@@ -108,7 +108,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Hex.cs" />
+    <Compile Include="Hexes\HexDefinition.cs" />
+    <Compile Include="Hexes\HexMap2.cs" />
+    <Compile Include="Hexes\NullHexDefinition.cs" />
     <Compile Include="HexMap.cs" />
+    <Compile Include="Hexes\HexSheet.cs" />
     <Compile Include="MathExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
@@ -117,6 +121,7 @@
     <Compile Include="Sprites\Sprite.cs" />
     <Compile Include="Sprites\SpriteMap.cs" />
     <Compile Include="Sprites\SpriteSheet.cs" />
+    <Compile Include="Tiles\NullTileDefinition.cs" />
     <Compile Include="Tiles\TileDefinition.cs" />
     <Compile Include="Tiles\TileMap.cs" />
     <Compile Include="Tiles\TileSheet.cs" />

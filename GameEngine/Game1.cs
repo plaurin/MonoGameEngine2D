@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using WindowsGame1.Hexes;
 using WindowsGame1.Sprites;
 using WindowsGame1.Tiles;
 
@@ -23,6 +24,7 @@ namespace WindowsGame1
         private long frameCounter;
         private long fps;
         private Texture2D tileSheet;
+        private Texture2D hexSheet;
 
         public Game1()
         {
@@ -58,6 +60,7 @@ namespace WindowsGame1
 
             this.linkSheet = Content.Load<Texture2D>("LinkSheet");
             this.tileSheet = Content.Load<Texture2D>("TileSheet");
+            this.hexSheet = Content.Load<Texture2D>("HexSheet");
         }
 
         /// <summary>
@@ -124,12 +127,34 @@ namespace WindowsGame1
             spriteBatch.DrawString(courierNew, "FPS " + ((int)fps).ToString(), new Vector2(610, 0), Color.White);
 
             //this.DrawHexMapTestDistance(blank);
+            var h = new Hex(Vector2.Zero, 22);
+            var w = h.Width;
+            var h2 = h.Height;
+
             this.DrawTileTest();
+            this.DrawHexTest();
             this.DrawSpriteTest();
 
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        private void DrawHexTest()
+        {
+            var sheet = new HexSheet(this.hexSheet, "Hexes", new Size(68, 60));
+            var red = sheet.CreateTileDefinition("red", new Point(55, 60));
+            var yellow = sheet.CreateTileDefinition("yellow", new Point(163, 330));
+            var purple = sheet.CreateTileDefinition("purple", new Point(488, 330));
+
+            var map = new HexMap2(new Size(4, 4), new Size(60, 52));
+            map[2, 0] = purple;
+            map[2, 1] = purple;
+            map[2, 2] = purple;
+            map[0, 1] = red;
+            map[1, 1] = red;
+
+            map.Draw(this.spriteBatch);
         }
 
         private void DrawTileTest()
@@ -142,10 +167,11 @@ namespace WindowsGame1
             sheet.CreateTileDefinition("orange", new Point(16, 16));
             sheet.CreateTileDefinition("blue", new Point(32, 16));
 
-            var tileMap = new TileMap(new Size(32, 32), new Size(16, 16), green);
+            var tileMap = new TileMap(new Size(32, 32), new Size(16, 16));
             tileMap[0, 0] = purple;
             tileMap[1, 1] = red;
             tileMap[10, 10] = purple;
+            tileMap[4, 20] = green;
 
             tileMap.Draw(this.spriteBatch);
         }
