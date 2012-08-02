@@ -3,27 +3,29 @@ Features
 * TileMap
  - Drawing utilities: DrawRectangle, FillRectangle, DrawLine
 * SpriteMap
- - 
 * HexMap
  - Variable hexSize
- - Merge HexMap and HexMap2
 * Map
  - Scrolling
  - Scaling
 * Scene
  - With Layers (*Map)
+ - Camera to move around
+* Screen
+ - Navigation
 * Other than Gfx
  - Input mapper (abstraction)
  - Audio?
+ - Entities
+  - Link to sprites
+ - Scene and Layers design tool
 
 Bugs
 ====
 
-
 Refactorings
 ============
 - Move engine into a class library (out of Windows Game)
-
 
 Quality
 =======

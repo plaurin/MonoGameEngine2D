@@ -4,14 +4,17 @@ using WindowsGame1.Sprites;
 
 namespace WindowsGame1.Hexes
 {
-    public class HexMap2
+    public class HexMap
     {
         private readonly HexDefinition[,] map;
+        private HexGrid grid;
 
-        public HexMap2(Size mapSize, Size hexSize, HexDefinition defaultHexDefinition = null)
+        public HexMap(Size mapSize, Size hexSize, HexDefinition defaultHexDefinition = null)
         {
             this.MapSize = mapSize;
             this.HexSize = hexSize;
+
+            this.grid = HexGrid.CreateHexMap(hexSize.Width / 2, mapSize.Width);
 
             this.map = new HexDefinition[mapSize.Width, mapSize.Height];
             if (defaultHexDefinition == null)
@@ -39,8 +42,11 @@ namespace WindowsGame1.Hexes
             for (var i = 0; i < this.MapSize.Width; i++)
                 for (var j = 0; j < this.MapSize.Height; j++)
                 {
-                    var destination = new Rectangle(i * this.HexSize.Width, j * this.HexSize.Height,
-                        this.HexSize.Width, this.HexSize.Height);
+                    var gridElement = this.grid[i, j];
+
+                    //var destination = new Rectangle(i * this.HexSize.Width, j * this.HexSize.Height,
+                    //    this.HexSize.Width, this.HexSize.Height);
+                    var destination = gridElement.Rectangle;
 
                     this.map[i, j].Draw(spriteBatch, destination);
                 }

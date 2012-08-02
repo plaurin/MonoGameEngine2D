@@ -107,11 +107,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hex.cs" />
+    <Compile Include="Hexes\HexGridElement.cs" />
     <Compile Include="Hexes\HexDefinition.cs" />
-    <Compile Include="Hexes\HexMap2.cs" />
+    <Compile Include="Hexes\HexGrid.cs" />
+    <Compile Include="Hexes\HexMap.cs" />
     <Compile Include="Hexes\NullHexDefinition.cs" />
-    <Compile Include="HexMap.cs" />
     <Compile Include="Hexes\HexSheet.cs" />
     <Compile Include="MathExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

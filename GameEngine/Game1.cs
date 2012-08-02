@@ -126,13 +126,9 @@ namespace WindowsGame1
             // FPS
             spriteBatch.DrawString(courierNew, "FPS " + ((int)fps).ToString(), new Vector2(610, 0), Color.White);
 
-            //this.DrawHexMapTestDistance(blank);
-            var h = new Hex(Vector2.Zero, 22);
-            var w = h.Width;
-            var h2 = h.Height;
-
-            this.DrawTileTest();
+            //this.DrawTileTest();
             this.DrawHexTest();
+            this.DrawHexMapTestDistance(blank);
             this.DrawSpriteTest();
 
             spriteBatch.End();
@@ -143,11 +139,11 @@ namespace WindowsGame1
         private void DrawHexTest()
         {
             var sheet = new HexSheet(this.hexSheet, "Hexes", new Size(68, 60));
-            var red = sheet.CreateTileDefinition("red", new Point(55, 60));
+            var red = sheet.CreateTileDefinition("red", new Point(55, 30));
             var yellow = sheet.CreateTileDefinition("yellow", new Point(163, 330));
             var purple = sheet.CreateTileDefinition("purple", new Point(488, 330));
 
-            var map = new HexMap2(new Size(4, 4), new Size(60, 52));
+            var map = new HexMap(new Size(4, 4), new Size(60, 52));
             map[2, 0] = purple;
             map[2, 1] = purple;
             map[2, 2] = purple;
@@ -203,10 +199,10 @@ namespace WindowsGame1
 
         private void DrawHexMapTestDistance(Texture2D blank)
         {
-            var hexMap = HexMap.CreateHexMap(25, 11);
+            var hexMap = HexGrid.CreateHexMap(30, 9);
             foreach (var hex in hexMap.Hexes) //this.HexCenters(20, 650))
             {
-                var distance = HexMap.HexDistance(hexMap[4, 5], hex);
+                var distance = HexGrid.HexDistance(hexMap[4, 5], hex);
 
                 var color = distance == 1
                     ? Color.FromNonPremultiplied(0, 255, 0, 255)
@@ -230,7 +226,7 @@ namespace WindowsGame1
                 var text = string.Format("{0},{1}", hex.Position.X - 4, hex.Position.Y - 5 + (hex.Position.X % 2) * .5);
                 //var text = string.Format("{0},{1}", hex.Position.X - 4, hex.Position.Y - 4 + (hex.Position.X % 2) * .5);
                 //var text = string.Format("{0},{1}", hex.Position.X - 5, hex.Position.Y - 5 - ((hex.Position.X + 1) % 2) * .5);
-                //var text = string.Format("{0}", HexMap.HexDistance(hexMap[3,3], hex));
+                //var text = string.Format("{0}", HexGrid.HexDistance(hexMap[3,3], hex));
                 var measure = this.courierNew.MeasureString(text);
 
                 this.spriteBatch.DrawString(this.courierNew, text, hex.Center - (measure / 2.0f), Color.Yellow);
@@ -253,7 +249,7 @@ namespace WindowsGame1
         //    DrawHex(batch, blank, color, new Hex(center, size));
         //}
 
-        private void DrawHex(SpriteBatch batch, Texture2D blank, Color color, Hex hex)
+        private void DrawHex(SpriteBatch batch, Texture2D blank, Color color, HexGridElement hex)
         {
             var vertices = new List<Vector2>(hex.GetVertices());
             vertices.Add(vertices.First());
