@@ -34,18 +34,17 @@ namespace WindowsGame1
         {
             return new Point((int)vector.X, (int)vector.Y);
         }
-    }
 
-    public static class MathUtil
-    {
-        public static float CalcHypotenuse(float sideA, float sideB)
+        public static Rectangle Scale(this Rectangle rectangle, float factor)
         {
-            return (sideA.Square() + sideB.Square()).SquareRoot();
-        }
+            var centerX = rectangle.X + rectangle.Width / 2.0f;
+            var centerY = rectangle.Y + rectangle.Height / 2.0f;
 
-        public static float CalcHypotenuseSide(float hypotenuse, float sideA)
-        {
-            return (hypotenuse.Square() - sideA.Square()).SquareRoot();
+            return new Rectangle(
+                (int)(centerX - rectangle.Width * factor / 2.0f),
+                (int)(centerY - rectangle.Height * factor / 2.0f),
+                (int)(rectangle.Width * factor),
+                (int)(rectangle.Height * factor));
         }
     }
 }

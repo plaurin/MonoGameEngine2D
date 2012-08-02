@@ -24,10 +24,12 @@ namespace WindowsGame1.Sprites
             this.definitions.Add(spriteName, spriteRectangle);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Sprite sprite)
+        public void Draw(SpriteBatch spriteBatch, Sprite sprite, float scaling)
         {
             var source = this.definitions[sprite.SpriteName];
-            var destination = new Rectangle(sprite.Position.X, sprite.Position.Y, source.Width, source.Height);
+            var destination = new Rectangle(sprite.Position.X, sprite.Position.Y, source.Width, source.Height)
+                .Scale(scaling);
+
             spriteBatch.Draw(this.texture2D, destination, source, Color.White);
         }
     }

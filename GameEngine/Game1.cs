@@ -26,6 +26,8 @@ namespace WindowsGame1
         private Texture2D tileSheet;
         private Texture2D hexSheet;
 
+        private float range = 1.0f;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -106,6 +108,9 @@ namespace WindowsGame1
             if (keyState.IsKeyDown(Keys.Down))
                 this.player = this.player.Translate(new Point(0, 1));
 
+            if (keyState.IsKeyDown(Keys.A)) this.range *= 1.02f;
+            if (keyState.IsKeyDown(Keys.Z)) this.range *= 1 / 1.02f;
+
             base.Update(gameTime);
         }
 
@@ -124,11 +129,12 @@ namespace WindowsGame1
             blank.SetData(new[] { Color.White });
 
             // FPS
-            spriteBatch.DrawString(courierNew, "FPS " + ((int)fps).ToString(), new Vector2(610, 0), Color.White);
+            spriteBatch.DrawString(courierNew, "FPS " + fps.ToString("d"), new Vector2(610, 0), Color.White);
+            spriteBatch.DrawString(courierNew, "Range " + range.ToString("f2"), new Vector2(610, 20), Color.White);
 
             //this.DrawTileTest();
             this.DrawHexTest();
-            this.DrawHexMapTestDistance(blank);
+            //this.DrawHexMapTestDistance(blank);
             this.DrawSpriteTest();
 
             spriteBatch.End();
@@ -150,6 +156,7 @@ namespace WindowsGame1
             map[0, 1] = red;
             map[1, 1] = red;
 
+            map.Scaling = this.range;
             map.Draw(this.spriteBatch);
         }
 
@@ -169,6 +176,7 @@ namespace WindowsGame1
             tileMap[10, 10] = purple;
             tileMap[4, 20] = green;
 
+            tileMap.Scaling = this.range;
             tileMap.Draw(this.spriteBatch);
         }
 
@@ -184,6 +192,8 @@ namespace WindowsGame1
             var spriteMap = new SpriteMap();
             spriteMap.AddSprite(link01);
             spriteMap.AddSprite(sleep01);
+
+            spriteMap.Scaling = this.range;
 
             spriteMap.Draw(this.spriteBatch);
 

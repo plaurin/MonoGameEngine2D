@@ -24,9 +24,9 @@ namespace WindowsGame1.Sprites
         //    get { return new Rectangle(this.Position.X, this.Position.Y, this.Size.Width, this.Size.Height); }
         //}
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, float scaling)
         {
-            this.SpriteSheet.Draw(spriteBatch, this);
+            this.SpriteSheet.Draw(spriteBatch, this, scaling);
         }
     }
 }

@@ -5,9 +5,10 @@ Features
 * SpriteMap
 * HexMap
  - Variable hexSize
-* Map
+* Map (Layer)
  - Scrolling
  - Scaling
+ - Zooming
 * Scene
  - With Layers (*Map)
  - Camera to move around
@@ -29,5 +30,5 @@ Refactorings
 
 Quality
 =======
-- StyleCop
+- Activate more StyleCop rules
 - FxCop

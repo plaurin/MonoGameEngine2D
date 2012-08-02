@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace WindowsGame1.Sprites
 {
-    public class SpriteMap
+    public class SpriteMap : MapBase
     {
         private readonly List<Sprite> sprites;
 
@@ -24,9 +24,9 @@ namespace WindowsGame1.Sprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var sprite in sprites)
+            foreach (var sprite in this.sprites)
             {
-                sprite.Draw(spriteBatch);
+                sprite.Draw(spriteBatch, this.Scaling);
             }
         }
     }

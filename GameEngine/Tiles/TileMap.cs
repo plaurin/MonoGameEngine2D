@@ -4,7 +4,7 @@ using WindowsGame1.Sprites;
 
 namespace WindowsGame1.Tiles
 {
-    public class TileMap
+    public class TileMap : MapBase
     {
         private readonly TileDefinition[,] map;
 
@@ -39,8 +39,11 @@ namespace WindowsGame1.Tiles
             for (var i = 0; i < this.MapSize.Width; i++)
                 for (var j = 0; j < this.MapSize.Height; j++)
                 {
-                    var destination = new Rectangle(i*this.TileSize.Width, j*this.TileSize.Height, 
-                        this.TileSize.Width, this.TileSize.Height);
+                    var destination = new Rectangle(
+                        (int)(i * this.TileSize.Width * this.Scaling),
+                        (int)(j * this.TileSize.Height * this.Scaling),
+                        (int)(this.TileSize.Width * this.Scaling),
+                        (int)(this.TileSize.Height * this.Scaling));
 
                     this.map[i, j].Draw(spriteBatch, destination);
                 }

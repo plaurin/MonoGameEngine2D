@@ -4,10 +4,10 @@ using WindowsGame1.Sprites;
 
 namespace WindowsGame1.Hexes
 {
-    public class HexMap
+    public class HexMap : MapBase
     {
         private readonly HexDefinition[,] map;
-        private HexGrid grid;
+        private readonly HexGrid grid;
 
         public HexMap(Size mapSize, Size hexSize, HexDefinition defaultHexDefinition = null)
         {
@@ -46,7 +46,11 @@ namespace WindowsGame1.Hexes
 
                     //var destination = new Rectangle(i * this.HexSize.Width, j * this.HexSize.Height,
                     //    this.HexSize.Width, this.HexSize.Height);
-                    var destination = gridElement.Rectangle;
+                    var destination = new Rectangle(
+                        (int)(gridElement.Rectangle.X * this.Scaling),
+                        (int)(gridElement.Rectangle.Y * this.Scaling),
+                        (int)(gridElement.Rectangle.Width * this.Scaling),
+                        (int)(gridElement.Rectangle.Height * this.Scaling));
 
                     this.map[i, j].Draw(spriteBatch, destination);
                 }
