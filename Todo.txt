@@ -4,18 +4,22 @@ Features
  - Map drawing utilities: DrawRectangle, FillRectangle, DrawLine
 * SpriteMap
  - Scaling SpriteSheets
+ - AnimatedSprites
+ - CompositeSprites
 * HexMap
  - Variable hexSize
 * Map (Layer)
+ - DrawingMap (text, line, rectangle, etc)
 * Scene
  - With Layers (*Map)
+ - Saving and Loading Scene
 * Screen
  - Navigation
 * Other than Gfx
  - Input mapper (abstraction)
  - Audio?
  - Entities
-  - Link to sprites
+  - Link to sprites/tiles
  - Scene and Layers design tool
 
 Bugs
@@ -24,6 +28,7 @@ Bugs
 Refactorings
 ============
 - Move engine into a class library (out of Windows Game)
+- Rendering should be in separated classes
 
 Quality
 =======

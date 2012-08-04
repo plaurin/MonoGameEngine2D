@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 
 using Microsoft.Xna.Framework;
 
-namespace WindowsGame1
+namespace WindowsGame1.Maps
 {
     public class MapBase
     {

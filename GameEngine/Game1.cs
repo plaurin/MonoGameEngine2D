@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Input;
 
 using WindowsGame1.Cameras;
 using WindowsGame1.Hexes;
+using WindowsGame1.Maps;
 using WindowsGame1.Sprites;
 using WindowsGame1.Tiles;
 
@@ -28,7 +29,7 @@ namespace WindowsGame1
         private long fps;
         private Texture2D tileSheet;
         private Texture2D hexSheet;
-        //private float range = 1.0f;
+        private float range = 1.0f;
 
         public Game1()
         {
@@ -46,6 +47,7 @@ namespace WindowsGame1
         {
             // TODO: Add your initialization logic here
             this.player = new Point(25, 25);
+            this.range = 0.25f;
 
             this.camera = new Camera(this.graphics.GraphicsDevice.Viewport);
 
@@ -121,6 +123,8 @@ namespace WindowsGame1
 
             if (keyState.IsKeyDown(Keys.A)) this.camera.ZoomFactor *= 1.02f;
             if (keyState.IsKeyDown(Keys.Z)) this.camera.ZoomFactor *= 1 / 1.02f;
+            if (keyState.IsKeyDown(Keys.W)) this.range *= 1.02f;
+            if (keyState.IsKeyDown(Keys.Q)) this.range *= 1 / 1.02f;
 
             base.Update(gameTime);
         }
@@ -146,15 +150,31 @@ namespace WindowsGame1
             this.spriteBatch.DrawString(this.courierNew, string.Format("Position: {0}", this.camera.Position), new Vector2(410, 60), Color.White);
             this.spriteBatch.DrawString(this.courierNew, string.Format("Zooming: {0:f1}", this.camera.ZoomFactor), new Vector2(410, 80), Color.White);
 
+            this.DrawImageMap();
             this.DrawHexTest();
             this.DrawHexMapTestDistance(blank);
             this.DrawTileTest();
+            this.DrawColorMap();
             this.DrawSpriteTest();
             this.DrawCamera(blank);
 
-            spriteBatch.End();
+            this.spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        private void DrawImageMap()
+        {
+            //var map = ImageMap.CreateFillScreenImageMap(this.GraphicsDevice, this.linkSheet);
+            var map = new ImageMap(this.linkSheet, new Rectangle(10, 10, 250, 250));
+            map.Draw(this.spriteBatch);
+        }
+
+        private void DrawColorMap()
+        {
+            var alpha = Math.Min(this.range, 1.0f);
+            var map = new ColorMap(this.GraphicsDevice, Color.Red * alpha);
+            map.Draw(this.spriteBatch, this.camera);
         }
 
         private void DrawCamera(Texture2D blank)

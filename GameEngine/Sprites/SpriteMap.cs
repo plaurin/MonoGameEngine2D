@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 
 using WindowsGame1.Cameras;
+using WindowsGame1.Maps;
 
 namespace WindowsGame1.Sprites
 {

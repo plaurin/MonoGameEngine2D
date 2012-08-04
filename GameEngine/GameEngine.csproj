@@ -114,7 +114,9 @@
     <Compile Include="Hexes\HexMap.cs" />
     <Compile Include="Hexes\NullHexDefinition.cs" />
     <Compile Include="Hexes\HexSheet.cs" />
-    <Compile Include="MapBase.cs" />
+    <Compile Include="Maps\ColorMap.cs" />
+    <Compile Include="Maps\ImageMap.cs" />
+    <Compile Include="Maps\MapBase.cs" />
     <Compile Include="MathExtensions.cs" />
     <Compile Include="MathUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

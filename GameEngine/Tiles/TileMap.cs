@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using WindowsGame1.Cameras;
+using WindowsGame1.Maps;
 using WindowsGame1.Sprites;
 
 namespace WindowsGame1.Tiles

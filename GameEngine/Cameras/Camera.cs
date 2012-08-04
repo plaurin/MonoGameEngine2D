@@ -7,11 +7,9 @@ namespace WindowsGame1.Cameras
 {
     public class Camera
     {
-        private readonly Viewport viewport;
-
         public Camera(Viewport viewport)
         {
-            this.viewport = viewport;
+            this.Viewport = viewport;
             this.ZoomFactor = 1.0f;
             this.ViewPortCenter = new Point(viewport.Width / 2, viewport.Height / 2);
         }
@@ -19,6 +17,8 @@ namespace WindowsGame1.Cameras
         public Point Position { get; private set; }
 
         public float ZoomFactor { get; set; }
+
+        public Viewport Viewport { get; private set; }
 
         public Point ViewPortCenter { get; private set; }
 
@@ -39,8 +39,8 @@ namespace WindowsGame1.Cameras
                 return new Rectangle(
                     (int)(this.Position.X - this.ViewPortCenter.X / this.ZoomFactor),
                     (int)(this.Position.Y - this.ViewPortCenter.Y / this.ZoomFactor),
-                    (int)(this.viewport.Width / this.ZoomFactor),
-                    (int)(this.viewport.Height / this.ZoomFactor));
+                    (int)(this.Viewport.Width / this.ZoomFactor),
+                    (int)(this.Viewport.Height / this.ZoomFactor));
             }
         }
 

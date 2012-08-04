@@ -78,5 +78,10 @@ namespace WindowsGame1
         {
             return new Rectangle(rectangle.X + vector.X, rectangle.Y + vector.Y, rectangle.Width, rectangle.Height);
         }
+
+        public static Color ChangeAlpha(this Color color, int alpha)
+        {
+            return new Color(color.R, color.G, color.B, alpha);
+        }
     }
 }
