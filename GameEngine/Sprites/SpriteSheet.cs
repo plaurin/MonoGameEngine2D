@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+using WindowsGame1.Cameras;
+
 namespace WindowsGame1.Sprites
 {
     public class SpriteSheet
@@ -24,11 +26,12 @@ namespace WindowsGame1.Sprites
             this.definitions.Add(spriteName, spriteRectangle);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Sprite sprite, float scaling)
+        public void Draw(SpriteBatch spriteBatch, Camera camera, Sprite sprite, float scaling)
         {
             var source = this.definitions[sprite.SpriteName];
             var destination = new Rectangle(sprite.Position.X, sprite.Position.Y, source.Width, source.Height)
-                .Scale(scaling);
+                .Scale(camera.ZoomFactor)
+                .Translate(camera.SceneTranslationVector);
 
             spriteBatch.Draw(this.texture2D, destination, source, Color.White);
         }

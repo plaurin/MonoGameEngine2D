@@ -25,9 +25,24 @@ namespace WindowsGame1
             return vector + new Vector2((float)Math.Cos(radAngle) * distance, (float)Math.Sin(radAngle) * distance);
         }
 
+        public static Vector2 Translate(this Vector2 vector, Point delta)
+        {
+            return new Vector2(vector.X + delta.X, vector.Y + delta.Y);
+        }
+
+        public static Vector2 Scale(this Vector2 vector, float zoomFactor)
+        {
+            return new Vector2(vector.X * zoomFactor, vector.Y * zoomFactor);
+        }
+
         public static Point Translate(this Point point, Point delta)
         {
             return new Point(point.X + delta.X, point.Y + delta.Y);
+        }
+
+        public static Point Translate(this Point point, int deltaX, int deltaY)
+        {
+            return new Point(point.X + deltaX, point.Y + deltaY);
         }
 
         public static Point ToPoint(this Vector2 vector)
@@ -35,16 +50,23 @@ namespace WindowsGame1
             return new Point((int)vector.X, (int)vector.Y);
         }
 
+        public static Vector2 ToVector(this Point point)
+        {
+            return new Vector2(point.X, point.Y);
+        }
+
         public static Rectangle Scale(this Rectangle rectangle, float factor)
         {
-            var centerX = rectangle.X + rectangle.Width / 2.0f;
-            var centerY = rectangle.Y + rectangle.Height / 2.0f;
-
             return new Rectangle(
-                (int)(centerX - rectangle.Width * factor / 2.0f),
-                (int)(centerY - rectangle.Height * factor / 2.0f),
+                (int)(rectangle.X * factor),
+                (int)(rectangle.Y * factor),
                 (int)(rectangle.Width * factor),
                 (int)(rectangle.Height * factor));
+        }
+
+        public static Rectangle Translate(this Rectangle rectangle, Point vector)
+        {
+            return new Rectangle(rectangle.X + vector.X, rectangle.Y + vector.Y, rectangle.Width, rectangle.Height);
         }
     }
 }

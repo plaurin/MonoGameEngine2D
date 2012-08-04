@@ -4,6 +4,8 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+
+using WindowsGame1.Cameras;
 using WindowsGame1.Hexes;
 using WindowsGame1.Sprites;
 using WindowsGame1.Tiles;
@@ -20,12 +22,12 @@ namespace WindowsGame1
         SpriteFont courierNew;
         private Texture2D linkSheet;
         private Point player;
+        private Camera camera;
         private float elapseTime;
         private long frameCounter;
         private long fps;
         private Texture2D tileSheet;
         private Texture2D hexSheet;
-
         private float range = 1.0f;
 
         public Game1()
@@ -44,6 +46,8 @@ namespace WindowsGame1
         {
             // TODO: Add your initialization logic here
             this.player = new Point(25, 25);
+
+            this.camera = new Camera(this.graphics.GraphicsDevice.Viewport);
 
             base.Initialize();
         }
@@ -99,17 +103,24 @@ namespace WindowsGame1
             // TODO: Add your update logic here
             var keyState = Keyboard.GetState();
 
-            if (keyState.IsKeyDown(Keys.Left))
-                this.player = this.player.Translate(new Point(-1, 0));
-            if (keyState.IsKeyDown(Keys.Right))
-                this.player = this.player.Translate(new Point(1, 0));
-            if (keyState.IsKeyDown(Keys.Up))
-                this.player = this.player.Translate(new Point(0, -1));
-            if (keyState.IsKeyDown(Keys.Down))
-                this.player = this.player.Translate(new Point(0, 1));
+            //if (keyState.IsKeyDown(Keys.Left))
+            //    this.player = this.player.Translate(new Point(-1, 0));
+            //if (keyState.IsKeyDown(Keys.Right))
+            //    this.player = this.player.Translate(new Point(1, 0));
+            //if (keyState.IsKeyDown(Keys.Up))
+            //    this.player = this.player.Translate(new Point(0, -1));
+            //if (keyState.IsKeyDown(Keys.Down))
+            //    this.player = this.player.Translate(new Point(0, 1));
 
-            if (keyState.IsKeyDown(Keys.A)) this.range *= 1.02f;
-            if (keyState.IsKeyDown(Keys.Z)) this.range *= 1 / 1.02f;
+            //if (keyState.IsKeyDown(Keys.A)) this.range *= 1.02f;
+            //if (keyState.IsKeyDown(Keys.Z)) this.range *= 1 / 1.02f;
+            if (keyState.IsKeyDown(Keys.Left)) this.camera.Move(-1, 0);
+            if (keyState.IsKeyDown(Keys.Right)) this.camera.Move(1, 0);
+            if (keyState.IsKeyDown(Keys.Up)) this.camera.Move(0, -1);
+            if (keyState.IsKeyDown(Keys.Down)) this.camera.Move(0, 1);
+
+            if (keyState.IsKeyDown(Keys.A)) this.camera.ZoomFactor *= 1.02f;
+            if (keyState.IsKeyDown(Keys.Z)) this.camera.ZoomFactor *= 1 / 1.02f;
 
             base.Update(gameTime);
         }
@@ -129,17 +140,32 @@ namespace WindowsGame1
             blank.SetData(new[] { Color.White });
 
             // FPS
-            spriteBatch.DrawString(courierNew, "FPS " + fps.ToString("d"), new Vector2(610, 0), Color.White);
-            spriteBatch.DrawString(courierNew, "Range " + range.ToString("f2"), new Vector2(610, 20), Color.White);
+            this.spriteBatch.DrawString(this.courierNew, "FPS " + this.fps.ToString("d"), new Vector2(610, 0), Color.White);
+            this.spriteBatch.DrawString(this.courierNew, string.Format("ViewPort: {0}", this.camera.SceneViewPort), new Vector2(410, 20), Color.White);
+            this.spriteBatch.DrawString(this.courierNew, string.Format("Translation: {0}", this.camera.SceneTranslationVector), new Vector2(410, 40), Color.White);
+            this.spriteBatch.DrawString(this.courierNew, string.Format("Position: {0}", this.camera.Position), new Vector2(410, 60), Color.White);
+            this.spriteBatch.DrawString(this.courierNew, string.Format("Zooming: {0:f1}", this.camera.ZoomFactor), new Vector2(410, 80), Color.White);
 
-            //this.DrawTileTest();
             this.DrawHexTest();
-            //this.DrawHexMapTestDistance(blank);
+            this.DrawHexMapTestDistance(blank);
+            this.DrawTileTest();
             this.DrawSpriteTest();
+            this.DrawCamera(blank);
 
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        private void DrawCamera(Texture2D blank)
+        {
+            this.DrawLine(this.spriteBatch, blank, 1.0f, Color.Yellow,
+                this.camera.ViewPortCenter.Translate(-10, 0).ToVector(),
+                this.camera.ViewPortCenter.Translate(10, 0).ToVector());
+
+            this.DrawLine(this.spriteBatch, blank, 1.0f, Color.Yellow,
+                this.camera.ViewPortCenter.Translate(0, -10).ToVector(),
+                this.camera.ViewPortCenter.Translate(0, 10).ToVector());
         }
 
         private void DrawHexTest()
@@ -152,12 +178,12 @@ namespace WindowsGame1
             var map = new HexMap(new Size(4, 4), new Size(60, 52));
             map[2, 0] = purple;
             map[2, 1] = purple;
-            map[2, 2] = purple;
+            map[2, 2] = yellow;
             map[0, 1] = red;
             map[1, 1] = red;
 
             map.Scaling = this.range;
-            map.Draw(this.spriteBatch);
+            map.Draw(this.spriteBatch, this.camera);
         }
 
         private void DrawTileTest()
@@ -177,7 +203,7 @@ namespace WindowsGame1
             tileMap[4, 20] = green;
 
             tileMap.Scaling = this.range;
-            tileMap.Draw(this.spriteBatch);
+            tileMap.Draw(this.spriteBatch, this.camera);
         }
 
         private void DrawSpriteTest()
@@ -195,7 +221,7 @@ namespace WindowsGame1
 
             spriteMap.Scaling = this.range;
 
-            spriteMap.Draw(this.spriteBatch);
+            spriteMap.Draw(this.spriteBatch, this.camera);
 
             //link01.Draw(this.spriteBatch);
             //sleep01.Draw(this.spriteBatch);
@@ -228,7 +254,7 @@ namespace WindowsGame1
 
                 //this.DrawLine(this.spriteBatch, blank, 1.0f, Color.White, hex.Center, hex.Center + new Vector2(0, 1));
                 //this.DrawLine(this.spriteBatch, blank, 1.0f, Color.White, hex.Center, hex.Center + new Vector2(1, 0));
-                this.DrawHex(this.spriteBatch, blank, color, hex);
+                this.DrawHex(this.spriteBatch, this.camera, blank, color, hex);
 
                 //var text = string.Format("{0},{1}", hex.Position.X, hex.Position.Y);
                 //var text = string.Format("{0},{1}", hex.Position.X - 4, (hex.Position.Y - 4) * 2 + hex.Position.X % 2);
@@ -239,7 +265,9 @@ namespace WindowsGame1
                 //var text = string.Format("{0}", HexGrid.HexDistance(hexMap[3,3], hex));
                 var measure = this.courierNew.MeasureString(text);
 
-                this.spriteBatch.DrawString(this.courierNew, text, hex.Center - (measure / 2.0f), Color.Yellow);
+                this.spriteBatch.DrawString(this.courierNew, text,
+                    (hex.Center - (measure / 2.0f)).Scale(this.camera.ZoomFactor).Translate(this.camera.SceneTranslationVector),
+                    Color.Yellow, 0.0f, Vector2.Zero, this.camera.ZoomFactor, SpriteEffects.None, 0.0f);
             }
         }
 
@@ -259,9 +287,11 @@ namespace WindowsGame1
         //    DrawHex(batch, blank, color, new Hex(center, size));
         //}
 
-        private void DrawHex(SpriteBatch batch, Texture2D blank, Color color, HexGridElement hex)
+        private void DrawHex(SpriteBatch batch, Camera camera1, Texture2D blank, Color color, HexGridElement hex)
         {
-            var vertices = new List<Vector2>(hex.GetVertices());
+            var vertices = new List<Vector2>(hex.GetVertices()
+                .Select(v => v.Scale(camera1.ZoomFactor).Translate(camera1.SceneTranslationVector)));
+
             vertices.Add(vertices.First());
 
             for (var i = 0; i < 6; i++)

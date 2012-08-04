@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+using WindowsGame1.Cameras;
+
 namespace WindowsGame1.Sprites
 {
     public class Sprite
@@ -24,9 +26,9 @@ namespace WindowsGame1.Sprites
         //    get { return new Rectangle(this.Position.X, this.Position.Y, this.Size.Width, this.Size.Height); }
         //}
 
-        public void Draw(SpriteBatch spriteBatch, float scaling)
+        public void Draw(SpriteBatch spriteBatch, Camera camera, float scaling)
         {
-            this.SpriteSheet.Draw(spriteBatch, this, scaling);
+            this.SpriteSheet.Draw(spriteBatch, camera, this, scaling);
         }
     }
 }

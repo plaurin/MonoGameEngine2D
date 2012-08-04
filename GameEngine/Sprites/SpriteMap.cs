@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 
+using WindowsGame1.Cameras;
+
 namespace WindowsGame1.Sprites
 {
     public class SpriteMap : MapBase
@@ -22,11 +24,11 @@ namespace WindowsGame1.Sprites
             this.sprites.Remove(sprite);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Camera camera)
         {
             foreach (var sprite in this.sprites)
             {
-                sprite.Draw(spriteBatch, this.Scaling);
+                sprite.Draw(spriteBatch, camera, this.Scaling);
             }
         }
     }

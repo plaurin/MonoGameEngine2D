@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
 using WindowsGame1.Sprites;
-using WindowsGame1.Tiles;
 
 namespace WindowsGame1.Hexes
 {

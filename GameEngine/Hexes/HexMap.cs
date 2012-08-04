@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
+using WindowsGame1.Cameras;
 using WindowsGame1.Sprites;
 
 namespace WindowsGame1.Hexes
@@ -37,20 +39,16 @@ namespace WindowsGame1.Hexes
             set { this.map[x, y] = value; }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Camera camera)
         {
             for (var i = 0; i < this.MapSize.Width; i++)
                 for (var j = 0; j < this.MapSize.Height; j++)
                 {
                     var gridElement = this.grid[i, j];
 
-                    //var destination = new Rectangle(i * this.HexSize.Width, j * this.HexSize.Height,
-                    //    this.HexSize.Width, this.HexSize.Height);
-                    var destination = new Rectangle(
-                        (int)(gridElement.Rectangle.X * this.Scaling),
-                        (int)(gridElement.Rectangle.Y * this.Scaling),
-                        (int)(gridElement.Rectangle.Width * this.Scaling),
-                        (int)(gridElement.Rectangle.Height * this.Scaling));
+                    var destination = gridElement.Rectangle
+                        .Scale(camera.ZoomFactor)
+                        .Translate(camera.SceneTranslationVector);
 
                     this.map[i, j].Draw(spriteBatch, destination);
                 }

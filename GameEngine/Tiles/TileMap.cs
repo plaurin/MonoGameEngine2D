@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
+using WindowsGame1.Cameras;
 using WindowsGame1.Sprites;
 
 namespace WindowsGame1.Tiles
@@ -34,16 +36,15 @@ namespace WindowsGame1.Tiles
             set { this.map[x, y] = value; }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Camera camera)
         {
             for (var i = 0; i < this.MapSize.Width; i++)
                 for (var j = 0; j < this.MapSize.Height; j++)
                 {
-                    var destination = new Rectangle(
-                        (int)(i * this.TileSize.Width * this.Scaling),
-                        (int)(j * this.TileSize.Height * this.Scaling),
-                        (int)(this.TileSize.Width * this.Scaling),
-                        (int)(this.TileSize.Height * this.Scaling));
+                    var destination =
+                        new Rectangle(i * this.TileSize.Width, j * this.TileSize.Height, this.TileSize.Width, this.TileSize.Height)
+                        .Scale(camera.ZoomFactor)
+                        .Translate(camera.SceneTranslationVector);
 
                     this.map[i, j].Draw(spriteBatch, destination);
                 }
