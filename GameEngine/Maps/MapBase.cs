@@ -1,16 +1,21 @@
 using System;
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+using WindowsGame1.Cameras;
 
 namespace WindowsGame1.Maps
 {
-    public class MapBase
+    public abstract class MapBase
     {
-        public MapBase()
+        protected MapBase()
         {
             this.ParallaxScrollingVector = Vector2.One;
         }
 
         public Vector2 ParallaxScrollingVector { get; set; }
+
+        public abstract void Draw(SpriteBatch spriteBatch, Camera camera);
     }
 }

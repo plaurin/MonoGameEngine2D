@@ -18,7 +18,7 @@ namespace WindowsGame1.Maps
             this.texture = CreateTexture(device);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Camera camera)
+        public override void Draw(SpriteBatch spriteBatch, Camera camera)
         {
             spriteBatch.Draw(this.texture, camera.Viewport.Bounds, this.color);
         }

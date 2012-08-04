@@ -25,7 +25,7 @@ namespace WindowsGame1.Sprites
             this.sprites.Remove(sprite);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Camera camera)
+        public override void Draw(SpriteBatch spriteBatch, Camera camera)
         {
             foreach (var sprite in this.sprites)
             {

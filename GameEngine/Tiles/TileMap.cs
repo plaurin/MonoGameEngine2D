@@ -37,7 +37,7 @@ namespace WindowsGame1.Tiles
             set { this.map[x, y] = value; }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Camera camera)
+        public override void Draw(SpriteBatch spriteBatch, Camera camera)
         {
             for (var i = 0; i < this.MapSize.Width; i++)
                 for (var j = 0; j < this.MapSize.Height; j++)

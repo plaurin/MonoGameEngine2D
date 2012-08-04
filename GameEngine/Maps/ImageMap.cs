@@ -3,6 +3,8 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+using WindowsGame1.Cameras;
+
 namespace WindowsGame1.Maps
 {
     public class ImageMap : MapBase
@@ -22,7 +24,7 @@ namespace WindowsGame1.Maps
             return new ImageMap(texture, device.Viewport.Bounds);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, Camera camera)
         {
             spriteBatch.Draw(this.texture, this.Rectangle, Color.White);
         }

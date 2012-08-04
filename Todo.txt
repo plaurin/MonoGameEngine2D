@@ -2,6 +2,7 @@ Features
 ========
 * TileMap
  - Map drawing utilities: DrawRectangle, FillRectangle, DrawLine
+ - Tile Stencil to help maps designing
 * SpriteMap
  - Scaling SpriteSheets
  - AnimatedSprites
@@ -11,7 +12,6 @@ Features
 * Map (Layer)
  - DrawingMap (text, line, rectangle, etc)
 * Scene
- - With Layers (*Map)
  - Saving and Loading Scene
 * Screen
  - Navigation

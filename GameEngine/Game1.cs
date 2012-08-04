@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Input;
 using WindowsGame1.Cameras;
 using WindowsGame1.Hexes;
 using WindowsGame1.Maps;
+using WindowsGame1.Scenes;
 using WindowsGame1.Sprites;
 using WindowsGame1.Tiles;
 
@@ -150,12 +151,17 @@ namespace WindowsGame1
             this.spriteBatch.DrawString(this.courierNew, string.Format("Position: {0}", this.camera.Position), new Vector2(410, 60), Color.White);
             this.spriteBatch.DrawString(this.courierNew, string.Format("Zooming: {0:f1}", this.camera.ZoomFactor), new Vector2(410, 80), Color.White);
 
-            this.DrawImageMap();
-            this.DrawHexTest();
+            var scene = new Scene();
+
+            scene.AddMap(this.DrawImageMap());
+            scene.AddMap(this.DrawHexTest());
+            scene.AddMap(this.DrawTileTest());
+            scene.AddMap(this.DrawColorMap());
+            scene.AddMap(this.DrawSpriteTest());
+            scene.Draw(this.spriteBatch, this.camera);
+
+
             this.DrawHexMapTestDistance(blank);
-            this.DrawTileTest();
-            this.DrawColorMap();
-            this.DrawSpriteTest();
             this.DrawCamera(blank);
 
             this.spriteBatch.End();
@@ -163,18 +169,22 @@ namespace WindowsGame1
             base.Draw(gameTime);
         }
 
-        private void DrawImageMap()
+        private ImageMap DrawImageMap()
         {
             //var map = ImageMap.CreateFillScreenImageMap(this.GraphicsDevice, this.linkSheet);
             var map = new ImageMap(this.linkSheet, new Rectangle(10, 10, 250, 250));
-            map.Draw(this.spriteBatch);
+            //map.Draw(this.spriteBatch, this.camera);
+
+            return map;
         }
 
-        private void DrawColorMap()
+        private ColorMap DrawColorMap()
         {
             var alpha = Math.Min(this.range, 1.0f);
             var map = new ColorMap(this.GraphicsDevice, Color.Red * alpha);
-            map.Draw(this.spriteBatch, this.camera);
+            //map.Draw(this.spriteBatch, this.camera);
+            
+            return map;
         }
 
         private void DrawCamera(Texture2D blank)
@@ -188,7 +198,7 @@ namespace WindowsGame1
                 this.camera.ViewPortCenter.Translate(0, 10).ToVector());
         }
 
-        private void DrawHexTest()
+        private HexMap DrawHexTest()
         {
             var sheet = new HexSheet(this.hexSheet, "Hexes", new Size(68, 60));
             var red = sheet.CreateTileDefinition("red", new Point(55, 30));
@@ -203,10 +213,12 @@ namespace WindowsGame1
             map[1, 1] = red;
 
             map.ParallaxScrollingVector = new Vector2(4.0f, 0.5f);
-            map.Draw(this.spriteBatch, this.camera);
+            //map.Draw(this.spriteBatch, this.camera);
+
+            return map;
         }
 
-        private void DrawTileTest()
+        private TileMap DrawTileTest()
         {
             var sheet = new TileSheet(this.tileSheet, "Background", new Size(16, 16));
             var red = sheet.CreateTileDefinition("red", new Point(0, 0));
@@ -223,10 +235,12 @@ namespace WindowsGame1
             tileMap[4, 20] = green;
 
             tileMap.ParallaxScrollingVector = new Vector2(2.0f, 2.0f);
-            tileMap.Draw(this.spriteBatch, this.camera);
+            //tileMap.Draw(this.spriteBatch, this.camera);
+
+            return tileMap;
         }
 
-        private void DrawSpriteTest()
+        private SpriteMap DrawSpriteTest()
         {
             var sheet = new SpriteSheet(this.linkSheet, "Link");
             sheet.CreateSpriteDefinition("Link01", new Rectangle(3, 3, 16, 22));
@@ -240,14 +254,9 @@ namespace WindowsGame1
             spriteMap.AddSprite(sleep01);
 
             spriteMap.ParallaxScrollingVector = new Vector2(4.0f, 8.0f);
-            spriteMap.Draw(this.spriteBatch, this.camera);
+            //spriteMap.Draw(this.spriteBatch, this.camera);
 
-            //link01.Draw(this.spriteBatch);
-            //sleep01.Draw(this.spriteBatch);
-
-            //this.spriteBatch.Draw(this.linkSheet, Vector2.Zero, Color.White);
-            //this.spriteBatch.Draw(this.linkSheet, new Rectangle(10, 10, 16, 22), new Rectangle(3, 3, 16, 22), Color.White);
-            //this.spriteBatch.Draw(this.linkSheet, new Rectangle(60, 10, 32, 40), new Rectangle(45, 219, 32, 40), Color.White);
+            return spriteMap;
         }
 
         private void DrawHexMapTestDistance(Texture2D blank)
@@ -318,59 +327,5 @@ namespace WindowsGame1
                 this.DrawLine(batch, blank, 3, color, vertices[i], vertices[i + 1]);
             }
         }
-
-        //private IEnumerable<Vector2> HexCenters(float hexSide, float area)
-        //{
-        //    //var centerDistance = (float)Math.Sqrt(Math.Pow(hexSide * 2, 2) + Math.Pow(hexSide, 2));
-        //    var centerDistance = (float)Math.Sqrt(Math.Pow(hexSide * 2, 2) - Math.Pow(hexSide, 2));
-        //    return this.GetAdjacentHexes(new Vector2(1, 1), centerDistance, area);
-        //}
-
-        //private IEnumerable<Vector2> GetAdjacentHexes(Vector2 hexCenter, float hexDistance, float area)
-        //{
-        //    var angles = new[] { -30, 30, 90 };
-        //    var hexCenters = new HashSet<Vector2>();
-        //    var toExplore = new HashSet<Vector2>();
-        //    toExplore.Add(new Vector2(1, 1));
-
-        //    while (toExplore.Any())
-        //    {
-        //        var hex = toExplore.First();
-        //        toExplore.Remove(hex);
-
-        //        foreach (var angle in angles)
-        //        {
-        //            var adjacent = GetAdjacentHex(hex, angle, hexDistance, area);
-
-        //            if (adjacent.X >= 0 && adjacent.Y >= 0 && adjacent.X <= area && adjacent.Y <= area)
-        //            {
-        //                if (!toExplore.Contains(adjacent) && !hexCenters.Contains(adjacent))
-        //                    toExplore.Add(adjacent);
-        //            }
-        //        }
-
-        //        hexCenters.Add(hex);
-        //    }
-
-        //    return hexCenters;
-        //}
-
-        //private Vector2 GetAdjacentHex(Vector2 hexCenter, float angleInDegree, float hexDistance, float area)
-        //{
-        //    var a1 = AngleToRad(angleInDegree);
-        //    var c1 = RoundTo(hexCenter + new Vector2((float)Math.Cos(a1) * hexDistance, (float)Math.Sin(a1) * hexDistance), 1);
-
-        //    return c1;
-        //}
-
-        //private static Vector2 RoundTo(Vector2 input, int precision)
-        //{
-        //    return new Vector2((float)Math.Round(input.X, precision), (float)Math.Round(input.Y, precision));
-        //}
-
-        //private static float AngleToRad(float angle)
-        //{
-        //    return (float)((angle / 360) * Math.PI * 2);
-        //}
     }
 }
