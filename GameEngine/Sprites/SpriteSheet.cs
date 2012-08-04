@@ -26,12 +26,12 @@ namespace WindowsGame1.Sprites
             this.definitions.Add(spriteName, spriteRectangle);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Camera camera, Sprite sprite, float scaling)
+        public void Draw(SpriteBatch spriteBatch, Camera camera, Vector2 parallaxScrollingVector, Sprite sprite)
         {
             var source = this.definitions[sprite.SpriteName];
             var destination = new Rectangle(sprite.Position.X, sprite.Position.Y, source.Width, source.Height)
                 .Scale(camera.ZoomFactor)
-                .Translate(camera.SceneTranslationVector);
+                .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
 
             spriteBatch.Draw(this.texture2D, destination, source, Color.White);
         }

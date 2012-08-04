@@ -48,5 +48,12 @@ namespace WindowsGame1.Cameras
         {
             this.Position = this.Position.Translate(new Point(delatX, deltaY));
         }
+
+        public Point GetSceneTranslationVector(Vector2 parallaxScrollingVector)
+        {
+            return new Point(
+                (int)(this.ViewPortCenter.X - this.Position.X * this.ZoomFactor * parallaxScrollingVector.X),
+                (int)(this.ViewPortCenter.Y - this.Position.Y * this.ZoomFactor * parallaxScrollingVector.Y));
+        }
     }
 }

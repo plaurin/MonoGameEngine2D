@@ -1,17 +1,14 @@
 Features
 ========
 * TileMap
- - Drawing utilities: DrawRectangle, FillRectangle, DrawLine
+ - Map drawing utilities: DrawRectangle, FillRectangle, DrawLine
 * SpriteMap
+ - Scaling SpriteSheets
 * HexMap
  - Variable hexSize
 * Map (Layer)
- - Scrolling
- - Scaling
- - Zooming
 * Scene
  - With Layers (*Map)
- - Camera to move around
 * Screen
  - Navigation
 * Other than Gfx

@@ -28,7 +28,7 @@ namespace WindowsGame1
         private long fps;
         private Texture2D tileSheet;
         private Texture2D hexSheet;
-        private float range = 1.0f;
+        //private float range = 1.0f;
 
         public Game1()
         {
@@ -182,7 +182,7 @@ namespace WindowsGame1
             map[0, 1] = red;
             map[1, 1] = red;
 
-            map.Scaling = this.range;
+            map.ParallaxScrollingVector = new Vector2(4.0f, 0.5f);
             map.Draw(this.spriteBatch, this.camera);
         }
 
@@ -202,7 +202,7 @@ namespace WindowsGame1
             tileMap[10, 10] = purple;
             tileMap[4, 20] = green;
 
-            tileMap.Scaling = this.range;
+            tileMap.ParallaxScrollingVector = new Vector2(2.0f, 2.0f);
             tileMap.Draw(this.spriteBatch, this.camera);
         }
 
@@ -219,8 +219,7 @@ namespace WindowsGame1
             spriteMap.AddSprite(link01);
             spriteMap.AddSprite(sleep01);
 
-            spriteMap.Scaling = this.range;
-
+            spriteMap.ParallaxScrollingVector = new Vector2(4.0f, 8.0f);
             spriteMap.Draw(this.spriteBatch, this.camera);
 
             //link01.Draw(this.spriteBatch);
@@ -229,8 +228,6 @@ namespace WindowsGame1
             //this.spriteBatch.Draw(this.linkSheet, Vector2.Zero, Color.White);
             //this.spriteBatch.Draw(this.linkSheet, new Rectangle(10, 10, 16, 22), new Rectangle(3, 3, 16, 22), Color.White);
             //this.spriteBatch.Draw(this.linkSheet, new Rectangle(60, 10, 32, 40), new Rectangle(45, 219, 32, 40), Color.White);
-
-
         }
 
         private void DrawHexMapTestDistance(Texture2D blank)
@@ -266,7 +263,9 @@ namespace WindowsGame1
                 var measure = this.courierNew.MeasureString(text);
 
                 this.spriteBatch.DrawString(this.courierNew, text,
-                    (hex.Center - (measure / 2.0f)).Scale(this.camera.ZoomFactor).Translate(this.camera.SceneTranslationVector),
+                    (hex.Center - (measure / 2.0f))
+                        .Scale(this.camera.ZoomFactor)
+                        .Translate(this.camera.GetSceneTranslationVector(new Vector2(0.5f, 2.0f))),
                     Color.Yellow, 0.0f, Vector2.Zero, this.camera.ZoomFactor, SpriteEffects.None, 0.0f);
             }
         }
@@ -290,7 +289,7 @@ namespace WindowsGame1
         private void DrawHex(SpriteBatch batch, Camera camera1, Texture2D blank, Color color, HexGridElement hex)
         {
             var vertices = new List<Vector2>(hex.GetVertices()
-                .Select(v => v.Scale(camera1.ZoomFactor).Translate(camera1.SceneTranslationVector)));
+                .Select(v => v.Scale(camera1.ZoomFactor).Translate(camera1.GetSceneTranslationVector(new Vector2(0.5f, 2.0f)))));
 
             vertices.Add(vertices.First());
 

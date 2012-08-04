@@ -35,6 +35,11 @@ namespace WindowsGame1
             return new Vector2(vector.X * zoomFactor, vector.Y * zoomFactor);
         }
 
+        public static Vector2 Scale(this Vector2 vector, Vector2 scalingVector)
+        {
+            return new Vector2(vector.X * scalingVector.X, vector.Y * scalingVector.Y);
+        }
+
         public static Point Translate(this Point point, Point delta)
         {
             return new Point(point.X + delta.X, point.Y + delta.Y);
@@ -43,6 +48,11 @@ namespace WindowsGame1
         public static Point Translate(this Point point, int deltaX, int deltaY)
         {
             return new Point(point.X + deltaX, point.Y + deltaY);
+        }
+
+        public static Point Scale(this Point point, Vector2 scalingVector)
+        {
+            return new Point((int)(point.X * scalingVector.X), (int)(point.Y * scalingVector.Y));
         }
 
         public static Point ToPoint(this Vector2 vector)

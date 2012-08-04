@@ -26,9 +26,9 @@ namespace WindowsGame1.Sprites
         //    get { return new Rectangle(this.Position.X, this.Position.Y, this.Size.Width, this.Size.Height); }
         //}
 
-        public void Draw(SpriteBatch spriteBatch, Camera camera, float scaling)
+        public void Draw(SpriteBatch spriteBatch, Camera camera, Vector2 parallaxScrollingVector)
         {
-            this.SpriteSheet.Draw(spriteBatch, camera, this, scaling);
+            this.SpriteSheet.Draw(spriteBatch, camera, parallaxScrollingVector, this);
         }
     }
 }

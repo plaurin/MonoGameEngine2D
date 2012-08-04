@@ -28,7 +28,7 @@ namespace WindowsGame1.Sprites
         {
             foreach (var sprite in this.sprites)
             {
-                sprite.Draw(spriteBatch, camera, this.Scaling);
+                sprite.Draw(spriteBatch, camera, this.ParallaxScrollingVector);
             }
         }
     }

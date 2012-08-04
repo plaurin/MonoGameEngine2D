@@ -8,15 +8,9 @@ namespace WindowsGame1
     {
         public MapBase()
         {
-            this.Scaling = 1.0f;
-            this.Zooming = 1.0f;
-            this.Position = Point.Zero;
+            this.ParallaxScrollingVector = Vector2.One;
         }
 
-        public float Scaling { get; set; }
-
-        public float Zooming { get; set; }
-
-        public Point Position { get; set; }
+        public Vector2 ParallaxScrollingVector { get; set; }
     }
 }

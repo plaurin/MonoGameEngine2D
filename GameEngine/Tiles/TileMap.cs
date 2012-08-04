@@ -44,7 +44,7 @@ namespace WindowsGame1.Tiles
                     var destination =
                         new Rectangle(i * this.TileSize.Width, j * this.TileSize.Height, this.TileSize.Width, this.TileSize.Height)
                         .Scale(camera.ZoomFactor)
-                        .Translate(camera.SceneTranslationVector);
+                        .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
 
                     this.map[i, j].Draw(spriteBatch, destination);
                 }

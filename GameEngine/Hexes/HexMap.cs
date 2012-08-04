@@ -48,7 +48,7 @@ namespace WindowsGame1.Hexes
 
                     var destination = gridElement.Rectangle
                         .Scale(camera.ZoomFactor)
-                        .Translate(camera.SceneTranslationVector);
+                        .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
 
                     this.map[i, j].Draw(spriteBatch, destination);
                 }
