@@ -114,6 +114,7 @@
     <Compile Include="Hexes\HexMap.cs" />
     <Compile Include="Hexes\NullHexDefinition.cs" />
     <Compile Include="Hexes\HexSheet.cs" />
+    <Compile Include="Hexes\NullHexSheet.cs" />
     <Compile Include="Maps\ColorMap.cs" />
     <Compile Include="Maps\ImageMap.cs" />
     <Compile Include="Maps\MapBase.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="Sprites\SpriteMap.cs" />
     <Compile Include="Sprites\SpriteSheet.cs" />
     <Compile Include="Tiles\NullTileDefinition.cs" />
+    <Compile Include="Tiles\NullTileSheet.cs" />
     <Compile Include="Tiles\TileDefinition.cs" />
     <Compile Include="Tiles\TileMap.cs" />
     <Compile Include="Tiles\TileSheet.cs" />

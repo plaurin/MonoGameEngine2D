@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -49,6 +53,56 @@ namespace WindowsGame1.Tiles
 
                     this.map[i, j].Draw(spriteBatch, destination);
                 }
+        }
+
+        public override XElement GetXml()
+        {
+            var tileReferences = this.CreateTileReferences().ToList();
+
+            return new XElement("TileMap",
+                new XElement("MapSize", this.MapSize),
+                new XElement("TileSize", this.TileSize),
+                new XElement("HexDefinitionReferences", tileReferences.Select(x =>
+                    new XElement("Reference",
+                        new XAttribute("id", x.Id),
+                        new XAttribute("sheetName", x.Definition.SheetName),
+                        new XAttribute("name", x.Definition.Name)))),
+                new XElement("Hexes", this.GetRowsXml(tileReferences)));
+        }
+
+        private IEnumerable<TileReference> CreateTileReferences()
+        {
+            var tileDefinitions = new List<TileDefinition>();
+            for (var i = 0; i < this.MapSize.Width; i++)
+                for (var j = 0; j < this.MapSize.Height; j++)
+                {
+                    tileDefinitions.Add(this.map[i, j]);
+                }
+
+            return tileDefinitions
+                .Distinct()
+                .Select((x, i) => new TileReference { Id = i, Definition = x });
+        }
+
+        private IEnumerable<XElement> GetRowsXml(List<TileReference> tileReferences)
+        {
+            for (var i = 0; i < this.MapSize.Width; i++)
+            {
+                var row = new int[this.MapSize.Height];
+                for (var j = 0; j < this.MapSize.Height; j++)
+                {
+                    row[j] = tileReferences.Single(x => x.Definition == this.map[i, j]).Id;
+                }
+
+                yield return new XElement("Row", string.Join(", ", row));
+            }
+        }
+
+        private struct TileReference
+        {
+            public int Id { get; set; }
+
+            public TileDefinition Definition { get; set; }
         }
     }
 }

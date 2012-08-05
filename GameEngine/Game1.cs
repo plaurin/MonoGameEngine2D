@@ -17,7 +17,7 @@ namespace WindowsGame1
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -32,10 +32,14 @@ namespace WindowsGame1
         private Texture2D hexSheet;
         private float range = 1.0f;
 
+        private Scene scene;
+
+        private Texture2D whitePixel;
+
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+            this.graphics = new GraphicsDeviceManager(this);
+            this.Content.RootDirectory = "Content";
         }
 
         /// <summary>
@@ -62,14 +66,18 @@ namespace WindowsGame1
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            courierNew = Content.Load<SpriteFont>("SpriteFont1");
+            this.courierNew = this.Content.Load<SpriteFont>("SpriteFont1");
 
-            this.linkSheet = Content.Load<Texture2D>("LinkSheet");
-            this.tileSheet = Content.Load<Texture2D>("TileSheet");
-            this.hexSheet = Content.Load<Texture2D>("HexSheet");
+            this.linkSheet = this.Content.Load<Texture2D>("LinkSheet");
+            this.tileSheet = this.Content.Load<Texture2D>("TileSheet");
+            this.hexSheet = this.Content.Load<Texture2D>("HexSheet");
+            this.whitePixel = CreateTexture(this.GraphicsDevice);
+
+            this.CreateScene();
+            this.scene = new Scene();
         }
 
         /// <summary>
@@ -92,11 +100,11 @@ namespace WindowsGame1
             this.elapseTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             this.frameCounter++;
 
-            if (elapseTime > 1)
+            if (this.elapseTime > 1)
             {
-                this.fps = frameCounter;
-                frameCounter = 0;
-                elapseTime = 0;
+                this.fps = this.frameCounter;
+                this.frameCounter = 0;
+                this.elapseTime = 0;
             }
 
             // Allows the game to exit
@@ -127,6 +135,10 @@ namespace WindowsGame1
             if (keyState.IsKeyDown(Keys.W)) this.range *= 1.02f;
             if (keyState.IsKeyDown(Keys.Q)) this.range *= 1 / 1.02f;
 
+            var colorMap = this.scene.Maps.OfType<ColorMap>().FirstOrDefault();
+            if (colorMap != null)
+                colorMap.Color = Color.Red * Math.Min(this.range, 1.0f);
+
             base.Update(gameTime);
         }
 
@@ -136,30 +148,23 @@ namespace WindowsGame1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            this.GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin();
+            this.spriteBatch.Begin();
 
-            Texture2D blank = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            Texture2D blank = new Texture2D(this.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             blank.SetData(new[] { Color.White });
 
             // FPS
             this.spriteBatch.DrawString(this.courierNew, "FPS " + this.fps.ToString("d"), new Vector2(610, 0), Color.White);
-            this.spriteBatch.DrawString(this.courierNew, string.Format("ViewPort: {0}", this.camera.SceneViewPort), new Vector2(410, 20), Color.White);
-            this.spriteBatch.DrawString(this.courierNew, string.Format("Translation: {0}", this.camera.SceneTranslationVector), new Vector2(410, 40), Color.White);
-            this.spriteBatch.DrawString(this.courierNew, string.Format("Position: {0}", this.camera.Position), new Vector2(410, 60), Color.White);
-            this.spriteBatch.DrawString(this.courierNew, string.Format("Zooming: {0:f1}", this.camera.ZoomFactor), new Vector2(410, 80), Color.White);
+            this.spriteBatch.DrawString(this.courierNew, String.Format("ViewPort: {0}", this.camera.SceneViewPort), new Vector2(410, 20), Color.White);
+            this.spriteBatch.DrawString(this.courierNew, String.Format("Translation: {0}", this.camera.SceneTranslationVector), new Vector2(410, 40), Color.White);
+            this.spriteBatch.DrawString(this.courierNew, String.Format("Position: {0}", this.camera.Position), new Vector2(410, 60), Color.White);
+            this.spriteBatch.DrawString(this.courierNew, String.Format("Zooming: {0:f1}", this.camera.ZoomFactor), new Vector2(410, 80), Color.White);
+            this.spriteBatch.DrawString(this.courierNew, String.Format("Range: {0:f1}", this.range), new Vector2(410, 100), Color.White);
 
-            var scene = new Scene();
-
-            scene.AddMap(this.DrawImageMap());
-            scene.AddMap(this.DrawHexTest());
-            scene.AddMap(this.DrawTileTest());
-            scene.AddMap(this.DrawColorMap());
-            scene.AddMap(this.DrawSpriteTest());
-            scene.Draw(this.spriteBatch, this.camera);
-
+            this.scene.Draw(this.spriteBatch, this.camera);
 
             this.DrawHexMapTestDistance(blank);
             this.DrawCamera(blank);
@@ -167,6 +172,21 @@ namespace WindowsGame1
             this.spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        private Scene CreateScene()
+        {
+            this.scene = new Scene();
+
+            this.scene.AddMap(this.DrawImageMap());
+            this.scene.AddMap(this.DrawHexTest());
+            this.scene.AddMap(this.DrawTileTest());
+            this.scene.AddMap(this.DrawColorMap());
+            this.scene.AddMap(this.DrawSpriteTest());
+
+            this.scene.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene");
+
+            return this.scene;
         }
 
         private ImageMap DrawImageMap()
@@ -181,7 +201,7 @@ namespace WindowsGame1
         private ColorMap DrawColorMap()
         {
             var alpha = Math.Min(this.range, 1.0f);
-            var map = new ColorMap(this.GraphicsDevice, Color.Red * alpha);
+            var map = new ColorMap(this.whitePixel, Color.Red * alpha);
             //map.Draw(this.spriteBatch, this.camera);
             
             return map;
@@ -285,7 +305,7 @@ namespace WindowsGame1
                 //var text = string.Format("{0},{1}", hex.Position.X, hex.Position.Y);
                 //var text = string.Format("{0},{1}", hex.Position.X - 4, (hex.Position.Y - 4) * 2 + hex.Position.X % 2);
                 //var text = string.Format("{0},{1}", hex.Position.X - 4, hex.Position.Y - 4);
-                var text = string.Format("{0},{1}", hex.Position.X - 4, hex.Position.Y - 5 + (hex.Position.X % 2) * .5);
+                var text = String.Format("{0},{1}", hex.Position.X - 4, hex.Position.Y - 5 + (hex.Position.X % 2) * .5);
                 //var text = string.Format("{0},{1}", hex.Position.X - 4, hex.Position.Y - 4 + (hex.Position.X % 2) * .5);
                 //var text = string.Format("{0},{1}", hex.Position.X - 5, hex.Position.Y - 5 - ((hex.Position.X + 1) % 2) * .5);
                 //var text = string.Format("{0}", HexGrid.HexDistance(hexMap[3,3], hex));
@@ -326,6 +346,17 @@ namespace WindowsGame1
             {
                 this.DrawLine(batch, blank, 3, color, vertices[i], vertices[i + 1]);
             }
+        }
+
+        private static Texture2D CreateTexture(GraphicsDevice device)
+        {
+            var rectangleTexture = new Texture2D(device, 1, 1, false, SurfaceFormat.Color)
+            {
+                Name = "WhitePixel"
+            };
+
+            rectangleTexture.SetData(new[] { Color.White });
+            return rectangleTexture;
         }
     }
 }

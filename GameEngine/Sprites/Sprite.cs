@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Xml.Linq;
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using WindowsGame1.Cameras;
@@ -19,16 +21,17 @@ namespace WindowsGame1.Sprites
 
         public Point Position { get; set; }
 
-        //public Size Size { get; set; }
-
-        //public Rectangle Rectangle
-        //{
-        //    get { return new Rectangle(this.Position.X, this.Position.Y, this.Size.Width, this.Size.Height); }
-        //}
-
         public void Draw(SpriteBatch spriteBatch, Camera camera, Vector2 parallaxScrollingVector)
         {
             this.SpriteSheet.Draw(spriteBatch, camera, parallaxScrollingVector, this);
+        }
+
+        public XElement GetXml()
+        {
+            return new XElement("Sprite",
+                new XAttribute("sheetName", this.SpriteSheet.Name),
+                new XAttribute("name", this.SpriteName),
+                new XAttribute("position", this.Position));
         }
     }
 }

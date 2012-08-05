@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
 
 using Microsoft.Xna.Framework.Graphics;
 
@@ -36,6 +38,21 @@ namespace WindowsGame1.Scenes
             {
                 map.Draw(spriteBatch, camera);
             }
+        }
+
+        public void Save(string path)
+        {
+            var document = new XDocument();
+            
+            document.Add(new XElement("Scene",
+                this.maps.Select(m => m.GetXml())));
+
+            Console.WriteLine(document);
+        }
+
+        public static Scene LoadFrom(string path)
+        {
+            return new Scene();
         }
     }
 }

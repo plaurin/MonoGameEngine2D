@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
+
 using Microsoft.Xna.Framework.Graphics;
 
 using WindowsGame1.Cameras;
@@ -31,6 +34,12 @@ namespace WindowsGame1.Sprites
             {
                 sprite.Draw(spriteBatch, camera, this.ParallaxScrollingVector);
             }
+        }
+
+        public override XElement GetXml()
+        {
+            return new XElement("SpriteMap",
+                new XElement("Sprites", this.sprites.Select(s => s.GetXml())));
         }
     }
 }

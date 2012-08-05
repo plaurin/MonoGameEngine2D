@@ -6,7 +6,7 @@ namespace WindowsGame1.Tiles
     public class NullTileDefinition : TileDefinition
     {
         private NullTileDefinition()
-            : base(null, "null", Rectangle.Empty)
+            : base(new NullTileSheet(), "null", Rectangle.Empty)
         {
         }
 

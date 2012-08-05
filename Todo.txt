@@ -2,25 +2,28 @@ Features
 ========
 * TileMap
  - Map drawing utilities: DrawRectangle, FillRectangle, DrawLine
- - Tile Stencil to help maps designing
+ - CompositeTile stencil to help map's designing
 * SpriteMap
- - Scaling SpriteSheets
- - AnimatedSprites
- - CompositeSprites
+ P2 - Scaling SpriteSheets
+ P3 - AnimatedSpriteDefinition
+ P3 - CompositeSprite
+    - CompositeSprite stencil to help map's designing
 * HexMap
- - Variable hexSize
+ - Rethink HexMap more as a SpriteMap but with Hex grid system
+ - Variable hexSize?
 * Map (Layer)
- - DrawingMap (text, line, rectangle, etc)
+ P2 - DrawingMap (text, line, rectangle, etc)
 * Scene
- - Saving and Loading Scene
+ P1 - Saving and Loading Scene, Maps, Sheets
 * Screen
- - Navigation
+ P2 - Navigation
 * Other than Gfx
- - Input mapper (abstraction)
+ P2 - Input mapper (abstraction)
  - Audio?
- - Entities
+ P4 - Entities
   - Link to sprites/tiles
  - Scene and Layers design tool
+ P1 - Resources manager: Texture, Sheet, Scene, Screen, Audio
 
 Bugs
 ====
@@ -29,6 +32,7 @@ Refactorings
 ============
 - Move engine into a class library (out of Windows Game)
 - Rendering should be in separated classes
+- Load/Save should be in separated classes
 
 Quality
 =======

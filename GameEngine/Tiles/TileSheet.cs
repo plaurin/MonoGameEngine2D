@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using WindowsGame1.Sprites;
@@ -7,20 +10,20 @@ namespace WindowsGame1.Tiles
 {
     public class TileSheet
     {
-        private readonly Texture2D texture2D;
+        private readonly Texture2D texture;
         private readonly Size tilesSize;
         private readonly IDictionary<string, TileDefinition> definitions;
 
-        public TileSheet(Texture2D texture2D, string sheetName, Size tilesSize)
+        public TileSheet(Texture2D texture, string sheetName, Size tilesSize)
         {
-            this.texture2D = texture2D;
-            this.SheetName = sheetName;
+            this.texture = texture;
+            this.Name = sheetName;
             this.tilesSize = tilesSize;
 
             this.definitions = new Dictionary<string, TileDefinition>();
         }
 
-        protected string SheetName { get; private set; }
+        public string Name { get; private set; }
 
         public TileDefinition CreateTileDefinition(string tileName, Point tilePosition)
         {
@@ -33,7 +36,16 @@ namespace WindowsGame1.Tiles
 
         public void Draw(SpriteBatch spriteBatch, TileDefinition tileDefinition, Rectangle destination)
         {
-            spriteBatch.Draw(this.texture2D, destination, tileDefinition.Rectangle, Color.White);
+            spriteBatch.Draw(this.texture, destination, tileDefinition.Rectangle, Color.White);
+        }
+
+        public XElement GetXml()
+        {
+            return new XElement("TileSheet",
+                new XAttribute("name", this.Name),
+                new XElement("Texture", this.texture.Name),
+                new XElement("TileSize", this.tilesSize),
+                new XElement("Definitions", this.definitions.Select(d => d.Value.GetXml())));
         }
     }
 }

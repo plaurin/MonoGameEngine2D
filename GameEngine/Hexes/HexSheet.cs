@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -8,19 +11,19 @@ namespace WindowsGame1.Hexes
 {
     public class HexSheet
     {
-        private readonly Texture2D texture2D;
+        private readonly Texture2D texture;
         private readonly Dictionary<string, HexDefinition> definitions;
 
-        public HexSheet(Texture2D texture2D, string sheetName, Size hexSize)
+        public HexSheet(Texture2D texture, string name, Size hexSize)
         {
-            this.SheetName = sheetName;
+            this.Name = name;
             this.HexSize = hexSize;
-            this.texture2D = texture2D;
+            this.texture = texture;
 
             this.definitions = new Dictionary<string, HexDefinition>();
         }
 
-        public string SheetName { get; set; }
+        public string Name { get; set; }
 
         public Size HexSize { get; set; }
 
@@ -35,7 +38,16 @@ namespace WindowsGame1.Hexes
 
         public void Draw(SpriteBatch spriteBatch, HexDefinition hexDefinition, Rectangle destination)
         {
-            spriteBatch.Draw(this.texture2D, destination, hexDefinition.Rectangle, Color.White);
+            spriteBatch.Draw(this.texture, destination, hexDefinition.Rectangle, Color.White);
+        }
+
+        public XElement GetXml()
+        {
+            return new XElement("HexSheet",
+                new XAttribute("name", this.Name),
+                new XElement("Texture", this.texture.Name),
+                new XElement("HexSize", this.HexSize),
+                new XElement("Definitions", this.definitions.Select(d => d.Value.GetXml())));
         }
     }
 }

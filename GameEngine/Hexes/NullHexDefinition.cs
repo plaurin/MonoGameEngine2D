@@ -6,7 +6,7 @@ namespace WindowsGame1.Hexes
     public class NullHexDefinition : HexDefinition
     {
         private NullHexDefinition()
-            : base(null, "null", Rectangle.Empty)
+            : base(new NullHexSheet(), "null", Rectangle.Empty)
         {
         }
 

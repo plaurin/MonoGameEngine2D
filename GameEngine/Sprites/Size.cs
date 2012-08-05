@@ -15,5 +15,10 @@ namespace WindowsGame1.Sprites
         {
             get { return new Size(0, 0); }
         }
+
+        public override string ToString()
+        {
+            return string.Format("{{Width:{0} Height:{1}}}", this.Width, this.Height);
+        }
     }
 }

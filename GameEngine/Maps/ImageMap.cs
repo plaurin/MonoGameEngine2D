@@ -1,4 +1,5 @@
 using System;
+using System.Xml.Linq;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -27,6 +28,13 @@ namespace WindowsGame1.Maps
         public override void Draw(SpriteBatch spriteBatch, Camera camera)
         {
             spriteBatch.Draw(this.texture, this.Rectangle, Color.White);
+        }
+
+        public override XElement GetXml()
+        {
+            return new XElement("ImageMap",
+                new XElement("Texture", this.texture.Name),
+                new XElement("Rectangle", this.Rectangle));
         }
     }
 }

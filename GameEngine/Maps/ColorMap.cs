@@ -1,4 +1,5 @@
 using System;
+using System.Xml.Linq;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,25 +10,25 @@ namespace WindowsGame1.Maps
 {
     public class ColorMap : MapBase
     {
-        private readonly Color color;
         private readonly Texture2D texture;
 
-        public ColorMap(GraphicsDevice device, Color color)
+        public ColorMap(Texture2D texture, Color color)
         {
-            this.color = color;
-            this.texture = CreateTexture(device);
+            this.Color = color;
+            this.texture = texture;
         }
+
+        public Color Color { get; set; }
 
         public override void Draw(SpriteBatch spriteBatch, Camera camera)
         {
-            spriteBatch.Draw(this.texture, camera.Viewport.Bounds, this.color);
+            spriteBatch.Draw(this.texture, camera.Viewport.Bounds, this.Color);
         }
 
-        private static Texture2D CreateTexture(GraphicsDevice device)
+        public override XElement GetXml()
         {
-            var rectangleTexture = new Texture2D(device, 1, 1, false, SurfaceFormat.Color);
-            rectangleTexture.SetData(new[] { Color.White });
-            return rectangleTexture;
+            return new XElement("ColorMap",
+                new XElement("Color", this.Color.PackedValue));
         }
     }
 }
