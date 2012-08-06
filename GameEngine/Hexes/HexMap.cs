@@ -2,13 +2,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using WindowsGame1.Cameras;
 using WindowsGame1.Maps;
 using WindowsGame1.Sprites;
-using WindowsGame1.Tiles;
 
 namespace WindowsGame1.Hexes
 {
@@ -65,6 +63,7 @@ namespace WindowsGame1.Hexes
             var hexReferences = this.CreateHexReferences().ToList();
 
             return new XElement("HexMap",
+                this.GetBaseXml(),
                 new XElement("MapSize", this.MapSize),
                 new XElement("HexSize", this.HexSize),
                 new XElement("HexDefinitionReferences", hexReferences.Select(x =>
@@ -101,6 +100,48 @@ namespace WindowsGame1.Hexes
 
                 yield return new XElement("Row", string.Join(", ", row));
             }
+        }
+
+        public static HexMap CreateFromXml(GameResourceManager gameResourceManager, XElement mapElement)
+        {
+            var mapSize = MathUtil.ParseSize(mapElement.Element("MapSize").Value);
+            var hexSize = MathUtil.ParseSize(mapElement.Element("HexSize").Value);
+            var hexReferences = GetHexReferences(gameResourceManager, mapElement.Element("HexDefinitionReferences")).ToList();
+            var hexes = GetRowsFromXml(mapElement.Element("Hexes"));
+
+            var map = new HexMap(mapSize, hexSize);
+
+            int x = 0;
+            foreach (var row in hexes)
+            {
+                int y = 0;
+                foreach (var element in row)
+                {
+                    map[x, y++] = hexReferences.Single(r => r.Id == element).Definition;
+                }
+
+                x++;
+            }
+
+            return map;
+        }
+
+        private static IEnumerable<IEnumerable<int>> GetRowsFromXml(XElement rowsElement)
+        {
+            return rowsElement.Elements()
+                .Select(rowElement => rowElement.Value.Split(',').Select(x => int.Parse(x.Trim())));
+        }
+
+        private static IEnumerable<HexReference> GetHexReferences(GameResourceManager gameResourceManager, XElement hexReferencesElement)
+        {
+            return hexReferencesElement.Elements()
+                .Select(x => new HexReference
+                {
+                    Id = int.Parse(x.Attribute("id").Value),
+                    Definition = gameResourceManager
+                        .GetHexSheet(x.Attribute("sheetName").Value)
+                        .Definitions[x.Attribute("name").Value]
+                });
         }
 
         private struct HexReference

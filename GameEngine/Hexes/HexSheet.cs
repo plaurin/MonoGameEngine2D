@@ -27,13 +27,26 @@ namespace WindowsGame1.Hexes
 
         public Size HexSize { get; set; }
 
-        public HexDefinition CreateTileDefinition(string hexName, Point hexPosition)
+        public Dictionary<string, HexDefinition> Definitions
+        {
+            get
+            {
+                return this.definitions;
+            }
+        }
+
+        public HexDefinition CreateHexDefinition(string hexName, Point hexPosition)
         {
             var rectangle = new Rectangle(hexPosition.X, hexPosition.Y, this.HexSize.Width, this.HexSize.Height);
             var hexDefinition = new HexDefinition(this, hexName, rectangle);
 
-            this.definitions.Add(hexName, hexDefinition);
+            this.Definitions.Add(hexName, hexDefinition);
             return hexDefinition;
+        }
+
+        public void AddHexDefinition(HexDefinition hexDefinition)
+        {
+            this.Definitions.Add(hexDefinition.Name, hexDefinition);
         }
 
         public void Draw(SpriteBatch spriteBatch, HexDefinition hexDefinition, Rectangle destination)
@@ -47,7 +60,7 @@ namespace WindowsGame1.Hexes
                 new XAttribute("name", this.Name),
                 new XElement("Texture", this.texture.Name),
                 new XElement("HexSize", this.HexSize),
-                new XElement("Definitions", this.definitions.Select(d => d.Value.GetXml())));
+                new XElement("Definitions", this.Definitions.Select(d => d.Value.GetXml())));
         }
     }
 }

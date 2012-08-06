@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Xml.Linq;
 
 using Microsoft.Xna.Framework;
@@ -20,5 +21,10 @@ namespace WindowsGame1.Maps
         public abstract void Draw(SpriteBatch spriteBatch, Camera camera);
 
         public abstract XElement GetXml();
+
+        public IEnumerable<object> GetBaseXml()
+        {
+            yield return new XAttribute("parallaxScrollingVector", this.ParallaxScrollingVector);
+        }
     }
 }

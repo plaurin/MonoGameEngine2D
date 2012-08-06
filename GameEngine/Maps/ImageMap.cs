@@ -36,5 +36,15 @@ namespace WindowsGame1.Maps
                 new XElement("Texture", this.texture.Name),
                 new XElement("Rectangle", this.Rectangle));
         }
+
+        public static ImageMap CreateFromXml(GameResourceManager gameResourceManager, XElement mapElement)
+        {
+            var textureName = mapElement.Element("Texture").Value;
+            var rectangleValue = mapElement.Element("Rectangle").Value;
+            
+            return new ImageMap(
+                gameResourceManager.GetTexture(textureName),
+                MathUtil.ParseRectangle(rectangleValue));
+        }
     }
 }

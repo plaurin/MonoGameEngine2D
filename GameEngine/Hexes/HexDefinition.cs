@@ -7,18 +7,18 @@ namespace WindowsGame1.Hexes
 {
     public class HexDefinition
     {
-        private readonly HexSheet sheet;
-
         public HexDefinition(HexSheet sheet, string name, Rectangle rectangle)
         {
-            this.sheet = sheet;
+            this.Sheet = sheet;
             this.Name = name;
             this.Rectangle = rectangle;
         }
 
+        public HexSheet Sheet { get; private set; }
+
         public string SheetName
         {
-            get { return this.sheet.Name; }
+            get { return this.Sheet.Name; }
         }
         
         public string Name { get; private set; }
@@ -27,7 +27,7 @@ namespace WindowsGame1.Hexes
 
         public virtual void Draw(SpriteBatch spriteBatch, Rectangle destination)
         {
-            this.sheet.Draw(spriteBatch, this, destination);
+            this.Sheet.Draw(spriteBatch, this, destination);
         }
 
         public object GetXml()

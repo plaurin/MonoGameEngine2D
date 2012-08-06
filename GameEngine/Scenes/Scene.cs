@@ -6,7 +6,10 @@ using System.Xml.Linq;
 using Microsoft.Xna.Framework.Graphics;
 
 using WindowsGame1.Cameras;
+using WindowsGame1.Hexes;
 using WindowsGame1.Maps;
+using WindowsGame1.Sprites;
+using WindowsGame1.Tiles;
 
 namespace WindowsGame1.Scenes
 {
@@ -47,12 +50,37 @@ namespace WindowsGame1.Scenes
             document.Add(new XElement("Scene",
                 this.maps.Select(m => m.GetXml())));
 
-            Console.WriteLine(document);
+            document.Save(path);
         }
 
-        public static Scene LoadFrom(string path)
+        public static Scene LoadFrom(GameResourceManager gameResourceManager, string path)
         {
-            return new Scene();
+            var scene = new Scene();
+            var document = XDocument.Load(path);
+
+            foreach (var mapElement in document.Element("Scene").Elements())
+            {
+                switch (mapElement.Name.ToString())
+                {
+                    case "ImageMap":
+                        scene.AddMap(ImageMap.CreateFromXml(gameResourceManager, mapElement));
+                        break;
+                    case "HexMap":
+                        scene.AddMap(HexMap.CreateFromXml(gameResourceManager, mapElement));
+                        break;
+                    case "TileMap":
+                        //scene.AddMap(TileMap.CreateFromXml(mapElement));
+                        break;
+                    case "ColorMap":
+                        //scene.AddMap(ColorMap.CreateFromXml(mapElement));
+                        break;
+                    case "SpriteMap":
+                        //scene.AddMap(SpriteMap.CreateFromXml(mapElement));
+                        break;
+                }
+            }
+
+            return scene;
         }
     }
 }

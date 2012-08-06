@@ -8,6 +8,7 @@ namespace WindowsGame1.Hexes
         private NullHexDefinition()
             : base(new NullHexSheet(), "null", Rectangle.Empty)
         {
+            this.Sheet.AddHexDefinition(this);
         }
 
         public static NullHexDefinition CreateInstance()

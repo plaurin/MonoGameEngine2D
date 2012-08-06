@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -19,22 +21,24 @@ namespace WindowsGame1
     /// </summary>
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        SpriteFont courierNew;
-        private Texture2D linkSheet;
+        private readonly GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
+        private SpriteFont courierNew;
+        //private Texture2D linkSheet;
         private Point player;
         private Camera camera;
         private float elapseTime;
         private long frameCounter;
         private long fps;
-        private Texture2D tileSheet;
-        private Texture2D hexSheet;
+        //private Texture2D tileSheet;
+        //private Texture2D hexSheet;
         private float range = 1.0f;
 
         private Scene scene;
 
-        private Texture2D whitePixel;
+        //private Texture2D whitePixel;
+
+        private GameResourceManager gameResourceManager;
 
         public Game1()
         {
@@ -67,17 +71,31 @@ namespace WindowsGame1
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
+            this.gameResourceManager = new GameResourceManager(this.Content);
 
             // TODO: use this.Content to load your game content here
             this.courierNew = this.Content.Load<SpriteFont>("SpriteFont1");
 
-            this.linkSheet = this.Content.Load<Texture2D>("LinkSheet");
-            this.tileSheet = this.Content.Load<Texture2D>("TileSheet");
-            this.hexSheet = this.Content.Load<Texture2D>("HexSheet");
-            this.whitePixel = CreateTexture(this.GraphicsDevice);
+            this.gameResourceManager.AddTexture("WhitePixel", CreateTexture(this.GraphicsDevice));
+
+            this.gameResourceManager.AddTexture("LinkSheet");
+            this.gameResourceManager.AddTexture("HexSheet");
+            this.gameResourceManager.AddTexture("TileSheet");
+
+            //this.linkSheet = this.Content.Load<Texture2D>("LinkSheet");
+            //this.linkSheet.Name = "LinkSheet";
+
+            //this.tileSheet = this.Content.Load<Texture2D>("TileSheet");
+            //this.hexSheet = this.Content.Load<Texture2D>("HexSheet");
+            //this.whitePixel = CreateTexture(this.GraphicsDevice);
 
             this.CreateScene();
-            this.scene = new Scene();
+            //this.scene = new Scene();
+
+            var scene2 = Scene.LoadFrom(this.gameResourceManager,
+                @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
+
+            Console.WriteLine(scene2);
         }
 
         /// <summary>
@@ -184,7 +202,7 @@ namespace WindowsGame1
             this.scene.AddMap(this.DrawColorMap());
             this.scene.AddMap(this.DrawSpriteTest());
 
-            this.scene.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene");
+            this.scene.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
 
             return this.scene;
         }
@@ -192,7 +210,8 @@ namespace WindowsGame1
         private ImageMap DrawImageMap()
         {
             //var map = ImageMap.CreateFillScreenImageMap(this.GraphicsDevice, this.linkSheet);
-            var map = new ImageMap(this.linkSheet, new Rectangle(10, 10, 250, 250));
+            var texture = this.gameResourceManager.GetTexture("LinkSheet");
+            var map = new ImageMap(texture, new Rectangle(10, 10, 250, 250));
             //map.Draw(this.spriteBatch, this.camera);
 
             return map;
@@ -201,7 +220,8 @@ namespace WindowsGame1
         private ColorMap DrawColorMap()
         {
             var alpha = Math.Min(this.range, 1.0f);
-            var map = new ColorMap(this.whitePixel, Color.Red * alpha);
+            var texture = this.gameResourceManager.GetTexture("WhitePixel");
+            var map = new ColorMap(texture, Color.Red * alpha);
             //map.Draw(this.spriteBatch, this.camera);
             
             return map;
@@ -220,10 +240,13 @@ namespace WindowsGame1
 
         private HexMap DrawHexTest()
         {
-            var sheet = new HexSheet(this.hexSheet, "Hexes", new Size(68, 60));
-            var red = sheet.CreateTileDefinition("red", new Point(55, 30));
-            var yellow = sheet.CreateTileDefinition("yellow", new Point(163, 330));
-            var purple = sheet.CreateTileDefinition("purple", new Point(488, 330));
+            var texture = this.gameResourceManager.GetTexture("HexSheet");
+            var sheet = new HexSheet(texture, "Hexes", new Size(68, 60));
+            var red = sheet.CreateHexDefinition("red", new Point(55, 30));
+            var yellow = sheet.CreateHexDefinition("yellow", new Point(163, 330));
+            var purple = sheet.CreateHexDefinition("purple", new Point(488, 330));
+
+            this.gameResourceManager.AddHexSheet(sheet);
 
             var map = new HexMap(new Size(4, 4), new Size(60, 52));
             map[2, 0] = purple;
@@ -240,7 +263,8 @@ namespace WindowsGame1
 
         private TileMap DrawTileTest()
         {
-            var sheet = new TileSheet(this.tileSheet, "Background", new Size(16, 16));
+            var texture = this.gameResourceManager.GetTexture("TileSheet");
+            var sheet = new TileSheet(texture, "Background", new Size(16, 16));
             var red = sheet.CreateTileDefinition("red", new Point(0, 0));
             var green = sheet.CreateTileDefinition("green", new Point(16, 0));
             sheet.CreateTileDefinition("yellow", new Point(32, 0));
@@ -262,7 +286,8 @@ namespace WindowsGame1
 
         private SpriteMap DrawSpriteTest()
         {
-            var sheet = new SpriteSheet(this.linkSheet, "Link");
+            var texture = this.gameResourceManager.GetTexture("LinkSheet");
+            var sheet = new SpriteSheet(texture, "Link");
             sheet.CreateSpriteDefinition("Link01", new Rectangle(3, 3, 16, 22));
             sheet.CreateSpriteDefinition("Sleep01", new Rectangle(45, 219, 32, 40));
 

@@ -30,5 +30,10 @@ namespace WindowsGame1.Maps
             return new XElement("ColorMap",
                 new XElement("Color", this.Color.PackedValue));
         }
+
+        public static void CreateFromXml(XElement mapElement)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

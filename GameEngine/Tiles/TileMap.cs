@@ -62,12 +62,12 @@ namespace WindowsGame1.Tiles
             return new XElement("TileMap",
                 new XElement("MapSize", this.MapSize),
                 new XElement("TileSize", this.TileSize),
-                new XElement("HexDefinitionReferences", tileReferences.Select(x =>
+                new XElement("TileDefinitionReferences", tileReferences.Select(x =>
                     new XElement("Reference",
                         new XAttribute("id", x.Id),
                         new XAttribute("sheetName", x.Definition.SheetName),
                         new XAttribute("name", x.Definition.Name)))),
-                new XElement("Hexes", this.GetRowsXml(tileReferences)));
+                new XElement("Tiles", this.GetRowsXml(tileReferences)));
         }
 
         private IEnumerable<TileReference> CreateTileReferences()
@@ -103,6 +103,11 @@ namespace WindowsGame1.Tiles
             public int Id { get; set; }
 
             public TileDefinition Definition { get; set; }
+        }
+
+        public static void CreateFromXml(XElement mapElement)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

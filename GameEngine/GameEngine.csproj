@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cameras\Camera.cs" />
+    <Compile Include="GameResourceManager.cs" />
     <Compile Include="Hexes\HexGridElement.cs" />
     <Compile Include="Hexes\HexDefinition.cs" />
     <Compile Include="Hexes\HexGrid.cs" />

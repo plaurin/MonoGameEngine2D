@@ -41,5 +41,10 @@ namespace WindowsGame1.Sprites
             return new XElement("SpriteMap",
                 new XElement("Sprites", this.sprites.Select(s => s.GetXml())));
         }
+
+        public static void CreateFromXml(XElement mapElement)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
