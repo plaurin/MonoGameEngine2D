@@ -8,6 +8,7 @@ namespace WindowsGame1.Tiles
         private NullTileDefinition()
             : base(new NullTileSheet(), "null", Rectangle.Empty)
         {
+            this.Sheet.AddTileDefinition(this);
         }
 
         public static NullTileDefinition CreateInstance()

@@ -58,12 +58,12 @@ namespace WindowsGame1.Hexes
                 }
         }
 
-        public override XElement GetXml()
+        public override XElement ToXml()
         {
             var hexReferences = this.CreateHexReferences().ToList();
 
             return new XElement("HexMap",
-                this.GetBaseXml(),
+                this.BaseToXml(),
                 new XElement("MapSize", this.MapSize),
                 new XElement("HexSize", this.HexSize),
                 new XElement("HexDefinitionReferences", hexReferences.Select(x =>
@@ -102,7 +102,7 @@ namespace WindowsGame1.Hexes
             }
         }
 
-        public static HexMap CreateFromXml(GameResourceManager gameResourceManager, XElement mapElement)
+        public static HexMap FromXml(GameResourceManager gameResourceManager, XElement mapElement)
         {
             var mapSize = MathUtil.ParseSize(mapElement.Element("MapSize").Value);
             var hexSize = MathUtil.ParseSize(mapElement.Element("HexSize").Value);
@@ -110,6 +110,7 @@ namespace WindowsGame1.Hexes
             var hexes = GetRowsFromXml(mapElement.Element("Hexes"));
 
             var map = new HexMap(mapSize, hexSize);
+            map.BaseFromXml(mapElement);
 
             int x = 0;
             foreach (var row in hexes)

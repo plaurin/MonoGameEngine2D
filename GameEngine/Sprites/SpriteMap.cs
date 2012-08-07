@@ -36,15 +36,33 @@ namespace WindowsGame1.Sprites
             }
         }
 
-        public override XElement GetXml()
+        public override XElement ToXml()
         {
             return new XElement("SpriteMap",
+                this.BaseToXml(),
                 new XElement("Sprites", this.sprites.Select(s => s.GetXml())));
         }
 
-        public static void CreateFromXml(XElement mapElement)
+        public static SpriteMap FromXml(GameResourceManager gameResourceManager, XElement mapElement)
         {
-            throw new System.NotImplementedException();
+            var map = new SpriteMap();
+            map.BaseFromXml(mapElement);
+
+            foreach(var element in mapElement.Element("Sprites").Elements())
+            {
+                var sheetName = element.Attribute("sheetName").Value;
+                var name = element.Attribute("name").Value;
+                var position = element.Attribute("position").Value;
+
+                var sprite = new Sprite(gameResourceManager.GetSpriteSheet(sheetName), name)
+                {
+                    Position = MathUtil.ParsePoint(position)
+                };
+
+                map.AddSprite(sprite);
+            }
+
+            return map;
         }
     }
 }

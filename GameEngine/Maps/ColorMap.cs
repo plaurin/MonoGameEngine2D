@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Xml.Linq;
 
 using Microsoft.Xna.Framework;
@@ -25,15 +26,22 @@ namespace WindowsGame1.Maps
             spriteBatch.Draw(this.texture, camera.Viewport.Bounds, this.Color);
         }
 
-        public override XElement GetXml()
+        public override XElement ToXml()
         {
             return new XElement("ColorMap",
-                new XElement("Color", this.Color.PackedValue));
+                new XElement("Color",
+                    string.Format("{0}, {1}, {2}, {3}", this.Color.R, this.Color.G, this.Color.B, this.Color.A)));
         }
 
-        public static void CreateFromXml(XElement mapElement)
+        public static ColorMap FromXml(GameResourceManager gameResourceManager, XElement mapElement)
         {
-            throw new NotImplementedException();
+            var colorValue = mapElement.Element("Color").Value
+                .Split(',')
+                .Select(x => int.Parse(x.Trim()))
+                .ToArray();
+
+            var texture = gameResourceManager.GetTexture("WhitePixel");
+            return new ColorMap(texture, new Color(colorValue[0], colorValue[1], colorValue[2], colorValue[3]));
         }
     }
 }

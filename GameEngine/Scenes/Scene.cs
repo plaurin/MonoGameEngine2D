@@ -48,7 +48,7 @@ namespace WindowsGame1.Scenes
             var document = new XDocument();
             
             document.Add(new XElement("Scene",
-                this.maps.Select(m => m.GetXml())));
+                this.maps.Select(m => m.ToXml())));
 
             document.Save(path);
         }
@@ -63,19 +63,19 @@ namespace WindowsGame1.Scenes
                 switch (mapElement.Name.ToString())
                 {
                     case "ImageMap":
-                        scene.AddMap(ImageMap.CreateFromXml(gameResourceManager, mapElement));
+                        scene.AddMap(ImageMap.FromXml(gameResourceManager, mapElement));
                         break;
                     case "HexMap":
-                        scene.AddMap(HexMap.CreateFromXml(gameResourceManager, mapElement));
+                        scene.AddMap(HexMap.FromXml(gameResourceManager, mapElement));
                         break;
                     case "TileMap":
-                        //scene.AddMap(TileMap.CreateFromXml(mapElement));
+                        scene.AddMap(TileMap.FromXml(gameResourceManager, mapElement));
                         break;
                     case "ColorMap":
-                        //scene.AddMap(ColorMap.CreateFromXml(mapElement));
+                        scene.AddMap(ColorMap.FromXml(gameResourceManager, mapElement));
                         break;
                     case "SpriteMap":
-                        //scene.AddMap(SpriteMap.CreateFromXml(mapElement));
+                        scene.AddMap(SpriteMap.FromXml(gameResourceManager, mapElement));
                         break;
                 }
             }

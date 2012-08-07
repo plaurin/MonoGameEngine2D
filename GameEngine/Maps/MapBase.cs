@@ -20,11 +20,16 @@ namespace WindowsGame1.Maps
 
         public abstract void Draw(SpriteBatch spriteBatch, Camera camera);
 
-        public abstract XElement GetXml();
+        public abstract XElement ToXml();
 
-        public IEnumerable<object> GetBaseXml()
+        public IEnumerable<object> BaseToXml()
         {
             yield return new XAttribute("parallaxScrollingVector", this.ParallaxScrollingVector);
+        }
+
+        public void BaseFromXml(XElement element)
+        {
+            this.ParallaxScrollingVector = MathUtil.ParseVector(element.Attribute("parallaxScrollingVector").Value);
         }
     }
 }

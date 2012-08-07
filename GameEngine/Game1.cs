@@ -95,7 +95,19 @@ namespace WindowsGame1
             var scene2 = Scene.LoadFrom(this.gameResourceManager,
                 @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
 
-            Console.WriteLine(scene2);
+            foreach (var map in this.scene.Maps)
+            {
+                var otherMap = scene2.Maps.Single(x => x.GetType() == map.GetType());
+
+                var myXml = map.ToXml();
+                var otherXml = otherMap.ToXml();
+
+                if (myXml.ToString() != otherXml.ToString())
+                {
+                    Console.WriteLine(myXml.ToString());
+                    Console.WriteLine(otherXml.ToString());
+                }
+            }
         }
 
         /// <summary>
@@ -272,6 +284,8 @@ namespace WindowsGame1
             sheet.CreateTileDefinition("orange", new Point(16, 16));
             sheet.CreateTileDefinition("blue", new Point(32, 16));
 
+            this.gameResourceManager.AddTileSheet(sheet);
+
             var tileMap = new TileMap(new Size(32, 32), new Size(16, 16));
             tileMap[0, 0] = purple;
             tileMap[1, 1] = red;
@@ -293,6 +307,8 @@ namespace WindowsGame1
 
             var link01 = new Sprite(sheet, "Link01") { Position = this.player };
             var sleep01 = new Sprite(sheet, "Sleep01") { Position = new Point(125, 25) };
+
+            this.gameResourceManager.AddSpriteSheet(sheet);
 
             var spriteMap = new SpriteMap();
             spriteMap.AddSprite(link01);

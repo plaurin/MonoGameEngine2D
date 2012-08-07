@@ -7,18 +7,18 @@ namespace WindowsGame1.Tiles
 {
     public class TileDefinition
     {
-        private readonly TileSheet sheet;
-
         public TileDefinition(TileSheet sheet, string name, Rectangle rectangle)
         {
-            this.sheet = sheet;
+            this.Sheet = sheet;
             this.Name = name;
             this.Rectangle = rectangle;
         }
 
+        public TileSheet Sheet { get; private set; }
+
         public string SheetName
         {
-            get { return this.sheet.Name; }
+            get { return this.Sheet.Name; }
         }
 
         public string Name { get; private set; }
@@ -27,7 +27,7 @@ namespace WindowsGame1.Tiles
 
         public virtual void Draw(SpriteBatch spriteBatch, Rectangle destination)
         {
-            this.sheet.Draw(spriteBatch, this, destination);
+            this.Sheet.Draw(spriteBatch, this, destination);
         }
 
         public XElement GetXml()

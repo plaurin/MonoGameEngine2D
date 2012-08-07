@@ -20,7 +20,7 @@
       <Row>0, 0, 0, 0</Row>
     </Hexes>
   </HexMap>
-  <TileMap>
+  <TileMap parallaxScrollingVector="{X:2 Y:2}">
     <MapSize>{Width:32 Height:32}</MapSize>
     <TileSize>{Width:16 Height:16}</TileSize>
     <TileDefinitionReferences>
@@ -65,9 +65,9 @@
     </Tiles>
   </TileMap>
   <ColorMap>
-    <Color>1056964671</Color>
+    <Color>63, 0, 0, 63</Color>
   </ColorMap>
-  <SpriteMap>
+  <SpriteMap parallaxScrollingVector="{X:4 Y:8}">
     <Sprites>
       <Sprite sheetName="Link" name="Link01" position="{X:25 Y:25}" />
       <Sprite sheetName="Link" name="Sleep01" position="{X:125 Y:25}" />

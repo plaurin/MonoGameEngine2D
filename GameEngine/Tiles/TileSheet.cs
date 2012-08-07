@@ -12,7 +12,7 @@ namespace WindowsGame1.Tiles
     {
         private readonly Texture2D texture;
         private readonly Size tilesSize;
-        private readonly IDictionary<string, TileDefinition> definitions;
+        private readonly Dictionary<string, TileDefinition> definitions;
 
         public TileSheet(Texture2D texture, string sheetName, Size tilesSize)
         {
@@ -25,6 +25,14 @@ namespace WindowsGame1.Tiles
 
         public string Name { get; private set; }
 
+        public Dictionary<string, TileDefinition> Definitions
+        {
+            get
+            {
+                return this.definitions;
+            }
+        }
+
         public TileDefinition CreateTileDefinition(string tileName, Point tilePosition)
         {
             var rectangle = new Rectangle(tilePosition.X, tilePosition.Y, this.tilesSize.Width, this.tilesSize.Height);
@@ -32,6 +40,11 @@ namespace WindowsGame1.Tiles
             this.definitions.Add(tileName, tileDefinition);
 
             return tileDefinition;
+        }
+
+        public void AddTileDefinition(TileDefinition tileDefinition)
+        {
+            this.definitions.Add(tileDefinition.Name, tileDefinition);
         }
 
         public void Draw(SpriteBatch spriteBatch, TileDefinition tileDefinition, Rectangle destination)

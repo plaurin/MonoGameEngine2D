@@ -30,14 +30,14 @@ namespace WindowsGame1.Maps
             spriteBatch.Draw(this.texture, this.Rectangle, Color.White);
         }
 
-        public override XElement GetXml()
+        public override XElement ToXml()
         {
             return new XElement("ImageMap",
                 new XElement("Texture", this.texture.Name),
                 new XElement("Rectangle", this.Rectangle));
         }
 
-        public static ImageMap CreateFromXml(GameResourceManager gameResourceManager, XElement mapElement)
+        public static ImageMap FromXml(GameResourceManager gameResourceManager, XElement mapElement)
         {
             var textureName = mapElement.Element("Texture").Value;
             var rectangleValue = mapElement.Element("Rectangle").Value;

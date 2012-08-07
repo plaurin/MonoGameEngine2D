@@ -34,6 +34,29 @@ namespace WindowsGame1
             return new Size(nameValues["Width"], nameValues["Height"]);
         }
 
+        public static Vector2 ParseVector(string value)
+        {
+            var nameValues = GetNameValuesFloat(value);
+
+            return new Vector2(nameValues["X"], nameValues["Y"]);
+        }
+
+        public static Point ParsePoint(string value)
+        {
+            var nameValues = GetNameValues(value);
+
+            return new Point(nameValues["X"], nameValues["Y"]);
+        }
+
+        private static Dictionary<string, float> GetNameValuesFloat(string value)
+        {
+            return value
+                .Trim(new[] { '{', '}' })
+                .Split(' ')
+                .Select(x => x.Split(':'))
+                .ToDictionary(x => x[0], x => float.Parse(x[1]));
+        }
+
         private static Dictionary<string, int> GetNameValues(string value)
         {
             return value

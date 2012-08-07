@@ -55,11 +55,12 @@ namespace WindowsGame1.Tiles
                 }
         }
 
-        public override XElement GetXml()
+        public override XElement ToXml()
         {
             var tileReferences = this.CreateTileReferences().ToList();
 
             return new XElement("TileMap",
+                this.BaseToXml(),
                 new XElement("MapSize", this.MapSize),
                 new XElement("TileSize", this.TileSize),
                 new XElement("TileDefinitionReferences", tileReferences.Select(x =>
@@ -98,16 +99,54 @@ namespace WindowsGame1.Tiles
             }
         }
 
+        public static TileMap FromXml(GameResourceManager gameResourceManager, XElement mapElement)
+        {
+            var mapSize = MathUtil.ParseSize(mapElement.Element("MapSize").Value);
+            var tileSize = MathUtil.ParseSize(mapElement.Element("TileSize").Value);
+            var tileReferences = GetTileReferences(gameResourceManager, mapElement.Element("TileDefinitionReferences")).ToList();
+            var tiles = GetRowsFromXml(mapElement.Element("Tiles"));
+
+            var map = new TileMap(mapSize, tileSize);
+            map.BaseFromXml(mapElement);
+
+            int x = 0;
+            foreach (var row in tiles)
+            {
+                int y = 0;
+                foreach (var element in row)
+                {
+                    map[x, y++] = tileReferences.Single(r => r.Id == element).Definition;
+                }
+
+                x++;
+            }
+
+            return map;
+        }
+
+        private static IEnumerable<IEnumerable<int>> GetRowsFromXml(XElement rowsElement)
+        {
+            return rowsElement.Elements()
+                .Select(rowElement => rowElement.Value.Split(',').Select(x => int.Parse(x.Trim())));
+        }
+
+        private static IEnumerable<TileReference> GetTileReferences(GameResourceManager gameResourceManager, XElement tileReferencesElement)
+        {
+            return tileReferencesElement.Elements()
+                .Select(x => new TileReference
+                {
+                    Id = int.Parse(x.Attribute("id").Value),
+                    Definition = gameResourceManager
+                        .GetTileSheet(x.Attribute("sheetName").Value)
+                        .Definitions[x.Attribute("name").Value]
+                });
+        }
+
         private struct TileReference
         {
             public int Id { get; set; }
 
             public TileDefinition Definition { get; set; }
-        }
-
-        public static void CreateFromXml(XElement mapElement)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
