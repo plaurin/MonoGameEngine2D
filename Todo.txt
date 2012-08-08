@@ -12,20 +12,20 @@ Features
  - Rethink HexMap more as a SpriteMap but with Hex grid system
  - Variable hexSize?
 * Map (Layer)
- P2 - DrawingMap (text, line, rectangle, etc)
+ P1 - DrawingMap (text, line, rectangle, etc)
+ P1 - Saving DrawingMap
 * Scene
- P1 - Saving and Loading Scene, Maps
  P2 - Saving and Loading Sheets
- P2 - Testing Saving and Loading!
+ P2 - UT Saving and Loading!
 * Screen
  P2 - Navigation
 * Other than Gfx
- P2 - Input mapper (abstraction)
+ - Input configuration (mouse, gamepad)
  - Audio?
  P4 - Entities
   - Link to sprites/tiles
  - Scene and Layers design tool
- P1 - Resources manager: Sheet, Scene, Screen, Audio, Font
+ P1 - Resources manager: Screen, Audio, Font
 
 Bugs
 ====

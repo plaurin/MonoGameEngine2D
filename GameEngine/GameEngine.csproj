@@ -116,6 +116,8 @@
     <Compile Include="Hexes\NullHexDefinition.cs" />
     <Compile Include="Hexes\HexSheet.cs" />
     <Compile Include="Hexes\NullHexSheet.cs" />
+    <Compile Include="Inputs\DigitalButton.cs" />
+    <Compile Include="Inputs\InputConfiguration.cs" />
     <Compile Include="Maps\ColorMap.cs" />
     <Compile Include="Maps\ImageMap.cs" />
     <Compile Include="Maps\MapBase.cs" />

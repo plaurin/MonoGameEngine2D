@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Resources;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,6 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 using WindowsGame1.Cameras;
 using WindowsGame1.Hexes;
+using WindowsGame1.Inputs;
 using WindowsGame1.Maps;
 using WindowsGame1.Scenes;
 using WindowsGame1.Sprites;
@@ -39,6 +39,8 @@ namespace WindowsGame1
         //private Texture2D whitePixel;
 
         private GameResourceManager gameResourceManager;
+
+        private InputConfiguration inputConfiguration;
 
         public Game1()
         {
@@ -74,6 +76,8 @@ namespace WindowsGame1
             this.gameResourceManager = new GameResourceManager(this.Content);
 
             // TODO: use this.Content to load your game content here
+            this.InitInput();
+
             this.courierNew = this.Content.Load<SpriteFont>("SpriteFont1");
 
             this.gameResourceManager.AddTexture("WhitePixel", CreateTexture(this.GraphicsDevice));
@@ -110,6 +114,19 @@ namespace WindowsGame1
             }
         }
 
+        private void InitInput()
+        {
+            this.inputConfiguration = new InputConfiguration();
+            this.inputConfiguration.AddDigitalButton("Left").Assign(Keys.Left).MapTo(() => this.camera.Move(-1, 0));
+            this.inputConfiguration.AddDigitalButton("Right").Assign(Keys.Right).MapTo(() => this.camera.Move(1, 0));
+            this.inputConfiguration.AddDigitalButton("Up").Assign(Keys.Up).MapTo(() => this.camera.Move(0, -1));
+            this.inputConfiguration.AddDigitalButton("Down").Assign(Keys.Down).MapTo(() => this.camera.Move(0, 1));
+            this.inputConfiguration.AddDigitalButton("ZoomIn").Assign(Keys.A).MapTo(() => this.camera.ZoomFactor *= 1.02f);
+            this.inputConfiguration.AddDigitalButton("ZoomOut").Assign(Keys.Z).MapTo(() => this.camera.ZoomFactor *= 1 / 1.02f);
+            this.inputConfiguration.AddDigitalButton("RangeUp").Assign(Keys.W).MapTo(() => this.range *= 1.02f);
+            this.inputConfiguration.AddDigitalButton("RangeDown").Assign(Keys.Q).MapTo(() => this.range *= 1 / 1.02f);
+        }
+
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// all content.
@@ -142,28 +159,7 @@ namespace WindowsGame1
                 this.Exit();
 
             // TODO: Add your update logic here
-            var keyState = Keyboard.GetState();
-
-            //if (keyState.IsKeyDown(Keys.Left))
-            //    this.player = this.player.Translate(new Point(-1, 0));
-            //if (keyState.IsKeyDown(Keys.Right))
-            //    this.player = this.player.Translate(new Point(1, 0));
-            //if (keyState.IsKeyDown(Keys.Up))
-            //    this.player = this.player.Translate(new Point(0, -1));
-            //if (keyState.IsKeyDown(Keys.Down))
-            //    this.player = this.player.Translate(new Point(0, 1));
-
-            //if (keyState.IsKeyDown(Keys.A)) this.range *= 1.02f;
-            //if (keyState.IsKeyDown(Keys.Z)) this.range *= 1 / 1.02f;
-            if (keyState.IsKeyDown(Keys.Left)) this.camera.Move(-1, 0);
-            if (keyState.IsKeyDown(Keys.Right)) this.camera.Move(1, 0);
-            if (keyState.IsKeyDown(Keys.Up)) this.camera.Move(0, -1);
-            if (keyState.IsKeyDown(Keys.Down)) this.camera.Move(0, 1);
-
-            if (keyState.IsKeyDown(Keys.A)) this.camera.ZoomFactor *= 1.02f;
-            if (keyState.IsKeyDown(Keys.Z)) this.camera.ZoomFactor *= 1 / 1.02f;
-            if (keyState.IsKeyDown(Keys.W)) this.range *= 1.02f;
-            if (keyState.IsKeyDown(Keys.Q)) this.range *= 1 / 1.02f;
+            this.inputConfiguration.Update();
 
             var colorMap = this.scene.Maps.OfType<ColorMap>().FirstOrDefault();
             if (colorMap != null)
