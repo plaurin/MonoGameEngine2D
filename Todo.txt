@@ -12,11 +12,14 @@ Features
  - Rethink HexMap more as a SpriteMap but with Hex grid system
  - Variable hexSize?
 * Map (Layer)
- P1 - DrawingMap (text, line, rectangle, etc)
+ P1 - DrawingMap (text, line, rectangle, etc) 
+  * rectangle
+  * HEX!
  P1 - Saving DrawingMap
+ P1 - Saving cameraMode
 * Scene
  P2 - Saving and Loading Sheets
- P2 - UT Saving and Loading!
+ P2 - UnitTesting Saving and Loading!
 * Screen
  P2 - Navigation
 * Other than Gfx

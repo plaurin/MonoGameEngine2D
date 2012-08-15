@@ -13,7 +13,8 @@ namespace WindowsGame1.Sprites
     {
         private readonly List<Sprite> sprites;
 
-        public SpriteMap()
+        public SpriteMap(string name)
+            : base(name)
         {
             this.sprites = new List<Sprite>();
         }
@@ -45,7 +46,8 @@ namespace WindowsGame1.Sprites
 
         public static SpriteMap FromXml(GameResourceManager gameResourceManager, XElement mapElement)
         {
-            var map = new SpriteMap();
+            var mapName = mapElement.Attribute("name").Value;
+            var map = new SpriteMap(mapName);
             map.BaseFromXml(mapElement);
 
             foreach(var element in mapElement.Element("Sprites").Elements())

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
+using WindowsGame1.Drawing;
 using WindowsGame1.Hexes;
 using WindowsGame1.Sprites;
 using WindowsGame1.Tiles;
@@ -24,6 +25,8 @@ namespace WindowsGame1
 
         private readonly Dictionary<string, SpriteSheet> spriteSheetDictionary;
 
+        private readonly Dictionary<string, DrawingFont> drawingFontDictionary;
+
         #endregion
 
         #region Constructor
@@ -36,6 +39,7 @@ namespace WindowsGame1
             this.hexSheetDictionary = new Dictionary<string, HexSheet>();
             this.tileSheetDictionary = new Dictionary<string, TileSheet>();
             this.spriteSheetDictionary = new Dictionary<string, SpriteSheet>();
+            this.drawingFontDictionary = new Dictionary<string, DrawingFont>();
 
             this.AddHexSheet(NullHexDefinition.CreateInstance().Sheet);
             this.AddTileSheet(NullTileDefinition.CreateInstance().Sheet);
@@ -110,6 +114,32 @@ namespace WindowsGame1
         public SpriteSheet GetSpriteSheet(string name)
         {
             return this.spriteSheetDictionary[name];
+        }
+
+        #endregion
+
+        #region SpriteFont
+
+        public void AddDrawingFont(string assetName)
+        {
+            this.drawingFontDictionary.Add(assetName, null);
+        }
+
+        public DrawingFont GetDrawingFont(string assetName)
+        {
+            var drawingFont = this.drawingFontDictionary[assetName];
+
+            if (drawingFont == null)
+            {
+                drawingFont = new DrawingFont
+                {
+                    Name = assetName,
+                    Font = this.contentManager.Load<SpriteFont>(assetName)
+                };
+                this.drawingFontDictionary[assetName] = drawingFont;
+            }
+
+            return drawingFont;
         }
 
         #endregion

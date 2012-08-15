@@ -48,6 +48,13 @@ namespace WindowsGame1
             return new Point(nameValues["X"], nameValues["Y"]);
         }
 
+        public static Color ParseColor(string value)
+        {
+            var nameValues = GetNameValues(value);
+
+            return new Color(nameValues["R"], nameValues["G"], nameValues["B"], nameValues["A"]);
+        }
+
         private static Dictionary<string, float> GetNameValuesFloat(string value)
         {
             return value

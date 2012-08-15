@@ -12,7 +12,8 @@ namespace WindowsGame1.Maps
     {
         private readonly Texture2D texture;
 
-        public ImageMap(Texture2D texture, Rectangle rectangle)
+        public ImageMap(string name, Texture2D texture, Rectangle rectangle)
+            : base(name)
         {
             this.texture = texture;
             this.Rectangle = rectangle;
@@ -20,9 +21,9 @@ namespace WindowsGame1.Maps
 
         public Rectangle Rectangle { get; set; }
 
-        public static ImageMap CreateFillScreenImageMap(GraphicsDevice device, Texture2D texture)
+        public static ImageMap CreateFillScreenImageMap(string name, GraphicsDevice device, Texture2D texture)
         {
-            return new ImageMap(texture, device.Viewport.Bounds);
+            return new ImageMap(name, texture, device.Viewport.Bounds);
         }
 
         public override void Draw(SpriteBatch spriteBatch, Camera camera)
@@ -33,18 +34,18 @@ namespace WindowsGame1.Maps
         public override XElement ToXml()
         {
             return new XElement("ImageMap",
+                new XAttribute("name", this.Name),
                 new XElement("Texture", this.texture.Name),
                 new XElement("Rectangle", this.Rectangle));
         }
 
         public static ImageMap FromXml(GameResourceManager gameResourceManager, XElement mapElement)
         {
+            var name = mapElement.Attribute("name").Value;
             var textureName = mapElement.Element("Texture").Value;
             var rectangleValue = mapElement.Element("Rectangle").Value;
             
-            return new ImageMap(
-                gameResourceManager.GetTexture(textureName),
-                MathUtil.ParseRectangle(rectangleValue));
+            return new ImageMap(name, gameResourceManager.GetTexture(textureName), MathUtil.ParseRectangle(rectangleValue));
         }
     }
 }

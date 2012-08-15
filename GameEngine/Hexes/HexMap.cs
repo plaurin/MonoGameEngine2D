@@ -15,7 +15,8 @@ namespace WindowsGame1.Hexes
         private readonly HexDefinition[,] map;
         private readonly HexGrid grid;
 
-        public HexMap(Size mapSize, Size hexSize, HexDefinition defaultHexDefinition = null)
+        public HexMap(string name, Size mapSize, Size hexSize, HexDefinition defaultHexDefinition = null)
+            : base(name)
         {
             this.MapSize = mapSize;
             this.HexSize = hexSize;
@@ -104,12 +105,13 @@ namespace WindowsGame1.Hexes
 
         public static HexMap FromXml(GameResourceManager gameResourceManager, XElement mapElement)
         {
+            var name = mapElement.Attribute("name").Value;
             var mapSize = MathUtil.ParseSize(mapElement.Element("MapSize").Value);
             var hexSize = MathUtil.ParseSize(mapElement.Element("HexSize").Value);
             var hexReferences = GetHexReferences(gameResourceManager, mapElement.Element("HexDefinitionReferences")).ToList();
             var hexes = GetRowsFromXml(mapElement.Element("Hexes"));
 
-            var map = new HexMap(mapSize, hexSize);
+            var map = new HexMap(name, mapSize, hexSize);
             map.BaseFromXml(mapElement);
 
             int x = 0;

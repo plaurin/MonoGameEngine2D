@@ -15,7 +15,8 @@ namespace WindowsGame1.Tiles
     {
         private readonly TileDefinition[,] map;
 
-        public TileMap(Size mapSize, Size tileSize, TileDefinition defaultTileDefinition = null)
+        public TileMap(string name, Size mapSize, Size tileSize, TileDefinition defaultTileDefinition = null)
+            : base(name)
         {
             this.MapSize = mapSize;
             this.TileSize = tileSize;
@@ -101,12 +102,13 @@ namespace WindowsGame1.Tiles
 
         public static TileMap FromXml(GameResourceManager gameResourceManager, XElement mapElement)
         {
+            var name = mapElement.Attribute("name").Value;
             var mapSize = MathUtil.ParseSize(mapElement.Element("MapSize").Value);
             var tileSize = MathUtil.ParseSize(mapElement.Element("TileSize").Value);
             var tileReferences = GetTileReferences(gameResourceManager, mapElement.Element("TileDefinitionReferences")).ToList();
             var tiles = GetRowsFromXml(mapElement.Element("Tiles"));
 
-            var map = new TileMap(mapSize, tileSize);
+            var map = new TileMap(name, mapSize, tileSize);
             map.BaseFromXml(mapElement);
 
             int x = 0;

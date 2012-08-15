@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using Microsoft.Xna.Framework.Graphics;
 
 using WindowsGame1.Cameras;
+using WindowsGame1.Drawing;
 using WindowsGame1.Hexes;
 using WindowsGame1.Maps;
 using WindowsGame1.Sprites;
@@ -76,6 +77,9 @@ namespace WindowsGame1.Scenes
                         break;
                     case "SpriteMap":
                         scene.AddMap(SpriteMap.FromXml(gameResourceManager, mapElement));
+                        break;
+                    case "DrawingMap":
+                        scene.AddMap(DrawingMap.FromXml(gameResourceManager, mapElement));
                         break;
                 }
             }

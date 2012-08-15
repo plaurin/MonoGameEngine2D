@@ -108,6 +108,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cameras\Camera.cs" />
+    <Compile Include="Drawing\DrawingElementBase.cs" />
+    <Compile Include="Drawing\DrawingFont.cs" />
+    <Compile Include="Drawing\DrawingMap.cs" />
+    <Compile Include="Drawing\LineElement.cs" />
+    <Compile Include="Drawing\TextElement.cs" />
     <Compile Include="GameResourceManager.cs" />
     <Compile Include="Hexes\HexGridElement.cs" />
     <Compile Include="Hexes\HexDefinition.cs" />

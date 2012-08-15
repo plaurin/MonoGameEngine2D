@@ -13,7 +13,8 @@ namespace WindowsGame1.Maps
     {
         private readonly Texture2D texture;
 
-        public ColorMap(Texture2D texture, Color color)
+        public ColorMap(string name, Texture2D texture, Color color)
+            : base(name)
         {
             this.Color = color;
             this.texture = texture;
@@ -29,19 +30,17 @@ namespace WindowsGame1.Maps
         public override XElement ToXml()
         {
             return new XElement("ColorMap",
-                new XElement("Color",
-                    string.Format("{0}, {1}, {2}, {3}", this.Color.R, this.Color.G, this.Color.B, this.Color.A)));
+                new XAttribute("name", this.Name),
+                new XElement("Color", this.Color));
         }
 
         public static ColorMap FromXml(GameResourceManager gameResourceManager, XElement mapElement)
         {
-            var colorValue = mapElement.Element("Color").Value
-                .Split(',')
-                .Select(x => int.Parse(x.Trim()))
-                .ToArray();
+            var name = mapElement.Attribute("name").Value;
+            var colorValue = mapElement.Element("Color").Value;
 
             var texture = gameResourceManager.GetTexture("WhitePixel");
-            return new ColorMap(texture, new Color(colorValue[0], colorValue[1], colorValue[2], colorValue[3]));
+            return new ColorMap(name, texture, MathUtil.ParseColor(colorValue));
         }
     }
 }
