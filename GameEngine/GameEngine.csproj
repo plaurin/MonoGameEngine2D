@@ -112,6 +112,7 @@
     <Compile Include="Drawing\DrawingFont.cs" />
     <Compile Include="Drawing\DrawingMap.cs" />
     <Compile Include="Drawing\LineElement.cs" />
+    <Compile Include="Drawing\PolygonElement.cs" />
     <Compile Include="Drawing\TextElement.cs" />
     <Compile Include="GameResourceManager.cs" />
     <Compile Include="Hexes\HexGridElement.cs" />

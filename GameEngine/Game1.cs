@@ -382,7 +382,7 @@ namespace WindowsGame1
 
                 //this.DrawLine(this.spriteBatch, blank, 1.0f, Color.White, hex.Center, hex.Center + new Vector2(0, 1));
                 //this.DrawLine(this.spriteBatch, blank, 1.0f, Color.White, hex.Center, hex.Center + new Vector2(1, 0));
-                this.DrawHex(this.spriteBatch, this.camera, blank, color, hex, map);
+                this.DrawHex(color, hex, map);
 
                 //var text = string.Format("{0},{1}", hex.Position.X, hex.Position.Y);
                 //var text = string.Format("{0},{1}", hex.Position.X - 4, (hex.Position.Y - 4) * 2 + hex.Position.X % 2);
@@ -415,24 +415,9 @@ namespace WindowsGame1
                        SpriteEffects.None, 0);
         }
 
-        //private void DrawHex(SpriteBatch batch, Texture2D blank, Color color, Vector2 center, float size)
-        //{
-        //    DrawHex(batch, blank, color, new Hex(center, size));
-        //}
-
-        private void DrawHex(SpriteBatch batch, Camera camera1, Texture2D blank, Color color, HexGridElement hex, DrawingMap map)
+        private void DrawHex(Color color, HexGridElement hex, DrawingMap map)
         {
-            //var vertices = new List<Vector2>(hex.GetVertices()
-            //    .Select(v => v.Scale(camera1.ZoomFactor).Translate(camera1.GetSceneTranslationVector(new Vector2(0.5f, 2.0f)))));
-            var vertices = new List<Vector2>(hex.GetVertices());
-
-            vertices.Add(vertices.First());
-
-            for (var i = 0; i < 6; i++)
-            {
-                //this.DrawLine(batch, blank, 3, color, vertices[i], vertices[i + 1]);
-                map.AddLine(vertices[i], vertices[i + 1], 3, color);
-            }
+            map.AddPolygone(3, color, hex.GetVertices());
         }
 
         private static Texture2D CreateTexture(GraphicsDevice device)

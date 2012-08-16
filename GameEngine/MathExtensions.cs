@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
 using Microsoft.Xna.Framework;
 
 namespace WindowsGame1
@@ -82,6 +85,23 @@ namespace WindowsGame1
         public static Color ChangeAlpha(this Color color, int alpha)
         {
             return new Color(color.R, color.G, color.B, alpha);
+        }
+
+        public static void ForEachPair<T>(this IEnumerable<T> enumerable, Action<T, T> action)
+        {
+            var first = default(T);
+            var last = default(T);
+            foreach (var item in enumerable)
+            {
+                if (object.Equals(first, default(T))) 
+                    first = item;
+                else 
+                    action(last, item);
+
+                last = item;
+            }
+
+            action(last, first);
         }
     }
 }

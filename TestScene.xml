@@ -69,1076 +69,617 @@
   </ColorMap>
   <DrawingMap name="Hex drawing test" parallaxScrollingVector="{X:1 Y:1}">
     <Elements>
-      <LineElement from="{X:45 Y:51.96152}" to="{X:15 Y:51.96152}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:15 Y:51.96152}" to="{X:0 Y:25.98076}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:0 Y:25.98076}" to="{X:15 Y:0}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:15 Y:0}" to="{X:45 Y:0}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:45 Y:0}" to="{X:60 Y:25.98077}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:60 Y:25.98077}" to="{X:45 Y:51.96152}" width="3" color="{R:255 G:0 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
+        <Vertices>{X:45 Y:51.96152}, {X:15 Y:51.96152}, {X:0 Y:25.98076}, {X:15 Y:0}, {X:45 Y:0}, {X:60 Y:25.98077}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-4,-5" vector="{X:12.5 Y:17.98076}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:90 Y:77.98076}" to="{X:60 Y:77.98076}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:60 Y:77.98076}" to="{X:45 Y:52}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:45 Y:52}" to="{X:60 Y:26.01924}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:60 Y:26.01924}" to="{X:90 Y:26.01924}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:90 Y:26.01924}" to="{X:105 Y:52}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:105 Y:52}" to="{X:90 Y:77.98076}" width="3" color="{R:255 G:0 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
+        <Vertices>{X:90 Y:77.98076}, {X:60 Y:77.98076}, {X:45 Y:52}, {X:60 Y:26.01924}, {X:90 Y:26.01924}, {X:105 Y:52}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-3,-4.5" vector="{X:50.5 Y:44}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:51.98076}" to="{X:105 Y:51.98076}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:105 Y:51.98076}" to="{X:90 Y:26}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:90 Y:26}" to="{X:105 Y:0.01923752}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:105 Y:0.01923752}" to="{X:135 Y:0.01923752}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:135 Y:0.01923752}" to="{X:150 Y:26.00001}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:150 Y:26.00001}" to="{X:135 Y:51.98076}" width="3" color="{R:255 G:0 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
+        <Vertices>{X:135 Y:51.98076}, {X:105 Y:51.98076}, {X:90 Y:26}, {X:105 Y:0.01923752}, {X:135 Y:0.01923752}, {X:150 Y:26.00001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-2,-5" vector="{X:102.5 Y:18}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:77.98076}" to="{X:150 Y:77.98076}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:150 Y:77.98076}" to="{X:135 Y:52}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:135 Y:52}" to="{X:150 Y:26.01924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:150 Y:26.01924}" to="{X:180 Y:26.01924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:180 Y:26.01924}" to="{X:195 Y:52}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:195 Y:52}" to="{X:180 Y:77.98076}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:180 Y:77.98076}, {X:150 Y:77.98076}, {X:135 Y:52}, {X:150 Y:26.01924}, {X:180 Y:26.01924}, {X:195 Y:52}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-1,-4.5" vector="{X:140.5 Y:44}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:51.98076}" to="{X:195 Y:51.98076}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:195 Y:51.98076}" to="{X:180 Y:26}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:180 Y:26}" to="{X:195 Y:0.01923752}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:195 Y:0.01923752}" to="{X:225 Y:0.01923752}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:225 Y:0.01923752}" to="{X:240 Y:26.00001}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:240 Y:26.00001}" to="{X:225 Y:51.98076}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:225 Y:51.98076}, {X:195 Y:51.98076}, {X:180 Y:26}, {X:195 Y:0.01923752}, {X:225 Y:0.01923752}, {X:240 Y:26.00001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="0,-5" vector="{X:196 Y:18}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:77.98076}" to="{X:240 Y:77.98076}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:240 Y:77.98076}" to="{X:225 Y:52}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:225 Y:52}" to="{X:240 Y:26.01924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:240 Y:26.01924}" to="{X:270 Y:26.01924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:270 Y:26.01924}" to="{X:285 Y:52}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:285 Y:52}" to="{X:270 Y:77.98076}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:270 Y:77.98076}, {X:240 Y:77.98076}, {X:225 Y:52}, {X:240 Y:26.01924}, {X:270 Y:26.01924}, {X:285 Y:52}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="1,-4.5" vector="{X:234 Y:44}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:315 Y:51.98076}" to="{X:285 Y:51.98076}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:285 Y:51.98076}" to="{X:270 Y:26}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:270 Y:26}" to="{X:285 Y:0.01923752}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:285 Y:0.01923752}" to="{X:315 Y:0.01923752}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:315 Y:0.01923752}" to="{X:330 Y:26.00001}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:330 Y:26.00001}" to="{X:315 Y:51.98076}" width="3" color="{R:255 G:0 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
+        <Vertices>{X:315 Y:51.98076}, {X:285 Y:51.98076}, {X:270 Y:26}, {X:285 Y:0.01923752}, {X:315 Y:0.01923752}, {X:330 Y:26.00001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="2,-5" vector="{X:286 Y:18}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:360 Y:77.98076}" to="{X:330 Y:77.98076}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:330 Y:77.98076}" to="{X:315 Y:52}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:315 Y:52}" to="{X:330 Y:26.01924}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:330 Y:26.01924}" to="{X:360 Y:26.01924}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:360 Y:26.01924}" to="{X:375 Y:52}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:375 Y:52}" to="{X:360 Y:77.98076}" width="3" color="{R:255 G:0 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
+        <Vertices>{X:360 Y:77.98076}, {X:330 Y:77.98076}, {X:315 Y:52}, {X:330 Y:26.01924}, {X:360 Y:26.01924}, {X:375 Y:52}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="3,-4.5" vector="{X:324 Y:44}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:405 Y:51.98076}" to="{X:375 Y:51.98076}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:375 Y:51.98076}" to="{X:360 Y:26}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:360 Y:26}" to="{X:375 Y:0.01923752}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:375 Y:0.01923752}" to="{X:405 Y:0.01923752}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:405 Y:0.01923752}" to="{X:420 Y:26.00001}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:420 Y:26.00001}" to="{X:405 Y:51.98076}" width="3" color="{R:255 G:0 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
+        <Vertices>{X:405 Y:51.98076}, {X:375 Y:51.98076}, {X:360 Y:26}, {X:375 Y:0.01923752}, {X:405 Y:0.01923752}, {X:420 Y:26.00001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="4,-5" vector="{X:376 Y:18}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:45 Y:103.8808}" to="{X:15 Y:103.8808}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:15 Y:103.8808}" to="{X:0 Y:77.9}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:0 Y:77.9}" to="{X:15 Y:51.91924}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:15 Y:51.91924}" to="{X:45 Y:51.91924}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:45 Y:51.91924}" to="{X:60 Y:77.90001}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:60 Y:77.90001}" to="{X:45 Y:103.8808}" width="3" color="{R:255 G:0 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
+        <Vertices>{X:45 Y:103.8808}, {X:15 Y:103.8808}, {X:0 Y:77.9}, {X:15 Y:51.91924}, {X:45 Y:51.91924}, {X:60 Y:77.90001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-4,-4" vector="{X:12.5 Y:69.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:90 Y:129.8808}" to="{X:60 Y:129.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:60 Y:129.8808}" to="{X:45 Y:103.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:45 Y:103.9}" to="{X:60 Y:77.91924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:60 Y:77.91924}" to="{X:90 Y:77.91924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:90 Y:77.91924}" to="{X:105 Y:103.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:105 Y:103.9}" to="{X:90 Y:129.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:90 Y:129.8808}, {X:60 Y:129.8808}, {X:45 Y:103.9}, {X:60 Y:77.91924}, {X:90 Y:77.91924}, {X:105 Y:103.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-3,-3.5" vector="{X:50.5 Y:95.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:103.8808}" to="{X:105 Y:103.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:105 Y:103.8808}" to="{X:90 Y:77.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:90 Y:77.9}" to="{X:105 Y:51.91924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:105 Y:51.91924}" to="{X:135 Y:51.91924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:135 Y:51.91924}" to="{X:150 Y:77.90001}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:150 Y:77.90001}" to="{X:135 Y:103.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:135 Y:103.8808}, {X:105 Y:103.8808}, {X:90 Y:77.9}, {X:105 Y:51.91924}, {X:135 Y:51.91924}, {X:150 Y:77.90001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-2,-4" vector="{X:102.5 Y:69.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:77.88077}" to="{X:150 Y:77.88077}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:150 Y:77.88077}" to="{X:135 Y:51.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:135 Y:51.9}" to="{X:150 Y:25.91924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:150 Y:25.91924}" to="{X:180 Y:25.91924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:180 Y:25.91924}" to="{X:195 Y:51.90001}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:195 Y:51.90001}" to="{X:180 Y:77.88077}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:180 Y:77.88077}, {X:150 Y:77.88077}, {X:135 Y:51.9}, {X:150 Y:25.91924}, {X:180 Y:25.91924}, {X:195 Y:51.90001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-1,-4.5" vector="{X:140.5 Y:43.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:51.88076}" to="{X:195 Y:51.88076}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:195 Y:51.88076}" to="{X:180 Y:25.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:180 Y:25.9}" to="{X:195 Y:-0.08076286}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:195 Y:-0.08076286}" to="{X:225 Y:-0.08076286}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:225 Y:-0.08076286}" to="{X:240 Y:25.90001}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:240 Y:25.90001}" to="{X:225 Y:51.88076}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:225 Y:51.88076}, {X:195 Y:51.88076}, {X:180 Y:25.9}, {X:195 Y:-0.08076286}, {X:225 Y:-0.08076286}, {X:240 Y:25.90001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="0,-5" vector="{X:196 Y:17.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:77.88077}" to="{X:240 Y:77.88077}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:240 Y:77.88077}" to="{X:225 Y:51.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:225 Y:51.9}" to="{X:240 Y:25.91924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:240 Y:25.91924}" to="{X:270 Y:25.91924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:270 Y:25.91924}" to="{X:285 Y:51.90001}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:285 Y:51.90001}" to="{X:270 Y:77.88077}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:270 Y:77.88077}, {X:240 Y:77.88077}, {X:225 Y:51.9}, {X:240 Y:25.91924}, {X:270 Y:25.91924}, {X:285 Y:51.90001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="1,-4.5" vector="{X:234 Y:43.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:315 Y:51.88076}" to="{X:285 Y:51.88076}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:285 Y:51.88076}" to="{X:270 Y:25.9}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:270 Y:25.9}" to="{X:285 Y:-0.08076286}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:285 Y:-0.08076286}" to="{X:315 Y:-0.08076286}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:315 Y:-0.08076286}" to="{X:330 Y:25.90001}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:330 Y:25.90001}" to="{X:315 Y:51.88076}" width="3" color="{R:255 G:0 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
+        <Vertices>{X:315 Y:51.88076}, {X:285 Y:51.88076}, {X:270 Y:25.9}, {X:285 Y:-0.08076286}, {X:315 Y:-0.08076286}, {X:330 Y:25.90001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="2,-5" vector="{X:286 Y:17.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:360 Y:77.88077}" to="{X:330 Y:77.88077}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:330 Y:77.88077}" to="{X:315 Y:51.9}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:315 Y:51.9}" to="{X:330 Y:25.91924}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:330 Y:25.91924}" to="{X:360 Y:25.91924}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:360 Y:25.91924}" to="{X:375 Y:51.90001}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:375 Y:51.90001}" to="{X:360 Y:77.88077}" width="3" color="{R:255 G:0 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
+        <Vertices>{X:360 Y:77.88077}, {X:330 Y:77.88077}, {X:315 Y:51.9}, {X:330 Y:25.91924}, {X:360 Y:25.91924}, {X:375 Y:51.90001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="3,-4.5" vector="{X:324 Y:43.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:405 Y:51.88076}" to="{X:375 Y:51.88076}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:375 Y:51.88076}" to="{X:360 Y:25.9}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:360 Y:25.9}" to="{X:375 Y:-0.08076286}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:375 Y:-0.08076286}" to="{X:405 Y:-0.08076286}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:405 Y:-0.08076286}" to="{X:420 Y:25.90001}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:420 Y:25.90001}" to="{X:405 Y:51.88076}" width="3" color="{R:255 G:0 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
+        <Vertices>{X:405 Y:51.88076}, {X:375 Y:51.88076}, {X:360 Y:25.9}, {X:375 Y:-0.08076286}, {X:405 Y:-0.08076286}, {X:420 Y:25.90001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="4,-5" vector="{X:376 Y:17.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:90 Y:77.88077}" to="{X:60 Y:77.88077}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:60 Y:77.88077}" to="{X:45 Y:51.9}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:45 Y:51.9}" to="{X:60 Y:25.91924}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:60 Y:25.91924}" to="{X:90 Y:25.91924}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:90 Y:25.91924}" to="{X:105 Y:51.90001}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:105 Y:51.90001}" to="{X:90 Y:77.88077}" width="3" color="{R:255 G:0 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
+        <Vertices>{X:90 Y:77.88077}, {X:60 Y:77.88077}, {X:45 Y:51.9}, {X:60 Y:25.91924}, {X:90 Y:25.91924}, {X:105 Y:51.90001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-3,-4.5" vector="{X:50.5 Y:43.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:51.88076}" to="{X:105 Y:51.88076}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:105 Y:51.88076}" to="{X:90 Y:25.9}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:90 Y:25.9}" to="{X:105 Y:-0.08076286}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:105 Y:-0.08076286}" to="{X:135 Y:-0.08076286}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:135 Y:-0.08076286}" to="{X:150 Y:25.90001}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:150 Y:25.90001}" to="{X:135 Y:51.88076}" width="3" color="{R:255 G:0 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
+        <Vertices>{X:135 Y:51.88076}, {X:105 Y:51.88076}, {X:90 Y:25.9}, {X:105 Y:-0.08076286}, {X:135 Y:-0.08076286}, {X:150 Y:25.90001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-2,-5" vector="{X:102.5 Y:17.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:103.9808}" to="{X:105 Y:103.9808}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:105 Y:103.9808}" to="{X:90 Y:78}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:90 Y:78}" to="{X:105 Y:52.01924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:105 Y:52.01924}" to="{X:135 Y:52.01924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:135 Y:52.01924}" to="{X:150 Y:78.00001}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:150 Y:78.00001}" to="{X:135 Y:103.9808}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:135 Y:103.9808}, {X:105 Y:103.9808}, {X:90 Y:78}, {X:105 Y:52.01924}, {X:135 Y:52.01924}, {X:150 Y:78.00001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-2,-4" vector="{X:102.5 Y:70}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:155.9808}" to="{X:105 Y:155.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:105 Y:155.9808}" to="{X:90 Y:130}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:90 Y:130}" to="{X:105 Y:104.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:105 Y:104.0192}" to="{X:135 Y:104.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:135 Y:104.0192}" to="{X:150 Y:130}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:150 Y:130}" to="{X:135 Y:155.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:135 Y:155.9808}, {X:105 Y:155.9808}, {X:90 Y:130}, {X:105 Y:104.0192}, {X:135 Y:104.0192}, {X:150 Y:130}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-2,-3" vector="{X:102.5 Y:122}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:207.9808}" to="{X:105 Y:207.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:105 Y:207.9808}" to="{X:90 Y:182}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:90 Y:182}" to="{X:105 Y:156.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:105 Y:156.0192}" to="{X:135 Y:156.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:135 Y:156.0192}" to="{X:150 Y:182}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:150 Y:182}" to="{X:135 Y:207.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:135 Y:207.9808}, {X:105 Y:207.9808}, {X:90 Y:182}, {X:105 Y:156.0192}, {X:135 Y:156.0192}, {X:150 Y:182}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-2,-2" vector="{X:102.5 Y:174}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:259.9808}" to="{X:105 Y:259.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:105 Y:259.9808}" to="{X:90 Y:234}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:90 Y:234}" to="{X:105 Y:208.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:105 Y:208.0192}" to="{X:135 Y:208.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:135 Y:208.0192}" to="{X:150 Y:234}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:150 Y:234}" to="{X:135 Y:259.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:135 Y:259.9808}, {X:105 Y:259.9808}, {X:90 Y:234}, {X:105 Y:208.0192}, {X:135 Y:208.0192}, {X:150 Y:234}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-2,-1" vector="{X:102.5 Y:226}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:285.9808}" to="{X:150 Y:285.9808}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:150 Y:285.9808}" to="{X:135 Y:260}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:260}" to="{X:150 Y:234.0192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:150 Y:234.0192}" to="{X:180 Y:234.0192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:234.0192}" to="{X:195 Y:260}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:195 Y:260}" to="{X:180 Y:285.9808}" width="3" color="{R:0 G:255 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
+        <Vertices>{X:180 Y:285.9808}, {X:150 Y:285.9808}, {X:135 Y:260}, {X:150 Y:234.0192}, {X:180 Y:234.0192}, {X:195 Y:260}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-1,-0.5" vector="{X:140.5 Y:252}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:259.9808}" to="{X:195 Y:259.9808}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:195 Y:259.9808}" to="{X:180 Y:234}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:234}" to="{X:195 Y:208.0192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:195 Y:208.0192}" to="{X:225 Y:208.0192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:208.0192}" to="{X:240 Y:234}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:240 Y:234}" to="{X:225 Y:259.9808}" width="3" color="{R:0 G:255 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
+        <Vertices>{X:225 Y:259.9808}, {X:195 Y:259.9808}, {X:180 Y:234}, {X:195 Y:208.0192}, {X:225 Y:208.0192}, {X:240 Y:234}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="0,-1" vector="{X:196 Y:226}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:233.9808}" to="{X:240 Y:233.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:240 Y:233.9808}" to="{X:225 Y:208}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:225 Y:208}" to="{X:240 Y:182.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:240 Y:182.0192}" to="{X:270 Y:182.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:270 Y:182.0192}" to="{X:285 Y:208}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:285 Y:208}" to="{X:270 Y:233.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:270 Y:233.9808}, {X:240 Y:233.9808}, {X:225 Y:208}, {X:240 Y:182.0192}, {X:270 Y:182.0192}, {X:285 Y:208}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="1,-1.5" vector="{X:234 Y:200}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:315 Y:207.9808}" to="{X:285 Y:207.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:285 Y:207.9808}" to="{X:270 Y:182}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:270 Y:182}" to="{X:285 Y:156.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:285 Y:156.0192}" to="{X:315 Y:156.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:315 Y:156.0192}" to="{X:330 Y:182}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:182}" to="{X:315 Y:207.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:315 Y:207.9808}, {X:285 Y:207.9808}, {X:270 Y:182}, {X:285 Y:156.0192}, {X:315 Y:156.0192}, {X:330 Y:182}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="2,-2" vector="{X:286 Y:174}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:360 Y:181.9808}" to="{X:330 Y:181.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:330 Y:181.9808}" to="{X:315 Y:156}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:315 Y:156}" to="{X:330 Y:130.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:330 Y:130.0192}" to="{X:360 Y:130.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:360 Y:130.0192}" to="{X:375 Y:156}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:156}" to="{X:360 Y:181.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:360 Y:181.9808}, {X:330 Y:181.9808}, {X:315 Y:156}, {X:330 Y:130.0192}, {X:360 Y:130.0192}, {X:375 Y:156}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="3,-2.5" vector="{X:324 Y:148}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:405 Y:155.9808}" to="{X:375 Y:155.9808}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:375 Y:155.9808}" to="{X:360 Y:130}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:360 Y:130}" to="{X:375 Y:104.0192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:375 Y:104.0192}" to="{X:405 Y:104.0192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:405 Y:104.0192}" to="{X:420 Y:130}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:420 Y:130}" to="{X:405 Y:155.9808}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:405 Y:155.9808}, {X:375 Y:155.9808}, {X:360 Y:130}, {X:375 Y:104.0192}, {X:405 Y:104.0192}, {X:420 Y:130}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="4,-3" vector="{X:376 Y:122}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:233.9808}" to="{X:150 Y:233.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:150 Y:233.9808}" to="{X:135 Y:208}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:135 Y:208}" to="{X:150 Y:182.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:150 Y:182.0192}" to="{X:180 Y:182.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:180 Y:182.0192}" to="{X:195 Y:208}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:195 Y:208}" to="{X:180 Y:233.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:180 Y:233.9808}, {X:150 Y:233.9808}, {X:135 Y:208}, {X:150 Y:182.0192}, {X:180 Y:182.0192}, {X:195 Y:208}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-1,-1.5" vector="{X:140.5 Y:200}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:207.9808}" to="{X:195 Y:207.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:195 Y:207.9808}" to="{X:180 Y:182}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:180 Y:182}" to="{X:195 Y:156.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:195 Y:156.0192}" to="{X:225 Y:156.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:225 Y:156.0192}" to="{X:240 Y:182}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:240 Y:182}" to="{X:225 Y:207.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:225 Y:207.9808}, {X:195 Y:207.9808}, {X:180 Y:182}, {X:195 Y:156.0192}, {X:225 Y:156.0192}, {X:240 Y:182}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="0,-2" vector="{X:196 Y:174}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:181.9808}" to="{X:240 Y:181.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:240 Y:181.9808}" to="{X:225 Y:156}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:225 Y:156}" to="{X:240 Y:130.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:240 Y:130.0192}" to="{X:270 Y:130.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:270 Y:130.0192}" to="{X:285 Y:156}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:285 Y:156}" to="{X:270 Y:181.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:270 Y:181.9808}, {X:240 Y:181.9808}, {X:225 Y:156}, {X:240 Y:130.0192}, {X:270 Y:130.0192}, {X:285 Y:156}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="1,-2.5" vector="{X:234 Y:148}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:315 Y:155.9808}" to="{X:285 Y:155.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:285 Y:155.9808}" to="{X:270 Y:130}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:270 Y:130}" to="{X:285 Y:104.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:285 Y:104.0192}" to="{X:315 Y:104.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:315 Y:104.0192}" to="{X:330 Y:130}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:330 Y:130}" to="{X:315 Y:155.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:315 Y:155.9808}, {X:285 Y:155.9808}, {X:270 Y:130}, {X:285 Y:104.0192}, {X:315 Y:104.0192}, {X:330 Y:130}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="2,-3" vector="{X:286 Y:122}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:181.9808}" to="{X:150 Y:181.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:150 Y:181.9808}" to="{X:135 Y:156}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:135 Y:156}" to="{X:150 Y:130.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:150 Y:130.0192}" to="{X:180 Y:130.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:180 Y:130.0192}" to="{X:195 Y:156}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:195 Y:156}" to="{X:180 Y:181.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:180 Y:181.9808}, {X:150 Y:181.9808}, {X:135 Y:156}, {X:150 Y:130.0192}, {X:180 Y:130.0192}, {X:195 Y:156}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-1,-2.5" vector="{X:140.5 Y:148}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:155.9808}" to="{X:195 Y:155.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:195 Y:155.9808}" to="{X:180 Y:130}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:180 Y:130}" to="{X:195 Y:104.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:195 Y:104.0192}" to="{X:225 Y:104.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:225 Y:104.0192}" to="{X:240 Y:130}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:240 Y:130}" to="{X:225 Y:155.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:225 Y:155.9808}, {X:195 Y:155.9808}, {X:180 Y:130}, {X:195 Y:104.0192}, {X:225 Y:104.0192}, {X:240 Y:130}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="0,-3" vector="{X:196 Y:122}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:90 Y:129.9808}" to="{X:60 Y:129.9808}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:60 Y:129.9808}" to="{X:45 Y:104}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:45 Y:104}" to="{X:60 Y:78.01924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:60 Y:78.01924}" to="{X:90 Y:78.01924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:90 Y:78.01924}" to="{X:105 Y:104}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:105 Y:104}" to="{X:90 Y:129.9808}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:90 Y:129.9808}, {X:60 Y:129.9808}, {X:45 Y:104}, {X:60 Y:78.01924}, {X:90 Y:78.01924}, {X:105 Y:104}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-3,-3.5" vector="{X:50.5 Y:96}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:90 Y:181.9808}" to="{X:60 Y:181.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:60 Y:181.9808}" to="{X:45 Y:156}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:45 Y:156}" to="{X:60 Y:130.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:60 Y:130.0192}" to="{X:90 Y:130.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:90 Y:130.0192}" to="{X:105 Y:156}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:105 Y:156}" to="{X:90 Y:181.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:90 Y:181.9808}, {X:60 Y:181.9808}, {X:45 Y:156}, {X:60 Y:130.0192}, {X:90 Y:130.0192}, {X:105 Y:156}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-3,-2.5" vector="{X:50.5 Y:148}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:90 Y:233.9808}" to="{X:60 Y:233.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:60 Y:233.9808}" to="{X:45 Y:208}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:45 Y:208}" to="{X:60 Y:182.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:60 Y:182.0192}" to="{X:90 Y:182.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:90 Y:182.0192}" to="{X:105 Y:208}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:105 Y:208}" to="{X:90 Y:233.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:90 Y:233.9808}, {X:60 Y:233.9808}, {X:45 Y:208}, {X:60 Y:182.0192}, {X:90 Y:182.0192}, {X:105 Y:208}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-3,-1.5" vector="{X:50.5 Y:200}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:90 Y:285.9808}" to="{X:60 Y:285.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:60 Y:285.9808}" to="{X:45 Y:260}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:45 Y:260}" to="{X:60 Y:234.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:60 Y:234.0192}" to="{X:90 Y:234.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:90 Y:234.0192}" to="{X:105 Y:260}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:105 Y:260}" to="{X:90 Y:285.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:90 Y:285.9808}, {X:60 Y:285.9808}, {X:45 Y:260}, {X:60 Y:234.0192}, {X:90 Y:234.0192}, {X:105 Y:260}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-3,-0.5" vector="{X:50.5 Y:252}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:90 Y:337.9808}" to="{X:60 Y:337.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:60 Y:337.9808}" to="{X:45 Y:312}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:45 Y:312}" to="{X:60 Y:286.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:60 Y:286.0192}" to="{X:90 Y:286.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:90 Y:286.0192}" to="{X:105 Y:312}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:105 Y:312}" to="{X:90 Y:337.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:90 Y:337.9808}, {X:60 Y:337.9808}, {X:45 Y:312}, {X:60 Y:286.0192}, {X:90 Y:286.0192}, {X:105 Y:312}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-3,0.5" vector="{X:54 Y:304}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:90 Y:389.9808}" to="{X:60 Y:389.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:60 Y:389.9808}" to="{X:45 Y:364}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:45 Y:364}" to="{X:60 Y:338.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:60 Y:338.0192}" to="{X:90 Y:338.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:90 Y:338.0192}" to="{X:105 Y:364}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:105 Y:364}" to="{X:90 Y:389.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:90 Y:389.9808}, {X:60 Y:389.9808}, {X:45 Y:364}, {X:60 Y:338.0192}, {X:90 Y:338.0192}, {X:105 Y:364}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-3,1.5" vector="{X:54 Y:356}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:90 Y:441.9808}" to="{X:60 Y:441.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:60 Y:441.9808}" to="{X:45 Y:416}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:45 Y:416}" to="{X:60 Y:390.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:60 Y:390.0192}" to="{X:90 Y:390.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:90 Y:390.0192}" to="{X:105 Y:416}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:105 Y:416}" to="{X:90 Y:441.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:90 Y:441.9808}, {X:60 Y:441.9808}, {X:45 Y:416}, {X:60 Y:390.0192}, {X:90 Y:390.0192}, {X:105 Y:416}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-3,2.5" vector="{X:54 Y:408}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:90 Y:493.9808}" to="{X:60 Y:493.9808}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:60 Y:493.9808}" to="{X:45 Y:468}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:45 Y:468}" to="{X:60 Y:442.0192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:60 Y:442.0192}" to="{X:90 Y:442.0192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:90 Y:442.0192}" to="{X:105 Y:468}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:105 Y:468}" to="{X:90 Y:493.9808}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:90 Y:493.9808}, {X:60 Y:493.9808}, {X:45 Y:468}, {X:60 Y:442.0192}, {X:90 Y:442.0192}, {X:105 Y:468}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-3,3.5" vector="{X:54 Y:460}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:467.9808}" to="{X:105 Y:467.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:105 Y:467.9808}" to="{X:90 Y:442}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:90 Y:442}" to="{X:105 Y:416.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:105 Y:416.0192}" to="{X:135 Y:416.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:135 Y:416.0192}" to="{X:150 Y:442}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:150 Y:442}" to="{X:135 Y:467.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:135 Y:467.9808}, {X:105 Y:467.9808}, {X:90 Y:442}, {X:105 Y:416.0192}, {X:135 Y:416.0192}, {X:150 Y:442}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-2,3" vector="{X:106 Y:434}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:493.9808}" to="{X:150 Y:493.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:150 Y:493.9808}" to="{X:135 Y:468}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:135 Y:468}" to="{X:150 Y:442.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:150 Y:442.0192}" to="{X:180 Y:442.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:180 Y:442.0192}" to="{X:195 Y:468}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:195 Y:468}" to="{X:180 Y:493.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:180 Y:493.9808}, {X:150 Y:493.9808}, {X:135 Y:468}, {X:150 Y:442.0192}, {X:180 Y:442.0192}, {X:195 Y:468}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-1,3.5" vector="{X:144 Y:460}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:467.9808}" to="{X:195 Y:467.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:195 Y:467.9808}" to="{X:180 Y:442}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:180 Y:442}" to="{X:195 Y:416.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:195 Y:416.0192}" to="{X:225 Y:416.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:225 Y:416.0192}" to="{X:240 Y:442}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:240 Y:442}" to="{X:225 Y:467.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:225 Y:467.9808}, {X:195 Y:467.9808}, {X:180 Y:442}, {X:195 Y:416.0192}, {X:225 Y:416.0192}, {X:240 Y:442}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="0,3" vector="{X:199.5 Y:434}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:441.9808}" to="{X:240 Y:441.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:240 Y:441.9808}" to="{X:225 Y:416}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:225 Y:416}" to="{X:240 Y:390.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:240 Y:390.0192}" to="{X:270 Y:390.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:270 Y:390.0192}" to="{X:285 Y:416}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:285 Y:416}" to="{X:270 Y:441.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:270 Y:441.9808}, {X:240 Y:441.9808}, {X:225 Y:416}, {X:240 Y:390.0192}, {X:270 Y:390.0192}, {X:285 Y:416}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="1,2.5" vector="{X:237.5 Y:408}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:315 Y:415.9808}" to="{X:285 Y:415.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:285 Y:415.9808}" to="{X:270 Y:390}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:270 Y:390}" to="{X:285 Y:364.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:285 Y:364.0192}" to="{X:315 Y:364.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:315 Y:364.0192}" to="{X:330 Y:390}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:390}" to="{X:315 Y:415.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:315 Y:415.9808}, {X:285 Y:415.9808}, {X:270 Y:390}, {X:285 Y:364.0192}, {X:315 Y:364.0192}, {X:330 Y:390}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="2,2" vector="{X:289.5 Y:382}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:360 Y:389.9808}" to="{X:330 Y:389.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:389.9808}" to="{X:315 Y:364}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:315 Y:364}" to="{X:330 Y:338.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:338.0192}" to="{X:360 Y:338.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:360 Y:338.0192}" to="{X:375 Y:364}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:375 Y:364}" to="{X:360 Y:389.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:360 Y:389.9808}, {X:330 Y:389.9808}, {X:315 Y:364}, {X:330 Y:338.0192}, {X:360 Y:338.0192}, {X:375 Y:364}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="3,1.5" vector="{X:327.5 Y:356}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:405 Y:363.9808}" to="{X:375 Y:363.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:363.9808}" to="{X:360 Y:338}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:360 Y:338}" to="{X:375 Y:312.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:312.0192}" to="{X:405 Y:312.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:405 Y:312.0192}" to="{X:420 Y:338}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:420 Y:338}" to="{X:405 Y:363.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:405 Y:363.9808}, {X:375 Y:363.9808}, {X:360 Y:338}, {X:375 Y:312.0192}, {X:405 Y:312.0192}, {X:420 Y:338}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="4,1" vector="{X:379.5 Y:330}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:441.9808}" to="{X:150 Y:441.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:150 Y:441.9808}" to="{X:135 Y:416}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:135 Y:416}" to="{X:150 Y:390.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:150 Y:390.0192}" to="{X:180 Y:390.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:180 Y:390.0192}" to="{X:195 Y:416}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:195 Y:416}" to="{X:180 Y:441.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:180 Y:441.9808}, {X:150 Y:441.9808}, {X:135 Y:416}, {X:150 Y:390.0192}, {X:180 Y:390.0192}, {X:195 Y:416}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-1,2.5" vector="{X:144 Y:408}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:415.9808}" to="{X:195 Y:415.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:195 Y:415.9808}" to="{X:180 Y:390}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:180 Y:390}" to="{X:195 Y:364.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:195 Y:364.0192}" to="{X:225 Y:364.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:225 Y:364.0192}" to="{X:240 Y:390}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:240 Y:390}" to="{X:225 Y:415.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:225 Y:415.9808}, {X:195 Y:415.9808}, {X:180 Y:390}, {X:195 Y:364.0192}, {X:225 Y:364.0192}, {X:240 Y:390}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="0,2" vector="{X:199.5 Y:382}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:389.9808}" to="{X:240 Y:389.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:240 Y:389.9808}" to="{X:225 Y:364}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:225 Y:364}" to="{X:240 Y:338.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:240 Y:338.0192}" to="{X:270 Y:338.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:270 Y:338.0192}" to="{X:285 Y:364}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:285 Y:364}" to="{X:270 Y:389.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:270 Y:389.9808}, {X:240 Y:389.9808}, {X:225 Y:364}, {X:240 Y:338.0192}, {X:270 Y:338.0192}, {X:285 Y:364}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="1,1.5" vector="{X:237.5 Y:356}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:315 Y:363.9808}" to="{X:285 Y:363.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:285 Y:363.9808}" to="{X:270 Y:338}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:270 Y:338}" to="{X:285 Y:312.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:285 Y:312.0192}" to="{X:315 Y:312.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:315 Y:312.0192}" to="{X:330 Y:338}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:330 Y:338}" to="{X:315 Y:363.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:315 Y:363.9808}, {X:285 Y:363.9808}, {X:270 Y:338}, {X:285 Y:312.0192}, {X:315 Y:312.0192}, {X:330 Y:338}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="2,1" vector="{X:289.5 Y:330}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:360 Y:337.9808}" to="{X:330 Y:337.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:337.9808}" to="{X:315 Y:312}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:315 Y:312}" to="{X:330 Y:286.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:286.0192}" to="{X:360 Y:286.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:360 Y:286.0192}" to="{X:375 Y:312}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:375 Y:312}" to="{X:360 Y:337.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:360 Y:337.9808}, {X:330 Y:337.9808}, {X:315 Y:312}, {X:330 Y:286.0192}, {X:360 Y:286.0192}, {X:375 Y:312}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="3,0.5" vector="{X:327.5 Y:304}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:405 Y:311.9808}" to="{X:375 Y:311.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:311.9808}" to="{X:360 Y:286}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:360 Y:286}" to="{X:375 Y:260.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:260.0192}" to="{X:405 Y:260.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:405 Y:260.0192}" to="{X:420 Y:286}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:420 Y:286}" to="{X:405 Y:311.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:405 Y:311.9808}, {X:375 Y:311.9808}, {X:360 Y:286}, {X:375 Y:260.0192}, {X:405 Y:260.0192}, {X:420 Y:286}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="4,0" vector="{X:379.5 Y:278}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:415.9808}" to="{X:105 Y:415.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:105 Y:415.9808}" to="{X:90 Y:390}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:90 Y:390}" to="{X:105 Y:364.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:105 Y:364.0192}" to="{X:135 Y:364.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:135 Y:364.0192}" to="{X:150 Y:390}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:150 Y:390}" to="{X:135 Y:415.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:135 Y:415.9808}, {X:105 Y:415.9808}, {X:90 Y:390}, {X:105 Y:364.0192}, {X:135 Y:364.0192}, {X:150 Y:390}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-2,2" vector="{X:106 Y:382}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:389.9808}" to="{X:150 Y:389.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:150 Y:389.9808}" to="{X:135 Y:364}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:135 Y:364}" to="{X:150 Y:338.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:150 Y:338.0192}" to="{X:180 Y:338.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:180 Y:338.0192}" to="{X:195 Y:364}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:195 Y:364}" to="{X:180 Y:389.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:180 Y:389.9808}, {X:150 Y:389.9808}, {X:135 Y:364}, {X:150 Y:338.0192}, {X:180 Y:338.0192}, {X:195 Y:364}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-1,1.5" vector="{X:144 Y:356}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:363.9808}" to="{X:195 Y:363.9808}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:195 Y:363.9808}" to="{X:180 Y:338}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:338}" to="{X:195 Y:312.0192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:195 Y:312.0192}" to="{X:225 Y:312.0192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:312.0192}" to="{X:240 Y:338}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:240 Y:338}" to="{X:225 Y:363.9808}" width="3" color="{R:0 G:255 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
+        <Vertices>{X:225 Y:363.9808}, {X:195 Y:363.9808}, {X:180 Y:338}, {X:195 Y:312.0192}, {X:225 Y:312.0192}, {X:240 Y:338}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="0,1" vector="{X:199.5 Y:330}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:337.9808}" to="{X:240 Y:337.9808}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:240 Y:337.9808}" to="{X:225 Y:312}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:312}" to="{X:240 Y:286.0192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:240 Y:286.0192}" to="{X:270 Y:286.0192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:286.0192}" to="{X:285 Y:312}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:285 Y:312}" to="{X:270 Y:337.9808}" width="3" color="{R:0 G:255 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
+        <Vertices>{X:270 Y:337.9808}, {X:240 Y:337.9808}, {X:225 Y:312}, {X:240 Y:286.0192}, {X:270 Y:286.0192}, {X:285 Y:312}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="1,0.5" vector="{X:237.5 Y:304}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:315 Y:311.9808}" to="{X:285 Y:311.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:285 Y:311.9808}" to="{X:270 Y:286}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:270 Y:286}" to="{X:285 Y:260.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:285 Y:260.0192}" to="{X:315 Y:260.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:315 Y:260.0192}" to="{X:330 Y:286}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:330 Y:286}" to="{X:315 Y:311.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:315 Y:311.9808}, {X:285 Y:311.9808}, {X:270 Y:286}, {X:285 Y:260.0192}, {X:315 Y:260.0192}, {X:330 Y:286}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="2,0" vector="{X:289.5 Y:278}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:360 Y:285.9808}" to="{X:330 Y:285.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:285.9808}" to="{X:315 Y:260}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:315 Y:260}" to="{X:330 Y:234.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:234.0192}" to="{X:360 Y:234.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:360 Y:234.0192}" to="{X:375 Y:260}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:375 Y:260}" to="{X:360 Y:285.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:360 Y:285.9808}, {X:330 Y:285.9808}, {X:315 Y:260}, {X:330 Y:234.0192}, {X:360 Y:234.0192}, {X:375 Y:260}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="3,-0.5" vector="{X:324 Y:252}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:405 Y:259.9808}" to="{X:375 Y:259.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:259.9808}" to="{X:360 Y:234}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:360 Y:234}" to="{X:375 Y:208.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:208.0192}" to="{X:405 Y:208.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:405 Y:208.0192}" to="{X:420 Y:234}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:420 Y:234}" to="{X:405 Y:259.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:405 Y:259.9808}, {X:375 Y:259.9808}, {X:360 Y:234}, {X:375 Y:208.0192}, {X:405 Y:208.0192}, {X:420 Y:234}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="4,-1" vector="{X:376 Y:226}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:363.9808}" to="{X:105 Y:363.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:105 Y:363.9808}" to="{X:90 Y:338}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:90 Y:338}" to="{X:105 Y:312.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:105 Y:312.0192}" to="{X:135 Y:312.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:135 Y:312.0192}" to="{X:150 Y:338}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:150 Y:338}" to="{X:135 Y:363.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:135 Y:363.9808}, {X:105 Y:363.9808}, {X:90 Y:338}, {X:105 Y:312.0192}, {X:135 Y:312.0192}, {X:150 Y:338}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-2,1" vector="{X:106 Y:330}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:103.9808}" to="{X:195 Y:103.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:195 Y:103.9808}" to="{X:180 Y:78}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:180 Y:78}" to="{X:195 Y:52.01924}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:195 Y:52.01924}" to="{X:225 Y:52.01924}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:225 Y:52.01924}" to="{X:240 Y:78.00001}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:240 Y:78.00001}" to="{X:225 Y:103.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:225 Y:103.9808}, {X:195 Y:103.9808}, {X:180 Y:78}, {X:195 Y:52.01924}, {X:225 Y:52.01924}, {X:240 Y:78.00001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="0,-4" vector="{X:196 Y:70}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:129.9808}" to="{X:150 Y:129.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:150 Y:129.9808}" to="{X:135 Y:104}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:135 Y:104}" to="{X:150 Y:78.01924}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:150 Y:78.01924}" to="{X:180 Y:78.01924}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:180 Y:78.01924}" to="{X:195 Y:104}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:195 Y:104}" to="{X:180 Y:129.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:180 Y:129.9808}, {X:150 Y:129.9808}, {X:135 Y:104}, {X:150 Y:78.01924}, {X:180 Y:78.01924}, {X:195 Y:104}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-1,-3.5" vector="{X:140.5 Y:96}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:315 Y:103.9808}" to="{X:285 Y:103.9808}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:285 Y:103.9808}" to="{X:270 Y:78}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:270 Y:78}" to="{X:285 Y:52.01924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:285 Y:52.01924}" to="{X:315 Y:52.01924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:315 Y:52.01924}" to="{X:330 Y:78.00001}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:330 Y:78.00001}" to="{X:315 Y:103.9808}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:315 Y:103.9808}, {X:285 Y:103.9808}, {X:270 Y:78}, {X:285 Y:52.01924}, {X:315 Y:52.01924}, {X:330 Y:78.00001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="2,-4" vector="{X:286 Y:70}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:129.9808}" to="{X:240 Y:129.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:240 Y:129.9808}" to="{X:225 Y:104}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:225 Y:104}" to="{X:240 Y:78.01924}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:240 Y:78.01924}" to="{X:270 Y:78.01924}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:270 Y:78.01924}" to="{X:285 Y:104}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:285 Y:104}" to="{X:270 Y:129.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:270 Y:129.9808}, {X:240 Y:129.9808}, {X:225 Y:104}, {X:240 Y:78.01924}, {X:270 Y:78.01924}, {X:285 Y:104}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="1,-3.5" vector="{X:234 Y:96}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:405 Y:103.9808}" to="{X:375 Y:103.9808}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:375 Y:103.9808}" to="{X:360 Y:78}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:360 Y:78}" to="{X:375 Y:52.01924}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:375 Y:52.01924}" to="{X:405 Y:52.01924}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:405 Y:52.01924}" to="{X:420 Y:78.00001}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:420 Y:78.00001}" to="{X:405 Y:103.9808}" width="3" color="{R:255 G:0 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
+        <Vertices>{X:405 Y:103.9808}, {X:375 Y:103.9808}, {X:360 Y:78}, {X:375 Y:52.01924}, {X:405 Y:52.01924}, {X:420 Y:78.00001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="4,-4" vector="{X:376 Y:70}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:360 Y:129.9808}" to="{X:330 Y:129.9808}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:330 Y:129.9808}" to="{X:315 Y:104}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:315 Y:104}" to="{X:330 Y:78.01924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:330 Y:78.01924}" to="{X:360 Y:78.01924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:360 Y:78.01924}" to="{X:375 Y:104}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:375 Y:104}" to="{X:360 Y:129.9808}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:360 Y:129.9808}, {X:330 Y:129.9808}, {X:315 Y:104}, {X:330 Y:78.01924}, {X:360 Y:78.01924}, {X:375 Y:104}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="3,-3.5" vector="{X:324 Y:96}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:45 Y:155.8808}" to="{X:15 Y:155.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:15 Y:155.8808}" to="{X:0 Y:129.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:0 Y:129.9}" to="{X:15 Y:103.9192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:15 Y:103.9192}" to="{X:45 Y:103.9192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:45 Y:103.9192}" to="{X:60 Y:129.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:60 Y:129.9}" to="{X:45 Y:155.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:45 Y:155.8808}, {X:15 Y:155.8808}, {X:0 Y:129.9}, {X:15 Y:103.9192}, {X:45 Y:103.9192}, {X:60 Y:129.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-4,-3" vector="{X:12.5 Y:121.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:45 Y:207.8808}" to="{X:15 Y:207.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:15 Y:207.8808}" to="{X:0 Y:181.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:0 Y:181.9}" to="{X:15 Y:155.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:15 Y:155.9192}" to="{X:45 Y:155.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:45 Y:155.9192}" to="{X:60 Y:181.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:60 Y:181.9}" to="{X:45 Y:207.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:45 Y:207.8808}, {X:15 Y:207.8808}, {X:0 Y:181.9}, {X:15 Y:155.9192}, {X:45 Y:155.9192}, {X:60 Y:181.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-4,-2" vector="{X:12.5 Y:173.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:45 Y:259.8808}" to="{X:15 Y:259.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:15 Y:259.8808}" to="{X:0 Y:233.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:0 Y:233.9}" to="{X:15 Y:207.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:15 Y:207.9192}" to="{X:45 Y:207.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:45 Y:207.9192}" to="{X:60 Y:233.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:60 Y:233.9}" to="{X:45 Y:259.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:45 Y:259.8808}, {X:15 Y:259.8808}, {X:0 Y:233.9}, {X:15 Y:207.9192}, {X:45 Y:207.9192}, {X:60 Y:233.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-4,-1" vector="{X:12.5 Y:225.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:45 Y:311.8808}" to="{X:15 Y:311.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:15 Y:311.8808}" to="{X:0 Y:285.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:0 Y:285.9}" to="{X:15 Y:259.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:15 Y:259.9192}" to="{X:45 Y:259.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:45 Y:259.9192}" to="{X:60 Y:285.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:60 Y:285.9}" to="{X:45 Y:311.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:45 Y:311.8808}, {X:15 Y:311.8808}, {X:0 Y:285.9}, {X:15 Y:259.9192}, {X:45 Y:259.9192}, {X:60 Y:285.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-4,0" vector="{X:16 Y:277.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:45 Y:363.8808}" to="{X:15 Y:363.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:15 Y:363.8808}" to="{X:0 Y:337.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:0 Y:337.9}" to="{X:15 Y:311.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:15 Y:311.9192}" to="{X:45 Y:311.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:45 Y:311.9192}" to="{X:60 Y:337.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:60 Y:337.9}" to="{X:45 Y:363.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:45 Y:363.8808}, {X:15 Y:363.8808}, {X:0 Y:337.9}, {X:15 Y:311.9192}, {X:45 Y:311.9192}, {X:60 Y:337.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-4,1" vector="{X:16 Y:329.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:45 Y:415.8808}" to="{X:15 Y:415.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:15 Y:415.8808}" to="{X:0 Y:389.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:0 Y:389.9}" to="{X:15 Y:363.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:15 Y:363.9192}" to="{X:45 Y:363.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:45 Y:363.9192}" to="{X:60 Y:389.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:60 Y:389.9}" to="{X:45 Y:415.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:45 Y:415.8808}, {X:15 Y:415.8808}, {X:0 Y:389.9}, {X:15 Y:363.9192}, {X:45 Y:363.9192}, {X:60 Y:389.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-4,2" vector="{X:16 Y:381.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:45 Y:467.8808}" to="{X:15 Y:467.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:15 Y:467.8808}" to="{X:0 Y:441.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:0 Y:441.9}" to="{X:15 Y:415.9192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:15 Y:415.9192}" to="{X:45 Y:415.9192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:45 Y:415.9192}" to="{X:60 Y:441.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:60 Y:441.9}" to="{X:45 Y:467.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:45 Y:467.8808}, {X:15 Y:467.8808}, {X:0 Y:441.9}, {X:15 Y:415.9192}, {X:45 Y:415.9192}, {X:60 Y:441.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-4,3" vector="{X:16 Y:433.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:90 Y:493.8808}" to="{X:60 Y:493.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:60 Y:493.8808}" to="{X:45 Y:467.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:45 Y:467.9}" to="{X:60 Y:441.9192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:60 Y:441.9192}" to="{X:90 Y:441.9192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:90 Y:441.9192}" to="{X:105 Y:467.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:105 Y:467.9}" to="{X:90 Y:493.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:90 Y:493.8808}, {X:60 Y:493.8808}, {X:45 Y:467.9}, {X:60 Y:441.9192}, {X:90 Y:441.9192}, {X:105 Y:467.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-3,3.5" vector="{X:54 Y:459.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:467.8808}" to="{X:105 Y:467.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:105 Y:467.8808}" to="{X:90 Y:441.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:90 Y:441.9}" to="{X:105 Y:415.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:105 Y:415.9192}" to="{X:135 Y:415.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:135 Y:415.9192}" to="{X:150 Y:441.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:150 Y:441.9}" to="{X:135 Y:467.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:135 Y:467.8808}, {X:105 Y:467.8808}, {X:90 Y:441.9}, {X:105 Y:415.9192}, {X:135 Y:415.9192}, {X:150 Y:441.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-2,3" vector="{X:106 Y:433.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:493.8808}" to="{X:150 Y:493.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:150 Y:493.8808}" to="{X:135 Y:467.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:135 Y:467.9}" to="{X:150 Y:441.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:150 Y:441.9192}" to="{X:180 Y:441.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:180 Y:441.9192}" to="{X:195 Y:467.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:195 Y:467.9}" to="{X:180 Y:493.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:180 Y:493.8808}, {X:150 Y:493.8808}, {X:135 Y:467.9}, {X:150 Y:441.9192}, {X:180 Y:441.9192}, {X:195 Y:467.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-1,3.5" vector="{X:144 Y:459.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:467.8808}" to="{X:195 Y:467.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:195 Y:467.8808}" to="{X:180 Y:441.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:180 Y:441.9}" to="{X:195 Y:415.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:195 Y:415.9192}" to="{X:225 Y:415.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:225 Y:415.9192}" to="{X:240 Y:441.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:240 Y:441.9}" to="{X:225 Y:467.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:225 Y:467.8808}, {X:195 Y:467.8808}, {X:180 Y:441.9}, {X:195 Y:415.9192}, {X:225 Y:415.9192}, {X:240 Y:441.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="0,3" vector="{X:199.5 Y:433.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:493.8808}" to="{X:240 Y:493.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:240 Y:493.8808}" to="{X:225 Y:467.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:225 Y:467.9}" to="{X:240 Y:441.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:240 Y:441.9192}" to="{X:270 Y:441.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:270 Y:441.9192}" to="{X:285 Y:467.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:285 Y:467.9}" to="{X:270 Y:493.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:270 Y:493.8808}, {X:240 Y:493.8808}, {X:225 Y:467.9}, {X:240 Y:441.9192}, {X:270 Y:441.9192}, {X:285 Y:467.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="1,3.5" vector="{X:237.5 Y:459.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:315 Y:467.8808}" to="{X:285 Y:467.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:285 Y:467.8808}" to="{X:270 Y:441.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:270 Y:441.9}" to="{X:285 Y:415.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:285 Y:415.9192}" to="{X:315 Y:415.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:315 Y:415.9192}" to="{X:330 Y:441.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:330 Y:441.9}" to="{X:315 Y:467.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:315 Y:467.8808}, {X:285 Y:467.8808}, {X:270 Y:441.9}, {X:285 Y:415.9192}, {X:315 Y:415.9192}, {X:330 Y:441.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="2,3" vector="{X:289.5 Y:433.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:360 Y:493.8808}" to="{X:330 Y:493.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:330 Y:493.8808}" to="{X:315 Y:467.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:315 Y:467.9}" to="{X:330 Y:441.9192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:330 Y:441.9192}" to="{X:360 Y:441.9192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:360 Y:441.9192}" to="{X:375 Y:467.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:375 Y:467.9}" to="{X:360 Y:493.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:360 Y:493.8808}, {X:330 Y:493.8808}, {X:315 Y:467.9}, {X:330 Y:441.9192}, {X:360 Y:441.9192}, {X:375 Y:467.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="3,3.5" vector="{X:327.5 Y:459.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:405 Y:467.8808}" to="{X:375 Y:467.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:375 Y:467.8808}" to="{X:360 Y:441.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:360 Y:441.9}" to="{X:375 Y:415.9192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:375 Y:415.9192}" to="{X:405 Y:415.9192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:405 Y:415.9192}" to="{X:420 Y:441.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:420 Y:441.9}" to="{X:405 Y:467.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:405 Y:467.8808}, {X:375 Y:467.8808}, {X:360 Y:441.9}, {X:375 Y:415.9192}, {X:405 Y:415.9192}, {X:420 Y:441.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="4,3" vector="{X:379.5 Y:433.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:360 Y:441.8808}" to="{X:330 Y:441.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:330 Y:441.8808}" to="{X:315 Y:415.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:315 Y:415.9}" to="{X:330 Y:389.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:330 Y:389.9192}" to="{X:360 Y:389.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:360 Y:389.9192}" to="{X:375 Y:415.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:415.9}" to="{X:360 Y:441.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:360 Y:441.8808}, {X:330 Y:441.8808}, {X:315 Y:415.9}, {X:330 Y:389.9192}, {X:360 Y:389.9192}, {X:375 Y:415.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="3,2.5" vector="{X:327.5 Y:407.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:405 Y:415.8808}" to="{X:375 Y:415.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:415.8808}" to="{X:360 Y:389.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:360 Y:389.9}" to="{X:375 Y:363.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:363.9192}" to="{X:405 Y:363.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:405 Y:363.9192}" to="{X:420 Y:389.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:420 Y:389.9}" to="{X:405 Y:415.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:405 Y:415.8808}, {X:375 Y:415.8808}, {X:360 Y:389.9}, {X:375 Y:363.9192}, {X:405 Y:363.9192}, {X:420 Y:389.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="4,2" vector="{X:379.5 Y:381.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:441.8808}" to="{X:240 Y:441.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:240 Y:441.8808}" to="{X:225 Y:415.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:225 Y:415.9}" to="{X:240 Y:389.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:240 Y:389.9192}" to="{X:270 Y:389.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:270 Y:389.9192}" to="{X:285 Y:415.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:285 Y:415.9}" to="{X:270 Y:441.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:270 Y:441.8808}, {X:240 Y:441.8808}, {X:225 Y:415.9}, {X:240 Y:389.9192}, {X:270 Y:389.9192}, {X:285 Y:415.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="1,2.5" vector="{X:237.5 Y:407.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:315 Y:415.8808}" to="{X:285 Y:415.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:285 Y:415.8808}" to="{X:270 Y:389.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:270 Y:389.9}" to="{X:285 Y:363.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:285 Y:363.9192}" to="{X:315 Y:363.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:315 Y:363.9192}" to="{X:330 Y:389.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:389.9}" to="{X:315 Y:415.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:315 Y:415.8808}, {X:285 Y:415.8808}, {X:270 Y:389.9}, {X:285 Y:363.9192}, {X:315 Y:363.9192}, {X:330 Y:389.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="2,2" vector="{X:289.5 Y:381.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:360 Y:389.8808}" to="{X:330 Y:389.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:389.8808}" to="{X:315 Y:363.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:315 Y:363.9}" to="{X:330 Y:337.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:337.9192}" to="{X:360 Y:337.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:360 Y:337.9192}" to="{X:375 Y:363.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:375 Y:363.9}" to="{X:360 Y:389.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:360 Y:389.8808}, {X:330 Y:389.8808}, {X:315 Y:363.9}, {X:330 Y:337.9192}, {X:360 Y:337.9192}, {X:375 Y:363.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="3,1.5" vector="{X:327.5 Y:355.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:405 Y:363.8808}" to="{X:375 Y:363.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:363.8808}" to="{X:360 Y:337.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:360 Y:337.9}" to="{X:375 Y:311.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:311.9192}" to="{X:405 Y:311.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:405 Y:311.9192}" to="{X:420 Y:337.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:420 Y:337.9}" to="{X:405 Y:363.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:405 Y:363.8808}, {X:375 Y:363.8808}, {X:360 Y:337.9}, {X:375 Y:311.9192}, {X:405 Y:311.9192}, {X:420 Y:337.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="4,1" vector="{X:379.5 Y:329.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:441.8808}" to="{X:150 Y:441.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:150 Y:441.8808}" to="{X:135 Y:415.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:135 Y:415.9}" to="{X:150 Y:389.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:150 Y:389.9192}" to="{X:180 Y:389.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:180 Y:389.9192}" to="{X:195 Y:415.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:195 Y:415.9}" to="{X:180 Y:441.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:180 Y:441.8808}, {X:150 Y:441.8808}, {X:135 Y:415.9}, {X:150 Y:389.9192}, {X:180 Y:389.9192}, {X:195 Y:415.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-1,2.5" vector="{X:144 Y:407.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:415.8808}" to="{X:195 Y:415.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:195 Y:415.8808}" to="{X:180 Y:389.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:180 Y:389.9}" to="{X:195 Y:363.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:195 Y:363.9192}" to="{X:225 Y:363.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:225 Y:363.9192}" to="{X:240 Y:389.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:240 Y:389.9}" to="{X:225 Y:415.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:225 Y:415.8808}, {X:195 Y:415.8808}, {X:180 Y:389.9}, {X:195 Y:363.9192}, {X:225 Y:363.9192}, {X:240 Y:389.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="0,2" vector="{X:199.5 Y:381.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:389.8808}" to="{X:240 Y:389.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:240 Y:389.8808}" to="{X:225 Y:363.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:225 Y:363.9}" to="{X:240 Y:337.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:240 Y:337.9192}" to="{X:270 Y:337.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:270 Y:337.9192}" to="{X:285 Y:363.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:285 Y:363.9}" to="{X:270 Y:389.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:270 Y:389.8808}, {X:240 Y:389.8808}, {X:225 Y:363.9}, {X:240 Y:337.9192}, {X:270 Y:337.9192}, {X:285 Y:363.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="1,1.5" vector="{X:237.5 Y:355.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:315 Y:363.8808}" to="{X:285 Y:363.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:285 Y:363.8808}" to="{X:270 Y:337.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:270 Y:337.9}" to="{X:285 Y:311.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:285 Y:311.9192}" to="{X:315 Y:311.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:315 Y:311.9192}" to="{X:330 Y:337.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:330 Y:337.9}" to="{X:315 Y:363.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:315 Y:363.8808}, {X:285 Y:363.8808}, {X:270 Y:337.9}, {X:285 Y:311.9192}, {X:315 Y:311.9192}, {X:330 Y:337.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="2,1" vector="{X:289.5 Y:329.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:360 Y:337.8808}" to="{X:330 Y:337.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:337.8808}" to="{X:315 Y:311.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:315 Y:311.9}" to="{X:330 Y:285.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:285.9192}" to="{X:360 Y:285.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:360 Y:285.9192}" to="{X:375 Y:311.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:375 Y:311.9}" to="{X:360 Y:337.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:360 Y:337.8808}, {X:330 Y:337.8808}, {X:315 Y:311.9}, {X:330 Y:285.9192}, {X:360 Y:285.9192}, {X:375 Y:311.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="3,0.5" vector="{X:327.5 Y:303.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:405 Y:311.8808}" to="{X:375 Y:311.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:311.8808}" to="{X:360 Y:285.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:360 Y:285.9}" to="{X:375 Y:259.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:259.9192}" to="{X:405 Y:259.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:405 Y:259.9192}" to="{X:420 Y:285.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:420 Y:285.9}" to="{X:405 Y:311.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:405 Y:311.8808}, {X:375 Y:311.8808}, {X:360 Y:285.9}, {X:375 Y:259.9192}, {X:405 Y:259.9192}, {X:420 Y:285.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="4,0" vector="{X:379.5 Y:277.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:90 Y:441.8808}" to="{X:60 Y:441.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:60 Y:441.8808}" to="{X:45 Y:415.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:45 Y:415.9}" to="{X:60 Y:389.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:60 Y:389.9192}" to="{X:90 Y:389.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:90 Y:389.9192}" to="{X:105 Y:415.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:105 Y:415.9}" to="{X:90 Y:441.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:90 Y:441.8808}, {X:60 Y:441.8808}, {X:45 Y:415.9}, {X:60 Y:389.9192}, {X:90 Y:389.9192}, {X:105 Y:415.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-3,2.5" vector="{X:54 Y:407.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:415.8808}" to="{X:105 Y:415.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:105 Y:415.8808}" to="{X:90 Y:389.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:90 Y:389.9}" to="{X:105 Y:363.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:105 Y:363.9192}" to="{X:135 Y:363.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:135 Y:363.9192}" to="{X:150 Y:389.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:150 Y:389.9}" to="{X:135 Y:415.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:135 Y:415.8808}, {X:105 Y:415.8808}, {X:90 Y:389.9}, {X:105 Y:363.9192}, {X:135 Y:363.9192}, {X:150 Y:389.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-2,2" vector="{X:106 Y:381.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:389.8808}" to="{X:150 Y:389.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:150 Y:389.8808}" to="{X:135 Y:363.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:135 Y:363.9}" to="{X:150 Y:337.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:150 Y:337.9192}" to="{X:180 Y:337.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:180 Y:337.9192}" to="{X:195 Y:363.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:195 Y:363.9}" to="{X:180 Y:389.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:180 Y:389.8808}, {X:150 Y:389.8808}, {X:135 Y:363.9}, {X:150 Y:337.9192}, {X:180 Y:337.9192}, {X:195 Y:363.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-1,1.5" vector="{X:144 Y:355.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:363.8808}" to="{X:195 Y:363.8808}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:195 Y:363.8808}" to="{X:180 Y:337.9}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:337.9}" to="{X:195 Y:311.9192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:195 Y:311.9192}" to="{X:225 Y:311.9192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:311.9192}" to="{X:240 Y:337.9}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:240 Y:337.9}" to="{X:225 Y:363.8808}" width="3" color="{R:0 G:255 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
+        <Vertices>{X:225 Y:363.8808}, {X:195 Y:363.8808}, {X:180 Y:337.9}, {X:195 Y:311.9192}, {X:225 Y:311.9192}, {X:240 Y:337.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="0,1" vector="{X:199.5 Y:329.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:337.8808}" to="{X:240 Y:337.8808}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:240 Y:337.8808}" to="{X:225 Y:311.9}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:311.9}" to="{X:240 Y:285.9192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:240 Y:285.9192}" to="{X:270 Y:285.9192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:285.9192}" to="{X:285 Y:311.9}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:285 Y:311.9}" to="{X:270 Y:337.8808}" width="3" color="{R:0 G:255 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
+        <Vertices>{X:270 Y:337.8808}, {X:240 Y:337.8808}, {X:225 Y:311.9}, {X:240 Y:285.9192}, {X:270 Y:285.9192}, {X:285 Y:311.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="1,0.5" vector="{X:237.5 Y:303.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:315 Y:311.8808}" to="{X:285 Y:311.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:285 Y:311.8808}" to="{X:270 Y:285.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:270 Y:285.9}" to="{X:285 Y:259.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:285 Y:259.9192}" to="{X:315 Y:259.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:315 Y:259.9192}" to="{X:330 Y:285.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:330 Y:285.9}" to="{X:315 Y:311.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:315 Y:311.8808}, {X:285 Y:311.8808}, {X:270 Y:285.9}, {X:285 Y:259.9192}, {X:315 Y:259.9192}, {X:330 Y:285.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="2,0" vector="{X:289.5 Y:277.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:360 Y:285.8808}" to="{X:330 Y:285.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:285.8808}" to="{X:315 Y:259.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:315 Y:259.9}" to="{X:330 Y:233.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:233.9192}" to="{X:360 Y:233.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:360 Y:233.9192}" to="{X:375 Y:259.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:375 Y:259.9}" to="{X:360 Y:285.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:360 Y:285.8808}, {X:330 Y:285.8808}, {X:315 Y:259.9}, {X:330 Y:233.9192}, {X:360 Y:233.9192}, {X:375 Y:259.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="3,-0.5" vector="{X:324 Y:251.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:405 Y:259.8808}" to="{X:375 Y:259.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:259.8808}" to="{X:360 Y:233.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:360 Y:233.9}" to="{X:375 Y:207.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:207.9192}" to="{X:405 Y:207.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:405 Y:207.9192}" to="{X:420 Y:233.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:420 Y:233.9}" to="{X:405 Y:259.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:405 Y:259.8808}, {X:375 Y:259.8808}, {X:360 Y:233.9}, {X:375 Y:207.9192}, {X:405 Y:207.9192}, {X:420 Y:233.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="4,-1" vector="{X:376 Y:225.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:90 Y:389.8808}" to="{X:60 Y:389.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:60 Y:389.8808}" to="{X:45 Y:363.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:45 Y:363.9}" to="{X:60 Y:337.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:60 Y:337.9192}" to="{X:90 Y:337.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:90 Y:337.9192}" to="{X:105 Y:363.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:105 Y:363.9}" to="{X:90 Y:389.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:90 Y:389.8808}, {X:60 Y:389.8808}, {X:45 Y:363.9}, {X:60 Y:337.9192}, {X:90 Y:337.9192}, {X:105 Y:363.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-3,1.5" vector="{X:54 Y:355.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:363.8808}" to="{X:105 Y:363.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:105 Y:363.8808}" to="{X:90 Y:337.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:90 Y:337.9}" to="{X:105 Y:311.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:105 Y:311.9192}" to="{X:135 Y:311.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:135 Y:311.9192}" to="{X:150 Y:337.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:150 Y:337.9}" to="{X:135 Y:363.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:135 Y:363.8808}, {X:105 Y:363.8808}, {X:90 Y:337.9}, {X:105 Y:311.9192}, {X:135 Y:311.9192}, {X:150 Y:337.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-2,1" vector="{X:106 Y:329.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:337.8808}" to="{X:150 Y:337.8808}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:150 Y:337.8808}" to="{X:135 Y:311.9}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:311.9}" to="{X:150 Y:285.9192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:150 Y:285.9192}" to="{X:180 Y:285.9192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:285.9192}" to="{X:195 Y:311.9}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:195 Y:311.9}" to="{X:180 Y:337.8808}" width="3" color="{R:0 G:255 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
+        <Vertices>{X:180 Y:337.8808}, {X:150 Y:337.8808}, {X:135 Y:311.9}, {X:150 Y:285.9192}, {X:180 Y:285.9192}, {X:195 Y:311.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-1,0.5" vector="{X:144 Y:303.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:311.8808}" to="{X:195 Y:311.8808}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:195 Y:311.8808}" to="{X:180 Y:285.9}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:180 Y:285.9}" to="{X:195 Y:259.9192}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:195 Y:259.9192}" to="{X:225 Y:259.9192}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:225 Y:259.9192}" to="{X:240 Y:285.9}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:240 Y:285.9}" to="{X:225 Y:311.8808}" width="3" color="{R:255 G:0 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
+        <Vertices>{X:225 Y:311.8808}, {X:195 Y:311.8808}, {X:180 Y:285.9}, {X:195 Y:259.9192}, {X:225 Y:259.9192}, {X:240 Y:285.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="0,0" vector="{X:199.5 Y:277.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:285.8808}" to="{X:240 Y:285.8808}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:240 Y:285.8808}" to="{X:225 Y:259.9}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:259.9}" to="{X:240 Y:233.9192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:240 Y:233.9192}" to="{X:270 Y:233.9192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:233.9192}" to="{X:285 Y:259.9}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:285 Y:259.9}" to="{X:270 Y:285.8808}" width="3" color="{R:0 G:255 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
+        <Vertices>{X:270 Y:285.8808}, {X:240 Y:285.8808}, {X:225 Y:259.9}, {X:240 Y:233.9192}, {X:270 Y:233.9192}, {X:285 Y:259.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="1,-0.5" vector="{X:234 Y:251.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:315 Y:259.8808}" to="{X:285 Y:259.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:285 Y:259.8808}" to="{X:270 Y:233.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:270 Y:233.9}" to="{X:285 Y:207.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:285 Y:207.9192}" to="{X:315 Y:207.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:315 Y:207.9192}" to="{X:330 Y:233.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:330 Y:233.9}" to="{X:315 Y:259.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:315 Y:259.8808}, {X:285 Y:259.8808}, {X:270 Y:233.9}, {X:285 Y:207.9192}, {X:315 Y:207.9192}, {X:330 Y:233.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="2,-1" vector="{X:286 Y:225.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:360 Y:233.8808}" to="{X:330 Y:233.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:233.8808}" to="{X:315 Y:207.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:315 Y:207.9}" to="{X:330 Y:181.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:181.9192}" to="{X:360 Y:181.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:360 Y:181.9192}" to="{X:375 Y:207.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:375 Y:207.9}" to="{X:360 Y:233.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:360 Y:233.8808}, {X:330 Y:233.8808}, {X:315 Y:207.9}, {X:330 Y:181.9192}, {X:360 Y:181.9192}, {X:375 Y:207.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="3,-1.5" vector="{X:324 Y:199.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:405 Y:207.8808}" to="{X:375 Y:207.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:207.8808}" to="{X:360 Y:181.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:360 Y:181.9}" to="{X:375 Y:155.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:155.9192}" to="{X:405 Y:155.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:405 Y:155.9192}" to="{X:420 Y:181.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:420 Y:181.9}" to="{X:405 Y:207.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:405 Y:207.8808}, {X:375 Y:207.8808}, {X:360 Y:181.9}, {X:375 Y:155.9192}, {X:405 Y:155.9192}, {X:420 Y:181.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="4,-2" vector="{X:376 Y:173.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:90 Y:337.8808}" to="{X:60 Y:337.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:60 Y:337.8808}" to="{X:45 Y:311.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:45 Y:311.9}" to="{X:60 Y:285.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:60 Y:285.9192}" to="{X:90 Y:285.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:90 Y:285.9192}" to="{X:105 Y:311.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:105 Y:311.9}" to="{X:90 Y:337.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:90 Y:337.8808}, {X:60 Y:337.8808}, {X:45 Y:311.9}, {X:60 Y:285.9192}, {X:90 Y:285.9192}, {X:105 Y:311.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-3,0.5" vector="{X:54 Y:303.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:311.8808}" to="{X:105 Y:311.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:105 Y:311.8808}" to="{X:90 Y:285.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:90 Y:285.9}" to="{X:105 Y:259.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:105 Y:259.9192}" to="{X:135 Y:259.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:135 Y:259.9192}" to="{X:150 Y:285.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:150 Y:285.9}" to="{X:135 Y:311.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:135 Y:311.8808}, {X:105 Y:311.8808}, {X:90 Y:285.9}, {X:105 Y:259.9192}, {X:135 Y:259.9192}, {X:150 Y:285.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-2,0" vector="{X:106 Y:277.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:285.8808}" to="{X:150 Y:285.8808}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:150 Y:285.8808}" to="{X:135 Y:259.9}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:259.9}" to="{X:150 Y:233.9192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:150 Y:233.9192}" to="{X:180 Y:233.9192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:233.9192}" to="{X:195 Y:259.9}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:195 Y:259.9}" to="{X:180 Y:285.8808}" width="3" color="{R:0 G:255 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
+        <Vertices>{X:180 Y:285.8808}, {X:150 Y:285.8808}, {X:135 Y:259.9}, {X:150 Y:233.9192}, {X:180 Y:233.9192}, {X:195 Y:259.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-1,-0.5" vector="{X:140.5 Y:251.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:259.8808}" to="{X:195 Y:259.8808}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:195 Y:259.8808}" to="{X:180 Y:233.9}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:233.9}" to="{X:195 Y:207.9192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:195 Y:207.9192}" to="{X:225 Y:207.9192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:207.9192}" to="{X:240 Y:233.9}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:240 Y:233.9}" to="{X:225 Y:259.8808}" width="3" color="{R:0 G:255 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
+        <Vertices>{X:225 Y:259.8808}, {X:195 Y:259.8808}, {X:180 Y:233.9}, {X:195 Y:207.9192}, {X:225 Y:207.9192}, {X:240 Y:233.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="0,-1" vector="{X:196 Y:225.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:233.8808}" to="{X:240 Y:233.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:240 Y:233.8808}" to="{X:225 Y:207.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:225 Y:207.9}" to="{X:240 Y:181.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:240 Y:181.9192}" to="{X:270 Y:181.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:270 Y:181.9192}" to="{X:285 Y:207.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:285 Y:207.9}" to="{X:270 Y:233.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:270 Y:233.8808}, {X:240 Y:233.8808}, {X:225 Y:207.9}, {X:240 Y:181.9192}, {X:270 Y:181.9192}, {X:285 Y:207.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="1,-1.5" vector="{X:234 Y:199.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:315 Y:207.8808}" to="{X:285 Y:207.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:285 Y:207.8808}" to="{X:270 Y:181.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:270 Y:181.9}" to="{X:285 Y:155.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:285 Y:155.9192}" to="{X:315 Y:155.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:315 Y:155.9192}" to="{X:330 Y:181.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:181.9}" to="{X:315 Y:207.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:315 Y:207.8808}, {X:285 Y:207.8808}, {X:270 Y:181.9}, {X:285 Y:155.9192}, {X:315 Y:155.9192}, {X:330 Y:181.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="2,-2" vector="{X:286 Y:173.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:360 Y:181.8808}" to="{X:330 Y:181.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:330 Y:181.8808}" to="{X:315 Y:155.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:315 Y:155.9}" to="{X:330 Y:129.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:330 Y:129.9192}" to="{X:360 Y:129.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:360 Y:129.9192}" to="{X:375 Y:155.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:155.9}" to="{X:360 Y:181.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:360 Y:181.8808}, {X:330 Y:181.8808}, {X:315 Y:155.9}, {X:330 Y:129.9192}, {X:360 Y:129.9192}, {X:375 Y:155.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="3,-2.5" vector="{X:324 Y:147.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:405 Y:155.8808}" to="{X:375 Y:155.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:375 Y:155.8808}" to="{X:360 Y:129.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:360 Y:129.9}" to="{X:375 Y:103.9192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:375 Y:103.9192}" to="{X:405 Y:103.9192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:405 Y:103.9192}" to="{X:420 Y:129.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:420 Y:129.9}" to="{X:405 Y:155.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:405 Y:155.8808}, {X:375 Y:155.8808}, {X:360 Y:129.9}, {X:375 Y:103.9192}, {X:405 Y:103.9192}, {X:420 Y:129.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="4,-3" vector="{X:376 Y:121.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:90 Y:285.8808}" to="{X:60 Y:285.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:60 Y:285.8808}" to="{X:45 Y:259.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:45 Y:259.9}" to="{X:60 Y:233.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:60 Y:233.9192}" to="{X:90 Y:233.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:90 Y:233.9192}" to="{X:105 Y:259.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:105 Y:259.9}" to="{X:90 Y:285.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:90 Y:285.8808}, {X:60 Y:285.8808}, {X:45 Y:259.9}, {X:60 Y:233.9192}, {X:90 Y:233.9192}, {X:105 Y:259.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-3,-0.5" vector="{X:50.5 Y:251.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:259.8808}" to="{X:105 Y:259.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:105 Y:259.8808}" to="{X:90 Y:233.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:90 Y:233.9}" to="{X:105 Y:207.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:105 Y:207.9192}" to="{X:135 Y:207.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:135 Y:207.9192}" to="{X:150 Y:233.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:150 Y:233.9}" to="{X:135 Y:259.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:135 Y:259.8808}, {X:105 Y:259.8808}, {X:90 Y:233.9}, {X:105 Y:207.9192}, {X:135 Y:207.9192}, {X:150 Y:233.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-2,-1" vector="{X:102.5 Y:225.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:233.8808}" to="{X:150 Y:233.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:150 Y:233.8808}" to="{X:135 Y:207.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:135 Y:207.9}" to="{X:150 Y:181.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:150 Y:181.9192}" to="{X:180 Y:181.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:180 Y:181.9192}" to="{X:195 Y:207.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:195 Y:207.9}" to="{X:180 Y:233.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:180 Y:233.8808}, {X:150 Y:233.8808}, {X:135 Y:207.9}, {X:150 Y:181.9192}, {X:180 Y:181.9192}, {X:195 Y:207.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-1,-1.5" vector="{X:140.5 Y:199.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:207.8808}" to="{X:195 Y:207.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:195 Y:207.8808}" to="{X:180 Y:181.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:180 Y:181.9}" to="{X:195 Y:155.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:195 Y:155.9192}" to="{X:225 Y:155.9192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:225 Y:155.9192}" to="{X:240 Y:181.9}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:240 Y:181.9}" to="{X:225 Y:207.8808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:225 Y:207.8808}, {X:195 Y:207.8808}, {X:180 Y:181.9}, {X:195 Y:155.9192}, {X:225 Y:155.9192}, {X:240 Y:181.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="0,-2" vector="{X:196 Y:173.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:181.8808}" to="{X:240 Y:181.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:240 Y:181.8808}" to="{X:225 Y:155.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:225 Y:155.9}" to="{X:240 Y:129.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:240 Y:129.9192}" to="{X:270 Y:129.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:270 Y:129.9192}" to="{X:285 Y:155.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:285 Y:155.9}" to="{X:270 Y:181.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:270 Y:181.8808}, {X:240 Y:181.8808}, {X:225 Y:155.9}, {X:240 Y:129.9192}, {X:270 Y:129.9192}, {X:285 Y:155.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="1,-2.5" vector="{X:234 Y:147.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:315 Y:155.8808}" to="{X:285 Y:155.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:285 Y:155.8808}" to="{X:270 Y:129.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:270 Y:129.9}" to="{X:285 Y:103.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:285 Y:103.9192}" to="{X:315 Y:103.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:315 Y:103.9192}" to="{X:330 Y:129.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:330 Y:129.9}" to="{X:315 Y:155.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:315 Y:155.8808}, {X:285 Y:155.8808}, {X:270 Y:129.9}, {X:285 Y:103.9192}, {X:315 Y:103.9192}, {X:330 Y:129.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="2,-3" vector="{X:286 Y:121.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:90 Y:233.8808}" to="{X:60 Y:233.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:60 Y:233.8808}" to="{X:45 Y:207.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:45 Y:207.9}" to="{X:60 Y:181.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:60 Y:181.9192}" to="{X:90 Y:181.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:90 Y:181.9192}" to="{X:105 Y:207.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:105 Y:207.9}" to="{X:90 Y:233.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:90 Y:233.8808}, {X:60 Y:233.8808}, {X:45 Y:207.9}, {X:60 Y:181.9192}, {X:90 Y:181.9192}, {X:105 Y:207.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-3,-1.5" vector="{X:50.5 Y:199.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:207.8808}" to="{X:105 Y:207.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:105 Y:207.8808}" to="{X:90 Y:181.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:90 Y:181.9}" to="{X:105 Y:155.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:105 Y:155.9192}" to="{X:135 Y:155.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:135 Y:155.9192}" to="{X:150 Y:181.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:150 Y:181.9}" to="{X:135 Y:207.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:135 Y:207.8808}, {X:105 Y:207.8808}, {X:90 Y:181.9}, {X:105 Y:155.9192}, {X:135 Y:155.9192}, {X:150 Y:181.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-2,-2" vector="{X:102.5 Y:173.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:181.8808}" to="{X:150 Y:181.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:150 Y:181.8808}" to="{X:135 Y:155.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:135 Y:155.9}" to="{X:150 Y:129.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:150 Y:129.9192}" to="{X:180 Y:129.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:180 Y:129.9192}" to="{X:195 Y:155.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:195 Y:155.9}" to="{X:180 Y:181.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:180 Y:181.8808}, {X:150 Y:181.8808}, {X:135 Y:155.9}, {X:150 Y:129.9192}, {X:180 Y:129.9192}, {X:195 Y:155.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-1,-2.5" vector="{X:140.5 Y:147.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:155.8808}" to="{X:195 Y:155.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:195 Y:155.8808}" to="{X:180 Y:129.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:180 Y:129.9}" to="{X:195 Y:103.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:195 Y:103.9192}" to="{X:225 Y:103.9192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:225 Y:103.9192}" to="{X:240 Y:129.9}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:240 Y:129.9}" to="{X:225 Y:155.8808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:225 Y:155.8808}, {X:195 Y:155.8808}, {X:180 Y:129.9}, {X:195 Y:103.9192}, {X:225 Y:103.9192}, {X:240 Y:129.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="0,-3" vector="{X:196 Y:121.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:155.8808}" to="{X:105 Y:155.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:105 Y:155.8808}" to="{X:90 Y:129.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:90 Y:129.9}" to="{X:105 Y:103.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:105 Y:103.9192}" to="{X:135 Y:103.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:135 Y:103.9192}" to="{X:150 Y:129.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:150 Y:129.9}" to="{X:135 Y:155.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:135 Y:155.8808}, {X:105 Y:155.8808}, {X:90 Y:129.9}, {X:105 Y:103.9192}, {X:135 Y:103.9192}, {X:150 Y:129.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-2,-3" vector="{X:102.5 Y:121.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:90 Y:181.8808}" to="{X:60 Y:181.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:60 Y:181.8808}" to="{X:45 Y:155.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:45 Y:155.9}" to="{X:60 Y:129.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:60 Y:129.9192}" to="{X:90 Y:129.9192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:90 Y:129.9192}" to="{X:105 Y:155.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:105 Y:155.9}" to="{X:90 Y:181.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:90 Y:181.8808}, {X:60 Y:181.8808}, {X:45 Y:155.9}, {X:60 Y:129.9192}, {X:90 Y:129.9192}, {X:105 Y:155.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-3,-2.5" vector="{X:50.5 Y:147.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:129.8808}" to="{X:150 Y:129.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:150 Y:129.8808}" to="{X:135 Y:103.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:135 Y:103.9}" to="{X:150 Y:77.91924}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:150 Y:77.91924}" to="{X:180 Y:77.91924}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:180 Y:77.91924}" to="{X:195 Y:103.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:195 Y:103.9}" to="{X:180 Y:129.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:180 Y:129.8808}, {X:150 Y:129.8808}, {X:135 Y:103.9}, {X:150 Y:77.91924}, {X:180 Y:77.91924}, {X:195 Y:103.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-1,-3.5" vector="{X:140.5 Y:95.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:103.8808}" to="{X:195 Y:103.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:195 Y:103.8808}" to="{X:180 Y:77.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:180 Y:77.9}" to="{X:195 Y:51.91924}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:195 Y:51.91924}" to="{X:225 Y:51.91924}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:225 Y:51.91924}" to="{X:240 Y:77.90001}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:240 Y:77.90001}" to="{X:225 Y:103.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:225 Y:103.8808}, {X:195 Y:103.8808}, {X:180 Y:77.9}, {X:195 Y:51.91924}, {X:225 Y:51.91924}, {X:240 Y:77.90001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="0,-4" vector="{X:196 Y:69.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:315 Y:103.8808}" to="{X:285 Y:103.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:285 Y:103.8808}" to="{X:270 Y:77.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:270 Y:77.9}" to="{X:285 Y:51.91924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:285 Y:51.91924}" to="{X:315 Y:51.91924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:315 Y:51.91924}" to="{X:330 Y:77.90001}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:330 Y:77.90001}" to="{X:315 Y:103.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:315 Y:103.8808}, {X:285 Y:103.8808}, {X:270 Y:77.9}, {X:285 Y:51.91924}, {X:315 Y:51.91924}, {X:330 Y:77.90001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="2,-4" vector="{X:286 Y:69.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:129.8808}" to="{X:240 Y:129.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:240 Y:129.8808}" to="{X:225 Y:103.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:225 Y:103.9}" to="{X:240 Y:77.91924}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:240 Y:77.91924}" to="{X:270 Y:77.91924}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:270 Y:77.91924}" to="{X:285 Y:103.9}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:285 Y:103.9}" to="{X:270 Y:129.8808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:270 Y:129.8808}, {X:240 Y:129.8808}, {X:225 Y:103.9}, {X:240 Y:77.91924}, {X:270 Y:77.91924}, {X:285 Y:103.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="1,-3.5" vector="{X:234 Y:95.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:405 Y:103.8808}" to="{X:375 Y:103.8808}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:375 Y:103.8808}" to="{X:360 Y:77.9}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:360 Y:77.9}" to="{X:375 Y:51.91924}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:375 Y:51.91924}" to="{X:405 Y:51.91924}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:405 Y:51.91924}" to="{X:420 Y:77.90001}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:420 Y:77.90001}" to="{X:405 Y:103.8808}" width="3" color="{R:255 G:0 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
+        <Vertices>{X:405 Y:103.8808}, {X:375 Y:103.8808}, {X:360 Y:77.9}, {X:375 Y:51.91924}, {X:405 Y:51.91924}, {X:420 Y:77.90001}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="4,-4" vector="{X:376 Y:69.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:360 Y:129.8808}" to="{X:330 Y:129.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:330 Y:129.8808}" to="{X:315 Y:103.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:315 Y:103.9}" to="{X:330 Y:77.91924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:330 Y:77.91924}" to="{X:360 Y:77.91924}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:360 Y:77.91924}" to="{X:375 Y:103.9}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:375 Y:103.9}" to="{X:360 Y:129.8808}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:360 Y:129.8808}, {X:330 Y:129.8808}, {X:315 Y:103.9}, {X:330 Y:77.91924}, {X:360 Y:77.91924}, {X:375 Y:103.9}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="3,-3.5" vector="{X:324 Y:95.9}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:311.9808}" to="{X:105 Y:311.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:105 Y:311.9808}" to="{X:90 Y:286}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:90 Y:286}" to="{X:105 Y:260.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:105 Y:260.0192}" to="{X:135 Y:260.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:135 Y:260.0192}" to="{X:150 Y:286}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:150 Y:286}" to="{X:135 Y:311.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:135 Y:311.9808}, {X:105 Y:311.9808}, {X:90 Y:286}, {X:105 Y:260.0192}, {X:135 Y:260.0192}, {X:150 Y:286}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-2,0" vector="{X:106 Y:278}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:311.9808}" to="{X:195 Y:311.9808}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:195 Y:311.9808}" to="{X:180 Y:286}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:180 Y:286}" to="{X:195 Y:260.0192}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:195 Y:260.0192}" to="{X:225 Y:260.0192}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:225 Y:260.0192}" to="{X:240 Y:286}" width="3" color="{R:255 G:0 B:0 A:255}" />
-      <LineElement from="{X:240 Y:286}" to="{X:225 Y:311.9808}" width="3" color="{R:255 G:0 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
+        <Vertices>{X:225 Y:311.9808}, {X:195 Y:311.9808}, {X:180 Y:286}, {X:195 Y:260.0192}, {X:225 Y:260.0192}, {X:240 Y:286}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="0,0" vector="{X:199.5 Y:278}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:337.9808}" to="{X:150 Y:337.9808}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:150 Y:337.9808}" to="{X:135 Y:312}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:135 Y:312}" to="{X:150 Y:286.0192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:150 Y:286.0192}" to="{X:180 Y:286.0192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:180 Y:286.0192}" to="{X:195 Y:312}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:195 Y:312}" to="{X:180 Y:337.9808}" width="3" color="{R:0 G:255 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
+        <Vertices>{X:180 Y:337.9808}, {X:150 Y:337.9808}, {X:135 Y:312}, {X:150 Y:286.0192}, {X:180 Y:286.0192}, {X:195 Y:312}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="-1,0.5" vector="{X:144 Y:304}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:285.9808}" to="{X:240 Y:285.9808}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:240 Y:285.9808}" to="{X:225 Y:260}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:225 Y:260}" to="{X:240 Y:234.0192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:240 Y:234.0192}" to="{X:270 Y:234.0192}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:234.0192}" to="{X:285 Y:260}" width="3" color="{R:0 G:255 B:0 A:255}" />
-      <LineElement from="{X:285 Y:260}" to="{X:270 Y:285.9808}" width="3" color="{R:0 G:255 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
+        <Vertices>{X:270 Y:285.9808}, {X:240 Y:285.9808}, {X:225 Y:260}, {X:240 Y:234.0192}, {X:270 Y:234.0192}, {X:285 Y:260}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="1,-0.5" vector="{X:234 Y:252}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:315 Y:259.9808}" to="{X:285 Y:259.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:285 Y:259.9808}" to="{X:270 Y:234}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:270 Y:234}" to="{X:285 Y:208.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:285 Y:208.0192}" to="{X:315 Y:208.0192}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:315 Y:208.0192}" to="{X:330 Y:234}" width="3" color="{R:0 G:192 B:0 A:255}" />
-      <LineElement from="{X:330 Y:234}" to="{X:315 Y:259.9808}" width="3" color="{R:0 G:192 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
+        <Vertices>{X:315 Y:259.9808}, {X:285 Y:259.9808}, {X:270 Y:234}, {X:285 Y:208.0192}, {X:315 Y:208.0192}, {X:330 Y:234}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="2,-1" vector="{X:286 Y:226}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:360 Y:233.9808}" to="{X:330 Y:233.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:233.9808}" to="{X:315 Y:208}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:315 Y:208}" to="{X:330 Y:182.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:330 Y:182.0192}" to="{X:360 Y:182.0192}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:360 Y:182.0192}" to="{X:375 Y:208}" width="3" color="{R:0 G:128 B:0 A:255}" />
-      <LineElement from="{X:375 Y:208}" to="{X:360 Y:233.9808}" width="3" color="{R:0 G:128 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
+        <Vertices>{X:360 Y:233.9808}, {X:330 Y:233.9808}, {X:315 Y:208}, {X:330 Y:182.0192}, {X:360 Y:182.0192}, {X:375 Y:208}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="3,-1.5" vector="{X:324 Y:200}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:405 Y:207.9808}" to="{X:375 Y:207.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:207.9808}" to="{X:360 Y:182}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:360 Y:182}" to="{X:375 Y:156.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:156.0192}" to="{X:405 Y:156.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:405 Y:156.0192}" to="{X:420 Y:182}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:420 Y:182}" to="{X:405 Y:207.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:405 Y:207.9808}, {X:375 Y:207.9808}, {X:360 Y:182}, {X:375 Y:156.0192}, {X:405 Y:156.0192}, {X:420 Y:182}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="4,-2" vector="{X:376 Y:174}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:270 Y:493.9808}" to="{X:240 Y:493.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:240 Y:493.9808}" to="{X:225 Y:468}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:225 Y:468}" to="{X:240 Y:442.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:240 Y:442.0192}" to="{X:270 Y:442.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:270 Y:442.0192}" to="{X:285 Y:468}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:285 Y:468}" to="{X:270 Y:493.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:270 Y:493.9808}, {X:240 Y:493.9808}, {X:225 Y:468}, {X:240 Y:442.0192}, {X:270 Y:442.0192}, {X:285 Y:468}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="1,3.5" vector="{X:237.5 Y:460}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:315 Y:467.9808}" to="{X:285 Y:467.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:285 Y:467.9808}" to="{X:270 Y:442}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:270 Y:442}" to="{X:285 Y:416.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:285 Y:416.0192}" to="{X:315 Y:416.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:315 Y:416.0192}" to="{X:330 Y:442}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:330 Y:442}" to="{X:315 Y:467.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:315 Y:467.9808}, {X:285 Y:467.9808}, {X:270 Y:442}, {X:285 Y:416.0192}, {X:315 Y:416.0192}, {X:330 Y:442}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="2,3" vector="{X:289.5 Y:434}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:360 Y:493.9808}" to="{X:330 Y:493.9808}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:330 Y:493.9808}" to="{X:315 Y:468}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:315 Y:468}" to="{X:330 Y:442.0192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:330 Y:442.0192}" to="{X:360 Y:442.0192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:360 Y:442.0192}" to="{X:375 Y:468}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:375 Y:468}" to="{X:360 Y:493.9808}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:360 Y:493.9808}, {X:330 Y:493.9808}, {X:315 Y:468}, {X:330 Y:442.0192}, {X:360 Y:442.0192}, {X:375 Y:468}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="3,3.5" vector="{X:327.5 Y:460}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:405 Y:467.9808}" to="{X:375 Y:467.9808}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:375 Y:467.9808}" to="{X:360 Y:442}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:360 Y:442}" to="{X:375 Y:416.0192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:375 Y:416.0192}" to="{X:405 Y:416.0192}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:405 Y:416.0192}" to="{X:420 Y:442}" width="3" color="{R:128 G:0 B:128 A:255}" />
-      <LineElement from="{X:420 Y:442}" to="{X:405 Y:467.9808}" width="3" color="{R:128 G:0 B:128 A:255}" />
+      <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
+        <Vertices>{X:405 Y:467.9808}, {X:375 Y:467.9808}, {X:360 Y:442}, {X:375 Y:416.0192}, {X:405 Y:416.0192}, {X:420 Y:442}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="4,3" vector="{X:379.5 Y:434}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:360 Y:441.9808}" to="{X:330 Y:441.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:330 Y:441.9808}" to="{X:315 Y:416}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:315 Y:416}" to="{X:330 Y:390.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:330 Y:390.0192}" to="{X:360 Y:390.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:360 Y:390.0192}" to="{X:375 Y:416}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:416}" to="{X:360 Y:441.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:360 Y:441.9808}, {X:330 Y:441.9808}, {X:315 Y:416}, {X:330 Y:390.0192}, {X:360 Y:390.0192}, {X:375 Y:416}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="3,2.5" vector="{X:327.5 Y:408}" color="{R:255 G:255 B:0 A:255}" />
-      <LineElement from="{X:405 Y:415.9808}" to="{X:375 Y:415.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:415.9808}" to="{X:360 Y:390}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:360 Y:390}" to="{X:375 Y:364.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:375 Y:364.0192}" to="{X:405 Y:364.0192}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:405 Y:364.0192}" to="{X:420 Y:390}" width="3" color="{R:0 G:64 B:0 A:255}" />
-      <LineElement from="{X:420 Y:390}" to="{X:405 Y:415.9808}" width="3" color="{R:0 G:64 B:0 A:255}" />
+      <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
+        <Vertices>{X:405 Y:415.9808}, {X:375 Y:415.9808}, {X:360 Y:390}, {X:375 Y:364.0192}, {X:405 Y:364.0192}, {X:420 Y:390}</Vertices>
+      </PolygonElement>
       <TextElement fontName="SpriteFont1" text="4,2" vector="{X:379.5 Y:382}" color="{R:255 G:255 B:0 A:255}" />
     </Elements>
   </DrawingMap>

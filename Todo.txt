@@ -12,11 +12,6 @@ Features
  - Rethink HexMap more as a SpriteMap but with Hex grid system
  - Variable hexSize?
 * Map (Layer)
- P1 - DrawingMap (text, line, rectangle, etc) 
-  * rectangle
-  * HEX!
- P1 - Saving DrawingMap
- P1 - Saving cameraMode
 * Scene
  P2 - Saving and Loading Sheets
  P2 - UnitTesting Saving and Loading!
@@ -28,7 +23,8 @@ Features
  P4 - Entities
   - Link to sprites/tiles
  - Scene and Layers design tool
- P1 - Resources manager: Screen, Audio, Font
+ P1 - Resources manager: Screen
+ - Resources manager: Audio
 
 Bugs
 ====

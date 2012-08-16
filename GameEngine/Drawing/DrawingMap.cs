@@ -32,12 +32,8 @@ namespace WindowsGame1.Drawing
         {
             var textElement = new TextElement(drawingFont, text, vector, color);
             this.elements.Add(textElement);
-            return textElement;
-        }
 
-        public void AddText(TextElement textElement)
-        {
-            this.elements.Add(textElement);
+            return textElement;
         }
 
         public LineElement AddLine(Vector2 fromVector, Vector2 toVector, int width, Color color)
@@ -48,9 +44,17 @@ namespace WindowsGame1.Drawing
             return lineElement;
         }
 
-        public void AddLine(LineElement lineElement)
+        public PolygonElement AddPolygone(int width, Color color, IEnumerable<Vector2> vertices)
         {
-            this.elements.Add(lineElement);
+            var polygonElement = new PolygonElement(this.blank, vertices, width, color);
+            this.elements.Add(polygonElement);
+
+            return polygonElement;
+        }
+
+        public void AddElement(DrawingElementBase element)
+        {
+            this.elements.Add(element);
         }
 
         public override void Draw(SpriteBatch spriteBatch, Camera camera)
@@ -80,10 +84,13 @@ namespace WindowsGame1.Drawing
                 switch (element.Name.ToString())
                 {
                     case "TextElement":
-                        map.AddText(TextElement.FromXml(gameResourceManager, element));
+                        map.AddElement(TextElement.FromXml(gameResourceManager, element));
                         break;
                     case "LineElement":
-                        map.AddLine(LineElement.FromXml(gameResourceManager, element));
+                        map.AddElement(LineElement.FromXml(gameResourceManager, element));
+                        break;
+                    case "PolygonElement":
+                        map.AddElement(PolygonElement.FromXml(gameResourceManager, element));
                         break;
                     default:
                         throw new NotImplementedException(element.Name + " is not implemented yet.");
