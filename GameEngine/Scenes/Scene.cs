@@ -18,10 +18,13 @@ namespace WindowsGame1.Scenes
     {
         private readonly List<MapBase> maps;
 
-        public Scene()
+        public Scene(string name)
         {
+            this.Name = name;
             this.maps = new List<MapBase>();
         }
+
+        public string Name { get; private set; }
 
         public IEnumerable<MapBase> Maps
         {
@@ -49,6 +52,7 @@ namespace WindowsGame1.Scenes
             var document = new XDocument();
             
             document.Add(new XElement("Scene",
+                new XAttribute("name", this.Name),
                 this.maps.Select(m => m.ToXml())));
 
             document.Save(path);
@@ -56,10 +60,12 @@ namespace WindowsGame1.Scenes
 
         public static Scene LoadFrom(GameResourceManager gameResourceManager, string path)
         {
-            var scene = new Scene();
             var document = XDocument.Load(path);
+            
+            var sceneElement = document.Element("Scene");
+            var scene = new Scene(sceneElement.Attribute("name").Value);
 
-            foreach (var mapElement in document.Element("Scene").Elements())
+            foreach (var mapElement in sceneElement.Elements())
             {
                 switch (mapElement.Name.ToString())
                 {

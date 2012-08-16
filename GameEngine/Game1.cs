@@ -222,7 +222,7 @@ namespace WindowsGame1
 
         private Scene CreateScene()
         {
-            this.scene = new Scene();
+            this.scene = new Scene("scene1");
 
             this.scene.AddMap(this.DrawImageMap());
             this.scene.AddMap(this.DrawHexTest());

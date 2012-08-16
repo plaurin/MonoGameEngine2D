@@ -13,27 +13,26 @@ Features
  - Variable hexSize?
 * Map (Layer)
 * Scene
- P2 - Saving and Loading Sheets
+ P1 - Saving and Loading Sheets
  P2 - UnitTesting Saving and Loading!
 * Screen
  P2 - Navigation
 * Other than Gfx
- - Input configuration (mouse, gamepad)
+ P3 - Input configuration (mouse, gamepad)
  - Audio?
  P4 - Entities
   - Link to sprites/tiles
  - Scene and Layers design tool
- P1 - Resources manager: Screen
- - Resources manager: Audio
+ P3 - Resources manager: Screen, Audio
 
 Bugs
 ====
 
 Refactorings
 ============
-- Move engine into a class library (out of Windows Game)
-- Rendering should be in separated classes
-- Load/Save should be in separated classes
+P2 - Move engine into a portable? class library (out of Windows Game)
+P1 - Rendering should be in separated classes
+P1 - Load/Save should be in separated classes
 
 Quality
 =======

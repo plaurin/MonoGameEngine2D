@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 using WindowsGame1.Drawing;
 using WindowsGame1.Hexes;
+using WindowsGame1.Scenes;
 using WindowsGame1.Sprites;
 using WindowsGame1.Tiles;
 
@@ -26,6 +27,8 @@ namespace WindowsGame1
         private readonly Dictionary<string, SpriteSheet> spriteSheetDictionary;
 
         private readonly Dictionary<string, DrawingFont> drawingFontDictionary;
+        
+        private readonly Dictionary<string, Scene> sceneDictionary;
 
         #endregion
 
@@ -40,6 +43,7 @@ namespace WindowsGame1
             this.tileSheetDictionary = new Dictionary<string, TileSheet>();
             this.spriteSheetDictionary = new Dictionary<string, SpriteSheet>();
             this.drawingFontDictionary = new Dictionary<string, DrawingFont>();
+            this.sceneDictionary = new Dictionary<string, Scene>();
 
             this.AddHexSheet(NullHexDefinition.CreateInstance().Sheet);
             this.AddTileSheet(NullTileDefinition.CreateInstance().Sheet);
@@ -140,6 +144,20 @@ namespace WindowsGame1
             }
 
             return drawingFont;
+        }
+
+        #endregion
+
+        #region Scene
+
+        public void AddScene(Scene scene)
+        {
+            this.sceneDictionary.Add(scene.Name, scene);
+        }
+
+        public Scene GetScene(string sceneName)
+        {
+            return this.sceneDictionary[sceneName];
         }
 
         #endregion

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Scene>
+<Scene name="scene1">
   <ImageMap name="Image">
     <Texture>LinkSheet</Texture>
     <Rectangle>{X:10 Y:10 Width:250 Height:250}</Rectangle>
