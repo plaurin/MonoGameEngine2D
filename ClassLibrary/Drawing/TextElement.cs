@@ -37,6 +37,7 @@ namespace ClassLibrary.Drawing
                     .Scale(camera.ZoomFactor)
                     .Translate(camera.GetSceneTranslationVector(drawingMap.ParallaxScrollingVector));
 
+            drawContext.DrawString(drawContext, camera, finalText, finalVector, finalZoomFactor, this.drawingFont, this.color);
             //spriteBatch.DrawString(this.drawingFont.Font, finalText, finalVector, this.color, 0.0f, Vector2.Zero, 
             //    finalZoomFactor, SpriteEffects.None, 0.0f);
         }
@@ -50,7 +51,7 @@ namespace ClassLibrary.Drawing
                 new XAttribute("color", this.color));
         }
 
-        public static TextElement FromXml(GameResourceManager gameResourceManager, XElement element)
+        public static TextElement FromXml(Factory factory, GameResourceManager gameResourceManager, XElement element)
         {
             var fontName = element.Attribute("fontName").Value;
             var text = element.Attribute("text").Value;

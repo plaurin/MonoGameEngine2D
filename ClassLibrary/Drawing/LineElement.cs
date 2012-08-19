@@ -32,10 +32,11 @@ namespace ClassLibrary.Drawing
                 .Scale(camera.ZoomFactor)
                 .Translate(camera.GetSceneTranslationVector(drawingMap.ParallaxScrollingVector));
 
-            var finalWidth = this.width * camera.ZoomFactor;
-            var angle = (float)Math.Atan2(finalTo.Y - finalFrom.Y, finalTo.X - finalFrom.X);
-            var length = Vector.Distance(finalFrom, finalTo);
+            //var finalWidth = this.width * camera.ZoomFactor;
+            //var angle = (float)Math.Atan2(finalTo.Y - finalFrom.Y, finalTo.X - finalFrom.X);
+            //var length = Vector.Distance(finalFrom, finalTo);
 
+            drawContext.DrawLine(finalFrom, finalTo, this.width * camera.ZoomFactor, this.color);
             //spriteBatch.Draw(this.blank, finalFrom, null, this.color, angle, Vector.Zero,
             //    new Vector(length, finalWidth), SpriteEffects.None, 0);
         }
@@ -49,7 +50,7 @@ namespace ClassLibrary.Drawing
                 new XAttribute("color", this.color));
         }
 
-        public static LineElement FromXml(GameResourceManager gameResourceManager, XElement element)
+        public static LineElement FromXml(Factory resourceManager, GameResourceManager gameResourceManager, XElement element)
         {
             var from = element.Attribute("from").Value;
             var to = element.Attribute("to").Value;

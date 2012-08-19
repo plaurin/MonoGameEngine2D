@@ -2,6 +2,7 @@ using System;
 
 using ClassLibrary;
 using ClassLibrary.Maps;
+using ClassLibrary.Tiles;
 
 namespace Editor
 {
@@ -15,6 +16,11 @@ namespace Editor
         public override ImageMap CreateImageMap(string name, Texture texture, Rectangle rectangle)
         {
             return new WinImageMap(name, texture, rectangle);
+        }
+
+        public override TileMap CreateTileMap(string name, Size mapSize, Size tileSize)
+        {
+            return new WinTileMap(name, mapSize, tileSize);
         }
     }
 }

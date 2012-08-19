@@ -1,7 +1,4 @@
 ﻿using ClassLibrary;
-using ClassLibrary.Hexes;
-using ClassLibrary.Sprites;
-using ClassLibrary.Tiles;
 
 namespace Editor
 {
@@ -29,14 +26,14 @@ namespace Editor
         private void CreateSheets(GameResourceManager gameResourceManager)
         {
             var texture = gameResourceManager.GetTexture("HexSheet");
-            var sheet = new HexSheet(texture, "Hexes", new Size(68, 60));
+            var sheet = new WinHexSheet(texture, "Hexes", new Size(68, 60));
             sheet.CreateHexDefinition("red", new Point(55, 30));
             sheet.CreateHexDefinition("yellow", new Point(163, 330));
             sheet.CreateHexDefinition("purple", new Point(488, 330));
             gameResourceManager.AddHexSheet(sheet);
 
             texture = gameResourceManager.GetTexture("TileSheet");
-            var tileSheet = new TileSheet(texture, "Background", new Size(16, 16));
+            var tileSheet = new WinTileSheet(texture, "Background", new Size(16, 16));
             tileSheet.CreateTileDefinition("red", new Point(0, 0));
             tileSheet.CreateTileDefinition("green", new Point(16, 0));
             tileSheet.CreateTileDefinition("yellow", new Point(32, 0));
@@ -46,7 +43,7 @@ namespace Editor
             gameResourceManager.AddTileSheet(tileSheet);
 
             texture = gameResourceManager.GetTexture("LinkSheet");
-            var spriteSheet = new SpriteSheet(texture, "Link");
+            var spriteSheet = new WinSpriteSheet(texture, "Link");
             spriteSheet.CreateSpriteDefinition("Link01", new Rectangle(3, 3, 16, 22));
             spriteSheet.CreateSpriteDefinition("Sleep01", new Rectangle(45, 219, 32, 40));
 

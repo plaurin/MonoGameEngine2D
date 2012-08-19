@@ -15,5 +15,10 @@ namespace Editor
         {
             return new System.Windows.Rect(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
         }
+
+        public static System.Windows.Point ToWinPoint(this Vector vector)
+        {
+            return new System.Windows.Point((int)vector.X, (int)vector.Y);
+        }
     }
 }

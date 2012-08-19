@@ -14,10 +14,5 @@ namespace ClassLibrary.Hexes
         {
             return new NullHexDefinition();
         }
-
-        public override void Draw(DrawContext drawContext, Rectangle destination)
-        {
-            // Do nothing: Null Object Pattern
-        }
     }
 }

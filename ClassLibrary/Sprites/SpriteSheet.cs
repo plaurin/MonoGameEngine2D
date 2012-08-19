@@ -7,20 +7,21 @@ using ClassLibrary.Cameras;
 
 namespace ClassLibrary.Sprites
 {
-    public class SpriteSheet
+    public abstract class SpriteSheet
     {
-        private readonly Texture texture;
         private readonly IDictionary<string, Rectangle> definitions;
 
-        public SpriteSheet(Texture texture, string name)
+        protected SpriteSheet(Texture texture, string name)
         {
-            this.texture = texture;
+            this.Texture = texture;
             this.Name = name;
 
             this.definitions = new Dictionary<string, Rectangle>();
         }
 
         public string Name { get; private set; }
+
+        public Texture Texture { get; private set; }
 
         public void CreateSpriteDefinition(string spriteName, Rectangle spriteRectangle)
         {
@@ -34,6 +35,7 @@ namespace ClassLibrary.Sprites
                 .Scale(camera.ZoomFactor)
                 .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
 
+            this.DoDraw(drawContext, camera, source, destination);
             //spriteBatch.Draw(this.texture, destination, source, Color.White);
         }
 
@@ -41,11 +43,13 @@ namespace ClassLibrary.Sprites
         {
             return new XElement("SpriteSheet",
                 new XAttribute("name", this.Name),
-                new XElement("Texture", this.texture.Name),
+                new XElement("Texture", this.Texture.Name),
                 new XElement("Definitions", this.definitions.Select(d => 
                     new XElement("Definition",
                         new XAttribute("name", d.Key),
                         new XAttribute("rectangle", d.Value)))));
         }
+
+        protected abstract void DoDraw(DrawContext drawContext, Camera camera, Rectangle source, Rectangle destination);
     }
 }

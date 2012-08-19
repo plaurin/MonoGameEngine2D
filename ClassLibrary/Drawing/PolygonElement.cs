@@ -35,7 +35,7 @@ namespace ClassLibrary.Drawing
                 new XElement("Vertices", string.Join(", ", this.vertices)));
         }
 
-        public static PolygonElement FromXml(GameResourceManager gameResourceManager, XElement element)
+        public static PolygonElement FromXml(Factory resourceManager, GameResourceManager gameResourceManager, XElement element)
         {
             var width = element.Attribute("width").Value;
             var color = element.Attribute("color").Value;
@@ -56,10 +56,11 @@ namespace ClassLibrary.Drawing
                 .Scale(camera.ZoomFactor)
                 .Translate(camera.GetSceneTranslationVector(drawingMap.ParallaxScrollingVector));
 
-            var finalWidth = this.width * camera.ZoomFactor;
-            var angle = (float)Math.Atan2(finalTo.Y - finalFrom.Y, finalTo.X - finalFrom.X);
-            var length = Vector.Distance(finalFrom, finalTo);
+            //var finalWidth = this.width * camera.ZoomFactor;
+            //var angle = (float)Math.Atan2(finalTo.Y - finalFrom.Y, finalTo.X - finalFrom.X);
+            //var length = Vector.Distance(finalFrom, finalTo);
 
+            drawContext.DrawLine(finalFrom, finalTo, this.width * camera.ZoomFactor, this.color);
             //spriteBatch.Draw(this.blank, finalFrom, null, this.color, angle, Vector2.Zero,
             //    new Vector2(length, finalWidth), SpriteEffects.None, 0);
         }

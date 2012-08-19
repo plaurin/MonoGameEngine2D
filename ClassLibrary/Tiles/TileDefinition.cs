@@ -3,9 +3,9 @@ using System.Xml.Linq;
 
 namespace ClassLibrary.Tiles
 {
-    public class TileDefinition
+    public abstract class TileDefinition
     {
-        public TileDefinition(TileSheet sheet, string name, Rectangle rectangle)
+        protected TileDefinition(TileSheet sheet, string name, Rectangle rectangle)
         {
             this.Sheet = sheet;
             this.Name = name;
@@ -23,10 +23,14 @@ namespace ClassLibrary.Tiles
         
         public Rectangle Rectangle { get; private set; }
 
-        public virtual void Draw(DrawContext drawContext, Rectangle destination)
+        public void Draw(DrawContext drawContext, Rectangle destination)
         {
-            //this.Sheet.Draw(spriteBatch, this, destination);
+            this.Sheet.Draw(drawContext, this, destination);
         }
+        //public virtual void Draw(DrawContext drawContext, Rectangle destination)
+        //{
+        //    //this.Sheet.Draw(spriteBatch, this, destination);
+        //}
 
         public XElement GetXml()
         {

@@ -70,7 +70,7 @@ namespace ClassLibrary.Drawing
                     this.elements.Select(e => e.ToXml())));
         }
 
-        public static MapBase FromXml(GameResourceManager gameResourceManager, XElement mapElement)
+        public static MapBase FromXml(Factory factory, GameResourceManager gameResourceManager, XElement mapElement)
         {
             var name = mapElement.Attribute("name").Value;
             var map = new DrawingMap(name, gameResourceManager);
@@ -81,13 +81,13 @@ namespace ClassLibrary.Drawing
                 switch (element.Name.ToString())
                 {
                     case "TextElement":
-                        map.AddElement(TextElement.FromXml(gameResourceManager, element));
+                        map.AddElement(TextElement.FromXml(factory, gameResourceManager, element));
                         break;
                     case "LineElement":
-                        map.AddElement(LineElement.FromXml(gameResourceManager, element));
+                        map.AddElement(LineElement.FromXml(factory, gameResourceManager, element));
                         break;
                     case "PolygonElement":
-                        map.AddElement(PolygonElement.FromXml(gameResourceManager, element));
+                        map.AddElement(PolygonElement.FromXml(factory, gameResourceManager, element));
                         break;
                     default:
                         throw new NotImplementedException(element.Name + " is not implemented yet.");

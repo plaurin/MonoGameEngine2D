@@ -27,6 +27,7 @@ Features
 
 Bugs
 ====
+! WPF, DrawString Zoom and Font
 
 Refactorings
 ============

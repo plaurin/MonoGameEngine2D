@@ -74,7 +74,7 @@ namespace ClassLibrary.Scenes
                         scene.AddMap(HexMap.FromXml(gameResourceManager, mapElement));
                         break;
                     case "TileMap":
-                        scene.AddMap(TileMap.FromXml(gameResourceManager, mapElement));
+                        scene.AddMap(TileMap.FromXml(factory, gameResourceManager, mapElement));
                         break;
                     case "ColorMap":
                         scene.AddMap(ColorMap.FromXml(factory, gameResourceManager, mapElement));
@@ -83,7 +83,7 @@ namespace ClassLibrary.Scenes
                         scene.AddMap(SpriteMap.FromXml(gameResourceManager, mapElement));
                         break;
                     case "DrawingMap":
-                        scene.AddMap(DrawingMap.FromXml(gameResourceManager, mapElement));
+                        scene.AddMap(DrawingMap.FromXml(factory, gameResourceManager, mapElement));
                         break;
                 }
             }

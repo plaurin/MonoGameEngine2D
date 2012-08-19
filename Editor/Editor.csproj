@@ -61,8 +61,14 @@
     <Compile Include="WinDrawContext.cs" />
     <Compile Include="WinExtensions.cs" />
     <Compile Include="WinFactory.cs" />
+    <Compile Include="WinHexDefinition.cs" />
+    <Compile Include="WinHexSheet.cs" />
     <Compile Include="WinImageMap.cs" />
+    <Compile Include="WinSpriteSheet.cs" />
     <Compile Include="WinTexture.cs" />
+    <Compile Include="WinTileDefinition.cs" />
+    <Compile Include="WinTileMap.cs" />
+    <Compile Include="WinTileSheet.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

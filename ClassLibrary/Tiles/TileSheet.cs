@@ -5,15 +5,15 @@ using System.Xml.Linq;
 
 namespace ClassLibrary.Tiles
 {
-    public class TileSheet
+    public abstract class TileSheet
     {
-        private readonly Texture texture;
         private readonly Size tilesSize;
+
         private readonly Dictionary<string, TileDefinition> definitions;
 
-        public TileSheet(Texture texture, string sheetName, Size tilesSize)
+        protected TileSheet(Texture texture, string sheetName, Size tilesSize)
         {
-            this.texture = texture;
+            this.Texture = texture;
             this.Name = sheetName;
             this.tilesSize = tilesSize;
 
@@ -21,6 +21,8 @@ namespace ClassLibrary.Tiles
         }
 
         public string Name { get; private set; }
+
+        public Texture Texture { get; private set; }
 
         public Dictionary<string, TileDefinition> Definitions
         {
@@ -33,7 +35,7 @@ namespace ClassLibrary.Tiles
         public TileDefinition CreateTileDefinition(string tileName, Point tilePosition)
         {
             var rectangle = new Rectangle(tilePosition.X, tilePosition.Y, this.tilesSize.Width, this.tilesSize.Height);
-            var tileDefinition = new TileDefinition(this, tileName, rectangle);
+            var tileDefinition = this.CreateTileDefinition(this, tileName, rectangle);
             this.definitions.Add(tileName, tileDefinition);
 
             return tileDefinition;
@@ -44,18 +46,17 @@ namespace ClassLibrary.Tiles
             this.definitions.Add(tileDefinition.Name, tileDefinition);
         }
 
-        public void Draw(DrawContext drawContext, TileDefinition tileDefinition, Rectangle destination)
-        {
-            //spriteBatch.Draw(this.texture, destination, tileDefinition.Rectangle, Color.White);
-        }
-
         public XElement GetXml()
         {
             return new XElement("TileSheet",
                 new XAttribute("name", this.Name),
-                new XElement("Texture", this.texture.Name),
+                new XElement("Texture", this.Texture.Name),
                 new XElement("TileSize", this.tilesSize),
                 new XElement("Definitions", this.definitions.Select(d => d.Value.GetXml())));
         }
+
+        public abstract void Draw(DrawContext drawContext, TileDefinition tileDefinition, Rectangle destination);
+
+        protected abstract TileDefinition CreateTileDefinition(TileSheet tileSheet, string tileName, Rectangle rectangle);
     }
 }

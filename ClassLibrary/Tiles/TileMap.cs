@@ -8,11 +8,11 @@ using ClassLibrary.Maps;
 
 namespace ClassLibrary.Tiles
 {
-    public class TileMap : MapBase
+    public abstract class TileMap : MapBase
     {
         private readonly TileDefinition[,] map;
 
-        public TileMap(string name, Size mapSize, Size tileSize, TileDefinition defaultTileDefinition = null)
+        protected TileMap(string name, Size mapSize, Size tileSize, TileDefinition defaultTileDefinition = null)
             : base(name)
         {
             this.MapSize = mapSize;
@@ -97,7 +97,7 @@ namespace ClassLibrary.Tiles
             }
         }
 
-        public static TileMap FromXml(GameResourceManager gameResourceManager, XElement mapElement)
+        public static TileMap FromXml(Factory factory, GameResourceManager gameResourceManager, XElement mapElement)
         {
             var name = mapElement.Attribute("name").Value;
             var mapSize = MathUtil.ParseSize(mapElement.Element("MapSize").Value);
@@ -105,7 +105,8 @@ namespace ClassLibrary.Tiles
             var tileReferences = GetTileReferences(gameResourceManager, mapElement.Element("TileDefinitionReferences")).ToList();
             var tiles = GetRowsFromXml(mapElement.Element("Tiles"));
 
-            var map = new TileMap(name, mapSize, tileSize);
+            //var map = new TileMap(name, mapSize, tileSize);
+            var map = factory.CreateTileMap(name, mapSize, tileSize);
             map.BaseFromXml(mapElement);
 
             int x = 0;
