@@ -3,9 +3,9 @@ using System.Xml.Linq;
 
 namespace ClassLibrary.Tiles
 {
-    public abstract class TileDefinition
+    public class TileDefinition
     {
-        protected TileDefinition(TileSheet sheet, string name, Rectangle rectangle)
+        public TileDefinition(TileSheet sheet, string name, Rectangle rectangle)
         {
             this.Sheet = sheet;
             this.Name = name;
@@ -23,7 +23,7 @@ namespace ClassLibrary.Tiles
         
         public Rectangle Rectangle { get; private set; }
 
-        public void Draw(DrawContext drawContext, Rectangle destination)
+        public virtual void Draw(DrawContext drawContext, Rectangle destination)
         {
             this.Sheet.Draw(drawContext, this, destination);
         }

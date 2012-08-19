@@ -5,11 +5,11 @@ using System.Xml.Linq;
 
 namespace ClassLibrary.Hexes
 {
-    public abstract class HexSheet
+    public class HexSheet
     {
         private readonly Dictionary<string, HexDefinition> definitions;
 
-        protected HexSheet(Texture texture, string name, Size hexSize)
+        public HexSheet(Texture texture, string name, Size hexSize)
         {
             this.Name = name;
             this.HexSize = hexSize;
@@ -35,7 +35,8 @@ namespace ClassLibrary.Hexes
         public HexDefinition CreateHexDefinition(string hexName, Point hexPosition)
         {
             var rectangle = new Rectangle(hexPosition.X, hexPosition.Y, this.HexSize.Width, this.HexSize.Height);
-            var hexDefinition = this.CreateHexDefinition(this, hexName, rectangle);
+            //var hexDefinition = this.CreateHexDefinition(this, hexName, rectangle);
+            var hexDefinition = new HexDefinition(this, hexName, rectangle);
 
             this.Definitions.Add(hexName, hexDefinition);
             return hexDefinition;
@@ -46,7 +47,12 @@ namespace ClassLibrary.Hexes
             this.Definitions.Add(hexDefinition.Name, hexDefinition);
         }
 
-        public abstract void Draw(DrawContext drawContext, HexDefinition hexDefinition, Rectangle destination);
+        //public abstract void Draw(DrawContext drawContext, HexDefinition hexDefinition, Rectangle destination);
+        public virtual void Draw(DrawContext drawContext, HexDefinition hexDefinition, Rectangle destination)
+        {
+            //spriteBatch.Draw(this.texture, destination, hexDefinition.Rectangle, Color.White);
+            drawContext.DrawImage(this.Texture, hexDefinition.Rectangle, destination);
+        }
 
         public XElement GetXml()
         {
@@ -57,6 +63,6 @@ namespace ClassLibrary.Hexes
                 new XElement("Definitions", this.Definitions.Select(d => d.Value.GetXml())));
         }
 
-        protected abstract HexDefinition CreateHexDefinition(HexSheet hexSheet, string hexName, Rectangle rectangle);
+        //protected abstract HexDefinition CreateHexDefinition(HexSheet hexSheet, string hexName, Rectangle rectangle);
     }
 }

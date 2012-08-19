@@ -5,11 +5,11 @@ using ClassLibrary.Cameras;
 
 namespace ClassLibrary.Maps
 {
-    public abstract class ColorMap : MapBase
+    public class ColorMap : MapBase
     {
         //private readonly Texture texture; Only XNA
 
-        protected ColorMap(string name, /*Texture texture,*/ Color color)
+        public ColorMap(string name, /*Texture texture,*/ Color color)
             : base(name)
         {
             this.Color = color;
@@ -18,10 +18,11 @@ namespace ClassLibrary.Maps
 
         public Color Color { get; set; }
 
-        //public override void Draw(DrawContext drawContext, Camera camera)
-        //{
-        //    //spriteBatch.Draw(this.texture, camera.Viewport.Bounds, this.Color);
-        //}
+        public override void Draw(DrawContext drawContext, Camera camera)
+        {
+            drawContext.FillColor(this.Color);
+            //spriteBatch.Draw(this.texture, camera.Viewport.Bounds, this.Color);
+        }
 
         public override XElement ToXml()
         {
@@ -36,8 +37,8 @@ namespace ClassLibrary.Maps
             var colorValue = mapElement.Element("Color").Value;
 
             //var texture = gameResourceManager.GetTexture("WhitePixel"); OnlyXNA
-            //return new ColorMap(name, MathUtil.ParseColor(colorValue));
-            return factory.CreateColorMap(name, MathUtil.ParseColor(colorValue));
+            return new ColorMap(name, MathUtil.ParseColor(colorValue));
+            //return factory.CreateColorMap(name, MathUtil.ParseColor(colorValue));
         }
     }
 }

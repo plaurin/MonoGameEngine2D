@@ -15,9 +15,9 @@ namespace ClassLibrary.Tiles
             return new NullTileDefinition();
         }
 
-        //public override void Draw(DrawContext drawContext, Rectangle destination)
-        //{
-        //    // Do nothing: Null Object Pattern
-        //}
+        public override void Draw(DrawContext drawContext, Rectangle destination)
+        {
+            // Do nothing: Null Object Pattern
+        }
     }
 }

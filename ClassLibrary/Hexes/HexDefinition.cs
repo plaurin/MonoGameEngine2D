@@ -3,9 +3,9 @@ using System.Xml.Linq;
 
 namespace ClassLibrary.Hexes
 {
-    public abstract class HexDefinition
+    public class HexDefinition
     {
-        protected HexDefinition(HexSheet sheet, string name, Rectangle rectangle)
+        public HexDefinition(HexSheet sheet, string name, Rectangle rectangle)
         {
             this.Sheet = sheet;
             this.Name = name;
@@ -23,8 +23,7 @@ namespace ClassLibrary.Hexes
 
         public Rectangle Rectangle { get; private set; }
 
-        //public abstract void Draw(DrawContext drawContext, Rectangle destination);
-        public void Draw(DrawContext drawContext, Rectangle destination)
+        public virtual void Draw(DrawContext drawContext, Rectangle destination)
         {
             this.Sheet.Draw(drawContext, this, destination);
         }

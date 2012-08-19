@@ -34,13 +34,13 @@ namespace Editor
             return this.drawingVisual;
         }
 
-        public void FillColor(Color color)
+        public override void FillColor(Color color)
         {
             var brush = new SolidColorBrush(color.ToWinColor());
             this.drawingContext.DrawRectangle(brush, null, new Rect(0, 0, this.viewport.Width, this.viewport.Height));
         }
 
-        public void DrawImage(Texture texture, Rectangle destination)
+        public override void DrawImage(Texture texture, Rectangle destination)
         {
             var winTexture = (WinTexture)texture;
 
@@ -53,7 +53,7 @@ namespace Editor
             this.drawingContext.DrawImage(bi, destination.ToRect());
         }
 
-        public void DrawImage(Texture texture, Rectangle source, Rectangle destination)
+        public override void DrawImage(Texture texture, Rectangle source, Rectangle destination)
         {
             var winTexture = (WinTexture)texture;
 

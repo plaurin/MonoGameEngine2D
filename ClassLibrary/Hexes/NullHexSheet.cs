@@ -14,9 +14,9 @@ namespace ClassLibrary.Hexes
             // Do nothing NullObjectPattern
         }
 
-        protected override HexDefinition CreateHexDefinition(HexSheet hexSheet, string hexName, Rectangle rectangle)
-        {
-            throw new NotImplementedException();
-        }
+        //protected override HexDefinition CreateHexDefinition(HexSheet hexSheet, string hexName, Rectangle rectangle)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

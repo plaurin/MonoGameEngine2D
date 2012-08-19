@@ -5,9 +5,9 @@ using ClassLibrary.Cameras;
 
 namespace ClassLibrary.Maps
 {
-    public abstract class ImageMap : MapBase
+    public class ImageMap : MapBase
     {
-        protected ImageMap(string name, Texture texture, Rectangle rectangle)
+        public ImageMap(string name, Texture texture, Rectangle rectangle)
             : base(name)
         {
             this.Texture = texture;
@@ -23,10 +23,11 @@ namespace ClassLibrary.Maps
         //    return new ImageMap(name, texture, device.Viewport.Bounds);
         //}
 
-        //public override void Draw(DrawContext drawContext, Camera camera)
-        //{
-        //    //spriteBatch.Draw(this.texture, this.Rectangle, Color.White);
-        //}
+        public override void Draw(DrawContext drawContext, Camera camera)
+        {
+            drawContext.DrawImage(this.Texture, this.Rectangle);
+            //spriteBatch.Draw(this.texture, this.Rectangle, Color.White);
+        }
 
         public override XElement ToXml()
         {
@@ -42,9 +43,9 @@ namespace ClassLibrary.Maps
             var textureName = mapElement.Element("Texture").Value;
             var rectangleValue = mapElement.Element("Rectangle").Value;
             
-            //return new ImageMap(name, gameResourceManager.GetTexture(textureName), MathUtil.ParseRectangle(rectangleValue));
-            return factory.CreateImageMap(
-                name, gameResourceManager.GetTexture(textureName), MathUtil.ParseRectangle(rectangleValue));
+            return new ImageMap(name, gameResourceManager.GetTexture(textureName), MathUtil.ParseRectangle(rectangleValue));
+            //return factory.CreateImageMap(
+            //    name, gameResourceManager.GetTexture(textureName), MathUtil.ParseRectangle(rectangleValue));
         }
     }
 }

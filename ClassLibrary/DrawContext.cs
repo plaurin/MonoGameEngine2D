@@ -19,5 +19,11 @@ namespace ClassLibrary
         public abstract void DrawLine(DrawContext drawContext, Camera camera, Vector from, Vector to, Color color);
 
         public abstract void DrawLine(Vector vectorFrom, Vector vectorTo, float width, Color color);
+
+        public abstract void DrawImage(Texture texture, Rectangle source, Rectangle destination);
+
+        public abstract void DrawImage(Texture texture, Rectangle destination);
+
+        public abstract void FillColor(Color color);
     }
 }
