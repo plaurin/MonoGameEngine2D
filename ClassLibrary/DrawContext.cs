@@ -16,8 +16,6 @@ namespace ClassLibrary
             DrawingFont drawingFont,
             Color color);
 
-        public abstract void DrawLine(DrawContext drawContext, Camera camera, Vector from, Vector to, Color color);
-
         public abstract void DrawLine(Vector vectorFrom, Vector vectorTo, float width, Color color);
 
         public abstract void DrawImage(Texture texture, Rectangle source, Rectangle destination);

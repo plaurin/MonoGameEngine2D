@@ -4,11 +4,15 @@ namespace ClassLibrary.Cameras
 {
     public class Camera
     {
+        private Vector innerPosition;
+
         public Camera(Viewport viewport)
         {
             this.Viewport = viewport;
             this.ZoomFactor = 1.0f;
             this.ViewPortCenter = new Point(viewport.Width / 2, viewport.Height / 2);
+            this.innerPosition = Vector.Zero;
+            this.Position = Point.Zero;
         }
 
         public Point Position { get; private set; }
@@ -41,9 +45,10 @@ namespace ClassLibrary.Cameras
             }
         }
 
-        public void Move(int delatX, int deltaY)
+        public void Move(float offsetX, float offsetY)
         {
-            this.Position = this.Position.Translate(new Point(delatX, deltaY));
+            this.innerPosition = this.innerPosition.Translate(offsetX, offsetY);
+            this.Position = this.innerPosition.ToPoint();
         }
 
         public Point GetSceneTranslationVector(Vector parallaxScrollingVector)

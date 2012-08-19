@@ -25,6 +25,11 @@ namespace ClassLibrary.Drawing
             //this.blank = this.gameResourceManager.GetTexture("WhitePixel"); OnlyXNA
         }
 
+        public IEnumerable<DrawingElementBase> Elements
+        {
+            get { return this.elements; }
+        }
+
         public TextElement AddText(DrawingFont drawingFont, string text, Vector vector, Color color)
         {
             var textElement = new TextElement(drawingFont, text, vector, color);

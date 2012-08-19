@@ -29,12 +29,14 @@ namespace ClassLibrary.Maps
         {
             yield return new XAttribute("name", this.Name);
             yield return new XAttribute("parallaxScrollingVector", this.ParallaxScrollingVector);
+            yield return new XAttribute("cameraMode", this.CameraMode);
         }
 
         public void BaseFromXml(XElement element)
         {
             this.Name = element.Attribute("name").Value;
             this.ParallaxScrollingVector = MathUtil.ParseVector(element.Attribute("parallaxScrollingVector").Value);
+            this.CameraMode = (CameraMode)Enum.Parse(typeof(CameraMode), element.Attribute("cameraMode").Value);
         }
     }
 }

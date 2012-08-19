@@ -98,18 +98,11 @@ namespace Editor
                 CultureInfo.GetCultureInfo("en-us"),
                 FlowDirection.LeftToRight,
                 new Typeface("Verdana"),
-                10,
+                11,
                 brush);
 
             // Draw the formatted text string to the DrawingContext of the control.
             this.drawingContext.DrawText(formattedText, finalVector.ToWinPoint());
-        }
-
-        public override void DrawLine(DrawContext drawContext, Camera camera, Vector @from, Vector to, Color color)
-        {
-            var pen = new Pen(new SolidColorBrush(color.ToWinColor()), camera.ZoomFactor);
-
-            this.drawingContext.DrawLine(pen, @from.ToWinPoint(), to.ToWinPoint());
         }
 
         public override void DrawLine(Vector vectorFrom, Vector vectorTo, float width, Color color)

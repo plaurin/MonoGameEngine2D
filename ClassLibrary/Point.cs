@@ -27,5 +27,10 @@ namespace ClassLibrary
         {
             get { return this.y; }
         }
+
+        public override string ToString()
+        {
+            return string.Format("{{X:{0} Y:{1}}}", this.X, this.Y);
+        }
     }
 }

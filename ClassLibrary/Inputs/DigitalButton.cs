@@ -8,8 +8,8 @@ namespace ClassLibrary.Inputs
     {
         private readonly List<Keys> mappingKeys;
 
-        private Action buttonDownAction;
-        private Action buttonUpAction;
+        private Action<float> buttonDownAction;
+        private Action<float> buttonUpAction;
 
         private bool isDown;
 
@@ -25,18 +25,18 @@ namespace ClassLibrary.Inputs
             return this;
         }
 
-        public void MapTo(Action downAction, Action upAction = null)
+        public void MapTo(Action<float> downAction, Action<float> upAction = null)
         {
             this.buttonDownAction = downAction;
             this.buttonUpAction = upAction;
         }
 
-        public void Update(InputContext inputContext)
+        public void Update(KeyboardStateBase keyboardState, float elapsedSeconds)
         {
-            this.isDown = this.mappingKeys.Any(inputContext.IsKeyDown);
+            this.isDown = this.mappingKeys.Any(keyboardState.IsKeyDown);
 
-            if (this.isDown && this.buttonDownAction != null) this.buttonDownAction.Invoke();
-            if (!this.isDown && this.buttonUpAction != null) this.buttonUpAction.Invoke();
+            if (this.isDown && this.buttonDownAction != null) this.buttonDownAction.Invoke(elapsedSeconds);
+            if (!this.isDown && this.buttonUpAction != null) this.buttonUpAction.Invoke(elapsedSeconds);
         }
     }
 }

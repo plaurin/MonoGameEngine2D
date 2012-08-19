@@ -12,13 +12,13 @@ namespace ClassLibrary.Inputs
             this.digitalButtons = new Dictionary<string, DigitalButton>();
         }
 
-        public void Update(InputContext inputContext)
+        public void Update(InputContext inputContext, float elapsedSeconds)
         {
             var keyState = inputContext.KeyboardGetState();
 
             foreach (var digitalButton in this.digitalButtons.Values)
             {
-                digitalButton.Update(keyState);
+                digitalButton.Update(keyState, elapsedSeconds);
             }
         }
 

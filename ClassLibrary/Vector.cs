@@ -48,5 +48,10 @@ namespace ClassLibrary
         {
             return MathUtil.CalcHypotenuse(Math.Abs(first.X - second.X), Math.Abs(first.Y - second.Y));
         }
+
+        public override string ToString()
+        {
+            return string.Format("{{X:{0} Y:{1}}}", this.X, this.Y);
+        }
     }
 }

@@ -4,7 +4,7 @@
     <Texture>LinkSheet</Texture>
     <Rectangle>{X:10 Y:10 Width:250 Height:250}</Rectangle>
   </ImageMap>
-  <HexMap name="Hex" parallaxScrollingVector="{X:4 Y:0.5}">
+  <HexMap name="Hex" parallaxScrollingVector="{X:4 Y:0.5}" cameraMode="Follow">
     <MapSize>{Width:4 Height:4}</MapSize>
     <HexSize>{Width:60 Height:52}</HexSize>
     <HexDefinitionReferences>
@@ -20,7 +20,7 @@
       <Row>0, 0, 0, 0</Row>
     </Hexes>
   </HexMap>
-  <TileMap name="Tiles" parallaxScrollingVector="{X:2 Y:2}">
+  <TileMap name="Tiles" parallaxScrollingVector="{X:2 Y:2}" cameraMode="Follow">
     <MapSize>{Width:32 Height:32}</MapSize>
     <TileSize>{Width:16 Height:16}</TileSize>
     <TileDefinitionReferences>
@@ -67,7 +67,7 @@
   <ColorMap name="Red">
     <Color>{R:63 G:0 B:0 A:63}</Color>
   </ColorMap>
-  <DrawingMap name="Hex drawing test" parallaxScrollingVector="{X:1 Y:1}">
+  <DrawingMap name="Hex drawing test" parallaxScrollingVector="{X:1 Y:1}" cameraMode="Follow">
     <Elements>
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:45 Y:51.96152}, {X:15 Y:51.96152}, {X:0 Y:25.98076}, {X:15 Y:0}, {X:45 Y:0}, {X:60 Y:25.98077}</Vertices>
@@ -683,13 +683,13 @@
       <TextElement fontName="SpriteFont1" text="4,2" vector="{X:379.5 Y:382}" color="{R:255 G:255 B:0 A:255}" />
     </Elements>
   </DrawingMap>
-  <SpriteMap name="Sprites" parallaxScrollingVector="{X:4 Y:8}">
+  <SpriteMap name="Sprites" parallaxScrollingVector="{X:4 Y:8}" cameraMode="Follow">
     <Sprites>
       <Sprite sheetName="Link" name="Link01" position="{X:25 Y:25}" />
       <Sprite sheetName="Link" name="Sleep01" position="{X:125 Y:25}" />
     </Sprites>
   </SpriteMap>
-  <DrawingMap name="Diagnostics" parallaxScrollingVector="{X:1 Y:1}">
+  <DrawingMap name="Diagnostics" parallaxScrollingVector="{X:1 Y:1}" cameraMode="Fix">
     <Elements>
       <TextElement fontName="SpriteFont1" text="FPS {0:d}" vector="{X:610 Y:0}" color="{R:255 G:255 B:255 A:255}" />
       <TextElement fontName="SpriteFont1" text="ViewPort: {0}" vector="{X:410 Y:20}" color="{R:255 G:255 B:255 A:255}" />

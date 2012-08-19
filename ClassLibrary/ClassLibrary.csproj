@@ -78,6 +78,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Inputs\InputContext.cs" />
+    <Compile Include="Inputs\KeyboardStateBase.cs" />
     <Compile Include="Inputs\Keys.cs" />
     <Compile Include="Maps\ColorMap.cs">
       <SubType>Code</SubType>

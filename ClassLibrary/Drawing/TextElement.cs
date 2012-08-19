@@ -8,7 +8,7 @@ namespace ClassLibrary.Drawing
     public class TextElement : DrawingElementBase
     {
         private readonly DrawingFont drawingFont;
-        private readonly string text;
+
         private readonly Vector vector;
         private readonly Color color;
 
@@ -17,8 +17,10 @@ namespace ClassLibrary.Drawing
             this.drawingFont = drawingFont;
             this.vector = vector;
             this.color = color;
-            this.text = text;
+            this.Text = text;
         }
+
+        public string Text { get; private set; }
 
         public void SetParameters(params object[] parameters)
         {
@@ -29,7 +31,7 @@ namespace ClassLibrary.Drawing
 
         public override void Draw(DrawContext drawContext, Camera camera, DrawingMap drawingMap)
         {
-            var finalText = this.Parameters != null ? string.Format(this.text, this.Parameters) : this.text;
+            var finalText = this.Parameters != null ? string.Format(this.Text, this.Parameters) : this.Text;
             var finalZoomFactor = drawingMap.CameraMode == CameraMode.Fix ? 1.0f : camera.ZoomFactor;
             var finalVector = drawingMap.CameraMode == CameraMode.Fix
                 ? this.vector
@@ -46,7 +48,7 @@ namespace ClassLibrary.Drawing
         {
             return new XElement("TextElement",
                 new XAttribute("fontName", this.drawingFont.Name),
-                new XAttribute("text", this.text),
+                new XAttribute("text", this.Text),
                 new XAttribute("vector", this.vector),
                 new XAttribute("color", this.color));
         }

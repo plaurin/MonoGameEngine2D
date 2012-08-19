@@ -40,6 +40,11 @@ namespace ClassLibrary
             return new Vector(vector.X + delta.X, vector.Y + delta.Y);
         }
 
+        public static Vector Translate(this Vector vector, float offsetX, float offsetY)
+        {
+            return new Vector(vector.X + offsetX, vector.Y + offsetY);
+        }
+
         public static Vector Scale(this Vector vector, float zoomFactor)
         {
             return new Vector(vector.X * zoomFactor, vector.Y * zoomFactor);

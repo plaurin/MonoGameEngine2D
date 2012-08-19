@@ -52,5 +52,10 @@ namespace ClassLibrary
             return point.X >= this.X && point.X <= this.X + this.Width
                 && point.Y >= this.Y && point.Y <= this.Y + this.Height;
         }
+
+        public override string ToString()
+        {
+            return string.Format("{{X:{0} Y:{1} Width:{2} Height:{3}}}", this.X, this.Y, this.Width, this.Height);
+        }
     }
 }
