@@ -57,5 +57,45 @@ namespace ClassLibrary
         {
             return string.Format("{{X:{0} Y:{1} Width:{2} Height:{3}}}", this.X, this.Y, this.Width, this.Height);
         }
+
+        public bool Equals(Rectangle other)
+        {
+            return other.x == this.x && other.y == this.y && other.width == this.width && other.height == this.height;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+            if (obj.GetType() != typeof(Rectangle))
+            {
+                return false;
+            }
+            return Equals((Rectangle)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int result = this.x;
+                result = (result * 397) ^ this.y;
+                result = (result * 397) ^ this.width;
+                result = (result * 397) ^ this.height;
+                return result;
+            }
+        }
+
+        public static bool operator ==(Rectangle left, Rectangle right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Rectangle left, Rectangle right)
+        {
+            return !left.Equals(right);
+        }
     }
 }

@@ -2,7 +2,6 @@ using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 using ClassLibrary;
 using ClassLibrary.Cameras;
@@ -44,48 +43,16 @@ namespace Editor
         {
             var winTexture = (WinTexture)texture;
 
-            var bi = new BitmapImage();
-            // BitmapImage.UriSource must be in a BeginInit/EndInit block.
-            bi.BeginInit();
-            bi.UriSource = new Uri(winTexture.FilePath, UriKind.RelativeOrAbsolute);
-            bi.EndInit();
-
-            this.drawingContext.DrawImage(bi, destination.ToRect());
+            this.drawingContext.DrawImage(winTexture.BitmapSource, destination.ToRect());
         }
 
         public override void DrawImage(Texture texture, Rectangle source, Rectangle destination)
         {
             var winTexture = (WinTexture)texture;
 
-            var bi = new BitmapImage();
-            // BitmapImage.UriSource must be in a BeginInit/EndInit block.
-            bi.BeginInit();
-            bi.UriSource = new Uri(winTexture.FilePath, UriKind.RelativeOrAbsolute);
-            bi.EndInit();
-
-            var tile = this.T(bi, source);
+            var tile = winTexture.GetTile(source);
 
             this.drawingContext.DrawImage(tile, destination.ToRect());
-        }
-
-        public BitmapSource T(BitmapSource source, Rectangle sourceRect)
-        {
-            // Calculate stride of source
-            var stride = source.PixelWidth * (source.Format.BitsPerPixel / 8);
-
-            // Create data array to hold source pixel data
-            var data = new byte[stride * source.PixelHeight];
-
-            // Copy source image pixels to the data array
-            source.CopyPixels(new Int32Rect(sourceRect.X, sourceRect.Y, sourceRect.Width, sourceRect.Height), data, stride, 0);
-
-            // Create WriteableBitmap to copy the pixel data to.
-            var target = new WriteableBitmap(sourceRect.Width, sourceRect.Height, source.DpiX, source.DpiY, source.Format, source.Palette);
-
-            // Write the pixel data to the WriteableBitmap.
-            target.WritePixels(new Int32Rect(0, 0, sourceRect.Width, sourceRect.Height), data, stride, 0);
-
-            return target;
         }
 
         public override void DrawString(DrawContext drawContext, Camera camera, string finalText, Vector finalVector, float finalZoomFactor, DrawingFont drawingFont, Color color)

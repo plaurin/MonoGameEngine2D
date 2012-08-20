@@ -59,7 +59,6 @@
     <Compile Include="ServiceLocator.cs" />
     <Compile Include="WinDrawContext.cs" />
     <Compile Include="WinExtensions.cs" />
-    <Compile Include="WinFactory.cs" />
     <Compile Include="WinInputContext.cs" />
     <Compile Include="WinTexture.cs" />
     <Page Include="MainWindow.xaml">

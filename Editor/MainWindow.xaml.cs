@@ -64,7 +64,6 @@ namespace Editor
             InitializeComponent();
 
             this.gameResourceManager = ServiceLocator.GameResourceManager;
-            this.factory = ServiceLocator.Factory;
             this.keys = new HashSet<Key>();
         }
 
@@ -91,7 +90,7 @@ namespace Editor
             this.lastFrameTime = DateTime.Now;
             var dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += this.Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 30);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
             dispatcherTimer.Start();
         }
 
