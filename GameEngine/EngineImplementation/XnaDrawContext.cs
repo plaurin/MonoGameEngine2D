@@ -7,12 +7,11 @@ using ClassLibrary.Drawing;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+using Color = Microsoft.Xna.Framework.Color;
 using Texture = ClassLibrary.Texture;
 using Viewport = Microsoft.Xna.Framework.Graphics.Viewport;
-using Xna = Microsoft.Xna.Framework;
-using XnaGfx = Microsoft.Xna.Framework.Graphics;
 
-namespace WindowsGame1
+namespace WindowsGame1.EngineImplementation
 {
     public class XnaDrawContext : DrawContext
     {
@@ -22,7 +21,7 @@ namespace WindowsGame1
 
         private readonly Viewport viewport;
 
-        public XnaDrawContext(SpriteBatch spriteBatch, Texture2D blank, XnaGfx.Viewport viewport)
+        public XnaDrawContext(SpriteBatch spriteBatch, Texture2D blank, Viewport viewport)
         {
             this.spriteBatch = spriteBatch;
             this.blank = blank;
@@ -49,18 +48,18 @@ namespace WindowsGame1
         public override void DrawImage(Texture texture, ClassLibrary.Rectangle source, ClassLibrary.Rectangle destination)
         {
             var xnaTexture = (XnaTexture)texture;
-            this.spriteBatch.Draw(xnaTexture.Texture2D, destination.ToXnaRect(), source.ToXnaRect(), Xna.Color.White);
+            this.spriteBatch.Draw(xnaTexture.Texture2D, destination.ToXnaRect(), source.ToXnaRect(), Color.White);
         }
 
         public override void DrawImage(Texture texture, ClassLibrary.Rectangle destination)
         {
             var xnaTexture = (XnaTexture)texture;
-            this.spriteBatch.Draw(xnaTexture.Texture2D, destination.ToXnaRect(), Xna.Color.White);
+            this.spriteBatch.Draw(xnaTexture.Texture2D, destination.ToXnaRect(), Color.White);
         }
 
         public override void FillColor(ClassLibrary.Color color)
         {
-            var finalColor = new Xna.Color(color.R, color.G, color.B, 255) * (color.A / 255.0f);
+            var finalColor = new Color(color.R, color.G, color.B, 255) * (color.A / 255.0f);
             this.spriteBatch.Draw(this.blank, this.viewport.Bounds, finalColor);
         }
     }

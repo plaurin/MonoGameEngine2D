@@ -4,7 +4,7 @@ using ClassLibrary.Inputs;
 
 using Microsoft.Xna.Framework.Input;
 
-namespace WindowsGame1
+namespace WindowsGame1.EngineImplementation
 {
     public class XnaInputContext : InputContext
     {

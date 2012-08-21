@@ -33,7 +33,7 @@ namespace ClassLibrary
 
         public static Color Yellow
         {
-            get { return new Color(0, 255, 255, 255); }
+            get { return new Color(255, 255, 0, 255); }
         }
 
         public override string ToString()

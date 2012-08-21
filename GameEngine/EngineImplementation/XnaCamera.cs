@@ -3,7 +3,7 @@ using System;
 using ClassLibrary;
 using ClassLibrary.Cameras;
 
-namespace WindowsGame1
+namespace WindowsGame1.EngineImplementation
 {
     public class XnaCamera : Camera
     {

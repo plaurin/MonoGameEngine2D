@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 using Texture = ClassLibrary.Texture;
 
-namespace WindowsGame1
+namespace WindowsGame1.EngineImplementation
 {
     internal class XnaTexture : Texture
     {
