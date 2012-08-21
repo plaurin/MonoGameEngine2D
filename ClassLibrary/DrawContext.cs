@@ -10,9 +10,9 @@ namespace ClassLibrary
         public abstract void DrawString(
             DrawContext drawContext,
             Camera camera,
-            string finalText,
-            Vector finalVector,
-            float finalZoomFactor,
+            string text,
+            Vector vector,
+            float zoomFactor,
             DrawingFont drawingFont,
             Color color);
 

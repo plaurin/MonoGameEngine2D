@@ -53,7 +53,7 @@ namespace ClassLibrary.Drawing
                 new XAttribute("color", this.color));
         }
 
-        public static TextElement FromXml(Factory factory, GameResourceManager gameResourceManager, XElement element)
+        public static TextElement FromXml(GameResourceManager gameResourceManager, XElement element)
         {
             var fontName = element.Attribute("fontName").Value;
             var text = element.Attribute("text").Value;

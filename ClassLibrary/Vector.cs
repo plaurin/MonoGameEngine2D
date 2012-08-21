@@ -44,6 +44,16 @@ namespace ClassLibrary
             return new Vector(first.X + second.X, first.Y + second.Y);
         }
 
+        public static Vector operator -(Vector first, Vector second)
+        {
+            return new Vector(first.X - second.X, first.Y - second.Y);
+        }
+
+        public static Vector operator /(Vector vector, float factor)
+        {
+            return new Vector(vector.X / factor, vector.Y / factor);
+        }
+
         public static double Distance(Vector first, Vector second)
         {
             return MathUtil.CalcHypotenuse(Math.Abs(first.X - second.X), Math.Abs(first.Y - second.Y));

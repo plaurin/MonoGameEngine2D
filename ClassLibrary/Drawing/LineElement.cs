@@ -50,7 +50,7 @@ namespace ClassLibrary.Drawing
                 new XAttribute("color", this.color));
         }
 
-        public static LineElement FromXml(Factory resourceManager, GameResourceManager gameResourceManager, XElement element)
+        public static LineElement FromXml(GameResourceManager gameResourceManager, XElement element)
         {
             var from = element.Attribute("from").Value;
             var to = element.Attribute("to").Value;

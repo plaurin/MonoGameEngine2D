@@ -7,5 +7,9 @@ namespace ClassLibrary.Drawing
         public string Name { get; set; }
 
         //public SpriteFont Font { get; set; }
+        public virtual Vector MeasureString(string text)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

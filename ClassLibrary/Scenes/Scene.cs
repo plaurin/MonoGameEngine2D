@@ -56,7 +56,7 @@ namespace ClassLibrary.Scenes
             document.Save(path);
         }
 
-        public static Scene LoadFrom(Factory factory, GameResourceManager gameResourceManager, string path)
+        public static Scene LoadFrom(GameResourceManager gameResourceManager, string path)
         {
             var document = XDocument.Load(path);
             
@@ -68,22 +68,22 @@ namespace ClassLibrary.Scenes
                 switch (mapElement.Name.ToString())
                 {
                     case "ImageMap":
-                        scene.AddMap(ImageMap.FromXml(factory, gameResourceManager, mapElement));
+                        scene.AddMap(ImageMap.FromXml(gameResourceManager, mapElement));
                         break;
                     case "HexMap":
                         scene.AddMap(HexMap.FromXml(gameResourceManager, mapElement));
                         break;
                     case "TileMap":
-                        scene.AddMap(TileMap.FromXml(factory, gameResourceManager, mapElement));
+                        scene.AddMap(TileMap.FromXml(gameResourceManager, mapElement));
                         break;
                     case "ColorMap":
-                        scene.AddMap(ColorMap.FromXml(factory, gameResourceManager, mapElement));
+                        scene.AddMap(ColorMap.FromXml(gameResourceManager, mapElement));
                         break;
                     case "SpriteMap":
                         scene.AddMap(SpriteMap.FromXml(gameResourceManager, mapElement));
                         break;
                     case "DrawingMap":
-                        scene.AddMap(DrawingMap.FromXml(factory, gameResourceManager, mapElement));
+                        scene.AddMap(DrawingMap.FromXml(gameResourceManager, mapElement));
                         break;
                 }
             }

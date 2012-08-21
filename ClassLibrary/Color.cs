@@ -21,6 +21,21 @@ namespace ClassLibrary
 
         public int A { get; private set; }
 
+        public static Color Red
+        {
+            get { return new Color(255, 0, 0, 255); }
+        }
+
+        public static Color White
+        {
+            get { return new Color(255, 255, 255, 255); }
+        }
+
+        public static Color Yellow
+        {
+            get { return new Color(0, 255, 255, 255); }
+        }
+
         public override string ToString()
         {
             return string.Format("{{R:{0} G:{1} B:{2} A:{3}}}", this.R, this.G, this.B, this.A);

@@ -35,7 +35,7 @@ namespace ClassLibrary.Drawing
                 new XElement("Vertices", string.Join(", ", this.vertices)));
         }
 
-        public static PolygonElement FromXml(Factory resourceManager, GameResourceManager gameResourceManager, XElement element)
+        public static PolygonElement FromXml(GameResourceManager gameResourceManager, XElement element)
         {
             var width = element.Attribute("width").Value;
             var color = element.Attribute("color").Value;

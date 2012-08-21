@@ -55,13 +55,13 @@ namespace Editor
             this.drawingContext.DrawImage(tile, destination.ToRect());
         }
 
-        public override void DrawString(DrawContext drawContext, Camera camera, string finalText, Vector finalVector, float finalZoomFactor, DrawingFont drawingFont, Color color)
+        public override void DrawString(DrawContext drawContext, Camera camera, string text, Vector vector, float zoomFactor, DrawingFont drawingFont, Color color)
         {
             var brush = new SolidColorBrush(color.ToWinColor());
 
             // Create the initial formatted text string.
             var formattedText = new FormattedText(
-                finalText,
+                text,
                 CultureInfo.GetCultureInfo("en-us"),
                 FlowDirection.LeftToRight,
                 new Typeface("Verdana"),
@@ -69,7 +69,7 @@ namespace Editor
                 brush);
 
             // Draw the formatted text string to the DrawingContext of the control.
-            this.drawingContext.DrawText(formattedText, finalVector.ToWinPoint());
+            this.drawingContext.DrawText(formattedText, vector.ToWinPoint());
         }
 
         public override void DrawLine(Vector vectorFrom, Vector vectorTo, float width, Color color)

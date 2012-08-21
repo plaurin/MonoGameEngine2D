@@ -29,25 +29,24 @@ namespace Editor
                 this.keys = keys;
             }
 
-            public override bool IsKeyDown(Keys key)
+            public override bool IsKeyDown(KeyboardKeys key)
             {
                 var winKey = ConvertToWinKey(key);
-
                 return this.keys.Contains(winKey);
             }
 
-            private static Key ConvertToWinKey(Keys key)
+            private static Key ConvertToWinKey(KeyboardKeys key)
             {
                 switch (key)
                 {
-                    case Keys.Left: return Key.Left;
-                    case Keys.Right: return Key.Right;
-                    case Keys.Up: return Key.Up;
-                    case Keys.Down: return Key.Down;
-                    case Keys.Q: return Key.Q;
-                    case Keys.W: return Key.W;
-                    case Keys.A: return Key.A;
-                    case Keys.Z: return Key.Z;
+                    case KeyboardKeys.Left: return Key.Left;
+                    case KeyboardKeys.Right: return Key.Right;
+                    case KeyboardKeys.Up: return Key.Up;
+                    case KeyboardKeys.Down: return Key.Down;
+                    case KeyboardKeys.Q: return Key.Q;
+                    case KeyboardKeys.W: return Key.W;
+                    case KeyboardKeys.A: return Key.A;
+                    case KeyboardKeys.Z: return Key.Z;
                     default: throw new NotSupportedException("Key not supported yet");
                 }
             }

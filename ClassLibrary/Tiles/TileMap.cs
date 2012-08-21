@@ -97,7 +97,7 @@ namespace ClassLibrary.Tiles
             }
         }
 
-        public static TileMap FromXml(Factory factory, GameResourceManager gameResourceManager, XElement mapElement)
+        public static TileMap FromXml(GameResourceManager gameResourceManager, XElement mapElement)
         {
             var name = mapElement.Attribute("name").Value;
             var mapSize = MathUtil.ParseSize(mapElement.Element("MapSize").Value);

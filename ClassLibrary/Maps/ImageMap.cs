@@ -37,7 +37,7 @@ namespace ClassLibrary.Maps
                 new XElement("Rectangle", this.Rectangle));
         }
 
-        public static ImageMap FromXml(Factory factory, GameResourceManager gameResourceManager, XElement mapElement)
+        public static ImageMap FromXml(GameResourceManager gameResourceManager, XElement mapElement)
         {
             var name = mapElement.Attribute("name").Value;
             var textureName = mapElement.Element("Texture").Value;

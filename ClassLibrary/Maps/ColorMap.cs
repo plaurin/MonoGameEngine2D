@@ -31,7 +31,7 @@ namespace ClassLibrary.Maps
                 new XElement("Color", this.Color));
         }
 
-        public static ColorMap FromXml(Factory factory, GameResourceManager gameResourceManager, XElement mapElement)
+        public static ColorMap FromXml(GameResourceManager gameResourceManager, XElement mapElement)
         {
             var name = mapElement.Attribute("name").Value;
             var colorValue = mapElement.Element("Color").Value;

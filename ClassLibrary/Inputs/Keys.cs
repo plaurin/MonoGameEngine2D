@@ -2,7 +2,7 @@ using System;
 
 namespace ClassLibrary.Inputs
 {
-    public enum Keys
+    public enum KeyboardKeys
     {
         None = 0,
         Back = 8,

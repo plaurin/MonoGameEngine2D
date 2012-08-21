@@ -4,6 +4,6 @@ namespace ClassLibrary.Inputs
 {
     public abstract class KeyboardStateBase
     {
-        public abstract bool IsKeyDown(Keys arg);
+        public abstract bool IsKeyDown(KeyboardKeys key);
     }
 }

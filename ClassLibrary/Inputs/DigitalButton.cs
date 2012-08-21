@@ -6,7 +6,7 @@ namespace ClassLibrary.Inputs
 {
     public class DigitalButton
     {
-        private readonly List<Keys> mappingKeys;
+        private readonly List<KeyboardKeys> mappingKeys;
 
         private Action<float> buttonDownAction;
         private Action<float> buttonUpAction;
@@ -15,10 +15,10 @@ namespace ClassLibrary.Inputs
 
         public DigitalButton()
         {
-            this.mappingKeys = new List<Keys>();
+            this.mappingKeys = new List<KeyboardKeys>();
         }
 
-        public DigitalButton Assign(Keys key)
+        public DigitalButton Assign(KeyboardKeys key)
         {
             this.mappingKeys.Add(key);
 
@@ -31,12 +31,12 @@ namespace ClassLibrary.Inputs
             this.buttonUpAction = upAction;
         }
 
-        public void Update(KeyboardStateBase keyboardState, float elapsedSeconds)
+        public void Update(KeyboardStateBase keyboardState, double elapsedSeconds)
         {
             this.isDown = this.mappingKeys.Any(keyboardState.IsKeyDown);
 
-            if (this.isDown && this.buttonDownAction != null) this.buttonDownAction.Invoke(elapsedSeconds);
-            if (!this.isDown && this.buttonUpAction != null) this.buttonUpAction.Invoke(elapsedSeconds);
+            if (this.isDown && this.buttonDownAction != null) this.buttonDownAction.Invoke((float)elapsedSeconds);
+            if (!this.isDown && this.buttonUpAction != null) this.buttonUpAction.Invoke((float)elapsedSeconds);
         }
     }
 }

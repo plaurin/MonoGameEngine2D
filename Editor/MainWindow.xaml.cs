@@ -25,8 +25,6 @@ namespace Editor
 
         private readonly GameResourceManager gameResourceManager;
 
-        private readonly Factory factory;
-
         private TextElement fpsElement;
 
         private TextElement viewPortElement;
@@ -69,7 +67,7 @@ namespace Editor
 
         private void Button1Click(object sender, RoutedEventArgs e)
         {
-            this.scene = Scene.LoadFrom(this.factory, this.gameResourceManager,
+            this.scene = Scene.LoadFrom(this.gameResourceManager,
                 @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
 
             this.viewport = new Viewport((int)this.Canvas.Width, (int)this.Canvas.Height);
@@ -164,14 +162,14 @@ namespace Editor
         private void InitInput()
         {
             this.inputConfiguration = new InputConfiguration();
-            this.inputConfiguration.AddDigitalButton("Left").Assign(Keys.Left).MapTo(elapse => this.camera.Move(-60 * elapse, 0));
-            this.inputConfiguration.AddDigitalButton("Right").Assign(Keys.Right).MapTo(elapse => this.camera.Move(60 * elapse, 0));
-            this.inputConfiguration.AddDigitalButton("Up").Assign(Keys.Up).MapTo(elapse => this.camera.Move(0, -60 * elapse));
-            this.inputConfiguration.AddDigitalButton("Down").Assign(Keys.Down).MapTo(elapse => this.camera.Move(0, 60 * elapse));
-            this.inputConfiguration.AddDigitalButton("ZoomIn").Assign(Keys.A).MapTo(elapse => this.camera.ZoomFactor *= 1.2f * (1 + elapse));
-            this.inputConfiguration.AddDigitalButton("ZoomOut").Assign(Keys.Z).MapTo(elapse => this.camera.ZoomFactor *= 1 / (1.2f * (1 + elapse)));
-            this.inputConfiguration.AddDigitalButton("RangeUp").Assign(Keys.W).MapTo(elapse => this.range *= 1.2f * (1 + elapse));
-            this.inputConfiguration.AddDigitalButton("RangeDown").Assign(Keys.Q).MapTo(elapse => this.range *= 1 / (1.2f * (1 + elapse)));
+            this.inputConfiguration.AddDigitalButton("Left").Assign(KeyboardKeys.Left).MapTo(elapse => this.camera.Move(-60 * elapse, 0));
+            this.inputConfiguration.AddDigitalButton("Right").Assign(KeyboardKeys.Right).MapTo(elapse => this.camera.Move(60 * elapse, 0));
+            this.inputConfiguration.AddDigitalButton("Up").Assign(KeyboardKeys.Up).MapTo(elapse => this.camera.Move(0, -60 * elapse));
+            this.inputConfiguration.AddDigitalButton("Down").Assign(KeyboardKeys.Down).MapTo(elapse => this.camera.Move(0, 60 * elapse));
+            this.inputConfiguration.AddDigitalButton("ZoomIn").Assign(KeyboardKeys.A).MapTo(elapse => this.camera.ZoomFactor *= 1.2f * (1 + elapse));
+            this.inputConfiguration.AddDigitalButton("ZoomOut").Assign(KeyboardKeys.Z).MapTo(elapse => this.camera.ZoomFactor *= 1 / (1.2f * (1 + elapse)));
+            this.inputConfiguration.AddDigitalButton("RangeUp").Assign(KeyboardKeys.W).MapTo(elapse => this.range *= 1.2f * (1 + elapse));
+            this.inputConfiguration.AddDigitalButton("RangeDown").Assign(KeyboardKeys.Q).MapTo(elapse => this.range *= 1 / (1.2f * (1 + elapse)));
         }
 
         private void WindowPreviewKey(object sender, System.Windows.Input.KeyEventArgs e)

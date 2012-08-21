@@ -51,6 +51,14 @@ namespace ClassLibrary
 
         #region Texture
 
+        //protected Dictionary<string, Texture> TextureDictionary
+        //{
+        //    get
+        //    {
+        //        return this.textureDictionary;
+        //    }
+        //}
+
         public void AddTexture(Texture texture)
         {
             this.textureDictionary.Add(texture.Name, texture);
@@ -71,14 +79,18 @@ namespace ClassLibrary
         {
             var texture = this.textureDictionary[assetName];
 
-            //if (texture == null)
-            //{
-            //    texture = this.contentManager.Load<Texture2D>(assetName);
-            //    texture.Name = assetName;
-            //    this.textureDictionary[assetName] = texture;
-            //}
+            if (texture == null)
+            {
+                texture = this.CreateTexture(assetName);
+                this.textureDictionary[assetName] = texture;
+            }
 
             return texture;
+        }
+
+        protected virtual Texture CreateTexture(string assetName)
+        {
+            throw new NotSupportedException();
         }
 
         #endregion
@@ -132,21 +144,26 @@ namespace ClassLibrary
             this.drawingFontDictionary.Add(assetName, null);
         }
 
-        public DrawingFont GetDrawingFont(string assetName)
+        public virtual DrawingFont GetDrawingFont(string assetName)
         {
             var drawingFont = this.drawingFontDictionary[assetName];
 
             if (drawingFont == null)
             {
-                drawingFont = new DrawingFont
-                {
-                    Name = assetName,
-                    //Font = this.contentManager.Load<SpriteFont>(assetName)
-                };
+                drawingFont = this.CreateDrawingFont(assetName);
                 this.drawingFontDictionary[assetName] = drawingFont;
             }
 
             return drawingFont;
+        }
+
+        protected virtual DrawingFont CreateDrawingFont(string assetName)
+        {
+            return new DrawingFont
+            {
+                Name = assetName,
+                //Font = this.contentManager.Load<SpriteFont>(assetName)
+            };
         }
 
         #endregion

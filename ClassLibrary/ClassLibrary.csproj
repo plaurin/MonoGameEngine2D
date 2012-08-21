@@ -62,7 +62,6 @@
     <Compile Include="Drawing\TextElement.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Factory.cs" />
     <Compile Include="GameResourceManager.cs" />
     <Compile Include="Hexes\HexDefinition.cs" />
     <Compile Include="Hexes\HexGrid.cs" />

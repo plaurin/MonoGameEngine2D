@@ -107,99 +107,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cameras\Camera.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Drawing\DrawingElementBase.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Drawing\DrawingFont.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Drawing\DrawingMap.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Drawing\LineElement.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Drawing\PolygonElement.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Drawing\TextElement.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GameResourceManager.cs" />
-    <Compile Include="Hexes\HexDefinition.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Hexes\HexGrid.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Hexes\HexGridElement.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Hexes\HexMap.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Hexes\HexSheet.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Hexes\NullHexDefinition.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Hexes\NullHexSheet.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Inputs\DigitalButton.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Inputs\InputConfiguration.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Maps\ColorMap.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Maps\ImageMap.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Maps\MapBase.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MathExtensions.cs" />
-    <Compile Include="MathUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="Scenes\Scene.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Sprites\Size.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Sprites\Sprite.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Sprites\SpriteMap.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Sprites\SpriteSheet.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Tiles\NullTileDefinition.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Tiles\NullTileSheet.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Tiles\TileDefinition.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Tiles\TileMap.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Tiles\TileSheet.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="XnaCamera.cs" />
+    <Compile Include="XnaDrawContext.cs" />
+    <Compile Include="XnaDrawingFont.cs" />
+    <Compile Include="XnaExtensions.cs" />
+    <Compile Include="XnaGameResourceManager.cs" />
+    <Compile Include="XnaInputContext.cs" />
+    <Compile Include="XnaTexture.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
@@ -212,6 +129,10 @@
     <Content Include="obj\x86\Debug\WindowsGame1.pdb" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj">
+      <Project>{6677C8EF-D627-4946-88EE-029503E258DF}</Project>
+      <Name>ClassLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GameEngineContent\GameEngineContent.contentproj">
       <Name>GameEngineContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
