@@ -8,26 +8,25 @@ using ClassLibrary.Hexes;
 using ClassLibrary.Inputs;
 using ClassLibrary.Maps;
 using ClassLibrary.Scenes;
+using ClassLibrary.Screens;
 using ClassLibrary.Sprites;
 using ClassLibrary.Tiles;
-
-using Microsoft.Xna.Framework;
-
-using WindowsGame1.EngineImplementation;
 
 using Point = ClassLibrary.Point;
 
 namespace WindowsGame1
 {
-    public class DefaultScreen
+    public class DefaultScreen : ScreenBase
     {
+        private Camera camera;
+
+        private GameResourceManager gameResourceManager;
+
         private Point player;
 
         private float range;
 
         private Scene scene;
-
-        private GameResourceManager gameResourceManager;
 
         private InputConfiguration inputConfiguration;
 
@@ -43,26 +42,75 @@ namespace WindowsGame1
 
         private TextElement rangeElement;
 
-        public void Initialize()
+        public override void Initialize(Camera theCamera)
         {
+            this.camera = theCamera;
             this.player = new ClassLibrary.Point(25, 25);
             this.range = 0.25f;
         }
 
-        public void LoadContent(Camera camera, GameResourceManager resourceManager)
+        public override InputConfiguration GetInputConfiguration()
+        {
+            this.inputConfiguration = new InputConfiguration();
+
+            this.inputConfiguration.AddDigitalButton("Left").Assign(KeyboardKeys.Left).MapTo(elapse => this.camera.Move(-60 * elapse, 0));
+            this.inputConfiguration.AddDigitalButton("Right").Assign(KeyboardKeys.Right).MapTo(elapse => this.camera.Move(60 * elapse, 0));
+            this.inputConfiguration.AddDigitalButton("Up").Assign(KeyboardKeys.Up).MapTo(elapse => this.camera.Move(0, -60 * elapse));
+            this.inputConfiguration.AddDigitalButton("Down").Assign(KeyboardKeys.Down).MapTo(elapse => this.camera.Move(0, 60 * elapse));
+            this.inputConfiguration.AddDigitalButton("ZoomIn").Assign(KeyboardKeys.A).MapTo(elapse => this.camera.ZoomFactor *= 1.2f * (1 + elapse));
+            this.inputConfiguration.AddDigitalButton("ZoomOut").Assign(KeyboardKeys.Z).MapTo(elapse => this.camera.ZoomFactor *= 1 / (1.2f * (1 + elapse)));
+            this.inputConfiguration.AddDigitalButton("RangeUp").Assign(KeyboardKeys.W).MapTo(elapse => this.range *= 1.2f * (1 + elapse));
+            this.inputConfiguration.AddDigitalButton("RangeDown").Assign(KeyboardKeys.Q).MapTo(elapse => this.range *= 1 / (1.2f * (1 + elapse)));
+
+            return this.inputConfiguration;
+        }
+
+        public override void LoadContent(GameResourceManager resourceManager)
         {
             this.gameResourceManager = resourceManager;
-
-            this.InitInput(camera);
 
             this.gameResourceManager.AddDrawingFont("SpriteFont1");
 
             this.gameResourceManager.AddTexture("LinkSheet");
             this.gameResourceManager.AddTexture("HexSheet");
             this.gameResourceManager.AddTexture("TileSheet");
+        }
 
-            this.CreateScene();
+        public override void Update(double elapsedSeconds, int fps)
+        {
+            var colorMap = this.scene.Maps.OfType<ColorMap>().FirstOrDefault();
+            if (colorMap != null)
+                colorMap.Color = new ClassLibrary.Color(255, 0, 0, (int)(255 * Math.Min(this.range, 1.0f)));
 
+            this.fpsElement.SetParameters(fps);
+            this.viewPortElement.SetParameters(this.camera.SceneViewPort);
+            this.translationElement.SetParameters(this.camera.SceneTranslationVector);
+            this.positionElement.SetParameters(this.camera.Position);
+            this.zoomingElement.SetParameters(this.camera.ZoomFactor);
+            this.rangeElement.SetParameters(this.range);
+        }
+
+        public override Scene GetScene()
+        {
+            this.scene = new Scene("scene1");
+
+            this.scene.AddMap(this.CreateImageMap());
+            this.scene.AddMap(this.CreateHexTest());
+            this.scene.AddMap(this.CreateTileTest());
+            this.scene.AddMap(this.CreateColorMap());
+            this.scene.AddMap(this.CreateHexMapTestDistance());
+            this.scene.AddMap(this.CreateSpriteTest());
+            this.scene.AddMap(this.CreateDiagnosticText());
+
+            this.scene.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
+
+            this.TestSceneSaveLoad();
+
+            return this.scene;
+        }
+
+        private void TestSceneSaveLoad()
+        {
             var scene2 = Scene.LoadFrom(this.gameResourceManager,
                 @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
 
@@ -79,55 +127,6 @@ namespace WindowsGame1
                     //Console.WriteLine(otherXml.ToString());
                 }
             }
-        }
-
-        public void Update(GameTime gameTime)
-        {
-            this.inputConfiguration.Update(new XnaInputContext(), gameTime.ElapsedGameTime.TotalSeconds);
-
-            var colorMap = this.scene.Maps.OfType<ColorMap>().FirstOrDefault();
-            if (colorMap != null)
-                colorMap.Color = new ClassLibrary.Color(255, 0, 0, (int)(255 * Math.Min(this.range, 1.0f)));
-        }
-
-        public void Draw(long fps, Camera camera, DrawContext drawContext)
-        {
-            this.fpsElement.SetParameters(fps);
-            this.viewPortElement.SetParameters(camera.SceneViewPort);
-            this.translationElement.SetParameters(camera.SceneTranslationVector);
-            this.positionElement.SetParameters(camera.Position);
-            this.zoomingElement.SetParameters(camera.ZoomFactor);
-            this.rangeElement.SetParameters(this.range);
-
-            this.scene.Draw(drawContext, camera);
-        }
-
-        private void InitInput(Camera camera)
-        {
-            this.inputConfiguration = new InputConfiguration();
-            this.inputConfiguration.AddDigitalButton("Left").Assign(KeyboardKeys.Left).MapTo(elapse => camera.Move(-60 * elapse, 0));
-            this.inputConfiguration.AddDigitalButton("Right").Assign(KeyboardKeys.Right).MapTo(elapse => camera.Move(60 * elapse, 0));
-            this.inputConfiguration.AddDigitalButton("Up").Assign(KeyboardKeys.Up).MapTo(elapse => camera.Move(0, -60 * elapse));
-            this.inputConfiguration.AddDigitalButton("Down").Assign(KeyboardKeys.Down).MapTo(elapse => camera.Move(0, 60 * elapse));
-            this.inputConfiguration.AddDigitalButton("ZoomIn").Assign(KeyboardKeys.A).MapTo(elapse => camera.ZoomFactor *= 1.2f * (1 + elapse));
-            this.inputConfiguration.AddDigitalButton("ZoomOut").Assign(KeyboardKeys.Z).MapTo(elapse => camera.ZoomFactor *= 1 / (1.2f * (1 + elapse)));
-            this.inputConfiguration.AddDigitalButton("RangeUp").Assign(KeyboardKeys.W).MapTo(elapse => this.range *= 1.2f * (1 + elapse));
-            this.inputConfiguration.AddDigitalButton("RangeDown").Assign(KeyboardKeys.Q).MapTo(elapse => this.range *= 1 / (1.2f * (1 + elapse)));
-        }
-
-        private void CreateScene()
-        {
-            this.scene = new Scene("scene1");
-
-            this.scene.AddMap(this.CreateImageMap());
-            this.scene.AddMap(this.CreateHexTest());
-            this.scene.AddMap(this.CreateTileTest());
-            this.scene.AddMap(this.CreateColorMap());
-            this.scene.AddMap(this.CreateHexMapTestDistance());
-            this.scene.AddMap(this.CreateSpriteTest());
-            this.scene.AddMap(this.CreateDiagnosticText());
-
-            this.scene.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
         }
 
         private DrawingMap CreateDiagnosticText()

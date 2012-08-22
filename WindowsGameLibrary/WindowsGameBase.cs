@@ -2,6 +2,9 @@ using System;
 
 using ClassLibrary;
 using ClassLibrary.Cameras;
+using ClassLibrary.Inputs;
+using ClassLibrary.Scenes;
+using ClassLibrary.Screens;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -11,29 +14,38 @@ using WindowsGame1.EngineImplementation;
 
 using Color = Microsoft.Xna.Framework.Color;
 
-namespace WindowsGame1
+namespace WindowsGameLibrary
 {
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Game
+    public class WindowsGameBase : Game
     {
         private readonly GraphicsDeviceManager graphics;
+
+        private readonly ScreenBase screen;
+
         private SpriteBatch spriteBatch;
+
         private Camera camera;
+
         private float elapseTime;
+
         private long frameCounter;
+
         private long fps;
 
         private GameResourceManager gameResourceManager;
 
-        private readonly DefaultScreen defaultScreen;
+        private InputConfiguration inputConfiguration;
 
-        public Game1()
+        private Scene scene;
+
+        public WindowsGameBase(ScreenBase initialScreen)
         {
             this.graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
-            this.defaultScreen = new DefaultScreen();
+            this.screen = initialScreen;
         }
 
         /// <summary>
@@ -46,7 +58,10 @@ namespace WindowsGame1
         {
             // TODO: Add your initialization logic here
             this.camera = XnaCamera.CreateCamera(this.graphics.GraphicsDevice.Viewport);
-            this.defaultScreen.Initialize();
+            
+            this.screen.Initialize(this.camera);
+
+            this.inputConfiguration = this.screen.GetInputConfiguration();
 
             base.Initialize();
         }
@@ -62,7 +77,9 @@ namespace WindowsGame1
             this.gameResourceManager = new XnaGameResourceManager(this.Content);
 
             // TODO: use this.Content to load your game content here
-            this.defaultScreen.LoadContent(this.camera, this.gameResourceManager);
+            this.screen.LoadContent(this.gameResourceManager);
+
+            this.scene = this.screen.GetScene();
         }
 
         /// <summary>
@@ -97,7 +114,9 @@ namespace WindowsGame1
                 this.Exit();
 
             // TODO: Add your update logic here
-            this.defaultScreen.Update(gameTime);
+            this.inputConfiguration.Update(new XnaInputContext(), gameTime.ElapsedGameTime.TotalSeconds);
+
+            this.screen.Update(gameTime.ElapsedGameTime.TotalSeconds, (int)this.fps);
 
             base.Update(gameTime);
         }
@@ -118,7 +137,7 @@ namespace WindowsGame1
 
             var drawContext = new XnaDrawContext(this.spriteBatch, blank, this.graphics.GraphicsDevice.Viewport);
 
-            this.defaultScreen.Draw(this.fps, this.camera, drawContext);
+            this.scene.Draw(drawContext, this.camera);
 
             this.DrawCamera(drawContext);
 

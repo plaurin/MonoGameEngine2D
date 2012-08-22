@@ -96,6 +96,7 @@
     <Compile Include="Scenes\Scene.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Screens\ScreenBase.cs" />
     <Compile Include="Size.cs" />
     <Compile Include="Sprites\Sprite.cs">
       <SubType>Code</SubType>

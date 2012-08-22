@@ -10,7 +10,7 @@ namespace WindowsGame1
         /// </summary>
         static void Main(string[] args)
         {
-            using (Game1 game = new Game1())
+            using (var game = new DemoGame())
             {
                 game.Run();
             }
@@ -18,4 +18,3 @@ namespace WindowsGame1
     }
 #endif
 }
-
