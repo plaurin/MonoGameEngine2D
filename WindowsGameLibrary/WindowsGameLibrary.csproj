@@ -99,7 +99,7 @@
     <Compile Include="EngineImplementation\XnaGameResourceManager.cs" />
     <Compile Include="EngineImplementation\XnaInputContext.cs" />
     <Compile Include="EngineImplementation\XnaTexture.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="WindowsGameBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
