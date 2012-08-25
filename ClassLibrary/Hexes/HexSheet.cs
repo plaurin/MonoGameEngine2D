@@ -3,24 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
+using ClassLibrary.Sheets;
+
 namespace ClassLibrary.Hexes
 {
-    public class HexSheet
+    public class HexSheet : SheetBase
     {
         private readonly Dictionary<string, HexDefinition> definitions;
 
         public HexSheet(Texture texture, string name, Size hexSize)
+            : base(texture, name)
         {
-            this.Name = name;
             this.HexSize = hexSize;
-            this.Texture = texture;
 
             this.definitions = new Dictionary<string, HexDefinition>();
         }
-
-        public string Name { get; set; }
-
-        public Texture Texture { get; private set; }
 
         public Size HexSize { get; set; }
 
@@ -35,7 +32,6 @@ namespace ClassLibrary.Hexes
         public HexDefinition CreateHexDefinition(string hexName, Point hexPosition)
         {
             var rectangle = new Rectangle(hexPosition.X, hexPosition.Y, this.HexSize.Width, this.HexSize.Height);
-            //var hexDefinition = this.CreateHexDefinition(this, hexName, rectangle);
             var hexDefinition = new HexDefinition(this, hexName, rectangle);
 
             this.Definitions.Add(hexName, hexDefinition);
@@ -47,22 +43,29 @@ namespace ClassLibrary.Hexes
             this.Definitions.Add(hexDefinition.Name, hexDefinition);
         }
 
-        //public abstract void Draw(DrawContext drawContext, HexDefinition hexDefinition, Rectangle destination);
         public virtual void Draw(DrawContext drawContext, HexDefinition hexDefinition, Rectangle destination)
         {
-            //spriteBatch.Draw(this.texture, destination, hexDefinition.Rectangle, Color.White);
             drawContext.DrawImage(this.Texture, hexDefinition.Rectangle, destination);
         }
 
-        public XElement GetXml()
+        protected override IEnumerable<object> GetXml()
         {
-            return new XElement("HexSheet",
-                new XAttribute("name", this.Name),
-                new XElement("Texture", this.Texture.Name),
-                new XElement("HexSize", this.HexSize),
-                new XElement("Definitions", this.Definitions.Select(d => d.Value.GetXml())));
+            yield return new XElement("HexSize", this.HexSize);
+            yield return new XElement("Definitions", this.Definitions.Select(d => d.Value.GetXml()));
         }
 
-        //protected abstract HexDefinition CreateHexDefinition(HexSheet hexSheet, string hexName, Rectangle rectangle);
+        public static SheetBase FromXml(XElement sheetElement, string name, Texture texture)
+        {
+            var hexSize = MathUtil.ParseSize(sheetElement.Element("HexSize").Value);
+            var hexSheet = new HexSheet(texture, name, hexSize);
+
+            foreach (var definitionElement in sheetElement.Elements("Definitions").Elements())
+            {
+                var hexDefinition = HexDefinition.FromXml(definitionElement, hexSheet);
+                hexSheet.AddHexDefinition(hexDefinition);
+            }
+
+            return hexSheet;
+        }
     }
 }

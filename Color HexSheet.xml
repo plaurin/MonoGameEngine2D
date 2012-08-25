@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HexSheet name="Hexes">
+  <Texture>HexSheet</Texture>
+  <HexSize>{Width:68 Height:60}</HexSize>
+  <Definitions>
+    <HexDefinition name="red" rectangle="{X:55 Y:30 Width:68 Height:60}" />
+    <HexDefinition name="yellow" rectangle="{X:163 Y:330 Width:68 Height:60}" />
+    <HexDefinition name="purple" rectangle="{X:488 Y:330 Width:68 Height:60}" />
+  </Definitions>
+</HexSheet>

@@ -34,5 +34,13 @@ namespace ClassLibrary.Hexes
                 new XAttribute("name", this.Name),
                 new XAttribute("rectangle", this.Rectangle));
         }
+
+        public static HexDefinition FromXml(XElement definitionElement, HexSheet hexSheet)
+        {
+            var name = definitionElement.Attribute("name").Value;
+            var rectangle = MathUtil.ParseRectangle(definitionElement.Attribute("rectangle").Value);
+
+            return new HexDefinition(hexSheet, name, rectangle);
+        }
     }
 }

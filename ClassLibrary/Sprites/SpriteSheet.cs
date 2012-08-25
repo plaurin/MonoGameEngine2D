@@ -4,24 +4,19 @@ using System.Linq;
 using System.Xml.Linq;
 
 using ClassLibrary.Cameras;
+using ClassLibrary.Sheets;
 
 namespace ClassLibrary.Sprites
 {
-    public class SpriteSheet
+    public class SpriteSheet : SheetBase
     {
         private readonly IDictionary<string, Rectangle> definitions;
 
         public SpriteSheet(Texture texture, string name)
+            : base(texture, name)
         {
-            this.Texture = texture;
-            this.Name = name;
-
             this.definitions = new Dictionary<string, Rectangle>();
         }
-
-        public string Name { get; private set; }
-
-        public Texture Texture { get; private set; }
 
         public void CreateSpriteDefinition(string spriteName, Rectangle spriteRectangle)
         {
@@ -36,21 +31,28 @@ namespace ClassLibrary.Sprites
                 .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
 
             drawContext.DrawImage(this.Texture, source, destination);
-            //this.DoDraw(drawContext, camera, source, destination);
-            //spriteBatch.Draw(this.texture, destination, source, Color.White);
         }
 
-        public XElement GetXml()
+        protected override IEnumerable<object> GetXml()
         {
-            return new XElement("SpriteSheet",
-                new XAttribute("name", this.Name),
-                new XElement("Texture", this.Texture.Name),
-                new XElement("Definitions", this.definitions.Select(d => 
-                    new XElement("Definition",
-                        new XAttribute("name", d.Key),
-                        new XAttribute("rectangle", d.Value)))));
+            yield return new XElement("Definitions", this.definitions.Select(d => 
+                new XElement("Definition",
+                    new XAttribute("name", d.Key),
+                    new XAttribute("rectangle", d.Value))));
         }
 
-        //protected abstract void DoDraw(DrawContext drawContext, Camera camera, Rectangle source, Rectangle destination);
+        public static SpriteSheet FromXml(XElement sheetElement, string name, Texture texture)
+        {
+            var spriteSheet = new SpriteSheet(texture, name);
+
+            foreach (var definitionElement in sheetElement.Elements("Definitions").Elements())
+            {
+                spriteSheet.CreateSpriteDefinition(
+                    definitionElement.Attribute("name").Value,
+                    MathUtil.ParseRectangle(definitionElement.Attribute("rectangle").Value));
+            }
+
+            return spriteSheet;
+        }
     }
 }

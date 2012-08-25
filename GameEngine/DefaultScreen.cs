@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Linq;
 
 using ClassLibrary;
@@ -9,6 +10,7 @@ using ClassLibrary.Inputs;
 using ClassLibrary.Maps;
 using ClassLibrary.Scenes;
 using ClassLibrary.Screens;
+using ClassLibrary.Sheets;
 using ClassLibrary.Sprites;
 using ClassLibrary.Tiles;
 
@@ -105,6 +107,7 @@ namespace WindowsGame1
             this.scene.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
 
             this.TestSceneSaveLoad();
+            this.TestSheetsSaveLoad();
 
             return this.scene;
         }
@@ -123,10 +126,33 @@ namespace WindowsGame1
 
                 if (myXml.ToString() != otherXml.ToString())
                 {
-                    //Console.WriteLine(myXml.ToString());
-                    //Console.WriteLine(otherXml.ToString());
+                    //Debugger.Break();
                 }
             }
+        }
+
+        private void TestSheetsSaveLoad()
+        {
+            var otherHexSheet = SheetBase.LoadFrom<HexSheet>(
+                this.gameResourceManager, @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Color HexSheet.xml");
+
+            var myHexSheetXml = this.gameResourceManager.GetHexSheet(otherHexSheet.Name).ToXml();
+            var otherHexSheetXml = otherHexSheet.ToXml();
+            if (myHexSheetXml.ToString() != otherHexSheetXml.ToString()) Debugger.Break();
+
+            var otherTileSheet = SheetBase.LoadFrom<TileSheet>(
+                this.gameResourceManager, @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Color TileSheet.xml");
+
+            var myTileSheetXml = this.gameResourceManager.GetTileSheet(otherTileSheet.Name).ToXml();
+            var otherTileSheetXml = otherTileSheet.ToXml();
+            if (myTileSheetXml.ToString() != otherTileSheetXml.ToString()) Debugger.Break();
+
+            var otherSpriteSheet = SheetBase.LoadFrom<SpriteSheet>(
+                this.gameResourceManager, @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Link SpriteSheet.xml");
+
+            var mySpriteSheetXml = this.gameResourceManager.GetSpriteSheet(otherSpriteSheet.Name).ToXml();
+            var otherSpriteSheetXml = otherSpriteSheet.ToXml();
+            if (mySpriteSheetXml.ToString() != otherSpriteSheetXml.ToString()) Debugger.Break();
         }
 
         private DrawingMap CreateDiagnosticText()
@@ -165,6 +191,8 @@ namespace WindowsGame1
             var yellow = sheet.CreateHexDefinition("yellow", new ClassLibrary.Point(163, 330));
             var purple = sheet.CreateHexDefinition("purple", new ClassLibrary.Point(488, 330));
 
+            sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Color HexSheet.xml");
+
             this.gameResourceManager.AddHexSheet(sheet);
 
             var map = new HexMap("Hex", new Size(4, 4), new Size(60, 52));
@@ -190,6 +218,8 @@ namespace WindowsGame1
             sheet.CreateTileDefinition("orange", new ClassLibrary.Point(16, 16));
             sheet.CreateTileDefinition("blue", new ClassLibrary.Point(32, 16));
 
+            sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Color TileSheet.xml");
+
             this.gameResourceManager.AddTileSheet(sheet);
 
             var tileMap = new TileMap("Tiles", new Size(32, 32), new Size(16, 16));
@@ -209,6 +239,8 @@ namespace WindowsGame1
             var sheet = new SpriteSheet(texture, "Link");
             sheet.CreateSpriteDefinition("Link01", new ClassLibrary.Rectangle(3, 3, 16, 22));
             sheet.CreateSpriteDefinition("Sleep01", new ClassLibrary.Rectangle(45, 219, 32, 40));
+
+            sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Link SpriteSheet.xml");
 
             var link01 = new Sprite(sheet, "Link01") { Position = this.player };
             var sleep01 = new Sprite(sheet, "Sleep01") { Position = new ClassLibrary.Point(125, 25) };

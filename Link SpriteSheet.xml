@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpriteSheet name="Link">
+  <Texture>LinkSheet</Texture>
+  <Definitions>
+    <Definition name="Link01" rectangle="{X:3 Y:3 Width:16 Height:22}" />
+    <Definition name="Sleep01" rectangle="{X:45 Y:219 Width:32 Height:40}" />
+  </Definitions>
+</SpriteSheet>

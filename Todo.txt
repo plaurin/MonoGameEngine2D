@@ -9,11 +9,11 @@ Features
  P3 - CompositeSprite
     - CompositeSprite stencil to help map's designing
 * HexMap
- - Rethink HexMap more as a SpriteMap but with Hex grid system
- - Variable hexSize?
+ P1 - Rethink HexMap more as a SpriteMap but with Hex grid system
+      -> Variable hexSize?
 * Map (Layer)
+ - Engine to offer a diagnostic map (DrawingMap)
 * Scene
- P1 - Saving and Loading Sheets
  P2 - UnitTesting Saving and Loading!
 * Screen
  P2 - Navigation
@@ -28,11 +28,10 @@ Features
 Bugs
 ====
 ! WPF, DrawString Zoom and Font
+! Scene saving point/vector/rectangle precision
 
 Refactorings
 ============
-P2 - Move engine into a portable? class library (out of Windows Game)
-P1 - Rendering should be in separated classes
 P1 - Load/Save should be in separated classes
 
 Quality

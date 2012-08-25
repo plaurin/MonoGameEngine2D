@@ -27,16 +27,20 @@ namespace ClassLibrary.Tiles
         {
             this.Sheet.Draw(drawContext, this, destination);
         }
-        //public virtual void Draw(DrawContext drawContext, Rectangle destination)
-        //{
-        //    //this.Sheet.Draw(spriteBatch, this, destination);
-        //}
 
         public XElement GetXml()
         {
             return new XElement("TileDefinition",
                 new XAttribute("name", this.Name),
                 new XAttribute("rectangle", this.Rectangle));
+        }
+
+        public static TileDefinition FromXml(XElement definitionElement, TileSheet tileSheet)
+        {
+            var name = definitionElement.Attribute("name").Value;
+            var rectangle = MathUtil.ParseRectangle(definitionElement.Attribute("rectangle").Value);
+
+            return new TileDefinition(tileSheet, name, rectangle);
         }
     }
 }
