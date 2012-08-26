@@ -6,7 +6,8 @@
   </ImageMap>
   <HexMap name="Hex" parallaxScrollingVector="{X:4 Y:0.5}" cameraMode="Follow">
     <MapSize>{Width:4 Height:4}</MapSize>
-    <HexSize>{Width:60 Height:52}</HexSize>
+    <HexSize>{Width:68 Height:60}</HexSize>
+    <EdgeLength>42</EdgeLength>
     <HexDefinitionReferences>
       <Reference id="0" sheetName="null" name="null" />
       <Reference id="1" sheetName="Hexes" name="red" />

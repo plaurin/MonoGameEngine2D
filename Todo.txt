@@ -9,16 +9,15 @@ Features
  P3 - CompositeSprite
     - CompositeSprite stencil to help map's designing
 * HexMap
- P1 - Rethink HexMap more as a SpriteMap but with Hex grid system
-      -> Variable hexSize?
 * Map (Layer)
- - Engine to offer a diagnostic map (DrawingMap)
+ P1 - Engine to offer a diagnostic map (DrawingMap)
 * Scene
  P2 - UnitTesting Saving and Loading!
 * Screen
- P2 - Navigation
+ P1 - Navigation
 * Other than Gfx
- P3 - Input configuration (mouse, gamepad)
+ P2 - Input configuration (mouse)
+ - Input configuration (gamepad)
  - Audio?
  P4 - Entities
   - Link to sprites/tiles
@@ -32,7 +31,7 @@ Bugs
 
 Refactorings
 ============
-P1 - Load/Save should be in separated classes
+P2 - Load/Save should be in separated classes
 
 Quality
 =======

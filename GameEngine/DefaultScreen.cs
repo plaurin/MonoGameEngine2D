@@ -195,7 +195,7 @@ namespace WindowsGame1
 
             this.gameResourceManager.AddHexSheet(sheet);
 
-            var map = new HexMap("Hex", new Size(4, 4), new Size(60, 52));
+            var map = new HexMap("Hex", new Size(4, 4), new Size(68, 60), 42);
             map[2, 0] = purple;
             map[2, 1] = purple;
             map[2, 2] = yellow;

@@ -11,15 +11,15 @@ namespace ClassLibrary.Hexes
     public class HexMap : MapBase
     {
         private readonly HexDefinition[,] map;
-        private readonly HexGrid grid;
 
-        public HexMap(string name, Size mapSize, Size hexSize, HexDefinition defaultHexDefinition = null)
+        private readonly int topEdgeLength;
+
+        public HexMap(string name, Size mapSize, Size hexSize, int topEdgeLength, HexDefinition defaultHexDefinition = null)
             : base(name)
         {
             this.MapSize = mapSize;
             this.HexSize = hexSize;
-
-            this.grid = HexGrid.CreateHexMap(hexSize.Width / 2, mapSize.Width);
+            this.topEdgeLength = topEdgeLength;
 
             this.map = new HexDefinition[mapSize.Width, mapSize.Height];
             if (defaultHexDefinition == null)
@@ -47,9 +47,15 @@ namespace ClassLibrary.Hexes
             for (var i = 0; i < this.MapSize.Width; i++)
                 for (var j = 0; j < this.MapSize.Height; j++)
                 {
-                    var gridElement = this.grid[i, j];
+                    var hexDistance = this.HexSize.Width - (this.HexSize.Width - this.topEdgeLength) / 2;
+                    var halfHeight = this.HexSize.Height / 2;
 
-                    var destination = gridElement.Rectangle
+                    var rectangle = new Rectangle(
+                        i * hexDistance,
+                        j * this.HexSize.Height + (i % 2 == 1 ? halfHeight : 0), 
+                        this.HexSize.Width, this.HexSize.Height);
+
+                    var destination = rectangle
                         .Scale(camera.ZoomFactor)
                         .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
 
@@ -65,6 +71,7 @@ namespace ClassLibrary.Hexes
                 this.BaseToXml(),
                 new XElement("MapSize", this.MapSize),
                 new XElement("HexSize", this.HexSize),
+                new XElement("EdgeLength", this.topEdgeLength),
                 new XElement("HexDefinitionReferences", hexReferences.Select(x =>
                     new XElement("Reference",
                         new XAttribute("id", x.Id),
@@ -106,10 +113,11 @@ namespace ClassLibrary.Hexes
             var name = mapElement.Attribute("name").Value;
             var mapSize = MathUtil.ParseSize(mapElement.Element("MapSize").Value);
             var hexSize = MathUtil.ParseSize(mapElement.Element("HexSize").Value);
+            var edgeLength = int.Parse(mapElement.Element("EdgeLength").Value);
             var hexReferences = GetHexReferences(gameResourceManager, mapElement.Element("HexDefinitionReferences")).ToList();
             var hexes = GetRowsFromXml(mapElement.Element("Hexes"));
 
-            var map = new HexMap(name, mapSize, hexSize);
+            var map = new HexMap(name, mapSize, hexSize, edgeLength);
             map.BaseFromXml(mapElement);
 
             int x = 0;
