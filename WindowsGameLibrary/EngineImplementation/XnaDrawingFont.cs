@@ -5,7 +5,7 @@ using ClassLibrary.Drawing;
 
 using Microsoft.Xna.Framework.Graphics;
 
-namespace WindowsGame1.EngineImplementation
+namespace WindowsGameLibrary.EngineImplementation
 {
     public class XnaDrawingFont : DrawingFont
     {

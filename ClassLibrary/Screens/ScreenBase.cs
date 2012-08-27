@@ -8,21 +8,14 @@ namespace ClassLibrary.Screens
 {
     public abstract class ScreenBase
     {
-        public virtual void Initialize(Camera camera)
-        {
-        }
+        public abstract void Initialize(Camera camera);
 
         public abstract InputConfiguration GetInputConfiguration();
 
-        public virtual void LoadContent(GameResourceManager resourceManager)
-        {
-        }
+        public abstract void LoadContent(GameResourceManager resourceManager);
 
-        public virtual void Update(double elapsedSeconds, int fps)
-        {
-        }
+        public abstract void Update(double elapsedSeconds, int fps);
 
         public abstract Scene GetScene();
-
     }
 }

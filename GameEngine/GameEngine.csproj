@@ -107,7 +107,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DefaultScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="DemoGame.cs" />
@@ -127,8 +126,12 @@
       <Project>{6677C8EF-D627-4946-88EE-029503E258DF}</Project>
       <Name>ClassLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GameEngineContent\GameEngineContent.contentproj">
-      <Name>GameEngineContent %28Content%29</Name>
+    <ProjectReference Include="..\DemoGameDomain\DemoGameDomain.csproj">
+      <Project>{D22765F8-9C64-4194-8ED4-55DE12E7B3D7}</Project>
+      <Name>DemoGameDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GameEngineContent\DemoGameContent.contentproj">
+      <Name>DemoGameContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
       <Project>{495B932E-B8A9-4459-AA44-298C24098CBF}</Project>
     </ProjectReference>

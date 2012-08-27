@@ -2,9 +2,9 @@ using System;
 
 using ClassLibrary;
 
-namespace Editor
+namespace WPFGameLibrary.EngineImplementation
 {
-    public static class WinExtensions
+    public static class WpfExtensions
     {
         public static System.Windows.Media.Color ToWinColor(this Color color)
         {

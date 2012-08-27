@@ -6,15 +6,15 @@ using System.Windows.Media.Imaging;
 
 using ClassLibrary;
 
-namespace Editor
+namespace WPFGameLibrary.EngineImplementation
 {
-    public class WinTexture : Texture
+    public class WpfTexture : Texture
     {
+        private readonly List<Tuple<Rectangle, BitmapSource>> tiles;
+
         private BitmapSource bitmapSource;
 
-        private List<Tuple<Rectangle, BitmapSource>> tiles;
-
-        public WinTexture(string name, string filePath)
+        public WpfTexture(string name, string filePath)
         {
             this.FilePath = filePath;
             this.Name = name;

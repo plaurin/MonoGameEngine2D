@@ -77,9 +77,9 @@ namespace ClassLibrary
 
         public Texture GetTexture(string assetName)
         {
-            var texture = this.textureDictionary[assetName];
+            Texture texture;
 
-            if (texture == null)
+            if (!this.textureDictionary.TryGetValue(assetName, out texture))
             {
                 texture = this.CreateTexture(assetName);
                 this.textureDictionary[assetName] = texture;

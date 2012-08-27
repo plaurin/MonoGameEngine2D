@@ -1,6 +1,6 @@
 using System;
 
-using ClassLibrary;
+using WPFGameLibrary.EngineImplementation;
 
 namespace Editor
 {
@@ -8,9 +8,9 @@ namespace Editor
     {
         static ServiceLocator()
         {
-            GameResourceManager = new GameResourceManager();
+            GameResourceManager = new WpfGameResourceManager();
         }
 
-        public static GameResourceManager GameResourceManager { get; private set; }
+        public static WpfGameResourceManager GameResourceManager { get; private set; }
     }
 }

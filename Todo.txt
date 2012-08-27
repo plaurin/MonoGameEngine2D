@@ -10,7 +10,7 @@ Features
     - CompositeSprite stencil to help map's designing
 * HexMap
 * Map (Layer)
- P1 - Engine to offer a diagnostic map (DrawingMap)
+ P1 - Engine to offer a diagnostic map (DrawingMap) et Camera map
 * Scene
  P2 - UnitTesting Saving and Loading!
 * Screen

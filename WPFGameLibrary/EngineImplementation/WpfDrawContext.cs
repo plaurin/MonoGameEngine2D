@@ -10,9 +10,9 @@ using ClassLibrary.Drawing;
 using Color = ClassLibrary.Color;
 using Vector = ClassLibrary.Vector;
 
-namespace Editor
+namespace WPFGameLibrary.EngineImplementation
 {
-    public class WinDrawContext : DrawContext
+    public class WpfDrawContext : DrawContext
     {
         private readonly Viewport viewport;
 
@@ -20,7 +20,7 @@ namespace Editor
 
         private readonly DrawingContext drawingContext;
 
-        public WinDrawContext(Viewport viewport)
+        public WpfDrawContext(Viewport viewport)
         {
             this.viewport = viewport;
             this.drawingVisual = new DrawingVisual();
@@ -41,14 +41,14 @@ namespace Editor
 
         public override void DrawImage(Texture texture, Rectangle destination)
         {
-            var winTexture = (WinTexture)texture;
+            var winTexture = (WpfTexture)texture;
 
             this.drawingContext.DrawImage(winTexture.BitmapSource, destination.ToRect());
         }
 
         public override void DrawImage(Texture texture, Rectangle source, Rectangle destination)
         {
-            var winTexture = (WinTexture)texture;
+            var winTexture = (WpfTexture)texture;
 
             var tile = winTexture.GetTile(source);
 

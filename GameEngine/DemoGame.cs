@@ -1,3 +1,5 @@
+using DemoGameDomain;
+
 using WindowsGameLibrary;
 
 namespace WindowsGame1

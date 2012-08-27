@@ -14,9 +14,7 @@ using ClassLibrary.Sheets;
 using ClassLibrary.Sprites;
 using ClassLibrary.Tiles;
 
-using Point = ClassLibrary.Point;
-
-namespace WindowsGame1
+namespace DemoGameDomain
 {
     public class DefaultScreen : ScreenBase
     {
@@ -73,9 +71,9 @@ namespace WindowsGame1
 
             this.gameResourceManager.AddDrawingFont("SpriteFont1");
 
-            this.gameResourceManager.AddTexture("LinkSheet");
-            this.gameResourceManager.AddTexture("HexSheet");
-            this.gameResourceManager.AddTexture("TileSheet");
+            //this.gameResourceManager.AddTexture("LinkSheet");
+            //this.gameResourceManager.AddTexture("HexSheet");
+            //this.gameResourceManager.AddTexture("TileSheet");
         }
 
         public override void Update(double elapsedSeconds, int fps)

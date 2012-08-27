@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Color = Microsoft.Xna.Framework.Color;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
-namespace WindowsGame1.EngineImplementation
+namespace WindowsGameLibrary.EngineImplementation
 {
     public static class XnaExtensions
     {

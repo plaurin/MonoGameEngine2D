@@ -4,13 +4,13 @@ using System.Windows.Input;
 
 using ClassLibrary.Inputs;
 
-namespace Editor
+namespace WPFGameLibrary.EngineImplementation
 {
-    public class WinInputContext : InputContext
+    public class WpfInputContext : InputContext
     {
         private readonly HashSet<Key> keys;
 
-        public WinInputContext(HashSet<Key> keys)
+        public WpfInputContext(HashSet<Key> keys)
         {
             this.keys = keys;
         }

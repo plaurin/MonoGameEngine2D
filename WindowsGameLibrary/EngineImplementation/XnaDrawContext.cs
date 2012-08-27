@@ -11,7 +11,7 @@ using Color = Microsoft.Xna.Framework.Color;
 using Texture = ClassLibrary.Texture;
 using Viewport = Microsoft.Xna.Framework.Graphics.Viewport;
 
-namespace WindowsGame1.EngineImplementation
+namespace WindowsGameLibrary.EngineImplementation
 {
     public class XnaDrawContext : DrawContext
     {

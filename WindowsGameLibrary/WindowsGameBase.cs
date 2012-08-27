@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-using WindowsGame1.EngineImplementation;
+using WindowsGameLibrary.EngineImplementation;
 
 using Color = Microsoft.Xna.Framework.Color;
 
@@ -19,7 +19,7 @@ namespace WindowsGameLibrary
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class WindowsGameBase : Game
+    public abstract class WindowsGameBase : Game
     {
         private readonly GraphicsDeviceManager graphics;
 
@@ -41,7 +41,7 @@ namespace WindowsGameLibrary
 
         private Scene scene;
 
-        public WindowsGameBase(ScreenBase initialScreen)
+        protected WindowsGameBase(ScreenBase initialScreen)
         {
             this.graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
