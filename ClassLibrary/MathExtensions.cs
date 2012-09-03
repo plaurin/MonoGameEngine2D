@@ -70,6 +70,11 @@ namespace ClassLibrary
             return new Point((int)(point.X * scalingVector.X), (int)(point.Y * scalingVector.Y));
         }
 
+        public static Point Scale(this Point point, float zoomFactor)
+        {
+            return new Point((int)(point.X * zoomFactor), (int)(point.Y * zoomFactor));
+        }
+
         public static Point ToPoint(this Vector vector)
         {
             return new Point((int)vector.X, (int)vector.Y);

@@ -48,5 +48,15 @@ namespace Editor
             if (this.wpfGame != null)
                 this.wpfGame.WindowPreviewKey(sender, e);
         }
+
+        private void WindowPreviewMouseButton(object sender, MouseButtonEventArgs e)
+        {
+            if (this.wpfGame != null) this.wpfGame.WindowPreviewMouseButton(sender, e);
+        }
+
+        private void WindowPreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            if (this.wpfGame != null) this.wpfGame.WindowPreviewMouseMove(sender, e, this.Canvas);
+        }
     }
 }

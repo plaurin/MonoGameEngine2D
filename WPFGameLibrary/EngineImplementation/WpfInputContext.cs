@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 
+using ClassLibrary;
+using ClassLibrary.Cameras;
 using ClassLibrary.Inputs;
 
 namespace WPFGameLibrary.EngineImplementation
@@ -10,14 +12,25 @@ namespace WPFGameLibrary.EngineImplementation
     {
         private readonly HashSet<Key> keys;
 
-        public WpfInputContext(HashSet<Key> keys)
+        private readonly Dictionary<MouseButton, MouseButtonState> buttons;
+
+        private readonly Point mousePosition;
+
+        public WpfInputContext(HashSet<Key> keys, Dictionary<MouseButton, MouseButtonState> buttons, Point mousePosition)
         {
             this.keys = keys;
+            this.buttons = buttons;
+            this.mousePosition = mousePosition;
         }
 
         public override KeyboardStateBase KeyboardGetState()
         {
             return new WinKeyboardState(this.keys);
+        }
+
+        public override MouseStateBase MouseGetState()
+        {
+            return new WinMouseState(this.buttons, this.mousePosition);
         }
 
         public class WinKeyboardState : KeyboardStateBase
@@ -48,6 +61,42 @@ namespace WPFGameLibrary.EngineImplementation
                     case KeyboardKeys.A: return Key.A;
                     case KeyboardKeys.Z: return Key.Z;
                     default: throw new NotSupportedException("Key not supported yet");
+                }
+            }
+        }
+
+        public class WinMouseState : MouseStateBase
+        {
+            private readonly Dictionary<MouseButton, MouseButtonState> buttons;
+
+            private readonly Point mousePosition;
+
+            public WinMouseState(Dictionary<MouseButton, MouseButtonState> buttons, Point mousePosition)
+            {
+                this.buttons = buttons;
+                this.mousePosition = mousePosition;
+            }
+
+            public override bool IsButtonDown(MouseButtons button)
+            {
+                switch (button)
+                {
+                    case MouseButtons.Left:
+                        return this.buttons[MouseButton.Left] == MouseButtonState.Pressed;
+                    case MouseButtons.Middle:
+                        return this.buttons[MouseButton.Middle] == MouseButtonState.Pressed;
+                    case MouseButtons.Right:
+                        return this.buttons[MouseButton.Right] == MouseButtonState.Pressed;
+                    default:
+                        throw new NotSupportedException("Button not supported yet");
+                }
+            }
+
+            public override Point Position
+            {
+                get
+                {
+                    return this.mousePosition;
                 }
             }
         }

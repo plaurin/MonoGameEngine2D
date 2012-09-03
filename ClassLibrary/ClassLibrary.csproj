@@ -79,6 +79,9 @@
     <Compile Include="Inputs\InputContext.cs" />
     <Compile Include="Inputs\KeyboardStateBase.cs" />
     <Compile Include="Inputs\Keys.cs" />
+    <Compile Include="Inputs\MouseButtons.cs" />
+    <Compile Include="Inputs\MouseStateBase.cs" />
+    <Compile Include="Inputs\MouseTracking.cs" />
     <Compile Include="Maps\ColorMap.cs">
       <SubType>Code</SubType>
     </Compile>

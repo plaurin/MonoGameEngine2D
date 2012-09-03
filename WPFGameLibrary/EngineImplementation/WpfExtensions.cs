@@ -20,5 +20,10 @@ namespace WPFGameLibrary.EngineImplementation
         {
             return new System.Windows.Point((int)vector.X, (int)vector.Y);
         }
+
+        public static Point ToLibPoint(this System.Windows.Point point)
+        {
+            return new Point((int)point.X, (int)point.Y);
+        }
     }
 }

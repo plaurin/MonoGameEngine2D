@@ -7,5 +7,7 @@ namespace ClassLibrary.Inputs
         public object Keyboard { get; set; }
 
         public abstract KeyboardStateBase KeyboardGetState();
+
+        public abstract MouseStateBase MouseGetState();
     }
 }

@@ -28,6 +28,8 @@ namespace DemoGameDomain
 
         private Scene scene;
 
+        private MouseStateBase mouseState;
+
         private InputConfiguration inputConfiguration;
 
         private TextElement fpsElement;
@@ -41,6 +43,11 @@ namespace DemoGameDomain
         private TextElement zoomingElement;
 
         private TextElement rangeElement;
+
+        private TextElement mouseElement;
+        private TextElement mouseElement2;
+
+        private DrawingMap mouseMap;
 
         public override void Initialize(Camera theCamera)
         {
@@ -57,10 +64,19 @@ namespace DemoGameDomain
             this.inputConfiguration.AddDigitalButton("Right").Assign(KeyboardKeys.Right).MapTo(elapse => this.camera.Move(60 * elapse, 0));
             this.inputConfiguration.AddDigitalButton("Up").Assign(KeyboardKeys.Up).MapTo(elapse => this.camera.Move(0, -60 * elapse));
             this.inputConfiguration.AddDigitalButton("Down").Assign(KeyboardKeys.Down).MapTo(elapse => this.camera.Move(0, 60 * elapse));
-            this.inputConfiguration.AddDigitalButton("ZoomIn").Assign(KeyboardKeys.A).MapTo(elapse => this.camera.ZoomFactor *= 1.2f * (1 + elapse));
-            this.inputConfiguration.AddDigitalButton("ZoomOut").Assign(KeyboardKeys.Z).MapTo(elapse => this.camera.ZoomFactor *= 1 / (1.2f * (1 + elapse)));
+            
+            this.inputConfiguration.AddDigitalButton("ZoomIn")
+                .Assign(KeyboardKeys.A).Assign(MouseButtons.Left)
+                .MapTo(elapse => this.camera.ZoomFactor *= 1.2f * (1 + elapse));
+            this.inputConfiguration.AddDigitalButton("ZoomOut")
+                .Assign(KeyboardKeys.Z).Assign(MouseButtons.Right)
+                .MapTo(elapse => this.camera.ZoomFactor *= 1 / (1.2f * (1 + elapse)));
+
             this.inputConfiguration.AddDigitalButton("RangeUp").Assign(KeyboardKeys.W).MapTo(elapse => this.range *= 1.2f * (1 + elapse));
             this.inputConfiguration.AddDigitalButton("RangeDown").Assign(KeyboardKeys.Q).MapTo(elapse => this.range *= 1 / (1.2f * (1 + elapse)));
+
+            //this.inputConfiguration.AddDigitalButton("Selection").Assign(MouseButtons.Left).MapTo(elapse => this.range *= 1 / (1.2f * (1 + elapse)));
+            this.inputConfiguration.AddMouseTracking(this.camera).OnMove((mt, e) => this.mouseState = mt);
 
             return this.inputConfiguration;
         }
@@ -70,10 +86,6 @@ namespace DemoGameDomain
             this.gameResourceManager = resourceManager;
 
             this.gameResourceManager.AddDrawingFont("SpriteFont1");
-
-            //this.gameResourceManager.AddTexture("LinkSheet");
-            //this.gameResourceManager.AddTexture("HexSheet");
-            //this.gameResourceManager.AddTexture("TileSheet");
         }
 
         public override void Update(double elapsedSeconds, int fps)
@@ -88,6 +100,15 @@ namespace DemoGameDomain
             this.positionElement.SetParameters(this.camera.Position);
             this.zoomingElement.SetParameters(this.camera.ZoomFactor);
             this.rangeElement.SetParameters(this.range);
+            this.mouseElement.SetParameters(this.mouseState);
+            this.mouseElement2.SetParameters(this.mouseState.AbsolutePosition);
+
+            this.mouseMap.ClearAll();
+            this.mouseMap.AddLine(this.mouseState.AbsolutePosition.Translate(-10, 0).ToVector(),
+                this.mouseState.AbsolutePosition.Translate(10, 0).ToVector(), 2, Color.Red);
+
+            this.mouseMap.AddLine(this.mouseState.AbsolutePosition.Translate(0, -10).ToVector(),
+                this.mouseState.AbsolutePosition.Translate(0, 10).ToVector(), 2, Color.Red);
         }
 
         public override Scene GetScene()
@@ -101,6 +122,7 @@ namespace DemoGameDomain
             this.scene.AddMap(this.CreateHexMapTestDistance());
             this.scene.AddMap(this.CreateSpriteTest());
             this.scene.AddMap(this.CreateDiagnosticText());
+            this.scene.AddMap(this.CreateMouseCursorMap());
 
             this.scene.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
 
@@ -153,6 +175,13 @@ namespace DemoGameDomain
             if (mySpriteSheetXml.ToString() != otherSpriteSheetXml.ToString()) Debugger.Break();
         }
 
+        private MapBase CreateMouseCursorMap()
+        {
+            this.mouseMap = new DrawingMap("MouseCusor", this.gameResourceManager) { CameraMode = CameraMode.Fix };
+
+            return this.mouseMap;
+        }
+
         private DrawingMap CreateDiagnosticText()
         {
             var map = new DrawingMap("Diagnostics", this.gameResourceManager) { CameraMode = CameraMode.Fix };
@@ -164,6 +193,9 @@ namespace DemoGameDomain
             this.positionElement = map.AddText(font, "Position: {0}", new Vector(410, 60), ClassLibrary.Color.White);
             this.zoomingElement = map.AddText(font, "Zooming: {0:f1}", new Vector(410, 80), ClassLibrary.Color.White);
             this.rangeElement = map.AddText(font, "Range: {0:f1}", new Vector(410, 100), ClassLibrary.Color.White);
+            this.mouseElement = map.AddText(font, "Mouse: {0}", new Vector(410, 120), ClassLibrary.Color.White);
+            this.mouseElement2 = map.AddText(font, "MouseAbs: {0}", new Vector(410, 140), ClassLibrary.Color.White);
+
             return map;
         }
 

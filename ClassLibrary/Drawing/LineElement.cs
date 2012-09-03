@@ -24,19 +24,21 @@ namespace ClassLibrary.Drawing
 
         public override void Draw(DrawContext drawContext, Camera camera, DrawingMap drawingMap)
         {
-            var finalFrom = this.fromVector
+            var finalFrom = drawingMap.CameraMode == CameraMode.Fix ? this.fromVector : this.fromVector
                 .Scale(camera.ZoomFactor)
                 .Translate(camera.GetSceneTranslationVector(drawingMap.ParallaxScrollingVector));
 
-            var finalTo = this.toVector
+            var finalTo = drawingMap.CameraMode == CameraMode.Fix ? this.toVector : this.toVector
                 .Scale(camera.ZoomFactor)
                 .Translate(camera.GetSceneTranslationVector(drawingMap.ParallaxScrollingVector));
+
+            var zoom = drawingMap.CameraMode == CameraMode.Fix ? 1.0f : this.width * camera.ZoomFactor;
 
             //var finalWidth = this.width * camera.ZoomFactor;
             //var angle = (float)Math.Atan2(finalTo.Y - finalFrom.Y, finalTo.X - finalFrom.X);
             //var length = Vector.Distance(finalFrom, finalTo);
 
-            drawContext.DrawLine(finalFrom, finalTo, this.width * camera.ZoomFactor, this.color);
+            drawContext.DrawLine(finalFrom, finalTo, zoom, this.color);
             //spriteBatch.Draw(this.blank, finalFrom, null, this.color, angle, Vector.Zero,
             //    new Vector(length, finalWidth), SpriteEffects.None, 0);
         }

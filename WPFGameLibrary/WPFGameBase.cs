@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -12,6 +13,8 @@ using ClassLibrary.Scenes;
 using ClassLibrary.Screens;
 
 using WPFGameLibrary.EngineImplementation;
+
+using Point = System.Windows.Point;
 
 namespace WPFGameLibrary
 {
@@ -27,11 +30,15 @@ namespace WPFGameLibrary
 
         private readonly HashSet<Key> keys;
 
+        private readonly Dictionary<MouseButton, MouseButtonState> buttons;
+
         private InputConfiguration inputConfiguration;
 
         private Camera camera;
 
         private Scene scene;
+
+        private Point mousePosition;
 
         private DateTime lastFrameTime;
 
@@ -52,6 +59,10 @@ namespace WPFGameLibrary
             this.imageSetterAction = imageSetterAction;
 
             this.keys = new HashSet<Key>();
+            this.buttons = new Dictionary<MouseButton, MouseButtonState>();
+            this.buttons[MouseButton.Left] = MouseButtonState.Released;
+            this.buttons[MouseButton.Middle] = MouseButtonState.Released;
+            this.buttons[MouseButton.Right] = MouseButtonState.Released;
         }
 
         public void Start()
@@ -70,6 +81,18 @@ namespace WPFGameLibrary
         {
             if (e.IsDown && !this.keys.Contains(e.Key)) this.keys.Add(e.Key);
             if (e.IsUp && this.keys.Contains(e.Key)) this.keys.Remove(e.Key);
+        }
+
+        public void WindowPreviewMouseButton(object sender, MouseButtonEventArgs e)
+        {
+            this.buttons[MouseButton.Left] = e.LeftButton;
+            this.buttons[MouseButton.Middle] = e.MiddleButton;
+            this.buttons[MouseButton.Right] = e.RightButton;
+        }
+
+        public void WindowPreviewMouseMove(object sender, MouseEventArgs e, IInputElement inputElement)
+        {
+            this.mousePosition = e.GetPosition(inputElement);
         }
 
         private void Initialize()
@@ -118,7 +141,7 @@ namespace WPFGameLibrary
                 this.elapseTime = 0;
             }
 
-            var inputContext = new WpfInputContext(this.keys);
+            var inputContext = new WpfInputContext(this.keys, this.buttons, this.mousePosition.ToLibPoint());
             this.inputConfiguration.Update(inputContext, (float)elapsedGameTime.TotalSeconds);
 
             this.screen.Update(elapsedGameTime.TotalSeconds, (int)this.fps);

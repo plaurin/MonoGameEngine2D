@@ -14,9 +14,9 @@ Features
 * Scene
  P2 - UnitTesting Saving and Loading!
 * Screen
- P1 - Navigation
+ P2 - Navigation
 * Other than Gfx
- P2 - Input configuration (mouse)
+ P1 - Input configuration (mouse)
  - Input configuration (gamepad)
  - Audio?
  P4 - Entities
@@ -28,6 +28,7 @@ Bugs
 ====
 ! WPF, DrawString Zoom and Font
 ! Scene saving point/vector/rectangle precision
+! CameraMode.Fix to be implemented on all Gfx 
 
 Refactorings
 ============

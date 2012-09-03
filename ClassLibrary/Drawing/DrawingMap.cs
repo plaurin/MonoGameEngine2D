@@ -59,6 +59,11 @@ namespace ClassLibrary.Drawing
             this.elements.Add(element);
         }
 
+        public void ClearAll()
+        {
+            this.elements.Clear();
+        }
+
         public override void Draw(DrawContext drawContext, Camera camera)
         {
             foreach (var element in this.elements)

@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
 
+using ClassLibrary;
+using ClassLibrary.Cameras;
 using ClassLibrary.Inputs;
 
 using Microsoft.Xna.Framework.Input;
@@ -11,6 +14,11 @@ namespace WindowsGameLibrary.EngineImplementation
         public override KeyboardStateBase KeyboardGetState()
         {
             return new XnaKeyboardState(Microsoft.Xna.Framework.Input.Keyboard.GetState());
+        }
+
+        public override MouseStateBase MouseGetState()
+        {
+            return new XnaMouseState(Mouse.GetState());
         }
 
         private class XnaKeyboardState : KeyboardStateBase
@@ -40,6 +48,39 @@ namespace WindowsGameLibrary.EngineImplementation
                     case KeyboardKeys.A: return Keys.A;
                     case KeyboardKeys.Z: return Keys.Z;
                     default: throw new NotSupportedException("Key not supported yet");
+                }
+            }
+        }
+
+        private class XnaMouseState : MouseStateBase
+        {
+            private readonly MouseState mouseState;
+
+            public XnaMouseState(MouseState mouseState)
+            {
+                this.mouseState = mouseState;
+            }
+
+            public override bool IsButtonDown(MouseButtons button)
+            {
+                switch (button)
+                {
+                    case MouseButtons.Left:
+                        return this.mouseState.LeftButton == ButtonState.Pressed;
+                    case MouseButtons.Middle:
+                        return this.mouseState.MiddleButton == ButtonState.Pressed;
+                    case MouseButtons.Right:
+                        return this.mouseState.RightButton == ButtonState.Pressed;
+                    default: 
+                        throw new NotSupportedException("Button not supported yet");
+                }
+            }
+
+            public override Point Position
+            {
+                get
+                {
+                    return new Point(this.mouseState.X, this.mouseState.Y);
                 }
             }
         }
