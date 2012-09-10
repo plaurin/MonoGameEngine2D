@@ -9,11 +9,10 @@ namespace ClassLibrary.Maps
     {
         //private readonly Texture texture; Only XNA
 
-        public ColorMap(string name, /*Texture texture,*/ Color color)
+        public ColorMap(string name, Color color)
             : base(name)
         {
             this.Color = color;
-            //this.texture = texture;
         }
 
         public Color Color { get; set; }
@@ -21,7 +20,6 @@ namespace ClassLibrary.Maps
         public override void Draw(DrawContext drawContext, Camera camera)
         {
             drawContext.FillColor(this.Color);
-            //spriteBatch.Draw(this.texture, camera.Viewport.Bounds, this.Color);
         }
 
         public override XElement ToXml()
@@ -36,9 +34,7 @@ namespace ClassLibrary.Maps
             var name = mapElement.Attribute("name").Value;
             var colorValue = mapElement.Element("Color").Value;
 
-            //var texture = gameResourceManager.GetTexture("WhitePixel"); OnlyXNA
             return new ColorMap(name, MathUtil.ParseColor(colorValue));
-            //return factory.CreateColorMap(name, MathUtil.ParseColor(colorValue));
         }
     }
 }

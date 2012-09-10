@@ -5,6 +5,7 @@ using System.Xml.Linq;
 
 using ClassLibrary.Cameras;
 using ClassLibrary.Maps;
+using ClassLibrary.Scenes;
 
 namespace ClassLibrary.Tiles
 {
@@ -51,6 +52,23 @@ namespace ClassLibrary.Tiles
 
                     this.map[i, j].Draw(drawContext, destination);
                 }
+        }
+
+        public override HitBase GetHit(Point position, Camera camera)
+        {
+            for (var i = 0; i < this.MapSize.Width; i++)
+                for (var j = 0; j < this.MapSize.Height; j++)
+                {
+                    var tileRectangle =
+                        new Rectangle(i * this.TileSize.Width, j * this.TileSize.Height, this.TileSize.Width, this.TileSize.Height)
+                        .Scale(camera.ZoomFactor)
+                        .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
+
+                    if (tileRectangle.Intercept(position))
+                        return new TileHit(new Point(i, j));
+                }
+
+            return null;
         }
 
         public override XElement ToXml()

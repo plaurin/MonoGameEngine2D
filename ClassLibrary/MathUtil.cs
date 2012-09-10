@@ -61,6 +61,21 @@ namespace ClassLibrary
             return (float)(degrees / 180.0 * Math.PI);
         }
 
+        public static bool IsHitPolygone(IEnumerable<Point> polygone, Point point)
+        {
+            var isHit = false;
+
+            polygone.ForEachPair((first, second) =>
+            {
+                if (((first.Y > point.Y) != (second.Y > point.Y))
+                    && (point.X < (second.X - first.X) * (point.Y - first.Y)
+                        / (second.Y - first.Y) + first.X))
+                    isHit = !isHit;
+            });
+
+            return isHit;
+        }
+
         private static Dictionary<string, float> GetNameValuesFloat(string value)
         {
             return value

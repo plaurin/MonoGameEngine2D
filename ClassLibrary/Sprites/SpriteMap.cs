@@ -5,6 +5,7 @@ using System.Xml.Linq;
 
 using ClassLibrary.Cameras;
 using ClassLibrary.Maps;
+using ClassLibrary.Scenes;
 
 namespace ClassLibrary.Sprites
 {
@@ -34,6 +35,13 @@ namespace ClassLibrary.Sprites
             {
                 sprite.Draw(drawContext, camera, this.ParallaxScrollingVector);
             }
+        }
+
+        public override HitBase GetHit(Point position, Camera camera)
+        {
+            return this.sprites
+                .Select(sprite => sprite.GetHit(position, camera, this.ParallaxScrollingVector))
+                .FirstOrDefault(spriteHit => spriteHit != null);
         }
 
         public override XElement ToXml()

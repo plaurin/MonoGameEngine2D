@@ -66,6 +66,7 @@
     <Compile Include="Hexes\HexDefinition.cs" />
     <Compile Include="Hexes\HexGrid.cs" />
     <Compile Include="Hexes\HexGridElement.cs" />
+    <Compile Include="Hexes\HexHit.cs" />
     <Compile Include="Hexes\HexMap.cs" />
     <Compile Include="Hexes\HexSheet.cs" />
     <Compile Include="Hexes\NullHexDefinition.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectangle.cs" />
+    <Compile Include="Scenes\HitBase.cs" />
     <Compile Include="Scenes\Scene.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -105,6 +107,7 @@
     <Compile Include="Sprites\Sprite.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Sprites\SpriteHit.cs" />
     <Compile Include="Sprites\SpriteMap.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -121,6 +124,7 @@
     <Compile Include="Tiles\TileDefinition.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Tiles\TileHit.cs" />
     <Compile Include="Tiles\TileMap.cs">
       <SubType>Code</SubType>
     </Compile>

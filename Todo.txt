@@ -10,13 +10,13 @@ Features
     - CompositeSprite stencil to help map's designing
 * HexMap
 * Map (Layer)
- P1 - Engine to offer a diagnostic map (DrawingMap) et Camera map
+ P3 - Engine to offer a diagnostic map (DrawingMap) et Camera map
 * Scene
- P2 - UnitTesting Saving and Loading!
+ P3 - UnitTesting Saving and Loading!
 * Screen
  P2 - Navigation
 * Other than Gfx
- P1 - Input configuration (mouse)
+ - Input configuration (mouse axes)
  - Input configuration (gamepad)
  - Audio?
  P4 - Entities

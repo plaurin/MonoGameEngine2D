@@ -14,15 +14,12 @@ namespace ClassLibrary.Drawing
 
         private readonly List<DrawingElementBase> elements;
 
-        private readonly Texture blank;
-
         public DrawingMap(string name, GameResourceManager gameResourceManager)
             : base(name)
         {
             this.gameResourceManager = gameResourceManager;
 
             this.elements = new List<DrawingElementBase>();
-            //this.blank = this.gameResourceManager.GetTexture("WhitePixel"); OnlyXNA
         }
 
         public IEnumerable<DrawingElementBase> Elements
@@ -40,7 +37,7 @@ namespace ClassLibrary.Drawing
 
         public LineElement AddLine(Vector fromVector, Vector toVector, int width, Color color)
         {
-            var lineElement = new LineElement(this.blank, fromVector, toVector, width, color);
+            var lineElement = new LineElement(fromVector, toVector, width, color);
             this.elements.Add(lineElement);
 
             return lineElement;
@@ -48,7 +45,7 @@ namespace ClassLibrary.Drawing
 
         public PolygonElement AddPolygone(int width, Color color, IEnumerable<Vector> vertices)
         {
-            var polygonElement = new PolygonElement(this.blank, vertices, width, color);
+            var polygonElement = new PolygonElement(vertices, width, color);
             this.elements.Add(polygonElement);
 
             return polygonElement;

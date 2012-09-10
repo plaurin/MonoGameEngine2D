@@ -2,6 +2,7 @@
 using System.Xml.Linq;
 
 using ClassLibrary.Cameras;
+using ClassLibrary.Scenes;
 
 namespace ClassLibrary.Sprites
 {
@@ -22,6 +23,11 @@ namespace ClassLibrary.Sprites
         public void Draw(DrawContext drawContext, Camera camera, Vector parallaxScrollingVector)
         {
             this.SpriteSheet.Draw(drawContext, camera, parallaxScrollingVector, this);
+        }
+
+        public HitBase GetHit(Point position, Camera camera, Vector parallaxScrollingVector)
+        {
+            return this.SpriteSheet.GetHit(position, camera, parallaxScrollingVector, this);
         }
 
         public XElement GetXml()

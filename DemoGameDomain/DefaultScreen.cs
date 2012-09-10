@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -45,9 +46,14 @@ namespace DemoGameDomain
         private TextElement rangeElement;
 
         private TextElement mouseElement;
+
         private TextElement mouseElement2;
 
+        private TextElement hitElement;
+
         private DrawingMap mouseMap;
+
+        private string hits;
 
         public override void Initialize(Camera theCamera)
         {
@@ -64,18 +70,18 @@ namespace DemoGameDomain
             this.inputConfiguration.AddDigitalButton("Right").Assign(KeyboardKeys.Right).MapTo(elapse => this.camera.Move(60 * elapse, 0));
             this.inputConfiguration.AddDigitalButton("Up").Assign(KeyboardKeys.Up).MapTo(elapse => this.camera.Move(0, -60 * elapse));
             this.inputConfiguration.AddDigitalButton("Down").Assign(KeyboardKeys.Down).MapTo(elapse => this.camera.Move(0, 60 * elapse));
-            
-            this.inputConfiguration.AddDigitalButton("ZoomIn")
-                .Assign(KeyboardKeys.A).Assign(MouseButtons.Left)
-                .MapTo(elapse => this.camera.ZoomFactor *= 1.2f * (1 + elapse));
-            this.inputConfiguration.AddDigitalButton("ZoomOut")
-                .Assign(KeyboardKeys.Z).Assign(MouseButtons.Right)
-                .MapTo(elapse => this.camera.ZoomFactor *= 1 / (1.2f * (1 + elapse)));
+
+            this.inputConfiguration.AddDigitalButton("ZoomIn").Assign(KeyboardKeys.A).MapTo(elapse => this.camera.ZoomFactor *= 1.2f * (1 + elapse));
+            this.inputConfiguration.AddDigitalButton("ZoomOut").Assign(KeyboardKeys.Z).MapTo(elapse => this.camera.ZoomFactor *= 1 / (1.2f * (1 + elapse)));
 
             this.inputConfiguration.AddDigitalButton("RangeUp").Assign(KeyboardKeys.W).MapTo(elapse => this.range *= 1.2f * (1 + elapse));
             this.inputConfiguration.AddDigitalButton("RangeDown").Assign(KeyboardKeys.Q).MapTo(elapse => this.range *= 1 / (1.2f * (1 + elapse)));
 
-            //this.inputConfiguration.AddDigitalButton("Selection").Assign(MouseButtons.Left).MapTo(elapse => this.range *= 1 / (1.2f * (1 + elapse)));
+            this.inputConfiguration.AddDigitalButton("Selection").Assign(MouseButtons.Left).MapTo(elapse =>
+            {
+                this.hits = string.Join("; ", scene.GetHits(this.mouseState.AbsolutePosition, this.camera));
+            });
+
             this.inputConfiguration.AddMouseTracking(this.camera).OnMove((mt, e) => this.mouseState = mt);
 
             return this.inputConfiguration;
@@ -102,6 +108,7 @@ namespace DemoGameDomain
             this.rangeElement.SetParameters(this.range);
             this.mouseElement.SetParameters(this.mouseState);
             this.mouseElement2.SetParameters(this.mouseState.AbsolutePosition);
+            this.hitElement.SetParameters(this.hits);
 
             this.mouseMap.ClearAll();
             this.mouseMap.AddLine(this.mouseState.AbsolutePosition.Translate(-10, 0).ToVector(),
@@ -195,6 +202,7 @@ namespace DemoGameDomain
             this.rangeElement = map.AddText(font, "Range: {0:f1}", new Vector(410, 100), ClassLibrary.Color.White);
             this.mouseElement = map.AddText(font, "Mouse: {0}", new Vector(410, 120), ClassLibrary.Color.White);
             this.mouseElement2 = map.AddText(font, "MouseAbs: {0}", new Vector(410, 140), ClassLibrary.Color.White);
+            this.hitElement = map.AddText(font, "Hits: {0}", new Vector(410, 160), ClassLibrary.Color.White);
 
             return map;
         }

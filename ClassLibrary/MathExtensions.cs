@@ -99,6 +99,14 @@ namespace ClassLibrary
             return new Rectangle(rectangle.X + vector.X, rectangle.Y + vector.Y, rectangle.Width, rectangle.Height);
         }
 
+        public static bool Intercept(this Rectangle rectangle, Point point)
+        {
+            return point.X >= rectangle.X
+                && point.Y >= rectangle.Y
+                && point.X < rectangle.X + rectangle.Width
+                && point.Y < rectangle.Y + rectangle.Height;
+        }
+
         public static Color ChangeAlpha(this Color color, int alpha)
         {
             return new Color(color.R, color.G, color.B, alpha);

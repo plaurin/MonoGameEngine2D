@@ -13,9 +13,8 @@ namespace ClassLibrary.Drawing
         private readonly int width;
         private readonly Color color;
 
-        public LineElement(Texture blank, Vector fromVector, Vector toVector, int width, Color color)
+        public LineElement(Vector fromVector, Vector toVector, int width, Color color)
         {
-            this.blank = blank;
             this.fromVector = fromVector;
             this.toVector = toVector;
             this.width = width;
@@ -60,7 +59,7 @@ namespace ClassLibrary.Drawing
             var color = element.Attribute("color").Value;
 
             var blank = gameResourceManager.GetTexture("WhitePixel");
-            return new LineElement(blank, MathUtil.ParseVector(from), MathUtil.ParseVector(to), int.Parse(width), MathUtil.ParseColor(color));
+            return new LineElement(MathUtil.ParseVector(from), MathUtil.ParseVector(to), int.Parse(width), MathUtil.ParseColor(color));
         }
     }
 }

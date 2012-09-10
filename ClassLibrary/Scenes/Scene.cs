@@ -45,6 +45,13 @@ namespace ClassLibrary.Scenes
             }
         }
 
+        public IEnumerable<HitBase> GetHits(Point position, Camera camera)
+        {
+            return this.maps
+                .Select(map => map.GetHit(position, camera))
+                .Where(hit => hit != null);
+        }
+
         public void Save(string path)
         {
             var document = new XDocument();

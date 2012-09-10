@@ -9,14 +9,12 @@ namespace ClassLibrary.Drawing
 {
     public class PolygonElement : DrawingElementBase
     {
-        private readonly Texture blank;
         private readonly List<Vector> vertices;
         private readonly int width;
         private readonly Color color;
 
-        public PolygonElement(Texture blank, IEnumerable<Vector> vertices, int width, Color color)
+        public PolygonElement(IEnumerable<Vector> vertices, int width, Color color)
         {
-            this.blank = blank;
             this.vertices = new List<Vector>(vertices);
             this.width = width;
             this.color = color;
@@ -41,9 +39,7 @@ namespace ClassLibrary.Drawing
             var color = element.Attribute("color").Value;
             var vertices = element.Element("Vertices").Value.Split(',').Select(x => MathUtil.ParseVector(x.Trim()));
 
-            //var blank = gameResourceManager.GetTexture("WhitePixel"); OnlyXNA
-            Texture blank = null;
-            return new PolygonElement(blank, vertices, int.Parse(width), MathUtil.ParseColor(color));
+            return new PolygonElement(vertices, int.Parse(width), MathUtil.ParseColor(color));
         }
 
         private void DrawLine(DrawContext drawContext, Camera camera, DrawingMap drawingMap, Vector fromVector, Vector toVector)
@@ -56,13 +52,7 @@ namespace ClassLibrary.Drawing
                 .Scale(camera.ZoomFactor)
                 .Translate(camera.GetSceneTranslationVector(drawingMap.ParallaxScrollingVector));
 
-            //var finalWidth = this.width * camera.ZoomFactor;
-            //var angle = (float)Math.Atan2(finalTo.Y - finalFrom.Y, finalTo.X - finalFrom.X);
-            //var length = Vector.Distance(finalFrom, finalTo);
-
             drawContext.DrawLine(finalFrom, finalTo, this.width * camera.ZoomFactor, this.color);
-            //spriteBatch.Draw(this.blank, finalFrom, null, this.color, angle, Vector2.Zero,
-            //    new Vector2(length, finalWidth), SpriteEffects.None, 0);
         }
     }
 }

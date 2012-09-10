@@ -4,6 +4,7 @@ using System.Linq;
 using System.Xml.Linq;
 
 using ClassLibrary.Cameras;
+using ClassLibrary.Scenes;
 using ClassLibrary.Sheets;
 
 namespace ClassLibrary.Sprites
@@ -31,6 +32,18 @@ namespace ClassLibrary.Sprites
                 .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
 
             drawContext.DrawImage(this.Texture, source, destination);
+        }
+
+        public HitBase GetHit(Point position, Camera camera, Vector parallaxScrollingVector, Sprite sprite)
+        {
+            var source = this.definitions[sprite.SpriteName];
+            var spriteRectangle = new Rectangle(sprite.Position.X, sprite.Position.Y, source.Width, source.Height)
+                .Scale(camera.ZoomFactor)
+                .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
+
+            return spriteRectangle.Intercept(position) 
+                ? new SpriteHit(sprite) 
+                : null;
         }
 
         protected override IEnumerable<object> GetXml()

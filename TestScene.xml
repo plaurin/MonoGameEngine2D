@@ -848,6 +848,7 @@
       <TextElement fontName="SpriteFont1" text="Range: {0:f1}" vector="{X:410 Y:100}" color="{R:255 G:255 B:255 A:255}" />
       <TextElement fontName="SpriteFont1" text="Mouse: {0}" vector="{X:410 Y:120}" color="{R:255 G:255 B:255 A:255}" />
       <TextElement fontName="SpriteFont1" text="MouseAbs: {0}" vector="{X:410 Y:140}" color="{R:255 G:255 B:255 A:255}" />
+      <TextElement fontName="SpriteFont1" text="Hits: {0}" vector="{X:410 Y:160}" color="{R:255 G:255 B:255 A:255}" />
     </Elements>
   </DrawingMap>
   <DrawingMap name="MouseCusor" parallaxScrollingVector="{X:1 Y:1}" cameraMode="Fix">

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 
 using ClassLibrary.Cameras;
+using ClassLibrary.Scenes;
 
 namespace ClassLibrary.Maps
 {
@@ -22,6 +23,11 @@ namespace ClassLibrary.Maps
         public Vector ParallaxScrollingVector { get; set; }
 
         public abstract void Draw(DrawContext drawContext, Camera camera);
+
+        public virtual HitBase GetHit(Point position, Camera camera)
+        {
+            return null;
+        }
 
         public abstract XElement ToXml();
 

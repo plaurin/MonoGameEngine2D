@@ -18,15 +18,9 @@ namespace ClassLibrary.Maps
 
         protected Texture Texture { get; private set; }
 
-        //public static ImageMap CreateFillScreenImageMap(string name, GraphicsDevice device, Texture2D texture)
-        //{
-        //    return new ImageMap(name, texture, device.Viewport.Bounds);
-        //}
-
         public override void Draw(DrawContext drawContext, Camera camera)
         {
             drawContext.DrawImage(this.Texture, this.Rectangle);
-            //spriteBatch.Draw(this.texture, this.Rectangle, Color.White);
         }
 
         public override XElement ToXml()
@@ -44,8 +38,6 @@ namespace ClassLibrary.Maps
             var rectangleValue = mapElement.Element("Rectangle").Value;
             
             return new ImageMap(name, gameResourceManager.GetTexture(textureName), MathUtil.ParseRectangle(rectangleValue));
-            //return factory.CreateImageMap(
-            //    name, gameResourceManager.GetTexture(textureName), MathUtil.ParseRectangle(rectangleValue));
         }
     }
 }

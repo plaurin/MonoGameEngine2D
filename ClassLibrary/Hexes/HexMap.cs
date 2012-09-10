@@ -5,6 +5,7 @@ using System.Xml.Linq;
 
 using ClassLibrary.Cameras;
 using ClassLibrary.Maps;
+using ClassLibrary.Scenes;
 
 namespace ClassLibrary.Hexes
 {
@@ -52,7 +53,7 @@ namespace ClassLibrary.Hexes
 
                     var rectangle = new Rectangle(
                         i * hexDistance,
-                        j * this.HexSize.Height + (i % 2 == 1 ? halfHeight : 0), 
+                        j * this.HexSize.Height + (i % 2 == 1 ? halfHeight : 0),
                         this.HexSize.Width, this.HexSize.Height);
 
                     var destination = rectangle
@@ -61,6 +62,42 @@ namespace ClassLibrary.Hexes
 
                     this.map[i, j].Draw(drawContext, destination);
                 }
+        }
+
+        public override HitBase GetHit(Point position, Camera camera)
+        {
+            for (var i = 0; i < this.MapSize.Width; i++)
+                for (var j = 0; j < this.MapSize.Height; j++)
+                {
+                    var hexDistance = this.HexSize.Width - (this.HexSize.Width - this.topEdgeLength) / 2;
+                    var halfHeight = this.HexSize.Height / 2;
+
+                    var rectangle = new Rectangle(
+                        i * hexDistance,
+                        j * this.HexSize.Height + (i % 2 == 1 ? halfHeight : 0),
+                        this.HexSize.Width, this.HexSize.Height);
+
+                    var mapPosition = position
+                        .Translate(-camera.GetSceneTranslationVector(this.ParallaxScrollingVector))
+                        .Scale(1.0f / camera.ZoomFactor);
+
+                    var x1 = (this.HexSize.Width - this.topEdgeLength) / 2;
+                    var x2 = x1 + this.topEdgeLength;
+
+                    var polygone = new[]
+                    {
+                        new Point(rectangle.X + x1, rectangle.Y), new Point(rectangle.X + x2, rectangle.Y),
+                        new Point(rectangle.X + this.HexSize.Width, rectangle.Y + halfHeight),
+                        new Point(rectangle.X + x2, rectangle.Y + this.HexSize.Height),
+                        new Point(rectangle.X + x1, rectangle.Y + this.HexSize.Height),
+                        new Point(rectangle.X, rectangle.Y + halfHeight)
+                    };
+
+                    if (MathUtil.IsHitPolygone(polygone, mapPosition))
+                        return new HexHit(new Point(i, j));
+                }
+
+            return null;
         }
 
         public override XElement ToXml()
