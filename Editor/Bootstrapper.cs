@@ -1,7 +1,7 @@
-﻿namespace Editor
-{
-    using System;
+﻿using System;
 
+namespace WpfGameLoader
+{
     public class Bootstrapper
     {
         public void Init()

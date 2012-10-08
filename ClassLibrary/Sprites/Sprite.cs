@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Xml.Linq;
 
-using ClassLibrary.Cameras;
-using ClassLibrary.Scenes;
+using GameFramework.Cameras;
+using GameFramework.Scenes;
 
-namespace ClassLibrary.Sprites
+namespace GameFramework.Sprites
 {
     public class Sprite
     {

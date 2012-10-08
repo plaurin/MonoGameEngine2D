@@ -1,4 +1,4 @@
-﻿<Window x:Class="Editor.MainWindow"
+﻿<Window x:Class="WpfGameLoader.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="544" Width="847" PreviewKeyUp="WindowPreviewKey" PreviewKeyDown="WindowPreviewKey" 

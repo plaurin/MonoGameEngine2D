@@ -1,8 +1,10 @@
+using System;
+
 using DemoGameDomain;
 
-using WindowsGameLibrary;
+using XnaGameFramework;
 
-namespace WindowsGame1
+namespace DemoGame
 {
     public class DemoGame : WindowsGameBase
     {

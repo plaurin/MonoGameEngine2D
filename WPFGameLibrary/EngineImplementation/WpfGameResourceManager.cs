@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 
-using ClassLibrary;
+using GameFramework;
+using GameFramework.Drawing;
 
-namespace WPFGameLibrary.EngineImplementation
+namespace WpfGameFramework.EngineImplementation
 {
     public class WpfGameResourceManager : GameResourceManager
     {
@@ -28,7 +29,7 @@ namespace WPFGameLibrary.EngineImplementation
             };
         }
 
-        protected override ClassLibrary.Drawing.DrawingFont CreateDrawingFont(string assetName)
+        protected override DrawingFont CreateDrawingFont(string assetName)
         {
             return new WpfDrawingFont
             {

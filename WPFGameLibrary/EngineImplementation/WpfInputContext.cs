@@ -2,11 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 
-using ClassLibrary;
-using ClassLibrary.Cameras;
-using ClassLibrary.Inputs;
+using GameFramework;
+using GameFramework.Inputs;
 
-namespace WPFGameLibrary.EngineImplementation
+namespace WpfGameFramework.EngineImplementation
 {
     public class WpfInputContext : InputContext
     {

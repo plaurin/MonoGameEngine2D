@@ -1,11 +1,11 @@
 using System;
 
-using ClassLibrary;
-using ClassLibrary.Drawing;
+using GameFramework;
+using GameFramework.Drawing;
 
 using Microsoft.Xna.Framework.Graphics;
 
-namespace WindowsGameLibrary.EngineImplementation
+namespace XnaGameFramework.EngineImplementation
 {
     public class XnaDrawingFont : DrawingFont
     {

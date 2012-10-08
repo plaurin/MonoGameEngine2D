@@ -1,8 +1,8 @@
 using System;
 
-using WPFGameLibrary.EngineImplementation;
+using WpfGameFramework.EngineImplementation;
 
-namespace Editor
+namespace WpfGameLoader
 {
     public class ServiceLocator
     {

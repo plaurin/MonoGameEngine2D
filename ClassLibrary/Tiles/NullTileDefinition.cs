@@ -1,6 +1,6 @@
 using System;
 
-namespace ClassLibrary.Tiles
+namespace GameFramework.Tiles
 {
     public class NullTileDefinition : TileDefinition
     {

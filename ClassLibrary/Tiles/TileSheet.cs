@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
-using ClassLibrary.Sheets;
+using GameFramework.Sheets;
 
-namespace ClassLibrary.Tiles
+namespace GameFramework.Tiles
 {
     public class TileSheet : SheetBase
     {

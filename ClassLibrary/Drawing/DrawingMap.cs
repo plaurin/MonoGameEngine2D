@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
-using ClassLibrary.Cameras;
-using ClassLibrary.Maps;
+using GameFramework.Cameras;
+using GameFramework.Maps;
 
-namespace ClassLibrary.Drawing
+namespace GameFramework.Drawing
 {
     public class DrawingMap : MapBase
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ClassLibrary
+namespace GameFramework
 {
     public struct Rectangle
     {
@@ -73,7 +73,7 @@ namespace ClassLibrary
             {
                 return false;
             }
-            return Equals((Rectangle)obj);
+            return this.Equals((Rectangle)obj);
         }
 
         public override int GetHashCode()

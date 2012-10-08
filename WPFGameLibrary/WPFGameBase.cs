@@ -6,17 +6,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
-using ClassLibrary;
-using ClassLibrary.Cameras;
-using ClassLibrary.Inputs;
-using ClassLibrary.Scenes;
-using ClassLibrary.Screens;
+using GameFramework;
+using GameFramework.Cameras;
+using GameFramework.Inputs;
+using GameFramework.Scenes;
+using GameFramework.Screens;
 
-using WPFGameLibrary.EngineImplementation;
+using WpfGameFramework.EngineImplementation;
 
+using Color = GameFramework.Color;
 using Point = System.Windows.Point;
 
-namespace WPFGameLibrary
+namespace WpfGameFramework
 {
     public class WPFGameBase
     {
@@ -167,11 +168,11 @@ namespace WPFGameLibrary
         {
             drawContext.DrawLine(
                 this.camera.ViewPortCenter.Translate(-10, 0).ToVector(),
-                this.camera.ViewPortCenter.Translate(10, 0).ToVector(), 1.0f, ClassLibrary.Color.Yellow);
+                this.camera.ViewPortCenter.Translate(10, 0).ToVector(), 1.0f, Color.Yellow);
 
             drawContext.DrawLine(
                 this.camera.ViewPortCenter.Translate(0, -10).ToVector(),
-                this.camera.ViewPortCenter.Translate(0, 10).ToVector(), 1.0f, ClassLibrary.Color.Yellow);
+                this.camera.ViewPortCenter.Translate(0, 10).ToVector(), 1.0f, Color.Yellow);
         }
     }
 }

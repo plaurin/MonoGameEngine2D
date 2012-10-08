@@ -4,9 +4,9 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
-using ClassLibrary;
+using GameFramework;
 
-namespace WPFGameLibrary.EngineImplementation
+namespace WpfGameFramework.EngineImplementation
 {
     public class WpfTexture : Texture
     {

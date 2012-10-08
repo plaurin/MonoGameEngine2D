@@ -1,8 +1,8 @@
 using System;
 
-using ClassLibrary.Scenes;
+using GameFramework.Scenes;
 
-namespace ClassLibrary.Tiles
+namespace GameFramework.Tiles
 {
     public class TileHit : HitBase
     {

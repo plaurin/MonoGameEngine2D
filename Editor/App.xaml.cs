@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Editor
+namespace WpfGameLoader
 {
     public partial class App
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 
-using ClassLibrary.Cameras;
-using ClassLibrary.Drawing;
+using GameFramework.Cameras;
+using GameFramework.Drawing;
 
-namespace ClassLibrary
+namespace GameFramework
 {
     public abstract class DrawContext
     {

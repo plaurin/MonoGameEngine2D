@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
-using ClassLibrary.Cameras;
+using GameFramework.Cameras;
 
-namespace ClassLibrary.Drawing
+namespace GameFramework.Drawing
 {
     public class PolygonElement : DrawingElementBase
     {

@@ -47,11 +47,12 @@ Samples ideas
 Projects structure
 ==================
 X Samples
-- XGame
+- XnaXGame
+- OtherXGame
 - XGameDomain
 - XGameContent
 Demo Sample
-- GameEngine (XNA GameEngine - Demo) [DemoGame]
+- GameEngine (XNA GameEngine - Demo) [XnaDemoGame]
 - DemoGameDomain (Demo GameDomain) [DemoGameDomain]
 - DemoGameContent (Demo GameContent) [DemoGameContent]
 WPF

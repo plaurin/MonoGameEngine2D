@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
-using ClassLibrary.Cameras;
-using ClassLibrary.Scenes;
+using GameFramework.Cameras;
+using GameFramework.Scenes;
 
-namespace ClassLibrary.Maps
+namespace GameFramework.Maps
 {
     public abstract class MapBase
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace WindowsGame1
+namespace DemoGame
 {
 #if WINDOWS || XBOX
     static class Program

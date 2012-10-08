@@ -1,20 +1,20 @@
 using System;
 
-using ClassLibrary;
-using ClassLibrary.Cameras;
-using ClassLibrary.Inputs;
-using ClassLibrary.Scenes;
-using ClassLibrary.Screens;
+using GameFramework;
+using GameFramework.Cameras;
+using GameFramework.Inputs;
+using GameFramework.Scenes;
+using GameFramework.Screens;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-using WindowsGameLibrary.EngineImplementation;
+using XnaGameFramework.EngineImplementation;
 
 using Color = Microsoft.Xna.Framework.Color;
 
-namespace WindowsGameLibrary
+namespace XnaGameFramework
 {
     /// <summary>
     /// This is the main type for your game
@@ -150,11 +150,11 @@ namespace WindowsGameLibrary
         {
             drawContext.DrawLine(
                 this.camera.ViewPortCenter.Translate(-10, 0).ToVector(),
-                this.camera.ViewPortCenter.Translate(10, 0).ToVector(), 1.0f, new ClassLibrary.Color(255, 255, 0, 255));
+                this.camera.ViewPortCenter.Translate(10, 0).ToVector(), 1.0f, new GameFramework.Color(255, 255, 0, 255));
 
             drawContext.DrawLine(
                 this.camera.ViewPortCenter.Translate(0, -10).ToVector(),
-                this.camera.ViewPortCenter.Translate(0, 10).ToVector(), 1.0f, new ClassLibrary.Color(255, 255, 0, 255));
+                this.camera.ViewPortCenter.Translate(0, 10).ToVector(), 1.0f, new GameFramework.Color(255, 255, 0, 255));
         }
     }
 }

@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 
-using ClassLibrary;
-using ClassLibrary.Cameras;
-
 using DemoGameDomain;
 
-using WPFGameLibrary;
+using GameFramework;
+using GameFramework.Cameras;
 
-namespace Editor
+using WpfGameFramework;
+
+namespace WpfGameLoader
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,7 +24,7 @@ namespace Editor
 
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
             this.gameResourceManager = ServiceLocator.GameResourceManager;
         }
@@ -37,7 +36,7 @@ namespace Editor
             this.viewport = new Viewport((int)this.Canvas.Width, (int)this.Canvas.Height);
             new Camera(this.viewport);
 
-            this.wpfGame = new WPFGameLibrary.WPFGameBase(this.viewport, this.gameResourceManager, new DefaultScreen(), 
+            this.wpfGame = new WPFGameBase(this.viewport, this.gameResourceManager, new DefaultScreen(), 
                 x => this.Canvas.Source = x);
 
             this.wpfGame.Start();

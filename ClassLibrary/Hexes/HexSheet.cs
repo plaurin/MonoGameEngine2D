@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
-using ClassLibrary.Sheets;
+using GameFramework.Sheets;
 
-namespace ClassLibrary.Hexes
+namespace GameFramework.Hexes
 {
     public class HexSheet : SheetBase
     {

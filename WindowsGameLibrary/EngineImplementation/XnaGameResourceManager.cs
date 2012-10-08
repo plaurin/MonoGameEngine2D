@@ -1,14 +1,14 @@
 using System;
 
-using ClassLibrary;
-using ClassLibrary.Drawing;
+using GameFramework;
+using GameFramework.Drawing;
 
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-using Texture = ClassLibrary.Texture;
+using Texture = GameFramework.Texture;
 
-namespace WindowsGameLibrary.EngineImplementation
+namespace XnaGameFramework.EngineImplementation
 {
     public class XnaGameResourceManager : GameResourceManager
     {

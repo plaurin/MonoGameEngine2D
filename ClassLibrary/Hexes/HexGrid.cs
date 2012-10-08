@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ClassLibrary.Hexes
+namespace GameFramework.Hexes
 {
     public class HexGrid
     {

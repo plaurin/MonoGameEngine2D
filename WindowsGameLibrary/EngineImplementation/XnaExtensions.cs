@@ -1,13 +1,13 @@
 using System;
 
-using ClassLibrary;
+using GameFramework;
 
 using Microsoft.Xna.Framework;
 
 using Color = Microsoft.Xna.Framework.Color;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
-namespace WindowsGameLibrary.EngineImplementation
+namespace XnaGameFramework.EngineImplementation
 {
     public static class XnaExtensions
     {
@@ -21,12 +21,12 @@ namespace WindowsGameLibrary.EngineImplementation
             return new Vector2((float)vector.X, (float)vector.Y);
         }
 
-        public static Color ToXnaColor(this ClassLibrary.Color color)
+        public static Color ToXnaColor(this GameFramework.Color color)
         {
             return new Color(color.R, color.G, color.B, color.A);
         }
 
-        public static Rectangle ToXnaRect(this ClassLibrary.Rectangle rectangle)
+        public static Rectangle ToXnaRect(this GameFramework.Rectangle rectangle)
         {
             return new Rectangle(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
         }

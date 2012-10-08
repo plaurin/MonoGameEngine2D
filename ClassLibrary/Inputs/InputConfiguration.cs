@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using ClassLibrary.Cameras;
+using GameFramework.Cameras;
 
-namespace ClassLibrary.Inputs
+namespace GameFramework.Inputs
 {
     public class InputConfiguration
     {

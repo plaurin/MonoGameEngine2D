@@ -1,6 +1,6 @@
 using System;
 
-namespace ClassLibrary.Inputs
+namespace GameFramework.Inputs
 {
     public abstract class InputContext
     {

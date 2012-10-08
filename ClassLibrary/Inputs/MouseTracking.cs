@@ -1,8 +1,8 @@
 using System;
 
-using ClassLibrary.Cameras;
+using GameFramework.Cameras;
 
-namespace ClassLibrary.Inputs
+namespace GameFramework.Inputs
 {
     public class MouseTracking
     {

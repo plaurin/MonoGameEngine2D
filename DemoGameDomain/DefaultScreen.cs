@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-using ClassLibrary;
-using ClassLibrary.Cameras;
-using ClassLibrary.Drawing;
-using ClassLibrary.Hexes;
-using ClassLibrary.Inputs;
-using ClassLibrary.Maps;
-using ClassLibrary.Scenes;
-using ClassLibrary.Screens;
-using ClassLibrary.Sheets;
-using ClassLibrary.Sprites;
-using ClassLibrary.Tiles;
+using GameFramework;
+using GameFramework.Cameras;
+using GameFramework.Drawing;
+using GameFramework.Hexes;
+using GameFramework.Inputs;
+using GameFramework.Maps;
+using GameFramework.Scenes;
+using GameFramework.Screens;
+using GameFramework.Sheets;
+using GameFramework.Sprites;
+using GameFramework.Tiles;
 
 namespace DemoGameDomain
 {
@@ -58,7 +58,7 @@ namespace DemoGameDomain
         public override void Initialize(Camera theCamera)
         {
             this.camera = theCamera;
-            this.player = new ClassLibrary.Point(25, 25);
+            this.player = new Point(25, 25);
             this.range = 0.25f;
 
             // theCamera.Center = CameraCenter.WindowTopLeft;
@@ -100,7 +100,7 @@ namespace DemoGameDomain
         {
             var colorMap = this.scene.Maps.OfType<ColorMap>().FirstOrDefault();
             if (colorMap != null)
-                colorMap.Color = new ClassLibrary.Color(255, 0, 0, (int)(255 * Math.Min(this.range, 1.0f)));
+                colorMap.Color = new Color(255, 0, 0, (int)(255 * Math.Min(this.range, 1.0f)));
 
             this.fpsElement.SetParameters(fps);
             this.viewPortElement.SetParameters(this.camera.SceneViewPort);
@@ -196,15 +196,15 @@ namespace DemoGameDomain
             var map = new DrawingMap("Diagnostics", this.gameResourceManager) { CameraMode = CameraMode.Fix };
 
             var font = this.gameResourceManager.GetDrawingFont("SpriteFont1");
-            this.fpsElement = map.AddText(font, "FPS {0:d}", new Vector(610, 0), ClassLibrary.Color.White);
-            this.viewPortElement = map.AddText(font, "ViewPort: {0}", new Vector(410, 20), ClassLibrary.Color.White);
-            this.translationElement = map.AddText(font, "Translation: {0}", new Vector(410, 40), ClassLibrary.Color.White);
-            this.positionElement = map.AddText(font, "Position: {0}", new Vector(410, 60), ClassLibrary.Color.White);
-            this.zoomingElement = map.AddText(font, "Zooming: {0:f1}", new Vector(410, 80), ClassLibrary.Color.White);
-            this.rangeElement = map.AddText(font, "Range: {0:f1}", new Vector(410, 100), ClassLibrary.Color.White);
-            this.mouseElement = map.AddText(font, "Mouse: {0}", new Vector(410, 120), ClassLibrary.Color.White);
-            this.mouseElement2 = map.AddText(font, "MouseAbs: {0}", new Vector(410, 140), ClassLibrary.Color.White);
-            this.hitElement = map.AddText(font, "Hits: {0}", new Vector(410, 160), ClassLibrary.Color.White);
+            this.fpsElement = map.AddText(font, "FPS {0:d}", new Vector(610, 0), Color.White);
+            this.viewPortElement = map.AddText(font, "ViewPort: {0}", new Vector(410, 20), Color.White);
+            this.translationElement = map.AddText(font, "Translation: {0}", new Vector(410, 40), Color.White);
+            this.positionElement = map.AddText(font, "Position: {0}", new Vector(410, 60), Color.White);
+            this.zoomingElement = map.AddText(font, "Zooming: {0:f1}", new Vector(410, 80), Color.White);
+            this.rangeElement = map.AddText(font, "Range: {0:f1}", new Vector(410, 100), Color.White);
+            this.mouseElement = map.AddText(font, "Mouse: {0}", new Vector(410, 120), Color.White);
+            this.mouseElement2 = map.AddText(font, "MouseAbs: {0}", new Vector(410, 140), Color.White);
+            this.hitElement = map.AddText(font, "Hits: {0}", new Vector(410, 160), Color.White);
 
             return map;
         }
@@ -213,23 +213,23 @@ namespace DemoGameDomain
         {
             var texture = this.gameResourceManager.GetTexture("LinkSheet");
 
-            return new ImageMap("Image", texture, new ClassLibrary.Rectangle(10, 10, 250, 250));
+            return new ImageMap("Image", texture, new Rectangle(10, 10, 250, 250));
         }
 
         private ColorMap CreateColorMap()
         {
             var alpha = Math.Min(this.range, 1.0f);
 
-            return new ColorMap("Red", new ClassLibrary.Color(255, 0, 0, (int)(255 * alpha)));
+            return new ColorMap("Red", new Color(255, 0, 0, (int)(255 * alpha)));
         }
 
         private HexMap CreateHexMap()
         {
             var texture = this.gameResourceManager.GetTexture("HexSheet");
             var sheet = new HexSheet(texture, "Hexes", new Size(68, 60));
-            var red = sheet.CreateHexDefinition("red", new ClassLibrary.Point(55, 30));
-            var yellow = sheet.CreateHexDefinition("yellow", new ClassLibrary.Point(163, 330));
-            var purple = sheet.CreateHexDefinition("purple", new ClassLibrary.Point(488, 330));
+            var red = sheet.CreateHexDefinition("red", new Point(55, 30));
+            var yellow = sheet.CreateHexDefinition("yellow", new Point(163, 330));
+            var purple = sheet.CreateHexDefinition("purple", new Point(488, 330));
 
             sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Color HexSheet.xml");
 
@@ -252,12 +252,12 @@ namespace DemoGameDomain
         {
             var texture = this.gameResourceManager.GetTexture("TileSheet");
             var sheet = new TileSheet(texture, "Background", new Size(16, 16));
-            var red = sheet.CreateTileDefinition("red", new ClassLibrary.Point(0, 0));
-            var green = sheet.CreateTileDefinition("green", new ClassLibrary.Point(16, 0));
-            sheet.CreateTileDefinition("yellow", new ClassLibrary.Point(32, 0));
-            var purple = sheet.CreateTileDefinition("purple", new ClassLibrary.Point(0, 16));
-            sheet.CreateTileDefinition("orange", new ClassLibrary.Point(16, 16));
-            sheet.CreateTileDefinition("blue", new ClassLibrary.Point(32, 16));
+            var red = sheet.CreateTileDefinition("red", new Point(0, 0));
+            var green = sheet.CreateTileDefinition("green", new Point(16, 0));
+            sheet.CreateTileDefinition("yellow", new Point(32, 0));
+            var purple = sheet.CreateTileDefinition("purple", new Point(0, 16));
+            sheet.CreateTileDefinition("orange", new Point(16, 16));
+            sheet.CreateTileDefinition("blue", new Point(32, 16));
 
             sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Color TileSheet.xml");
 
@@ -279,13 +279,13 @@ namespace DemoGameDomain
         {
             var texture = this.gameResourceManager.GetTexture("LinkSheet");
             var sheet = new SpriteSheet(texture, "Link");
-            sheet.CreateSpriteDefinition("Link01", new ClassLibrary.Rectangle(3, 3, 16, 22));
-            sheet.CreateSpriteDefinition("Sleep01", new ClassLibrary.Rectangle(45, 219, 32, 40));
+            sheet.CreateSpriteDefinition("Link01", new Rectangle(3, 3, 16, 22));
+            sheet.CreateSpriteDefinition("Sleep01", new Rectangle(45, 219, 32, 40));
 
             sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Link SpriteSheet.xml");
 
             var link01 = new Sprite(sheet, "Link01") { Position = this.player };
-            var sleep01 = new Sprite(sheet, "Sleep01") { Position = new ClassLibrary.Point(125, 25) };
+            var sleep01 = new Sprite(sheet, "Sleep01") { Position = new Point(125, 25) };
 
             this.gameResourceManager.AddSpriteSheet(sheet);
 
@@ -309,23 +309,23 @@ namespace DemoGameDomain
                 var distance = HexGrid.HexDistance(hexMap[4, 5], hex);
 
                 var color = distance == 1
-                    ? new ClassLibrary.Color(0, 255, 0, 255)
+                    ? new Color(0, 255, 0, 255)
                     : distance == 2
-                        ? new ClassLibrary.Color(0, 192, 0, 255)
+                        ? new Color(0, 192, 0, 255)
                         : distance == 3
-                            ? new ClassLibrary.Color(0, 128, 0, 255)
+                            ? new Color(0, 128, 0, 255)
                             : distance == 4
-                                ? new ClassLibrary.Color(0, 64, 0, 255)
+                                ? new Color(0, 64, 0, 255)
                                 : distance == 5
-                                    ? new ClassLibrary.Color(128, 0, 128, 255)
-                                    : ClassLibrary.Color.Red;
+                                    ? new Color(128, 0, 128, 255)
+                                    : Color.Red;
 
                 map.AddPolygone(3, color, hex.GetVertices());
 
                 var text = string.Format("{0},{1}", hex.Position.X - 4, hex.Position.Y - 5 + (hex.Position.X % 2) * .5);
                 var measure = font.MeasureString(text);
 
-                map.AddText(font, text, hex.Center - (measure / 2.0f), ClassLibrary.Color.Yellow);
+                map.AddText(font, text, hex.Center - (measure / 2.0f), Color.Yellow);
             }
 
             return map;

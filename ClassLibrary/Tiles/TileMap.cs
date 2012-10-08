@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
-using ClassLibrary.Cameras;
-using ClassLibrary.Maps;
-using ClassLibrary.Scenes;
+using GameFramework.Cameras;
+using GameFramework.Maps;
+using GameFramework.Scenes;
 
-namespace ClassLibrary.Tiles
+namespace GameFramework.Tiles
 {
     public class TileMap : MapBase
     {

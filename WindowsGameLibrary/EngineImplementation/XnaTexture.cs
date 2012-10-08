@@ -2,11 +2,9 @@ using System;
 
 using Microsoft.Xna.Framework.Graphics;
 
-using Texture = ClassLibrary.Texture;
-
-namespace WindowsGameLibrary.EngineImplementation
+namespace XnaGameFramework.EngineImplementation
 {
-    internal class XnaTexture : Texture
+    internal class XnaTexture : GameFramework.Texture
     {
         public XnaTexture(Texture2D texture2D)
         {

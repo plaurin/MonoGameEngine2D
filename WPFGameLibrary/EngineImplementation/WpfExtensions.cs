@@ -1,8 +1,8 @@
 using System;
 
-using ClassLibrary;
+using GameFramework;
 
-namespace WPFGameLibrary.EngineImplementation
+namespace WpfGameFramework.EngineImplementation
 {
     public static class WpfExtensions
     {

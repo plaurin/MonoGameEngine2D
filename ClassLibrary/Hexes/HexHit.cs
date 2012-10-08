@@ -1,8 +1,8 @@
 using System;
 
-using ClassLibrary.Scenes;
+using GameFramework.Scenes;
 
-namespace ClassLibrary.Hexes
+namespace GameFramework.Hexes
 {
     public class HexHit : HitBase
     {

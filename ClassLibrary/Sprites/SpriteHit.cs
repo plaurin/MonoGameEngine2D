@@ -1,8 +1,8 @@
 using System;
 
-using ClassLibrary.Scenes;
+using GameFramework.Scenes;
 
-namespace ClassLibrary.Sprites
+namespace GameFramework.Sprites
 {
     public class SpriteHit : HitBase
     {
@@ -15,7 +15,7 @@ namespace ClassLibrary.Sprites
 
         public override string ToString()
         {
-            return "Sprite: " + Sprite.SpriteName;
+            return "Sprite: " + this.Sprite.SpriteName;
         }
     }
 }

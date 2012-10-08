@@ -1,6 +1,6 @@
 using System;
 
-namespace ClassLibrary.Scenes
+namespace GameFramework.Scenes
 {
     public abstract class HitBase
     {

@@ -1,9 +1,9 @@
 using System;
 
-using ClassLibrary;
-using ClassLibrary.Drawing;
+using GameFramework;
+using GameFramework.Drawing;
 
-namespace WPFGameLibrary.EngineImplementation
+namespace WpfGameFramework.EngineImplementation
 {
     public class WpfDrawingFont : DrawingFont
     {

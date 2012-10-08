@@ -1,9 +1,9 @@
 using System;
 
-using ClassLibrary;
-using ClassLibrary.Cameras;
+using GameFramework;
+using GameFramework.Cameras;
 
-namespace WindowsGameLibrary.EngineImplementation
+namespace XnaGameFramework.EngineImplementation
 {
     public class XnaCamera : Camera
     {

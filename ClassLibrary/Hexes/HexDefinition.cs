@@ -1,7 +1,7 @@
 using System;
 using System.Xml.Linq;
 
-namespace ClassLibrary.Hexes
+namespace GameFramework.Hexes
 {
     public class HexDefinition
     {

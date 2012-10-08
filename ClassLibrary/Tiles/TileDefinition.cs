@@ -1,7 +1,7 @@
 using System;
 using System.Xml.Linq;
 
-namespace ClassLibrary.Tiles
+namespace GameFramework.Tiles
 {
     public class TileDefinition
     {

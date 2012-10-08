@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 
-using ClassLibrary.Drawing;
-using ClassLibrary.Hexes;
-using ClassLibrary.Scenes;
-using ClassLibrary.Sprites;
-using ClassLibrary.Tiles;
+using GameFramework.Drawing;
+using GameFramework.Hexes;
+using GameFramework.Scenes;
+using GameFramework.Sprites;
+using GameFramework.Tiles;
 
-namespace ClassLibrary
+namespace GameFramework
 {
     public class GameResourceManager
     {

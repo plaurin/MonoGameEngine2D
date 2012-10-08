@@ -1,13 +1,11 @@
 using System;
-using System.Collections.Generic;
 
-using ClassLibrary;
-using ClassLibrary.Cameras;
-using ClassLibrary.Inputs;
+using GameFramework;
+using GameFramework.Inputs;
 
 using Microsoft.Xna.Framework.Input;
 
-namespace WindowsGameLibrary.EngineImplementation
+namespace XnaGameFramework.EngineImplementation
 {
     public class XnaInputContext : InputContext
     {

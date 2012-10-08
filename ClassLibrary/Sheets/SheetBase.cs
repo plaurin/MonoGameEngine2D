@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
-using ClassLibrary.Hexes;
-using ClassLibrary.Sprites;
-using ClassLibrary.Tiles;
+using GameFramework.Hexes;
+using GameFramework.Sprites;
+using GameFramework.Tiles;
 
-namespace ClassLibrary.Sheets
+namespace GameFramework.Sheets
 {
     public abstract class SheetBase
     {

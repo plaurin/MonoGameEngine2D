@@ -1,6 +1,6 @@
 using System;
 
-namespace ClassLibrary.Drawing
+namespace GameFramework.Drawing
 {
     public class DrawingFont
     {

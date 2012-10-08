@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ClassLibrary
+namespace GameFramework
 {
     public static class MathExtensions
     {

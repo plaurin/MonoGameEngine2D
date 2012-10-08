@@ -1,6 +1,6 @@
 using System;
 
-namespace ClassLibrary
+namespace GameFramework
 {
     public struct Point
     {

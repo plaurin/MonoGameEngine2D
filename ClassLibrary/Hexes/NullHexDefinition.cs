@@ -1,6 +1,6 @@
 using System;
 
-namespace ClassLibrary.Hexes
+namespace GameFramework.Hexes
 {
     public class NullHexDefinition : HexDefinition
     {

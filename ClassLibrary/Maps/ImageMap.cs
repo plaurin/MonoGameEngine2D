@@ -1,9 +1,9 @@
 using System;
 using System.Xml.Linq;
 
-using ClassLibrary.Cameras;
+using GameFramework.Cameras;
 
-namespace ClassLibrary.Maps
+namespace GameFramework.Maps
 {
     public class ImageMap : MapBase
     {

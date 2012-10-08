@@ -1,10 +1,10 @@
 ﻿using System;
 
-using ClassLibrary.Cameras;
-using ClassLibrary.Inputs;
-using ClassLibrary.Scenes;
+using GameFramework.Cameras;
+using GameFramework.Inputs;
+using GameFramework.Scenes;
 
-namespace ClassLibrary.Screens
+namespace GameFramework.Screens
 {
     public abstract class ScreenBase
     {

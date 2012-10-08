@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
-using ClassLibrary.Cameras;
-using ClassLibrary.Maps;
-using ClassLibrary.Scenes;
+using GameFramework.Cameras;
+using GameFramework.Maps;
+using GameFramework.Scenes;
 
-namespace ClassLibrary.Sprites
+namespace GameFramework.Sprites
 {
     public class SpriteMap : MapBase
     {
@@ -57,7 +57,7 @@ namespace ClassLibrary.Sprites
             var map = new SpriteMap(mapName);
             map.BaseFromXml(mapElement);
 
-            foreach(var element in mapElement.Element("Sprites").Elements())
+            foreach (var element in mapElement.Element("Sprites").Elements())
             {
                 var sheetName = element.Attribute("sheetName").Value;
                 var name = element.Attribute("name").Value;

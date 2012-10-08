@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ClassLibrary.Cameras
+namespace GameFramework.Cameras
 {
     public class Camera
     {

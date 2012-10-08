@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
-using ClassLibrary.Cameras;
-using ClassLibrary.Drawing;
-using ClassLibrary.Hexes;
-using ClassLibrary.Maps;
-using ClassLibrary.Sprites;
-using ClassLibrary.Tiles;
+using GameFramework.Cameras;
+using GameFramework.Drawing;
+using GameFramework.Hexes;
+using GameFramework.Maps;
+using GameFramework.Sprites;
+using GameFramework.Tiles;
 
-namespace ClassLibrary.Scenes
+namespace GameFramework.Scenes
 {
     public class Scene
     {

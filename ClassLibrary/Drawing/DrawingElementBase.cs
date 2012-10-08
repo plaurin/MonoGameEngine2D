@@ -1,9 +1,9 @@
 using System;
 using System.Xml.Linq;
 
-using ClassLibrary.Cameras;
+using GameFramework.Cameras;
 
-namespace ClassLibrary.Drawing
+namespace GameFramework.Drawing
 {
     public abstract class DrawingElementBase
     {

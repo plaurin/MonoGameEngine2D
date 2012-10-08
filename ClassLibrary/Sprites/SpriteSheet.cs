@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
-using ClassLibrary.Cameras;
-using ClassLibrary.Scenes;
-using ClassLibrary.Sheets;
+using GameFramework.Cameras;
+using GameFramework.Scenes;
+using GameFramework.Sheets;
 
-namespace ClassLibrary.Sprites
+namespace GameFramework.Sprites
 {
     public class SpriteSheet : SheetBase
     {

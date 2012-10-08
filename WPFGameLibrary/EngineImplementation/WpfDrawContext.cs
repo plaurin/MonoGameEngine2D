@@ -3,14 +3,14 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
 
-using ClassLibrary;
-using ClassLibrary.Cameras;
-using ClassLibrary.Drawing;
+using GameFramework;
+using GameFramework.Cameras;
+using GameFramework.Drawing;
 
-using Color = ClassLibrary.Color;
-using Vector = ClassLibrary.Vector;
+using Color = GameFramework.Color;
+using Vector = GameFramework.Vector;
 
-namespace WPFGameLibrary.EngineImplementation
+namespace WpfGameFramework.EngineImplementation
 {
     public class WpfDrawContext : DrawContext
     {
