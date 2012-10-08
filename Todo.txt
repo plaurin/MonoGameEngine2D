@@ -55,10 +55,10 @@ Demo Sample
 - DemoGameDomain (Demo GameDomain) [DemoGameDomain]
 - DemoGameContent (Demo GameContent) [DemoGameContent]
 WPF
-- Editor (WPF UI Frame) [WpfGameFrame]
-- WPFGameLibrary (WPF GameFramework Implementation) [WpfGameEngine]
+- Editor (WPF UI Frame) [WpfGameLoader]
+- WPFGameLibrary (WPF GameFramework Implementation) [WpfGameFramework]
 XNA
-- WindowsGameLibrary (XNA GameFramework Implementation) [XnaGameEngine]
+- WindowsGameLibrary (XNA GameFramework Implementation) [XnaGameFramwork]
 Framework
 - ClassLibrary (GameFramework Abtraction) [GameFramework]
 
