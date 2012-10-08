@@ -97,7 +97,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary\GameFramework.csproj">
+    <ProjectReference Include="..\GameFramework\GameFramework.csproj">
       <Project>{6677C8EF-D627-4946-88EE-029503E258DF}</Project>
       <Name>GameFramework</Name>
     </ProjectReference>
@@ -105,7 +105,7 @@
       <Project>{D22765F8-9C64-4194-8ED4-55DE12E7B3D7}</Project>
       <Name>DemoGameDomain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WPFGameLibrary\WpfGameFramework.csproj">
+    <ProjectReference Include="..\WpfGameFramework\WpfGameFramework.csproj">
       <Project>{B3C83C23-BDFB-4238-8814-173A61A42117}</Project>
       <Name>WpfGameFramework</Name>
     </ProjectReference>

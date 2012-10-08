@@ -44,7 +44,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary\GameFramework.csproj">
+    <ProjectReference Include="..\GameFramework\GameFramework.csproj">
       <Project>{6677C8EF-D627-4946-88EE-029503E258DF}</Project>
       <Name>GameFramework</Name>
     </ProjectReference>
