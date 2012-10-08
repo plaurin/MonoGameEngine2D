@@ -18,6 +18,11 @@ namespace ClassLibrary
             get { return new Point(); }
         }
 
+        public bool IsZero
+        {
+            get { return this.x == 0 && this.y == 0; }
+        }
+
         public int X
         {
             get { return this.x; }

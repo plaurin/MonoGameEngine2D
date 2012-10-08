@@ -33,14 +33,14 @@ namespace ClassLibrary.Sprites
         {
             foreach (var sprite in this.sprites)
             {
-                sprite.Draw(drawContext, camera, this.ParallaxScrollingVector);
+                sprite.Draw(drawContext, camera, this.Offset, this.ParallaxScrollingVector);
             }
         }
 
         public override HitBase GetHit(Point position, Camera camera)
         {
             return this.sprites
-                .Select(sprite => sprite.GetHit(position, camera, this.ParallaxScrollingVector))
+                .Select(sprite => sprite.GetHit(position, camera, this.Offset, this.ParallaxScrollingVector))
                 .FirstOrDefault(spriteHit => spriteHit != null);
         }
 

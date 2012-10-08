@@ -24,20 +24,30 @@ namespace ClassLibrary.Sprites
             this.definitions.Add(spriteName, spriteRectangle);
         }
 
-        public void Draw(DrawContext drawContext, Camera camera, Vector parallaxScrollingVector, Sprite sprite)
+        public void Draw(DrawContext drawContext, Camera camera, Point mapOffset, Vector parallaxScrollingVector, Sprite sprite)
         {
             var source = this.definitions[sprite.SpriteName];
-            var destination = new Rectangle(sprite.Position.X, sprite.Position.Y, source.Width, source.Height)
+            var destination = 
+                new Rectangle(
+                    mapOffset.X + sprite.Position.X,
+                    mapOffset.Y + sprite.Position.Y, 
+                    source.Width, 
+                    source.Height)
                 .Scale(camera.ZoomFactor)
                 .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
 
             drawContext.DrawImage(this.Texture, source, destination);
         }
 
-        public HitBase GetHit(Point position, Camera camera, Vector parallaxScrollingVector, Sprite sprite)
+        public HitBase GetHit(Point position, Camera camera, Point mapOffset, Vector parallaxScrollingVector, Sprite sprite)
         {
             var source = this.definitions[sprite.SpriteName];
-            var spriteRectangle = new Rectangle(sprite.Position.X, sprite.Position.Y, source.Width, source.Height)
+            var spriteRectangle = 
+                new Rectangle(
+                    mapOffset.X + sprite.Position.X,
+                    mapOffset.X + sprite.Position.Y, 
+                    source.Width, 
+                    source.Height)
                 .Scale(camera.ZoomFactor)
                 .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
 

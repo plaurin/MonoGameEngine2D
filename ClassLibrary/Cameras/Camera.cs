@@ -23,13 +23,25 @@ namespace ClassLibrary.Cameras
 
         public Point ViewPortCenter { get; private set; }
 
+        public CameraCenter Center { get; set; }
+
         public Point SceneTranslationVector
         {
             get
             {
-                return new Point(
-                    (int)(this.ViewPortCenter.X - this.Position.X * this.ZoomFactor),
-                    (int)(this.ViewPortCenter.Y - this.Position.Y * this.ZoomFactor));
+                switch (this.Center)
+                {
+                    case CameraCenter.WindowCenter:
+                        return new Point(
+                            (int)(this.ViewPortCenter.X - this.Position.X * this.ZoomFactor),
+                            (int)(this.ViewPortCenter.Y - this.Position.Y * this.ZoomFactor));
+                    case CameraCenter.WindowTopLeft:
+                        return new Point(
+                            (int)(-this.Position.X * this.ZoomFactor),
+                            (int)(-this.Position.Y * this.ZoomFactor));
+                    default:
+                        throw new NotSupportedException("CameraCenter value not supported");
+                }
             }
         }
 
@@ -37,11 +49,23 @@ namespace ClassLibrary.Cameras
         {
             get
             {
-                return new Rectangle(
-                    (int)(this.Position.X - this.ViewPortCenter.X / this.ZoomFactor),
-                    (int)(this.Position.Y - this.ViewPortCenter.Y / this.ZoomFactor),
-                    (int)(this.Viewport.Width / this.ZoomFactor),
-                    (int)(this.Viewport.Height / this.ZoomFactor));
+                switch (this.Center)
+                {
+                    case CameraCenter.WindowCenter:
+                        return new Rectangle(
+                            (int)(this.Position.X - this.ViewPortCenter.X / this.ZoomFactor),
+                            (int)(this.Position.Y - this.ViewPortCenter.Y / this.ZoomFactor),
+                            (int)(this.Viewport.Width / this.ZoomFactor),
+                            (int)(this.Viewport.Height / this.ZoomFactor));
+                    case CameraCenter.WindowTopLeft:
+                        return new Rectangle(
+                            (int)(this.Position.X / this.ZoomFactor),
+                            (int)(this.Position.Y / this.ZoomFactor),
+                            (int)(this.Viewport.Width / this.ZoomFactor),
+                            (int)(this.Viewport.Height / this.ZoomFactor));
+                    default:
+                        throw new NotSupportedException("CameraCenter value not supported");
+                }
             }
         }
 
@@ -53,9 +77,19 @@ namespace ClassLibrary.Cameras
 
         public Point GetSceneTranslationVector(Vector parallaxScrollingVector)
         {
-            return new Point(
-                (int)(this.ViewPortCenter.X - this.Position.X * this.ZoomFactor * parallaxScrollingVector.X),
-                (int)(this.ViewPortCenter.Y - this.Position.Y * this.ZoomFactor * parallaxScrollingVector.Y));
+            switch (this.Center)
+            {
+                case CameraCenter.WindowCenter:
+                    return new Point(
+                        (int)(this.ViewPortCenter.X - this.Position.X * this.ZoomFactor * parallaxScrollingVector.X),
+                        (int)(this.ViewPortCenter.Y - this.Position.Y * this.ZoomFactor * parallaxScrollingVector.Y));
+                case CameraCenter.WindowTopLeft:
+                    return new Point(
+                        (int)(-this.Position.X * this.ZoomFactor * parallaxScrollingVector.X),
+                        (int)(-this.Position.Y * this.ZoomFactor * parallaxScrollingVector.Y));
+                default:
+                    throw new NotSupportedException("CameraCenter value not supported");
+            }
         }
     }
 
@@ -63,5 +97,11 @@ namespace ClassLibrary.Cameras
     {
         Follow = 0,
         Fix = 1
+    }
+
+    public enum CameraCenter
+    {
+        WindowCenter,
+        WindowTopLeft
     }
 }

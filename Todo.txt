@@ -38,3 +38,27 @@ Quality
 =======
 - Activate more StyleCop rules
 - FxCop
+
+Samples ideas
+=============
+- Shooter Game (top view)
+- Tactical War Game (Hex map)
+
+Projects structure
+==================
+X Samples
+- XGame
+- XGameDomain
+- XGameContent
+Demo Sample
+- GameEngine (XNA GameEngine - Demo) [DemoGame]
+- DemoGameDomain (Demo GameDomain) [DemoGameDomain]
+- DemoGameContent (Demo GameContent) [DemoGameContent]
+WPF
+- Editor (WPF UI Frame) [WpfGameFrame]
+- WPFGameLibrary (WPF GameFramework Implementation) [WpfGameEngine]
+XNA
+- WindowsGameLibrary (XNA GameFramework Implementation) [XnaGameEngine]
+Framework
+- ClassLibrary (GameFramework Abtraction) [GameFramework]
+

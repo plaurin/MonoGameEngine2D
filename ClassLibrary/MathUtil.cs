@@ -76,6 +76,41 @@ namespace ClassLibrary
             return isHit;
         }
 
+        public static int HexDistance(Point first, Point second)
+        {
+            var deltaX = second.X - first.X;
+            var deltaY = second.Y - first.Y;
+
+            var adj = first.X % 2 == 0 ? 0.5 : -0.5;
+            var adx = Math.Abs(deltaX);
+            var ady = Math.Abs(deltaY + (adx % 2 * adj));
+
+            if (adx >= 2 * ady) return adx;
+            return (int)(adx + ady - adx / 2.0);
+        }
+
+        public static IEnumerable<Point> AdjacentHex(Point hexPosition)
+        {
+            if (hexPosition.X % 2 == 0)
+            {
+                yield return new Point(hexPosition.X, hexPosition.Y - 1);
+                yield return new Point(hexPosition.X + 1, hexPosition.Y - 1);
+                yield return new Point(hexPosition.X + 1, hexPosition.Y);
+                yield return new Point(hexPosition.X, hexPosition.Y + 1);
+                yield return new Point(hexPosition.X - 1, hexPosition.Y);
+                yield return new Point(hexPosition.X - 1, hexPosition.Y - 1);
+            }
+            else
+            {
+                yield return new Point(hexPosition.X, hexPosition.Y - 1);
+                yield return new Point(hexPosition.X + 1, hexPosition.Y);
+                yield return new Point(hexPosition.X + 1, hexPosition.Y + 1);
+                yield return new Point(hexPosition.X, hexPosition.Y + 1);
+                yield return new Point(hexPosition.X - 1, hexPosition.Y + 1);
+                yield return new Point(hexPosition.X - 1, hexPosition.Y);
+            }
+        }
+
         private static Dictionary<string, float> GetNameValuesFloat(string value)
         {
             return value

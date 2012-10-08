@@ -21,6 +21,8 @@ namespace ClassLibrary.Maps
         public CameraMode CameraMode { get; set; }
 
         public Vector ParallaxScrollingVector { get; set; }
+        
+        public Point Offset { get; set; }
 
         public abstract void Draw(DrawContext drawContext, Camera camera);
 
@@ -35,6 +37,7 @@ namespace ClassLibrary.Maps
         {
             yield return new XAttribute("name", this.Name);
             yield return new XAttribute("parallaxScrollingVector", this.ParallaxScrollingVector);
+            yield return new XAttribute("offset", this.Offset);
             yield return new XAttribute("cameraMode", this.CameraMode);
         }
 
@@ -42,6 +45,7 @@ namespace ClassLibrary.Maps
         {
             this.Name = element.Attribute("name").Value;
             this.ParallaxScrollingVector = MathUtil.ParseVector(element.Attribute("parallaxScrollingVector").Value);
+            this.Offset = MathUtil.ParsePoint(element.Attribute("offset").Value);
             this.CameraMode = (CameraMode)Enum.Parse(typeof(CameraMode), element.Attribute("cameraMode").Value);
         }
     }

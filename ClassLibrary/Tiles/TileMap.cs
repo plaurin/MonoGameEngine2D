@@ -46,7 +46,11 @@ namespace ClassLibrary.Tiles
                 for (var j = 0; j < this.MapSize.Height; j++)
                 {
                     var destination =
-                        new Rectangle(i * this.TileSize.Width, j * this.TileSize.Height, this.TileSize.Width, this.TileSize.Height)
+                        new Rectangle(
+                            this.Offset.X + i * this.TileSize.Width, 
+                            this.Offset.Y + j * this.TileSize.Height, 
+                            this.TileSize.Width, 
+                            this.TileSize.Height)
                         .Scale(camera.ZoomFactor)
                         .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
 
@@ -60,7 +64,11 @@ namespace ClassLibrary.Tiles
                 for (var j = 0; j < this.MapSize.Height; j++)
                 {
                     var tileRectangle =
-                        new Rectangle(i * this.TileSize.Width, j * this.TileSize.Height, this.TileSize.Width, this.TileSize.Height)
+                        new Rectangle(
+                            this.Offset.X + i * this.TileSize.Width,
+                            this.Offset.Y + j * this.TileSize.Height, 
+                            this.TileSize.Width, 
+                            this.TileSize.Height)
                         .Scale(camera.ZoomFactor)
                         .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
 

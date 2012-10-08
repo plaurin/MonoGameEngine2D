@@ -43,6 +43,12 @@ namespace ClassLibrary.Hexes
             set { this.map[x, y] = value; }
         }
 
+        public HexDefinition this[Point point]
+        {
+            get { return this.map[point.X, point.Y]; }
+            set { this.map[point.X, point.Y] = value; }
+        }
+
         public override void Draw(DrawContext drawContext, Camera camera)
         {
             for (var i = 0; i < this.MapSize.Width; i++)
@@ -52,8 +58,8 @@ namespace ClassLibrary.Hexes
                     var halfHeight = this.HexSize.Height / 2;
 
                     var rectangle = new Rectangle(
-                        i * hexDistance,
-                        j * this.HexSize.Height + (i % 2 == 1 ? halfHeight : 0),
+                        this.Offset.X + i * hexDistance,
+                        this.Offset.Y + j * this.HexSize.Height + (i % 2 == 1 ? halfHeight : 0),
                         this.HexSize.Width, this.HexSize.Height);
 
                     var destination = rectangle
@@ -73,8 +79,8 @@ namespace ClassLibrary.Hexes
                     var halfHeight = this.HexSize.Height / 2;
 
                     var rectangle = new Rectangle(
-                        i * hexDistance,
-                        j * this.HexSize.Height + (i % 2 == 1 ? halfHeight : 0),
+                        this.Offset.X + i * hexDistance,
+                        this.Offset.Y + j * this.HexSize.Height + (i % 2 == 1 ? halfHeight : 0),
                         this.HexSize.Width, this.HexSize.Height);
 
                     var mapPosition = position

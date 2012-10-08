@@ -47,6 +47,8 @@ namespace WindowsGameLibrary.EngineImplementation
                     case KeyboardKeys.W: return Keys.W;
                     case KeyboardKeys.A: return Keys.A;
                     case KeyboardKeys.Z: return Keys.Z;
+                    case KeyboardKeys.Enter: return Keys.Enter;
+                    case KeyboardKeys.Back: return Keys.Back;
                     default: throw new NotSupportedException("Key not supported yet");
                 }
             }

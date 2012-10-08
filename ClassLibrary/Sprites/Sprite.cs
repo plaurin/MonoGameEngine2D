@@ -20,14 +20,14 @@ namespace ClassLibrary.Sprites
 
         public Point Position { get; set; }
 
-        public void Draw(DrawContext drawContext, Camera camera, Vector parallaxScrollingVector)
+        public void Draw(DrawContext drawContext, Camera camera, Point mapOffset, Vector parallaxScrollingVector)
         {
-            this.SpriteSheet.Draw(drawContext, camera, parallaxScrollingVector, this);
+            this.SpriteSheet.Draw(drawContext, camera, mapOffset, parallaxScrollingVector, this);
         }
 
-        public HitBase GetHit(Point position, Camera camera, Vector parallaxScrollingVector)
+        public HitBase GetHit(Point position, Camera camera, Point mapOffset, Vector parallaxScrollingVector)
         {
-            return this.SpriteSheet.GetHit(position, camera, parallaxScrollingVector, this);
+            return this.SpriteSheet.GetHit(position, camera, mapOffset, parallaxScrollingVector, this);
         }
 
         public XElement GetXml()

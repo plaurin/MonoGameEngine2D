@@ -4,7 +4,7 @@
     <Texture>LinkSheet</Texture>
     <Rectangle>{X:10 Y:10 Width:250 Height:250}</Rectangle>
   </ImageMap>
-  <HexMap name="Hex" parallaxScrollingVector="{X:4 Y:0.5}" cameraMode="Follow">
+  <HexMap name="Hex" parallaxScrollingVector="{X:4 Y:0.5}" offset="{X:-25 Y:0}" cameraMode="Follow">
     <MapSize>{Width:4 Height:4}</MapSize>
     <HexSize>{Width:68 Height:60}</HexSize>
     <EdgeLength>42</EdgeLength>
@@ -21,7 +21,7 @@
       <Row>0, 0, 0, 0</Row>
     </Hexes>
   </HexMap>
-  <TileMap name="Tiles" parallaxScrollingVector="{X:2 Y:2}" cameraMode="Follow">
+  <TileMap name="Tiles" parallaxScrollingVector="{X:2 Y:2}" offset="{X:0 Y:-20}" cameraMode="Follow">
     <MapSize>{Width:32 Height:32}</MapSize>
     <TileSize>{Width:16 Height:16}</TileSize>
     <TileDefinitionReferences>
@@ -68,777 +68,777 @@
   <ColorMap name="Red">
     <Color>{R:255 G:0 B:0 A:63}</Color>
   </ColorMap>
-  <DrawingMap name="Hex drawing test" parallaxScrollingVector="{X:1 Y:1}" cameraMode="Follow">
+  <DrawingMap name="Hex drawing test" parallaxScrollingVector="{X:1 Y:1}" offset="{X:0 Y:0}" cameraMode="Follow">
     <Elements>
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:44.9999990463257 Y:51.9615249633789}, {X:14.9999980926514 Y:51.9615249633789}, {X:0 Y:25.9807598590062}, {X:15.0000028610229 Y:0}, {X:44.9999971389771 Y:0}, {X:60 Y:25.980767727056}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-4,-5" vector="{X:30 Y:25.9807624816895}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-4,-5" vector="{X:12.5 Y:17.9807624816895}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:89.9999990463257 Y:77.9807624816895}, {X:59.9999980926514 Y:77.9807624816895}, {X:45 Y:51.9999973773167}, {X:60.0000028610229 Y:26.0192375183105}, {X:89.9999971389771 Y:26.0192375183105}, {X:105 Y:52.0000052453665}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,-4.5" vector="{X:75 Y:52}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,-4.5" vector="{X:50.5 Y:44}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:134.999999046326 Y:51.9807624816895}, {X:104.999998092651 Y:51.9807624816895}, {X:90 Y:25.9999973773167}, {X:105.000002861023 Y:0.0192375183105469}, {X:134.999997138977 Y:0.0192375183105469}, {X:150 Y:26.0000052453665}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,-5" vector="{X:120 Y:26}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,-5" vector="{X:102.5 Y:18}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:179.999999046326 Y:77.9807624816895}, {X:149.999998092651 Y:77.9807624816895}, {X:135 Y:51.9999973773167}, {X:150.000002861023 Y:26.0192375183105}, {X:179.999997138977 Y:26.0192375183105}, {X:195 Y:52.0000052453665}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,-4.5" vector="{X:165 Y:52}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,-4.5" vector="{X:140.5 Y:44}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:224.999999046326 Y:51.9807624816895}, {X:194.999998092651 Y:51.9807624816895}, {X:180 Y:25.9999973773167}, {X:195.000002861023 Y:0.0192375183105469}, {X:224.999997138977 Y:0.0192375183105469}, {X:240 Y:26.0000052453665}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,-5" vector="{X:210 Y:26}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,-5" vector="{X:196 Y:18}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:269.999999046326 Y:77.9807624816895}, {X:239.999998092651 Y:77.9807624816895}, {X:225 Y:51.9999973773167}, {X:240.000002861023 Y:26.0192375183105}, {X:269.999997138977 Y:26.0192375183105}, {X:285 Y:52.0000052453665}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,-4.5" vector="{X:255 Y:52}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,-4.5" vector="{X:234 Y:44}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:314.999999046326 Y:51.9807624816895}, {X:284.999998092651 Y:51.9807624816895}, {X:270 Y:25.9999973773167}, {X:285.000002861023 Y:0.0192375183105469}, {X:314.999997138977 Y:0.0192375183105469}, {X:330 Y:26.0000052453665}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,-5" vector="{X:300 Y:26}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,-5" vector="{X:286 Y:18}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:359.999999046326 Y:77.9807624816895}, {X:329.999998092651 Y:77.9807624816895}, {X:315 Y:51.9999973773167}, {X:330.000002861023 Y:26.0192375183105}, {X:359.999997138977 Y:26.0192375183105}, {X:375 Y:52.0000052453665}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,-4.5" vector="{X:345 Y:52}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,-4.5" vector="{X:324 Y:44}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:404.999999046326 Y:51.9807624816895}, {X:374.999998092651 Y:51.9807624816895}, {X:360 Y:25.9999973773167}, {X:375.000002861023 Y:0.0192375183105469}, {X:404.999997138977 Y:0.0192375183105469}, {X:420 Y:26.0000052453665}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,-5" vector="{X:390 Y:26}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,-5" vector="{X:376 Y:18}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:449.999999046326 Y:77.9807624816895}, {X:419.999998092651 Y:77.9807624816895}, {X:405 Y:51.9999973773167}, {X:420.000002861023 Y:26.0192375183105}, {X:449.999997138977 Y:26.0192375183105}, {X:465 Y:52.0000052453665}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,-4.5" vector="{X:435 Y:52}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,-4.5" vector="{X:414 Y:44}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:449.999999046326 Y:129.980762481689}, {X:419.999998092651 Y:129.980762481689}, {X:405 Y:103.999997377317}, {X:420.000002861023 Y:78.0192375183105}, {X:449.999997138977 Y:78.0192375183105}, {X:465 Y:104.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,-3.5" vector="{X:435 Y:104}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,-3.5" vector="{X:414 Y:96}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:449.999999046326 Y:181.980762481689}, {X:419.999998092651 Y:181.980762481689}, {X:405 Y:155.999997377317}, {X:420.000002861023 Y:130.019237518311}, {X:449.999997138977 Y:130.019237518311}, {X:465 Y:156.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,-2.5" vector="{X:435 Y:156}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,-2.5" vector="{X:414 Y:148}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:449.999999046326 Y:233.980762481689}, {X:419.999998092651 Y:233.980762481689}, {X:405 Y:207.999997377317}, {X:420.000002861023 Y:182.019237518311}, {X:449.999997138977 Y:182.019237518311}, {X:465 Y:208.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,-1.5" vector="{X:435 Y:208}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,-1.5" vector="{X:414 Y:200}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:449.999999046326 Y:285.980762481689}, {X:419.999998092651 Y:285.980762481689}, {X:405 Y:259.999997377317}, {X:420.000002861023 Y:234.019237518311}, {X:449.999997138977 Y:234.019237518311}, {X:465 Y:260.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,-0.5" vector="{X:435 Y:260}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,-0.5" vector="{X:414 Y:252}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:449.999999046326 Y:337.980762481689}, {X:419.999998092651 Y:337.980762481689}, {X:405 Y:311.999997377317}, {X:420.000002861023 Y:286.019237518311}, {X:449.999997138977 Y:286.019237518311}, {X:465 Y:312.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,0.5" vector="{X:435 Y:312}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,0.5" vector="{X:417.5 Y:304}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:449.999999046326 Y:389.980762481689}, {X:419.999998092651 Y:389.980762481689}, {X:405 Y:363.999997377317}, {X:420.000002861023 Y:338.019237518311}, {X:449.999997138977 Y:338.019237518311}, {X:465 Y:364.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,1.5" vector="{X:435 Y:364}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,1.5" vector="{X:417.5 Y:356}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:449.999999046326 Y:441.980762481689}, {X:419.999998092651 Y:441.980762481689}, {X:405 Y:415.999997377317}, {X:420.000002861023 Y:390.019237518311}, {X:449.999997138977 Y:390.019237518311}, {X:465 Y:416.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,2.5" vector="{X:435 Y:416}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,2.5" vector="{X:417.5 Y:408}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:449.999999046326 Y:493.980762481689}, {X:419.999998092651 Y:493.980762481689}, {X:405 Y:467.999997377317}, {X:420.000002861023 Y:442.019237518311}, {X:449.999997138977 Y:442.019237518311}, {X:465 Y:468.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,3.5" vector="{X:435 Y:468}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,3.5" vector="{X:417.5 Y:460}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:449.999999046326 Y:545.980762481689}, {X:419.999998092651 Y:545.980762481689}, {X:405 Y:519.999997377317}, {X:420.000002861023 Y:494.019237518311}, {X:449.999997138977 Y:494.019237518311}, {X:465 Y:520.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,4.5" vector="{X:435 Y:520}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,4.5" vector="{X:417.5 Y:512}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:44.9999990463257 Y:103.880764007568}, {X:14.9999980926514 Y:103.880764007568}, {X:0 Y:77.8999989031956}, {X:15.0000028610229 Y:51.9192390441895}, {X:44.9999971389771 Y:51.9192390441895}, {X:60 Y:77.9000067712454}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-4,-4" vector="{X:30 Y:77.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-4,-4" vector="{X:12.5 Y:69.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:89.9999990463257 Y:129.880764007568}, {X:59.9999980926514 Y:129.880764007568}, {X:45 Y:103.899998903196}, {X:60.0000028610229 Y:77.9192390441895}, {X:89.9999971389771 Y:77.9192390441895}, {X:105 Y:103.900006771245}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,-3.5" vector="{X:75 Y:103.900001525879}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,-3.5" vector="{X:50.5 Y:95.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:134.999999046326 Y:103.880764007568}, {X:104.999998092651 Y:103.880764007568}, {X:90 Y:77.8999989031956}, {X:105.000002861023 Y:51.9192390441895}, {X:134.999997138977 Y:51.9192390441895}, {X:150 Y:77.9000067712454}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,-4" vector="{X:120 Y:77.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,-4" vector="{X:102.5 Y:69.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:179.999999046326 Y:77.8807640075684}, {X:149.999998092651 Y:77.8807640075684}, {X:135 Y:51.8999989031956}, {X:150.000002861023 Y:25.9192390441895}, {X:179.999997138977 Y:25.9192390441895}, {X:195 Y:51.9000067712454}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,-4.5" vector="{X:165 Y:51.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,-4.5" vector="{X:140.5 Y:43.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:224.999999046326 Y:51.8807621002197}, {X:194.999998092651 Y:51.8807621002197}, {X:180 Y:25.899996995847}, {X:195.000002861023 Y:-0.0807628631591797}, {X:224.999997138977 Y:-0.0807628631591797}, {X:240 Y:25.9000048638968}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,-5" vector="{X:210 Y:25.8999996185303}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,-5" vector="{X:196 Y:17.8999996185303}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:269.999999046326 Y:77.8807640075684}, {X:239.999998092651 Y:77.8807640075684}, {X:225 Y:51.8999989031956}, {X:240.000002861023 Y:25.9192390441895}, {X:269.999997138977 Y:25.9192390441895}, {X:285 Y:51.9000067712454}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,-4.5" vector="{X:255 Y:51.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,-4.5" vector="{X:234 Y:43.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:314.999999046326 Y:51.8807621002197}, {X:284.999998092651 Y:51.8807621002197}, {X:270 Y:25.899996995847}, {X:285.000002861023 Y:-0.0807628631591797}, {X:314.999997138977 Y:-0.0807628631591797}, {X:330 Y:25.9000048638968}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,-5" vector="{X:300 Y:25.8999996185303}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,-5" vector="{X:286 Y:17.8999996185303}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:359.999999046326 Y:77.8807640075684}, {X:329.999998092651 Y:77.8807640075684}, {X:315 Y:51.8999989031956}, {X:330.000002861023 Y:25.9192390441895}, {X:359.999997138977 Y:25.9192390441895}, {X:375 Y:51.9000067712454}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,-4.5" vector="{X:345 Y:51.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,-4.5" vector="{X:324 Y:43.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:404.999999046326 Y:51.8807621002197}, {X:374.999998092651 Y:51.8807621002197}, {X:360 Y:25.899996995847}, {X:375.000002861023 Y:-0.0807628631591797}, {X:404.999997138977 Y:-0.0807628631591797}, {X:420 Y:25.9000048638968}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,-5" vector="{X:390 Y:25.8999996185303}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,-5" vector="{X:376 Y:17.8999996185303}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:449.999999046326 Y:77.8807640075684}, {X:419.999998092651 Y:77.8807640075684}, {X:405 Y:51.8999989031956}, {X:420.000002861023 Y:25.9192390441895}, {X:449.999997138977 Y:25.9192390441895}, {X:465 Y:51.9000067712454}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,-4.5" vector="{X:435 Y:51.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,-4.5" vector="{X:414 Y:43.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:449.999999046326 Y:129.880764007568}, {X:419.999998092651 Y:129.880764007568}, {X:405 Y:103.899998903196}, {X:420.000002861023 Y:77.9192390441895}, {X:449.999997138977 Y:77.9192390441895}, {X:465 Y:103.900006771245}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,-3.5" vector="{X:435 Y:103.900001525879}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,-3.5" vector="{X:414 Y:95.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:449.999999046326 Y:181.880756378174}, {X:419.999998092651 Y:181.880756378174}, {X:405 Y:155.899991273801}, {X:420.000002861023 Y:129.919231414795}, {X:449.999997138977 Y:129.919231414795}, {X:465 Y:155.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,-2.5" vector="{X:435 Y:155.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,-2.5" vector="{X:414 Y:147.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:449.999999046326 Y:233.880756378174}, {X:419.999998092651 Y:233.880756378174}, {X:405 Y:207.899991273801}, {X:420.000002861023 Y:181.919231414795}, {X:449.999997138977 Y:181.919231414795}, {X:465 Y:207.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,-1.5" vector="{X:435 Y:207.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,-1.5" vector="{X:414 Y:199.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:449.999999046326 Y:285.880756378174}, {X:419.999998092651 Y:285.880756378174}, {X:405 Y:259.899991273801}, {X:420.000002861023 Y:233.919231414795}, {X:449.999997138977 Y:233.919231414795}, {X:465 Y:259.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,-0.5" vector="{X:435 Y:259.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,-0.5" vector="{X:414 Y:251.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:449.999999046326 Y:337.880756378174}, {X:419.999998092651 Y:337.880756378174}, {X:405 Y:311.899991273801}, {X:420.000002861023 Y:285.919231414795}, {X:449.999997138977 Y:285.919231414795}, {X:465 Y:311.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,0.5" vector="{X:435 Y:311.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,0.5" vector="{X:417.5 Y:303.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:449.999999046326 Y:389.880756378174}, {X:419.999998092651 Y:389.880756378174}, {X:405 Y:363.899991273801}, {X:420.000002861023 Y:337.919231414795}, {X:449.999997138977 Y:337.919231414795}, {X:465 Y:363.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,1.5" vector="{X:435 Y:363.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,1.5" vector="{X:417.5 Y:355.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:449.999999046326 Y:441.880756378174}, {X:419.999998092651 Y:441.880756378174}, {X:405 Y:415.899991273801}, {X:420.000002861023 Y:389.919231414795}, {X:449.999997138977 Y:389.919231414795}, {X:465 Y:415.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,2.5" vector="{X:435 Y:415.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,2.5" vector="{X:417.5 Y:407.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:449.999999046326 Y:493.880756378174}, {X:419.999998092651 Y:493.880756378174}, {X:405 Y:467.899991273801}, {X:420.000002861023 Y:441.919231414795}, {X:449.999997138977 Y:441.919231414795}, {X:465 Y:467.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,3.5" vector="{X:435 Y:467.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,3.5" vector="{X:417.5 Y:459.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:449.999999046326 Y:545.880786895752}, {X:419.999998092651 Y:545.880786895752}, {X:405 Y:519.900021791379}, {X:420.000002861023 Y:493.919261932373}, {X:449.999997138977 Y:493.919261932373}, {X:465 Y:519.900029659429}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="5,4.5" vector="{X:435 Y:519.900024414063}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="5,4.5" vector="{X:417.5 Y:511.900024414063}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:89.9999990463257 Y:77.8807640075684}, {X:59.9999980926514 Y:77.8807640075684}, {X:45 Y:51.8999989031956}, {X:60.0000028610229 Y:25.9192390441895}, {X:89.9999971389771 Y:25.9192390441895}, {X:105 Y:51.9000067712454}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,-4.5" vector="{X:75 Y:51.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,-4.5" vector="{X:50.5 Y:43.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:134.999999046326 Y:51.8807621002197}, {X:104.999998092651 Y:51.8807621002197}, {X:90 Y:25.899996995847}, {X:105.000002861023 Y:-0.0807628631591797}, {X:134.999997138977 Y:-0.0807628631591797}, {X:150 Y:25.9000048638968}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,-5" vector="{X:120 Y:25.8999996185303}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,-5" vector="{X:102.5 Y:17.8999996185303}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:134.999999046326 Y:103.980762481689}, {X:104.999998092651 Y:103.980762481689}, {X:90 Y:77.9999973773167}, {X:105.000002861023 Y:52.0192375183105}, {X:134.999997138977 Y:52.0192375183105}, {X:150 Y:78.0000052453665}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,-4" vector="{X:120 Y:78}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,-4" vector="{X:102.5 Y:70}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:134.999999046326 Y:155.980762481689}, {X:104.999998092651 Y:155.980762481689}, {X:90 Y:129.999997377317}, {X:105.000002861023 Y:104.019237518311}, {X:134.999997138977 Y:104.019237518311}, {X:150 Y:130.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,-3" vector="{X:120 Y:130}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,-3" vector="{X:102.5 Y:122}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:134.999999046326 Y:207.980762481689}, {X:104.999998092651 Y:207.980762481689}, {X:90 Y:181.999997377317}, {X:105.000002861023 Y:156.019237518311}, {X:134.999997138977 Y:156.019237518311}, {X:150 Y:182.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,-2" vector="{X:120 Y:182}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,-2" vector="{X:102.5 Y:174}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:134.999999046326 Y:259.980762481689}, {X:104.999998092651 Y:259.980762481689}, {X:90 Y:233.999997377317}, {X:105.000002861023 Y:208.019237518311}, {X:134.999997138977 Y:208.019237518311}, {X:150 Y:234.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,-1" vector="{X:120 Y:234}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,-1" vector="{X:102.5 Y:226}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
         <Vertices>{X:179.999999046326 Y:285.980762481689}, {X:149.999998092651 Y:285.980762481689}, {X:135 Y:259.999997377317}, {X:150.000002861023 Y:234.019237518311}, {X:179.999997138977 Y:234.019237518311}, {X:195 Y:260.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,-0.5" vector="{X:165 Y:260}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,-0.5" vector="{X:140.5 Y:252}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
         <Vertices>{X:224.999999046326 Y:259.980762481689}, {X:194.999998092651 Y:259.980762481689}, {X:180 Y:233.999997377317}, {X:195.000002861023 Y:208.019237518311}, {X:224.999997138977 Y:208.019237518311}, {X:240 Y:234.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,-1" vector="{X:210 Y:234}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,-1" vector="{X:196 Y:226}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:269.999999046326 Y:233.980762481689}, {X:239.999998092651 Y:233.980762481689}, {X:225 Y:207.999997377317}, {X:240.000002861023 Y:182.019237518311}, {X:269.999997138977 Y:182.019237518311}, {X:285 Y:208.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,-1.5" vector="{X:255 Y:208}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,-1.5" vector="{X:234 Y:200}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:314.999999046326 Y:207.980762481689}, {X:284.999998092651 Y:207.980762481689}, {X:270 Y:181.999997377317}, {X:285.000002861023 Y:156.019237518311}, {X:314.999997138977 Y:156.019237518311}, {X:330 Y:182.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,-2" vector="{X:300 Y:182}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,-2" vector="{X:286 Y:174}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:359.999999046326 Y:181.980762481689}, {X:329.999998092651 Y:181.980762481689}, {X:315 Y:155.999997377317}, {X:330.000002861023 Y:130.019237518311}, {X:359.999997138977 Y:130.019237518311}, {X:375 Y:156.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,-2.5" vector="{X:345 Y:156}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,-2.5" vector="{X:324 Y:148}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:404.999999046326 Y:155.980762481689}, {X:374.999998092651 Y:155.980762481689}, {X:360 Y:129.999997377317}, {X:375.000002861023 Y:104.019237518311}, {X:404.999997138977 Y:104.019237518311}, {X:420 Y:130.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,-3" vector="{X:390 Y:130}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,-3" vector="{X:376 Y:122}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:179.999999046326 Y:233.980762481689}, {X:149.999998092651 Y:233.980762481689}, {X:135 Y:207.999997377317}, {X:150.000002861023 Y:182.019237518311}, {X:179.999997138977 Y:182.019237518311}, {X:195 Y:208.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,-1.5" vector="{X:165 Y:208}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,-1.5" vector="{X:140.5 Y:200}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:224.999999046326 Y:207.980762481689}, {X:194.999998092651 Y:207.980762481689}, {X:180 Y:181.999997377317}, {X:195.000002861023 Y:156.019237518311}, {X:224.999997138977 Y:156.019237518311}, {X:240 Y:182.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,-2" vector="{X:210 Y:182}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,-2" vector="{X:196 Y:174}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:269.999999046326 Y:181.980762481689}, {X:239.999998092651 Y:181.980762481689}, {X:225 Y:155.999997377317}, {X:240.000002861023 Y:130.019237518311}, {X:269.999997138977 Y:130.019237518311}, {X:285 Y:156.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,-2.5" vector="{X:255 Y:156}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,-2.5" vector="{X:234 Y:148}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:314.999999046326 Y:155.980762481689}, {X:284.999998092651 Y:155.980762481689}, {X:270 Y:129.999997377317}, {X:285.000002861023 Y:104.019237518311}, {X:314.999997138977 Y:104.019237518311}, {X:330 Y:130.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,-3" vector="{X:300 Y:130}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,-3" vector="{X:286 Y:122}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:179.999999046326 Y:181.980762481689}, {X:149.999998092651 Y:181.980762481689}, {X:135 Y:155.999997377317}, {X:150.000002861023 Y:130.019237518311}, {X:179.999997138977 Y:130.019237518311}, {X:195 Y:156.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,-2.5" vector="{X:165 Y:156}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,-2.5" vector="{X:140.5 Y:148}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:224.999999046326 Y:155.980762481689}, {X:194.999998092651 Y:155.980762481689}, {X:180 Y:129.999997377317}, {X:195.000002861023 Y:104.019237518311}, {X:224.999997138977 Y:104.019237518311}, {X:240 Y:130.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,-3" vector="{X:210 Y:130}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,-3" vector="{X:196 Y:122}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:89.9999990463257 Y:129.980762481689}, {X:59.9999980926514 Y:129.980762481689}, {X:45 Y:103.999997377317}, {X:60.0000028610229 Y:78.0192375183105}, {X:89.9999971389771 Y:78.0192375183105}, {X:105 Y:104.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,-3.5" vector="{X:75 Y:104}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,-3.5" vector="{X:50.5 Y:96}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:89.9999990463257 Y:181.980762481689}, {X:59.9999980926514 Y:181.980762481689}, {X:45 Y:155.999997377317}, {X:60.0000028610229 Y:130.019237518311}, {X:89.9999971389771 Y:130.019237518311}, {X:105 Y:156.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,-2.5" vector="{X:75 Y:156}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,-2.5" vector="{X:50.5 Y:148}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:89.9999990463257 Y:233.980762481689}, {X:59.9999980926514 Y:233.980762481689}, {X:45 Y:207.999997377317}, {X:60.0000028610229 Y:182.019237518311}, {X:89.9999971389771 Y:182.019237518311}, {X:105 Y:208.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,-1.5" vector="{X:75 Y:208}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,-1.5" vector="{X:50.5 Y:200}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:89.9999990463257 Y:285.980762481689}, {X:59.9999980926514 Y:285.980762481689}, {X:45 Y:259.999997377317}, {X:60.0000028610229 Y:234.019237518311}, {X:89.9999971389771 Y:234.019237518311}, {X:105 Y:260.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,-0.5" vector="{X:75 Y:260}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,-0.5" vector="{X:50.5 Y:252}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:89.9999990463257 Y:337.980762481689}, {X:59.9999980926514 Y:337.980762481689}, {X:45 Y:311.999997377317}, {X:60.0000028610229 Y:286.019237518311}, {X:89.9999971389771 Y:286.019237518311}, {X:105 Y:312.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,0.5" vector="{X:75 Y:312}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,0.5" vector="{X:54 Y:304}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:89.9999990463257 Y:389.980762481689}, {X:59.9999980926514 Y:389.980762481689}, {X:45 Y:363.999997377317}, {X:60.0000028610229 Y:338.019237518311}, {X:89.9999971389771 Y:338.019237518311}, {X:105 Y:364.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,1.5" vector="{X:75 Y:364}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,1.5" vector="{X:54 Y:356}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:89.9999990463257 Y:441.980762481689}, {X:59.9999980926514 Y:441.980762481689}, {X:45 Y:415.999997377317}, {X:60.0000028610229 Y:390.019237518311}, {X:89.9999971389771 Y:390.019237518311}, {X:105 Y:416.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,2.5" vector="{X:75 Y:416}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,2.5" vector="{X:54 Y:408}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:89.9999990463257 Y:493.980762481689}, {X:59.9999980926514 Y:493.980762481689}, {X:45 Y:467.999997377317}, {X:60.0000028610229 Y:442.019237518311}, {X:89.9999971389771 Y:442.019237518311}, {X:105 Y:468.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,3.5" vector="{X:75 Y:468}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,3.5" vector="{X:54 Y:460}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:134.999999046326 Y:519.980762481689}, {X:104.999998092651 Y:519.980762481689}, {X:90 Y:493.999997377317}, {X:105.000002861023 Y:468.019237518311}, {X:134.999997138977 Y:468.019237518311}, {X:150 Y:494.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,4" vector="{X:120 Y:494}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,4" vector="{X:106 Y:486}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:179.999999046326 Y:493.980762481689}, {X:149.999998092651 Y:493.980762481689}, {X:135 Y:467.999997377317}, {X:150.000002861023 Y:442.019237518311}, {X:179.999997138977 Y:442.019237518311}, {X:195 Y:468.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,3.5" vector="{X:165 Y:468}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,3.5" vector="{X:144 Y:460}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:224.999999046326 Y:467.980762481689}, {X:194.999998092651 Y:467.980762481689}, {X:180 Y:441.999997377317}, {X:195.000002861023 Y:416.019237518311}, {X:224.999997138977 Y:416.019237518311}, {X:240 Y:442.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,3" vector="{X:210 Y:442}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,3" vector="{X:199.5 Y:434}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:269.999999046326 Y:441.980762481689}, {X:239.999998092651 Y:441.980762481689}, {X:225 Y:415.999997377317}, {X:240.000002861023 Y:390.019237518311}, {X:269.999997138977 Y:390.019237518311}, {X:285 Y:416.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,2.5" vector="{X:255 Y:416}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,2.5" vector="{X:237.5 Y:408}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:314.999999046326 Y:415.980762481689}, {X:284.999998092651 Y:415.980762481689}, {X:270 Y:389.999997377317}, {X:285.000002861023 Y:364.019237518311}, {X:314.999997138977 Y:364.019237518311}, {X:330 Y:390.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,2" vector="{X:300 Y:390}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,2" vector="{X:289.5 Y:382}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:359.999999046326 Y:389.980762481689}, {X:329.999998092651 Y:389.980762481689}, {X:315 Y:363.999997377317}, {X:330.000002861023 Y:338.019237518311}, {X:359.999997138977 Y:338.019237518311}, {X:375 Y:364.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,1.5" vector="{X:345 Y:364}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,1.5" vector="{X:327.5 Y:356}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:404.999999046326 Y:363.980762481689}, {X:374.999998092651 Y:363.980762481689}, {X:360 Y:337.999997377317}, {X:375.000002861023 Y:312.019237518311}, {X:404.999997138977 Y:312.019237518311}, {X:420 Y:338.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,1" vector="{X:390 Y:338}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,1" vector="{X:379.5 Y:330}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:134.999999046326 Y:467.980762481689}, {X:104.999998092651 Y:467.980762481689}, {X:90 Y:441.999997377317}, {X:105.000002861023 Y:416.019237518311}, {X:134.999997138977 Y:416.019237518311}, {X:150 Y:442.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,3" vector="{X:120 Y:442}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,3" vector="{X:106 Y:434}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:179.999999046326 Y:441.980762481689}, {X:149.999998092651 Y:441.980762481689}, {X:135 Y:415.999997377317}, {X:150.000002861023 Y:390.019237518311}, {X:179.999997138977 Y:390.019237518311}, {X:195 Y:416.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,2.5" vector="{X:165 Y:416}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,2.5" vector="{X:144 Y:408}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:224.999999046326 Y:415.980762481689}, {X:194.999998092651 Y:415.980762481689}, {X:180 Y:389.999997377317}, {X:195.000002861023 Y:364.019237518311}, {X:224.999997138977 Y:364.019237518311}, {X:240 Y:390.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,2" vector="{X:210 Y:390}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,2" vector="{X:199.5 Y:382}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:269.999999046326 Y:389.980762481689}, {X:239.999998092651 Y:389.980762481689}, {X:225 Y:363.999997377317}, {X:240.000002861023 Y:338.019237518311}, {X:269.999997138977 Y:338.019237518311}, {X:285 Y:364.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,1.5" vector="{X:255 Y:364}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,1.5" vector="{X:237.5 Y:356}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:314.999999046326 Y:363.980762481689}, {X:284.999998092651 Y:363.980762481689}, {X:270 Y:337.999997377317}, {X:285.000002861023 Y:312.019237518311}, {X:314.999997138977 Y:312.019237518311}, {X:330 Y:338.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,1" vector="{X:300 Y:338}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,1" vector="{X:289.5 Y:330}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:359.999999046326 Y:337.980762481689}, {X:329.999998092651 Y:337.980762481689}, {X:315 Y:311.999997377317}, {X:330.000002861023 Y:286.019237518311}, {X:359.999997138977 Y:286.019237518311}, {X:375 Y:312.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,0.5" vector="{X:345 Y:312}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,0.5" vector="{X:327.5 Y:304}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:404.999999046326 Y:311.980762481689}, {X:374.999998092651 Y:311.980762481689}, {X:360 Y:285.999997377317}, {X:375.000002861023 Y:260.019237518311}, {X:404.999997138977 Y:260.019237518311}, {X:420 Y:286.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,0" vector="{X:390 Y:286}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,0" vector="{X:379.5 Y:278}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:134.999999046326 Y:415.980762481689}, {X:104.999998092651 Y:415.980762481689}, {X:90 Y:389.999997377317}, {X:105.000002861023 Y:364.019237518311}, {X:134.999997138977 Y:364.019237518311}, {X:150 Y:390.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,2" vector="{X:120 Y:390}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,2" vector="{X:106 Y:382}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:179.999999046326 Y:389.980762481689}, {X:149.999998092651 Y:389.980762481689}, {X:135 Y:363.999997377317}, {X:150.000002861023 Y:338.019237518311}, {X:179.999997138977 Y:338.019237518311}, {X:195 Y:364.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,1.5" vector="{X:165 Y:364}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,1.5" vector="{X:144 Y:356}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
         <Vertices>{X:224.999999046326 Y:363.980762481689}, {X:194.999998092651 Y:363.980762481689}, {X:180 Y:337.999997377317}, {X:195.000002861023 Y:312.019237518311}, {X:224.999997138977 Y:312.019237518311}, {X:240 Y:338.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,1" vector="{X:210 Y:338}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,1" vector="{X:199.5 Y:330}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
         <Vertices>{X:269.999999046326 Y:337.980762481689}, {X:239.999998092651 Y:337.980762481689}, {X:225 Y:311.999997377317}, {X:240.000002861023 Y:286.019237518311}, {X:269.999997138977 Y:286.019237518311}, {X:285 Y:312.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,0.5" vector="{X:255 Y:312}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,0.5" vector="{X:237.5 Y:304}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:314.999999046326 Y:311.980762481689}, {X:284.999998092651 Y:311.980762481689}, {X:270 Y:285.999997377317}, {X:285.000002861023 Y:260.019237518311}, {X:314.999997138977 Y:260.019237518311}, {X:330 Y:286.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,0" vector="{X:300 Y:286}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,0" vector="{X:289.5 Y:278}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:359.999999046326 Y:285.980762481689}, {X:329.999998092651 Y:285.980762481689}, {X:315 Y:259.999997377317}, {X:330.000002861023 Y:234.019237518311}, {X:359.999997138977 Y:234.019237518311}, {X:375 Y:260.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,-0.5" vector="{X:345 Y:260}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,-0.5" vector="{X:324 Y:252}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:404.999999046326 Y:259.980762481689}, {X:374.999998092651 Y:259.980762481689}, {X:360 Y:233.999997377317}, {X:375.000002861023 Y:208.019237518311}, {X:404.999997138977 Y:208.019237518311}, {X:420 Y:234.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,-1" vector="{X:390 Y:234}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,-1" vector="{X:376 Y:226}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:134.999999046326 Y:363.980762481689}, {X:104.999998092651 Y:363.980762481689}, {X:90 Y:337.999997377317}, {X:105.000002861023 Y:312.019237518311}, {X:134.999997138977 Y:312.019237518311}, {X:150 Y:338.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,1" vector="{X:120 Y:338}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,1" vector="{X:106 Y:330}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:224.999999046326 Y:103.980762481689}, {X:194.999998092651 Y:103.980762481689}, {X:180 Y:77.9999973773167}, {X:195.000002861023 Y:52.0192375183105}, {X:224.999997138977 Y:52.0192375183105}, {X:240 Y:78.0000052453665}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,-4" vector="{X:210 Y:78}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,-4" vector="{X:196 Y:70}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:179.999999046326 Y:129.980762481689}, {X:149.999998092651 Y:129.980762481689}, {X:135 Y:103.999997377317}, {X:150.000002861023 Y:78.0192375183105}, {X:179.999997138977 Y:78.0192375183105}, {X:195 Y:104.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,-3.5" vector="{X:165 Y:104}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,-3.5" vector="{X:140.5 Y:96}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:314.999999046326 Y:103.980762481689}, {X:284.999998092651 Y:103.980762481689}, {X:270 Y:77.9999973773167}, {X:285.000002861023 Y:52.0192375183105}, {X:314.999997138977 Y:52.0192375183105}, {X:330 Y:78.0000052453665}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,-4" vector="{X:300 Y:78}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,-4" vector="{X:286 Y:70}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:269.999999046326 Y:129.980762481689}, {X:239.999998092651 Y:129.980762481689}, {X:225 Y:103.999997377317}, {X:240.000002861023 Y:78.0192375183105}, {X:269.999997138977 Y:78.0192375183105}, {X:285 Y:104.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,-3.5" vector="{X:255 Y:104}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,-3.5" vector="{X:234 Y:96}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:404.999999046326 Y:103.980762481689}, {X:374.999998092651 Y:103.980762481689}, {X:360 Y:77.9999973773167}, {X:375.000002861023 Y:52.0192375183105}, {X:404.999997138977 Y:52.0192375183105}, {X:420 Y:78.0000052453665}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,-4" vector="{X:390 Y:78}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,-4" vector="{X:376 Y:70}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:359.999999046326 Y:129.980762481689}, {X:329.999998092651 Y:129.980762481689}, {X:315 Y:103.999997377317}, {X:330.000002861023 Y:78.0192375183105}, {X:359.999997138977 Y:78.0192375183105}, {X:375 Y:104.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,-3.5" vector="{X:345 Y:104}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,-3.5" vector="{X:324 Y:96}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:44.9999990463257 Y:155.880756378174}, {X:14.9999980926514 Y:155.880756378174}, {X:0 Y:129.899991273801}, {X:15.0000028610229 Y:103.919231414795}, {X:44.9999971389771 Y:103.919231414795}, {X:60 Y:129.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-4,-3" vector="{X:30 Y:129.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-4,-3" vector="{X:12.5 Y:121.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:44.9999990463257 Y:207.880756378174}, {X:14.9999980926514 Y:207.880756378174}, {X:0 Y:181.899991273801}, {X:15.0000028610229 Y:155.919231414795}, {X:44.9999971389771 Y:155.919231414795}, {X:60 Y:181.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-4,-2" vector="{X:30 Y:181.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-4,-2" vector="{X:12.5 Y:173.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:44.9999990463257 Y:259.880756378174}, {X:14.9999980926514 Y:259.880756378174}, {X:0 Y:233.899991273801}, {X:15.0000028610229 Y:207.919231414795}, {X:44.9999971389771 Y:207.919231414795}, {X:60 Y:233.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-4,-1" vector="{X:30 Y:233.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-4,-1" vector="{X:12.5 Y:225.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:44.9999990463257 Y:311.880756378174}, {X:14.9999980926514 Y:311.880756378174}, {X:0 Y:285.899991273801}, {X:15.0000028610229 Y:259.919231414795}, {X:44.9999971389771 Y:259.919231414795}, {X:60 Y:285.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-4,0" vector="{X:30 Y:285.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-4,0" vector="{X:16 Y:277.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:44.9999990463257 Y:363.880756378174}, {X:14.9999980926514 Y:363.880756378174}, {X:0 Y:337.899991273801}, {X:15.0000028610229 Y:311.919231414795}, {X:44.9999971389771 Y:311.919231414795}, {X:60 Y:337.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-4,1" vector="{X:30 Y:337.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-4,1" vector="{X:16 Y:329.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:44.9999990463257 Y:415.880756378174}, {X:14.9999980926514 Y:415.880756378174}, {X:0 Y:389.899991273801}, {X:15.0000028610229 Y:363.919231414795}, {X:44.9999971389771 Y:363.919231414795}, {X:60 Y:389.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-4,2" vector="{X:30 Y:389.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-4,2" vector="{X:16 Y:381.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:44.9999990463257 Y:467.880756378174}, {X:14.9999980926514 Y:467.880756378174}, {X:0 Y:441.899991273801}, {X:15.0000028610229 Y:415.919231414795}, {X:44.9999971389771 Y:415.919231414795}, {X:60 Y:441.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-4,3" vector="{X:30 Y:441.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-4,3" vector="{X:16 Y:433.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:44.9999990463257 Y:519.880756378174}, {X:14.9999980926514 Y:519.880756378174}, {X:0 Y:493.899991273801}, {X:15.0000028610229 Y:467.919231414795}, {X:44.9999971389771 Y:467.919231414795}, {X:60 Y:493.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-4,4" vector="{X:30 Y:493.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-4,4" vector="{X:16 Y:485.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:89.9999990463257 Y:545.880786895752}, {X:59.9999980926514 Y:545.880786895752}, {X:45 Y:519.900021791379}, {X:60.0000028610229 Y:493.919261932373}, {X:89.9999971389771 Y:493.919261932373}, {X:105 Y:519.900029659429}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,4.5" vector="{X:75 Y:519.900024414063}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,4.5" vector="{X:54 Y:511.900024414063}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:134.999999046326 Y:519.880756378174}, {X:104.999998092651 Y:519.880756378174}, {X:90 Y:493.899991273801}, {X:105.000002861023 Y:467.919231414795}, {X:134.999997138977 Y:467.919231414795}, {X:150 Y:493.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,4" vector="{X:120 Y:493.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,4" vector="{X:106 Y:485.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:179.999999046326 Y:545.880786895752}, {X:149.999998092651 Y:545.880786895752}, {X:135 Y:519.900021791379}, {X:150.000002861023 Y:493.919261932373}, {X:179.999997138977 Y:493.919261932373}, {X:195 Y:519.900029659429}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,4.5" vector="{X:165 Y:519.900024414063}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,4.5" vector="{X:144 Y:511.900024414063}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:224.999999046326 Y:519.880756378174}, {X:194.999998092651 Y:519.880756378174}, {X:180 Y:493.899991273801}, {X:195.000002861023 Y:467.919231414795}, {X:224.999997138977 Y:467.919231414795}, {X:240 Y:493.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,4" vector="{X:210 Y:493.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,4" vector="{X:199.5 Y:485.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:269.999999046326 Y:545.880786895752}, {X:239.999998092651 Y:545.880786895752}, {X:225 Y:519.900021791379}, {X:240.000002861023 Y:493.919261932373}, {X:269.999997138977 Y:493.919261932373}, {X:285 Y:519.900029659429}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,4.5" vector="{X:255 Y:519.900024414063}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,4.5" vector="{X:237.5 Y:511.900024414063}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:314.999999046326 Y:519.880756378174}, {X:284.999998092651 Y:519.880756378174}, {X:270 Y:493.899991273801}, {X:285.000002861023 Y:467.919231414795}, {X:314.999997138977 Y:467.919231414795}, {X:330 Y:493.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,4" vector="{X:300 Y:493.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,4" vector="{X:289.5 Y:485.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:359.999999046326 Y:545.880786895752}, {X:329.999998092651 Y:545.880786895752}, {X:315 Y:519.900021791379}, {X:330.000002861023 Y:493.919261932373}, {X:359.999997138977 Y:493.919261932373}, {X:375 Y:519.900029659429}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,4.5" vector="{X:345 Y:519.900024414063}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,4.5" vector="{X:327.5 Y:511.900024414063}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:404.999999046326 Y:519.880756378174}, {X:374.999998092651 Y:519.880756378174}, {X:360 Y:493.899991273801}, {X:375.000002861023 Y:467.919231414795}, {X:404.999997138977 Y:467.919231414795}, {X:420 Y:493.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,4" vector="{X:390 Y:493.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,4" vector="{X:379.5 Y:485.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:359.999999046326 Y:493.880756378174}, {X:329.999998092651 Y:493.880756378174}, {X:315 Y:467.899991273801}, {X:330.000002861023 Y:441.919231414795}, {X:359.999997138977 Y:441.919231414795}, {X:375 Y:467.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,3.5" vector="{X:345 Y:467.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,3.5" vector="{X:327.5 Y:459.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:404.999999046326 Y:467.880756378174}, {X:374.999998092651 Y:467.880756378174}, {X:360 Y:441.899991273801}, {X:375.000002861023 Y:415.919231414795}, {X:404.999997138977 Y:415.919231414795}, {X:420 Y:441.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,3" vector="{X:390 Y:441.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,3" vector="{X:379.5 Y:433.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:269.999999046326 Y:493.880756378174}, {X:239.999998092651 Y:493.880756378174}, {X:225 Y:467.899991273801}, {X:240.000002861023 Y:441.919231414795}, {X:269.999997138977 Y:441.919231414795}, {X:285 Y:467.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,3.5" vector="{X:255 Y:467.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,3.5" vector="{X:237.5 Y:459.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:314.999999046326 Y:467.880756378174}, {X:284.999998092651 Y:467.880756378174}, {X:270 Y:441.899991273801}, {X:285.000002861023 Y:415.919231414795}, {X:314.999997138977 Y:415.919231414795}, {X:330 Y:441.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,3" vector="{X:300 Y:441.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,3" vector="{X:289.5 Y:433.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:359.999999046326 Y:441.880756378174}, {X:329.999998092651 Y:441.880756378174}, {X:315 Y:415.899991273801}, {X:330.000002861023 Y:389.919231414795}, {X:359.999997138977 Y:389.919231414795}, {X:375 Y:415.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,2.5" vector="{X:345 Y:415.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,2.5" vector="{X:327.5 Y:407.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:404.999999046326 Y:415.880756378174}, {X:374.999998092651 Y:415.880756378174}, {X:360 Y:389.899991273801}, {X:375.000002861023 Y:363.919231414795}, {X:404.999997138977 Y:363.919231414795}, {X:420 Y:389.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,2" vector="{X:390 Y:389.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,2" vector="{X:379.5 Y:381.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:179.999999046326 Y:493.880756378174}, {X:149.999998092651 Y:493.880756378174}, {X:135 Y:467.899991273801}, {X:150.000002861023 Y:441.919231414795}, {X:179.999997138977 Y:441.919231414795}, {X:195 Y:467.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,3.5" vector="{X:165 Y:467.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,3.5" vector="{X:144 Y:459.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:224.999999046326 Y:467.880756378174}, {X:194.999998092651 Y:467.880756378174}, {X:180 Y:441.899991273801}, {X:195.000002861023 Y:415.919231414795}, {X:224.999997138977 Y:415.919231414795}, {X:240 Y:441.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,3" vector="{X:210 Y:441.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,3" vector="{X:199.5 Y:433.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:269.999999046326 Y:441.880756378174}, {X:239.999998092651 Y:441.880756378174}, {X:225 Y:415.899991273801}, {X:240.000002861023 Y:389.919231414795}, {X:269.999997138977 Y:389.919231414795}, {X:285 Y:415.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,2.5" vector="{X:255 Y:415.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,2.5" vector="{X:237.5 Y:407.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:314.999999046326 Y:415.880756378174}, {X:284.999998092651 Y:415.880756378174}, {X:270 Y:389.899991273801}, {X:285.000002861023 Y:363.919231414795}, {X:314.999997138977 Y:363.919231414795}, {X:330 Y:389.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,2" vector="{X:300 Y:389.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,2" vector="{X:289.5 Y:381.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:359.999999046326 Y:389.880756378174}, {X:329.999998092651 Y:389.880756378174}, {X:315 Y:363.899991273801}, {X:330.000002861023 Y:337.919231414795}, {X:359.999997138977 Y:337.919231414795}, {X:375 Y:363.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,1.5" vector="{X:345 Y:363.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,1.5" vector="{X:327.5 Y:355.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:404.999999046326 Y:363.880756378174}, {X:374.999998092651 Y:363.880756378174}, {X:360 Y:337.899991273801}, {X:375.000002861023 Y:311.919231414795}, {X:404.999997138977 Y:311.919231414795}, {X:420 Y:337.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,1" vector="{X:390 Y:337.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,1" vector="{X:379.5 Y:329.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:89.9999990463257 Y:493.880756378174}, {X:59.9999980926514 Y:493.880756378174}, {X:45 Y:467.899991273801}, {X:60.0000028610229 Y:441.919231414795}, {X:89.9999971389771 Y:441.919231414795}, {X:105 Y:467.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,3.5" vector="{X:75 Y:467.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,3.5" vector="{X:54 Y:459.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:134.999999046326 Y:467.880756378174}, {X:104.999998092651 Y:467.880756378174}, {X:90 Y:441.899991273801}, {X:105.000002861023 Y:415.919231414795}, {X:134.999997138977 Y:415.919231414795}, {X:150 Y:441.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,3" vector="{X:120 Y:441.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,3" vector="{X:106 Y:433.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:179.999999046326 Y:441.880756378174}, {X:149.999998092651 Y:441.880756378174}, {X:135 Y:415.899991273801}, {X:150.000002861023 Y:389.919231414795}, {X:179.999997138977 Y:389.919231414795}, {X:195 Y:415.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,2.5" vector="{X:165 Y:415.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,2.5" vector="{X:144 Y:407.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:224.999999046326 Y:415.880756378174}, {X:194.999998092651 Y:415.880756378174}, {X:180 Y:389.899991273801}, {X:195.000002861023 Y:363.919231414795}, {X:224.999997138977 Y:363.919231414795}, {X:240 Y:389.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,2" vector="{X:210 Y:389.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,2" vector="{X:199.5 Y:381.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:269.999999046326 Y:389.880756378174}, {X:239.999998092651 Y:389.880756378174}, {X:225 Y:363.899991273801}, {X:240.000002861023 Y:337.919231414795}, {X:269.999997138977 Y:337.919231414795}, {X:285 Y:363.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,1.5" vector="{X:255 Y:363.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,1.5" vector="{X:237.5 Y:355.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:314.999999046326 Y:363.880756378174}, {X:284.999998092651 Y:363.880756378174}, {X:270 Y:337.899991273801}, {X:285.000002861023 Y:311.919231414795}, {X:314.999997138977 Y:311.919231414795}, {X:330 Y:337.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,1" vector="{X:300 Y:337.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,1" vector="{X:289.5 Y:329.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:359.999999046326 Y:337.880756378174}, {X:329.999998092651 Y:337.880756378174}, {X:315 Y:311.899991273801}, {X:330.000002861023 Y:285.919231414795}, {X:359.999997138977 Y:285.919231414795}, {X:375 Y:311.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,0.5" vector="{X:345 Y:311.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,0.5" vector="{X:327.5 Y:303.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:404.999999046326 Y:311.880756378174}, {X:374.999998092651 Y:311.880756378174}, {X:360 Y:285.899991273801}, {X:375.000002861023 Y:259.919231414795}, {X:404.999997138977 Y:259.919231414795}, {X:420 Y:285.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,0" vector="{X:390 Y:285.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,0" vector="{X:379.5 Y:277.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:89.9999990463257 Y:441.880756378174}, {X:59.9999980926514 Y:441.880756378174}, {X:45 Y:415.899991273801}, {X:60.0000028610229 Y:389.919231414795}, {X:89.9999971389771 Y:389.919231414795}, {X:105 Y:415.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,2.5" vector="{X:75 Y:415.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,2.5" vector="{X:54 Y:407.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:134.999999046326 Y:415.880756378174}, {X:104.999998092651 Y:415.880756378174}, {X:90 Y:389.899991273801}, {X:105.000002861023 Y:363.919231414795}, {X:134.999997138977 Y:363.919231414795}, {X:150 Y:389.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,2" vector="{X:120 Y:389.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,2" vector="{X:106 Y:381.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:179.999999046326 Y:389.880756378174}, {X:149.999998092651 Y:389.880756378174}, {X:135 Y:363.899991273801}, {X:150.000002861023 Y:337.919231414795}, {X:179.999997138977 Y:337.919231414795}, {X:195 Y:363.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,1.5" vector="{X:165 Y:363.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,1.5" vector="{X:144 Y:355.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
         <Vertices>{X:224.999999046326 Y:363.880756378174}, {X:194.999998092651 Y:363.880756378174}, {X:180 Y:337.899991273801}, {X:195.000002861023 Y:311.919231414795}, {X:224.999997138977 Y:311.919231414795}, {X:240 Y:337.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,1" vector="{X:210 Y:337.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,1" vector="{X:199.5 Y:329.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
         <Vertices>{X:269.999999046326 Y:337.880756378174}, {X:239.999998092651 Y:337.880756378174}, {X:225 Y:311.899991273801}, {X:240.000002861023 Y:285.919231414795}, {X:269.999997138977 Y:285.919231414795}, {X:285 Y:311.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,0.5" vector="{X:255 Y:311.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,0.5" vector="{X:237.5 Y:303.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:314.999999046326 Y:311.880756378174}, {X:284.999998092651 Y:311.880756378174}, {X:270 Y:285.899991273801}, {X:285.000002861023 Y:259.919231414795}, {X:314.999997138977 Y:259.919231414795}, {X:330 Y:285.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,0" vector="{X:300 Y:285.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,0" vector="{X:289.5 Y:277.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:359.999999046326 Y:285.880756378174}, {X:329.999998092651 Y:285.880756378174}, {X:315 Y:259.899991273801}, {X:330.000002861023 Y:233.919231414795}, {X:359.999997138977 Y:233.919231414795}, {X:375 Y:259.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,-0.5" vector="{X:345 Y:259.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,-0.5" vector="{X:324 Y:251.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:404.999999046326 Y:259.880756378174}, {X:374.999998092651 Y:259.880756378174}, {X:360 Y:233.899991273801}, {X:375.000002861023 Y:207.919231414795}, {X:404.999997138977 Y:207.919231414795}, {X:420 Y:233.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,-1" vector="{X:390 Y:233.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,-1" vector="{X:376 Y:225.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:89.9999990463257 Y:389.880756378174}, {X:59.9999980926514 Y:389.880756378174}, {X:45 Y:363.899991273801}, {X:60.0000028610229 Y:337.919231414795}, {X:89.9999971389771 Y:337.919231414795}, {X:105 Y:363.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,1.5" vector="{X:75 Y:363.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,1.5" vector="{X:54 Y:355.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:134.999999046326 Y:363.880756378174}, {X:104.999998092651 Y:363.880756378174}, {X:90 Y:337.899991273801}, {X:105.000002861023 Y:311.919231414795}, {X:134.999997138977 Y:311.919231414795}, {X:150 Y:337.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,1" vector="{X:120 Y:337.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,1" vector="{X:106 Y:329.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
         <Vertices>{X:179.999999046326 Y:337.880756378174}, {X:149.999998092651 Y:337.880756378174}, {X:135 Y:311.899991273801}, {X:150.000002861023 Y:285.919231414795}, {X:179.999997138977 Y:285.919231414795}, {X:195 Y:311.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,0.5" vector="{X:165 Y:311.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,0.5" vector="{X:144 Y:303.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:224.999999046326 Y:311.880756378174}, {X:194.999998092651 Y:311.880756378174}, {X:180 Y:285.899991273801}, {X:195.000002861023 Y:259.919231414795}, {X:224.999997138977 Y:259.919231414795}, {X:240 Y:285.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,0" vector="{X:210 Y:285.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,0" vector="{X:199.5 Y:277.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
         <Vertices>{X:269.999999046326 Y:285.880756378174}, {X:239.999998092651 Y:285.880756378174}, {X:225 Y:259.899991273801}, {X:240.000002861023 Y:233.919231414795}, {X:269.999997138977 Y:233.919231414795}, {X:285 Y:259.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,-0.5" vector="{X:255 Y:259.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,-0.5" vector="{X:234 Y:251.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:314.999999046326 Y:259.880756378174}, {X:284.999998092651 Y:259.880756378174}, {X:270 Y:233.899991273801}, {X:285.000002861023 Y:207.919231414795}, {X:314.999997138977 Y:207.919231414795}, {X:330 Y:233.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,-1" vector="{X:300 Y:233.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,-1" vector="{X:286 Y:225.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:359.999999046326 Y:233.880756378174}, {X:329.999998092651 Y:233.880756378174}, {X:315 Y:207.899991273801}, {X:330.000002861023 Y:181.919231414795}, {X:359.999997138977 Y:181.919231414795}, {X:375 Y:207.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,-1.5" vector="{X:345 Y:207.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,-1.5" vector="{X:324 Y:199.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:404.999999046326 Y:207.880756378174}, {X:374.999998092651 Y:207.880756378174}, {X:360 Y:181.899991273801}, {X:375.000002861023 Y:155.919231414795}, {X:404.999997138977 Y:155.919231414795}, {X:420 Y:181.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,-2" vector="{X:390 Y:181.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,-2" vector="{X:376 Y:173.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:89.9999990463257 Y:337.880756378174}, {X:59.9999980926514 Y:337.880756378174}, {X:45 Y:311.899991273801}, {X:60.0000028610229 Y:285.919231414795}, {X:89.9999971389771 Y:285.919231414795}, {X:105 Y:311.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,0.5" vector="{X:75 Y:311.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,0.5" vector="{X:54 Y:303.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:134.999999046326 Y:311.880756378174}, {X:104.999998092651 Y:311.880756378174}, {X:90 Y:285.899991273801}, {X:105.000002861023 Y:259.919231414795}, {X:134.999997138977 Y:259.919231414795}, {X:150 Y:285.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,0" vector="{X:120 Y:285.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,0" vector="{X:106 Y:277.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
         <Vertices>{X:179.999999046326 Y:285.880756378174}, {X:149.999998092651 Y:285.880756378174}, {X:135 Y:259.899991273801}, {X:150.000002861023 Y:233.919231414795}, {X:179.999997138977 Y:233.919231414795}, {X:195 Y:259.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,-0.5" vector="{X:165 Y:259.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,-0.5" vector="{X:140.5 Y:251.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
         <Vertices>{X:224.999999046326 Y:259.880756378174}, {X:194.999998092651 Y:259.880756378174}, {X:180 Y:233.899991273801}, {X:195.000002861023 Y:207.919231414795}, {X:224.999997138977 Y:207.919231414795}, {X:240 Y:233.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,-1" vector="{X:210 Y:233.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,-1" vector="{X:196 Y:225.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:269.999999046326 Y:233.880756378174}, {X:239.999998092651 Y:233.880756378174}, {X:225 Y:207.899991273801}, {X:240.000002861023 Y:181.919231414795}, {X:269.999997138977 Y:181.919231414795}, {X:285 Y:207.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,-1.5" vector="{X:255 Y:207.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,-1.5" vector="{X:234 Y:199.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:314.999999046326 Y:207.880756378174}, {X:284.999998092651 Y:207.880756378174}, {X:270 Y:181.899991273801}, {X:285.000002861023 Y:155.919231414795}, {X:314.999997138977 Y:155.919231414795}, {X:330 Y:181.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,-2" vector="{X:300 Y:181.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,-2" vector="{X:286 Y:173.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:359.999999046326 Y:181.880756378174}, {X:329.999998092651 Y:181.880756378174}, {X:315 Y:155.899991273801}, {X:330.000002861023 Y:129.919231414795}, {X:359.999997138977 Y:129.919231414795}, {X:375 Y:155.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,-2.5" vector="{X:345 Y:155.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,-2.5" vector="{X:324 Y:147.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:404.999999046326 Y:155.880756378174}, {X:374.999998092651 Y:155.880756378174}, {X:360 Y:129.899991273801}, {X:375.000002861023 Y:103.919231414795}, {X:404.999997138977 Y:103.919231414795}, {X:420 Y:129.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,-3" vector="{X:390 Y:129.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,-3" vector="{X:376 Y:121.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:89.9999990463257 Y:285.880756378174}, {X:59.9999980926514 Y:285.880756378174}, {X:45 Y:259.899991273801}, {X:60.0000028610229 Y:233.919231414795}, {X:89.9999971389771 Y:233.919231414795}, {X:105 Y:259.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,-0.5" vector="{X:75 Y:259.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,-0.5" vector="{X:50.5 Y:251.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:134.999999046326 Y:259.880756378174}, {X:104.999998092651 Y:259.880756378174}, {X:90 Y:233.899991273801}, {X:105.000002861023 Y:207.919231414795}, {X:134.999997138977 Y:207.919231414795}, {X:150 Y:233.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,-1" vector="{X:120 Y:233.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,-1" vector="{X:102.5 Y:225.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:179.999999046326 Y:233.880756378174}, {X:149.999998092651 Y:233.880756378174}, {X:135 Y:207.899991273801}, {X:150.000002861023 Y:181.919231414795}, {X:179.999997138977 Y:181.919231414795}, {X:195 Y:207.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,-1.5" vector="{X:165 Y:207.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,-1.5" vector="{X:140.5 Y:199.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:224.999999046326 Y:207.880756378174}, {X:194.999998092651 Y:207.880756378174}, {X:180 Y:181.899991273801}, {X:195.000002861023 Y:155.919231414795}, {X:224.999997138977 Y:155.919231414795}, {X:240 Y:181.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,-2" vector="{X:210 Y:181.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,-2" vector="{X:196 Y:173.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:269.999999046326 Y:181.880756378174}, {X:239.999998092651 Y:181.880756378174}, {X:225 Y:155.899991273801}, {X:240.000002861023 Y:129.919231414795}, {X:269.999997138977 Y:129.919231414795}, {X:285 Y:155.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,-2.5" vector="{X:255 Y:155.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,-2.5" vector="{X:234 Y:147.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:314.999999046326 Y:155.880756378174}, {X:284.999998092651 Y:155.880756378174}, {X:270 Y:129.899991273801}, {X:285.000002861023 Y:103.919231414795}, {X:314.999997138977 Y:103.919231414795}, {X:330 Y:129.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,-3" vector="{X:300 Y:129.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,-3" vector="{X:286 Y:121.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:89.9999990463257 Y:233.880756378174}, {X:59.9999980926514 Y:233.880756378174}, {X:45 Y:207.899991273801}, {X:60.0000028610229 Y:181.919231414795}, {X:89.9999971389771 Y:181.919231414795}, {X:105 Y:207.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,-1.5" vector="{X:75 Y:207.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,-1.5" vector="{X:50.5 Y:199.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:134.999999046326 Y:207.880756378174}, {X:104.999998092651 Y:207.880756378174}, {X:90 Y:181.899991273801}, {X:105.000002861023 Y:155.919231414795}, {X:134.999997138977 Y:155.919231414795}, {X:150 Y:181.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,-2" vector="{X:120 Y:181.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,-2" vector="{X:102.5 Y:173.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:179.999999046326 Y:181.880756378174}, {X:149.999998092651 Y:181.880756378174}, {X:135 Y:155.899991273801}, {X:150.000002861023 Y:129.919231414795}, {X:179.999997138977 Y:129.919231414795}, {X:195 Y:155.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,-2.5" vector="{X:165 Y:155.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,-2.5" vector="{X:140.5 Y:147.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:224.999999046326 Y:155.880756378174}, {X:194.999998092651 Y:155.880756378174}, {X:180 Y:129.899991273801}, {X:195.000002861023 Y:103.919231414795}, {X:224.999997138977 Y:103.919231414795}, {X:240 Y:129.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,-3" vector="{X:210 Y:129.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,-3" vector="{X:196 Y:121.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:134.999999046326 Y:155.880756378174}, {X:104.999998092651 Y:155.880756378174}, {X:90 Y:129.899991273801}, {X:105.000002861023 Y:103.919231414795}, {X:134.999997138977 Y:103.919231414795}, {X:150 Y:129.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,-3" vector="{X:120 Y:129.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,-3" vector="{X:102.5 Y:121.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:89.9999990463257 Y:181.880756378174}, {X:59.9999980926514 Y:181.880756378174}, {X:45 Y:155.899991273801}, {X:60.0000028610229 Y:129.919231414795}, {X:89.9999971389771 Y:129.919231414795}, {X:105 Y:155.899999141851}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,-2.5" vector="{X:75 Y:155.899993896484}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,-2.5" vector="{X:50.5 Y:147.899993896484}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:179.999999046326 Y:129.880764007568}, {X:149.999998092651 Y:129.880764007568}, {X:135 Y:103.899998903196}, {X:150.000002861023 Y:77.9192390441895}, {X:179.999997138977 Y:77.9192390441895}, {X:195 Y:103.900006771245}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,-3.5" vector="{X:165 Y:103.900001525879}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,-3.5" vector="{X:140.5 Y:95.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:224.999999046326 Y:103.880764007568}, {X:194.999998092651 Y:103.880764007568}, {X:180 Y:77.8999989031956}, {X:195.000002861023 Y:51.9192390441895}, {X:224.999997138977 Y:51.9192390441895}, {X:240 Y:77.9000067712454}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,-4" vector="{X:210 Y:77.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,-4" vector="{X:196 Y:69.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:314.999999046326 Y:103.880764007568}, {X:284.999998092651 Y:103.880764007568}, {X:270 Y:77.8999989031956}, {X:285.000002861023 Y:51.9192390441895}, {X:314.999997138977 Y:51.9192390441895}, {X:330 Y:77.9000067712454}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,-4" vector="{X:300 Y:77.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,-4" vector="{X:286 Y:69.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:269.999999046326 Y:129.880764007568}, {X:239.999998092651 Y:129.880764007568}, {X:225 Y:103.899998903196}, {X:240.000002861023 Y:77.9192390441895}, {X:269.999997138977 Y:77.9192390441895}, {X:285 Y:103.900006771245}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,-3.5" vector="{X:255 Y:103.900001525879}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,-3.5" vector="{X:234 Y:95.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:404.999999046326 Y:103.880764007568}, {X:374.999998092651 Y:103.880764007568}, {X:360 Y:77.8999989031956}, {X:375.000002861023 Y:51.9192390441895}, {X:404.999997138977 Y:51.9192390441895}, {X:420 Y:77.9000067712454}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,-4" vector="{X:390 Y:77.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,-4" vector="{X:376 Y:69.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:359.999999046326 Y:129.880764007568}, {X:329.999998092651 Y:129.880764007568}, {X:315 Y:103.899998903196}, {X:330.000002861023 Y:77.9192390441895}, {X:359.999997138977 Y:77.9192390441895}, {X:375 Y:103.900006771245}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,-3.5" vector="{X:345 Y:103.900001525879}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,-3.5" vector="{X:324 Y:95.9000015258789}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:134.999999046326 Y:311.980762481689}, {X:104.999998092651 Y:311.980762481689}, {X:90 Y:285.999997377317}, {X:105.000002861023 Y:260.019237518311}, {X:134.999997138977 Y:260.019237518311}, {X:150 Y:286.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-2,0" vector="{X:120 Y:286}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-2,0" vector="{X:106 Y:278}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:224.999999046326 Y:311.980762481689}, {X:194.999998092651 Y:311.980762481689}, {X:180 Y:285.999997377317}, {X:195.000002861023 Y:260.019237518311}, {X:224.999997138977 Y:260.019237518311}, {X:240 Y:286.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,0" vector="{X:210 Y:286}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,0" vector="{X:199.5 Y:278}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
         <Vertices>{X:179.999999046326 Y:337.980762481689}, {X:149.999998092651 Y:337.980762481689}, {X:135 Y:311.999997377317}, {X:150.000002861023 Y:286.019237518311}, {X:179.999997138977 Y:286.019237518311}, {X:195 Y:312.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,0.5" vector="{X:165 Y:312}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,0.5" vector="{X:144 Y:304}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:255 B:0 A:255}">
         <Vertices>{X:269.999999046326 Y:285.980762481689}, {X:239.999998092651 Y:285.980762481689}, {X:225 Y:259.999997377317}, {X:240.000002861023 Y:234.019237518311}, {X:269.999997138977 Y:234.019237518311}, {X:285 Y:260.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,-0.5" vector="{X:255 Y:260}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,-0.5" vector="{X:234 Y:252}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:192 B:0 A:255}">
         <Vertices>{X:314.999999046326 Y:259.980762481689}, {X:284.999998092651 Y:259.980762481689}, {X:270 Y:233.999997377317}, {X:285.000002861023 Y:208.019237518311}, {X:314.999997138977 Y:208.019237518311}, {X:330 Y:234.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,-1" vector="{X:300 Y:234}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,-1" vector="{X:286 Y:226}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:128 B:0 A:255}">
         <Vertices>{X:359.999999046326 Y:233.980762481689}, {X:329.999998092651 Y:233.980762481689}, {X:315 Y:207.999997377317}, {X:330.000002861023 Y:182.019237518311}, {X:359.999997138977 Y:182.019237518311}, {X:375 Y:208.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,-1.5" vector="{X:345 Y:208}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,-1.5" vector="{X:324 Y:200}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:404.999999046326 Y:207.980762481689}, {X:374.999998092651 Y:207.980762481689}, {X:360 Y:181.999997377317}, {X:375.000002861023 Y:156.019237518311}, {X:404.999997138977 Y:156.019237518311}, {X:420 Y:182.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,-2" vector="{X:390 Y:182}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,-2" vector="{X:376 Y:174}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:89.9999990463257 Y:545.980762481689}, {X:59.9999980926514 Y:545.980762481689}, {X:45 Y:519.999997377317}, {X:60.0000028610229 Y:494.019237518311}, {X:89.9999971389771 Y:494.019237518311}, {X:105 Y:520.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-3,4.5" vector="{X:75 Y:520}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-3,4.5" vector="{X:54 Y:512}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:179.999999046326 Y:545.980762481689}, {X:149.999998092651 Y:545.980762481689}, {X:135 Y:519.999997377317}, {X:150.000002861023 Y:494.019237518311}, {X:179.999997138977 Y:494.019237518311}, {X:195 Y:520.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="-1,4.5" vector="{X:165 Y:520}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="-1,4.5" vector="{X:144 Y:512}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:224.999999046326 Y:519.980762481689}, {X:194.999998092651 Y:519.980762481689}, {X:180 Y:493.999997377317}, {X:195.000002861023 Y:468.019237518311}, {X:224.999997138977 Y:468.019237518311}, {X:240 Y:494.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="0,4" vector="{X:210 Y:494}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="0,4" vector="{X:199.5 Y:486}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:269.999999046326 Y:545.980762481689}, {X:239.999998092651 Y:545.980762481689}, {X:225 Y:519.999997377317}, {X:240.000002861023 Y:494.019237518311}, {X:269.999997138977 Y:494.019237518311}, {X:285 Y:520.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,4.5" vector="{X:255 Y:520}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,4.5" vector="{X:237.5 Y:512}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:314.999999046326 Y:519.980762481689}, {X:284.999998092651 Y:519.980762481689}, {X:270 Y:493.999997377317}, {X:285.000002861023 Y:468.019237518311}, {X:314.999997138977 Y:468.019237518311}, {X:330 Y:494.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,4" vector="{X:300 Y:494}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,4" vector="{X:289.5 Y:486}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:359.999999046326 Y:545.980762481689}, {X:329.999998092651 Y:545.980762481689}, {X:315 Y:519.999997377317}, {X:330.000002861023 Y:494.019237518311}, {X:359.999997138977 Y:494.019237518311}, {X:375 Y:520.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,4.5" vector="{X:345 Y:520}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,4.5" vector="{X:327.5 Y:512}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:255 G:0 B:0 A:255}">
         <Vertices>{X:404.999999046326 Y:519.980762481689}, {X:374.999998092651 Y:519.980762481689}, {X:360 Y:493.999997377317}, {X:375.000002861023 Y:468.019237518311}, {X:404.999997138977 Y:468.019237518311}, {X:420 Y:494.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,4" vector="{X:390 Y:494}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,4" vector="{X:379.5 Y:486}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:359.999999046326 Y:493.980762481689}, {X:329.999998092651 Y:493.980762481689}, {X:315 Y:467.999997377317}, {X:330.000002861023 Y:442.019237518311}, {X:359.999997138977 Y:442.019237518311}, {X:375 Y:468.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,3.5" vector="{X:345 Y:468}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,3.5" vector="{X:327.5 Y:460}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:128 G:0 B:128 A:255}">
         <Vertices>{X:404.999999046326 Y:467.980762481689}, {X:374.999998092651 Y:467.980762481689}, {X:360 Y:441.999997377317}, {X:375.000002861023 Y:416.019237518311}, {X:404.999997138977 Y:416.019237518311}, {X:420 Y:442.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,3" vector="{X:390 Y:442}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,3" vector="{X:379.5 Y:434}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:269.999999046326 Y:493.980762481689}, {X:239.999998092651 Y:493.980762481689}, {X:225 Y:467.999997377317}, {X:240.000002861023 Y:442.019237518311}, {X:269.999997138977 Y:442.019237518311}, {X:285 Y:468.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="1,3.5" vector="{X:255 Y:468}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="1,3.5" vector="{X:237.5 Y:460}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:314.999999046326 Y:467.980762481689}, {X:284.999998092651 Y:467.980762481689}, {X:270 Y:441.999997377317}, {X:285.000002861023 Y:416.019237518311}, {X:314.999997138977 Y:416.019237518311}, {X:330 Y:442.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="2,3" vector="{X:300 Y:442}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="2,3" vector="{X:289.5 Y:434}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:359.999999046326 Y:441.980762481689}, {X:329.999998092651 Y:441.980762481689}, {X:315 Y:415.999997377317}, {X:330.000002861023 Y:390.019237518311}, {X:359.999997138977 Y:390.019237518311}, {X:375 Y:416.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="3,2.5" vector="{X:345 Y:416}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="3,2.5" vector="{X:327.5 Y:408}" color="{R:255 G:255 B:0 A:255}" />
       <PolygonElement width="3" color="{R:0 G:64 B:0 A:255}">
         <Vertices>{X:404.999999046326 Y:415.980762481689}, {X:374.999998092651 Y:415.980762481689}, {X:360 Y:389.999997377317}, {X:375.000002861023 Y:364.019237518311}, {X:404.999997138977 Y:364.019237518311}, {X:420 Y:390.000005245367}</Vertices>
       </PolygonElement>
-      <TextElement fontName="SpriteFont1" text="4,2" vector="{X:390 Y:390}" color="{R:255 G:255 B:0 A:255}" />
+      <TextElement fontName="SpriteFont1" text="4,2" vector="{X:379.5 Y:382}" color="{R:255 G:255 B:0 A:255}" />
     </Elements>
   </DrawingMap>
-  <SpriteMap name="Sprites" parallaxScrollingVector="{X:4 Y:8}" cameraMode="Follow">
+  <SpriteMap name="Sprites" parallaxScrollingVector="{X:4 Y:8}" offset="{X:50 Y:50}" cameraMode="Follow">
     <Sprites>
       <Sprite sheetName="Link" name="Link01" position="{X:25 Y:25}" />
       <Sprite sheetName="Link" name="Sleep01" position="{X:125 Y:25}" />
     </Sprites>
   </SpriteMap>
-  <DrawingMap name="Diagnostics" parallaxScrollingVector="{X:1 Y:1}" cameraMode="Fix">
+  <DrawingMap name="Diagnostics" parallaxScrollingVector="{X:1 Y:1}" offset="{X:0 Y:0}" cameraMode="Fix">
     <Elements>
       <TextElement fontName="SpriteFont1" text="FPS {0:d}" vector="{X:610 Y:0}" color="{R:255 G:255 B:255 A:255}" />
       <TextElement fontName="SpriteFont1" text="ViewPort: {0}" vector="{X:410 Y:20}" color="{R:255 G:255 B:255 A:255}" />
@@ -851,7 +851,7 @@
       <TextElement fontName="SpriteFont1" text="Hits: {0}" vector="{X:410 Y:160}" color="{R:255 G:255 B:255 A:255}" />
     </Elements>
   </DrawingMap>
-  <DrawingMap name="MouseCusor" parallaxScrollingVector="{X:1 Y:1}" cameraMode="Fix">
+  <DrawingMap name="MouseCusor" parallaxScrollingVector="{X:1 Y:1}" offset="{X:0 Y:0}" cameraMode="Fix">
     <Elements />
   </DrawingMap>
 </Scene>

@@ -60,6 +60,8 @@ namespace DemoGameDomain
             this.camera = theCamera;
             this.player = new ClassLibrary.Point(25, 25);
             this.range = 0.25f;
+
+            // theCamera.Center = CameraCenter.WindowTopLeft;
         }
 
         public override InputConfiguration GetInputConfiguration()
@@ -123,11 +125,11 @@ namespace DemoGameDomain
             this.scene = new Scene("scene1");
 
             this.scene.AddMap(this.CreateImageMap());
-            this.scene.AddMap(this.CreateHexTest());
-            this.scene.AddMap(this.CreateTileTest());
+            this.scene.AddMap(this.CreateHexMap());
+            this.scene.AddMap(this.CreateTileMap());
             this.scene.AddMap(this.CreateColorMap());
             this.scene.AddMap(this.CreateHexMapTestDistance());
-            this.scene.AddMap(this.CreateSpriteTest());
+            this.scene.AddMap(this.CreateSpriteMap());
             this.scene.AddMap(this.CreateDiagnosticText());
             this.scene.AddMap(this.CreateMouseCursorMap());
 
@@ -221,7 +223,7 @@ namespace DemoGameDomain
             return new ColorMap("Red", new ClassLibrary.Color(255, 0, 0, (int)(255 * alpha)));
         }
 
-        private HexMap CreateHexTest()
+        private HexMap CreateHexMap()
         {
             var texture = this.gameResourceManager.GetTexture("HexSheet");
             var sheet = new HexSheet(texture, "Hexes", new Size(68, 60));
@@ -241,11 +243,12 @@ namespace DemoGameDomain
             map[1, 1] = red;
 
             map.ParallaxScrollingVector = new Vector(4.0f, 0.5f);
+            map.Offset = new Point(-25, 0);
 
             return map;
         }
 
-        private TileMap CreateTileTest()
+        private TileMap CreateTileMap()
         {
             var texture = this.gameResourceManager.GetTexture("TileSheet");
             var sheet = new TileSheet(texture, "Background", new Size(16, 16));
@@ -267,11 +270,12 @@ namespace DemoGameDomain
             tileMap[4, 20] = green;
 
             tileMap.ParallaxScrollingVector = new Vector(2.0f, 2.0f);
+            tileMap.Offset = new Point(0, -20);
 
             return tileMap;
         }
 
-        private SpriteMap CreateSpriteTest()
+        private SpriteMap CreateSpriteMap()
         {
             var texture = this.gameResourceManager.GetTexture("LinkSheet");
             var sheet = new SpriteSheet(texture, "Link");
@@ -290,6 +294,7 @@ namespace DemoGameDomain
             spriteMap.AddSprite(sleep01);
 
             spriteMap.ParallaxScrollingVector = new Vector(4.0f, 8.0f);
+            spriteMap.Offset = new Point(50, 50);
 
             return spriteMap;
         }
