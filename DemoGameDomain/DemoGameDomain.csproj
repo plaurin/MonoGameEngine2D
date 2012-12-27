@@ -49,6 +49,16 @@
       <Name>GameFramework</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\HexSheet.png" />
+    <None Include="Content\SpriteFont1.xnb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\TileSheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\LinkSheet.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

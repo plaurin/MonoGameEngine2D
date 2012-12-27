@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{463DB36F-CFA9-40AB-A934-ED40703AE4EB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MonoGameFramework</RootNamespace>
+    <AssemblyName>MonoGameFramework</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\XnaGameFramework\EngineImplementation\XnaCamera.cs">
+      <Link>EngineImplementation\XnaCamera.cs</Link>
+    </Compile>
+    <Compile Include="..\XnaGameFramework\EngineImplementation\XnaDrawContext.cs">
+      <Link>EngineImplementation\XnaDrawContext.cs</Link>
+    </Compile>
+    <Compile Include="..\XnaGameFramework\EngineImplementation\XnaDrawingFont.cs">
+      <Link>EngineImplementation\XnaDrawingFont.cs</Link>
+    </Compile>
+    <Compile Include="..\XnaGameFramework\EngineImplementation\XnaExtensions.cs">
+      <Link>EngineImplementation\XnaExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\XnaGameFramework\EngineImplementation\XnaGameResourceManager.cs">
+      <Link>EngineImplementation\XnaGameResourceManager.cs</Link>
+    </Compile>
+    <Compile Include="..\XnaGameFramework\EngineImplementation\XnaInputContext.cs">
+      <Link>EngineImplementation\XnaInputContext.cs</Link>
+    </Compile>
+    <Compile Include="..\XnaGameFramework\EngineImplementation\XnaTexture.cs">
+      <Link>EngineImplementation\XnaTexture.cs</Link>
+    </Compile>
+    <Compile Include="..\XnaGameFramework\WindowsGameBase.cs">
+      <Link>WindowsGameBase.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="OpenTK" />
+    <Reference Include="MonoGame.Framework.Windows" />
+    <Reference Include="Lidgren.Network" />
+    <Reference Include="Tao.Sdl" />
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameFramework\GameFramework.csproj">
+      <Project>{6677C8EF-D627-4946-88EE-029503E258DF}</Project>
+      <Name>GameFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

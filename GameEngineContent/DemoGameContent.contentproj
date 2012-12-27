@@ -49,14 +49,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="xander_link_sheet.png">
+    <Compile Include="LinkSheet.png">
       <Name>LinkSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tiles.png">
+    <Compile Include="TileSheet.png">
       <Name>TileSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
