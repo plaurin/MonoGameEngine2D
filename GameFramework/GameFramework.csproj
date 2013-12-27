@@ -47,7 +47,6 @@
     <Compile Include="Drawing\LineElement.cs" />
     <Compile Include="Drawing\PolygonElement.cs" />
     <Compile Include="Drawing\TextElement.cs" />
-    <Compile Include="Fx.cs" />
     <Compile Include="GameResourceManager.cs" />
     <Compile Include="GameTimer.cs" />
     <Compile Include="Hexes\HexDefinition.cs" />

@@ -44,12 +44,19 @@
   <ItemGroup>
     <Compile Include="DefaultScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShootEmUp\CompositeSprite.cs" />
+    <Compile Include="ShootEmUp\PlayerShipEntity.cs" />
+    <Compile Include="ShootEmUp\ShootEmUpScreen.cs" />
+    <Compile Include="ShootEmUp\SpriteReference.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\HexSheet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\LinkSheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\ShootEmUp\Sprites.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\TileSheet.png">
