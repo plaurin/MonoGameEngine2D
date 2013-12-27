@@ -1,4 +1,4 @@
-XNAGameEngine2D
+MonoGameEngine2D
 
 As the name state the obvious, I'll stick to features:
 - Developer focus game engine
@@ -12,5 +12,3 @@ Wishlist:
 - Platform agnostic engine so that it could be used not only with XNA
 - Sheets and Maps designer tool
 - Maybe network
-
-License: I need one, don't know which one to use.

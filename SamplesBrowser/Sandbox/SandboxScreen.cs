@@ -7,15 +7,15 @@ using GameFramework.Drawing;
 using GameFramework.Hexes;
 using GameFramework.Inputs;
 using GameFramework.Maps;
+using GameFramework.Scenes;
 using GameFramework.Screens;
 using GameFramework.Sheets;
 using GameFramework.Sprites;
 using GameFramework.Tiles;
-using Scene = GameFramework.Scenes.Scene;
 
-namespace SamplesBrowser
+namespace SamplesBrowser.Sandbox
 {
-    public class DefaultScreen : ScreenBase
+    public class SandboxScreen : ScreenBase
     {
         private Camera camera;
 
@@ -79,7 +79,7 @@ namespace SamplesBrowser
 
             this.inputConfiguration.AddDigitalButton("Selection").Assign(MouseButtons.Left).MapTo(elapse =>
             {
-                this.hits = string.Join("; ", scene.GetHits(this.mouseState.AbsolutePosition, this.camera));
+                this.hits = string.Join("; ", this.scene.GetHits(this.mouseState.AbsolutePosition, this.camera));
             });
 
             this.inputConfiguration.AddMouseTracking(this.camera).OnMove((mt, e) => this.mouseState = mt);
@@ -91,7 +91,7 @@ namespace SamplesBrowser
         {
             this.gameResourceManager = resourceManager;
 
-            this.gameResourceManager.AddDrawingFont("SpriteFont1");
+            this.gameResourceManager.AddDrawingFont(@"Sandbox\SpriteFont1");
         }
 
         public override void Update(IGameTiming gameTime)
@@ -131,7 +131,7 @@ namespace SamplesBrowser
             this.scene.AddMap(this.CreateDiagnosticText());
             this.scene.AddMap(this.CreateMouseCursorMap());
 
-            this.scene.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
+            //this.scene.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
 
             //this.TestSceneSaveLoad();
             //this.TestSheetsSaveLoad();
@@ -193,7 +193,7 @@ namespace SamplesBrowser
         {
             var map = new DrawingMap("Diagnostics", this.gameResourceManager) { CameraMode = CameraMode.Fix };
 
-            var font = this.gameResourceManager.GetDrawingFont("SpriteFont1");
+            var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
             this.fpsElement = map.AddText(font, "FPS {0:d}", new Vector(610, 0), Color.White);
             this.viewPortElement = map.AddText(font, "ViewPort: {0}", new Vector(410, 20), Color.White);
             this.translationElement = map.AddText(font, "Translation: {0}", new Vector(410, 40), Color.White);
@@ -209,7 +209,7 @@ namespace SamplesBrowser
 
         private ImageMap CreateImageMap()
         {
-            var texture = this.gameResourceManager.GetTexture("LinkSheet");
+            var texture = this.gameResourceManager.GetTexture(@"Sandbox\LinkSheet");
 
             return new ImageMap("Image", texture, new Rectangle(10, 10, 250, 250));
         }
@@ -223,13 +223,13 @@ namespace SamplesBrowser
 
         private HexMap CreateHexMap()
         {
-            var texture = this.gameResourceManager.GetTexture("HexSheet");
+            var texture = this.gameResourceManager.GetTexture(@"Sandbox\HexSheet");
             var sheet = new HexSheet(texture, "Hexes", new Size(68, 60));
             var red = sheet.CreateHexDefinition("red", new Point(55, 30));
             var yellow = sheet.CreateHexDefinition("yellow", new Point(163, 330));
             var purple = sheet.CreateHexDefinition("purple", new Point(488, 330));
 
-            sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Color HexSheet.xml");
+            //sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Color HexSheet.xml");
 
             this.gameResourceManager.AddHexSheet(sheet);
 
@@ -248,7 +248,7 @@ namespace SamplesBrowser
 
         private TileMap CreateTileMap()
         {
-            var texture = this.gameResourceManager.GetTexture("TileSheet");
+            var texture = this.gameResourceManager.GetTexture(@"Sandbox\TileSheet");
             var sheet = new TileSheet(texture, "Background", new Size(16, 16));
             var red = sheet.CreateTileDefinition("red", new Point(0, 0));
             var green = sheet.CreateTileDefinition("green", new Point(16, 0));
@@ -257,7 +257,7 @@ namespace SamplesBrowser
             sheet.CreateTileDefinition("orange", new Point(16, 16));
             sheet.CreateTileDefinition("blue", new Point(32, 16));
 
-            sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Color TileSheet.xml");
+            //sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Color TileSheet.xml");
 
             this.gameResourceManager.AddTileSheet(sheet);
 
@@ -275,12 +275,12 @@ namespace SamplesBrowser
 
         private SpriteMap CreateSpriteMap()
         {
-            var texture = this.gameResourceManager.GetTexture("LinkSheet");
+            var texture = this.gameResourceManager.GetTexture(@"Sandbox\LinkSheet");
             var sheet = new SpriteSheet(texture, "Link");
             sheet.CreateSpriteDefinition("Link01", new Rectangle(3, 3, 16, 22));
             sheet.CreateSpriteDefinition("Sleep01", new Rectangle(45, 219, 32, 40));
 
-            sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Link SpriteSheet.xml");
+            //sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Link SpriteSheet.xml");
 
             var link01 = new Sprite(sheet, "Link01") { Position = this.player };
             var sleep01 = new Sprite(sheet, "Sleep01") { Position = new Point(125, 25) };
@@ -300,7 +300,7 @@ namespace SamplesBrowser
         private DrawingMap CreateHexMapTestDistance()
         {
             var map = new DrawingMap("Hex drawing test", this.gameResourceManager);
-            var font = this.gameResourceManager.GetDrawingFont("SpriteFont1");
+            var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
             var hexMap = HexGrid.CreateHexMap(30, 9);
             foreach (var hex in hexMap.Hexes)
             {

@@ -64,28 +64,28 @@
       <Link>SDL.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\SamplesBrowser\Content\HexSheet.png">
-      <Link>Content\HexSheet.png</Link>
+    <Content Include="..\SamplesBrowser\Content\Sandbox\HexSheet.png">
+      <Link>Content\Sandbox\HexSheet.png</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\SamplesBrowser\Content\LinkSheet.png">
-      <Link>Content\LinkSheet.png</Link>
+    <Content Include="..\SamplesBrowser\Content\Sandbox\LinkSheet.png">
+      <Link>Content\Sandbox\LinkSheet.png</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\SamplesBrowser\Content\ShootEmUp\Sprites.png">
       <Link>Content\ShootEmUp\Sprites.png</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\SamplesBrowser\Content\TileSheet.png">
-      <Link>Content\TileSheet.png</Link>
+    <Content Include="..\SamplesBrowser\Content\Sandbox\TileSheet.png">
+      <Link>Content\Sandbox\TileSheet.png</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="..\SamplesBrowser\Content\SpriteFont1.xnb">
-      <Link>Content\SpriteFont1.xnb</Link>
+    <Content Include="..\SamplesBrowser\Content\Sandbox\SpriteFont1.xnb">
+      <Link>Content\Sandbox\SpriteFont1.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="app.config" />
