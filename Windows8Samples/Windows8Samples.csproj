@@ -135,11 +135,23 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="..\SamplesBrowser\Content\SpriteFont1.xnb">
+      <Link>Content\SpriteFont1.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Windows8Samples_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\SamplesBrowser\Content\HexSheet.png">
+      <Link>Content\HexSheet.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\SamplesBrowser\Content\LinkSheet.png">
       <Link>Content\LinkSheet.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\SamplesBrowser\Content\TileSheet.png">
+      <Link>Content\TileSheet.png</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Logo.png" />
