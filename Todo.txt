@@ -68,3 +68,6 @@ InTray
 - Support Tiled map files
 - Sync Content Projects (and Engine Implementation)
 - Import base screen samples
+- Touch support in InputConfiguration mapping
+- Implement Screen Navigation, Scene Navigation
+- Document Glosary
