@@ -1,4 +1,4 @@
-﻿using WindowsBase;
+﻿using MonoGameImplementation;
 using SamplesBrowser;
 
 namespace Windows8Samples
@@ -6,11 +6,10 @@ namespace Windows8Samples
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class SamplesBrowserWin8 : WindowsGameBase
+    public class SamplesBrowserWin8 : MonoGameBase
     {
-        public SamplesBrowserWin8()
+        public SamplesBrowserWin8() : base(new DefaultScreen())
         {
-            this.Scene = new MyScene();
         }
     }
 }

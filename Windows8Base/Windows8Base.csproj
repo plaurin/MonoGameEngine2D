@@ -127,8 +127,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\WindowsBase\WindowsGameBase.cs">
-      <Link>WindowsGameBase.cs</Link>
+    <Compile Include="..\WindowsBase\EngineImplementation\XnaCamera.cs">
+      <Link>EngineImplementation\XnaCamera.cs</Link>
+    </Compile>
+    <Compile Include="..\WindowsBase\EngineImplementation\XnaDrawContext.cs">
+      <Link>EngineImplementation\XnaDrawContext.cs</Link>
+    </Compile>
+    <Compile Include="..\WindowsBase\EngineImplementation\XnaDrawingFont.cs">
+      <Link>EngineImplementation\XnaDrawingFont.cs</Link>
+    </Compile>
+    <Compile Include="..\WindowsBase\EngineImplementation\XnaExtensions.cs">
+      <Link>EngineImplementation\XnaExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\WindowsBase\EngineImplementation\XnaGameResourceManager.cs">
+      <Link>EngineImplementation\XnaGameResourceManager.cs</Link>
+    </Compile>
+    <Compile Include="..\WindowsBase\EngineImplementation\XnaInputContext.cs">
+      <Link>EngineImplementation\XnaInputContext.cs</Link>
+    </Compile>
+    <Compile Include="..\WindowsBase\EngineImplementation\XnaTexture.cs">
+      <Link>EngineImplementation\XnaTexture.cs</Link>
+    </Compile>
+    <Compile Include="..\WindowsBase\MonoGameBase.cs">
+      <Link>MonoGameBase.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
