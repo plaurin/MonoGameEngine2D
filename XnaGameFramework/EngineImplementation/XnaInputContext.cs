@@ -47,6 +47,7 @@ namespace XnaGameFramework.EngineImplementation
                     case KeyboardKeys.Z: return Keys.Z;
                     case KeyboardKeys.Enter: return Keys.Enter;
                     case KeyboardKeys.Back: return Keys.Back;
+                    case KeyboardKeys.Space: return Keys.Space;
                     default: throw new NotSupportedException("Key not supported yet");
                 }
             }

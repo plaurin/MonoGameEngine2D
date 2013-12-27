@@ -43,13 +43,11 @@ namespace WpfGameFramework
 
         private DateTime lastFrameTime;
 
+        private DateTime firstFrameTime;
+
         private bool isInFrame;
-
-        private float elapseTime;
-
-        private long frameCounter;
-
-        private long fps;
+        
+        private readonly GameTimer gameTimer;
 
         public WPFGameBase(Viewport viewport, GameResourceManager gameResourceManager, ScreenBase initialScreen, 
             Action<ImageSource> imageSetterAction)
@@ -58,6 +56,7 @@ namespace WpfGameFramework
             this.gameResourceManager = gameResourceManager;
             this.screen = initialScreen;
             this.imageSetterAction = imageSetterAction;
+            this.gameTimer = new GameTimer();
 
             this.keys = new HashSet<Key>();
             this.buttons = new Dictionary<MouseButton, MouseButtonState>();
@@ -72,6 +71,7 @@ namespace WpfGameFramework
             this.LoadContent();
 
             this.lastFrameTime = DateTime.Now;
+            this.firstFrameTime = this.lastFrameTime;
             var dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += this.Tick;
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(1);
@@ -120,8 +120,9 @@ namespace WpfGameFramework
 
                 var thisFrameTime = DateTime.Now;
                 var delta = thisFrameTime.Subtract(this.lastFrameTime);
+                var total = thisFrameTime.Subtract(this.firstFrameTime);
 
-                this.UpdateFrame(delta);
+                this.UpdateFrame(delta, total);
                 this.DrawFrame(delta);
 
                 this.lastFrameTime = thisFrameTime;
@@ -129,23 +130,14 @@ namespace WpfGameFramework
             }
         }
 
-        private void UpdateFrame(TimeSpan elapsedGameTime)
+        private void UpdateFrame(TimeSpan elapsedGameTime, TimeSpan totalGameTime)
         {
-            // FPS
-            this.elapseTime += (float)elapsedGameTime.TotalSeconds;
-            this.frameCounter++;
-
-            if (this.elapseTime > 1)
-            {
-                this.fps = this.frameCounter;
-                this.frameCounter = 0;
-                this.elapseTime = 0;
-            }
+            this.gameTimer.Update(elapsedGameTime, totalGameTime);
 
             var inputContext = new WpfInputContext(this.keys, this.buttons, this.mousePosition.ToLibPoint());
-            this.inputConfiguration.Update(inputContext, (float)elapsedGameTime.TotalSeconds);
+            this.inputConfiguration.Update(inputContext, gameTimer);
 
-            this.screen.Update(elapsedGameTime.TotalSeconds, (int)this.fps);
+            this.screen.Update(this.gameTimer);
         }
 
         private void DrawFrame(TimeSpan elapsedGameTime)

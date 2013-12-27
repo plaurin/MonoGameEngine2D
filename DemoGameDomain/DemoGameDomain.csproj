@@ -44,12 +44,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GameFramework\GameFramework.csproj">
-      <Project>{6677C8EF-D627-4946-88EE-029503E258DF}</Project>
-      <Name>GameFramework</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Content\HexSheet.png" />
     <None Include="Content\SpriteFont1.xnb" />
   </ItemGroup>
@@ -58,6 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\LinkSheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OldGameFramework\OldGameFramework.csproj">
+      <Project>{6677C8EF-D627-4946-88EE-029503E258DF}</Project>
+      <Name>OldGameFramework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

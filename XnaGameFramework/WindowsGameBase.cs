@@ -29,23 +29,26 @@ namespace XnaGameFramework
 
         private Camera camera;
 
-        private float elapseTime;
+        //private float elapseTime;
 
-        private long frameCounter;
+        //private long frameCounter;
 
-        private long fps;
+        //private long fps;
 
         private GameResourceManager gameResourceManager;
 
         private InputConfiguration inputConfiguration;
 
         private Scene scene;
+        
+        private readonly GameTimer gameTimer;
 
         protected WindowsGameBase(ScreenBase initialScreen)
         {
             this.graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
             this.screen = initialScreen;
+            this.gameTimer = new GameTimer();
         }
 
         /// <summary>
@@ -98,25 +101,27 @@ namespace XnaGameFramework
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // FPS
-            this.elapseTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            this.frameCounter++;
+            this.gameTimer.Update(gameTime.ElapsedGameTime, gameTime.TotalGameTime);
 
-            if (this.elapseTime > 1)
-            {
-                this.fps = this.frameCounter;
-                this.frameCounter = 0;
-                this.elapseTime = 0;
-            }
+            // FPS
+            //this.elapseTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            //this.frameCounter++;
+
+            //if (this.elapseTime > 1)
+            //{
+            //    this.fps = this.frameCounter;
+            //    this.frameCounter = 0;
+            //    this.elapseTime = 0;
+            //}
 
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
             // TODO: Add your update logic here
-            this.inputConfiguration.Update(new XnaInputContext(), gameTime.ElapsedGameTime.TotalSeconds);
+            this.inputConfiguration.Update(new XnaInputContext(), this.gameTimer);
 
-            this.screen.Update(gameTime.ElapsedGameTime.TotalSeconds, (int)this.fps);
+            this.screen.Update(this.gameTimer);
 
             base.Update(gameTime);
         }

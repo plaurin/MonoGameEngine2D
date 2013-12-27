@@ -122,10 +122,6 @@
     <Content Include="obj\x86\Debug\WindowsGame1.pdb" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GameFramework\GameFramework.csproj">
-      <Project>{6677C8EF-D627-4946-88EE-029503E258DF}</Project>
-      <Name>GameFramework</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DemoGameDomain\DemoGameDomain.csproj">
       <Project>{D22765F8-9C64-4194-8ED4-55DE12E7B3D7}</Project>
       <Name>DemoGameDomain</Name>
@@ -134,6 +130,10 @@
       <Name>DemoGameContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
       <Project>{495B932E-B8A9-4459-AA44-298C24098CBF}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\OldGameFramework\OldGameFramework.csproj">
+      <Project>{6677C8EF-D627-4946-88EE-029503E258DF}</Project>
+      <Name>OldGameFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\XnaGameFramework\XnaGameFramework.csproj">
       <Project>{EA05E12F-615B-45FB-8F2F-4DDA4843625D}</Project>

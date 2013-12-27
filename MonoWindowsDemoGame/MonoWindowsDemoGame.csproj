@@ -67,13 +67,13 @@
       <Project>{D22765F8-9C64-4194-8ED4-55DE12E7B3D7}</Project>
       <Name>DemoGameDomain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GameFramework\GameFramework.csproj">
-      <Project>{6677C8EF-D627-4946-88EE-029503E258DF}</Project>
-      <Name>GameFramework</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MonoGameFramework\MonoGameFramework.csproj">
       <Project>{463DB36F-CFA9-40AB-A934-ED40703AE4EB}</Project>
       <Name>MonoGameFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OldGameFramework\OldGameFramework.csproj">
+      <Project>{6677C8EF-D627-4946-88EE-029503E258DF}</Project>
+      <Name>OldGameFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -68,16 +68,16 @@ namespace DemoGameDomain
         {
             this.inputConfiguration = new InputConfiguration();
 
-            this.inputConfiguration.AddDigitalButton("Left").Assign(KeyboardKeys.Left).MapTo(elapse => this.camera.Move(-60 * elapse, 0));
-            this.inputConfiguration.AddDigitalButton("Right").Assign(KeyboardKeys.Right).MapTo(elapse => this.camera.Move(60 * elapse, 0));
-            this.inputConfiguration.AddDigitalButton("Up").Assign(KeyboardKeys.Up).MapTo(elapse => this.camera.Move(0, -60 * elapse));
-            this.inputConfiguration.AddDigitalButton("Down").Assign(KeyboardKeys.Down).MapTo(elapse => this.camera.Move(0, 60 * elapse));
+            this.inputConfiguration.AddDigitalButton("Left").Assign(KeyboardKeys.Left).MapTo(gt => this.camera.Move(-60 * gt.ElapsedSeconds, 0));
+            this.inputConfiguration.AddDigitalButton("Right").Assign(KeyboardKeys.Right).MapTo(gt => this.camera.Move(60 * gt.ElapsedSeconds, 0));
+            this.inputConfiguration.AddDigitalButton("Up").Assign(KeyboardKeys.Up).MapTo(gt => this.camera.Move(0, -60 * gt.ElapsedSeconds));
+            this.inputConfiguration.AddDigitalButton("Down").Assign(KeyboardKeys.Down).MapTo(gt => this.camera.Move(0, 60 * gt.ElapsedSeconds));
 
-            this.inputConfiguration.AddDigitalButton("ZoomIn").Assign(KeyboardKeys.A).MapTo(elapse => this.camera.ZoomFactor *= 1.2f * (1 + elapse));
-            this.inputConfiguration.AddDigitalButton("ZoomOut").Assign(KeyboardKeys.Z).MapTo(elapse => this.camera.ZoomFactor *= 1 / (1.2f * (1 + elapse)));
+            this.inputConfiguration.AddDigitalButton("ZoomIn").Assign(KeyboardKeys.A).MapTo(gt => this.camera.ZoomFactor *= 1.2f * (1 + gt.ElapsedSeconds));
+            this.inputConfiguration.AddDigitalButton("ZoomOut").Assign(KeyboardKeys.Z).MapTo(gt => this.camera.ZoomFactor *= 1 / (1.2f * (1 + gt.ElapsedSeconds)));
 
-            this.inputConfiguration.AddDigitalButton("RangeUp").Assign(KeyboardKeys.W).MapTo(elapse => this.range *= 1.2f * (1 + elapse));
-            this.inputConfiguration.AddDigitalButton("RangeDown").Assign(KeyboardKeys.Q).MapTo(elapse => this.range *= 1 / (1.2f * (1 + elapse)));
+            this.inputConfiguration.AddDigitalButton("RangeUp").Assign(KeyboardKeys.W).MapTo(gt => this.range *= 1.2f * (1 + gt.ElapsedSeconds));
+            this.inputConfiguration.AddDigitalButton("RangeDown").Assign(KeyboardKeys.Q).MapTo(gt => this.range *= 1 / (1.2f * (1 + gt.ElapsedSeconds)));
 
             this.inputConfiguration.AddDigitalButton("Selection").Assign(MouseButtons.Left).MapTo(elapse =>
             {
@@ -96,13 +96,13 @@ namespace DemoGameDomain
             this.gameResourceManager.AddDrawingFont("SpriteFont1");
         }
 
-        public override void Update(double elapsedSeconds, int fps)
+        public override void Update(IGameTiming gameTime)
         {
             var colorMap = this.scene.Maps.OfType<ColorMap>().FirstOrDefault();
             if (colorMap != null)
                 colorMap.Color = new Color(255, 0, 0, (int)(255 * Math.Min(this.range, 1.0f)));
 
-            this.fpsElement.SetParameters(fps);
+            this.fpsElement.SetParameters(gameTime.Fps);
             this.viewPortElement.SetParameters(this.camera.SceneViewPort);
             this.translationElement.SetParameters(this.camera.SceneTranslationVector);
             this.positionElement.SetParameters(this.camera.Position);

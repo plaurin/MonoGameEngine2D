@@ -14,6 +14,7 @@ namespace XnaShootEmUpGame
         public Game()
             : base(new DefaultScreen())
         {
+            IsMouseVisible = true;
         }
     }
 }

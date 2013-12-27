@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6677C8EF-D627-4946-88EE-029503E258DF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GameFramework</RootNamespace>
+    <AssemblyName>GameFramework</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cameras\Camera.cs" />
+    <Compile Include="Color.cs" />
+    <Compile Include="DrawContext.cs" />
+    <Compile Include="Drawing\DrawingElementBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Drawing\DrawingFont.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Drawing\DrawingMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Drawing\LineElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Drawing\PolygonElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Drawing\TextElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GameResourceManager.cs" />
+    <Compile Include="GameTimer.cs" />
+    <Compile Include="Hexes\HexDefinition.cs" />
+    <Compile Include="Hexes\HexGrid.cs" />
+    <Compile Include="Hexes\HexGridElement.cs" />
+    <Compile Include="Hexes\HexHit.cs" />
+    <Compile Include="Hexes\HexMap.cs" />
+    <Compile Include="Hexes\HexSheet.cs" />
+    <Compile Include="Hexes\NullHexDefinition.cs" />
+    <Compile Include="Hexes\NullHexSheet.cs" />
+    <Compile Include="Inputs\DigitalButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Inputs\InputConfiguration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Inputs\InputContext.cs" />
+    <Compile Include="Inputs\KeyboardStateBase.cs" />
+    <Compile Include="Inputs\Keys.cs" />
+    <Compile Include="Inputs\MouseButtons.cs" />
+    <Compile Include="Inputs\MouseStateBase.cs" />
+    <Compile Include="Inputs\MouseTracking.cs" />
+    <Compile Include="Maps\ColorMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Maps\ImageMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Maps\MapBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MathExtensions.cs" />
+    <Compile Include="MathUtil.cs" />
+    <Compile Include="Point.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rectangle.cs" />
+    <Compile Include="Scenes\HitBase.cs" />
+    <Compile Include="Scenes\Scene.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Screens\ScreenBase.cs" />
+    <Compile Include="Sheets\SheetBase.cs" />
+    <Compile Include="Size.cs" />
+    <Compile Include="Sprites\Sprite.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sprites\SpriteHit.cs" />
+    <Compile Include="Sprites\SpriteMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sprites\SpriteSheet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Texture.cs" />
+    <Compile Include="Tiles\NullTileDefinition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tiles\NullTileSheet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tiles\TileDefinition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tiles\TileHit.cs" />
+    <Compile Include="Tiles\TileMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tiles\TileSheet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Vector.cs" />
+    <Compile Include="Viewport.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
