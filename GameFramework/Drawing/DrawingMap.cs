@@ -51,6 +51,15 @@ namespace GameFramework.Drawing
             return polygonElement;
         }
 
+        // Todo: Should be on Extension class as Extension Method
+        public RectangleElement AddRectangle(float x, float y, float width, float height, int lineWidth, Color color)
+        {
+            var rectangleElement = new RectangleElement(x, y, width, height, lineWidth, color);
+            this.elements.Add(rectangleElement);
+
+            return rectangleElement;
+        }
+
         public void AddElement(DrawingElementBase element)
         {
             this.elements.Add(element);

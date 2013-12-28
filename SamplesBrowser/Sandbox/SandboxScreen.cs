@@ -87,9 +87,9 @@ namespace SamplesBrowser.Sandbox
             return this.inputConfiguration;
         }
 
-        public override void LoadContent(GameResourceManager resourceManager)
+        public override void LoadContent(GameResourceManager theResourceManager)
         {
-            this.gameResourceManager = resourceManager;
+            this.gameResourceManager = theResourceManager;
 
             this.gameResourceManager.AddDrawingFont(@"Sandbox\SpriteFont1");
         }

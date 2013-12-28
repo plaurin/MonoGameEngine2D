@@ -22,7 +22,7 @@ namespace GameFramework.Drawing
 
         public override void Draw(DrawContext drawContext, Camera camera, DrawingMap drawingMap)
         {
-            this.vertices.ForEachPair((x, y) => this.DrawLine(drawContext, camera, drawingMap, x, y));
+            this.vertices.ForEachPair((x, y) => this.DrawLine(drawContext, camera, drawingMap, x, y, this.width, this.color));
         }
 
         public override XElement ToXml()
@@ -40,19 +40,6 @@ namespace GameFramework.Drawing
             var vertices = element.Element("Vertices").Value.Split(',').Select(x => MathUtil.ParseVector(x.Trim()));
 
             return new PolygonElement(vertices, int.Parse(width), MathUtil.ParseColor(color));
-        }
-
-        private void DrawLine(DrawContext drawContext, Camera camera, DrawingMap drawingMap, Vector fromVector, Vector toVector)
-        {
-            var finalFrom = fromVector
-                .Scale(camera.ZoomFactor)
-                .Translate(camera.GetSceneTranslationVector(drawingMap.ParallaxScrollingVector));
-
-            var finalTo = toVector
-                .Scale(camera.ZoomFactor)
-                .Translate(camera.GetSceneTranslationVector(drawingMap.ParallaxScrollingVector));
-
-            drawContext.DrawLine(finalFrom, finalTo, this.width * camera.ZoomFactor, this.color);
         }
     }
 }

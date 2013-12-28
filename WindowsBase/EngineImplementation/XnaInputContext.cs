@@ -41,6 +41,18 @@ namespace MonoGameImplementation.EngineImplementation
                     case KeyboardKeys.Right: return Keys.Right;
                     case KeyboardKeys.Up: return Keys.Up;
                     case KeyboardKeys.Down: return Keys.Down;
+
+                    case KeyboardKeys.D0: return Keys.D0;
+                    case KeyboardKeys.D1: return Keys.D1;
+                    case KeyboardKeys.D2: return Keys.D2;
+                    case KeyboardKeys.D3: return Keys.D3;
+                    case KeyboardKeys.D4: return Keys.D4;
+                    case KeyboardKeys.D5: return Keys.D5;
+                    case KeyboardKeys.D6: return Keys.D6;
+                    case KeyboardKeys.D7: return Keys.D7;
+                    case KeyboardKeys.D8: return Keys.D8;
+                    case KeyboardKeys.D9: return Keys.D9;
+
                     case KeyboardKeys.Q: return Keys.Q;
                     case KeyboardKeys.W: return Keys.W;
                     case KeyboardKeys.A: return Keys.A;

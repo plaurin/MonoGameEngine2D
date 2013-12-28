@@ -113,6 +113,8 @@ namespace MonoGameImplementation
             //}
 
             // Allows the game to exit
+
+            // TODO: Allow to exit another way!
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
@@ -142,7 +144,8 @@ namespace MonoGameImplementation
 
             this.scene.Draw(drawContext, this.camera);
 
-            this.DrawCamera(drawContext);
+            // TODO: Move this option elsewhere
+            //this.DrawCamera(drawContext);
 
             this.spriteBatch.End();
 

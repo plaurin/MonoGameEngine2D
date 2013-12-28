@@ -39,9 +39,9 @@ namespace SamplesBrowser.ShootEmUp
             return this.inputConfiguration;
         }
 
-        public override void LoadContent(GameResourceManager resourceManager)
+        public override void LoadContent(GameResourceManager theResourceManager)
         {
-            this.gameResourceManager = resourceManager;
+            this.gameResourceManager = theResourceManager;
         }
 
         private PlayerShipEntity playerShipEntity;
