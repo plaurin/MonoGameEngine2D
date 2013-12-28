@@ -2,6 +2,7 @@
 using MonoGameImplementation;
 using SamplesBrowser;
 using SamplesBrowser.Sandbox;
+using SamplesBrowser.ShootEmUp;
 
 namespace WindowsSamples
 {
@@ -11,8 +12,8 @@ namespace WindowsSamples
     public class SamplesBrowserWin : MonoGameBase
     {
         //public SamplesBrowserWin() : base(new SandboxScreen())
-        public SamplesBrowserWin() : base(new HubScreen())
-        //public SamplesBrowserWin() : base(new ShootEmUpScreen())
+        //public SamplesBrowserWin() : base(new HubScreen())
+        public SamplesBrowserWin() : base(new ShootEmUpScreen())
         {
         }
     }
