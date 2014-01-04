@@ -17,6 +17,8 @@ namespace SamplesBrowser.Sandbox
 {
     public class SandboxScreen : ScreenBase
     {
+        private readonly ScreenNavigation screenNavigation;
+
         private Camera camera;
 
         private GameResourceManager gameResourceManager;
@@ -53,6 +55,11 @@ namespace SamplesBrowser.Sandbox
 
         private string hits;
 
+        public SandboxScreen(ScreenNavigation screenNavigation)
+        {
+            this.screenNavigation = screenNavigation;
+        }
+
         public override void Initialize(Camera theCamera)
         {
             this.camera = theCamera;
@@ -65,6 +72,9 @@ namespace SamplesBrowser.Sandbox
         public override InputConfiguration GetInputConfiguration()
         {
             this.inputConfiguration = new InputConfiguration();
+
+            this.inputConfiguration.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
+                .MapClickTo(gt => this.screenNavigation.NavigateBack());
 
             this.inputConfiguration.AddDigitalButton("Left").Assign(KeyboardKeys.Left).MapTo(gt => this.camera.Move(-60 * gt.ElapsedSeconds, 0));
             this.inputConfiguration.AddDigitalButton("Right").Assign(KeyboardKeys.Right).MapTo(gt => this.camera.Move(60 * gt.ElapsedSeconds, 0));

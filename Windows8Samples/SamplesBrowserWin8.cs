@@ -9,7 +9,8 @@ namespace Windows8Samples
     /// </summary>
     public class SamplesBrowserWin8 : MonoGameBase
     {
-        public SamplesBrowserWin8() : base(new SandboxScreen())
+        public SamplesBrowserWin8()
+            : base(new SampleBrowserScreenNavigation())
         {
         }
     }

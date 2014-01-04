@@ -141,7 +141,8 @@ namespace GameFramework
 
         public void AddDrawingFont(string assetName)
         {
-            this.drawingFontDictionary.Add(assetName, null);
+            if (!this.drawingFontDictionary.ContainsKey(assetName))
+                this.drawingFontDictionary.Add(assetName, null);
         }
 
         public virtual DrawingFont GetDrawingFont(string assetName)

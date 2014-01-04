@@ -9,6 +9,8 @@ namespace SamplesBrowser.ShootEmUp
 {
     public class ShootEmUpScreen : ScreenBase
     {
+        private readonly ScreenNavigation screenNavigation;
+
         private Camera camera;
 
         private InputConfiguration inputConfiguration;
@@ -18,6 +20,11 @@ namespace SamplesBrowser.ShootEmUp
         private Scene scene;
 
         private SpriteMap entityMap;
+
+        public ShootEmUpScreen(ScreenNavigation screenNavigation)
+        {
+            this.screenNavigation = screenNavigation;
+        }
 
         public override void Initialize(Camera theCamera)
         {
@@ -29,6 +36,9 @@ namespace SamplesBrowser.ShootEmUp
         public override InputConfiguration GetInputConfiguration()
         {
             this.inputConfiguration = new InputConfiguration();
+
+            this.inputConfiguration.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
+                .MapClickTo(gt => this.screenNavigation.NavigateBack());
 
             this.inputConfiguration.AddDigitalButton("Left").Assign(KeyboardKeys.Left);
             this.inputConfiguration.AddDigitalButton("Right").Assign(KeyboardKeys.Right);

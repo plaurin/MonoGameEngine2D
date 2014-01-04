@@ -95,10 +95,13 @@ namespace MonoGameImplementation
 
             // Allows the game to exit
             // TODO: Allow to exit another way!
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            //    this.Exit();
+            if (this.screenNavigation.ShouldExit) this.Exit();
 
             // TODO: Add your update logic here
+            this.screenNavigation.Update();
+
             this.screenNavigation.Current.InputConfiguration.Update(new XnaInputContext(), this.gameTimer);
 
             this.screenNavigation.Current.Screen.Update(this.gameTimer);

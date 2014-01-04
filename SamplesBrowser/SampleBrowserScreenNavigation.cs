@@ -8,7 +8,7 @@ namespace SamplesBrowser
     {
         public SampleBrowserScreenNavigation()
         {
-            this.AddScreen(new HubScreen(), new SandboxScreen(), new ShootEmUpScreen());
+            this.AddScreen(new HubScreen(this), new SandboxScreen(this), new ShootEmUpScreen(this));
 
             this.SetInitialScreen<HubScreen>();
         }

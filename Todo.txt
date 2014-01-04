@@ -14,7 +14,7 @@ Features
 * Scene
  P3 - UnitTesting Saving and Loading!
 * Screen
- P2 - Navigation
+ - ScreenNavigation should handle UnloadContent and manage available memory
 * Other than Gfx
  - Input configuration (mouse axes)
  - Input configuration (gamepad)

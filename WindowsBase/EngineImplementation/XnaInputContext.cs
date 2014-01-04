@@ -60,6 +60,7 @@ namespace MonoGameImplementation.EngineImplementation
                     case KeyboardKeys.Enter: return Keys.Enter;
                     case KeyboardKeys.Back: return Keys.Back;
                     case KeyboardKeys.Space: return Keys.Space;
+                    case KeyboardKeys.Escape: return Keys.Escape;
                     default: throw new NotSupportedException("Key not supported yet");
                 }
             }

@@ -9,17 +9,22 @@ namespace GameFramework.Screens
     {
         private readonly IDictionary<Type, ScreenContext> screens;
 
+        private readonly Stack<ScreenContext> navigationStack;
+
         private GameResourceManager gameResourceManager;
 
         public ScreenNavigation()
         {
             this.screens = new Dictionary<Type, ScreenContext>();
+            this.navigationStack = new Stack<ScreenContext>();
         }
 
         public Type InitialScreen { get; private set; }
 
         public ScreenContext Current { get; private set; }
 
+        public bool ShouldExit { get; private set; }
+        
         public void Initialize(Func<Camera> cameraFactory)
         {
             foreach (var screenContext in this.screens.Values.Where(screenContext => !screenContext.IsInitialized))
@@ -31,6 +36,12 @@ namespace GameFramework.Screens
         public void LoadContent(GameResourceManager theGameResourceManager)
         {
             this.gameResourceManager = theGameResourceManager;
+        }
+
+        public void Update()
+        {
+            if (this.navigationStack != null && this.Current != this.navigationStack.Peek())
+                this.Current = this.navigationStack.Peek();
         }
 
         public void NavigateTo<T>() where T : ScreenBase
@@ -47,7 +58,17 @@ namespace GameFramework.Screens
                 this.LoadContent(screenToNavigate);
             }
 
-            this.Current = screenToNavigate;
+            this.navigationStack.Push(screenToNavigate);
+        }
+
+        public void NavigateBack()
+        {
+            this.navigationStack.Pop();
+        }
+
+        public void Exit()
+        {
+            this.ShouldExit = true;
         }
 
         protected void AddScreen(params ScreenBase[] screensToAdd)

@@ -5,11 +5,15 @@ using GameFramework.Drawing;
 using GameFramework.Inputs;
 using GameFramework.Scenes;
 using GameFramework.Screens;
+using SamplesBrowser.Sandbox;
+using SamplesBrowser.ShootEmUp;
 
 namespace SamplesBrowser
 {
     public class HubScreen : ScreenBase
     {
+        private readonly ScreenNavigation screenNavigation;
+
         private Camera camera;
         private GameResourceManager gameResourceManager;
 
@@ -17,6 +21,11 @@ namespace SamplesBrowser
 
         private RectangleElement sandboxRectangle;
         private RectangleElement shootEmUpRectangle;
+
+        public HubScreen(ScreenNavigation screenNavigation)
+        {
+            this.screenNavigation = screenNavigation;
+        }
 
         private enum Samples
         {
@@ -36,11 +45,22 @@ namespace SamplesBrowser
         {
             var input = new InputConfiguration();
 
+            input.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
+                .MapClickTo(gt => this.screenNavigation.Exit());
+
             input.AddDigitalButton("GotoSandbox").Assign(KeyboardKeys.D1)
-                .MapClickTo(gt => { this.currentSample = Samples.Sandbox; });
+                .MapClickTo(gt =>
+                {
+                    this.currentSample = Samples.Sandbox;
+                    this.screenNavigation.NavigateTo<SandboxScreen>();
+                });
 
             input.AddDigitalButton("GotoShootEmUp").Assign(KeyboardKeys.D2)
-                .MapClickTo(gt => { this.currentSample = Samples.ShootEmUp; });
+                .MapClickTo(gt =>
+                {
+                    this.currentSample = Samples.ShootEmUp;
+                    this.screenNavigation.NavigateTo<ShootEmUpScreen>();
+                });
 
             return input;
         }
