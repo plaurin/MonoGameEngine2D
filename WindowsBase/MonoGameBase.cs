@@ -2,14 +2,11 @@ using System;
 
 using GameFramework;
 using GameFramework.Cameras;
-using GameFramework.Inputs;
-using GameFramework.Scenes;
 using GameFramework.Screens;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using MonoGame.Framework;
 using MonoGameImplementation.EngineImplementation;
 using Color = Microsoft.Xna.Framework.Color;
 
@@ -24,38 +21,29 @@ namespace MonoGameImplementation
 
         private readonly Type initialScreen;
 
-        //private readonly ScreenBase screen;
-
-        private SpriteBatch spriteBatch;
-
-        //private Camera camera;
-
-        //private float elapseTime;
-
-        //private long frameCounter;
-
-        //private long fps;
-
-        private GameResourceManager gameResourceManager;
-
-        //private InputConfiguration inputConfiguration;
-
-        //private Scene scene;
-
         private readonly GameFramework.GameTimer gameTimer;
 
         private readonly ScreenNavigation screenNavigation;
 
+        private SpriteBatch spriteBatch;
+
+        private GameResourceManager gameResourceManager;
+
         protected MonoGameBase(ScreenBase initialScreen)
+            : this(new SingleScreenNavigation(initialScreen))
+        {
+        }
+
+        protected MonoGameBase(ScreenNavigation screenNavigation)
         {
             this.graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
-            //this.screen = initialScreen;
-            this.initialScreen = initialScreen.GetType();
+
             this.gameTimer = new GameFramework.GameTimer();
 
-            this.screenNavigation = new ScreenNavigation(this.CreateCamera);
-            this.screenNavigation.AddScreen(initialScreen);
+            this.screenNavigation = screenNavigation;
+
+            this.initialScreen = screenNavigation.InitialScreen;
         }
 
         /// <summary>
@@ -67,23 +55,9 @@ namespace MonoGameImplementation
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            //this.camera = XnaCamera.CreateCamera(this.graphics.GraphicsDevice.Viewport);
-            //this.camera = this.CreateCamera();
-            
-            //this.screen.Initialize(this.camera);
-
-            //this.inputConfiguration = this.screen.GetInputConfiguration();
+            this.screenNavigation.Initialize(this.CreateCamera);
 
             base.Initialize();
-        }
-
-        public Camera CreateCamera()
-        {
-            var viewport = new GameFramework.Viewport(this.graphics.GraphicsDevice.Viewport.Width, 
-                this.graphics.GraphicsDevice.Viewport.Height);
-            return new Camera(viewport);
-
-            //return XnaCamera.CreateCamera(this.graphics.GraphicsDevice.Viewport);
         }
 
         /// <summary>
@@ -99,10 +73,6 @@ namespace MonoGameImplementation
             // TODO: use this.Content to load your game content here
             this.screenNavigation.LoadContent(this.gameResourceManager);
             this.screenNavigation.NavigateTo(this.initialScreen);
-
-            //this.screen.LoadContent(this.gameResourceManager);
-
-            //this.scene = this.screen.GetScene();
         }
 
         /// <summary>
@@ -123,25 +93,12 @@ namespace MonoGameImplementation
         {
             this.gameTimer.Update(gameTime.ElapsedGameTime, gameTime.TotalGameTime);
 
-            // FPS
-            //this.elapseTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //this.frameCounter++;
-
-            //if (this.elapseTime > 1)
-            //{
-            //    this.fps = this.frameCounter;
-            //    this.frameCounter = 0;
-            //    this.elapseTime = 0;
-            //}
-
             // Allows the game to exit
-
             // TODO: Allow to exit another way!
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
             // TODO: Add your update logic here
-//            this.inputConfiguration.Update(new XnaInputContext(), this.gameTimer);
             this.screenNavigation.Current.InputConfiguration.Update(new XnaInputContext(), this.gameTimer);
 
             this.screenNavigation.Current.Screen.Update(this.gameTimer);
@@ -165,7 +122,6 @@ namespace MonoGameImplementation
 
             var drawContext = new XnaDrawContext(this.spriteBatch, blank, this.graphics.GraphicsDevice.Viewport);
 
-            //this.scene.Draw(drawContext, this.camera);
             this.screenNavigation.Current.Scene.Draw(drawContext, this.screenNavigation.Current.Camera);
 
             // TODO: Move this option elsewhere
@@ -186,5 +142,23 @@ namespace MonoGameImplementation
         //        this.camera.ViewPortCenter.Translate(0, -10).ToVector(),
         //        this.camera.ViewPortCenter.Translate(0, 10).ToVector(), 1.0f, new GameFramework.Color(255, 255, 0, 255));
         //}
+
+        private Camera CreateCamera()
+        {
+            var viewport = new GameFramework.Viewport(
+                this.graphics.GraphicsDevice.Viewport.Width,
+                this.graphics.GraphicsDevice.Viewport.Height);
+
+            return new Camera(viewport);
+        }
+
+        private class SingleScreenNavigation : ScreenNavigation
+        {
+            public SingleScreenNavigation(ScreenBase screen)
+            {
+                this.AddScreen(screen);
+                this.SetInitialScreen(screen);
+            }
+        }
     }
 }

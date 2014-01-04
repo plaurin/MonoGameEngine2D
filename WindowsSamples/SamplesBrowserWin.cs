@@ -11,9 +11,10 @@ namespace WindowsSamples
     /// </summary>
     public class SamplesBrowserWin : MonoGameBase
     {
-        //public SamplesBrowserWin() : base(new SandboxScreen())
+        public SamplesBrowserWin() : base(new SandboxScreen())
         //public SamplesBrowserWin() : base(new HubScreen())
-        public SamplesBrowserWin() : base(new ShootEmUpScreen())
+        //public SamplesBrowserWin() : base(new ShootEmUpScreen())
+        //public SamplesBrowserWin() : base(new SampleBrowserScreenNavigation())
         {
         }
     }

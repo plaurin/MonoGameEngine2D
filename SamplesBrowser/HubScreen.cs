@@ -28,7 +28,7 @@ namespace SamplesBrowser
         public override void Initialize(Camera theCamera)
         {
             this.camera = theCamera;
-            
+
             this.camera.Center = CameraCenter.WindowTopLeft;
         }
 

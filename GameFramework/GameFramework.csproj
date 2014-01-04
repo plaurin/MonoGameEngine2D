@@ -77,6 +77,8 @@
     <Compile Include="Scenes\HitBase.cs" />
     <Compile Include="Scenes\Scene.cs" />
     <Compile Include="Screens\ScreenBase.cs" />
+    <Compile Include="Screens\ScreenContext.cs" />
+    <Compile Include="Screens\ScreenNavigation.cs" />
     <Compile Include="Sheets\SheetBase.cs" />
     <Compile Include="Size.cs" />
     <Compile Include="Sprites\Sprite.cs" />
