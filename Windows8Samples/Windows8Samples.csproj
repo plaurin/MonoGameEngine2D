@@ -188,4 +188,6 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup />
+  <ItemGroup />
 </Project>

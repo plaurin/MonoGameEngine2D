@@ -71,6 +71,10 @@
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>$(SolutionDir)\ContentSync\bin\Debug\ContentSync.exe $(ProjectPath) $(SolutionDir)\WindowsSamples\WindowsSamples.csproj
+$(SolutionDir)\ContentSync\bin\Debug\ContentSync.exe $(ProjectPath) $(SolutionDir)\Windows8Samples\Windows8Samples.csproj</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

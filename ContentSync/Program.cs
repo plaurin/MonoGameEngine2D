@@ -57,7 +57,7 @@ namespace ContentSync
                 if (hasChanges)
                 {
                     Console.WriteLine("Saving the updated project file " + destination);
-                    //destinationDocument.Save(destination);
+                    destinationDocument.Save(destination);
                 }
                 else
                 {
