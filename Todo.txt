@@ -18,6 +18,7 @@ Features
 * Other than Gfx
  - Input configuration (mouse axes)
  - Input configuration (gamepad)
+ - Input configuration (touches & gestures)
  - Audio?
  P4 - Entities
   - Link to sprites/tiles
@@ -46,28 +47,26 @@ Samples ideas
 
 Projects structure
 ==================
-X Samples
-- XnaXGame
-- OtherXGame
-- XGameDomain
-- XGameContent
-Demo Sample
-- GameEngine (XNA GameEngine - Demo) [XnaDemoGame]
-- DemoGameDomain (Demo GameDomain) [DemoGameDomain]
-- DemoGameContent (Demo GameContent) [DemoGameContent]
-WPF
-- Editor (WPF UI Frame) [WpfGameLoader]
-- WPFGameLibrary (WPF GameFramework Implementation) [WpfGameFramework]
-XNA
-- WindowsGameLibrary (XNA GameFramework Implementation) [XnaGameFramwork]
-Framework
-- ClassLibrary (GameFramework Abtraction) [GameFramework]
+Base Launcher
+- Windows8Base (Windows 8.1 base game project)
+- WindowsBase (Windows desktop base game project)
+- WindowsPhoneBase (Windows Phone 8 base game project)
+Samples Launcher
+- Windows8Samples (Windows 8.1 game launcher for SamplesBrowser)
+- WindowsPhone8Samples (Windows Phone 8 game launcher for SamplesBrowser)
+- WindowsSamples (Windows desktop game launcher for SamplesBrowser)
+Utilities
+- ContentSync (Post-Build utility to sync projects Content folder)
+Other
+- GameFramework (Framework abstraction - PCL)
+- SamplesBrowser (Samples game demo - PCL)
 
 InTray
 ======
-- Support Tiled map files
-- Sync Content Projects (and Engine Implementation)
-- Touch support in InputConfiguration mapping
-- Implement Screen Navigation, Scene Navigation
+P2 - Support Tiled map files
+P1 - Sync Content Projects (and Engine Implementation)
+P3 - Touch support in InputConfiguration mapping
+- Implement Scene Navigation
 - Document Glosary
 - Fix WP8 Samples
+- Fix Win8.1 Exit
