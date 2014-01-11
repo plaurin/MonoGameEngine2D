@@ -190,4 +190,22 @@
   -->
   <ItemGroup />
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="..\SamplesBrowser\Content\Tiled\untitled.tmx">
+      <Link>Content\Tiled\untitled.tmx</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\SamplesBrowser\Content\Tiled\tmw_desert_spacing.png">
+      <Link>Content\Tiled\tmw_desert_spacing.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\SamplesBrowser\Content\Tiled\desert.tsx">
+      <Link>Content\Tiled\desert.tsx</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

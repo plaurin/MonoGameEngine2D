@@ -25,6 +25,9 @@ Features
  - Scene and Layers design tool
  P3 - Resources manager: Screen, Audio
 
+ * ContentSync
+ - Validate current content Links
+
 Bugs
 ====
 ! WPF, DrawString Zoom and Font
@@ -57,6 +60,7 @@ Samples Launcher
 - WindowsSamples (Windows desktop game launcher for SamplesBrowser)
 Utilities
 - ContentSync (Post-Build utility to sync projects Content folder)
+- ContentSyncTests (UnitTest project for ContentSync)
 Other
 - GameFramework (Framework abstraction - PCL)
 - SamplesBrowser (Samples game demo - PCL)
@@ -64,7 +68,6 @@ Other
 InTray
 ======
 P2 - Support Tiled map files
-P1 - Sync Content Projects (and Engine Implementation)
 P3 - Touch support in InputConfiguration mapping
 - Implement Scene Navigation
 - Document Glosary

@@ -7,6 +7,7 @@ using GameFramework.Scenes;
 using GameFramework.Screens;
 using SamplesBrowser.Sandbox;
 using SamplesBrowser.ShootEmUp;
+using SamplesBrowser.Tiled;
 
 namespace SamplesBrowser
 {
@@ -21,6 +22,7 @@ namespace SamplesBrowser
 
         private RectangleElement sandboxRectangle;
         private RectangleElement shootEmUpRectangle;
+        private RectangleElement tiledRectangle;
 
         public HubScreen(ScreenNavigation screenNavigation)
         {
@@ -31,7 +33,8 @@ namespace SamplesBrowser
         {
             None,
             Sandbox,
-            ShootEmUp
+            ShootEmUp,
+            Tiled
         }
 
         public override void Initialize(Camera theCamera)
@@ -62,6 +65,13 @@ namespace SamplesBrowser
                     this.screenNavigation.NavigateTo<ShootEmUpScreen>();
                 });
 
+            input.AddDigitalButton("GotoTiled").Assign(KeyboardKeys.D3)
+                .MapClickTo(gt =>
+                {
+                    this.currentSample = Samples.Tiled;
+                    this.screenNavigation.NavigateTo<TiledScreen>();
+                });
+
             return input;
         }
 
@@ -77,6 +87,7 @@ namespace SamplesBrowser
         {
             this.sandboxRectangle.Color = this.currentSample == Samples.Sandbox ? Color.Red : Color.White;
             this.shootEmUpRectangle.Color = this.currentSample == Samples.ShootEmUp ? Color.Red : Color.White;
+            this.tiledRectangle.Color = this.currentSample == Samples.Tiled ? Color.Red : Color.White;
         }
 
         public override Scene GetScene()
@@ -89,11 +100,13 @@ namespace SamplesBrowser
 
             this.sandboxRectangle = hubMap.AddRectangle(10, 10, 200, 200, 1, Color.White);
             this.shootEmUpRectangle = hubMap.AddRectangle(220, 10, 200, 200, 1, Color.White);
+            this.tiledRectangle = hubMap.AddRectangle(10, 230, 200, 200, 1, Color.White);
             //hubMap.AddRectangle(10, 230, 200, 200, 1, Color.White);
             //hubMap.AddRectangle(220, 230, 200, 200, 1, Color.White);
 
             hubMap.AddText(font, "1 - Sandbox sample", new Vector(20, 210), Color.White);
             hubMap.AddText(font, "2 - ShootEmUp sample", new Vector(220, 210), Color.White);
+            hubMap.AddText(font, "3 - Tiled sample", new Vector(20, 430), Color.White);
 
             scene.AddMap(hubMap);
 

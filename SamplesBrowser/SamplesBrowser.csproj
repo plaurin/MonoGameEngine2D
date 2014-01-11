@@ -36,6 +36,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\GameFramework.IO\GameFramework.IO.csproj">
+      <Project>{267edcab-f1bf-4678-b412-dca86afb2603}</Project>
+      <Name>GameFramework.IO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GameFramework\GameFramework.csproj">
       <Project>{E30E5EEE-AAF6-4455-8BC5-40E158EACBC1}</Project>
       <Name>GameFramework</Name>
@@ -50,6 +54,7 @@
     <Compile Include="ShootEmUp\PlayerShipEntity.cs" />
     <Compile Include="ShootEmUp\ShootEmUpScreen.cs" />
     <Compile Include="ShootEmUp\SpriteReference.cs" />
+    <Compile Include="Tiled\TiledScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Sandbox\HexSheet.png">
@@ -64,11 +69,18 @@
     <Content Include="Content\Sandbox\TileSheet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Tiled\tmw_desert_spacing.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Sandbox\SpriteFont1.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Tiled\desert.tsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Tiled\untitled.tmx" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <PropertyGroup>
