@@ -32,11 +32,11 @@ namespace GameFramework.Utilities
 
         private int nextLineY;
 
-        public DiagnosticMap(GameResourceManager gameResourceManager)
+        public DiagnosticMap(GameResourceManager gameResourceManager, DrawingFont font)
             : base("Diagnostic")
         {
+            this.font = font;
             this.map = new DrawingMap("DiagnosticsInner", gameResourceManager) { CameraMode = CameraMode.Fix };
-            this.font = gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
 
             this.fpsElement = this.map.AddText(this.font, "FPS {0:d}", Vector.Zero, Color.White);
             this.viewPortElement = this.map.AddText(this.font, "ViewPort: {0}", Vector.Zero, Color.White);
@@ -97,7 +97,7 @@ namespace GameFramework.Utilities
         public void AddLine(string lineId, string textFormat)
         {
             var textElement = this.map.AddText(this.font, textFormat, new Vector(410, this.nextLineY), Color.White);
-            
+
             this.lines.Add(textElement);
 
             this.customLines.Add(lineId, textElement);

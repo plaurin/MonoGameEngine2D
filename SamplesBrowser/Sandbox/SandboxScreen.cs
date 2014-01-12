@@ -114,7 +114,7 @@ namespace SamplesBrowser.Sandbox
             this.scene.AddMap(this.CreateColorMap());
             this.scene.AddMap(this.CreateHexMapTestDistance());
             this.scene.AddMap(this.CreateSpriteMap());
-            this.scene.AddMap(this.CreateDiagnosticText());
+            this.scene.AddMap(this.CreateDiagnosticMap());
             this.scene.AddMap(this.CreateMouseCursorMap());
 
             //this.scene.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
@@ -175,9 +175,11 @@ namespace SamplesBrowser.Sandbox
             return this.mouseMap;
         }
 
-        private DiagnosticMap CreateDiagnosticText()
+        private DiagnosticMap CreateDiagnosticMap()
         {
-            this.diagnosticMap = new DiagnosticMap(this.gameResourceManager);
+            var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1"); 
+            
+            this.diagnosticMap = new DiagnosticMap(this.gameResourceManager, font);
             this.diagnosticMap.AddLine("Range", "Range: {0:f1}");
 
             return this.diagnosticMap;
