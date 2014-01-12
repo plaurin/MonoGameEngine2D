@@ -51,7 +51,7 @@ namespace SamplesBrowser.Sandbox
 
         private TextElement hitElement;
 
-        private DrawingMap mouseMap;
+        private MouseCursorMap mouseMap;
 
         private string hits;
 
@@ -92,7 +92,11 @@ namespace SamplesBrowser.Sandbox
                 this.hits = string.Join("; ", this.scene.GetHits(this.mouseState.AbsolutePosition, this.camera));
             });
 
-            this.inputConfiguration.AddMouseTracking(this.camera).OnMove((mt, e) => this.mouseState = mt);
+            this.inputConfiguration.AddMouseTracking(this.camera).OnMove((mt, e) =>
+            {
+                this.mouseState = mt;
+                this.mouseMap.Update(this.mouseState);
+            });
 
             return this.inputConfiguration;
         }
@@ -119,13 +123,6 @@ namespace SamplesBrowser.Sandbox
             this.mouseElement.SetParameters(this.mouseState);
             this.mouseElement2.SetParameters(this.mouseState.AbsolutePosition);
             this.hitElement.SetParameters(this.hits);
-
-            this.mouseMap.ClearAll();
-            this.mouseMap.AddLine(this.mouseState.AbsolutePosition.Translate(-10, 0).ToVector(),
-                this.mouseState.AbsolutePosition.Translate(10, 0).ToVector(), 2, Color.Red);
-
-            this.mouseMap.AddLine(this.mouseState.AbsolutePosition.Translate(0, -10).ToVector(),
-                this.mouseState.AbsolutePosition.Translate(0, 10).ToVector(), 2, Color.Red);
         }
 
         public override Scene GetScene()
@@ -194,7 +191,7 @@ namespace SamplesBrowser.Sandbox
 
         private MapBase CreateMouseCursorMap()
         {
-            this.mouseMap = new DrawingMap("MouseCusor", this.gameResourceManager) { CameraMode = CameraMode.Fix };
+            this.mouseMap = MouseCursorMap.Create(this.gameResourceManager);
 
             return this.mouseMap;
         }
