@@ -15,10 +15,12 @@ Features
  P3 - UnitTesting Saving and Loading!
 * Screen
  - ScreenNavigation should handle UnloadContent and manage available memory
-* Other than Gfx
+* Input
  - Input configuration (mouse axes)
+  + Built in Mouse layer
  - Input configuration (gamepad)
  - Input configuration (touches & gestures)
+* Others
  - Audio?
  P4 - Entities
   - Link to sprites/tiles
@@ -28,6 +30,9 @@ Features
  * ContentSync
  - Validate current content Links
 
+ * IO
+ - Validate Tiled load map/tileset support
+
 Bugs
 ====
 ! WPF, DrawString Zoom and Font
@@ -36,7 +41,8 @@ Bugs
 
 Refactorings
 ============
-P2 - Load/Save should be in separated classes
+P2 - Load/Save should be in separated classes (GameFramework.IO)
+- *Map should be renamed Layer
 
 Quality
 =======
@@ -67,7 +73,6 @@ Other
 
 InTray
 ======
-P2 - Support Tiled map files
 P3 - Touch support in InputConfiguration mapping
 - Implement Scene Navigation
 - Document Glosary
