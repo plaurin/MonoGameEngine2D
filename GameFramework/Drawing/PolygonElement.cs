@@ -4,6 +4,7 @@ using System.Linq;
 using System.Xml.Linq;
 
 using GameFramework.Cameras;
+using GameFramework.Scenes;
 
 namespace GameFramework.Drawing
 {
@@ -31,6 +32,12 @@ namespace GameFramework.Drawing
                 new XAttribute("width", this.width),
                 new XAttribute("color", this.color),
                 new XElement("Vertices", string.Join(", ", this.vertices)));
+        }
+
+        public override HitBase GetHit(Point position, Camera camera, Point mapOffset, Vector parallaxScrollingVector)
+        {
+            // To be implemented
+            return null;
         }
 
         public static PolygonElement FromXml(GameResourceManager gameResourceManager, XElement element)

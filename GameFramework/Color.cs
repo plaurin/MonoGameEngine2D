@@ -26,6 +26,11 @@ namespace GameFramework
             get { return new Color(255, 0, 0, 255); }
         }
 
+        public static Color Blue
+        {
+            get { return new Color(0, 0, 255, 255); }
+        }
+
         public static Color White
         {
             get { return new Color(255, 255, 255, 255); }

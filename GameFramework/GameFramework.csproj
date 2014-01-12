@@ -47,6 +47,7 @@
     <Compile Include="Drawing\LineElement.cs" />
     <Compile Include="Drawing\PolygonElement.cs" />
     <Compile Include="Drawing\RectangleElement.cs" />
+    <Compile Include="Drawing\RectangleHit.cs" />
     <Compile Include="Drawing\TextElement.cs" />
     <Compile Include="GameResourceManager.cs" />
     <Compile Include="GameTimer.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Maps\ColorMap.cs" />
     <Compile Include="Maps\ImageMap.cs" />
     <Compile Include="Maps\MapBase.cs" />
+    <Compile Include="Maps\MouseCursorMap.cs" />
     <Compile Include="MathExtensions.cs" />
     <Compile Include="MathUtil.cs" />
     <Compile Include="Point.cs" />

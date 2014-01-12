@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Xml.Linq;
 using GameFramework.Cameras;
+using GameFramework.Scenes;
 
 namespace GameFramework.Drawing
 {
@@ -41,6 +42,22 @@ namespace GameFramework.Drawing
         public override XElement ToXml()
         {
             throw new NotImplementedException();
+        }
+
+        public override HitBase GetHit(Point position, Camera camera, Point mapOffset, Vector parallaxScrollingVector)
+        {
+            var rectangle =
+                new Rectangle(
+                    mapOffset.X + (int)this.x,
+                    mapOffset.X + (int)this.y,
+                    (int)this.width,
+                    (int)this.height)
+                .Scale(camera.ZoomFactor)
+                .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
+
+            return rectangle.Intercept(position)
+                ? new RectangleHit(this)
+                : null;
         }
     }
 }

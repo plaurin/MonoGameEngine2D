@@ -5,6 +5,7 @@ using System.Xml.Linq;
 
 using GameFramework.Cameras;
 using GameFramework.Maps;
+using GameFramework.Scenes;
 
 namespace GameFramework.Drawing
 {
@@ -76,6 +77,13 @@ namespace GameFramework.Drawing
             {
                 element.Draw(drawContext, camera, this);
             }
+        }
+
+        public override HitBase GetHit(Point position, Camera camera)
+        {
+            return this.elements
+                .Select(element => element.GetHit(position, camera, this.Offset, this.ParallaxScrollingVector))
+                .FirstOrDefault(spriteHit => spriteHit != null);
         }
 
         public override XElement ToXml()

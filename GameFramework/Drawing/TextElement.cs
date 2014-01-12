@@ -2,6 +2,7 @@ using System;
 using System.Xml.Linq;
 
 using GameFramework.Cameras;
+using GameFramework.Scenes;
 
 namespace GameFramework.Drawing
 {
@@ -51,6 +52,11 @@ namespace GameFramework.Drawing
                 new XAttribute("text", this.Text),
                 new XAttribute("vector", this.vector),
                 new XAttribute("color", this.color));
+        }
+
+        public override HitBase GetHit(Point position, Camera camera, Point mapOffset, Vector parallaxScrollingVector)
+        {
+            return null;
         }
 
         public static TextElement FromXml(GameResourceManager gameResourceManager, XElement element)

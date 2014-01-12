@@ -26,6 +26,7 @@ namespace GameFramework.Inputs
 
         public DigitalButton Assign(KeyboardKeys key)
         {
+            // Should it replace the assignment?
             this.mappingKeys.Add(key);
 
             return this;
@@ -33,6 +34,7 @@ namespace GameFramework.Inputs
 
         public DigitalButton Assign(MouseButtons button)
         {
+            // Should it replace the assignment?
             this.mappingButtons.Add(button);
 
             return this;

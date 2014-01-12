@@ -2,6 +2,7 @@ using System;
 using System.Xml.Linq;
 
 using GameFramework.Cameras;
+using GameFramework.Scenes;
 
 namespace GameFramework.Drawing
 {
@@ -11,6 +12,8 @@ namespace GameFramework.Drawing
         public abstract void Draw(DrawContext drawContext, Camera camera, DrawingMap drawingMap);
 
         public abstract XElement ToXml();
+
+        public abstract HitBase GetHit(Point position, Camera camera, Point mapOffset, Vector parallaxScrollingVector);
 
         protected void DrawLine(DrawContext drawContext, Camera camera, DrawingMap drawingMap, Vector fromVector, Vector toVector, int width, Color color)
         {
