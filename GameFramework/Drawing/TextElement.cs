@@ -10,18 +10,19 @@ namespace GameFramework.Drawing
     {
         private readonly DrawingFont drawingFont;
 
-        private readonly Vector vector;
         private readonly Color color;
 
         public TextElement(DrawingFont drawingFont, string text, Vector vector, Color color)
         {
             this.drawingFont = drawingFont;
-            this.vector = vector;
+            this.Position = vector;
             this.color = color;
             this.Text = text;
         }
 
         public string Text { get; private set; }
+
+        public Vector Position { get; set; }
 
         public void SetParameters(params object[] parameters)
         {
@@ -35,8 +36,8 @@ namespace GameFramework.Drawing
             var finalText = this.Parameters != null ? string.Format(this.Text, this.Parameters) : this.Text;
             var finalZoomFactor = drawingMap.CameraMode == CameraMode.Fix ? 1.0f : camera.ZoomFactor;
             var finalVector = drawingMap.CameraMode == CameraMode.Fix
-                ? this.vector
-                : this.vector
+                ? this.Position
+                : this.Position
                     .Scale(camera.ZoomFactor)
                     .Translate(camera.GetSceneTranslationVector(drawingMap.ParallaxScrollingVector));
 
@@ -50,7 +51,7 @@ namespace GameFramework.Drawing
             return new XElement("TextElement",
                 new XAttribute("fontName", this.drawingFont.Name),
                 new XAttribute("text", this.Text),
-                new XAttribute("vector", this.vector),
+                new XAttribute("vector", this.Position),
                 new XAttribute("color", this.color));
         }
 

@@ -3,10 +3,10 @@ using System.Xml.Linq;
 using GameFramework.Cameras;
 using GameFramework.Drawing;
 using GameFramework.Inputs;
+using GameFramework.Maps;
 
-namespace GameFramework.Maps
+namespace GameFramework.Utilities
 {
-    // TODO: Should be moved outside of Maps namespace because it use DrawingMap
     public class MouseCursorMap : MapBase
     {
         private readonly MapBase map;
@@ -19,7 +19,6 @@ namespace GameFramework.Maps
             this.updateAction = updateAction;
         }
 
-        // TODO: Could be moved to a factory
         public static MouseCursorMap Create(GameResourceManager gameResourceManager)
         {
             var drawingMap = new DrawingMap("MouseCursorInner", gameResourceManager) { CameraMode = CameraMode.Fix };

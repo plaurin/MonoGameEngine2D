@@ -68,9 +68,10 @@
     <Compile Include="Inputs\MouseStateBase.cs" />
     <Compile Include="Inputs\MouseTracking.cs" />
     <Compile Include="Maps\ColorMap.cs" />
+    <Compile Include="Utilities\DiagnosticMap.cs" />
     <Compile Include="Maps\ImageMap.cs" />
     <Compile Include="Maps\MapBase.cs" />
-    <Compile Include="Maps\MouseCursorMap.cs" />
+    <Compile Include="Utilities\MouseCursorMap.cs" />
     <Compile Include="MathExtensions.cs" />
     <Compile Include="MathUtil.cs" />
     <Compile Include="Point.cs" />

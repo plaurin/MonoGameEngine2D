@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using GameFramework;
@@ -12,6 +13,7 @@ using GameFramework.Screens;
 using GameFramework.Sheets;
 using GameFramework.Sprites;
 using GameFramework.Tiles;
+using GameFramework.Utilities;
 
 namespace SamplesBrowser.Sandbox
 {
@@ -33,27 +35,11 @@ namespace SamplesBrowser.Sandbox
 
         private InputConfiguration inputConfiguration;
 
-        private TextElement fpsElement;
-
-        private TextElement viewPortElement;
-
-        private TextElement translationElement;
-
-        private TextElement positionElement;
-
-        private TextElement zoomingElement;
-
-        private TextElement rangeElement;
-
-        private TextElement mouseElement;
-
-        private TextElement mouseElement2;
-
-        private TextElement hitElement;
-
         private MouseCursorMap mouseMap;
+        private DiagnosticMap diagnosticMap;
 
-        private string hits;
+        //private string hits;
+        private List<HitBase> hits;
 
         public SandboxScreen(ScreenNavigation screenNavigation)
         {
@@ -89,7 +75,7 @@ namespace SamplesBrowser.Sandbox
 
             this.inputConfiguration.AddDigitalButton("Selection").Assign(MouseButtons.Left).MapTo(elapse =>
             {
-                this.hits = string.Join("; ", this.scene.GetHits(this.mouseState.AbsolutePosition, this.camera));
+                this.hits = this.scene.GetHits(this.mouseState.AbsolutePosition, this.camera).ToList();
             });
 
             this.inputConfiguration.AddMouseTracking(this.camera).OnMove((mt, e) =>
@@ -114,15 +100,8 @@ namespace SamplesBrowser.Sandbox
             if (colorMap != null)
                 colorMap.Color = new Color(255, 0, 0, (int)(255 * Math.Min(this.range, 1.0f)));
 
-            this.fpsElement.SetParameters(gameTime.Fps);
-            this.viewPortElement.SetParameters(this.camera.SceneViewPort);
-            this.translationElement.SetParameters(this.camera.SceneTranslationVector);
-            this.positionElement.SetParameters(this.camera.Position);
-            this.zoomingElement.SetParameters(this.camera.ZoomFactor);
-            this.rangeElement.SetParameters(this.range);
-            this.mouseElement.SetParameters(this.mouseState);
-            this.mouseElement2.SetParameters(this.mouseState.AbsolutePosition);
-            this.hitElement.SetParameters(this.hits);
+            this.diagnosticMap.Update(gameTime, this.camera, this.mouseState, this.hits);
+            this.diagnosticMap.UpdateLine("Range", this.range);
         }
 
         public override Scene GetScene()
@@ -196,22 +175,12 @@ namespace SamplesBrowser.Sandbox
             return this.mouseMap;
         }
 
-        private DrawingMap CreateDiagnosticText()
+        private DiagnosticMap CreateDiagnosticText()
         {
-            var map = new DrawingMap("Diagnostics", this.gameResourceManager) { CameraMode = CameraMode.Fix };
+            this.diagnosticMap = new DiagnosticMap(this.gameResourceManager);
+            this.diagnosticMap.AddLine("Range", "Range: {0:f1}");
 
-            var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
-            this.fpsElement = map.AddText(font, "FPS {0:d}", new Vector(610, 0), Color.White);
-            this.viewPortElement = map.AddText(font, "ViewPort: {0}", new Vector(410, 20), Color.White);
-            this.translationElement = map.AddText(font, "Translation: {0}", new Vector(410, 40), Color.White);
-            this.positionElement = map.AddText(font, "Position: {0}", new Vector(410, 60), Color.White);
-            this.zoomingElement = map.AddText(font, "Zooming: {0:f1}", new Vector(410, 80), Color.White);
-            this.rangeElement = map.AddText(font, "Range: {0:f1}", new Vector(410, 100), Color.White);
-            this.mouseElement = map.AddText(font, "Mouse: {0}", new Vector(410, 120), Color.White);
-            this.mouseElement2 = map.AddText(font, "MouseAbs: {0}", new Vector(410, 140), Color.White);
-            this.hitElement = map.AddText(font, "Hits: {0}", new Vector(410, 160), Color.White);
-
-            return map;
+            return this.diagnosticMap;
         }
 
         private ImageMap CreateImageMap()

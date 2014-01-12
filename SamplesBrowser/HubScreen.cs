@@ -7,6 +7,7 @@ using GameFramework.Inputs;
 using GameFramework.Maps;
 using GameFramework.Scenes;
 using GameFramework.Screens;
+using GameFramework.Utilities;
 using SamplesBrowser.Sandbox;
 using SamplesBrowser.ShootEmUp;
 using SamplesBrowser.Tiled;

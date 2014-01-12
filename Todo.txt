@@ -10,14 +10,13 @@ Features
     - CompositeSprite stencil to help map's designing
 * HexMap
 * Map (Layer)
- P3 - Engine to offer a diagnostic map (DrawingMap) et Camera map
+ P3 - Engine to offer a diagnostic map (DrawingMap) 
 * Scene
  P3 - UnitTesting Saving and Loading!
 * Screen
  - ScreenNavigation should handle UnloadContent and manage available memory
 * Input
  - Input configuration (mouse axes)
-  + Built in Mouse layer
  - Input configuration (gamepad)
  - Input configuration (touches & gestures)
 * Others
