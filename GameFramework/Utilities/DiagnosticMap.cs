@@ -38,7 +38,7 @@ namespace GameFramework.Utilities
             this.font = font;
             this.map = new DrawingMap("DiagnosticsInner", gameResourceManager) { CameraMode = CameraMode.Fix };
 
-            this.fpsElement = this.map.AddText(this.font, "FPS {0:d}", Vector.Zero, Color.White);
+            this.fpsElement = this.map.AddText(this.font, "FPS {0:d} - Update Per Second {1:d}", Vector.Zero, Color.White);
             this.viewPortElement = this.map.AddText(this.font, "ViewPort: {0}", Vector.Zero, Color.White);
             this.translationElement = this.map.AddText(this.font, "Translation: {0}", Vector.Zero, Color.White);
             this.positionElement = this.map.AddText(this.font, "Position: {0}", Vector.Zero, Color.White);
@@ -72,7 +72,7 @@ namespace GameFramework.Utilities
                 currentY += LineHeight;
             }
 
-            this.fpsElement.SetParameters(gameTime.Fps);
+            this.fpsElement.SetParameters(gameTime.DrawFps, gameTime.UpdateFps);
             this.viewPortElement.SetParameters(camera.SceneViewPort);
             this.translationElement.SetParameters(camera.SceneTranslationVector);
             this.positionElement.SetParameters(camera.Position);

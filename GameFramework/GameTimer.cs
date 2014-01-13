@@ -4,37 +4,84 @@ namespace GameFramework
 {
     public class GameTimer : IGameTiming
     {
-        private float elapseTime;
+        private readonly InnerTimer updateTimer;
+        private readonly InnerTimer drawTimer;
 
-        private long frameCounter;
+        public GameTimer()
+        {
+            this.updateTimer = new InnerTimer();
+            this.drawTimer = new InnerTimer();
+        }
 
-        public float ElapsedSeconds { get; set; }
+        public float ElapsedSeconds
+        {
+            get { return this.updateTimer.ElapsedSeconds; }
+        }
 
-        public float TotalSeconds { get; set; }
+        public float TotalSeconds
+        {
+            get { return this.updateTimer.TotalSeconds; }
+        }
 
-        public long Fps { get; private set; }
+        public long UpdateFps
+        {
+            get { return this.updateTimer.Fps; }
+        }
+
+        public long DrawFps
+        {
+            get { return this.drawTimer.Fps; }
+        }
 
         public void Update(TimeSpan elapsedGameTime, TimeSpan totalGameTime)
         {
-            this.ElapsedSeconds = (float)elapsedGameTime.TotalSeconds;
-            this.TotalSeconds = (float)totalGameTime.TotalSeconds;
+            this.updateTimer.Update(elapsedGameTime, totalGameTime);
+        }
 
-            this.elapseTime += (float)elapsedGameTime.TotalSeconds;
-            this.frameCounter++;
+        public void DrawFrame(TimeSpan elapsedGameTime, TimeSpan totalGameTime)
+        {
+            this.drawTimer.Update(elapsedGameTime, totalGameTime);
+        }
 
-            if (this.elapseTime > 1)
+        private class InnerTimer
+        {
+            private float elapseTime;
+
+            private long frameCounter;
+
+            public float ElapsedSeconds { get; private set; }
+
+            public float TotalSeconds { get; private set; }
+
+            public long Fps { get; private set; }
+
+            public void Update(TimeSpan elapsedGameTime, TimeSpan totalGameTime)
             {
-                this.Fps = this.frameCounter;
-                this.frameCounter = 0;
-                this.elapseTime = 0;
+                this.ElapsedSeconds = (float)elapsedGameTime.TotalSeconds;
+                this.TotalSeconds = (float)totalGameTime.TotalSeconds;
+
+                this.elapseTime += (float)elapsedGameTime.TotalSeconds;
+
+                if (this.elapseTime >= 1)
+                {
+                    this.Fps = this.frameCounter;
+                    this.frameCounter = 0;
+                    this.elapseTime -= 1;
+                }
+
+                this.frameCounter++;
             }
         }
     }
 
     public interface IGameTiming
     {
-        float ElapsedSeconds { get; set; }
-        float TotalSeconds { get; set; }
-        long Fps { get; }
+        float ElapsedSeconds { get; }
+
+        float TotalSeconds { get; }
+
+        long UpdateFps { get; }
+
+        long DrawFps { get; }
     }
 }

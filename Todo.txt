@@ -10,7 +10,6 @@ Features
     - CompositeSprite stencil to help map's designing
 * HexMap
 * Map (Layer)
- P3 - Engine to offer a diagnostic map (DrawingMap) 
 * Scene
  P3 - UnitTesting Saving and Loading!
 * Screen
@@ -23,7 +22,6 @@ Features
  - Audio?
  P4 - Entities
   - Link to sprites/tiles
- - Scene and Layers design tool
  P3 - Resources manager: Screen, Audio
 
  * ContentSync
@@ -42,6 +40,7 @@ Refactorings
 ============
 P2 - Load/Save should be in separated classes (GameFramework.IO)
 - *Map should be renamed Layer
+- Review Point, Rectangle, Vector and used type: int, float, double
 
 Quality
 =======

@@ -94,12 +94,8 @@ namespace MonoGameImplementation
             this.gameTimer.Update(gameTime.ElapsedGameTime, gameTime.TotalGameTime);
 
             // Allows the game to exit
-            // TODO: Allow to exit another way!
-            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-            //    this.Exit();
             if (this.screenNavigation.ShouldExit) this.Exit();
 
-            // TODO: Add your update logic here
             this.screenNavigation.Update();
 
             this.screenNavigation.Current.InputConfiguration.Update(new XnaInputContext(), this.gameTimer);
@@ -115,6 +111,8 @@ namespace MonoGameImplementation
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            this.gameTimer.DrawFrame(gameTime.ElapsedGameTime, gameTime.TotalGameTime);
+
             this.GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
