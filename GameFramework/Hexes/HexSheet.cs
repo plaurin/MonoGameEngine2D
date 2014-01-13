@@ -47,25 +47,5 @@ namespace GameFramework.Hexes
         {
             drawContext.DrawImage(this.Texture, hexDefinition.Rectangle, destination);
         }
-
-        protected override IEnumerable<object> GetXml()
-        {
-            yield return new XElement("HexSize", this.HexSize);
-            yield return new XElement("Definitions", this.Definitions.Select(d => d.Value.GetXml()));
-        }
-
-        public static SheetBase FromXml(XElement sheetElement, string name, Texture texture)
-        {
-            var hexSize = MathUtil.ParseSize(sheetElement.Element("HexSize").Value);
-            var hexSheet = new HexSheet(texture, name, hexSize);
-
-            foreach (var definitionElement in sheetElement.Elements("Definitions").Elements())
-            {
-                var hexDefinition = HexDefinition.FromXml(definitionElement, hexSheet);
-                hexSheet.AddHexDefinition(hexDefinition);
-            }
-
-            return hexSheet;
-        }
     }
 }

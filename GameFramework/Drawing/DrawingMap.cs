@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Linq;
 
 using GameFramework.Cameras;
 using GameFramework.Maps;
@@ -86,39 +85,13 @@ namespace GameFramework.Drawing
                 .FirstOrDefault(spriteHit => spriteHit != null);
         }
 
-        public override XElement ToXml()
-        {
-            return new XElement("DrawingMap", 
-                this.BaseToXml(),
-                new XElement("Elements", 
-                    this.elements.Select(e => e.ToXml())));
-        }
-
-        public static MapBase FromXml(GameResourceManager gameResourceManager, XElement mapElement)
-        {
-            var name = mapElement.Attribute("name").Value;
-            var map = new DrawingMap(name, gameResourceManager);
-            map.BaseFromXml(mapElement);
-
-            foreach (var element in mapElement.Element("Elements").Elements())
-            {
-                switch (element.Name.ToString())
-                {
-                    case "TextElement":
-                        map.AddElement(TextElement.FromXml(gameResourceManager, element));
-                        break;
-                    case "LineElement":
-                        map.AddElement(LineElement.FromXml(gameResourceManager, element));
-                        break;
-                    case "PolygonElement":
-                        map.AddElement(PolygonElement.FromXml(gameResourceManager, element));
-                        break;
-                    default:
-                        throw new NotImplementedException(element.Name + " is not implemented yet.");
-                }
-            }
-
-            return map;
-        }
+        //public override XElement ToXml()
+        //{
+        //    return XmlRepository.ToXml(this);
+        //    //return new XElement("DrawingMap", 
+        //    //    this.BaseToXml(),
+        //    //    new XElement("Elements", 
+        //    //        this.elements.Select(e => e.ToXml())));
+        //}
     }
 }

@@ -11,6 +11,7 @@ namespace GameFramework.Drawing
     {
         public abstract void Draw(DrawContext drawContext, Camera camera, DrawingMap drawingMap);
 
+        [Obsolete]
         public abstract XElement ToXml();
 
         public abstract HitBase GetHit(Point position, Camera camera, Point mapOffset, Vector parallaxScrollingVector);

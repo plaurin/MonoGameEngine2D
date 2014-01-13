@@ -30,6 +30,7 @@ namespace GameFramework.Sprites
             return this.SpriteSheet.GetHit(position, camera, mapOffset, parallaxScrollingVector, this);
         }
 
+        [Obsolete]
         public XElement GetXml()
         {
             return new XElement("Sprite",

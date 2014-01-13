@@ -31,16 +31,18 @@ namespace GameFramework.Maps
             return null;
         }
 
-        public abstract XElement ToXml();
+        //public abstract XElement ToXml();
 
-        public IEnumerable<object> BaseToXml()
-        {
-            yield return new XAttribute("name", this.Name);
-            yield return new XAttribute("parallaxScrollingVector", this.ParallaxScrollingVector);
-            yield return new XAttribute("offset", this.Offset);
-            yield return new XAttribute("cameraMode", this.CameraMode);
-        }
+        //[Obsolete]
+        //public IEnumerable<object> BaseToXml()
+        //{
+        //    yield return new XAttribute("name", this.Name);
+        //    yield return new XAttribute("parallaxScrollingVector", this.ParallaxScrollingVector);
+        //    yield return new XAttribute("offset", this.Offset);
+        //    yield return new XAttribute("cameraMode", this.CameraMode);
+        //}
 
+        [Obsolete]
         public void BaseFromXml(XElement element)
         {
             this.Name = element.Attribute("name").Value;

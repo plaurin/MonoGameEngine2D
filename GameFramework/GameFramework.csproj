@@ -68,6 +68,12 @@
     <Compile Include="Inputs\MouseStateBase.cs" />
     <Compile Include="Inputs\MouseTracking.cs" />
     <Compile Include="Maps\ColorMap.cs" />
+    <Compile Include="Repository\ColorXmlRepository.cs" />
+    <Compile Include="Repository\DrawingXmlRepository.cs" />
+    <Compile Include="Repository\HexXmlRepository.cs" />
+    <Compile Include="Repository\ImageXmlRepository.cs" />
+    <Compile Include="Repository\SpriteXmlRepository.cs" />
+    <Compile Include="Repository\TileXmlRepository.cs" />
     <Compile Include="Utilities\DiagnosticMap.cs" />
     <Compile Include="Maps\ImageMap.cs" />
     <Compile Include="Maps\MapBase.cs" />
@@ -97,6 +103,7 @@
     <Compile Include="Tiles\TileSheet.cs" />
     <Compile Include="Vector.cs" />
     <Compile Include="Viewport.cs" />
+    <Compile Include="Repository\XmlRepository.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

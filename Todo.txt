@@ -67,6 +67,7 @@ Utilities
 - ContentSyncTests (UnitTest project for ContentSync)
 Other
 - GameFramework (Framework abstraction - PCL)
+- GameFramework.IO (Framework utilities for loading/saving scenes - PCL)
 - SamplesBrowser (Samples game demo - PCL)
 
 InTray

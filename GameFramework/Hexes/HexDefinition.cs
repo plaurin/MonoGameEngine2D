@@ -28,6 +28,7 @@ namespace GameFramework.Hexes
             this.Sheet.Draw(drawContext, this, destination);
         }
 
+        [Obsolete]
         public object GetXml()
         {
             return new XElement("HexDefinition",
@@ -35,6 +36,7 @@ namespace GameFramework.Hexes
                 new XAttribute("rectangle", this.Rectangle));
         }
 
+        [Obsolete]
         public static HexDefinition FromXml(XElement definitionElement, HexSheet hexSheet)
         {
             var name = definitionElement.Attribute("name").Value;

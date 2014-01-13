@@ -28,6 +28,7 @@ namespace GameFramework.Tiles
             this.Sheet.Draw(drawContext, this, destination);
         }
 
+        [Obsolete]
         public XElement GetXml()
         {
             return new XElement("TileDefinition",
@@ -35,6 +36,7 @@ namespace GameFramework.Tiles
                 new XAttribute("rectangle", this.Rectangle));
         }
 
+        [Obsolete]
         public static TileDefinition FromXml(XElement definitionElement, TileSheet tileSheet)
         {
             var name = definitionElement.Attribute("name").Value;

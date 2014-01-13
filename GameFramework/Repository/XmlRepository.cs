@@ -1,0 +1,154 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
+using GameFramework.Drawing;
+using GameFramework.Hexes;
+using GameFramework.Maps;
+using GameFramework.Scenes;
+using GameFramework.Sheets;
+using GameFramework.Sprites;
+using GameFramework.Tiles;
+
+namespace GameFramework.Repository
+{
+    public class XmlRepository
+    {
+        public void Save(Scene scene, string path)
+        {
+            var document = new XDocument();
+
+            document.Add(new XElement("Scene",
+                new XAttribute("name", scene.Name),
+                //scene.Maps.Select(m => m.ToXml())));
+                scene.Maps.Select(XmlRepository.ToXml)));
+
+            // TODO: Fix this
+            //document.Save(path);
+        }
+
+        public void Save(SheetBase sheetBase, string path)
+        {
+            var document = new XDocument();
+
+            document.Add(SheetXmlRepository.ToXml(sheetBase));
+
+            // TODO: Fix this
+            //document.Save(path);
+        }
+
+        public static Scene LoadFrom(GameResourceManager gameResourceManager, string path)
+        {
+            var document = XDocument.Load(path);
+
+            var sceneElement = document.Element("Scene");
+            var scene = new Scene(sceneElement.Attribute("name").Value);
+
+            foreach (var mapElement in sceneElement.Elements())
+            {
+                switch (mapElement.Name.ToString())
+                {
+                    case "ImageMap":
+                        scene.AddMap(ImageXmlRepository.ImageMapFromXml(gameResourceManager, mapElement));
+                        break;
+                    case "HexMap":
+                        scene.AddMap(HexXmlRepository.HexMapFromXml(gameResourceManager, mapElement));
+                        break;
+                    case "TileMap":
+                        scene.AddMap(TileXmlRepository.TileMapFromXml(gameResourceManager, mapElement));
+                        break;
+                    case "ColorMap":
+                        scene.AddMap(ColorXmlRepository.ColorMapFromXml(gameResourceManager, mapElement));
+                        break;
+                    case "SpriteMap":
+                        scene.AddMap(SpriteXmlRepository.SpriteMapFromXml(gameResourceManager, mapElement));
+                        break;
+                    case "DrawingMap":
+                        scene.AddMap(DrawingXmlRepository.DrawingMapFromXml(gameResourceManager, mapElement));
+                        break;
+                }
+            }
+
+            return scene;
+        }
+
+        public static XElement ToXml(MapBase mapBase)
+        {
+            var drawingMap = mapBase as DrawingMap;
+            if (drawingMap != null) return DrawingXmlRepository.ToXml(drawingMap);
+
+            var hexMap = mapBase as HexMap;
+            if (hexMap != null) return HexXmlRepository.ToXml(hexMap);
+
+            var colorMap = mapBase as ColorMap;
+            if (colorMap != null) return ColorXmlRepository.ToXml(colorMap);
+
+            var imageMap = mapBase as ImageMap;
+            if (imageMap != null) return ImageXmlRepository.ToXml(imageMap);
+
+            var spriteMap = mapBase as SpriteMap;
+            if (spriteMap != null) return XmlRepository.ToXml(spriteMap);
+
+            var tileMap = mapBase as TileMap;
+            if (tileMap != null) return TileXmlRepository.ToXml(tileMap);
+
+            throw new NotSupportedException(mapBase.GetType() + " is not supported");
+        }
+
+        internal static IEnumerable<object> MapBaseToXml(MapBase mapBase)
+        {
+            yield return new XAttribute("name", mapBase.Name);
+            yield return new XAttribute("parallaxScrollingVector", mapBase.ParallaxScrollingVector);
+            yield return new XAttribute("offset", mapBase.Offset);
+            yield return new XAttribute("cameraMode", mapBase.CameraMode);
+        }
+    }
+
+    public static class SheetXmlRepository
+    {
+        public static XElement ToXml(SheetBase sheetBase)
+        {
+            return new XElement(sheetBase.GetType().Name,
+                new XAttribute("name", sheetBase.Name),
+                new XElement("Texture", sheetBase.Texture.Name),
+                GetXml(sheetBase));
+        }
+
+        private static IEnumerable<object> GetXml(SheetBase sheetBase)
+        {
+            // TODO support all SheetType
+            throw new NotSupportedException(sheetBase.GetType().Name + " is not supported");
+        }
+
+        //public XElement ToXml()
+        //{
+        //    return new XElement(this.GetType().Name,
+        //        new XAttribute("name", this.Name),
+        //        new XElement("Texture", this.Texture.Name),
+        //        this.GetXml());
+        //}
+
+        public static T LoadFrom<T>(GameResourceManager gameResourceManager, string path) where T : SheetBase
+        {
+            var document = XDocument.Load(path);
+            var sheetElement = document.Root;
+
+            var name = sheetElement.Attribute("name").Value;
+            var textureName = sheetElement.Element("Texture").Value;
+
+            var texture = gameResourceManager.GetTexture(textureName);
+
+            switch (sheetElement.Name.ToString())
+            {
+                case "SpriteSheet":
+                    return SpriteXmlRepository.FromXml(sheetElement, name, texture) as T;
+                case "TileSheet":
+                    return TileXmlRepository.FromXml(sheetElement, name, texture) as T;
+                case "HexSheet":
+                    return HexXmlRepository.FromXml(sheetElement, name, texture) as T;
+                default:
+                    throw new InvalidOperationException(sheetElement.Name + " is not a valid sheet type.");
+            }
+        }
+    }
+}

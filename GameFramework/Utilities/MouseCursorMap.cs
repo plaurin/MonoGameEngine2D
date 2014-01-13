@@ -1,5 +1,4 @@
 using System;
-using System.Xml.Linq;
 using GameFramework.Cameras;
 using GameFramework.Drawing;
 using GameFramework.Inputs;
@@ -45,9 +44,9 @@ namespace GameFramework.Utilities
             this.map.Draw(drawContext, camera);
         }
 
-        public override XElement ToXml()
-        {
-            throw new NotImplementedException();
-        }
+        //public override XElement ToXml()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

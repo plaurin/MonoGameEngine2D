@@ -8,6 +8,7 @@ using GameFramework.Drawing;
 using GameFramework.Hexes;
 using GameFramework.Inputs;
 using GameFramework.Maps;
+using GameFramework.Repository;
 using GameFramework.Scenes;
 using GameFramework.Screens;
 using GameFramework.Sheets;
@@ -127,15 +128,15 @@ namespace SamplesBrowser.Sandbox
 
         private void TestSceneSaveLoad()
         {
-            var scene2 = Scene.LoadFrom(this.gameResourceManager,
+            var scene2 = XmlRepository.LoadFrom(this.gameResourceManager,
                 @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
 
             foreach (var map in this.scene.Maps)
             {
                 var otherMap = scene2.Maps.Single(x => x.Name == map.Name);
 
-                var myXml = map.ToXml();
-                var otherXml = otherMap.ToXml();
+                var myXml = XmlRepository.ToXml(map); // map.ToXml();
+                var otherXml = XmlRepository.ToXml(otherMap); // otherMap.ToXml();
 
                 if (myXml.ToString() != otherXml.ToString())
                 {
@@ -146,25 +147,25 @@ namespace SamplesBrowser.Sandbox
 
         private void TestSheetsSaveLoad()
         {
-            var otherHexSheet = SheetBase.LoadFrom<HexSheet>(
+            var otherHexSheet = SheetXmlRepository.LoadFrom<HexSheet>(
                 this.gameResourceManager, @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Color HexSheet.xml");
 
-            var myHexSheetXml = this.gameResourceManager.GetHexSheet(otherHexSheet.Name).ToXml();
-            var otherHexSheetXml = otherHexSheet.ToXml();
+            var myHexSheetXml = SheetXmlRepository.ToXml(this.gameResourceManager.GetHexSheet(otherHexSheet.Name));
+            var otherHexSheetXml = SheetXmlRepository.ToXml(otherHexSheet);
             if (myHexSheetXml.ToString() != otherHexSheetXml.ToString()) Debugger.Break();
 
-            var otherTileSheet = SheetBase.LoadFrom<TileSheet>(
+            var otherTileSheet = SheetXmlRepository.LoadFrom<TileSheet>(
                 this.gameResourceManager, @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Color TileSheet.xml");
 
-            var myTileSheetXml = this.gameResourceManager.GetTileSheet(otherTileSheet.Name).ToXml();
-            var otherTileSheetXml = otherTileSheet.ToXml();
+            var myTileSheetXml = SheetXmlRepository.ToXml(this.gameResourceManager.GetTileSheet(otherTileSheet.Name));
+            var otherTileSheetXml = SheetXmlRepository.ToXml(otherTileSheet);
             if (myTileSheetXml.ToString() != otherTileSheetXml.ToString()) Debugger.Break();
 
-            var otherSpriteSheet = SheetBase.LoadFrom<SpriteSheet>(
+            var otherSpriteSheet = SheetXmlRepository.LoadFrom<SpriteSheet>(
                 this.gameResourceManager, @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Link SpriteSheet.xml");
 
-            var mySpriteSheetXml = this.gameResourceManager.GetSpriteSheet(otherSpriteSheet.Name).ToXml();
-            var otherSpriteSheetXml = otherSpriteSheet.ToXml();
+            var mySpriteSheetXml = SheetXmlRepository.ToXml(this.gameResourceManager.GetSpriteSheet(otherSpriteSheet.Name));
+            var otherSpriteSheetXml = SheetXmlRepository.ToXml(otherSpriteSheet);
             if (mySpriteSheetXml.ToString() != otherSpriteSheetXml.ToString()) Debugger.Break();
         }
 
