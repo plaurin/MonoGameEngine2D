@@ -3,7 +3,7 @@ using System.Linq;
 using System.Xml.Linq;
 using GameFramework.Hexes;
 
-namespace GameFramework.Repository
+namespace GameFramework.IO.Repositories
 {
     public class HexXmlRepository
     {

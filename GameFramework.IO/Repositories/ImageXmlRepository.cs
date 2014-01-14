@@ -1,7 +1,7 @@
 ﻿using System.Xml.Linq;
 using GameFramework.Maps;
 
-namespace GameFramework.Repository
+namespace GameFramework.IO.Repositories
 {
     public class ImageXmlRepository
     {

@@ -29,6 +29,7 @@ Features
 
  * IO
  - Validate Tiled load map/tileset support
+ - Fix Repositories to proper constructor injection patterns
 
 Bugs
 ====
@@ -38,7 +39,6 @@ Bugs
 
 Refactorings
 ============
-P2 - Load/Save should be in separated classes (GameFramework.IO)
 - *Map should be renamed Layer
 - Review Point, Rectangle, Vector and used type: int, float, double
 

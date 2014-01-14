@@ -6,7 +6,7 @@ using GameFramework.Sheets;
 using GameFramework.Sprites;
 using GameFramework.Tiles;
 
-namespace GameFramework.Repository
+namespace GameFramework.IO.Repositories
 {
     public static class SheetXmlRepository
     {

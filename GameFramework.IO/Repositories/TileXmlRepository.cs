@@ -4,7 +4,7 @@ using System.Linq;
 using System.Xml.Linq;
 using GameFramework.Tiles;
 
-namespace GameFramework.Repository
+namespace GameFramework.IO.Repositories
 {
     public static class TileXmlRepository
     {
