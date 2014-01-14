@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using GameFramework.Cameras;
 using GameFramework.Drawing;
 using GameFramework.Hexes;
 using GameFramework.Maps;
@@ -58,7 +59,7 @@ namespace GameFramework.Repository
                         scene.AddMap(TileXmlRepository.TileMapFromXml(gameResourceManager, mapElement));
                         break;
                     case "ColorMap":
-                        scene.AddMap(ColorXmlRepository.ColorMapFromXml(gameResourceManager, mapElement));
+                        scene.AddMap(ColorXmlRepository.ColorMapFromXml(mapElement));
                         break;
                     case "SpriteMap":
                         scene.AddMap(SpriteXmlRepository.SpriteMapFromXml(gameResourceManager, mapElement));
@@ -87,7 +88,7 @@ namespace GameFramework.Repository
             if (imageMap != null) return ImageXmlRepository.ToXml(imageMap);
 
             var spriteMap = mapBase as SpriteMap;
-            if (spriteMap != null) return XmlRepository.ToXml(spriteMap);
+            if (spriteMap != null) return SpriteXmlRepository.ToXml(spriteMap);
 
             var tileMap = mapBase as TileMap;
             if (tileMap != null) return TileXmlRepository.ToXml(tileMap);
@@ -102,53 +103,13 @@ namespace GameFramework.Repository
             yield return new XAttribute("offset", mapBase.Offset);
             yield return new XAttribute("cameraMode", mapBase.CameraMode);
         }
-    }
 
-    public static class SheetXmlRepository
-    {
-        public static XElement ToXml(SheetBase sheetBase)
+        internal static void BaseFromXml(MapBase mapBase, XElement element)
         {
-            return new XElement(sheetBase.GetType().Name,
-                new XAttribute("name", sheetBase.Name),
-                new XElement("Texture", sheetBase.Texture.Name),
-                GetXml(sheetBase));
-        }
-
-        private static IEnumerable<object> GetXml(SheetBase sheetBase)
-        {
-            // TODO support all SheetType
-            throw new NotSupportedException(sheetBase.GetType().Name + " is not supported");
-        }
-
-        //public XElement ToXml()
-        //{
-        //    return new XElement(this.GetType().Name,
-        //        new XAttribute("name", this.Name),
-        //        new XElement("Texture", this.Texture.Name),
-        //        this.GetXml());
-        //}
-
-        public static T LoadFrom<T>(GameResourceManager gameResourceManager, string path) where T : SheetBase
-        {
-            var document = XDocument.Load(path);
-            var sheetElement = document.Root;
-
-            var name = sheetElement.Attribute("name").Value;
-            var textureName = sheetElement.Element("Texture").Value;
-
-            var texture = gameResourceManager.GetTexture(textureName);
-
-            switch (sheetElement.Name.ToString())
-            {
-                case "SpriteSheet":
-                    return SpriteXmlRepository.FromXml(sheetElement, name, texture) as T;
-                case "TileSheet":
-                    return TileXmlRepository.FromXml(sheetElement, name, texture) as T;
-                case "HexSheet":
-                    return HexXmlRepository.FromXml(sheetElement, name, texture) as T;
-                default:
-                    throw new InvalidOperationException(sheetElement.Name + " is not a valid sheet type.");
-            }
+            mapBase.Name = element.Attribute("name").Value;
+            mapBase.ParallaxScrollingVector = MathUtil.ParseVector(element.Attribute("parallaxScrollingVector").Value);
+            mapBase.Offset = MathUtil.ParsePoint(element.Attribute("offset").Value);
+            mapBase.CameraMode = (CameraMode)Enum.Parse(typeof(CameraMode), element.Attribute("cameraMode").Value);
         }
     }
 }

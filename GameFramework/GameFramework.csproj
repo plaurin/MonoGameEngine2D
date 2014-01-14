@@ -72,8 +72,10 @@
     <Compile Include="Repository\DrawingXmlRepository.cs" />
     <Compile Include="Repository\HexXmlRepository.cs" />
     <Compile Include="Repository\ImageXmlRepository.cs" />
+    <Compile Include="Repository\SheetXmlRepository.cs" />
     <Compile Include="Repository\SpriteXmlRepository.cs" />
     <Compile Include="Repository\TileXmlRepository.cs" />
+    <Compile Include="Sprites\SpriteBase.cs" />
     <Compile Include="Utilities\DiagnosticMap.cs" />
     <Compile Include="Maps\ImageMap.cs" />
     <Compile Include="Maps\MapBase.cs" />

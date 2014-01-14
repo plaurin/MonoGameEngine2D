@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Xml.Linq;
 using GameFramework.Cameras;
 using GameFramework.Scenes;
 
@@ -37,11 +36,6 @@ namespace GameFramework.Drawing
             this.DrawLine(drawContext, camera, drawingMap, topRight, bottomRight, this.LineWidth, this.Color);
             this.DrawLine(drawContext, camera, drawingMap, bottomRight, bottomLeft, this.LineWidth, this.Color);
             this.DrawLine(drawContext, camera, drawingMap, bottomLeft, topLeft, this.LineWidth, this.Color);
-        }
-
-        public override XElement ToXml()
-        {
-            throw new NotImplementedException();
         }
 
         public override HitBase GetHit(Point position, Camera camera, Point mapOffset, Vector parallaxScrollingVector)

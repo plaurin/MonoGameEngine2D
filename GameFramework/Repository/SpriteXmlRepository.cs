@@ -11,14 +11,14 @@ namespace GameFramework.Repository
         {
             return new XElement("SpriteMap",
                 XmlRepository.MapBaseToXml(spriteMap),
-                new XElement("Sprites", spriteMap.Sprites.OfType<Sprite>().Select(s => s.GetXml())));
+                new XElement("Sprites", spriteMap.Sprites.OfType<Sprite>().Select(GetXml)));
         }
 
         public static SpriteMap SpriteMapFromXml(GameResourceManager gameResourceManager, XElement mapElement)
         {
             var mapName = mapElement.Attribute("name").Value;
             var map = new SpriteMap(mapName);
-            map.BaseFromXml(mapElement);
+            XmlRepository.BaseFromXml(map, mapElement);
 
             foreach (var element in mapElement.Element("Sprites").Elements())
             {
@@ -57,6 +57,14 @@ namespace GameFramework.Repository
             }
 
             return spriteSheet;
+        }
+
+        private static XElement GetXml(Sprite sprite)
+        {
+            return new XElement("Sprite",
+                new XAttribute("sheetName", sprite.SpriteSheet.Name),
+                new XAttribute("name", sprite.SpriteName),
+                new XAttribute("position", sprite.Position));
         }
     }
 }

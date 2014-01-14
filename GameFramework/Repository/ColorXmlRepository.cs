@@ -12,7 +12,7 @@ namespace GameFramework.Repository
                 new XElement("Color", colorMap.Color));
         }
 
-        public static ColorMap ColorMapFromXml(GameResourceManager gameResourceManager, XElement mapElement)
+        public static ColorMap ColorMapFromXml(XElement mapElement)
         {
             var name = mapElement.Attribute("name").Value;
             var colorValue = mapElement.Element("Color").Value;

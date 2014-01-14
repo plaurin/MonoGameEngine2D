@@ -13,8 +13,5 @@ namespace GameFramework.Sheets
         public Texture Texture { get; private set; }
 
         public string Name { get; private set; }
-
-        //[Obsolete]
-        //protected abstract IEnumerable<object> GetXml();
     }
 }

@@ -1,5 +1,4 @@
 using System;
-using System.Xml.Linq;
 
 using GameFramework.Cameras;
 using GameFramework.Scenes;
@@ -8,17 +7,17 @@ namespace GameFramework.Drawing
 {
     public class TextElement : DrawingElementBase
     {
-        private readonly DrawingFont drawingFont;
-
-        private readonly Color color;
-
         public TextElement(DrawingFont drawingFont, string text, Vector vector, Color color)
         {
-            this.drawingFont = drawingFont;
+            this.DrawingFont = drawingFont;
             this.Position = vector;
-            this.color = color;
+            this.Color = color;
             this.Text = text;
         }
+
+        public DrawingFont DrawingFont { get; private set; }
+
+        public Color Color { get; private set; }
 
         public string Text { get; private set; }
 
@@ -41,35 +40,14 @@ namespace GameFramework.Drawing
                     .Scale(camera.ZoomFactor)
                     .Translate(camera.GetSceneTranslationVector(drawingMap.ParallaxScrollingVector));
 
-            drawContext.DrawString(drawContext, camera, finalText, finalVector, finalZoomFactor, this.drawingFont, this.color);
+            drawContext.DrawString(drawContext, camera, finalText, finalVector, finalZoomFactor, this.DrawingFont, this.Color);
             //spriteBatch.DrawString(this.drawingFont.Font, finalText, finalVector, this.color, 0.0f, Vector2.Zero, 
             //    finalZoomFactor, SpriteEffects.None, 0.0f);
-        }
-
-        public override XElement ToXml()
-        {
-            return new XElement("TextElement",
-                new XAttribute("fontName", this.drawingFont.Name),
-                new XAttribute("text", this.Text),
-                new XAttribute("vector", this.Position),
-                new XAttribute("color", this.color));
         }
 
         public override HitBase GetHit(Point position, Camera camera, Point mapOffset, Vector parallaxScrollingVector)
         {
             return null;
-        }
-
-        public static TextElement FromXml(GameResourceManager gameResourceManager, XElement element)
-        {
-            var fontName = element.Attribute("fontName").Value;
-            var text = element.Attribute("text").Value;
-            var vector = element.Attribute("vector").Value;
-            var color = element.Attribute("color").Value;
-
-            //var font = gameResourceManager.GetDrawingFont(fontName); OnlyXNA
-            var font = new DrawingFont { Name = fontName };
-            return new TextElement(font, text, MathUtil.ParseVector(vector), MathUtil.ParseColor(color));
         }
     }
 }

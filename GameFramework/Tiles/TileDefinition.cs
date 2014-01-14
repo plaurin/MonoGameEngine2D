@@ -1,5 +1,4 @@
 using System;
-using System.Xml.Linq;
 
 namespace GameFramework.Tiles
 {
@@ -26,23 +25,6 @@ namespace GameFramework.Tiles
         public virtual void Draw(DrawContext drawContext, Rectangle destination)
         {
             this.Sheet.Draw(drawContext, this, destination);
-        }
-
-        [Obsolete]
-        public XElement GetXml()
-        {
-            return new XElement("TileDefinition",
-                new XAttribute("name", this.Name),
-                new XAttribute("rectangle", this.Rectangle));
-        }
-
-        [Obsolete]
-        public static TileDefinition FromXml(XElement definitionElement, TileSheet tileSheet)
-        {
-            var name = definitionElement.Attribute("name").Value;
-            var rectangle = MathUtil.ParseRectangle(definitionElement.Attribute("rectangle").Value);
-
-            return new TileDefinition(tileSheet, name, rectangle);
         }
     }
 }

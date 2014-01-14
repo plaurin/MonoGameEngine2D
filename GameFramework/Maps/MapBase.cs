@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Xml.Linq;
 
 using GameFramework.Cameras;
 using GameFramework.Scenes;
@@ -16,7 +14,7 @@ namespace GameFramework.Maps
             this.ParallaxScrollingVector = Vector.One;
         }
 
-        public string Name { get; private set; }
+        public string Name { get; internal set; }
 
         public CameraMode CameraMode { get; set; }
 
@@ -29,26 +27,6 @@ namespace GameFramework.Maps
         public virtual HitBase GetHit(Point position, Camera camera)
         {
             return null;
-        }
-
-        //public abstract XElement ToXml();
-
-        //[Obsolete]
-        //public IEnumerable<object> BaseToXml()
-        //{
-        //    yield return new XAttribute("name", this.Name);
-        //    yield return new XAttribute("parallaxScrollingVector", this.ParallaxScrollingVector);
-        //    yield return new XAttribute("offset", this.Offset);
-        //    yield return new XAttribute("cameraMode", this.CameraMode);
-        //}
-
-        [Obsolete]
-        public void BaseFromXml(XElement element)
-        {
-            this.Name = element.Attribute("name").Value;
-            this.ParallaxScrollingVector = MathUtil.ParseVector(element.Attribute("parallaxScrollingVector").Value);
-            this.Offset = MathUtil.ParsePoint(element.Attribute("offset").Value);
-            this.CameraMode = (CameraMode)Enum.Parse(typeof(CameraMode), element.Attribute("cameraMode").Value);
         }
     }
 }

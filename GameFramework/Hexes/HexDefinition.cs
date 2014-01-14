@@ -1,5 +1,4 @@
 using System;
-using System.Xml.Linq;
 
 namespace GameFramework.Hexes
 {
@@ -26,23 +25,6 @@ namespace GameFramework.Hexes
         public virtual void Draw(DrawContext drawContext, Rectangle destination)
         {
             this.Sheet.Draw(drawContext, this, destination);
-        }
-
-        [Obsolete]
-        public object GetXml()
-        {
-            return new XElement("HexDefinition",
-                new XAttribute("name", this.Name),
-                new XAttribute("rectangle", this.Rectangle));
-        }
-
-        [Obsolete]
-        public static HexDefinition FromXml(XElement definitionElement, HexSheet hexSheet)
-        {
-            var name = definitionElement.Attribute("name").Value;
-            var rectangle = MathUtil.ParseRectangle(definitionElement.Attribute("rectangle").Value);
-
-            return new HexDefinition(hexSheet, name, rectangle);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace GameFramework.Repository
     {
         public static XElement ToXml(TileMap tileMap)
         {
-            var tileReferences = Enumerable.ToList(CreateTileReferences(tileMap));
+            var tileReferences = CreateTileReferences(tileMap).ToList();
 
             return new XElement("TileMap",
                 XmlRepository.MapBaseToXml(tileMap),
@@ -22,6 +22,53 @@ namespace GameFramework.Repository
                         new XAttribute("sheetName", x.Definition.SheetName),
                         new XAttribute("name", x.Definition.Name)))),
                 new XElement("Tiles", GetRowsXml(tileMap, tileReferences)));
+        }
+
+        public static TileMap TileMapFromXml(GameResourceManager gameResourceManager, XElement mapElement)
+        {
+            var name = mapElement.Attribute("name").Value;
+            var mapSize = MathUtil.ParseSize(mapElement.Element("MapSize").Value);
+            var tileSize = MathUtil.ParseSize(mapElement.Element("TileSize").Value);
+            var tileReferences = GetTileReferences(gameResourceManager, mapElement.Element("TileDefinitionReferences")).ToList();
+            var tiles = GetTileRowsFromXml(mapElement.Element("Tiles"));
+
+            var map = new TileMap(name, mapSize, tileSize);
+            //var map = factory.CreateTileMap(name, mapSize, tileSize);
+            XmlRepository.BaseFromXml(map, mapElement);
+
+            int x = 0;
+            foreach (var row in tiles)
+            {
+                int y = 0;
+                foreach (var element in row)
+                {
+                    map[x, y++] = tileReferences.Single(r => r.Id == element).Definition;
+                }
+
+                x++;
+            }
+
+            return map;
+        }
+
+        public static IEnumerable<object> GetXml(TileSheet tileSheet)
+        {
+            yield return new XElement("TileSize", tileSheet.TilesSize);
+            yield return new XElement("Definitions", tileSheet.Definitions.Select(d => GetXml(d.Value)));
+        }
+
+        public static TileSheet FromXml(XElement sheetElement, string name, Texture texture)
+        {
+            var tileSize = MathUtil.ParseSize(sheetElement.Element("TileSize").Value);
+            var tileSheet = new TileSheet(texture, name, tileSize);
+
+            foreach (var definitionElement in sheetElement.Elements("Definitions").Elements())
+            {
+                var tileDefinition = FromXml(definitionElement, tileSheet);
+                tileSheet.AddTileDefinition(tileDefinition);
+            }
+
+            return tileSheet;
         }
 
         private static IEnumerable<TileMap.TileReference> CreateTileReferences(TileMap tileMap)
@@ -48,41 +95,14 @@ namespace GameFramework.Repository
                     row[j] = tileReferences.Single(x => x.Definition == tileMap[i, j]).Id;
                 }
 
-                yield return new XElement("Row", String.Join(", ", row));
+                yield return new XElement("Row", string.Join(", ", row));
             }
-        }
-
-        public static TileMap TileMapFromXml(GameResourceManager gameResourceManager, XElement mapElement)
-        {
-            var name = mapElement.Attribute("name").Value;
-            var mapSize = MathUtil.ParseSize(mapElement.Element("MapSize").Value);
-            var tileSize = MathUtil.ParseSize(mapElement.Element("TileSize").Value);
-            var tileReferences = Enumerable.ToList(GetTileReferences(gameResourceManager, mapElement.Element("TileDefinitionReferences")));
-            var tiles = GetTileRowsFromXml(mapElement.Element("Tiles"));
-
-            var map = new TileMap(name, mapSize, tileSize);
-            //var map = factory.CreateTileMap(name, mapSize, tileSize);
-            map.BaseFromXml(mapElement);
-
-            int x = 0;
-            foreach (var row in tiles)
-            {
-                int y = 0;
-                foreach (var element in row)
-                {
-                    map[x, y++] = tileReferences.Single(r => r.Id == element).Definition;
-                }
-
-                x++;
-            }
-
-            return map;
         }
 
         private static IEnumerable<IEnumerable<int>> GetTileRowsFromXml(XElement rowsElement)
         {
             return rowsElement.Elements()
-                .Select(rowElement => rowElement.Value.Split(',').Select(x => Int32.Parse(x.Trim())));
+                .Select(rowElement => rowElement.Value.Split(',').Select(x => int.Parse(x.Trim())));
         }
 
         private static IEnumerable<TileMap.TileReference> GetTileReferences(GameResourceManager gameResourceManager, XElement tileReferencesElement)
@@ -90,32 +110,26 @@ namespace GameFramework.Repository
             return tileReferencesElement.Elements()
                 .Select(x => new TileMap.TileReference
                 {
-                    Id = Int32.Parse(x.Attribute("id").Value),
+                    Id = int.Parse(x.Attribute("id").Value),
                     Definition = gameResourceManager
                         .GetTileSheet(x.Attribute("sheetName").Value)
                         .Definitions[x.Attribute("name").Value]
                 });
         }
 
-        public static IEnumerable<object> GetXml(TileSheet tileSheet)
+        private static XElement GetXml(TileDefinition tileDefinition)
         {
-            yield return new XElement("TileSize", tileSheet.TilesSize);
-            yield return new XElement("Definitions", tileSheet.Definitions.Select(d => d.Value.GetXml()));
+            return new XElement("TileDefinition",
+                new XAttribute("name", tileDefinition.Name),
+                new XAttribute("rectangle", tileDefinition.Rectangle));
         }
 
-        [Obsolete]
-        public static TileSheet FromXml(XElement sheetElement, string name, Texture texture)
+        private static TileDefinition FromXml(XElement definitionElement, TileSheet tileSheet)
         {
-            var tileSize = MathUtil.ParseSize(sheetElement.Element("TileSize").Value);
-            var tileSheet = new TileSheet(texture, name, tileSize);
+            var name = definitionElement.Attribute("name").Value;
+            var rectangle = MathUtil.ParseRectangle(definitionElement.Attribute("rectangle").Value);
 
-            foreach (var definitionElement in sheetElement.Elements("Definitions").Elements())
-            {
-                var tileDefinition = TileDefinition.FromXml(definitionElement, tileSheet);
-                tileSheet.AddTileDefinition(tileDefinition);
-            }
-
-            return tileSheet;
+            return new TileDefinition(tileSheet, name, rectangle);
         }
     }
 }
