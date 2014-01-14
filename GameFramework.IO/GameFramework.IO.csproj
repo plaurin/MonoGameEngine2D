@@ -34,6 +34,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ColorXmlRepository.cs" />
+    <Compile Include="Repositories\DrawingXmlRepository.cs" />
+    <Compile Include="Repositories\HexXmlRepository.cs" />
+    <Compile Include="Repositories\ImageXmlRepository.cs" />
+    <Compile Include="Repositories\SheetXmlRepository.cs" />
+    <Compile Include="Repositories\SpriteXmlRepository.cs" />
+    <Compile Include="Repositories\TileXmlRepository.cs" />
+    <Compile Include="Repositories\XmlRepository.cs" />
     <Compile Include="TiledHelper.cs" />
     <Compile Include="TiledSharp\ImageLayer.cs" />
     <Compile Include="TiledSharp\ITmxElement.cs" />
@@ -71,9 +79,7 @@
   <ItemGroup>
     <Content Include="TiledSharp\Readme.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

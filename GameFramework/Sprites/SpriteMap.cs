@@ -18,19 +18,19 @@ namespace GameFramework.Sprites
             this.sprites = new List<SpriteBase>();
         }
 
-        internal List<SpriteBase> Sprites
+        public IEnumerable<SpriteBase> Sprites
         {
             get { return this.sprites; }
         }
 
         public void AddSprite(SpriteBase sprite)
         {
-            this.Sprites.Add(sprite);
+            this.sprites.Add(sprite);
         }
 
         public void RemoveSprite(SpriteBase sprite)
         {
-            this.Sprites.Remove(sprite);
+            this.sprites.Remove(sprite);
         }
 
         public override void Draw(DrawContext drawContext, Camera camera)
@@ -47,11 +47,5 @@ namespace GameFramework.Sprites
                 .Select(sprite => sprite.GetHit(position, camera, this.Offset, this.ParallaxScrollingVector))
                 .FirstOrDefault(spriteHit => spriteHit != null);
         }
-
-        //public override XElement ToXml()
-        //{
-        //    return XmlRepository.ToXml(this);
-        //}
-
     }
 }

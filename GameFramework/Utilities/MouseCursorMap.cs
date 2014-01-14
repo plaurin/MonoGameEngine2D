@@ -43,10 +43,5 @@ namespace GameFramework.Utilities
         {
             this.map.Draw(drawContext, camera);
         }
-
-        //public override XElement ToXml()
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }

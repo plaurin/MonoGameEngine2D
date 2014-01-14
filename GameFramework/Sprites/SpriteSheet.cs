@@ -16,7 +16,7 @@ namespace GameFramework.Sprites
             this.definitions = new Dictionary<string, Rectangle>();
         }
 
-        internal IDictionary<string, Rectangle> Definitions
+        public IDictionary<string, Rectangle> Definitions
         {
             get { return this.definitions; }
         }

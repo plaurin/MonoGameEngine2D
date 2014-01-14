@@ -84,14 +84,5 @@ namespace GameFramework.Drawing
                 .Select(element => element.GetHit(position, camera, this.Offset, this.ParallaxScrollingVector))
                 .FirstOrDefault(spriteHit => spriteHit != null);
         }
-
-        //public override XElement ToXml()
-        //{
-        //    return XmlRepository.ToXml(this);
-        //    //return new XElement("DrawingMap", 
-        //    //    this.BaseToXml(),
-        //    //    new XElement("Elements", 
-        //    //        this.elements.Select(e => e.ToXml())));
-        //}
     }
 }

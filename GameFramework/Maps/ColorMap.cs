@@ -20,10 +20,5 @@ namespace GameFramework.Maps
         {
             drawContext.FillColor(this.Color);
         }
-
-        //public override XElement ToXml()
-        //{
-        //    return XmlRepository.ToXml(this);
-        //}
     }
 }

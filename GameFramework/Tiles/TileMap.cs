@@ -75,19 +75,5 @@ namespace GameFramework.Tiles
 
             return null;
         }
-
-        //public override XElement ToXml()
-        //{
-        //    return XmlRepository.ToXml(this);
-        //}
-
-
-
-        internal struct TileReference
-        {
-            public int Id { get; set; }
-
-            public TileDefinition Definition { get; set; }
-        }
     }
 }

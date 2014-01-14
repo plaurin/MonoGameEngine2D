@@ -21,10 +21,5 @@ namespace GameFramework.Maps
         {
             drawContext.DrawImage(this.Texture, this.Rectangle);
         }
-
-        //public override XElement ToXml()
-        //{
-        //    return XmlRepository.ToXml(this);
-        //}
     }
 }

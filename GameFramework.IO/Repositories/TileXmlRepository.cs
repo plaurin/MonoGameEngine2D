@@ -71,7 +71,7 @@ namespace GameFramework.Repository
             return tileSheet;
         }
 
-        private static IEnumerable<TileMap.TileReference> CreateTileReferences(TileMap tileMap)
+        private static IEnumerable<TileReference> CreateTileReferences(TileMap tileMap)
         {
             var tileDefinitions = new List<TileDefinition>();
             for (var i = 0; i < tileMap.MapSize.Width; i++)
@@ -82,10 +82,10 @@ namespace GameFramework.Repository
 
             return tileDefinitions
                 .Distinct()
-                .Select((x, i) => new TileMap.TileReference { Id = i, Definition = x });
+                .Select((x, i) => new TileReference { Id = i, Definition = x });
         }
 
-        private static IEnumerable<XElement> GetRowsXml(TileMap tileMap, List<TileMap.TileReference> tileReferences)
+        private static IEnumerable<XElement> GetRowsXml(TileMap tileMap, List<TileReference> tileReferences)
         {
             for (var i = 0; i < tileMap.MapSize.Width; i++)
             {
@@ -105,10 +105,10 @@ namespace GameFramework.Repository
                 .Select(rowElement => rowElement.Value.Split(',').Select(x => int.Parse(x.Trim())));
         }
 
-        private static IEnumerable<TileMap.TileReference> GetTileReferences(GameResourceManager gameResourceManager, XElement tileReferencesElement)
+        private static IEnumerable<TileReference> GetTileReferences(GameResourceManager gameResourceManager, XElement tileReferencesElement)
         {
             return tileReferencesElement.Elements()
-                .Select(x => new TileMap.TileReference
+                .Select(x => new TileReference
                 {
                     Id = int.Parse(x.Attribute("id").Value),
                     Definition = gameResourceManager
@@ -130,6 +130,13 @@ namespace GameFramework.Repository
             var rectangle = MathUtil.ParseRectangle(definitionElement.Attribute("rectangle").Value);
 
             return new TileDefinition(tileSheet, name, rectangle);
+        }
+
+        internal struct TileReference
+        {
+            public int Id { get; set; }
+
+            public TileDefinition Definition { get; set; }
         }
     }
 }

@@ -34,7 +34,7 @@ namespace GameFramework.Hexes
 
         public Size HexSize { get; private set; }
 
-        internal int TopEdgeLength
+        public int TopEdgeLength
         {
             get { return this.topEdgeLength; }
         }
@@ -106,60 +106,6 @@ namespace GameFramework.Hexes
                 }
 
             return null;
-        }
-
-        //public override XElement ToXml()
-        //{
-        //    return XmlRepository.ToXml(this);
-        //    //var hexReferences = this.CreateHexReferences().ToList();
-
-        //    //return new XElement("HexMap",
-        //    //    this.BaseToXml(),
-        //    //    new XElement("MapSize", this.MapSize),
-        //    //    new XElement("HexSize", this.HexSize),
-        //    //    new XElement("EdgeLength", this.topEdgeLength),
-        //    //    new XElement("HexDefinitionReferences", hexReferences.Select(x =>
-        //    //        new XElement("Reference",
-        //    //            new XAttribute("id", x.Id),
-        //    //            new XAttribute("sheetName", x.Definition.SheetName),
-        //    //            new XAttribute("name", x.Definition.Name)))),
-        //    //    new XElement("Hexes", this.GetRowsXml(hexReferences)));
-        //}
-
-        //internal IEnumerable<HexReference> CreateHexReferences()
-        //{
-        //    var hexDefinitions = new List<HexDefinition>();
-        //    for (var i = 0; i < this.MapSize.Width; i++)
-        //        for (var j = 0; j < this.MapSize.Height; j++)
-        //        {
-        //            hexDefinitions.Add(this.map[i, j]);
-        //        }
-
-        //    return hexDefinitions
-        //        .Distinct()
-        //        .Select((x, i) => new HexReference { Id = i, Definition = x });
-        //}
-
-        //internal IEnumerable<XElement> GetRowsXml(List<HexReference> hexReferences)
-        //{
-        //    for (var i = 0; i < this.MapSize.Width; i++)
-        //    {
-        //        var row = new int[this.MapSize.Height];
-        //        for (var j = 0; j < this.MapSize.Height; j++)
-        //        {
-        //            row[j] = hexReferences.Single(x => x.Definition == this.map[i, j]).Id;
-        //        }
-
-        //        yield return new XElement("Row", string.Join(", ", row));
-        //    }
-        //}
-
-
-        internal struct HexReference
-        {
-            public int Id { get; set; }
-
-            public HexDefinition Definition { get; set; }
         }
     }
 }

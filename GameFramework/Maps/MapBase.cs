@@ -14,7 +14,7 @@ namespace GameFramework.Maps
             this.ParallaxScrollingVector = Vector.One;
         }
 
-        public string Name { get; internal set; }
+        public string Name { get; set; }
 
         public CameraMode CameraMode { get; set; }
 

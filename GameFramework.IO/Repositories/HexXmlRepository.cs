@@ -70,7 +70,7 @@ namespace GameFramework.Repository
             return hexSheet;
         }
 
-        private static IEnumerable<HexMap.HexReference> CreateHexReferences(HexMap hexMap)
+        private static IEnumerable<HexReference> CreateHexReferences(HexMap hexMap)
         {
             var hexDefinitions = new List<HexDefinition>();
             for (var i = 0; i < hexMap.MapSize.Width; i++)
@@ -81,10 +81,10 @@ namespace GameFramework.Repository
 
             return hexDefinitions
                 .Distinct()
-                .Select((x, i) => new HexMap.HexReference { Id = i, Definition = x });
+                .Select((x, i) => new HexReference { Id = i, Definition = x });
         }
 
-        private static IEnumerable<XElement> GetRowsXml(HexMap hexMap, List<HexMap.HexReference> hexReferences)
+        private static IEnumerable<XElement> GetRowsXml(HexMap hexMap, List<HexReference> hexReferences)
         {
             for (var i = 0; i < hexMap.MapSize.Width; i++)
             {
@@ -104,10 +104,10 @@ namespace GameFramework.Repository
                 .Select(rowElement => rowElement.Value.Split(',').Select(x => int.Parse(x.Trim())));
         }
 
-        private static IEnumerable<HexMap.HexReference> GetHexReferences(GameResourceManager gameResourceManager, XElement hexReferencesElement)
+        private static IEnumerable<HexReference> GetHexReferences(GameResourceManager gameResourceManager, XElement hexReferencesElement)
         {
             return hexReferencesElement.Elements()
-                .Select(x => new HexMap.HexReference
+                .Select(x => new HexReference
                 {
                     Id = int.Parse(x.Attribute("id").Value),
                     Definition = gameResourceManager
@@ -129,6 +129,13 @@ namespace GameFramework.Repository
             var rectangle = MathUtil.ParseRectangle(definitionElement.Attribute("rectangle").Value);
 
             return new HexDefinition(hexSheet, name, rectangle);
+        }
+
+        internal struct HexReference
+        {
+            public int Id { get; set; }
+
+            public HexDefinition Definition { get; set; }
         }
     }
 }

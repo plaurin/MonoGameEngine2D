@@ -27,7 +27,7 @@ namespace GameFramework.Tiles
             }
         }
 
-        internal Size TilesSize
+        public Size TilesSize
         {
             get { return this.tilesSize; }
         }
@@ -50,6 +50,5 @@ namespace GameFramework.Tiles
         {
             drawContext.DrawImage(this.Texture, tileDefinition.Rectangle, destination);
         }
-
     }
 }

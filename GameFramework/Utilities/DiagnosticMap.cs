@@ -88,11 +88,6 @@ namespace GameFramework.Utilities
             this.map.Draw(drawContext, camera);
         }
 
-        //public override XElement ToXml()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         public void AddLine(string lineId, string textFormat)
         {
             var textElement = this.map.AddText(this.font, textFormat, new Vector(410, this.nextLineY), Color.White);
