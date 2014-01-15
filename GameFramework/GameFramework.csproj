@@ -67,6 +67,8 @@
     <Compile Include="Inputs\MouseButtons.cs" />
     <Compile Include="Inputs\MouseStateBase.cs" />
     <Compile Include="Inputs\MouseTracking.cs" />
+    <Compile Include="Inputs\TouchStateBase.cs" />
+    <Compile Include="Inputs\TouchTracking.cs" />
     <Compile Include="Maps\ColorMap.cs" />
     <Compile Include="Sprites\SpriteBase.cs" />
     <Compile Include="Utilities\DiagnosticMap.cs" />

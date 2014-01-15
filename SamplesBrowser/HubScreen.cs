@@ -11,6 +11,7 @@ using GameFramework.Utilities;
 using SamplesBrowser.Sandbox;
 using SamplesBrowser.ShootEmUp;
 using SamplesBrowser.Tiled;
+using SamplesBrowser.Touch;
 
 namespace SamplesBrowser
 {
@@ -27,6 +28,7 @@ namespace SamplesBrowser
         private RectangleElement sandboxRectangle;
         private RectangleElement shootEmUpRectangle;
         private RectangleElement tiledRectangle;
+        private RectangleElement touchRectangle;
 
         private MouseStateBase mouseState;
 
@@ -43,7 +45,8 @@ namespace SamplesBrowser
             None,
             Sandbox,
             ShootEmUp,
-            Tiled
+            Tiled,
+            Touch
         }
 
         public override void Initialize(Camera theCamera)
@@ -70,6 +73,9 @@ namespace SamplesBrowser
             input.AddDigitalButton("GotoTiled").Assign(KeyboardKeys.D3)
                 .MapClickTo(gt => this.LaunchTiledSample());
 
+            input.AddDigitalButton("GotoTouch").Assign(KeyboardKeys.D4)
+                .MapClickTo(gt => this.LaunchTouchSample());
+
             // Mouse
             Func<RectangleHit, Samples> hitToSampleFunc = hit =>
             {
@@ -78,6 +84,7 @@ namespace SamplesBrowser
                     if (hit.RectangleElement == this.sandboxRectangle) return Samples.Sandbox;
                     if (hit.RectangleElement == this.shootEmUpRectangle) return Samples.ShootEmUp;
                     if (hit.RectangleElement == this.tiledRectangle) return Samples.Tiled;
+                    if (hit.RectangleElement == this.touchRectangle) return Samples.Touch;
                 }
 
                 return Samples.None;
@@ -109,6 +116,9 @@ namespace SamplesBrowser
                     case Samples.Tiled:
                         this.LaunchTiledSample();
                         break;
+                    case Samples.Touch:
+                        this.LaunchTouchSample();
+                        break;
                 }
             });
 
@@ -131,6 +141,7 @@ namespace SamplesBrowser
             this.sandboxRectangle.Color = colorFunc(Samples.Sandbox);
             this.shootEmUpRectangle.Color = colorFunc(Samples.ShootEmUp);
             this.tiledRectangle.Color = colorFunc(Samples.Tiled);
+            this.touchRectangle.Color = colorFunc(Samples.Touch);
         }
 
         public override Scene GetScene()
@@ -144,12 +155,14 @@ namespace SamplesBrowser
             this.sandboxRectangle = hubMap.AddRectangle(10, 10, 200, 200, 1, Color.White);
             this.shootEmUpRectangle = hubMap.AddRectangle(220, 10, 200, 200, 1, Color.White);
             this.tiledRectangle = hubMap.AddRectangle(10, 230, 200, 200, 1, Color.White);
+            this.touchRectangle = hubMap.AddRectangle(220, 230, 200, 200, 1, Color.White);
             //hubMap.AddRectangle(10, 230, 200, 200, 1, Color.White);
             //hubMap.AddRectangle(220, 230, 200, 200, 1, Color.White);
 
             hubMap.AddText(font, "1 - Sandbox sample", new Vector(20, 210), Color.White);
             hubMap.AddText(font, "2 - ShootEmUp sample", new Vector(220, 210), Color.White);
             hubMap.AddText(font, "3 - Tiled sample", new Vector(20, 430), Color.White);
+            hubMap.AddText(font, "4 - Touch sample", new Vector(220, 430), Color.White);
 
             this.scene.AddMap(hubMap);
 
@@ -175,6 +188,12 @@ namespace SamplesBrowser
         {
             this.currentSample = Samples.Tiled;
             this.screenNavigation.NavigateTo<TiledScreen>();
+        }
+
+        private void LaunchTouchSample()
+        {
+            this.currentSample = Samples.Touch;
+            this.screenNavigation.NavigateTo<TouchScreen>();
         }
     }
 }

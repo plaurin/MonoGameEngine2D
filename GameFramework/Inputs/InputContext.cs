@@ -9,5 +9,7 @@ namespace GameFramework.Inputs
         public abstract KeyboardStateBase KeyboardGetState();
 
         public abstract MouseStateBase MouseGetState();
+
+        public abstract TouchStateBase TouchGetState();
     }
 }

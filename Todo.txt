@@ -7,7 +7,6 @@ Features
  P2 - Scaling SpriteSheets
  P3 - AnimatedSpriteDefinition
  P3 - CompositeSprite
-    - CompositeSprite stencil to help map's designing
 * HexMap
 * Map (Layer)
 * Scene
@@ -17,19 +16,20 @@ Features
 * Input
  - Input configuration (mouse axes)
  - Input configuration (gamepad)
- - Input configuration (touches & gestures)
+ P1 - Input configuration (touches & gestures)
 * Others
  - Audio?
  P4 - Entities
   - Link to sprites/tiles
+  - Animations state machine
  P3 - Resources manager: Screen, Audio
 
- * ContentSync
+* ContentSync
  - Validate current content Links
 
- * IO
+* IO
  - Validate Tiled load map/tileset support
- - Fix Repositories to proper constructor injection patterns
+ - Fix Repositories to use proper constructor injection patterns
 
 Bugs
 ====
@@ -41,6 +41,7 @@ Refactorings
 ============
 - *Map should be renamed Layer
 - Review Point, Rectangle, Vector and used type: int, float, double
+- Should Draw be external to core classes?
 
 Quality
 =======
@@ -51,6 +52,10 @@ Samples ideas
 =============
 - Shooter Game (top view)
 - Tactical War Game (Hex map)
+- Side scroller
+- Infinite tile map (trick)
+- Mouse GetHit
+- Touch
 
 Projects structure
 ==================
@@ -76,4 +81,4 @@ P3 - Touch support in InputConfiguration mapping
 - Implement Scene Navigation
 - Document Glosary
 - Fix WP8 Samples
-- Fix Win8.1 Exit
+- Fix Win8.1 Exit with Escape (can it be fixed?)

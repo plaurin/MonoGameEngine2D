@@ -10,6 +10,7 @@ namespace GameFramework.Inputs
         private readonly Dictionary<string, DigitalButton> digitalButtons;
 
         private MouseTracking mouseTracking;
+        private TouchTracking touchTracking;
 
         public InputConfiguration()
         {
@@ -27,6 +28,12 @@ namespace GameFramework.Inputs
             foreach (var digitalButton in this.digitalButtons.Values)
             {
                 digitalButton.Update(keyState, mouseState, gameTime);
+            }
+
+            if (this.touchTracking != null)
+            {
+                var touchState = inputContext.TouchGetState();
+                this.touchTracking.Update(touchState, gameTime);
             }
         }
 
@@ -50,5 +57,11 @@ namespace GameFramework.Inputs
             return this.mouseTracking;
         }
 
+        public TouchTracking AddTouchTracking(Camera camera)
+        {
+            this.touchTracking = new TouchTracking(camera);
+
+            return this.touchTracking;
+        }
     }
 }

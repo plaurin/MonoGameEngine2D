@@ -1,9 +1,13 @@
 using System;
-
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using GameFramework;
 using GameFramework.Inputs;
-
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input.Touch;
+using Point = GameFramework.Point;
 
 namespace MonoGameImplementation.EngineImplementation
 {
@@ -17,6 +21,11 @@ namespace MonoGameImplementation.EngineImplementation
         public override MouseStateBase MouseGetState()
         {
             return new XnaMouseState(Mouse.GetState());
+        }
+
+        public override TouchStateBase TouchGetState()
+        {
+            return new XnaTouchState(TouchPanel.GetState());
         }
 
         private class XnaKeyboardState : KeyboardStateBase
@@ -95,6 +104,25 @@ namespace MonoGameImplementation.EngineImplementation
                 get
                 {
                     return new Point(this.mouseState.X, this.mouseState.Y);
+                }
+            }
+        }
+
+        private class XnaTouchState : TouchStateBase
+        {
+            private readonly TouchCollection touchCollection;
+
+            public XnaTouchState(TouchCollection touchCollection)
+            {
+                this.touchCollection = touchCollection;
+            }
+
+            public override IEnumerable<TouchPoint> Touches
+            {
+                get
+                {
+                    return this.touchCollection.Select(t => 
+                        new TouchPoint(t.Id, new Vector(t.Position.X, t.Position.Y), t.Pressure, (TouchPointState)t.State));
                 }
             }
         }
