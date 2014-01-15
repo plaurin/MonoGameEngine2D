@@ -50,7 +50,7 @@ namespace GameFramework.Inputs
 
         public override string ToString()
         {
-            return string.Format("Id:{0}, Position:{1}, Pressure:{2}, State:{3}", this.Id, this.Position, this.Pressure, this.State);
+            return string.Format("Id:{0}, Position:{1}, Pressure:{2:f2}, State:{3}", this.Id, this.Position, this.Pressure, this.State);
         }
     }
 

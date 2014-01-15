@@ -11,7 +11,6 @@ using GameFramework.IO.Repositories;
 using GameFramework.Maps;
 using GameFramework.Scenes;
 using GameFramework.Screens;
-using GameFramework.Sheets;
 using GameFramework.Sprites;
 using GameFramework.Tiles;
 using GameFramework.Utilities;
@@ -101,7 +100,7 @@ namespace SamplesBrowser.Sandbox
             if (colorMap != null)
                 colorMap.Color = new Color(255, 0, 0, (int)(255 * Math.Min(this.range, 1.0f)));
 
-            this.diagnosticMap.Update(gameTime, this.camera, this.mouseState, this.hits);
+            this.diagnosticMap.Update(gameTime, this.camera, this.mouseState, null, this.hits);
             this.diagnosticMap.UpdateLine("Range", this.range);
         }
 

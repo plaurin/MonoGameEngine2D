@@ -61,7 +61,7 @@ namespace GameFramework
 
         public override string ToString()
         {
-            return string.Format("{{X:{0} Y:{1}}}", this.X, this.Y);
+            return string.Format("{{ X:{0:f2} Y:{1:f2} }}", this.X, this.Y);
         }
     }
 }

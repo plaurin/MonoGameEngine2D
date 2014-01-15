@@ -32,6 +32,7 @@ namespace GameFramework.Utilities
             Zoom,
             Mouse,
             MouseAbsolute,
+            Touches,
             Hits
         }
 
@@ -63,11 +64,17 @@ namespace GameFramework.Utilities
                 this.CreateNewLine(LineId.MouseAbsolute, "MouseAbs: {0}");
             }
 
+            if (this.configuration.DisplayTouchState)
+            {
+                this.CreateNewLine(LineId.Touches, "Touches: {0}");
+            }
+
             if (this.configuration.DisplayHits)
                 this.CreateNewLine(LineId.Hits, "Hits: {0}");
         }
 
-        public void Update(IGameTiming gameTime, Camera camera, MouseStateBase mouseState = null, IEnumerable<HitBase> hits = null)
+        public void Update(IGameTiming gameTime, Camera camera, MouseStateBase mouseState = null, 
+            TouchStateBase touchState = null, IEnumerable<HitBase> hits = null)
         {
             var currentY = FirstLineY;
             foreach (var textElement in this.allLines.Select(l => l.Value))
@@ -95,6 +102,11 @@ namespace GameFramework.Utilities
             {
                 this.UpdatBuiltInLine(LineId.Mouse, mouseState);
                 this.UpdatBuiltInLine(LineId.MouseAbsolute, mouseState.AbsolutePosition);
+            }
+
+            if (this.configuration.DisplayTouchState && touchState != null)
+            {
+                this.UpdatBuiltInLine(LineId.Touches, string.Join("; ", touchState.Touches));
             }
 
             if (this.configuration.DisplayHits && hits != null)
@@ -143,6 +155,7 @@ namespace GameFramework.Utilities
             this.DisplayFps = true;
             this.DisplayCameraState = true;
             this.DisplayMouseState = true;
+            this.DisplayTouchState = true;
             this.DisplayHits = true;
         }
 
@@ -154,6 +167,8 @@ namespace GameFramework.Utilities
 
         public bool DisplayMouseState { get; set; }
 
+        public bool DisplayTouchState { get; set; }
+
         public bool DisplayHits { get; set; }
 
         public static DiagnosticMapConfiguration CreateWithFpsOnly(DiagnosticDisplayLocation location = DiagnosticDisplayLocation.Right)
@@ -163,6 +178,7 @@ namespace GameFramework.Utilities
                 DisplayLocation = location,
                 DisplayCameraState = false,
                 DisplayMouseState = false,
+                DisplayTouchState = false,
                 DisplayHits = false,
             };
         }

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Linq;
 using GameFramework;
 using GameFramework.Cameras;
-using GameFramework.Drawing;
 using GameFramework.Inputs;
 using GameFramework.Scenes;
 using GameFramework.Screens;
@@ -19,6 +16,8 @@ namespace SamplesBrowser.Touch
         private GameResourceManager gameResourceManager;
         private Scene scene;
         private DiagnosticMap diagnosticMap;
+
+        private TouchStateBase touchState;
 
         public TouchScreen(ScreenNavigation screenNavigation)
         {
@@ -41,13 +40,7 @@ namespace SamplesBrowser.Touch
 
             this.inputConfiguration.AddTouchTracking(this.camera).OnTouch((ts, gt) =>
             {
-                if (ts.Touches.Any())
-                {
-                    Debugger.Break();
-                }
-
-                var toto = string.Join(", ", ts.Touches);
-                var a = toto;
+                this.touchState = ts;
             });
 
             return this.inputConfiguration;
@@ -60,8 +53,7 @@ namespace SamplesBrowser.Touch
 
         public override void Update(IGameTiming gameTime)
         {
-            this.diagnosticMap.Update(gameTime, this.camera);
-            this.diagnosticMap.UpdateLine("Range", "133");
+            this.diagnosticMap.Update(gameTime, this.camera, touchState: this.touchState);
         }
 
         public override Scene GetScene()
@@ -77,10 +69,10 @@ namespace SamplesBrowser.Touch
         {
             var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
 
-            this.diagnosticMap = new DiagnosticMap(this.gameResourceManager, font, 
-                DiagnosticMapConfiguration.CreateWithFpsOnly(DiagnosticDisplayLocation.Left));
+            var configuration = DiagnosticMapConfiguration.CreateWithFpsOnly(DiagnosticDisplayLocation.Left);
+            configuration.DisplayTouchState = true;
 
-            this.diagnosticMap.AddLine("Range", "Range: {0:f1}");
+            this.diagnosticMap = new DiagnosticMap(this.gameResourceManager, font, configuration);
 
             return this.diagnosticMap;
         }
