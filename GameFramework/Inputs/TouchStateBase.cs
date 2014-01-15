@@ -25,9 +25,37 @@ namespace GameFramework.Inputs
             {
                 get { return this.innerTouchState.Touches; }
             }
+
+            public override bool IsConnected
+            {
+                get { return this.innerTouchState.IsConnected; }
+            }
+
+            public override bool HasPressure
+            {
+                get { return this.innerTouchState.HasPressure; }
+            }
+
+            public override int MaximumTouchCount
+            {
+                get { return this.innerTouchState.MaximumTouchCount; }
+            }
+
+            public override bool IsGestureAvailable
+            {
+                get { return this.innerTouchState.IsGestureAvailable; }
+            }
         }
 
         public abstract IEnumerable<TouchPoint> Touches { get; }
+
+        public abstract bool IsConnected { get; }
+        
+        public abstract bool HasPressure { get; }
+        
+        public abstract int MaximumTouchCount { get; }
+        
+        public abstract bool IsGestureAvailable { get; }
     }
 
     public class TouchPoint
@@ -50,7 +78,7 @@ namespace GameFramework.Inputs
 
         public override string ToString()
         {
-            return string.Format("Id:{0}, Position:{1}, Pressure:{2:f2}, State:{3}", this.Id, this.Position, this.Pressure, this.State);
+            return string.Format("[{0}] {1} P:{2:f2} ({3})", this.Id, this.Position, this.Pressure, this.State);
         }
     }
 

@@ -32,6 +32,8 @@ namespace GameFramework.Utilities
             Zoom,
             Mouse,
             MouseAbsolute,
+            TouchCapabilities,
+            TouchCapabilities2,
             Touches,
             Hits
         }
@@ -66,6 +68,8 @@ namespace GameFramework.Utilities
 
             if (this.configuration.DisplayTouchState)
             {
+                this.CreateNewLine(LineId.TouchCapabilities, "TouchCap: Connected?: {0}, Pressure?: {1}");
+                this.CreateNewLine(LineId.TouchCapabilities2, "TouchCap: MaxTouchCount: {0}, Gesture?: {1}");
                 this.CreateNewLine(LineId.Touches, "Touches: {0}");
             }
 
@@ -102,6 +106,8 @@ namespace GameFramework.Utilities
         {
             if (this.configuration.DisplayTouchState && touchState != null)
             {
+                this.UpdatBuiltInLine(LineId.TouchCapabilities, touchState.IsConnected, touchState.HasPressure);
+                this.UpdatBuiltInLine(LineId.TouchCapabilities2, touchState.MaximumTouchCount, touchState.IsGestureAvailable);
                 this.UpdatBuiltInLine(LineId.Touches, string.Join("; ", touchState.Touches));
             }
         }

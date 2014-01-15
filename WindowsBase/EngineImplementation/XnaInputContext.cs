@@ -25,7 +25,7 @@ namespace MonoGameImplementation.EngineImplementation
 
         public override TouchStateBase TouchGetState()
         {
-            return new XnaTouchState(TouchPanel.GetState());
+            return new XnaTouchState(TouchPanel.GetState(), TouchPanel.GetCapabilities(), TouchPanel.IsGestureAvailable);
         }
 
         private class XnaKeyboardState : KeyboardStateBase
@@ -111,10 +111,14 @@ namespace MonoGameImplementation.EngineImplementation
         private class XnaTouchState : TouchStateBase
         {
             private readonly TouchCollection touchCollection;
+            private readonly TouchPanelCapabilities capabilities;
+            private readonly bool isGestureAvailable;
 
-            public XnaTouchState(TouchCollection touchCollection)
+            public XnaTouchState(TouchCollection touchCollection, TouchPanelCapabilities capabilities, bool isGestureAvailable)
             {
                 this.touchCollection = touchCollection;
+                this.capabilities = capabilities;
+                this.isGestureAvailable = isGestureAvailable;
             }
 
             public override IEnumerable<TouchPoint> Touches
@@ -124,6 +128,26 @@ namespace MonoGameImplementation.EngineImplementation
                     return this.touchCollection.Select(t => 
                         new TouchPoint(t.Id, new Vector(t.Position.X, t.Position.Y), t.Pressure, (TouchPointState)t.State));
                 }
+            }
+
+            public override bool IsConnected
+            {
+                get { return this.capabilities.IsConnected; }
+            }
+
+            public override bool HasPressure
+            {
+                get { return this.capabilities.HasPressure; }
+            }
+
+            public override int MaximumTouchCount
+            {
+                get { return this.capabilities.MaximumTouchCount; }
+            }
+
+            public override bool IsGestureAvailable
+            {
+                get { return this.isGestureAvailable; }
             }
         }
     }
