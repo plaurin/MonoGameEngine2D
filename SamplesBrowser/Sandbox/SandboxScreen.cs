@@ -180,7 +180,7 @@ namespace SamplesBrowser.Sandbox
         {
             var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1"); 
             
-            this.diagnosticMap = new DiagnosticMap(this.gameResourceManager, font);
+            this.diagnosticMap = new DiagnosticMap(this.gameResourceManager, font, new DiagnosticMapConfiguration());
             this.diagnosticMap.AddLine("Range", "Range: {0:f1}");
 
             return this.diagnosticMap;

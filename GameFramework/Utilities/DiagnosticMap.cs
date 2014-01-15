@@ -12,10 +12,12 @@ namespace GameFramework.Utilities
     {
         private const int FirstLineY = 10;
         private const int LineHeight = 15;
+        private const int LeftMargin = 10;
         private const int RightMargin = 350;
 
         private readonly DrawingMap map;
         private readonly DrawingFont font;
+        private readonly DiagnosticMapConfiguration configuration;
 
         private readonly TextElement fpsElement;
         private readonly TextElement viewPortElement;
@@ -29,57 +31,69 @@ namespace GameFramework.Utilities
         private readonly List<TextElement> lines;
         private readonly Dictionary<string, TextElement> customLines;
 
-        private int nextLineY;
-
-        public DiagnosticMap(GameResourceManager gameResourceManager, DrawingFont font)
+        public DiagnosticMap(GameResourceManager gameResourceManager, DrawingFont font, DiagnosticMapConfiguration configuration = null)
             : base("Diagnostic")
         {
             this.font = font;
             this.map = new DrawingMap("DiagnosticsInner", gameResourceManager) { CameraMode = CameraMode.Fix };
+            this.configuration = configuration ?? new DiagnosticMapConfiguration();
 
-            this.fpsElement = this.map.AddText(this.font, "FPS {0:d} - Update Per Second {1:d}", Vector.Zero, Color.White);
-            this.viewPortElement = this.map.AddText(this.font, "ViewPort: {0}", Vector.Zero, Color.White);
-            this.translationElement = this.map.AddText(this.font, "Translation: {0}", Vector.Zero, Color.White);
-            this.positionElement = this.map.AddText(this.font, "Position: {0}", Vector.Zero, Color.White);
-            this.zoomingElement = this.map.AddText(this.font, "Zooming: {0:f1}", Vector.Zero, Color.White);
-            this.mouseElement = this.map.AddText(this.font, "Mouse: {0}", Vector.Zero, Color.White);
-            this.mouseElement2 = this.map.AddText(this.font, "MouseAbs: {0}", Vector.Zero, Color.White);
-            this.hitElement = this.map.AddText(this.font, "Hits: {0}", Vector.Zero, Color.White);
-
-            this.lines = new List<TextElement>
-            {
-                this.fpsElement, 
-                this.viewPortElement, 
-                this.translationElement, 
-                this.positionElement, 
-                this.zoomingElement, 
-                this.mouseElement, 
-                this.mouseElement2,
-                this.hitElement
-            };
-
-            this.nextLineY = FirstLineY + this.lines.Count * LineHeight;
+            this.lines = new List<TextElement>();
             this.customLines = new Dictionary<string, TextElement>();
+
+            // Create default diagnostic lines based on configuration
+            if (this.configuration.DisplayFps)
+                this.fpsElement = this.CreateNewLine("FPS {0:d} - Update Per Second {1:d}");
+
+            if (this.configuration.DisplayCameraState)
+            {
+                this.viewPortElement = this.CreateNewLine("ViewPort: {0}");
+                this.translationElement = this.CreateNewLine("Translation: {0}");
+                this.positionElement = this.CreateNewLine("Position: {0}");
+                this.zoomingElement = this.CreateNewLine("Zooming: {0:f1}");
+            }
+
+            if (this.configuration.DisplayMouseState)
+            {
+                this.mouseElement = this.CreateNewLine("Mouse: {0}");
+                this.mouseElement2 = this.CreateNewLine("MouseAbs: {0}");
+            }
+
+            if (this.configuration.DisplayHits)
+                this.hitElement = this.CreateNewLine("Hits: {0}");
         }
 
-        public void Update(IGameTiming gameTime, Camera camera, MouseStateBase mouseState, IEnumerable<HitBase> hits = null)
+        public void Update(IGameTiming gameTime, Camera camera, MouseStateBase mouseState = null, IEnumerable<HitBase> hits = null)
         {
             var currentY = FirstLineY;
             foreach (var textElement in this.lines)
             {
-                textElement.Position = new Vector(camera.Viewport.Width - RightMargin, currentY);
+                var x = this.configuration.DisplayLocation == DiagnosticDisplayLocation.Left
+                    ? LeftMargin
+                    : camera.Viewport.Width - RightMargin;
+
+                textElement.Position = new Vector(x, currentY);
                 currentY += LineHeight;
             }
 
-            this.fpsElement.SetParameters(gameTime.DrawFps, gameTime.UpdateFps);
-            this.viewPortElement.SetParameters(camera.SceneViewPort);
-            this.translationElement.SetParameters(camera.SceneTranslationVector);
-            this.positionElement.SetParameters(camera.Position);
-            this.zoomingElement.SetParameters(camera.ZoomFactor);
-            this.mouseElement.SetParameters(mouseState);
-            this.mouseElement2.SetParameters(mouseState.AbsolutePosition);
+            if (this.configuration.DisplayFps)
+                this.fpsElement.SetParameters(gameTime.DrawFps, gameTime.UpdateFps);
 
-            if (hits != null)
+            if (this.configuration.DisplayCameraState)
+            {
+                this.viewPortElement.SetParameters(camera.SceneViewPort);
+                this.translationElement.SetParameters(camera.SceneTranslationVector);
+                this.positionElement.SetParameters(camera.Position);
+                this.zoomingElement.SetParameters(camera.ZoomFactor);
+            }
+
+            if (this.configuration.DisplayMouseState && mouseState != null)
+            {
+                this.mouseElement.SetParameters(mouseState);
+                this.mouseElement2.SetParameters(mouseState.AbsolutePosition);
+            }
+
+            if (this.configuration.DisplayHits && hits != null)
                 this.hitElement.SetParameters(string.Join("; ", hits));
         }
 
@@ -90,12 +104,7 @@ namespace GameFramework.Utilities
 
         public void AddLine(string lineId, string textFormat)
         {
-            var textElement = this.map.AddText(this.font, textFormat, new Vector(410, this.nextLineY), Color.White);
-
-            this.lines.Add(textElement);
-
-            this.customLines.Add(lineId, textElement);
-            this.nextLineY += 20;
+            this.customLines.Add(lineId, this.CreateNewLine(textFormat));
         }
 
         public void UpdateLine(string lineId, params object[] parameters)
@@ -103,5 +112,51 @@ namespace GameFramework.Utilities
             var textElement = this.customLines[lineId];
             textElement.SetParameters(parameters);
         }
+
+        private TextElement CreateNewLine(string text)
+        {
+            var textElement = this.map.AddText(this.font, text, Vector.Zero, Color.White);
+            this.lines.Add(textElement);
+            return textElement;
+        }
+    }
+
+    public class DiagnosticMapConfiguration
+    {
+        public DiagnosticMapConfiguration()
+        {
+            this.DisplayLocation = DiagnosticDisplayLocation.Right;
+            this.DisplayFps = true;
+            this.DisplayCameraState = true;
+            this.DisplayMouseState = true;
+            this.DisplayHits = true;
+        }
+
+        public DiagnosticDisplayLocation DisplayLocation { get; set; }
+
+        public bool DisplayFps { get; set; }
+
+        public bool DisplayCameraState { get; set; }
+
+        public bool DisplayMouseState { get; set; }
+
+        public bool DisplayHits { get; set; }
+
+        public static DiagnosticMapConfiguration CreateWithFpsOnly(DiagnosticDisplayLocation location = DiagnosticDisplayLocation.Right)
+        {
+            return new DiagnosticMapConfiguration
+            {
+                DisplayLocation = location,
+                DisplayCameraState = false,
+                DisplayMouseState = false,
+                DisplayHits = false,
+            };
+        }
+    }
+
+    public enum DiagnosticDisplayLocation
+    {
+        Left,
+        Right
     }
 }
