@@ -73,19 +73,9 @@ namespace GameFramework.Utilities
                 this.CreateNewLine(LineId.Hits, "Hits: {0}");
         }
 
-        public void Update(IGameTiming gameTime, Camera camera, MouseStateBase mouseState = null, 
-            TouchStateBase touchState = null, IEnumerable<HitBase> hits = null)
+        public void Update(IGameTiming gameTime, Camera camera)
         {
-            var currentY = FirstLineY;
-            foreach (var textElement in this.allLines.Select(l => l.Value))
-            {
-                var x = this.configuration.DisplayLocation == DiagnosticDisplayLocation.Left
-                    ? LeftMargin
-                    : camera.Viewport.Width - RightMargin;
-
-                textElement.Position = new Vector(x, currentY);
-                currentY += LineHeight;
-            }
+            this.AdjustLinesPosition(camera);
 
             if (this.configuration.DisplayFps)
                 this.UpdatBuiltInLine(LineId.Fps, gameTime.DrawFps, gameTime.UpdateFps);
@@ -97,18 +87,27 @@ namespace GameFramework.Utilities
                 this.UpdatBuiltInLine(LineId.Position, camera.Position);
                 this.UpdatBuiltInLine(LineId.Zoom, camera.ZoomFactor);
             }
+        }
 
+        public void Update(MouseStateBase mouseState)
+        {
             if (this.configuration.DisplayMouseState && mouseState != null)
             {
                 this.UpdatBuiltInLine(LineId.Mouse, mouseState);
                 this.UpdatBuiltInLine(LineId.MouseAbsolute, mouseState.AbsolutePosition);
             }
+        }
 
+        public void Update(TouchStateBase touchState)
+        {
             if (this.configuration.DisplayTouchState && touchState != null)
             {
                 this.UpdatBuiltInLine(LineId.Touches, string.Join("; ", touchState.Touches));
             }
+        }
 
+        public void Update(IEnumerable<HitBase> hits)
+        {
             if (this.configuration.DisplayHits && hits != null)
                 this.UpdatBuiltInLine(LineId.Hits, string.Join("; ", hits));
         }
@@ -144,6 +143,20 @@ namespace GameFramework.Utilities
         private void UpdatBuiltInLine(LineId lineId, params object[] parameters)
         {
             this.allLines.Single(l => l.Key == lineId.ToString()).Value.SetParameters(parameters);
+        }
+
+        private void AdjustLinesPosition(Camera camera)
+        {
+            var currentY = FirstLineY;
+            foreach (var textElement in this.allLines.Select(l => l.Value))
+            {
+                var x = this.configuration.DisplayLocation == DiagnosticDisplayLocation.Left
+                    ? LeftMargin
+                    : camera.Viewport.Width - RightMargin;
+
+                textElement.Position = new Vector(x, currentY);
+                currentY += LineHeight;
+            }
         }
     }
 

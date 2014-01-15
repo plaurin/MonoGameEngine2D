@@ -53,7 +53,8 @@ namespace SamplesBrowser.Touch
 
         public override void Update(IGameTiming gameTime)
         {
-            this.diagnosticMap.Update(gameTime, this.camera, touchState: this.touchState);
+            this.diagnosticMap.Update(gameTime, this.camera);
+            this.diagnosticMap.Update(this.touchState);
         }
 
         public override Scene GetScene()
