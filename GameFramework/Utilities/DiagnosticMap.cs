@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using GameFramework.Cameras;
 using GameFramework.Drawing;
 using GameFramework.Inputs;
@@ -19,17 +20,20 @@ namespace GameFramework.Utilities
         private readonly DrawingFont font;
         private readonly DiagnosticMapConfiguration configuration;
 
-        private readonly TextElement fpsElement;
-        private readonly TextElement viewPortElement;
-        private readonly TextElement translationElement;
-        private readonly TextElement positionElement;
-        private readonly TextElement zoomingElement;
-        private readonly TextElement mouseElement;
-        private readonly TextElement mouseElement2;
-        private readonly TextElement hitElement;
-
-        private readonly List<TextElement> lines;
+        private readonly List<KeyValuePair<string, TextElement>> allLines;
         private readonly Dictionary<string, TextElement> customLines;
+
+        private enum LineId
+        {
+            Fps,
+            ViewPort,
+            Translation,
+            Position,
+            Zoom,
+            Mouse,
+            MouseAbsolute,
+            Hits
+        }
 
         public DiagnosticMap(GameResourceManager gameResourceManager, DrawingFont font, DiagnosticMapConfiguration configuration = null)
             : base("Diagnostic")
@@ -38,35 +42,35 @@ namespace GameFramework.Utilities
             this.map = new DrawingMap("DiagnosticsInner", gameResourceManager) { CameraMode = CameraMode.Fix };
             this.configuration = configuration ?? new DiagnosticMapConfiguration();
 
-            this.lines = new List<TextElement>();
+            this.allLines = new List<KeyValuePair<string, TextElement>>();
             this.customLines = new Dictionary<string, TextElement>();
 
             // Create default diagnostic lines based on configuration
             if (this.configuration.DisplayFps)
-                this.fpsElement = this.CreateNewLine("FPS {0:d} - Update Per Second {1:d}");
+                this.CreateNewLine(LineId.Fps, "FPS {0:d} - Update Per Second {1:d}");
 
             if (this.configuration.DisplayCameraState)
             {
-                this.viewPortElement = this.CreateNewLine("ViewPort: {0}");
-                this.translationElement = this.CreateNewLine("Translation: {0}");
-                this.positionElement = this.CreateNewLine("Position: {0}");
-                this.zoomingElement = this.CreateNewLine("Zooming: {0:f1}");
+                this.CreateNewLine(LineId.ViewPort, "ViewPort: {0}");
+                this.CreateNewLine(LineId.Translation, "Translation: {0}");
+                this.CreateNewLine(LineId.Position, "Position: {0}");
+                this.CreateNewLine(LineId.Zoom, "Zooming: {0:f1}");
             }
 
             if (this.configuration.DisplayMouseState)
             {
-                this.mouseElement = this.CreateNewLine("Mouse: {0}");
-                this.mouseElement2 = this.CreateNewLine("MouseAbs: {0}");
+                this.CreateNewLine(LineId.Mouse, "Mouse: {0}");
+                this.CreateNewLine(LineId.MouseAbsolute, "MouseAbs: {0}");
             }
 
             if (this.configuration.DisplayHits)
-                this.hitElement = this.CreateNewLine("Hits: {0}");
+                this.CreateNewLine(LineId.Hits, "Hits: {0}");
         }
 
         public void Update(IGameTiming gameTime, Camera camera, MouseStateBase mouseState = null, IEnumerable<HitBase> hits = null)
         {
             var currentY = FirstLineY;
-            foreach (var textElement in this.lines)
+            foreach (var textElement in this.allLines.Select(l => l.Value))
             {
                 var x = this.configuration.DisplayLocation == DiagnosticDisplayLocation.Left
                     ? LeftMargin
@@ -77,24 +81,24 @@ namespace GameFramework.Utilities
             }
 
             if (this.configuration.DisplayFps)
-                this.fpsElement.SetParameters(gameTime.DrawFps, gameTime.UpdateFps);
+                this.UpdatBuiltInLine(LineId.Fps, gameTime.DrawFps, gameTime.UpdateFps);
 
             if (this.configuration.DisplayCameraState)
             {
-                this.viewPortElement.SetParameters(camera.SceneViewPort);
-                this.translationElement.SetParameters(camera.SceneTranslationVector);
-                this.positionElement.SetParameters(camera.Position);
-                this.zoomingElement.SetParameters(camera.ZoomFactor);
+                this.UpdatBuiltInLine(LineId.ViewPort, camera.SceneViewPort);
+                this.UpdatBuiltInLine(LineId.Translation, camera.SceneTranslationVector);
+                this.UpdatBuiltInLine(LineId.Position, camera.Position);
+                this.UpdatBuiltInLine(LineId.Zoom, camera.ZoomFactor);
             }
 
             if (this.configuration.DisplayMouseState && mouseState != null)
             {
-                this.mouseElement.SetParameters(mouseState);
-                this.mouseElement2.SetParameters(mouseState.AbsolutePosition);
+                this.UpdatBuiltInLine(LineId.Mouse, mouseState);
+                this.UpdatBuiltInLine(LineId.MouseAbsolute, mouseState.AbsolutePosition);
             }
 
             if (this.configuration.DisplayHits && hits != null)
-                this.hitElement.SetParameters(string.Join("; ", hits));
+                this.UpdatBuiltInLine(LineId.Hits, string.Join("; ", hits));
         }
 
         public override void Draw(DrawContext drawContext, Camera camera)
@@ -104,7 +108,7 @@ namespace GameFramework.Utilities
 
         public void AddLine(string lineId, string textFormat)
         {
-            this.customLines.Add(lineId, this.CreateNewLine(textFormat));
+            this.customLines.Add(lineId, this.CreateNewLine(null, textFormat));
         }
 
         public void UpdateLine(string lineId, params object[] parameters)
@@ -113,11 +117,21 @@ namespace GameFramework.Utilities
             textElement.SetParameters(parameters);
         }
 
-        private TextElement CreateNewLine(string text)
+        private void CreateNewLine(LineId lineId, string text)
+        {
+            this.CreateNewLine(lineId.ToString(), text);
+        }
+
+        private TextElement CreateNewLine(string lineId, string text)
         {
             var textElement = this.map.AddText(this.font, text, Vector.Zero, Color.White);
-            this.lines.Add(textElement);
+            this.allLines.Add(new KeyValuePair<string, TextElement>(lineId, textElement));
             return textElement;
+        }
+
+        private void UpdatBuiltInLine(LineId lineId, params object[] parameters)
+        {
+            this.allLines.Single(l => l.Key == lineId.ToString()).Value.SetParameters(parameters);
         }
     }
 
