@@ -10,35 +10,35 @@ namespace GameFramework.Cameras
         {
             this.Viewport = viewport;
             this.ZoomFactor = 1.0f;
-            this.ViewPortCenter = new Point(viewport.Width / 2, viewport.Height / 2);
+            this.ViewPortCenter = new Vector(viewport.Width / 2.0f, viewport.Height / 2.0f);
             this.innerPosition = Vector.Zero;
-            this.Position = Point.Zero;
+            this.Position = Vector.Zero;
         }
 
-        public Point Position { get; private set; }
+        public Vector Position { get; private set; }
 
         public float ZoomFactor { get; set; }
 
         public Viewport Viewport { get; private set; }
 
-        public Point ViewPortCenter { get; private set; }
+        public Vector ViewPortCenter { get; private set; }
 
         public CameraCenter Center { get; set; }
 
-        public Point SceneTranslationVector
+        public Vector SceneTranslationVector
         {
             get
             {
                 switch (this.Center)
                 {
                     case CameraCenter.WindowCenter:
-                        return new Point(
-                            (int)(this.ViewPortCenter.X - this.Position.X * this.ZoomFactor),
-                            (int)(this.ViewPortCenter.Y - this.Position.Y * this.ZoomFactor));
+                        return new Vector(
+                            this.ViewPortCenter.X - this.Position.X * this.ZoomFactor,
+                            this.ViewPortCenter.Y - this.Position.Y * this.ZoomFactor);
                     case CameraCenter.WindowTopLeft:
-                        return new Point(
-                            (int)(-this.Position.X * this.ZoomFactor),
-                            (int)(-this.Position.Y * this.ZoomFactor));
+                        return new Vector(
+                            -this.Position.X * this.ZoomFactor,
+                            -this.Position.Y * this.ZoomFactor);
                     default:
                         throw new NotSupportedException("CameraCenter value not supported");
                 }
@@ -72,21 +72,21 @@ namespace GameFramework.Cameras
         public void Move(float offsetX, float offsetY)
         {
             this.innerPosition = this.innerPosition.Translate(offsetX, offsetY);
-            this.Position = this.innerPosition.ToPoint();
+            this.Position = this.innerPosition;
         }
 
-        public Point GetSceneTranslationVector(Vector parallaxScrollingVector)
+        public Vector GetSceneTranslationVector(Vector parallaxScrollingVector)
         {
             switch (this.Center)
             {
                 case CameraCenter.WindowCenter:
-                    return new Point(
-                        (int)(this.ViewPortCenter.X - this.Position.X * this.ZoomFactor * parallaxScrollingVector.X),
-                        (int)(this.ViewPortCenter.Y - this.Position.Y * this.ZoomFactor * parallaxScrollingVector.Y));
+                    return new Vector(
+                        this.ViewPortCenter.X - this.Position.X * this.ZoomFactor * parallaxScrollingVector.X,
+                        this.ViewPortCenter.Y - this.Position.Y * this.ZoomFactor * parallaxScrollingVector.Y);
                 case CameraCenter.WindowTopLeft:
-                    return new Point(
-                        (int)(-this.Position.X * this.ZoomFactor * parallaxScrollingVector.X),
-                        (int)(-this.Position.Y * this.ZoomFactor * parallaxScrollingVector.Y));
+                    return new Vector(
+                        -this.Position.X * this.ZoomFactor * parallaxScrollingVector.X,
+                        -this.Position.Y * this.ZoomFactor * parallaxScrollingVector.Y);
                 default:
                     throw new NotSupportedException("CameraCenter value not supported");
             }

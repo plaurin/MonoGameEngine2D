@@ -49,7 +49,7 @@ namespace GameFramework.Tiles
                             this.TileSize.Width, 
                             this.TileSize.Height)
                         .Scale(camera.ZoomFactor)
-                        .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
+                        .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector).ToPoint());
 
                     this.map[i, j].Draw(drawContext, destination);
                 }
@@ -67,7 +67,7 @@ namespace GameFramework.Tiles
                             this.TileSize.Width, 
                             this.TileSize.Height)
                         .Scale(camera.ZoomFactor)
-                        .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
+                        .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector).ToPoint());
 
                     if (tileRectangle.Intercept(position))
                         return new TileHit(new Point(i, j));

@@ -64,9 +64,9 @@ namespace GameFramework.Inputs
                 get
                 {
                     return this.inneMouseState.Position
-                        .Translate(-this.camera.ViewPortCenter)
+                        .Translate(-this.camera.ViewPortCenter.ToPoint())
                         .Scale(1.0f / this.camera.ZoomFactor)
-                        .Translate(this.camera.Position);
+                        .Translate(this.camera.Position.ToPoint());
                 }
             }
         }

@@ -66,7 +66,7 @@ namespace GameFramework.Hexes
 
                     var destination = rectangle
                         .Scale(camera.ZoomFactor)
-                        .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
+                        .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector).ToPoint());
 
                     this.map[i, j].Draw(drawContext, destination);
                 }
@@ -86,7 +86,7 @@ namespace GameFramework.Hexes
                         this.HexSize.Width, this.HexSize.Height);
 
                     var mapPosition = position
-                        .Translate(-camera.GetSceneTranslationVector(this.ParallaxScrollingVector))
+                        .Translate(-camera.GetSceneTranslationVector(this.ParallaxScrollingVector).ToPoint())
                         .Scale(1.0f / camera.ZoomFactor);
 
                     var x1 = (this.HexSize.Width - this.TopEdgeLength) / 2;

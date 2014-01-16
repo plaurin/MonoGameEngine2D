@@ -36,7 +36,7 @@ namespace GameFramework.Sprites
                     source.Width, 
                     source.Height)
                 .Scale(camera.ZoomFactor)
-                .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
+                .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector).ToPoint());
 
             drawContext.DrawImage(this.Texture, source, destination);
         }
@@ -51,7 +51,7 @@ namespace GameFramework.Sprites
                     source.Width, 
                     source.Height)
                 .Scale(camera.ZoomFactor)
-                .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
+                .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector).ToPoint());
 
             return spriteRectangle.Intercept(position) 
                 ? new SpriteHit(sprite) 

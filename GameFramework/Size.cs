@@ -2,6 +2,9 @@
 
 namespace GameFramework
 {
+    /// <summary>
+    /// <remarks>Should only be used for MapSize (and array size)</remarks>
+    /// </summary>
     public struct Size
     {
         public int Width;
