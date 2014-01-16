@@ -4,14 +4,31 @@ namespace GameFramework
 {
     public class Viewport
     {
-        public Viewport(int width, int height)
+        public Viewport(float x, float y, float width, float height)
+            : this(width, height)
         {
-            this.Height = height;
-            this.Width = width;
+            this.X = x;
+            this.Y = y;
+            this.Positon = new Vector(x, y);
         }
 
-        public int Width { get; private set; }
+        public Viewport(float width, float height)
+        {
+            this.Width = width;
+            this.Height = height;
+            this.Size = new Vector(width, height);
+        }
 
-        public int Height { get; private set; }
+        public float X { get; private set; }
+
+        public float Y { get; private set; }
+
+        public float Width { get; private set; }
+
+        public float Height { get; private set; }
+
+        public Vector Positon { get; private set; }
+
+        public Vector Size { get; private set; }
     }
 }

@@ -71,9 +71,10 @@ namespace SamplesBrowser.Touch
             this.inputConfiguration.AddEvent("PinchComplete").Assign(TouchGestureType.PinchComplete).MapTo(gt => this.pinchCompleteCount++);
             this.inputConfiguration.AddEvent("VerticalDrag").Assign(TouchGestureType.VerticalDrag).MapTo(gt => this.verticalDragCount++);
 
-            var size = new Size(this.camera.Viewport.Width, this.camera.Viewport.Height);
-            var s2 = size.Scale(0.1f);
-            var backRectangle = new Rectangle(size.Width - s2.Width * 2, size.Height - s2.Height * 2, s2);
+            var viewport = this.camera.Viewport;
+            //var size = new Size(viewport.Width, viewport.Height);
+            var s2 = viewport.Size.Scale(0.1f);
+            var backRectangle = new Rectangle((int)(viewport.Width - s2.X * 2), (int)(viewport.Height - s2.Y * 2), (int)s2.X, (int)s2.Y);
 
             this.visualBackButton = this.inputConfiguration.AddVisualButton("Back", backRectangle)
                 .Assign(TouchGestureType.Tap)

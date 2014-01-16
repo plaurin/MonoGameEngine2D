@@ -109,6 +109,7 @@ namespace GameFramework
                 (int)(rectangle.Height * factor));
         }
 
+        [Obsolete("Should use Vector instead of Point")]
         public static Rectangle Translate(this Rectangle rectangle, Point vector)
         {
             return new Rectangle(rectangle.X + vector.X, rectangle.Y + vector.Y, rectangle.Width, rectangle.Height);

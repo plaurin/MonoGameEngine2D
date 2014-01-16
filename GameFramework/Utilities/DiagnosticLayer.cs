@@ -93,7 +93,7 @@ namespace GameFramework.Utilities
 
             if (this.configuration.DisplayCameraState)
             {
-                this.UpdatBuiltInLine(LineId.ViewPort, camera.SceneViewPort);
+                this.UpdatBuiltInLine(LineId.ViewPort, camera.SceneViewport);
                 this.UpdatBuiltInLine(LineId.Translation, camera.SceneTranslationVector);
                 this.UpdatBuiltInLine(LineId.Position, camera.Position);
                 this.UpdatBuiltInLine(LineId.Zoom, camera.ZoomFactor);

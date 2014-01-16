@@ -45,20 +45,20 @@ namespace GameFramework.Cameras
             }
         }
 
-        public Rectangle SceneViewPort
+        public Viewport SceneViewport
         {
             get
             {
                 switch (this.Center)
                 {
                     case CameraCenter.WindowCenter:
-                        return new Rectangle(
+                        return new Viewport(
                             (int)(this.Position.X - this.ViewPortCenter.X / this.ZoomFactor),
                             (int)(this.Position.Y - this.ViewPortCenter.Y / this.ZoomFactor),
                             (int)(this.Viewport.Width / this.ZoomFactor),
                             (int)(this.Viewport.Height / this.ZoomFactor));
                     case CameraCenter.WindowTopLeft:
-                        return new Rectangle(
+                        return new Viewport(
                             (int)(this.Position.X / this.ZoomFactor),
                             (int)(this.Position.Y / this.ZoomFactor),
                             (int)(this.Viewport.Width / this.ZoomFactor),
