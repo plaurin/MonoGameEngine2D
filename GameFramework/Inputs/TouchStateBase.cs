@@ -46,9 +46,9 @@ namespace GameFramework.Inputs
                 get { return this.innerTouchState.IsGestureAvailable; }
             }
 
-            public override TouchGesture CurrentGestures
+            public override TouchGesture CurrentGesture
             {
-                get { return this.innerTouchState.CurrentGestures; }
+                get { return this.innerTouchState.CurrentGesture; }
             }
         }
 
@@ -62,7 +62,7 @@ namespace GameFramework.Inputs
         
         public abstract bool IsGestureAvailable { get; }
 
-        public abstract TouchGesture CurrentGestures { get; }
+        public abstract TouchGesture CurrentGesture { get; }
     }
 
     public class TouchPoint

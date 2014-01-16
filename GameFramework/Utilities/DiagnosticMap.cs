@@ -22,7 +22,7 @@ namespace GameFramework.Utilities
 
         private readonly List<KeyValuePair<string, TextElement>> allLines;
         private readonly Dictionary<string, TextElement> customLines;
-        private readonly Dictionary<TouchGesture, float> gestures;
+        private readonly Dictionary<TouchGestureType, float> gestures;
 
         private IGameTiming currentGameTime;
 
@@ -51,7 +51,7 @@ namespace GameFramework.Utilities
 
             this.allLines = new List<KeyValuePair<string, TextElement>>();
             this.customLines = new Dictionary<string, TextElement>();
-            this.gestures = new Dictionary<TouchGesture, float>();
+            this.gestures = new Dictionary<TouchGestureType, float>();
 
             // Create default diagnostic lines based on configuration
             if (this.configuration.DisplayFps)
@@ -116,7 +116,7 @@ namespace GameFramework.Utilities
                 this.UpdatBuiltInLine(LineId.TouchCapabilities, touchState.IsConnected, touchState.HasPressure);
                 this.UpdatBuiltInLine(LineId.TouchCapabilities2, touchState.MaximumTouchCount, touchState.IsGestureAvailable);
                 this.UpdatBuiltInLine(LineId.Touches, string.Join("; ", touchState.Touches));
-                this.UpdatBuiltInLine(LineId.Gestures, this.GetGesturesList(touchState.CurrentGestures));
+                this.UpdatBuiltInLine(LineId.Gestures, this.GetGesturesList(touchState.CurrentGesture.GestureType));
             }
         }
 
@@ -173,9 +173,9 @@ namespace GameFramework.Utilities
             }
         }
 
-        private string GetGesturesList(TouchGesture gesture)
+        private string GetGesturesList(TouchGestureType gesture)
         {
-            if (gesture != TouchGesture.None)
+            if (gesture != TouchGestureType.None)
                 this.gestures[gesture] = this.currentGameTime.TotalSeconds;
 
             return string.Join(", ", this.gestures.Where(g => g.Value + 1 > this.currentGameTime.TotalSeconds).Select(g => g.Key));

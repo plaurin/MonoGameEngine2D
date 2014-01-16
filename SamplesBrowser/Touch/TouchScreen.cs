@@ -51,20 +51,20 @@ namespace SamplesBrowser.Touch
 
             this.inputConfiguration.AddTouchTracking(this.camera).OnTouch((ts, gt) => this.touchState = ts);
 
-            this.inputConfiguration.EnableGesture(TouchGesture.Tap, TouchGesture.Hold, TouchGesture.DoubleTap,
-                TouchGesture.DragComplete, TouchGesture.Flick, TouchGesture.FreeDrag, TouchGesture.HorizontalDrag,
-                TouchGesture.Pinch, TouchGesture.PinchComplete, TouchGesture.VerticalDrag);
+            this.inputConfiguration.EnableGesture(TouchGestureType.Tap, TouchGestureType.Hold, TouchGestureType.DoubleTap,
+                TouchGestureType.DragComplete, TouchGestureType.Flick, TouchGestureType.FreeDrag, TouchGestureType.HorizontalDrag,
+                TouchGestureType.Pinch, TouchGestureType.PinchComplete, TouchGestureType.VerticalDrag);
 
-            this.inputConfiguration.AddEvent("Tap").Assign(TouchGesture.Tap).MapTo(gt => this.tapCount++);
-            this.inputConfiguration.AddEvent("Hold").Assign(TouchGesture.Hold).MapTo(gt => this.holdCount++);
-            this.inputConfiguration.AddEvent("DoubleTap").Assign(TouchGesture.DoubleTap).MapTo(gt => this.doubleTapCount++);
-            this.inputConfiguration.AddEvent("DragComplete").Assign(TouchGesture.DragComplete).MapTo(gt => this.dragCompleteCount++);
-            this.inputConfiguration.AddEvent("Flick").Assign(TouchGesture.Flick).MapTo(gt => this.flickCount++);
-            this.inputConfiguration.AddEvent("FreeDrag").Assign(TouchGesture.FreeDrag).MapTo(gt => this.freeDragCount++);
-            this.inputConfiguration.AddEvent("HorizontalDrag").Assign(TouchGesture.HorizontalDrag).MapTo(gt => this.horizontalDragCount++);
-            this.inputConfiguration.AddEvent("Pinch").Assign(TouchGesture.Pinch).MapTo(gt => this.pinchCount++);
-            this.inputConfiguration.AddEvent("PinchComplete").Assign(TouchGesture.PinchComplete).MapTo(gt => this.pinchCompleteCount++);
-            this.inputConfiguration.AddEvent("VerticalDrag").Assign(TouchGesture.VerticalDrag).MapTo(gt => this.verticalDragCount++);
+            this.inputConfiguration.AddEvent("Tap").Assign(TouchGestureType.Tap).MapTo(gt => this.tapCount++);
+            this.inputConfiguration.AddEvent("Hold").Assign(TouchGestureType.Hold).MapTo(gt => this.holdCount++);
+            this.inputConfiguration.AddEvent("DoubleTap").Assign(TouchGestureType.DoubleTap).MapTo(gt => this.doubleTapCount++);
+            this.inputConfiguration.AddEvent("DragComplete").Assign(TouchGestureType.DragComplete).MapTo(gt => this.dragCompleteCount++);
+            this.inputConfiguration.AddEvent("Flick").Assign(TouchGestureType.Flick).MapTo(gt => this.flickCount++);
+            this.inputConfiguration.AddEvent("FreeDrag").Assign(TouchGestureType.FreeDrag).MapTo(gt => this.freeDragCount++);
+            this.inputConfiguration.AddEvent("HorizontalDrag").Assign(TouchGestureType.HorizontalDrag).MapTo(gt => this.horizontalDragCount++);
+            this.inputConfiguration.AddEvent("Pinch").Assign(TouchGestureType.Pinch).MapTo(gt => this.pinchCount++);
+            this.inputConfiguration.AddEvent("PinchComplete").Assign(TouchGestureType.PinchComplete).MapTo(gt => this.pinchCompleteCount++);
+            this.inputConfiguration.AddEvent("VerticalDrag").Assign(TouchGestureType.VerticalDrag).MapTo(gt => this.verticalDragCount++);
 
             return this.inputConfiguration;
         }

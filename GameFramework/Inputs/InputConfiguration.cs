@@ -17,10 +17,10 @@ namespace GameFramework.Inputs
         {
             this.digitalButtons = new Dictionary<string, DigitalButton>();
             this.inputEvents = new Dictionary<string, InputEvent>();
-            this.EnabledGestures = Enumerable.Empty<TouchGesture>();
+            this.EnabledGestures = Enumerable.Empty<TouchGestureType>();
         }
 
-        public IEnumerable<TouchGesture> EnabledGestures { get; private set; }
+        public IEnumerable<TouchGestureType> EnabledGestures { get; private set; }
 
         public bool EnabledGesturesUpdated { get; set; }
 
@@ -89,8 +89,9 @@ namespace GameFramework.Inputs
             return this.touchTracking;
         }
 
-        public void EnableGesture(params TouchGesture[] touchGestures)
+        public void EnableGesture(params TouchGestureType[] touchGestures)
         {
+            // TODO: Those two should be on an interface only XNA can see
             this.EnabledGestures = touchGestures.ToList();
             this.EnabledGesturesUpdated = true;
         }

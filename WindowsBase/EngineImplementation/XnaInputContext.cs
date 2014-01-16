@@ -30,34 +30,34 @@ namespace MonoGameImplementation.EngineImplementation
                 gestureSample);
         }
 
-        public static GestureType GetGestures(IEnumerable<TouchGesture> touchGestures)
+        public static GestureType GetGestures(IEnumerable<TouchGestureType> touchGestures)
         {
             var result = GestureType.None;
             foreach (var touchGesture in touchGestures)
             {
                 switch (touchGesture)
                 {
-                    case TouchGesture.None: result |= GestureType.None;
+                    case TouchGestureType.None: result |= GestureType.None;
                         break;
-                    case TouchGesture.Tap: result |= GestureType.Tap;
+                    case TouchGestureType.Tap: result |= GestureType.Tap;
                         break;
-                    case TouchGesture.DragComplete: result |= GestureType.DragComplete;
+                    case TouchGestureType.DragComplete: result |= GestureType.DragComplete;
                         break;
-                    case TouchGesture.Flick: result |= GestureType.Flick;
+                    case TouchGestureType.Flick: result |= GestureType.Flick;
                         break;
-                    case TouchGesture.FreeDrag: result |= GestureType.FreeDrag;
+                    case TouchGestureType.FreeDrag: result |= GestureType.FreeDrag;
                         break;
-                    case TouchGesture.Hold: result |= GestureType.Hold;
+                    case TouchGestureType.Hold: result |= GestureType.Hold;
                         break;
-                    case TouchGesture.HorizontalDrag: result |= GestureType.HorizontalDrag;
+                    case TouchGestureType.HorizontalDrag: result |= GestureType.HorizontalDrag;
                         break;
-                    case TouchGesture.Pinch: result |= GestureType.Pinch;
+                    case TouchGestureType.Pinch: result |= GestureType.Pinch;
                         break;
-                    case TouchGesture.PinchComplete: result |= GestureType.PinchComplete;
+                    case TouchGestureType.PinchComplete: result |= GestureType.PinchComplete;
                         break;
-                    case TouchGesture.DoubleTap: result |= GestureType.DoubleTap;
+                    case TouchGestureType.DoubleTap: result |= GestureType.DoubleTap;
                         break;
-                    case TouchGesture.VerticalDrag: result |= GestureType.VerticalDrag;
+                    case TouchGestureType.VerticalDrag: result |= GestureType.VerticalDrag;
                         break;
                     default: throw new NotSupportedException("Gesture not supported yet");
                 }
@@ -191,13 +191,15 @@ namespace MonoGameImplementation.EngineImplementation
                 get { return this.isGestureAvailable; }
             }
 
-            public override TouchGesture CurrentGestures
+            public override TouchGesture CurrentGesture
             {
                 get
                 {
                     if (!this.gestureSample.HasValue) return TouchGesture.None;
 
-                    return (TouchGesture)this.gestureSample.Value.GestureType;
+                    var gesture = this.gestureSample.Value;
+                    return new TouchGesture((TouchGestureType)gesture.GestureType, gesture.Position.ToVector(),
+                        gesture.Position2.ToVector(), gesture.Delta.ToVector(), gesture.Delta2.ToVector());
                 }
             }
         }

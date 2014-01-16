@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using GameFramework;
 using GameFramework.Cameras;
 using GameFramework.Drawing;
 using GameFramework.Inputs;
-using GameFramework.Maps;
 using GameFramework.Scenes;
 using GameFramework.Screens;
 using GameFramework.Utilities;
@@ -31,6 +31,7 @@ namespace SamplesBrowser
         private RectangleElement touchRectangle;
 
         private MouseStateBase mouseState;
+        private TouchStateBase touchState;
 
         private Scene scene;
         private MouseCursorMap mouseMap;
@@ -100,7 +101,7 @@ namespace SamplesBrowser
                 this.hoveringSample = hitToSampleFunc(hit);
             });
 
-            input.AddDigitalButton("Selection").Assign(MouseButtons.Left).MapClickTo(elapse =>
+            input.AddDigitalButton("MouseSelection").Assign(MouseButtons.Left).MapClickTo(elapse =>
             {
                 var hit = this.scene.GetHits(this.mouseState.AbsolutePosition, this.camera).OfType<RectangleHit>().FirstOrDefault();
                 var hitSample = hitToSampleFunc(hit);
@@ -108,6 +109,44 @@ namespace SamplesBrowser
                 switch (hitSample)
                 {
                     case Samples.Sandbox: 
+                        this.LaunchSandboxSample();
+                        break;
+                    case Samples.ShootEmUp:
+                        this.LaunchShootEmUpSample();
+                        break;
+                    case Samples.Tiled:
+                        this.LaunchTiledSample();
+                        break;
+                    case Samples.Touch:
+                        this.LaunchTouchSample();
+                        break;
+                }
+            });
+
+            // Touch
+            input.AddTouchTracking(this.camera).OnTouch((ts, gt) =>
+            {
+                this.touchState = ts;
+
+                var hit = this.touchState.Touches
+                    .SelectMany(t => this.scene.GetHits(t.Position.ToPoint(), this.camera))
+                    .OfType<RectangleHit>().FirstOrDefault();
+
+                this.hoveringSample = hitToSampleFunc(hit);
+            });
+
+            input.EnableGesture(TouchGestureType.Tap);
+
+            input.AddEvent("TouchSelection").Assign(TouchGestureType.Tap).MapTo(gt =>
+            {
+                var hit = this.scene.GetHits(this.touchState.CurrentGesture.Position.ToPoint(), this.camera)
+                    .OfType<RectangleHit>().FirstOrDefault();
+
+                var hitSample = hitToSampleFunc(hit);
+
+                switch (hitSample)
+                {
+                    case Samples.Sandbox:
                         this.LaunchSandboxSample();
                         break;
                     case Samples.ShootEmUp:
