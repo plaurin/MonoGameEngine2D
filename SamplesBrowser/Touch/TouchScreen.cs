@@ -80,6 +80,7 @@ namespace SamplesBrowser.Touch
             this.diagnosticMap.Update(this.touchState);
             this.diagnosticMap.UpdateLine("DoubleTap", this.doubleTapCount);
             this.diagnosticMap.UpdateLine("DragC", this.dragCompleteCount);
+            this.diagnosticMap.UpdateLine("Flick", this.flickCount);
             this.diagnosticMap.UpdateLine("FreeD", this.freeDragCount);
             this.diagnosticMap.UpdateLine("Hold", this.holdCount);
             this.diagnosticMap.UpdateLine("HDrag", this.horizontalDragCount);
@@ -109,6 +110,7 @@ namespace SamplesBrowser.Touch
 
             this.diagnosticMap.AddLine("DoubleTap", "DoubleTap: {0}");
             this.diagnosticMap.AddLine("DragC", "DragComplete: {0}");
+            this.diagnosticMap.AddLine("Flick", "Flick: {0}");
             this.diagnosticMap.AddLine("FreeD", "FreeDrag: {0}");
             this.diagnosticMap.AddLine("Hold", "Hold: {0}");
             this.diagnosticMap.AddLine("HDrag", "HorizontalDrag: {0}");
