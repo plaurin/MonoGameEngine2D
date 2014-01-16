@@ -125,7 +125,7 @@ namespace SamplesBrowser.Touch
             var drawingMap = new DrawingLayer("Button", this.gameResourceManager);
 
             this.visualBackButtonElement = drawingMap.AddRectangle(this.visualBackButton.Rectangle, 2, Color.Blue);
-            drawingMap.AddText(font, "Back", this.visualBackButton.Rectangle.Location.Translate(10, 10).ToVector(), Color.White);
+            drawingMap.AddText(font, "Back", this.visualBackButton.Rectangle.Location.ToVector().Translate(10, 10), Color.White);
 
             return drawingMap;
         }

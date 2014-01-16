@@ -63,7 +63,7 @@ namespace GameFramework.Inputs
         public void Update(TouchStateBase touchState, MouseStateBase mouseState, IGameTiming gameTime)
         {
             if (this.touchAction != null &&
-                touchState.Touches.Any(t => this.Rectangle.Intercept(t.Position.ToPoint())))
+                touchState.Touches.Any(t => this.Rectangle.Intercept(t.Position)))
             {
                 this.touchAction.Invoke(gameTime);
             }
@@ -77,7 +77,7 @@ namespace GameFramework.Inputs
             if (this.clickAction != null)
             {
                 if (this.mappingGestures.Any(g => (g & touchState.CurrentGesture.GestureType) == g)
-                    && this.Rectangle.Intercept(touchState.CurrentGesture.Position.ToPoint()))
+                    && this.Rectangle.Intercept(touchState.CurrentGesture.Position))
                 {
                     this.clickAction.Invoke(gameTime);
                 }

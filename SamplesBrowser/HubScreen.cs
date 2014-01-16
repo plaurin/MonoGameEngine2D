@@ -129,7 +129,7 @@ namespace SamplesBrowser
                 this.touchState = ts;
 
                 var hit = this.touchState.Touches
-                    .SelectMany(t => this.scene.GetHits(t.Position.ToPoint(), this.camera))
+                    .SelectMany(t => this.scene.GetHits(t.Position, this.camera))
                     .OfType<RectangleHit>().FirstOrDefault();
 
                 this.hoveringSample = hitToSampleFunc(hit);
@@ -139,7 +139,7 @@ namespace SamplesBrowser
 
             input.AddEvent("TouchSelection").Assign(TouchGestureType.Tap).MapTo(gt =>
             {
-                var hit = this.scene.GetHits(this.touchState.CurrentGesture.Position.ToPoint(), this.camera)
+                var hit = this.scene.GetHits(this.touchState.CurrentGesture.Position, this.camera)
                     .OfType<RectangleHit>().FirstOrDefault();
 
                 var hitSample = hitToSampleFunc(hit);

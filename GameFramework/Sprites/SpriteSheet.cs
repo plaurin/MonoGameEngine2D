@@ -31,12 +31,12 @@ namespace GameFramework.Sprites
             var source = this.Definitions[sprite.SpriteName];
             var destination = 
                 new Rectangle(
-                    (int)layerOffset.X + sprite.Position.X,
-                    (int)layerOffset.Y + sprite.Position.Y, 
+                    (int)(layerOffset.X + sprite.Position.X),
+                    (int)(layerOffset.Y + sprite.Position.Y), 
                     source.Width, 
                     source.Height)
                 .Scale(camera.ZoomFactor)
-                .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector).ToPoint());
+                .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
 
             drawContext.DrawImage(this.Texture, source, destination);
         }
@@ -46,14 +46,14 @@ namespace GameFramework.Sprites
             var source = this.Definitions[sprite.SpriteName];
             var spriteRectangle = 
                 new Rectangle(
-                    (int)layerOffset.X + sprite.Position.X,
-                    (int)layerOffset.X + sprite.Position.Y, 
+                    (int)(layerOffset.X + sprite.Position.X),
+                    (int)(layerOffset.X + sprite.Position.Y), 
                     source.Width, 
                     source.Height)
                 .Scale(camera.ZoomFactor)
-                .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector).ToPoint());
+                .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
 
-            return spriteRectangle.Intercept(position.ToPoint()) 
+            return spriteRectangle.Intercept(position) 
                 ? new SpriteHit(sprite) 
                 : null;
         }

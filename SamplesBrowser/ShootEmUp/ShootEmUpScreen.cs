@@ -73,9 +73,9 @@ namespace SamplesBrowser.ShootEmUp
             this.playerShipEntity = new PlayerShipEntity(this.entityLayer, spriteSheet);
             this.playerShipEntity.BindController(this.inputConfiguration);
 
-            var yellowSprite = new Sprite(spriteSheet, "YellowEnemy") { Position = new Point(250, 100) };
-            var redSprite = new Sprite(spriteSheet, "RedEnemy") { Position = new Point(300, 100) };
-            var blueSprite = new Sprite(spriteSheet, "BlueEnemy") { Position = new Point(350, 100) };
+            var yellowSprite = new Sprite(spriteSheet, "YellowEnemy") { Position = new Vector(250, 100) };
+            var redSprite = new Sprite(spriteSheet, "RedEnemy") { Position = new Vector(300, 100) };
+            var blueSprite = new Sprite(spriteSheet, "BlueEnemy") { Position = new Vector(350, 100) };
 
             this.entityLayer.AddSprite(yellowSprite);
             this.entityLayer.AddSprite(redSprite);

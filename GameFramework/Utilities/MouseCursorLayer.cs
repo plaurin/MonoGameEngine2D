@@ -24,11 +24,11 @@ namespace GameFramework.Utilities
             Action<MouseStateBase> updateAction = mouseState =>
             {
                 drawingMap.ClearAll();
-                drawingMap.AddLine(mouseState.AbsolutePosition.Translate(-10, 0).ToVector(),
-                    mouseState.AbsolutePosition.Translate(10, 0).ToVector(), 2, Color.Red);
+                drawingMap.AddLine(mouseState.AbsolutePosition.Translate(-10, 0),
+                    mouseState.AbsolutePosition.Translate(10, 0), 2, Color.Red);
 
-                drawingMap.AddLine(mouseState.AbsolutePosition.Translate(0, -10).ToVector(),
-                    mouseState.AbsolutePosition.Translate(0, 10).ToVector(), 2, Color.Red);
+                drawingMap.AddLine(mouseState.AbsolutePosition.Translate(0, -10),
+                    mouseState.AbsolutePosition.Translate(0, 10), 2, Color.Red);
             };
 
             return new MouseCursorLayer(drawingMap, updateAction);

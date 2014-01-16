@@ -2,6 +2,9 @@ using System;
 
 namespace GameFramework
 {
+    /// <summary>
+    /// <remarks>Should be used only for position in a map (array), Sprite (texture) position</remarks>
+    /// </summary>
     public struct Point
     {
         private readonly int x;

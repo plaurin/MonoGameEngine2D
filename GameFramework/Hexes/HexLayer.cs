@@ -66,7 +66,7 @@ namespace GameFramework.Hexes
 
                     var destination = rectangle
                         .Scale(camera.ZoomFactor)
-                        .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector).ToPoint());
+                        .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
 
                     this.map[i, j].Draw(drawContext, destination);
                 }
@@ -86,7 +86,7 @@ namespace GameFramework.Hexes
                         this.HexSize.Width, this.HexSize.Height);
 
                     var mapPosition = position
-                        .Translate(-camera.GetSceneTranslationVector(this.ParallaxScrollingVector).ToPoint())
+                        .Translate(-camera.GetSceneTranslationVector(this.ParallaxScrollingVector))
                         .Scale(1.0f / camera.ZoomFactor);
 
                     var x1 = (this.HexSize.Width - this.TopEdgeLength) / 2;
@@ -101,7 +101,7 @@ namespace GameFramework.Hexes
                         new Point(rectangle.X, rectangle.Y + halfHeight)
                     };
 
-                    if (MathUtil.IsHitPolygone(polygone, mapPosition.ToPoint()))
+                    if (MathUtil.IsHitPolygone(polygone, mapPosition))
                         return new HexHit(new Point(i, j));
                 }
 

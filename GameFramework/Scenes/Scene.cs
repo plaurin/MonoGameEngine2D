@@ -40,10 +40,10 @@ namespace GameFramework.Scenes
             }
         }
 
-        public IEnumerable<HitBase> GetHits(Point position, Camera camera)
+        public IEnumerable<HitBase> GetHits(Vector position, Camera camera)
         {
             return this.layers
-                .Select(layer => layer.GetHit(position.ToVector(), camera))
+                .Select(layer => layer.GetHit(position, camera))
                 .Where(hit => hit != null);
         }
     }

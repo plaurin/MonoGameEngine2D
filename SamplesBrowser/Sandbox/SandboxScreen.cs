@@ -25,7 +25,7 @@ namespace SamplesBrowser.Sandbox
 
         private GameResourceManager gameResourceManager;
 
-        private Point player;
+        private Vector player;
 
         private float range;
 
@@ -49,7 +49,7 @@ namespace SamplesBrowser.Sandbox
         public override void Initialize(Camera theCamera)
         {
             this.camera = theCamera;
-            this.player = new Point(25, 25);
+            this.player = new Vector(25, 25);
             this.range = 0.25f;
 
             // theCamera.Center = CameraCenter.WindowTopLeft;
@@ -263,7 +263,7 @@ namespace SamplesBrowser.Sandbox
             //sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Link SpriteSheet.xml");
 
             var link01 = new Sprite(sheet, "Link01") { Position = this.player };
-            var sleep01 = new Sprite(sheet, "Sleep01") { Position = new Point(125, 25) };
+            var sleep01 = new Sprite(sheet, "Sleep01") { Position = new Vector(125, 25) };
 
             this.gameResourceManager.AddSpriteSheet(sheet);
 

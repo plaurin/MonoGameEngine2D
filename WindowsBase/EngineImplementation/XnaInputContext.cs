@@ -137,11 +137,11 @@ namespace MonoGameImplementation.EngineImplementation
                 }
             }
 
-            public override Point Position
+            public override Vector Position
             {
                 get
                 {
-                    return new Point(this.mouseState.X, this.mouseState.Y);
+                    return new Vector(this.mouseState.X, this.mouseState.Y);
                 }
             }
         }

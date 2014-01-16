@@ -59,6 +59,11 @@ namespace GameFramework
             return MathUtil.CalcHypotenuse(Math.Abs(first.X - second.X), Math.Abs(first.Y - second.Y));
         }
 
+        public static Vector operator -(Vector vector)
+        {
+            return new Vector(-vector.X, -vector.Y);
+        }
+
         public override string ToString()
         {
             return string.Format("{{ X:{0:f2} Y:{1:f2} }}", this.X, this.Y);

@@ -61,14 +61,14 @@ namespace GameFramework
             return (float)(degrees / 180.0 * Math.PI);
         }
 
-        public static bool IsHitPolygone(IEnumerable<Point> polygone, Point point)
+        public static bool IsHitPolygone(IEnumerable<Point> polygone, Vector vector)
         {
             var isHit = false;
 
             polygone.ForEachPair((first, second) =>
             {
-                if (((first.Y > point.Y) != (second.Y > point.Y))
-                    && (point.X < (second.X - first.X) * (point.Y - first.Y)
+                if (((first.Y > vector.Y) != (second.Y > vector.Y))
+                    && (vector.X < (second.X - first.X) * (vector.Y - first.Y)
                         / (second.Y - first.Y) + first.X))
                     isHit = !isHit;
             });

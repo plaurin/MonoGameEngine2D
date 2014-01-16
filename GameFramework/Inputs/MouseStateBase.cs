@@ -9,7 +9,7 @@ namespace GameFramework.Inputs
     {
         public abstract bool IsButtonDown(MouseButtons button);
 
-        public virtual Point AbsolutePosition
+        public virtual Vector AbsolutePosition
         {
             get
             {
@@ -17,7 +17,7 @@ namespace GameFramework.Inputs
             }
         }
 
-        public abstract Point Position { get; }
+        public abstract Vector Position { get; }
 
         public MouseStateBase AdjustToCamera(Camera camera)
         {
@@ -51,7 +51,7 @@ namespace GameFramework.Inputs
                 return this.inneMouseState.IsButtonDown(button);
             }
 
-            public override Point AbsolutePosition
+            public override Vector AbsolutePosition
             {
                 get
                 {
@@ -59,14 +59,14 @@ namespace GameFramework.Inputs
                 }
             }
 
-            public override Point Position
+            public override Vector Position
             {
                 get
                 {
                     return this.inneMouseState.Position
-                        .Translate(-this.camera.ViewPortCenter.ToPoint())
+                        .Translate(-this.camera.ViewPortCenter)
                         .Scale(1.0f / this.camera.ZoomFactor)
-                        .Translate(this.camera.Position.ToPoint());
+                        .Translate(this.camera.Position);
                 }
             }
         }

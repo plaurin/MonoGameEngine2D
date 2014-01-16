@@ -40,6 +40,7 @@ namespace GameFramework
             return new Vector(vector.X + delta.X, vector.Y + delta.Y);
         }
 
+        [Obsolete("Should use Vector instead of Point")]
         public static Vector Translate(this Vector vector, Point delta)
         {
             return new Vector(vector.X + delta.X, vector.Y + delta.Y);
@@ -70,21 +71,25 @@ namespace GameFramework
             return new Point(point.X + delta.X, point.Y + delta.Y);
         }
 
+        [Obsolete("Should use Vector instead of Point")]
         public static Point Translate(this Point point, int deltaX, int deltaY)
         {
             return new Point(point.X + deltaX, point.Y + deltaY);
         }
 
+        [Obsolete("Should use Vector instead of Point")]
         public static Point Scale(this Point point, Vector scalingVector)
         {
             return new Point((int)(point.X * scalingVector.X), (int)(point.Y * scalingVector.Y));
         }
 
+        [Obsolete("Should use Vector instead of Point")]
         public static Point Scale(this Point point, float zoomFactor)
         {
             return new Point((int)(point.X * zoomFactor), (int)(point.Y * zoomFactor));
         }
 
+        [Obsolete("Should use Vector instead of Point")]
         public static Point ToPoint(this Vector vector)
         {
             return new Point((int)vector.X, (int)vector.Y);
@@ -109,12 +114,26 @@ namespace GameFramework
             return new Rectangle(rectangle.X + vector.X, rectangle.Y + vector.Y, rectangle.Width, rectangle.Height);
         }
 
+        public static Rectangle Translate(this Rectangle rectangle, Vector vector)
+        {
+            return new Rectangle(rectangle.X + (int)vector.X, rectangle.Y + (int)vector.Y, rectangle.Width, rectangle.Height);
+        }
+
+        [Obsolete("Should use Vector instead of Point")]
         public static bool Intercept(this Rectangle rectangle, Point point)
         {
             return point.X >= rectangle.X
                 && point.Y >= rectangle.Y
                 && point.X < rectangle.X + rectangle.Width
                 && point.Y < rectangle.Y + rectangle.Height;
+        }
+
+        public static bool Intercept(this Rectangle rectangle, Vector vector)
+        {
+            return vector.X >= rectangle.X
+                && vector.Y >= rectangle.Y
+                && vector.X < rectangle.X + rectangle.Width
+                && vector.Y < rectangle.Y + rectangle.Height;
         }
 
         public static Color ChangeAlpha(this Color color, int alpha)

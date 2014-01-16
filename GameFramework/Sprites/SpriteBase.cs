@@ -7,7 +7,7 @@ namespace GameFramework.Sprites
     {
         public string SpriteName { get; set; }
 
-        public Point Position { get; set; }
+        public Vector Position { get; set; }
 
         public abstract void Draw(DrawContext drawContext, Camera camera, Vector layerOffset, Vector parallaxScrollingVector);
 

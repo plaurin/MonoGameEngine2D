@@ -52,9 +52,9 @@ namespace GameFramework.Drawing
                     (int)this.width,
                     (int)this.height)
                 .Scale(camera.ZoomFactor)
-                .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector).ToPoint());
+                .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
 
-            return rectangle.Intercept(position.ToPoint())
+            return rectangle.Intercept(position)
                 ? new RectangleHit(this)
                 : null;
         }

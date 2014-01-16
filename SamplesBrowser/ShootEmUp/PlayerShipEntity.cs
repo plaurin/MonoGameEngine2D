@@ -24,7 +24,7 @@ namespace SamplesBrowser.ShootEmUp
 
             this.SpriteReference = new SpriteReference
             {
-                Position = new Point(300, 400),
+                Position = new Vector(300, 400),
                 SpriteName = "Player Ship",
                 ReferencedSprite = new Sprite(this.shipSheet, "Ship")
             };
@@ -44,7 +44,7 @@ namespace SamplesBrowser.ShootEmUp
             this.shipVelocity = this.shipVelocity.Clamp(velocityClampRectangle);
             this.shipPosition = this.shipPosition.Translate(this.shipVelocity).Clamp(gameAreaClampRectangle);
 
-            this.SpriteReference.Position = this.shipPosition.ToPoint();
+            this.SpriteReference.Position = this.shipPosition;
 
             this.shipVelocity = Vector.Zero;
 
@@ -93,7 +93,7 @@ namespace SamplesBrowser.ShootEmUp
 
             this.SpriteReference = new SpriteReference
             {
-                Position = this.position.ToPoint(),
+                Position = this.position,
                 SpriteName = "Bullet",
                 ReferencedSprite = new Sprite(this.shipSheet, "YellowShot")
             };
@@ -117,9 +117,9 @@ namespace SamplesBrowser.ShootEmUp
                 var actualVelocity = this.velocity.Scale(gameTime.ElapsedSeconds);
                 this.position = this.position.Translate(actualVelocity);
 
-                this.SpriteReference.Position = this.position.ToPoint();
+                this.SpriteReference.Position = this.position;
 
-                this.isActive = gameAreaClampRectangle.Intercept(this.position.ToPoint());
+                this.isActive = gameAreaClampRectangle.Intercept(this.position);
             }
         }
     }

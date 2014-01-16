@@ -28,7 +28,7 @@ namespace GameFramework.IO.Repositories
 
                 var sprite = new Sprite(gameResourceManager.GetSpriteSheet(sheetName), name)
                 {
-                    Position = MathUtil.ParsePoint(position)
+                    Position = MathUtil.ParseVector(position)
                 };
 
                 layer.AddSprite(sprite);
