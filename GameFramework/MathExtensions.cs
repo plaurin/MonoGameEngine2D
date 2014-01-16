@@ -122,6 +122,11 @@ namespace GameFramework
             return new Color(color.R, color.G, color.B, alpha);
         }
 
+        public static Size Scale(this Size size, float zoomFactor)
+        {
+            return new Size((int)(size.Width * zoomFactor), (int)(size.Height * zoomFactor));
+        }
+
         public static void ForEachPair<T>(this IEnumerable<T> enumerable, Action<T, T> action)
         {
             var first = default(T);

@@ -70,6 +70,7 @@
     <Compile Include="Inputs\MouseTracking.cs" />
     <Compile Include="Inputs\TouchStateBase.cs" />
     <Compile Include="Inputs\TouchTracking.cs" />
+    <Compile Include="Inputs\VisualButton.cs" />
     <Compile Include="Maps\ColorMap.cs" />
     <Compile Include="Sprites\SpriteBase.cs" />
     <Compile Include="Utilities\DiagnosticMap.cs" />

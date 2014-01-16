@@ -60,6 +60,14 @@ namespace GameFramework.Drawing
             return rectangleElement;
         }
 
+        public RectangleElement AddRectangle(Rectangle rectangle, int lineWidth, Color color)
+        {
+            var rectangleElement = new RectangleElement(rectangle, lineWidth, color);
+            this.elements.Add(rectangleElement);
+
+            return rectangleElement;
+        }
+
         public void AddElement(DrawingElementBase element)
         {
             this.elements.Add(element);

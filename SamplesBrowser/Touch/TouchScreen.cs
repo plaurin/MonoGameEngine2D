@@ -1,6 +1,7 @@
 ﻿using System;
 using GameFramework;
 using GameFramework.Cameras;
+using GameFramework.Drawing;
 using GameFramework.Inputs;
 using GameFramework.Scenes;
 using GameFramework.Screens;
@@ -29,6 +30,10 @@ namespace SamplesBrowser.Touch
         private int pinchCount;
         private int pinchCompleteCount;
         private int verticalDragCount;
+
+        private VisualButton visualBackButton;
+        private RectangleElement visualBackButtonElement;
+        private bool isHoveringBackButton;
 
         public TouchScreen(ScreenNavigation screenNavigation)
         {
@@ -66,6 +71,15 @@ namespace SamplesBrowser.Touch
             this.inputConfiguration.AddEvent("PinchComplete").Assign(TouchGestureType.PinchComplete).MapTo(gt => this.pinchCompleteCount++);
             this.inputConfiguration.AddEvent("VerticalDrag").Assign(TouchGestureType.VerticalDrag).MapTo(gt => this.verticalDragCount++);
 
+            var size = new Size(this.camera.Viewport.Width, this.camera.Viewport.Height);
+            var s2 = size.Scale(0.1f);
+            var backRectangle = new Rectangle(size.Width - s2.Width * 2, size.Height - s2.Height * 2, s2);
+
+            this.visualBackButton = this.inputConfiguration.AddVisualButton("Back", backRectangle)
+                .Assign(TouchGestureType.Tap)
+                .MapTouchTo(gt => this.isHoveringBackButton = true)
+                .MapClickTo(gt => this.screenNavigation.NavigateBack());
+
             return this.inputConfiguration;
         }
 
@@ -88,15 +102,32 @@ namespace SamplesBrowser.Touch
             this.diagnosticMap.UpdateLine("Pinch", this.pinchCount);
             this.diagnosticMap.UpdateLine("Tap", this.tapCount);
             this.diagnosticMap.UpdateLine("VDrag", this.verticalDragCount);
+
+            this.visualBackButtonElement.Color = this.isHoveringBackButton ? Color.Red : Color.Blue;
+            this.isHoveringBackButton = false;
         }
 
         public override Scene GetScene()
         {
             this.scene = new Scene("Touch");
 
+            this.scene.AddMap(this.CreateButtonMap());
+
             this.scene.AddMap(this.CreateDiagnosticMap());
 
             return this.scene;
+        }
+
+        public DrawingMap CreateButtonMap()
+        {
+            var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
+
+            var drawingMap = new DrawingMap("Button", this.gameResourceManager);
+
+            this.visualBackButtonElement = drawingMap.AddRectangle(this.visualBackButton.Rectangle, 2, Color.Blue);
+            drawingMap.AddText(font, "Back", this.visualBackButton.Rectangle.Location.Translate(10, 10).ToVector(), Color.White);
+
+            return drawingMap;
         }
 
         private DiagnosticMap CreateDiagnosticMap()

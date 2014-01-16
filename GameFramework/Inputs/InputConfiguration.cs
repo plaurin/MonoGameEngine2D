@@ -8,6 +8,7 @@ namespace GameFramework.Inputs
     public class InputConfiguration
     {
         private readonly Dictionary<string, DigitalButton> digitalButtons;
+        private readonly Dictionary<string, VisualButton> visualButtons;
         private readonly Dictionary<string, InputEvent> inputEvents;
 
         private MouseTracking mouseTracking;
@@ -16,6 +17,7 @@ namespace GameFramework.Inputs
         public InputConfiguration()
         {
             this.digitalButtons = new Dictionary<string, DigitalButton>();
+            this.visualButtons = new Dictionary<string, VisualButton>();
             this.inputEvents = new Dictionary<string, InputEvent>();
             this.EnabledGestures = Enumerable.Empty<TouchGestureType>();
         }
@@ -36,6 +38,11 @@ namespace GameFramework.Inputs
             foreach (var digitalButton in this.digitalButtons.Values)
             {
                 digitalButton.Update(keyState, mouseState, gameTime);
+            }
+
+            foreach (var visualButton in this.visualButtons.Values)
+            {
+                visualButton.Update(touchState, mouseState, gameTime);
             }
 
             if (this.touchTracking != null)
@@ -60,6 +67,19 @@ namespace GameFramework.Inputs
         public DigitalButton GetDigitalButton(string name)
         {
             return this.digitalButtons[name];
+        }
+
+        public VisualButton AddVisualButton(string name, Rectangle rectangle)
+        {
+            var visualButton = new VisualButton(rectangle);
+            this.visualButtons.Add(name, visualButton);
+
+            return visualButton;
+        }
+
+        public VisualButton GetVisualButton(string name)
+        {
+            return this.visualButtons[name];
         }
 
         public InputEvent AddEvent(string name)

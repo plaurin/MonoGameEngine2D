@@ -17,6 +17,14 @@ namespace GameFramework
             this.height = height;
         }
 
+        public Rectangle(int x, int y, Size size)
+        {
+            this.x = x;
+            this.y = y;
+            this.width = size.Width;
+            this.height = size.Height;
+        }
+
         public static Rectangle Empty
         {
             get { return new Rectangle(); }

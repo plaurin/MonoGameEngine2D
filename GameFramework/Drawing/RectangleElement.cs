@@ -11,6 +11,11 @@ namespace GameFramework.Drawing
         private readonly float width;
         private readonly float height;
 
+        public RectangleElement(Rectangle rectangle, int lineWidth, Color color)
+            : this(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height, lineWidth, color)
+        {
+        }
+
         public RectangleElement(float x, float y, float width, float height, int lineWidth, Color color)
         {
             this.x = x;
@@ -31,7 +36,7 @@ namespace GameFramework.Drawing
             var topRight = new Vector(this.x + this.width, this.y);
             var bottomLeft = new Vector(this.x, this.y + this.height);
             var bottomRight = new Vector(this.x + this.width, this.y + this.height);
-            
+
             this.DrawLine(drawContext, camera, drawingMap, topLeft, topRight, this.LineWidth, this.Color);
             this.DrawLine(drawContext, camera, drawingMap, topRight, bottomRight, this.LineWidth, this.Color);
             this.DrawLine(drawContext, camera, drawingMap, bottomRight, bottomLeft, this.LineWidth, this.Color);
