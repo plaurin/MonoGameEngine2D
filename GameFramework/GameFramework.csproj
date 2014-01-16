@@ -62,6 +62,7 @@
     <Compile Include="Inputs\DigitalButton.cs" />
     <Compile Include="Inputs\InputConfiguration.cs" />
     <Compile Include="Inputs\InputContext.cs" />
+    <Compile Include="Inputs\InputEvent.cs" />
     <Compile Include="Inputs\KeyboardStateBase.cs" />
     <Compile Include="Inputs\Keys.cs" />
     <Compile Include="Inputs\MouseButtons.cs" />

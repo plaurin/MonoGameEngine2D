@@ -1,10 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using GameFramework;
 using GameFramework.Inputs;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using Point = GameFramework.Point;
@@ -25,7 +23,47 @@ namespace MonoGameImplementation.EngineImplementation
 
         public override TouchStateBase TouchGetState()
         {
-            return new XnaTouchState(TouchPanel.GetState(), TouchPanel.GetCapabilities(), TouchPanel.IsGestureAvailable);
+            GestureSample? gestureSample = null;
+            if (TouchPanel.IsGestureAvailable) gestureSample = TouchPanel.ReadGesture();
+
+            return new XnaTouchState(TouchPanel.GetState(), TouchPanel.GetCapabilities(), TouchPanel.IsGestureAvailable,
+                gestureSample);
+        }
+
+        public static GestureType GetGestures(IEnumerable<TouchGesture> touchGestures)
+        {
+            var result = GestureType.None;
+            foreach (var touchGesture in touchGestures)
+            {
+                switch (touchGesture)
+                {
+                    case TouchGesture.None: result |= GestureType.None;
+                        break;
+                    case TouchGesture.Tap: result |= GestureType.Tap;
+                        break;
+                    case TouchGesture.DragComplete: result |= GestureType.DragComplete;
+                        break;
+                    case TouchGesture.Flick: result |= GestureType.Flick;
+                        break;
+                    case TouchGesture.FreeDrag: result |= GestureType.FreeDrag;
+                        break;
+                    case TouchGesture.Hold: result |= GestureType.Hold;
+                        break;
+                    case TouchGesture.HorizontalDrag: result |= GestureType.HorizontalDrag;
+                        break;
+                    case TouchGesture.Pinch: result |= GestureType.Pinch;
+                        break;
+                    case TouchGesture.PinchComplete: result |= GestureType.PinchComplete;
+                        break;
+                    case TouchGesture.DoubleTap: result |= GestureType.DoubleTap;
+                        break;
+                    case TouchGesture.VerticalDrag: result |= GestureType.VerticalDrag;
+                        break;
+                    default: throw new NotSupportedException("Gesture not supported yet");
+                }
+            }
+
+            return result;
         }
 
         private class XnaKeyboardState : KeyboardStateBase
@@ -113,12 +151,15 @@ namespace MonoGameImplementation.EngineImplementation
             private readonly TouchCollection touchCollection;
             private readonly TouchPanelCapabilities capabilities;
             private readonly bool isGestureAvailable;
+            private readonly GestureSample? gestureSample;
 
-            public XnaTouchState(TouchCollection touchCollection, TouchPanelCapabilities capabilities, bool isGestureAvailable)
+            public XnaTouchState(TouchCollection touchCollection, TouchPanelCapabilities capabilities, bool isGestureAvailable,
+                GestureSample? gestureSample)
             {
                 this.touchCollection = touchCollection;
                 this.capabilities = capabilities;
                 this.isGestureAvailable = isGestureAvailable;
+                this.gestureSample = gestureSample;
             }
 
             public override IEnumerable<TouchPoint> Touches
@@ -148,6 +189,16 @@ namespace MonoGameImplementation.EngineImplementation
             public override bool IsGestureAvailable
             {
                 get { return this.isGestureAvailable; }
+            }
+
+            public override TouchGesture CurrentGestures
+            {
+                get
+                {
+                    if (!this.gestureSample.HasValue) return TouchGesture.None;
+
+                    return (TouchGesture)this.gestureSample.Value.GestureType;
+                }
             }
         }
     }

@@ -45,6 +45,11 @@ namespace GameFramework.Inputs
             {
                 get { return this.innerTouchState.IsGestureAvailable; }
             }
+
+            public override TouchGesture CurrentGestures
+            {
+                get { return this.innerTouchState.CurrentGestures; }
+            }
         }
 
         public abstract IEnumerable<TouchPoint> Touches { get; }
@@ -56,6 +61,8 @@ namespace GameFramework.Inputs
         public abstract int MaximumTouchCount { get; }
         
         public abstract bool IsGestureAvailable { get; }
+
+        public abstract TouchGesture CurrentGestures { get; }
     }
 
     public class TouchPoint

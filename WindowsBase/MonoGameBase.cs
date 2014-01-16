@@ -7,6 +7,7 @@ using GameFramework.Screens;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input.Touch;
 using MonoGameImplementation.EngineImplementation;
 using Color = Microsoft.Xna.Framework.Color;
 
@@ -97,6 +98,15 @@ namespace MonoGameImplementation
             if (this.screenNavigation.ShouldExit) this.Exit();
 
             this.screenNavigation.Update();
+
+            // TODO: Review this if we decide to implement Gestures ourself
+            if (this.screenNavigation.Current.InputConfiguration.EnabledGesturesUpdated)
+            {
+                TouchPanel.EnabledGestures = 
+                    XnaInputContext.GetGestures(this.screenNavigation.Current.InputConfiguration.EnabledGestures);
+
+                this.screenNavigation.Current.InputConfiguration.EnabledGesturesUpdated = false;
+            }
 
             this.screenNavigation.Current.InputConfiguration.Update(new XnaInputContext(), this.gameTimer);
 
