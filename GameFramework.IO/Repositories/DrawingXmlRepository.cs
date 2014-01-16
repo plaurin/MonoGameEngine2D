@@ -7,38 +7,38 @@ namespace GameFramework.IO.Repositories
 {
     public class DrawingXmlRepository
     {
-        public static XElement ToXml(DrawingMap drawingMap)
+        public static XElement ToXml(DrawingLayer drawingLayer)
         {
-            return new XElement("DrawingMap", XmlRepository.MapBaseToXml(drawingMap),
+            return new XElement("DrawingLayer", XmlRepository.LayerBaseToXml(drawingLayer),
                 new XElement("Elements",
-                    drawingMap.Elements.Select(ToXml)));
+                    drawingLayer.Elements.Select(ToXml)));
         }
 
-        public static DrawingMap DrawingMapFromXml(GameResourceManager gameResourceManager, XElement mapElement)
+        public static DrawingLayer DrawingLayerFromXml(GameResourceManager gameResourceManager, XElement layerElement)
         {
-            var name = mapElement.Attribute("name").Value;
-            var map = new DrawingMap(name, gameResourceManager);
-            XmlRepository.BaseFromXml(map, mapElement);
+            var name = layerElement.Attribute("name").Value;
+            var layer = new DrawingLayer(name, gameResourceManager);
+            XmlRepository.BaseFromXml(layer, layerElement);
 
-            foreach (var element in mapElement.Element("Elements").Elements())
+            foreach (var element in layerElement.Element("Elements").Elements())
             {
                 switch (element.Name.ToString())
                 {
                     case "TextElement":
-                        map.AddElement(TextElementFromXml(element));
+                        layer.AddElement(TextElementFromXml(element));
                         break;
                     case "LineElement":
-                        map.AddElement(LineElementFromXml(element));
+                        layer.AddElement(LineElementFromXml(element));
                         break;
                     case "PolygonElement":
-                        map.AddElement(PolygonElementFromXml(element));
+                        layer.AddElement(PolygonElementFromXml(element));
                         break;
                     default:
                         throw new NotImplementedException(element.Name + " is not implemented yet.");
                 }
             }
 
-            return map;
+            return layer;
         }
 
         private static XElement ToXml(DrawingElementBase drawingElement)

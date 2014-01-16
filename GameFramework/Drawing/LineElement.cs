@@ -23,17 +23,17 @@ namespace GameFramework.Drawing
 
         public Color Color { get; private set; }
 
-        public override void Draw(DrawContext drawContext, Camera camera, DrawingMap drawingMap)
+        public override void Draw(DrawContext drawContext, Camera camera, DrawingLayer drawingLayer)
         {
-            var finalFrom = drawingMap.CameraMode == CameraMode.Fix ? this.FromVector : this.FromVector
+            var finalFrom = drawingLayer.CameraMode == CameraMode.Fix ? this.FromVector : this.FromVector
                 .Scale(camera.ZoomFactor)
-                .Translate(camera.GetSceneTranslationVector(drawingMap.ParallaxScrollingVector));
+                .Translate(camera.GetSceneTranslationVector(drawingLayer.ParallaxScrollingVector));
 
-            var finalTo = drawingMap.CameraMode == CameraMode.Fix ? this.ToVector : this.ToVector
+            var finalTo = drawingLayer.CameraMode == CameraMode.Fix ? this.ToVector : this.ToVector
                 .Scale(camera.ZoomFactor)
-                .Translate(camera.GetSceneTranslationVector(drawingMap.ParallaxScrollingVector));
+                .Translate(camera.GetSceneTranslationVector(drawingLayer.ParallaxScrollingVector));
 
-            var zoom = drawingMap.CameraMode == CameraMode.Fix ? 1.0f : this.Width * camera.ZoomFactor;
+            var zoom = drawingLayer.CameraMode == CameraMode.Fix ? 1.0f : this.Width * camera.ZoomFactor;
 
             //var finalWidth = this.width * camera.ZoomFactor;
             //var angle = (float)Math.Atan2(finalTo.Y - finalFrom.Y, finalTo.X - finalFrom.X);
@@ -44,7 +44,7 @@ namespace GameFramework.Drawing
             //    new Vector(length, finalWidth), SpriteEffects.None, 0);
         }
 
-        public override HitBase GetHit(Point position, Camera camera, Point mapOffset, Vector parallaxScrollingVector)
+        public override HitBase GetHit(Point position, Camera camera, Point layerOffset, Vector parallaxScrollingVector)
         {
             return null;
         }

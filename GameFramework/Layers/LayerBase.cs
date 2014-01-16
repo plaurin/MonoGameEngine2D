@@ -1,13 +1,12 @@
 using System;
-
 using GameFramework.Cameras;
 using GameFramework.Scenes;
 
-namespace GameFramework.Maps
+namespace GameFramework.Layers
 {
-    public abstract class MapBase
+    public abstract class LayerBase
     {
-        protected MapBase(string name)
+        protected LayerBase(string name)
         {
             this.Name = name;
             this.CameraMode = CameraMode.Follow;

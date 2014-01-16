@@ -8,33 +8,32 @@ namespace GameFramework.IO.Repositories
 {
     public static class TileXmlRepository
     {
-        public static XElement ToXml(TileMap tileMap)
+        public static XElement ToXml(TileLayer tileLayer)
         {
-            var tileReferences = CreateTileReferences(tileMap).ToList();
+            var tileReferences = CreateTileReferences(tileLayer).ToList();
 
-            return new XElement("TileMap",
-                XmlRepository.MapBaseToXml(tileMap),
-                new XElement("MapSize", tileMap.MapSize),
-                new XElement("TileSize", tileMap.TileSize),
+            return new XElement("TileLayer",
+                XmlRepository.LayerBaseToXml(tileLayer),
+                new XElement("MapSize", tileLayer.MapSize),
+                new XElement("TileSize", tileLayer.TileSize),
                 new XElement("TileDefinitionReferences", tileReferences.Select(x =>
                     new XElement("Reference",
                         new XAttribute("id", x.Id),
                         new XAttribute("sheetName", x.Definition.SheetName),
                         new XAttribute("name", x.Definition.Name)))),
-                new XElement("Tiles", GetRowsXml(tileMap, tileReferences)));
+                new XElement("Tiles", GetRowsXml(tileLayer, tileReferences)));
         }
 
-        public static TileMap TileMapFromXml(GameResourceManager gameResourceManager, XElement mapElement)
+        public static TileLayer TileLayerFromXml(GameResourceManager gameResourceManager, XElement layerElement)
         {
-            var name = mapElement.Attribute("name").Value;
-            var mapSize = MathUtil.ParseSize(mapElement.Element("MapSize").Value);
-            var tileSize = MathUtil.ParseSize(mapElement.Element("TileSize").Value);
-            var tileReferences = GetTileReferences(gameResourceManager, mapElement.Element("TileDefinitionReferences")).ToList();
-            var tiles = GetTileRowsFromXml(mapElement.Element("Tiles"));
+            var name = layerElement.Attribute("name").Value;
+            var mapSize = MathUtil.ParseSize(layerElement.Element("MapSize").Value);
+            var tileSize = MathUtil.ParseSize(layerElement.Element("TileSize").Value);
+            var tileReferences = GetTileReferences(gameResourceManager, layerElement.Element("TileDefinitionReferences")).ToList();
+            var tiles = GetTileRowsFromXml(layerElement.Element("Tiles"));
 
-            var map = new TileMap(name, mapSize, tileSize);
-            //var map = factory.CreateTileMap(name, mapSize, tileSize);
-            XmlRepository.BaseFromXml(map, mapElement);
+            var layer = new TileLayer(name, mapSize, tileSize);
+            XmlRepository.BaseFromXml(layer, layerElement);
 
             int x = 0;
             foreach (var row in tiles)
@@ -42,13 +41,13 @@ namespace GameFramework.IO.Repositories
                 int y = 0;
                 foreach (var element in row)
                 {
-                    map[x, y++] = tileReferences.Single(r => r.Id == element).Definition;
+                    layer[x, y++] = tileReferences.Single(r => r.Id == element).Definition;
                 }
 
                 x++;
             }
 
-            return map;
+            return layer;
         }
 
         public static IEnumerable<object> GetXml(TileSheet tileSheet)
@@ -71,13 +70,13 @@ namespace GameFramework.IO.Repositories
             return tileSheet;
         }
 
-        private static IEnumerable<TileReference> CreateTileReferences(TileMap tileMap)
+        private static IEnumerable<TileReference> CreateTileReferences(TileLayer tileLayer)
         {
             var tileDefinitions = new List<TileDefinition>();
-            for (var i = 0; i < tileMap.MapSize.Width; i++)
-                for (var j = 0; j < tileMap.MapSize.Height; j++)
+            for (var i = 0; i < tileLayer.MapSize.Width; i++)
+                for (var j = 0; j < tileLayer.MapSize.Height; j++)
                 {
-                    tileDefinitions.Add(tileMap[i, j]);
+                    tileDefinitions.Add(tileLayer[i, j]);
                 }
 
             return tileDefinitions
@@ -85,14 +84,14 @@ namespace GameFramework.IO.Repositories
                 .Select((x, i) => new TileReference { Id = i, Definition = x });
         }
 
-        private static IEnumerable<XElement> GetRowsXml(TileMap tileMap, List<TileReference> tileReferences)
+        private static IEnumerable<XElement> GetRowsXml(TileLayer tileLayer, List<TileReference> tileReferences)
         {
-            for (var i = 0; i < tileMap.MapSize.Width; i++)
+            for (var i = 0; i < tileLayer.MapSize.Width; i++)
             {
-                var row = new int[tileMap.MapSize.Height];
-                for (var j = 0; j < tileMap.MapSize.Height; j++)
+                var row = new int[tileLayer.MapSize.Height];
+                for (var j = 0; j < tileLayer.MapSize.Height; j++)
                 {
-                    row[j] = tileReferences.Single(x => x.Definition == tileMap[i, j]).Id;
+                    row[j] = tileReferences.Single(x => x.Definition == tileLayer[i, j]).Id;
                 }
 
                 yield return new XElement("Row", string.Join(", ", row));

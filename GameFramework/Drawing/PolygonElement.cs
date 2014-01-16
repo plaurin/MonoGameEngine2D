@@ -26,12 +26,12 @@ namespace GameFramework.Drawing
             get { return this.vertices; }
         }
 
-        public override void Draw(DrawContext drawContext, Camera camera, DrawingMap drawingMap)
+        public override void Draw(DrawContext drawContext, Camera camera, DrawingLayer drawingLayer)
         {
-            this.Vertices.ForEachPair((x, y) => this.DrawLine(drawContext, camera, drawingMap, x, y, this.Width, this.Color));
+            this.Vertices.ForEachPair((x, y) => this.DrawLine(drawContext, camera, drawingLayer, x, y, this.Width, this.Color));
         }
 
-        public override HitBase GetHit(Point position, Camera camera, Point mapOffset, Vector parallaxScrollingVector)
+        public override HitBase GetHit(Point position, Camera camera, Point layerOffset, Vector parallaxScrollingVector)
         {
             // To be implemented
             return null;

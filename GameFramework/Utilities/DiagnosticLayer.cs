@@ -4,21 +4,21 @@ using System.Linq;
 using GameFramework.Cameras;
 using GameFramework.Drawing;
 using GameFramework.Inputs;
-using GameFramework.Maps;
+using GameFramework.Layers;
 using GameFramework.Scenes;
 
 namespace GameFramework.Utilities
 {
-    public class DiagnosticMap : MapBase
+    public class DiagnosticLayer : LayerBase
     {
         private const int FirstLineY = 10;
         private const int LineHeight = 15;
         private const int LeftMargin = 10;
         private const int RightMargin = 350;
 
-        private readonly DrawingMap map;
+        private readonly DrawingLayer layer;
         private readonly DrawingFont font;
-        private readonly DiagnosticMapConfiguration configuration;
+        private readonly DiagnosticLayerConfiguration configuration;
 
         private readonly List<KeyValuePair<string, TextElement>> allLines;
         private readonly Dictionary<string, TextElement> customLines;
@@ -42,12 +42,12 @@ namespace GameFramework.Utilities
             Hits
         }
 
-        public DiagnosticMap(GameResourceManager gameResourceManager, DrawingFont font, DiagnosticMapConfiguration configuration = null)
+        public DiagnosticLayer(GameResourceManager gameResourceManager, DrawingFont font, DiagnosticLayerConfiguration configuration = null)
             : base("Diagnostic")
         {
             this.font = font;
-            this.map = new DrawingMap("DiagnosticsInner", gameResourceManager) { CameraMode = CameraMode.Fix };
-            this.configuration = configuration ?? new DiagnosticMapConfiguration();
+            this.layer = new DrawingLayer("DiagnosticsInner", gameResourceManager) { CameraMode = CameraMode.Fix };
+            this.configuration = configuration ?? new DiagnosticLayerConfiguration();
 
             this.allLines = new List<KeyValuePair<string, TextElement>>();
             this.customLines = new Dictionary<string, TextElement>();
@@ -128,7 +128,7 @@ namespace GameFramework.Utilities
 
         public override void Draw(DrawContext drawContext, Camera camera)
         {
-            this.map.Draw(drawContext, camera);
+            this.layer.Draw(drawContext, camera);
         }
 
         public void AddLine(string lineId, string textFormat)
@@ -149,7 +149,7 @@ namespace GameFramework.Utilities
 
         private TextElement CreateNewLine(string lineId, string text)
         {
-            var textElement = this.map.AddText(this.font, text, Vector.Zero, Color.White);
+            var textElement = this.layer.AddText(this.font, text, Vector.Zero, Color.White);
             this.allLines.Add(new KeyValuePair<string, TextElement>(lineId, textElement));
             return textElement;
         }
@@ -182,9 +182,9 @@ namespace GameFramework.Utilities
         }
     }
 
-    public class DiagnosticMapConfiguration
+    public class DiagnosticLayerConfiguration
     {
-        public DiagnosticMapConfiguration()
+        public DiagnosticLayerConfiguration()
         {
             this.DisplayLocation = DiagnosticDisplayLocation.Right;
             this.DisplayFps = true;
@@ -206,9 +206,9 @@ namespace GameFramework.Utilities
 
         public bool DisplayHits { get; set; }
 
-        public static DiagnosticMapConfiguration CreateWithFpsOnly(DiagnosticDisplayLocation location = DiagnosticDisplayLocation.Right)
+        public static DiagnosticLayerConfiguration CreateWithFpsOnly(DiagnosticDisplayLocation location = DiagnosticDisplayLocation.Right)
         {
-            return new DiagnosticMapConfiguration
+            return new DiagnosticLayerConfiguration
             {
                 DisplayLocation = location,
                 DisplayCameraState = false,

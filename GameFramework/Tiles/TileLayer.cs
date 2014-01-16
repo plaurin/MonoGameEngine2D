@@ -1,16 +1,16 @@
 using System;
 
 using GameFramework.Cameras;
-using GameFramework.Maps;
+using GameFramework.Layers;
 using GameFramework.Scenes;
 
 namespace GameFramework.Tiles
 {
-    public class TileMap : MapBase
+    public class TileLayer : LayerBase
     {
         private readonly TileDefinition[,] map;
 
-        public TileMap(string name, Size mapSize, Size tileSize, TileDefinition defaultTileDefinition = null)
+        public TileLayer(string name, Size mapSize, Size tileSize, TileDefinition defaultTileDefinition = null)
             : base(name)
         {
             this.MapSize = mapSize;

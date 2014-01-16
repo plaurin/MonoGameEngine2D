@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 
 using GameFramework.Cameras;
-using GameFramework.Maps;
+using GameFramework.Layers;
 using GameFramework.Scenes;
 
 namespace GameFramework.Drawing
 {
-    public class DrawingMap : MapBase
+    public class DrawingLayer : LayerBase
     {
         private readonly GameResourceManager gameResourceManager;
 
         private readonly List<DrawingElementBase> elements;
 
-        public DrawingMap(string name, GameResourceManager gameResourceManager)
+        public DrawingLayer(string name, GameResourceManager gameResourceManager)
             : base(name)
         {
             this.gameResourceManager = gameResourceManager;

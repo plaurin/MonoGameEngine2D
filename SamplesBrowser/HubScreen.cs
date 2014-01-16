@@ -34,7 +34,7 @@ namespace SamplesBrowser
         private TouchStateBase touchState;
 
         private Scene scene;
-        private MouseCursorMap mouseMap;
+        private MouseCursorLayer mouseLayer;
 
         public HubScreen(ScreenNavigation screenNavigation)
         {
@@ -95,7 +95,7 @@ namespace SamplesBrowser
             {
                 this.mouseState = mt;
 
-                this.mouseMap.Update(this.mouseState);
+                this.mouseLayer.Update(this.mouseState);
 
                 var hit = this.scene.GetHits(this.mouseState.AbsolutePosition, this.camera).OfType<RectangleHit>().FirstOrDefault();
                 this.hoveringSample = hitToSampleFunc(hit);
@@ -189,7 +189,7 @@ namespace SamplesBrowser
 
             var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
 
-            var hubMap = new DrawingMap("HubMap", this.gameResourceManager);
+            var hubMap = new DrawingLayer("HubMap", this.gameResourceManager);
 
             this.sandboxRectangle = hubMap.AddRectangle(10, 10, 200, 200, 1, Color.White);
             this.shootEmUpRectangle = hubMap.AddRectangle(220, 10, 200, 200, 1, Color.White);
@@ -203,10 +203,10 @@ namespace SamplesBrowser
             hubMap.AddText(font, "3 - Tiled sample", new Vector(20, 430), Color.White);
             hubMap.AddText(font, "4 - Touch sample", new Vector(220, 430), Color.White);
 
-            this.scene.AddMap(hubMap);
+            this.scene.AddLayer(hubMap);
 
-            this.mouseMap = MouseCursorMap.Create(this.gameResourceManager);
-            this.scene.AddMap(this.mouseMap);
+            this.mouseLayer = MouseCursorLayer.Create(this.gameResourceManager);
+            this.scene.AddLayer(this.mouseLayer);
 
             return this.scene;
         }

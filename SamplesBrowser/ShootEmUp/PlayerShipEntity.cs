@@ -8,7 +8,7 @@ namespace SamplesBrowser.ShootEmUp
 {
     public class PlayerShipEntity
     {
-        private readonly SpriteMap entityMap;
+        private readonly SpriteLayer entityLayer;
         private readonly SpriteSheet shipSheet;
 
         private Vector shipPosition = new Vector(300, 400);
@@ -17,9 +17,9 @@ namespace SamplesBrowser.ShootEmUp
         private float lastFiringTime;
         private List<BulletEntity> bullets;
 
-        public PlayerShipEntity(SpriteMap entityMap, SpriteSheet shipSheet)
+        public PlayerShipEntity(SpriteLayer entityLayer, SpriteSheet shipSheet)
         {
-            this.entityMap = entityMap;
+            this.entityLayer = entityLayer;
             this.shipSheet = shipSheet;
 
             this.SpriteReference = new SpriteReference
@@ -29,7 +29,7 @@ namespace SamplesBrowser.ShootEmUp
                 ReferencedSprite = new Sprite(this.shipSheet, "Ship")
             };
 
-            this.entityMap.AddSprite(this.SpriteReference);
+            this.entityLayer.AddSprite(this.SpriteReference);
 
             this.bullets = new List<BulletEntity>();
         }
@@ -67,7 +67,7 @@ namespace SamplesBrowser.ShootEmUp
         {
             if (gameTime.TotalSeconds - this.lastFiringTime > 0.05f)
             {
-                this.bullets.Add(BulletEntity.Create(entityMap, shipSheet, this.shipPosition, new Vector(0, -500)));
+                this.bullets.Add(BulletEntity.Create(this.entityLayer, shipSheet, this.shipPosition, new Vector(0, -500)));
 
                 this.lastFiringTime = gameTime.TotalSeconds;
             }
@@ -76,16 +76,16 @@ namespace SamplesBrowser.ShootEmUp
 
     public class BulletEntity
     {
-        private readonly SpriteMap entityMap;
+        private readonly SpriteLayer entityLayer;
         private readonly SpriteSheet shipSheet;
 
         private Vector position;
         private Vector velocity;
         private bool isActive;
 
-        private BulletEntity(SpriteMap entityMap, SpriteSheet shipSheet, Vector position, Vector velocity)
+        private BulletEntity(SpriteLayer entityLayer, SpriteSheet shipSheet, Vector position, Vector velocity)
         {
-            this.entityMap = entityMap;
+            this.entityLayer = entityLayer;
             this.shipSheet = shipSheet;
             this.position = position;
             this.velocity = velocity;
@@ -98,14 +98,14 @@ namespace SamplesBrowser.ShootEmUp
                 ReferencedSprite = new Sprite(this.shipSheet, "YellowShot")
             };
 
-            this.entityMap.AddSprite(this.SpriteReference);
+            this.entityLayer.AddSprite(this.SpriteReference);
         }
 
         public SpriteReference SpriteReference { get; private set; }
 
-        public static BulletEntity Create(SpriteMap entityMap, SpriteSheet shipSheet, Vector position, Vector velocity)
+        public static BulletEntity Create(SpriteLayer entityLayer, SpriteSheet shipSheet, Vector position, Vector velocity)
         {
-            return new BulletEntity(entityMap, shipSheet, position, velocity);
+            return new BulletEntity(entityLayer, shipSheet, position, velocity);
         }
 
         public void Update(IGameTiming gameTime)

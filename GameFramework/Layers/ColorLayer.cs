@@ -1,14 +1,11 @@
 using System;
-
 using GameFramework.Cameras;
 
-namespace GameFramework.Maps
+namespace GameFramework.Layers
 {
-    public class ColorMap : MapBase
+    public class ColorLayer : LayerBase
     {
-        //private readonly Texture texture; Only XNA
-
-        public ColorMap(string name, Color color)
+        public ColorLayer(string name, Color color)
             : base(name)
         {
             this.Color = color;

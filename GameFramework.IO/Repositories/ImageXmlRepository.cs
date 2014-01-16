@@ -1,25 +1,25 @@
 ﻿using System.Xml.Linq;
-using GameFramework.Maps;
+using GameFramework.Layers;
 
 namespace GameFramework.IO.Repositories
 {
     public class ImageXmlRepository
     {
-        public static XElement ToXml(ImageMap imageMap)
+        public static XElement ToXml(ImageLayer imageLayer)
         {
-            return new XElement("ImageMap",
-                new XAttribute("name", imageMap.Name),
-                new XElement("Texture", imageMap.Texture.Name),
-                new XElement("Rectangle", imageMap.Rectangle));
+            return new XElement("ImageLayer",
+                new XAttribute("name", imageLayer.Name),
+                new XElement("Texture", imageLayer.Texture.Name),
+                new XElement("Rectangle", imageLayer.Rectangle));
         }
 
-        public static ImageMap ImageMapFromXml(GameResourceManager gameResourceManager, XElement mapElement)
+        public static ImageLayer ImageLayerFromXml(GameResourceManager gameResourceManager, XElement layerElement)
         {
-            var name = mapElement.Attribute("name").Value;
-            var textureName = mapElement.Element("Texture").Value;
-            var rectangleValue = mapElement.Element("Rectangle").Value;
+            var name = layerElement.Attribute("name").Value;
+            var textureName = layerElement.Element("Texture").Value;
+            var rectangleValue = layerElement.Element("Rectangle").Value;
 
-            return new ImageMap(name, gameResourceManager.GetTexture(textureName), MathUtil.ParseRectangle(rectangleValue));
+            return new ImageLayer(name, gameResourceManager.GetTexture(textureName), MathUtil.ParseRectangle(rectangleValue));
         }
     }
 }

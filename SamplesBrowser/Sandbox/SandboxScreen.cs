@@ -8,7 +8,7 @@ using GameFramework.Drawing;
 using GameFramework.Hexes;
 using GameFramework.Inputs;
 using GameFramework.IO.Repositories;
-using GameFramework.Maps;
+using GameFramework.Layers;
 using GameFramework.Scenes;
 using GameFramework.Screens;
 using GameFramework.Sprites;
@@ -35,8 +35,8 @@ namespace SamplesBrowser.Sandbox
 
         private InputConfiguration inputConfiguration;
 
-        private MouseCursorMap mouseMap;
-        private DiagnosticMap diagnosticMap;
+        private MouseCursorLayer mouseLayer;
+        private DiagnosticLayer diagnosticLayer;
 
         //private string hits;
         private List<HitBase> hits;
@@ -81,7 +81,7 @@ namespace SamplesBrowser.Sandbox
             this.inputConfiguration.AddMouseTracking(this.camera).OnMove((mt, e) =>
             {
                 this.mouseState = mt;
-                this.mouseMap.Update(this.mouseState);
+                this.mouseLayer.Update(this.mouseState);
             });
 
             return this.inputConfiguration;
@@ -96,28 +96,28 @@ namespace SamplesBrowser.Sandbox
 
         public override void Update(IGameTiming gameTime)
         {
-            var colorMap = this.scene.Maps.OfType<ColorMap>().FirstOrDefault();
-            if (colorMap != null)
-                colorMap.Color = new Color(255, 0, 0, (int)(255 * Math.Min(this.range, 1.0f)));
+            var colorLayer = this.scene.Layers.OfType<ColorLayer>().FirstOrDefault();
+            if (colorLayer != null)
+                colorLayer.Color = new Color(255, 0, 0, (int)(255 * Math.Min(this.range, 1.0f)));
 
-            this.diagnosticMap.Update(gameTime, this.camera);
-            this.diagnosticMap.Update(this.mouseState);
-            this.diagnosticMap.Update(this.hits);
-            this.diagnosticMap.UpdateLine("Range", this.range);
+            this.diagnosticLayer.Update(gameTime, this.camera);
+            this.diagnosticLayer.Update(this.mouseState);
+            this.diagnosticLayer.Update(this.hits);
+            this.diagnosticLayer.UpdateLine("Range", this.range);
         }
 
         public override Scene GetScene()
         {
             this.scene = new Scene("scene1");
 
-            this.scene.AddMap(this.CreateImageMap());
-            this.scene.AddMap(this.CreateHexMap());
-            this.scene.AddMap(this.CreateTileMap());
-            this.scene.AddMap(this.CreateColorMap());
-            this.scene.AddMap(this.CreateHexMapTestDistance());
-            this.scene.AddMap(this.CreateSpriteMap());
-            this.scene.AddMap(this.CreateDiagnosticMap());
-            this.scene.AddMap(this.CreateMouseCursorMap());
+            this.scene.AddLayer(this.CreateImageLayer());
+            this.scene.AddLayer(this.CreateHexLayer());
+            this.scene.AddLayer(this.CreateTileLayer());
+            this.scene.AddLayer(this.CreateColorLayer());
+            this.scene.AddLayer(this.CreateHexLayerTestDistance());
+            this.scene.AddLayer(this.CreateSpriteLayer());
+            this.scene.AddLayer(this.CreateDiagnosticLayer());
+            this.scene.AddLayer(this.CreateMouseCursorLayer());
 
             //this.scene.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
 
@@ -132,12 +132,12 @@ namespace SamplesBrowser.Sandbox
             var scene2 = XmlRepository.LoadFrom(this.gameResourceManager,
                 @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
 
-            foreach (var map in this.scene.Maps)
+            foreach (var layer in this.scene.Layers)
             {
-                var otherMap = scene2.Maps.Single(x => x.Name == map.Name);
+                var otherLayer = scene2.Layers.Single(x => x.Name == layer.Name);
 
-                var myXml = XmlRepository.ToXml(map); // map.ToXml();
-                var otherXml = XmlRepository.ToXml(otherMap); // otherMap.ToXml();
+                var myXml = XmlRepository.ToXml(layer); // map.ToXml();
+                var otherXml = XmlRepository.ToXml(otherLayer); // otherMap.ToXml();
 
                 if (myXml.ToString() != otherXml.ToString())
                 {
@@ -170,38 +170,38 @@ namespace SamplesBrowser.Sandbox
             if (mySpriteSheetXml.ToString() != otherSpriteSheetXml.ToString()) Debugger.Break();
         }
 
-        private MapBase CreateMouseCursorMap()
+        private LayerBase CreateMouseCursorLayer()
         {
-            this.mouseMap = MouseCursorMap.Create(this.gameResourceManager);
+            this.mouseLayer = MouseCursorLayer.Create(this.gameResourceManager);
 
-            return this.mouseMap;
+            return this.mouseLayer;
         }
 
-        private DiagnosticMap CreateDiagnosticMap()
+        private DiagnosticLayer CreateDiagnosticLayer()
         {
             var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1"); 
             
-            this.diagnosticMap = new DiagnosticMap(this.gameResourceManager, font, new DiagnosticMapConfiguration());
-            this.diagnosticMap.AddLine("Range", "Range: {0:f1}");
+            this.diagnosticLayer = new DiagnosticLayer(this.gameResourceManager, font, new DiagnosticLayerConfiguration());
+            this.diagnosticLayer.AddLine("Range", "Range: {0:f1}");
 
-            return this.diagnosticMap;
+            return this.diagnosticLayer;
         }
 
-        private ImageMap CreateImageMap()
+        private ImageLayer CreateImageLayer()
         {
             var texture = this.gameResourceManager.GetTexture(@"Sandbox\LinkSheet");
 
-            return new ImageMap("Image", texture, new Rectangle(10, 10, 250, 250));
+            return new ImageLayer("Image", texture, new Rectangle(10, 10, 250, 250));
         }
 
-        private ColorMap CreateColorMap()
+        private ColorLayer CreateColorLayer()
         {
             var alpha = Math.Min(this.range, 1.0f);
 
-            return new ColorMap("Red", new Color(255, 0, 0, (int)(255 * alpha)));
+            return new ColorLayer("Red", new Color(255, 0, 0, (int)(255 * alpha)));
         }
 
-        private HexMap CreateHexMap()
+        private HexLayer CreateHexLayer()
         {
             var texture = this.gameResourceManager.GetTexture(@"Sandbox\HexSheet");
             var sheet = new HexSheet(texture, "Hexes", new Size(68, 60));
@@ -213,20 +213,20 @@ namespace SamplesBrowser.Sandbox
 
             this.gameResourceManager.AddHexSheet(sheet);
 
-            var map = new HexMap("Hex", new Size(4, 4), new Size(68, 60), 42);
-            map[2, 0] = purple;
-            map[2, 1] = purple;
-            map[2, 2] = yellow;
-            map[0, 1] = red;
-            map[1, 1] = red;
+            var hexLayer = new HexLayer("Hex", new Size(4, 4), new Size(68, 60), 42);
+            hexLayer[2, 0] = purple;
+            hexLayer[2, 1] = purple;
+            hexLayer[2, 2] = yellow;
+            hexLayer[0, 1] = red;
+            hexLayer[1, 1] = red;
 
-            map.ParallaxScrollingVector = new Vector(4.0f, 0.5f);
-            map.Offset = new Point(-25, 0);
+            hexLayer.ParallaxScrollingVector = new Vector(4.0f, 0.5f);
+            hexLayer.Offset = new Point(-25, 0);
 
-            return map;
+            return hexLayer;
         }
 
-        private TileMap CreateTileMap()
+        private TileLayer CreateTileLayer()
         {
             var texture = this.gameResourceManager.GetTexture(@"Sandbox\TileSheet");
             var sheet = new TileSheet(texture, "Background", new Size(16, 16));
@@ -241,19 +241,19 @@ namespace SamplesBrowser.Sandbox
 
             this.gameResourceManager.AddTileSheet(sheet);
 
-            var tileMap = new TileMap("Tiles", new Size(32, 32), new Size(16, 16));
-            tileMap[0, 0] = purple;
-            tileMap[1, 1] = red;
-            tileMap[10, 10] = purple;
-            tileMap[4, 20] = green;
+            var tileLayer = new TileLayer("Tiles", new Size(32, 32), new Size(16, 16));
+            tileLayer[0, 0] = purple;
+            tileLayer[1, 1] = red;
+            tileLayer[10, 10] = purple;
+            tileLayer[4, 20] = green;
 
-            tileMap.ParallaxScrollingVector = new Vector(2.0f, 2.0f);
-            tileMap.Offset = new Point(0, -20);
+            tileLayer.ParallaxScrollingVector = new Vector(2.0f, 2.0f);
+            tileLayer.Offset = new Point(0, -20);
 
-            return tileMap;
+            return tileLayer;
         }
 
-        private SpriteMap CreateSpriteMap()
+        private SpriteLayer CreateSpriteLayer()
         {
             var texture = this.gameResourceManager.GetTexture(@"Sandbox\LinkSheet");
             var sheet = new SpriteSheet(texture, "Link");
@@ -267,19 +267,19 @@ namespace SamplesBrowser.Sandbox
 
             this.gameResourceManager.AddSpriteSheet(sheet);
 
-            var spriteMap = new SpriteMap("Sprites");
-            spriteMap.AddSprite(link01);
-            spriteMap.AddSprite(sleep01);
+            var spriteLayer = new SpriteLayer("Sprites");
+            spriteLayer.AddSprite(link01);
+            spriteLayer.AddSprite(sleep01);
 
-            spriteMap.ParallaxScrollingVector = new Vector(4.0f, 8.0f);
-            spriteMap.Offset = new Point(50, 50);
+            spriteLayer.ParallaxScrollingVector = new Vector(4.0f, 8.0f);
+            spriteLayer.Offset = new Point(50, 50);
 
-            return spriteMap;
+            return spriteLayer;
         }
 
-        private DrawingMap CreateHexMapTestDistance()
+        private DrawingLayer CreateHexLayerTestDistance()
         {
-            var map = new DrawingMap("Hex drawing test", this.gameResourceManager);
+            var layer = new DrawingLayer("Hex drawing test", this.gameResourceManager);
             var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
             var hexMap = HexGrid.CreateHexMap(30, 9);
             foreach (var hex in hexMap.Hexes)
@@ -298,15 +298,15 @@ namespace SamplesBrowser.Sandbox
                                     ? new Color(128, 0, 128, 255)
                                     : Color.Red;
 
-                map.AddPolygone(3, color, hex.GetVertices());
+                layer.AddPolygone(3, color, hex.GetVertices());
 
                 var text = string.Format("{0},{1}", hex.Position.X - 4, hex.Position.Y - 5 + (hex.Position.X % 2) * .5);
                 var measure = font.MeasureString(text);
 
-                map.AddText(font, text, hex.Center - (measure / 2.0f), Color.Yellow);
+                layer.AddText(font, text, hex.Center - (measure / 2.0f), Color.Yellow);
             }
 
-            return map;
+            return layer;
         }
     }
 }

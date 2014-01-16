@@ -16,7 +16,7 @@ namespace SamplesBrowser.Touch
         private InputConfiguration inputConfiguration;
         private GameResourceManager gameResourceManager;
         private Scene scene;
-        private DiagnosticMap diagnosticMap;
+        private DiagnosticLayer diagnosticLayer;
 
         private TouchStateBase touchState;
 
@@ -90,18 +90,18 @@ namespace SamplesBrowser.Touch
 
         public override void Update(IGameTiming gameTime)
         {
-            this.diagnosticMap.Update(gameTime, this.camera);
-            this.diagnosticMap.Update(this.touchState);
-            this.diagnosticMap.UpdateLine("DoubleTap", this.doubleTapCount);
-            this.diagnosticMap.UpdateLine("DragC", this.dragCompleteCount);
-            this.diagnosticMap.UpdateLine("Flick", this.flickCount);
-            this.diagnosticMap.UpdateLine("FreeD", this.freeDragCount);
-            this.diagnosticMap.UpdateLine("Hold", this.holdCount);
-            this.diagnosticMap.UpdateLine("HDrag", this.horizontalDragCount);
-            this.diagnosticMap.UpdateLine("PinchC", this.pinchCompleteCount);
-            this.diagnosticMap.UpdateLine("Pinch", this.pinchCount);
-            this.diagnosticMap.UpdateLine("Tap", this.tapCount);
-            this.diagnosticMap.UpdateLine("VDrag", this.verticalDragCount);
+            this.diagnosticLayer.Update(gameTime, this.camera);
+            this.diagnosticLayer.Update(this.touchState);
+            this.diagnosticLayer.UpdateLine("DoubleTap", this.doubleTapCount);
+            this.diagnosticLayer.UpdateLine("DragC", this.dragCompleteCount);
+            this.diagnosticLayer.UpdateLine("Flick", this.flickCount);
+            this.diagnosticLayer.UpdateLine("FreeD", this.freeDragCount);
+            this.diagnosticLayer.UpdateLine("Hold", this.holdCount);
+            this.diagnosticLayer.UpdateLine("HDrag", this.horizontalDragCount);
+            this.diagnosticLayer.UpdateLine("PinchC", this.pinchCompleteCount);
+            this.diagnosticLayer.UpdateLine("Pinch", this.pinchCount);
+            this.diagnosticLayer.UpdateLine("Tap", this.tapCount);
+            this.diagnosticLayer.UpdateLine("VDrag", this.verticalDragCount);
 
             this.visualBackButtonElement.Color = this.isHoveringBackButton ? Color.Red : Color.Blue;
             this.isHoveringBackButton = false;
@@ -111,18 +111,18 @@ namespace SamplesBrowser.Touch
         {
             this.scene = new Scene("Touch");
 
-            this.scene.AddMap(this.CreateButtonMap());
+            this.scene.AddLayer(this.CreateButtonLayer());
 
-            this.scene.AddMap(this.CreateDiagnosticMap());
+            this.scene.AddLayer(this.CreateDiagnosticLayer());
 
             return this.scene;
         }
 
-        public DrawingMap CreateButtonMap()
+        public DrawingLayer CreateButtonLayer()
         {
             var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
 
-            var drawingMap = new DrawingMap("Button", this.gameResourceManager);
+            var drawingMap = new DrawingLayer("Button", this.gameResourceManager);
 
             this.visualBackButtonElement = drawingMap.AddRectangle(this.visualBackButton.Rectangle, 2, Color.Blue);
             drawingMap.AddText(font, "Back", this.visualBackButton.Rectangle.Location.Translate(10, 10).ToVector(), Color.White);
@@ -130,27 +130,27 @@ namespace SamplesBrowser.Touch
             return drawingMap;
         }
 
-        private DiagnosticMap CreateDiagnosticMap()
+        private DiagnosticLayer CreateDiagnosticLayer()
         {
             var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
 
-            var configuration = DiagnosticMapConfiguration.CreateWithFpsOnly(DiagnosticDisplayLocation.Left);
+            var configuration = DiagnosticLayerConfiguration.CreateWithFpsOnly(DiagnosticDisplayLocation.Left);
             configuration.DisplayTouchState = true;
 
-            this.diagnosticMap = new DiagnosticMap(this.gameResourceManager, font, configuration);
+            this.diagnosticLayer = new DiagnosticLayer(this.gameResourceManager, font, configuration);
 
-            this.diagnosticMap.AddLine("DoubleTap", "DoubleTap: {0}");
-            this.diagnosticMap.AddLine("DragC", "DragComplete: {0}");
-            this.diagnosticMap.AddLine("Flick", "Flick: {0}");
-            this.diagnosticMap.AddLine("FreeD", "FreeDrag: {0}");
-            this.diagnosticMap.AddLine("Hold", "Hold: {0}");
-            this.diagnosticMap.AddLine("HDrag", "HorizontalDrag: {0}");
-            this.diagnosticMap.AddLine("PinchC", "PinchCompleted: {0}");
-            this.diagnosticMap.AddLine("Pinch", "Pinch: {0}");
-            this.diagnosticMap.AddLine("Tap", "Tap: {0}");
-            this.diagnosticMap.AddLine("VDrag", "VerticalDrag: {0}");
+            this.diagnosticLayer.AddLine("DoubleTap", "DoubleTap: {0}");
+            this.diagnosticLayer.AddLine("DragC", "DragComplete: {0}");
+            this.diagnosticLayer.AddLine("Flick", "Flick: {0}");
+            this.diagnosticLayer.AddLine("FreeD", "FreeDrag: {0}");
+            this.diagnosticLayer.AddLine("Hold", "Hold: {0}");
+            this.diagnosticLayer.AddLine("HDrag", "HorizontalDrag: {0}");
+            this.diagnosticLayer.AddLine("PinchC", "PinchCompleted: {0}");
+            this.diagnosticLayer.AddLine("Pinch", "Pinch: {0}");
+            this.diagnosticLayer.AddLine("Tap", "Tap: {0}");
+            this.diagnosticLayer.AddLine("VDrag", "VerticalDrag: {0}");
 
-            return this.diagnosticMap;
+            return this.diagnosticLayer;
         }
     }
 }

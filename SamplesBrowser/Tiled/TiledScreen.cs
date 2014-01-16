@@ -8,7 +8,6 @@ using GameFramework.Hexes;
 using GameFramework.Inputs;
 using GameFramework.IO;
 using GameFramework.IO.TiledSharp;
-using GameFramework.Maps;
 using GameFramework.Scenes;
 using GameFramework.Screens;
 using GameFramework.Sheets;
@@ -116,8 +115,8 @@ namespace SamplesBrowser.Tiled
             //var tmxTileset = map.Tilesets[0];
             //this.scene.AddMap(this.CreateTileMap(map, tmxTileset, tmxLayer));
 
-            foreach (var tileMap in TiledHelper.LoadMap(@"Tiled\untitled.tmx", this.gameResourceManager))
-                this.scene.AddMap(tileMap);
+            foreach (var tileMap in TiledHelper.LoadFile(@"Tiled\untitled.tmx", this.gameResourceManager))
+                this.scene.AddLayer(tileMap);
 
             //this.scene.AddMap(this.CreateImageMap());
             //this.scene.AddMap(this.CreateHexMap());

@@ -1,13 +1,13 @@
 ## Features
-### TileMap
+### TileLayer
  - Map drawing utilities: DrawRectangle, FillRectangle, DrawLine
  - CompositeTile stencil to help map's designing
-### SpriteMap
+### SpriteLayer
  - P2 Scaling SpriteSheets
  - P3 AnimatedSpriteDefinition
  - P3 CompositeSprite
-### HexMap
-### Map (Layer)
+### HexLayer
+### Layer
 ### Scene
  - P3 UnitTesting Saving and Loading!
 ### Screen
@@ -34,7 +34,6 @@
 - ! Touch gesture get stuck, should we implement our own configurable gesture? (add-on utility)
 
 ## Refactorings
-- * Map should be renamed Layer
 - Review Point, Rectangle, Vector and used type: int, float, double
 - Should Draw be external to core classes?
 

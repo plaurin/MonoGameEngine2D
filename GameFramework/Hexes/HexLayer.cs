@@ -1,18 +1,18 @@
 using System;
 
 using GameFramework.Cameras;
-using GameFramework.Maps;
+using GameFramework.Layers;
 using GameFramework.Scenes;
 
 namespace GameFramework.Hexes
 {
-    public class HexMap : MapBase
+    public class HexLayer : LayerBase
     {
         private readonly HexDefinition[,] map;
 
         private readonly int topEdgeLength;
 
-        public HexMap(string name, Size mapSize, Size hexSize, int topEdgeLength, HexDefinition defaultHexDefinition = null)
+        public HexLayer(string name, Size mapSize, Size hexSize, int topEdgeLength, HexDefinition defaultHexDefinition = null)
             : base(name)
         {
             this.MapSize = mapSize;

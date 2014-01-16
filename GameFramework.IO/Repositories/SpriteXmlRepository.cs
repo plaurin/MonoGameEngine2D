@@ -7,20 +7,20 @@ namespace GameFramework.IO.Repositories
 {
     public static class SpriteXmlRepository
     {
-        public static XElement ToXml(SpriteMap spriteMap)
+        public static XElement ToXml(SpriteLayer spriteLayer)
         {
-            return new XElement("SpriteMap",
-                XmlRepository.MapBaseToXml(spriteMap),
-                new XElement("Sprites", spriteMap.Sprites.OfType<Sprite>().Select(GetXml)));
+            return new XElement("SpriteLayer",
+                XmlRepository.LayerBaseToXml(spriteLayer),
+                new XElement("Sprites", spriteLayer.Sprites.OfType<Sprite>().Select(GetXml)));
         }
 
-        public static SpriteMap SpriteMapFromXml(GameResourceManager gameResourceManager, XElement mapElement)
+        public static SpriteLayer SpriteLayerFromXml(GameResourceManager gameResourceManager, XElement layerElement)
         {
-            var mapName = mapElement.Attribute("name").Value;
-            var map = new SpriteMap(mapName);
-            XmlRepository.BaseFromXml(map, mapElement);
+            var layerName = layerElement.Attribute("name").Value;
+            var layer = new SpriteLayer(layerName);
+            XmlRepository.BaseFromXml(layer, layerElement);
 
-            foreach (var element in mapElement.Element("Sprites").Elements())
+            foreach (var element in layerElement.Element("Sprites").Elements())
             {
                 var sheetName = element.Attribute("sheetName").Value;
                 var name = element.Attribute("name").Value;
@@ -31,10 +31,10 @@ namespace GameFramework.IO.Repositories
                     Position = MathUtil.ParsePoint(position)
                 };
 
-                map.AddSprite(sprite);
+                layer.AddSprite(sprite);
             }
 
-            return map;
+            return layer;
         }
 
         public static IEnumerable<object> GetXml(SpriteSheet spriteSheet)

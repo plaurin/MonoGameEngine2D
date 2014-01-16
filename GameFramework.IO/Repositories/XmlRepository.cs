@@ -5,7 +5,7 @@ using System.Xml.Linq;
 using GameFramework.Cameras;
 using GameFramework.Drawing;
 using GameFramework.Hexes;
-using GameFramework.Maps;
+using GameFramework.Layers;
 using GameFramework.Scenes;
 using GameFramework.Sheets;
 using GameFramework.Sprites;
@@ -21,8 +21,7 @@ namespace GameFramework.IO.Repositories
 
             document.Add(new XElement("Scene",
                 new XAttribute("name", scene.Name),
-                //scene.Maps.Select(m => m.ToXml())));
-                scene.Maps.Select(XmlRepository.ToXml)));
+                scene.Layers.Select(XmlRepository.ToXml)));
 
             // TODO: Fix this
             //document.Save(path);
@@ -45,27 +44,27 @@ namespace GameFramework.IO.Repositories
             var sceneElement = document.Element("Scene");
             var scene = new Scene(sceneElement.Attribute("name").Value);
 
-            foreach (var mapElement in sceneElement.Elements())
+            foreach (var layerElement in sceneElement.Elements())
             {
-                switch (mapElement.Name.ToString())
+                switch (layerElement.Name.ToString())
                 {
-                    case "ImageMap":
-                        scene.AddMap(ImageXmlRepository.ImageMapFromXml(gameResourceManager, mapElement));
+                    case "ImageLayer":
+                        scene.AddLayer(ImageXmlRepository.ImageLayerFromXml(gameResourceManager, layerElement));
                         break;
-                    case "HexMap":
-                        scene.AddMap(HexXmlRepository.HexMapFromXml(gameResourceManager, mapElement));
+                    case "HexLayer":
+                        scene.AddLayer(HexXmlRepository.HexLayerFromXml(gameResourceManager, layerElement));
                         break;
-                    case "TileMap":
-                        scene.AddMap(TileXmlRepository.TileMapFromXml(gameResourceManager, mapElement));
+                    case "TileLayer":
+                        scene.AddLayer(TileXmlRepository.TileLayerFromXml(gameResourceManager, layerElement));
                         break;
-                    case "ColorMap":
-                        scene.AddMap(ColorXmlRepository.ColorMapFromXml(mapElement));
+                    case "ColorLayer":
+                        scene.AddLayer(ColorXmlRepository.ColorLayerFromXml(layerElement));
                         break;
-                    case "SpriteMap":
-                        scene.AddMap(SpriteXmlRepository.SpriteMapFromXml(gameResourceManager, mapElement));
+                    case "SpriteLayer":
+                        scene.AddLayer(SpriteXmlRepository.SpriteLayerFromXml(gameResourceManager, layerElement));
                         break;
-                    case "DrawingMap":
-                        scene.AddMap(DrawingXmlRepository.DrawingMapFromXml(gameResourceManager, mapElement));
+                    case "DrawingLayer":
+                        scene.AddLayer(DrawingXmlRepository.DrawingLayerFromXml(gameResourceManager, layerElement));
                         break;
                 }
             }
@@ -73,43 +72,43 @@ namespace GameFramework.IO.Repositories
             return scene;
         }
 
-        public static XElement ToXml(MapBase mapBase)
+        public static XElement ToXml(LayerBase layerBase)
         {
-            var drawingMap = mapBase as DrawingMap;
-            if (drawingMap != null) return DrawingXmlRepository.ToXml(drawingMap);
+            var drawingLayer = layerBase as DrawingLayer;
+            if (drawingLayer != null) return DrawingXmlRepository.ToXml(drawingLayer);
 
-            var hexMap = mapBase as HexMap;
-            if (hexMap != null) return HexXmlRepository.ToXml(hexMap);
+            var hexLayer = layerBase as HexLayer;
+            if (hexLayer != null) return HexXmlRepository.ToXml(hexLayer);
 
-            var colorMap = mapBase as ColorMap;
-            if (colorMap != null) return ColorXmlRepository.ToXml(colorMap);
+            var colorLayer = layerBase as ColorLayer;
+            if (colorLayer != null) return ColorXmlRepository.ToXml(colorLayer);
 
-            var imageMap = mapBase as ImageMap;
-            if (imageMap != null) return ImageXmlRepository.ToXml(imageMap);
+            var imageLayer = layerBase as ImageLayer;
+            if (imageLayer != null) return ImageXmlRepository.ToXml(imageLayer);
 
-            var spriteMap = mapBase as SpriteMap;
-            if (spriteMap != null) return SpriteXmlRepository.ToXml(spriteMap);
+            var spriteLayer = layerBase as SpriteLayer;
+            if (spriteLayer != null) return SpriteXmlRepository.ToXml(spriteLayer);
 
-            var tileMap = mapBase as TileMap;
-            if (tileMap != null) return TileXmlRepository.ToXml(tileMap);
+            var tileLayer = layerBase as TileLayer;
+            if (tileLayer != null) return TileXmlRepository.ToXml(tileLayer);
 
-            throw new NotSupportedException(mapBase.GetType() + " is not supported");
+            throw new NotSupportedException(layerBase.GetType() + " is not supported");
         }
 
-        internal static IEnumerable<object> MapBaseToXml(MapBase mapBase)
+        internal static IEnumerable<object> LayerBaseToXml(LayerBase layerBase)
         {
-            yield return new XAttribute("name", mapBase.Name);
-            yield return new XAttribute("parallaxScrollingVector", mapBase.ParallaxScrollingVector);
-            yield return new XAttribute("offset", mapBase.Offset);
-            yield return new XAttribute("cameraMode", mapBase.CameraMode);
+            yield return new XAttribute("name", layerBase.Name);
+            yield return new XAttribute("parallaxScrollingVector", layerBase.ParallaxScrollingVector);
+            yield return new XAttribute("offset", layerBase.Offset);
+            yield return new XAttribute("cameraMode", layerBase.CameraMode);
         }
 
-        internal static void BaseFromXml(MapBase mapBase, XElement element)
+        internal static void BaseFromXml(LayerBase layerBase, XElement element)
         {
-            mapBase.Name = element.Attribute("name").Value;
-            mapBase.ParallaxScrollingVector = MathUtil.ParseVector(element.Attribute("parallaxScrollingVector").Value);
-            mapBase.Offset = MathUtil.ParsePoint(element.Attribute("offset").Value);
-            mapBase.CameraMode = (CameraMode)Enum.Parse(typeof(CameraMode), element.Attribute("cameraMode").Value);
+            layerBase.Name = element.Attribute("name").Value;
+            layerBase.ParallaxScrollingVector = MathUtil.ParseVector(element.Attribute("parallaxScrollingVector").Value);
+            layerBase.Offset = MathUtil.ParsePoint(element.Attribute("offset").Value);
+            layerBase.CameraMode = (CameraMode)Enum.Parse(typeof(CameraMode), element.Attribute("cameraMode").Value);
         }
     }
 }

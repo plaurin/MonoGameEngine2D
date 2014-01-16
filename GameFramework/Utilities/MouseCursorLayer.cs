@@ -2,25 +2,25 @@ using System;
 using GameFramework.Cameras;
 using GameFramework.Drawing;
 using GameFramework.Inputs;
-using GameFramework.Maps;
+using GameFramework.Layers;
 
 namespace GameFramework.Utilities
 {
-    public class MouseCursorMap : MapBase
+    public class MouseCursorLayer : LayerBase
     {
-        private readonly MapBase map;
+        private readonly LayerBase layer;
         private readonly Action<MouseStateBase> updateAction;
 
-        private MouseCursorMap(MapBase map, Action<MouseStateBase> updateAction)
+        private MouseCursorLayer(LayerBase layer, Action<MouseStateBase> updateAction)
             : base("MouseCursor")
         {
-            this.map = map;
+            this.layer = layer;
             this.updateAction = updateAction;
         }
 
-        public static MouseCursorMap Create(GameResourceManager gameResourceManager)
+        public static MouseCursorLayer Create(GameResourceManager gameResourceManager)
         {
-            var drawingMap = new DrawingMap("MouseCursorInner", gameResourceManager) { CameraMode = CameraMode.Fix };
+            var drawingMap = new DrawingLayer("MouseCursorInner", gameResourceManager) { CameraMode = CameraMode.Fix };
             Action<MouseStateBase> updateAction = mouseState =>
             {
                 drawingMap.ClearAll();
@@ -31,7 +31,7 @@ namespace GameFramework.Utilities
                     mouseState.AbsolutePosition.Translate(0, 10).ToVector(), 2, Color.Red);
             };
 
-            return new MouseCursorMap(drawingMap, updateAction);
+            return new MouseCursorLayer(drawingMap, updateAction);
         }
 
         public void Update(MouseStateBase mouseState)
@@ -41,7 +41,7 @@ namespace GameFramework.Utilities
 
         public override void Draw(DrawContext drawContext, Camera camera)
         {
-            this.map.Draw(drawContext, camera);
+            this.layer.Draw(drawContext, camera);
         }
     }
 }

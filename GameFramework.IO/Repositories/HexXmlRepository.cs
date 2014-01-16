@@ -7,33 +7,33 @@ namespace GameFramework.IO.Repositories
 {
     public class HexXmlRepository
     {
-        public static XElement ToXml(HexMap hexMap)
+        public static XElement ToXml(HexLayer hexLayer)
         {
-            var hexReferences = CreateHexReferences(hexMap).ToList();
+            var hexReferences = CreateHexReferences(hexLayer).ToList();
 
-            return new XElement("HexMap", XmlRepository.MapBaseToXml(hexMap),
-                new XElement("MapSize", hexMap.MapSize),
-                new XElement("HexSize", hexMap.HexSize),
-                new XElement("EdgeLength", hexMap.TopEdgeLength),
+            return new XElement("HexLayer", XmlRepository.LayerBaseToXml(hexLayer),
+                new XElement("MapSize", hexLayer.MapSize),
+                new XElement("HexSize", hexLayer.HexSize),
+                new XElement("EdgeLength", hexLayer.TopEdgeLength),
                 new XElement("HexDefinitionReferences", hexReferences.Select(x =>
                     new XElement("Reference",
                         new XAttribute("id", x.Id),
                         new XAttribute("sheetName", x.Definition.SheetName),
                         new XAttribute("name", x.Definition.Name)))),
-                new XElement("Hexes", GetRowsXml(hexMap, hexReferences)));
+                new XElement("Hexes", GetRowsXml(hexLayer, hexReferences)));
         }
 
-        public static HexMap HexMapFromXml(GameResourceManager gameResourceManager, XElement mapElement)
+        public static HexLayer HexLayerFromXml(GameResourceManager gameResourceManager, XElement layerElement)
         {
-            var name = mapElement.Attribute("name").Value;
-            var mapSize = MathUtil.ParseSize(mapElement.Element("MapSize").Value);
-            var hexSize = MathUtil.ParseSize(mapElement.Element("HexSize").Value);
-            var edgeLength = int.Parse(mapElement.Element("EdgeLength").Value);
-            var hexReferences = GetHexReferences(gameResourceManager, mapElement.Element("HexDefinitionReferences")).ToList();
-            var hexes = GetRowsFromXml(mapElement.Element("Hexes"));
+            var name = layerElement.Attribute("name").Value;
+            var mapSize = MathUtil.ParseSize(layerElement.Element("MapSize").Value);
+            var hexSize = MathUtil.ParseSize(layerElement.Element("HexSize").Value);
+            var edgeLength = int.Parse(layerElement.Element("EdgeLength").Value);
+            var hexReferences = GetHexReferences(gameResourceManager, layerElement.Element("HexDefinitionReferences")).ToList();
+            var hexes = GetRowsFromXml(layerElement.Element("Hexes"));
 
-            var map = new HexMap(name, mapSize, hexSize, edgeLength);
-            XmlRepository.BaseFromXml(map, mapElement);
+            var layer = new HexLayer(name, mapSize, hexSize, edgeLength);
+            XmlRepository.BaseFromXml(layer, layerElement);
 
             int x = 0;
             foreach (var row in hexes)
@@ -41,13 +41,13 @@ namespace GameFramework.IO.Repositories
                 int y = 0;
                 foreach (var element in row)
                 {
-                    map[x, y++] = hexReferences.Single(r => r.Id == element).Definition;
+                    layer[x, y++] = hexReferences.Single(r => r.Id == element).Definition;
                 }
 
                 x++;
             }
 
-            return map;
+            return layer;
         }
 
         public static IEnumerable<object> GetXml(HexSheet hexSheet)
@@ -70,13 +70,13 @@ namespace GameFramework.IO.Repositories
             return hexSheet;
         }
 
-        private static IEnumerable<HexReference> CreateHexReferences(HexMap hexMap)
+        private static IEnumerable<HexReference> CreateHexReferences(HexLayer hexLayer)
         {
             var hexDefinitions = new List<HexDefinition>();
-            for (var i = 0; i < hexMap.MapSize.Width; i++)
-                for (var j = 0; j < hexMap.MapSize.Height; j++)
+            for (var i = 0; i < hexLayer.MapSize.Width; i++)
+                for (var j = 0; j < hexLayer.MapSize.Height; j++)
                 {
-                    hexDefinitions.Add(hexMap[i, j]);
+                    hexDefinitions.Add(hexLayer[i, j]);
                 }
 
             return hexDefinitions
@@ -84,14 +84,14 @@ namespace GameFramework.IO.Repositories
                 .Select((x, i) => new HexReference { Id = i, Definition = x });
         }
 
-        private static IEnumerable<XElement> GetRowsXml(HexMap hexMap, List<HexReference> hexReferences)
+        private static IEnumerable<XElement> GetRowsXml(HexLayer hexLayer, List<HexReference> hexReferences)
         {
-            for (var i = 0; i < hexMap.MapSize.Width; i++)
+            for (var i = 0; i < hexLayer.MapSize.Width; i++)
             {
-                var row = new int[hexMap.MapSize.Height];
-                for (var j = 0; j < hexMap.MapSize.Height; j++)
+                var row = new int[hexLayer.MapSize.Height];
+                for (var j = 0; j < hexLayer.MapSize.Height; j++)
                 {
-                    row[j] = hexReferences.Single(x => x.Definition == hexMap[i, j]).Id;
+                    row[j] = hexReferences.Single(x => x.Definition == hexLayer[i, j]).Id;
                 }
 
                 yield return new XElement("Row", string.Join(", ", row));

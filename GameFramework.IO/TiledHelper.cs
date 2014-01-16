@@ -11,7 +11,7 @@ namespace GameFramework.IO
     {
         private const string ContentFolder = "Content";
 
-        public static IEnumerable<TileMap> LoadMap(string filepath, GameResourceManager gameResourceManager)
+        public static IEnumerable<TileLayer> LoadFile(string filepath, GameResourceManager gameResourceManager)
         {
             var map = new TmxMap(Path.Combine(ContentFolder, filepath));
 
@@ -51,17 +51,17 @@ namespace GameFramework.IO
             return sheet;
         }
 
-        private static TileMap LoadLayer(TmxLayer layer, Size mapSize, Size tilesSize, IDictionary<string, TileDefinition> tileDefinitions)
+        private static TileLayer LoadLayer(TmxLayer layer, Size mapSize, Size tilesSize, IDictionary<string, TileDefinition> tileDefinitions)
         {
-            var tileMap = new TileMap(layer.Name, mapSize, tilesSize);
+            var tileLayer = new TileLayer(layer.Name, mapSize, tilesSize);
 
             foreach (var tile in layer.Tiles)
             {
                 if (tile.Gid != 0)
-                    tileMap[tile.X, tile.Y] = tileDefinitions[tile.Gid.ToString()];
+                    tileLayer[tile.X, tile.Y] = tileDefinitions[tile.Gid.ToString()];
             }
 
-            return tileMap;
+            return tileLayer;
         }
     }
 }

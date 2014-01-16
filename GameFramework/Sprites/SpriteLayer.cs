@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 
 using GameFramework.Cameras;
-using GameFramework.Maps;
+using GameFramework.Layers;
 using GameFramework.Scenes;
 
 namespace GameFramework.Sprites
 {
-    public class SpriteMap : MapBase
+    public class SpriteLayer : LayerBase
     {
         private readonly List<SpriteBase> sprites;
 
-        public SpriteMap(string name)
+        public SpriteLayer(string name)
             : base(name)
         {
             this.sprites = new List<SpriteBase>();

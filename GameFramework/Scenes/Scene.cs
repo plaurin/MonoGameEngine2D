@@ -3,47 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 
 using GameFramework.Cameras;
-using GameFramework.Maps;
+using GameFramework.Layers;
 
 namespace GameFramework.Scenes
 {
     public class Scene
     {
-        private readonly List<MapBase> maps;
+        private readonly List<LayerBase> layers;
 
         public Scene(string name)
         {
             this.Name = name;
-            this.maps = new List<MapBase>();
+            this.layers = new List<LayerBase>();
         }
 
         public string Name { get; private set; }
 
-        public IEnumerable<MapBase> Maps
+        public IEnumerable<LayerBase> Layers
         {
             get
             {
-                return this.maps;
+                return this.layers;
             }
         }
 
-        public void AddMap(MapBase map)
+        public void AddLayer(LayerBase layer)
         {
-            this.maps.Add(map);
+            this.layers.Add(layer);
         }
 
         public void Draw(DrawContext drawContext, Camera camera)
         {
-            foreach (var map in this.maps)
+            foreach (var layer in this.layers)
             {
-                map.Draw(drawContext, camera);
+                layer.Draw(drawContext, camera);
             }
         }
 
         public IEnumerable<HitBase> GetHits(Point position, Camera camera)
         {
-            return this.maps
-                .Select(map => map.GetHit(position, camera))
+            return this.layers
+                .Select(layer => layer.GetHit(position, camera))
                 .Where(hit => hit != null);
         }
     }

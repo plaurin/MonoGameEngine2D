@@ -19,7 +19,7 @@ namespace SamplesBrowser.ShootEmUp
 
         private Scene scene;
 
-        private SpriteMap entityMap;
+        private SpriteLayer entityLayer;
 
         public ShootEmUpScreen(ScreenNavigation screenNavigation)
         {
@@ -67,19 +67,19 @@ namespace SamplesBrowser.ShootEmUp
 
             var spriteSheet = CreateSpriteSheet();
 
-            entityMap = new SpriteMap("EntityMap");
-            this.scene.AddMap(entityMap);
+            this.entityLayer = new SpriteLayer("EntityMap");
+            this.scene.AddLayer(this.entityLayer);
 
-            this.playerShipEntity = new PlayerShipEntity(entityMap, spriteSheet);
+            this.playerShipEntity = new PlayerShipEntity(this.entityLayer, spriteSheet);
             this.playerShipEntity.BindController(this.inputConfiguration);
 
             var yellowSprite = new Sprite(spriteSheet, "YellowEnemy") { Position = new Point(250, 100) };
             var redSprite = new Sprite(spriteSheet, "RedEnemy") { Position = new Point(300, 100) };
             var blueSprite = new Sprite(spriteSheet, "BlueEnemy") { Position = new Point(350, 100) };
 
-            entityMap.AddSprite(yellowSprite);
-            entityMap.AddSprite(redSprite);
-            entityMap.AddSprite(blueSprite);
+            this.entityLayer.AddSprite(yellowSprite);
+            this.entityLayer.AddSprite(redSprite);
+            this.entityLayer.AddSprite(blueSprite);
 
             return this.scene;
         }

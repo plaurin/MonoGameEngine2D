@@ -1,12 +1,11 @@
 using System;
-
 using GameFramework.Cameras;
 
-namespace GameFramework.Maps
+namespace GameFramework.Layers
 {
-    public class ImageMap : MapBase
+    public class ImageLayer : LayerBase
     {
-        public ImageMap(string name, Texture texture, Rectangle rectangle)
+        public ImageLayer(string name, Texture texture, Rectangle rectangle)
             : base(name)
         {
             this.Texture = texture;

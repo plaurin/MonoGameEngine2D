@@ -30,25 +30,25 @@ namespace GameFramework.Drawing
 
         public Color Color { get; set; }
 
-        public override void Draw(DrawContext drawContext, Camera camera, DrawingMap drawingMap)
+        public override void Draw(DrawContext drawContext, Camera camera, DrawingLayer drawingLayer)
         {
             var topLeft = new Vector(this.x, this.y);
             var topRight = new Vector(this.x + this.width, this.y);
             var bottomLeft = new Vector(this.x, this.y + this.height);
             var bottomRight = new Vector(this.x + this.width, this.y + this.height);
 
-            this.DrawLine(drawContext, camera, drawingMap, topLeft, topRight, this.LineWidth, this.Color);
-            this.DrawLine(drawContext, camera, drawingMap, topRight, bottomRight, this.LineWidth, this.Color);
-            this.DrawLine(drawContext, camera, drawingMap, bottomRight, bottomLeft, this.LineWidth, this.Color);
-            this.DrawLine(drawContext, camera, drawingMap, bottomLeft, topLeft, this.LineWidth, this.Color);
+            this.DrawLine(drawContext, camera, drawingLayer, topLeft, topRight, this.LineWidth, this.Color);
+            this.DrawLine(drawContext, camera, drawingLayer, topRight, bottomRight, this.LineWidth, this.Color);
+            this.DrawLine(drawContext, camera, drawingLayer, bottomRight, bottomLeft, this.LineWidth, this.Color);
+            this.DrawLine(drawContext, camera, drawingLayer, bottomLeft, topLeft, this.LineWidth, this.Color);
         }
 
-        public override HitBase GetHit(Point position, Camera camera, Point mapOffset, Vector parallaxScrollingVector)
+        public override HitBase GetHit(Point position, Camera camera, Point layerOffset, Vector parallaxScrollingVector)
         {
             var rectangle =
                 new Rectangle(
-                    mapOffset.X + (int)this.x,
-                    mapOffset.X + (int)this.y,
+                    layerOffset.X + (int)this.x,
+                    layerOffset.X + (int)this.y,
                     (int)this.width,
                     (int)this.height)
                 .Scale(camera.ZoomFactor)
