@@ -44,8 +44,8 @@ namespace GameFramework.Tiles
                 {
                     var destination =
                         new Rectangle(
-                            this.Offset.X + i * this.TileSize.Width, 
-                            this.Offset.Y + j * this.TileSize.Height, 
+                            (int)this.Offset.X + i * this.TileSize.Width, 
+                            (int)this.Offset.Y + j * this.TileSize.Height, 
                             this.TileSize.Width, 
                             this.TileSize.Height)
                         .Scale(camera.ZoomFactor)
@@ -55,21 +55,21 @@ namespace GameFramework.Tiles
                 }
         }
 
-        public override HitBase GetHit(Point position, Camera camera)
+        public override HitBase GetHit(Vector position, Camera camera)
         {
             for (var i = 0; i < this.MapSize.Width; i++)
                 for (var j = 0; j < this.MapSize.Height; j++)
                 {
                     var tileRectangle =
                         new Rectangle(
-                            this.Offset.X + i * this.TileSize.Width,
-                            this.Offset.Y + j * this.TileSize.Height, 
+                            (int)this.Offset.X + i * this.TileSize.Width,
+                            (int)this.Offset.Y + j * this.TileSize.Height, 
                             this.TileSize.Width, 
                             this.TileSize.Height)
                         .Scale(camera.ZoomFactor)
                         .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector).ToPoint());
 
-                    if (tileRectangle.Intercept(position))
+                    if (tileRectangle.Intercept(position.ToPoint()))
                         return new TileHit(new Point(i, j));
                 }
 

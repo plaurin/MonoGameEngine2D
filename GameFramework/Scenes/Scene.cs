@@ -43,7 +43,7 @@ namespace GameFramework.Scenes
         public IEnumerable<HitBase> GetHits(Point position, Camera camera)
         {
             return this.layers
-                .Select(layer => layer.GetHit(position, camera))
+                .Select(layer => layer.GetHit(position.ToVector(), camera))
                 .Where(hit => hit != null);
         }
     }

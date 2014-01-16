@@ -36,7 +36,7 @@ namespace SamplesBrowser.ShootEmUp
             }
         }
 
-        public override HitBase GetHit(Point position, Camera camera, Point mapOffset, Vector parallaxScrollingVector)
+        public override HitBase GetHit(Vector position, Camera camera, Point mapOffset, Vector parallaxScrollingVector)
         {
             throw new NotImplementedException();
         }

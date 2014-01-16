@@ -60,8 +60,8 @@ namespace GameFramework.Hexes
                     var halfHeight = this.HexSize.Height / 2;
 
                     var rectangle = new Rectangle(
-                        this.Offset.X + i * hexDistance,
-                        this.Offset.Y + j * this.HexSize.Height + (i % 2 == 1 ? halfHeight : 0),
+                        (int)this.Offset.X + i * hexDistance,
+                        (int)this.Offset.Y + j * this.HexSize.Height + (i % 2 == 1 ? halfHeight : 0),
                         this.HexSize.Width, this.HexSize.Height);
 
                     var destination = rectangle
@@ -72,7 +72,7 @@ namespace GameFramework.Hexes
                 }
         }
 
-        public override HitBase GetHit(Point position, Camera camera)
+        public override HitBase GetHit(Vector position, Camera camera)
         {
             for (var i = 0; i < this.MapSize.Width; i++)
                 for (var j = 0; j < this.MapSize.Height; j++)
@@ -81,8 +81,8 @@ namespace GameFramework.Hexes
                     var halfHeight = this.HexSize.Height / 2;
 
                     var rectangle = new Rectangle(
-                        this.Offset.X + i * hexDistance,
-                        this.Offset.Y + j * this.HexSize.Height + (i % 2 == 1 ? halfHeight : 0),
+                        (int)this.Offset.X + i * hexDistance,
+                        (int)this.Offset.Y + j * this.HexSize.Height + (i % 2 == 1 ? halfHeight : 0),
                         this.HexSize.Width, this.HexSize.Height);
 
                     var mapPosition = position
@@ -101,7 +101,7 @@ namespace GameFramework.Hexes
                         new Point(rectangle.X, rectangle.Y + halfHeight)
                     };
 
-                    if (MathUtil.IsHitPolygone(polygone, mapPosition))
+                    if (MathUtil.IsHitPolygone(polygone, mapPosition.ToPoint()))
                         return new HexHit(new Point(i, j));
                 }
 

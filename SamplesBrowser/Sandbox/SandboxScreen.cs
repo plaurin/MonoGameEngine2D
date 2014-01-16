@@ -221,7 +221,7 @@ namespace SamplesBrowser.Sandbox
             hexLayer[1, 1] = red;
 
             hexLayer.ParallaxScrollingVector = new Vector(4.0f, 0.5f);
-            hexLayer.Offset = new Point(-25, 0);
+            hexLayer.Offset = new Vector(-25, 0);
 
             return hexLayer;
         }
@@ -248,7 +248,7 @@ namespace SamplesBrowser.Sandbox
             tileLayer[4, 20] = green;
 
             tileLayer.ParallaxScrollingVector = new Vector(2.0f, 2.0f);
-            tileLayer.Offset = new Point(0, -20);
+            tileLayer.Offset = new Vector(0, -20);
 
             return tileLayer;
         }
@@ -272,7 +272,7 @@ namespace SamplesBrowser.Sandbox
             spriteLayer.AddSprite(sleep01);
 
             spriteLayer.ParallaxScrollingVector = new Vector(4.0f, 8.0f);
-            spriteLayer.Offset = new Point(50, 50);
+            spriteLayer.Offset = new Vector(50, 50);
 
             return spriteLayer;
         }

@@ -10,7 +10,7 @@ namespace GameFramework.Drawing
     {
         public abstract void Draw(DrawContext drawContext, Camera camera, DrawingLayer drawingLayer);
 
-        public abstract HitBase GetHit(Point position, Camera camera, Point layerOffset, Vector parallaxScrollingVector);
+        public abstract HitBase GetHit(Vector position, Camera camera, Point layerOffset, Vector parallaxScrollingVector);
 
         protected void DrawLine(DrawContext drawContext, Camera camera, DrawingLayer drawingLayer, Vector fromVector, Vector toVector, int width, Color color)
         {

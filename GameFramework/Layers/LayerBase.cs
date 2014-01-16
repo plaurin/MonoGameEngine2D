@@ -19,11 +19,11 @@ namespace GameFramework.Layers
 
         public Vector ParallaxScrollingVector { get; set; }
         
-        public Point Offset { get; set; }
+        public Vector Offset { get; set; }
 
         public abstract void Draw(DrawContext drawContext, Camera camera);
 
-        public virtual HitBase GetHit(Point position, Camera camera)
+        public virtual HitBase GetHit(Vector position, Camera camera)
         {
             return null;
         }

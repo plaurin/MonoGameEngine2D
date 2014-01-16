@@ -11,6 +11,6 @@ namespace GameFramework.Sprites
 
         public abstract void Draw(DrawContext drawContext, Camera camera, Point mapOffset, Vector parallaxScrollingVector);
 
-        public abstract HitBase GetHit(Point position, Camera camera, Point mapOffset, Vector parallaxScrollingVector);
+        public abstract HitBase GetHit(Vector position, Camera camera, Point mapOffset, Vector parallaxScrollingVector);
     }
 }

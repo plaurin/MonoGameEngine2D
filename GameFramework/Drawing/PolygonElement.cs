@@ -31,7 +31,7 @@ namespace GameFramework.Drawing
             this.Vertices.ForEachPair((x, y) => this.DrawLine(drawContext, camera, drawingLayer, x, y, this.Width, this.Color));
         }
 
-        public override HitBase GetHit(Point position, Camera camera, Point layerOffset, Vector parallaxScrollingVector)
+        public override HitBase GetHit(Vector position, Camera camera, Point layerOffset, Vector parallaxScrollingVector)
         {
             // To be implemented
             return null;

@@ -107,7 +107,7 @@ namespace GameFramework.IO.Repositories
         {
             layerBase.Name = element.Attribute("name").Value;
             layerBase.ParallaxScrollingVector = MathUtil.ParseVector(element.Attribute("parallaxScrollingVector").Value);
-            layerBase.Offset = MathUtil.ParsePoint(element.Attribute("offset").Value);
+            layerBase.Offset = MathUtil.ParseVector(element.Attribute("offset").Value);
             layerBase.CameraMode = (CameraMode)Enum.Parse(typeof(CameraMode), element.Attribute("cameraMode").Value);
         }
     }

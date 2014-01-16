@@ -20,7 +20,7 @@ namespace GameFramework.Sprites
             this.SpriteSheet.Draw(drawContext, camera, mapOffset, parallaxScrollingVector, this);
         }
 
-        public override HitBase GetHit(Point position, Camera camera, Point mapOffset, Vector parallaxScrollingVector)
+        public override HitBase GetHit(Vector position, Camera camera, Point mapOffset, Vector parallaxScrollingVector)
         {
             return this.SpriteSheet.GetHit(position, camera, mapOffset, parallaxScrollingVector, this);
         }

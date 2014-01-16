@@ -41,7 +41,7 @@ namespace GameFramework.Sprites
             drawContext.DrawImage(this.Texture, source, destination);
         }
 
-        public HitBase GetHit(Point position, Camera camera, Point mapOffset, Vector parallaxScrollingVector, Sprite sprite)
+        public HitBase GetHit(Vector position, Camera camera, Point mapOffset, Vector parallaxScrollingVector, Sprite sprite)
         {
             var source = this.Definitions[sprite.SpriteName];
             var spriteRectangle = 
@@ -53,7 +53,7 @@ namespace GameFramework.Sprites
                 .Scale(camera.ZoomFactor)
                 .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector).ToPoint());
 
-            return spriteRectangle.Intercept(position) 
+            return spriteRectangle.Intercept(position.ToPoint()) 
                 ? new SpriteHit(sprite) 
                 : null;
         }

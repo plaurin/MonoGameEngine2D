@@ -3,7 +3,7 @@
 namespace GameFramework
 {
     /// <summary>
-    /// <remarks>Should only be used for MapSize (and array size)</remarks>
+    /// <remarks>Should only be used for MapSize (and array size) and ViewPort</remarks>
     /// </summary>
     public struct Size
     {
