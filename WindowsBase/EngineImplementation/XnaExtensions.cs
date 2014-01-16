@@ -18,7 +18,7 @@ namespace MonoGameImplementation.EngineImplementation
 
         public static Vector2 ToVector2(this Vector vector)
         {
-            return new Vector2((float)vector.X, (float)vector.Y);
+            return new Vector2(vector.X, vector.Y);
         }
 
         public static Color ToXnaColor(this GameFramework.Color color)

@@ -4,8 +4,8 @@ namespace GameFramework
 {
     public struct Vector
     {
-        private readonly double x;
-        private readonly double y;
+        private readonly float x;
+        private readonly float y;
 
         public Vector(float x, float y)
         {
@@ -13,18 +13,12 @@ namespace GameFramework
             this.y = y;
         }
 
-        public Vector(double x, double y)
-        {
-            this.x = x;
-            this.y = y;
-        }
-
-        public double X 
+        public float X 
         { 
             get { return this.x; }
         }
 
-        public double Y
+        public float Y
         { 
             get { return this.y; }
         }
@@ -36,7 +30,7 @@ namespace GameFramework
 
         public static Vector One
         {
-            get { return new Vector(1.0, 1.0); }
+            get { return new Vector(1, 1); }
         }
 
         public static Vector operator +(Vector first, Vector second)
@@ -54,7 +48,7 @@ namespace GameFramework
             return new Vector(vector.X / factor, vector.Y / factor);
         }
 
-        public static double Distance(Vector first, Vector second)
+        public static float Distance(Vector first, Vector second)
         {
             return MathUtil.CalcHypotenuse(Math.Abs(first.X - second.X), Math.Abs(first.Y - second.Y));
         }

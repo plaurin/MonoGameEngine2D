@@ -136,7 +136,7 @@ namespace GameFramework
             return new Vector(x, y);
         }
 
-        private static double Clamp(double value, double minValue, double maxValue)
+        private static float Clamp(float value, float minValue, float maxValue)
         {
             return value < minValue
                 ? minValue
