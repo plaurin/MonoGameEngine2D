@@ -43,12 +43,12 @@ namespace GameFramework.Drawing
             this.DrawLine(drawContext, camera, drawingLayer, bottomLeft, topLeft, this.LineWidth, this.Color);
         }
 
-        public override HitBase GetHit(Vector position, Camera camera, Point layerOffset, Vector parallaxScrollingVector)
+        public override HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector)
         {
             var rectangle =
                 new Rectangle(
-                    layerOffset.X + (int)this.x,
-                    layerOffset.X + (int)this.y,
+                    (int)layerOffset.X + (int)this.x,
+                    (int)layerOffset.X + (int)this.y,
                     (int)this.width,
                     (int)this.height)
                 .Scale(camera.ZoomFactor)

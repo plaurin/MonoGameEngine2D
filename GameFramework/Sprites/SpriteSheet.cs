@@ -26,13 +26,13 @@ namespace GameFramework.Sprites
             this.Definitions.Add(spriteName, spriteRectangle);
         }
 
-        public void Draw(DrawContext drawContext, Camera camera, Point mapOffset, Vector parallaxScrollingVector, Sprite sprite)
+        public void Draw(DrawContext drawContext, Camera camera, Vector layerOffset, Vector parallaxScrollingVector, Sprite sprite)
         {
             var source = this.Definitions[sprite.SpriteName];
             var destination = 
                 new Rectangle(
-                    mapOffset.X + sprite.Position.X,
-                    mapOffset.Y + sprite.Position.Y, 
+                    (int)layerOffset.X + sprite.Position.X,
+                    (int)layerOffset.Y + sprite.Position.Y, 
                     source.Width, 
                     source.Height)
                 .Scale(camera.ZoomFactor)
@@ -41,13 +41,13 @@ namespace GameFramework.Sprites
             drawContext.DrawImage(this.Texture, source, destination);
         }
 
-        public HitBase GetHit(Vector position, Camera camera, Point mapOffset, Vector parallaxScrollingVector, Sprite sprite)
+        public HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector, Sprite sprite)
         {
             var source = this.Definitions[sprite.SpriteName];
             var spriteRectangle = 
                 new Rectangle(
-                    mapOffset.X + sprite.Position.X,
-                    mapOffset.X + sprite.Position.Y, 
+                    (int)layerOffset.X + sprite.Position.X,
+                    (int)layerOffset.X + sprite.Position.Y, 
                     source.Width, 
                     source.Height)
                 .Scale(camera.ZoomFactor)

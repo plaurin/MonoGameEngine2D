@@ -2,6 +2,9 @@
 
 namespace GameFramework
 {
+    /// <summary>
+    /// <remarks>Should only be used for Texture source and destination (Sprite too)</remarks>
+    /// </summary>
     public struct Rectangle
     {
         private readonly int x;

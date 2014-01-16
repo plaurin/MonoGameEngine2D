@@ -44,7 +44,7 @@ namespace GameFramework.Drawing
             //    new Vector(length, finalWidth), SpriteEffects.None, 0);
         }
 
-        public override HitBase GetHit(Vector position, Camera camera, Point layerOffset, Vector parallaxScrollingVector)
+        public override HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector)
         {
             return null;
         }

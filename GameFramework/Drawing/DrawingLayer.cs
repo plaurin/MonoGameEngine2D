@@ -89,7 +89,7 @@ namespace GameFramework.Drawing
         public override HitBase GetHit(Vector position, Camera camera)
         {
             return this.elements
-                .Select(element => element.GetHit(position, camera, this.Offset.ToPoint(), this.ParallaxScrollingVector))
+                .Select(element => element.GetHit(position, camera, this.Offset, this.ParallaxScrollingVector))
                 .FirstOrDefault(spriteHit => spriteHit != null);
         }
     }
