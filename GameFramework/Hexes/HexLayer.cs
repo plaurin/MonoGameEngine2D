@@ -60,8 +60,8 @@ namespace GameFramework.Hexes
                     var halfHeight = this.HexSize.Height / 2;
 
                     var rectangle = new Rectangle(
-                        (int)this.Offset.X + i * hexDistance,
-                        (int)this.Offset.Y + j * this.HexSize.Height + (i % 2 == 1 ? halfHeight : 0),
+                        this.Offset.X + i * hexDistance,
+                        this.Offset.Y + j * this.HexSize.Height + (i % 2 == 1 ? halfHeight : 0),
                         this.HexSize.Width, this.HexSize.Height);
 
                     var destination = rectangle
@@ -81,8 +81,8 @@ namespace GameFramework.Hexes
                     var halfHeight = this.HexSize.Height / 2;
 
                     var rectangle = new Rectangle(
-                        (int)this.Offset.X + i * hexDistance,
-                        (int)this.Offset.Y + j * this.HexSize.Height + (i % 2 == 1 ? halfHeight : 0),
+                        this.Offset.X + i * hexDistance,
+                        this.Offset.Y + j * this.HexSize.Height + (i % 2 == 1 ? halfHeight : 0),
                         this.HexSize.Width, this.HexSize.Height);
 
                     var mapPosition = position
@@ -94,11 +94,12 @@ namespace GameFramework.Hexes
 
                     var polygone = new[]
                     {
-                        new Point(rectangle.X + x1, rectangle.Y), new Point(rectangle.X + x2, rectangle.Y),
-                        new Point(rectangle.X + this.HexSize.Width, rectangle.Y + halfHeight),
-                        new Point(rectangle.X + x2, rectangle.Y + this.HexSize.Height),
-                        new Point(rectangle.X + x1, rectangle.Y + this.HexSize.Height),
-                        new Point(rectangle.X, rectangle.Y + halfHeight)
+                        new Vector(rectangle.X + x1, rectangle.Y),
+                        new Vector(rectangle.X + x2, rectangle.Y),
+                        new Vector(rectangle.X + this.HexSize.Width, rectangle.Y + halfHeight),
+                        new Vector(rectangle.X + x2, rectangle.Y + this.HexSize.Height),
+                        new Vector(rectangle.X + x1, rectangle.Y + this.HexSize.Height),
+                        new Vector(rectangle.X, rectangle.Y + halfHeight)
                     };
 
                     if (MathUtil.IsHitPolygone(polygone, mapPosition))

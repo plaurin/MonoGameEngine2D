@@ -72,6 +72,7 @@
     <Compile Include="Inputs\TouchTracking.cs" />
     <Compile Include="Inputs\VisualButton.cs" />
     <Compile Include="Layers\ColorLayer.cs" />
+    <Compile Include="Rectangle.cs" />
     <Compile Include="Sprites\SpriteBase.cs" />
     <Compile Include="Utilities\DiagnosticLayer.cs" />
     <Compile Include="Layers\ImageLayer.cs" />
@@ -81,7 +82,7 @@
     <Compile Include="MathUtil.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rectangle.cs" />
+    <Compile Include="RectangleInt.cs" />
     <Compile Include="Scenes\HitBase.cs" />
     <Compile Include="Scenes\Scene.cs" />
     <Compile Include="Screens\ScreenBase.cs" />

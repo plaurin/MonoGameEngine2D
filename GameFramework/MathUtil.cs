@@ -61,7 +61,7 @@ namespace GameFramework
             return (float)(degrees / 180.0 * Math.PI);
         }
 
-        public static bool IsHitPolygone(IEnumerable<Point> polygone, Vector vector)
+        public static bool IsHitPolygone(IEnumerable<Vector> polygone, Vector vector)
         {
             var isHit = false;
 

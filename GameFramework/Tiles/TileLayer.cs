@@ -44,8 +44,8 @@ namespace GameFramework.Tiles
                 {
                     var destination =
                         new Rectangle(
-                            (int)this.Offset.X + i * this.TileSize.Width, 
-                            (int)this.Offset.Y + j * this.TileSize.Height, 
+                            this.Offset.X + i * this.TileSize.Width, 
+                            this.Offset.Y + j * this.TileSize.Height, 
                             this.TileSize.Width, 
                             this.TileSize.Height)
                         .Scale(camera.ZoomFactor)
@@ -62,8 +62,8 @@ namespace GameFramework.Tiles
                 {
                     var tileRectangle =
                         new Rectangle(
-                            (int)this.Offset.X + i * this.TileSize.Width,
-                            (int)this.Offset.Y + j * this.TileSize.Height, 
+                            this.Offset.X + i * this.TileSize.Width,
+                            this.Offset.Y + j * this.TileSize.Height, 
                             this.TileSize.Width, 
                             this.TileSize.Height)
                         .Scale(camera.ZoomFactor)

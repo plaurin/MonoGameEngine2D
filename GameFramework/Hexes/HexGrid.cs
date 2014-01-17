@@ -15,9 +15,10 @@ namespace GameFramework.Hexes
 
             var upperLeft = new Point(this.Hexes.Min(x => x.Position.X), this.Hexes.Min(x => x.Position.Y));
             var lowerRight = new Point(this.Hexes.Max(x => x.Position.X), this.Hexes.Max(x => x.Position.Y));
-            this.Area = new Rectangle(upperLeft.X, upperLeft.Y, lowerRight.X - upperLeft.X + 1, lowerRight.Y - upperLeft.Y + 1);
+            this.Position = new Point(upperLeft.X, upperLeft.Y);
+            this.Size = new Size(lowerRight.X - upperLeft.X + 1, lowerRight.Y - upperLeft.Y + 1);
 
-            this.indexedHexes = new HexGridElement[this.Area.Width, this.Area.Height];
+            this.indexedHexes = new HexGridElement[this.Size.Width, this.Size.Height];
             foreach (var hex in this.hexes)
             {
                 this.indexedHexes[hex.Position.X, hex.Position.Y] = hex;
@@ -29,7 +30,9 @@ namespace GameFramework.Hexes
             get { return this.hexes; }
         }
 
-        public Rectangle Area { get; private set; }
+        public Point Position { get; private set; }
+
+        public Size Size { get; private set; }
 
         public HexGridElement this[int x, int y]
         {
@@ -66,10 +69,10 @@ namespace GameFramework.Hexes
             return new HexGrid(CreateHexMap(
                 new Vector(temp.Width / 2f, temp.Height / 2f),
                 edgeLength,
-                new Rectangle(0, 0, (int)area, (int)area)));
+                new RectangleInt(0, 0, (int)area, (int)area)));
         }
 
-        public static IEnumerable<HexGridElement> CreateHexMap(Vector startingCenter, float edgeLength, Rectangle areaRectangle)
+        public static IEnumerable<HexGridElement> CreateHexMap(Vector startingCenter, float edgeLength, RectangleInt areaRectangle)
         {
             var hexRadius = MathUtil.CalcHypotenuseSide(edgeLength * 2, edgeLength);
             var angles = new[] { -30, 30, 90 };

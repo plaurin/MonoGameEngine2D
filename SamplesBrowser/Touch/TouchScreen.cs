@@ -74,7 +74,7 @@ namespace SamplesBrowser.Touch
             var viewport = this.camera.Viewport;
             //var size = new Size(viewport.Width, viewport.Height);
             var s2 = viewport.Size.Scale(0.1f);
-            var backRectangle = new Rectangle((int)(viewport.Width - s2.X * 2), (int)(viewport.Height - s2.Y * 2), (int)s2.X, (int)s2.Y);
+            var backRectangle = new Rectangle(viewport.Width - s2.X * 2, viewport.Height - s2.Y * 2, s2.X, s2.Y);
 
             this.visualBackButton = this.inputConfiguration.AddVisualButton("Back", backRectangle)
                 .Assign(TouchGestureType.Tap)
@@ -126,7 +126,7 @@ namespace SamplesBrowser.Touch
             var drawingMap = new DrawingLayer("Button", this.gameResourceManager);
 
             this.visualBackButtonElement = drawingMap.AddRectangle(this.visualBackButton.Rectangle, 2, Color.Blue);
-            drawingMap.AddText(font, "Back", this.visualBackButton.Rectangle.Location.ToVector().Translate(10, 10), Color.White);
+            drawingMap.AddText(font, "Back", this.visualBackButton.Rectangle.Location.Translate(10, 10), Color.White);
 
             return drawingMap;
         }

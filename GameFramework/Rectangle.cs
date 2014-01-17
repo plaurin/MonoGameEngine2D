@@ -2,17 +2,14 @@
 
 namespace GameFramework
 {
-    /// <summary>
-    /// <remarks>Should only be used for Texture source and destination (Sprite too)</remarks>
-    /// </summary>
     public struct Rectangle
     {
-        private readonly int x;
-        private readonly int y;
-        private readonly int width;
-        private readonly int height;
+        private readonly float x;
+        private readonly float y;
+        private readonly float width;
+        private readonly float height;
 
-        public Rectangle(int x, int y, int width, int height)
+        public Rectangle(float x, float y, float width, float height)
         {
             this.x = x;
             this.y = y;
@@ -20,7 +17,7 @@ namespace GameFramework
             this.height = height;
         }
 
-        public Rectangle(int x, int y, Size size)
+        public Rectangle(float x, float y, Size size)
         {
             this.x = x;
             this.y = y;
@@ -33,55 +30,55 @@ namespace GameFramework
             get { return new Rectangle(); }
         }
 
-        public int X
+        public float X
         {
             get { return this.x; }
         }
 
-        public int Y
+        public float Y
         {
             get { return this.y; }
         }
 
-        public int Width
+        public float Width
         {
             get { return this.width; }
         }
 
-        public int Height
+        public float Height
         {
             get { return this.height; }
         }
 
-        public int Left
+        public float Left
         {
             get { return this.x; }
         }
 
-        public int Right
+        public float Right
         {
             get { return this.x + this.Width - 1; }
         }
 
-        public int Top
+        public float Top
         {
             get { return this.y; }
         }
 
-        public int Bottom
+        public float Bottom
         {
             get { return this.y + this.Height - 1; }
         }
         
-        public Point Location
+        public Vector Location
         {
-            get { return new Point(this.x, this.y); }
+            get { return new Vector(this.x, this.y); }
         }
 
         public bool Contains(Point point)
         {
             return point.X >= this.X && point.X <= this.X + this.Width
-                && point.Y >= this.Y && point.Y <= this.Y + this.Height;
+                   && point.Y >= this.Y && point.Y <= this.Y + this.Height;
         }
 
         public override string ToString()
@@ -91,19 +88,17 @@ namespace GameFramework
 
         public bool Equals(Rectangle other)
         {
-            return other.x == this.x && other.y == this.y && other.width == this.width && other.height == this.height;
+            const float Tolerance = 0.0000001f;
+            return Math.Abs(other.x - this.x) < Tolerance 
+                && Math.Abs(other.y - this.y) < Tolerance 
+                && Math.Abs(other.width - this.width) < Tolerance
+                && Math.Abs(other.height - this.height) < Tolerance;
         }
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-            if (obj.GetType() != typeof(Rectangle))
-            {
-                return false;
-            }
+            if (ReferenceEquals(null, obj)) return false;
+            if (obj.GetType() != typeof(Rectangle)) return false;
             return this.Equals((Rectangle)obj);
         }
 
@@ -111,11 +106,11 @@ namespace GameFramework
         {
             unchecked
             {
-                int result = this.x;
-                result = (result * 397) ^ this.y;
-                result = (result * 397) ^ this.width;
-                result = (result * 397) ^ this.height;
-                return result;
+                var hashCode = this.x.GetHashCode();
+                hashCode = (hashCode * 397) ^ this.y.GetHashCode();
+                hashCode = (hashCode * 397) ^ this.width.GetHashCode();
+                hashCode = (hashCode * 397) ^ this.height.GetHashCode();
+                return hashCode;
             }
         }
 

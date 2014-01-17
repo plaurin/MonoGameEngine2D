@@ -33,10 +33,10 @@ namespace GameFramework.Hexes
             get
             {
                 return new Rectangle(
-                    (int)(this.Center.X - this.Width / 2.0), 
-                    (int)(this.Center.Y - this.Height / 2.0),
-                    (int)this.Width, 
-                    (int)this.Height);
+                    this.Center.X - this.Width / 2.0f,
+                    this.Center.Y - this.Height / 2.0f,
+                    this.Width, 
+                    this.Height);
             }
         }
 

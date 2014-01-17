@@ -53,16 +53,16 @@ namespace GameFramework.Cameras
                 {
                     case CameraCenter.WindowCenter:
                         return new Viewport(
-                            (int)(this.Position.X - this.ViewPortCenter.X / this.ZoomFactor),
-                            (int)(this.Position.Y - this.ViewPortCenter.Y / this.ZoomFactor),
-                            (int)(this.Viewport.Width / this.ZoomFactor),
-                            (int)(this.Viewport.Height / this.ZoomFactor));
+                            this.Position.X - this.ViewPortCenter.X / this.ZoomFactor,
+                            this.Position.Y - this.ViewPortCenter.Y / this.ZoomFactor,
+                            this.Viewport.Width / this.ZoomFactor,
+                            this.Viewport.Height / this.ZoomFactor);
                     case CameraCenter.WindowTopLeft:
                         return new Viewport(
-                            (int)(this.Position.X / this.ZoomFactor),
-                            (int)(this.Position.Y / this.ZoomFactor),
-                            (int)(this.Viewport.Width / this.ZoomFactor),
-                            (int)(this.Viewport.Height / this.ZoomFactor));
+                            this.Position.X / this.ZoomFactor,
+                            this.Position.Y / this.ZoomFactor,
+                            this.Viewport.Width / this.ZoomFactor,
+                            this.Viewport.Height / this.ZoomFactor);
                     default:
                         throw new NotSupportedException("CameraCenter value not supported");
                 }

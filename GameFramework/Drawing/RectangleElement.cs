@@ -47,10 +47,10 @@ namespace GameFramework.Drawing
         {
             var rectangle =
                 new Rectangle(
-                    (int)layerOffset.X + (int)this.x,
-                    (int)layerOffset.X + (int)this.y,
-                    (int)this.width,
-                    (int)this.height)
+                    layerOffset.X + this.x,
+                    layerOffset.X + this.y,
+                    this.width,
+                    this.height)
                 .Scale(camera.ZoomFactor)
                 .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
 

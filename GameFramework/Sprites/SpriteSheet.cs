@@ -31,8 +31,8 @@ namespace GameFramework.Sprites
             var source = this.Definitions[sprite.SpriteName];
             var destination = 
                 new Rectangle(
-                    (int)(layerOffset.X + sprite.Position.X),
-                    (int)(layerOffset.Y + sprite.Position.Y), 
+                    layerOffset.X + sprite.Position.X,
+                    layerOffset.Y + sprite.Position.Y,
                     source.Width, 
                     source.Height)
                 .Scale(camera.ZoomFactor)
@@ -46,8 +46,8 @@ namespace GameFramework.Sprites
             var source = this.Definitions[sprite.SpriteName];
             var spriteRectangle = 
                 new Rectangle(
-                    (int)(layerOffset.X + sprite.Position.X),
-                    (int)(layerOffset.X + sprite.Position.Y), 
+                    layerOffset.X + sprite.Position.X,
+                    layerOffset.X + sprite.Position.Y,
                     source.Width, 
                     source.Height)
                 .Scale(camera.ZoomFactor)

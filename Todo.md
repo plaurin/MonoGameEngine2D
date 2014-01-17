@@ -34,8 +34,7 @@
 - ! Touch gesture get stuck, should we implement our own configurable gesture? (add-on utility)
 
 ## Refactorings
-- Review Point, Rectangle, Vector and used type: int, float, double
-- Should Draw be external to core classes?
+- Should Draw/Hit be external to core classes?
 
 ## Quality
 - Activate more StyleCop rules

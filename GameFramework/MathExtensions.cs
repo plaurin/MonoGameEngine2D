@@ -40,12 +40,6 @@ namespace GameFramework
             return new Vector(vector.X + delta.X, vector.Y + delta.Y);
         }
 
-        [Obsolete("Should use Vector instead of Point")]
-        public static Vector Translate(this Vector vector, Point delta)
-        {
-            return new Vector(vector.X + delta.X, vector.Y + delta.Y);
-        }
-
         public static Vector Translate(this Vector vector, float offsetX, float offsetY)
         {
             return new Vector(vector.X + offsetX, vector.Y + offsetY);
@@ -71,30 +65,6 @@ namespace GameFramework
             return new Point(point.X + delta.X, point.Y + delta.Y);
         }
 
-        [Obsolete("Should use Vector instead of Point")]
-        public static Point Translate(this Point point, int deltaX, int deltaY)
-        {
-            return new Point(point.X + deltaX, point.Y + deltaY);
-        }
-
-        [Obsolete("Should use Vector instead of Point")]
-        public static Point Scale(this Point point, Vector scalingVector)
-        {
-            return new Point((int)(point.X * scalingVector.X), (int)(point.Y * scalingVector.Y));
-        }
-
-        [Obsolete("Should use Vector instead of Point")]
-        public static Point Scale(this Point point, float zoomFactor)
-        {
-            return new Point((int)(point.X * zoomFactor), (int)(point.Y * zoomFactor));
-        }
-
-        [Obsolete("Should use Vector instead of Point")]
-        public static Point ToPoint(this Vector vector)
-        {
-            return new Point((int)vector.X, (int)vector.Y);
-        }
-
         public static Vector ToVector(this Point point)
         {
             return new Vector(point.X, point.Y);
@@ -103,30 +73,15 @@ namespace GameFramework
         public static Rectangle Scale(this Rectangle rectangle, float factor)
         {
             return new Rectangle(
-                (int)(rectangle.X * factor),
-                (int)(rectangle.Y * factor),
-                (int)(rectangle.Width * factor),
-                (int)(rectangle.Height * factor));
-        }
-
-        [Obsolete("Should use Vector instead of Point")]
-        public static Rectangle Translate(this Rectangle rectangle, Point vector)
-        {
-            return new Rectangle(rectangle.X + vector.X, rectangle.Y + vector.Y, rectangle.Width, rectangle.Height);
+                rectangle.X * factor,
+                rectangle.Y * factor,
+                rectangle.Width * factor,
+                rectangle.Height * factor);
         }
 
         public static Rectangle Translate(this Rectangle rectangle, Vector vector)
         {
-            return new Rectangle(rectangle.X + (int)vector.X, rectangle.Y + (int)vector.Y, rectangle.Width, rectangle.Height);
-        }
-
-        [Obsolete("Should use Vector instead of Point")]
-        public static bool Intercept(this Rectangle rectangle, Point point)
-        {
-            return point.X >= rectangle.X
-                && point.Y >= rectangle.Y
-                && point.X < rectangle.X + rectangle.Width
-                && point.Y < rectangle.Y + rectangle.Height;
+            return new Rectangle(rectangle.X + vector.X, rectangle.Y + vector.Y, rectangle.Width, rectangle.Height);
         }
 
         public static bool Intercept(this Rectangle rectangle, Vector vector)
@@ -140,11 +95,6 @@ namespace GameFramework
         public static Color ChangeAlpha(this Color color, int alpha)
         {
             return new Color(color.R, color.G, color.B, alpha);
-        }
-
-        public static Size Scale(this Size size, float zoomFactor)
-        {
-            return new Size((int)(size.Width * zoomFactor), (int)(size.Height * zoomFactor));
         }
 
         public static void ForEachPair<T>(this IEnumerable<T> enumerable, Action<T, T> action)
