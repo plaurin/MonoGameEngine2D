@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameFramework", "GameFramework\GameFramework.csproj", "{E30E5EEE-AAF6-4455-8BC5-40E158EACBC1}"
 EndProject
@@ -31,7 +31,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndroidSamples", "AndroidSa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E68D5BC9-1591-4434-A571-F69A56822570}"
 	ProjectSection(SolutionItems) = preProject
+		GameFramework.nuspec = GameFramework.nuspec
 		License.txt = License.txt
+		Package.ps1 = Package.ps1
 		Readme.txt = Readme.txt
 		Settings.StyleCop = Settings.StyleCop
 		Todo.md = Todo.md

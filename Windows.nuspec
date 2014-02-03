@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>MonoGameEngine2D.Windows</id>
+    <version>1.0.0</version>
+    <authors>Pascal Laurin</authors>
+    <owners>Pascal Laurin</owners>
+    <licenseUrl>http://github.com/plaurin/MonoGameEngine2D/blob/master/License.txt</licenseUrl>
+    <projectUrl>http://github.com/plaurin/MonoGameEngine2D</projectUrl>
+    <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Cross-platform Game making framework using MonoGame and PCL.  Use to create a Windows host.</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>Game MonoGame</tags>
+    <dependencies>
+      <dependency id="MonoGameEngine2D.GameFramework" version="1.0.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="WindowsBase\bin\WindowsGL\Release\WindowsBase.dll" target="lib\net45" />
+    <file src="WindowsBase\bin\WindowsGL\Release\WindowsBase.dll.config" target="lib\net45" />
+    <file src="WindowsBase\bin\WindowsGL\Release\WindowsBase.pdb" target="lib\net45" />
+    <file src="WindowsBase\bin\WindowsGL\Release\Lidgren.Network.dll" target="lib\net45" />
+    <file src="WindowsBase\bin\WindowsGL\Release\MonoGame.Framework.dll" target="lib\net45" />
+    <file src="WindowsBase\bin\WindowsGL\Release\OpenTK.dll" target="lib\net45" />
+    <file src="WindowsBase\bin\WindowsGL\Release\SDL.dll" target="lib\net45" />
+    <file src="WindowsBase\bin\WindowsGL\Release\Tao.Sdl.dll" target="lib\net45" />
+  </files>
+</package>
