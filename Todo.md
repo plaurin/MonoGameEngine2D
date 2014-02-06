@@ -24,6 +24,7 @@
 ### ContentSync
  - Validate current content Links
 ### IO
+ - P1 Filter Layer to Import (TiledHelper.LoadFile -> TiledHelper.ImportLayers(, params string[] layerNames))
  - Validate Tiled load map/tileset support
  - Fix Repositories to use proper constructor injection patterns
 
