@@ -37,7 +37,7 @@ namespace GameFramework.Sprites
         {
             foreach (var sprite in this.Sprites)
             {
-                sprite.Draw(drawContext, camera, this.Offset, this.ParallaxScrollingVector);
+                sprite.Draw(drawContext, camera, this.Offset, this.ParallaxScrollingVector, this.CameraMode);
             }
         }
 

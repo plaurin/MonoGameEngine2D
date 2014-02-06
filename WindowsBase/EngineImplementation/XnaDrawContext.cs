@@ -54,7 +54,7 @@ namespace MonoGameImplementation.EngineImplementation
             var destination = param.Destination.ToXnaRect();
             Microsoft.Xna.Framework.Rectangle? source = null;
             var rotation = param.Rotation;
-            var origin = Vector2.Zero;
+            var origin = param.Origin.ToVector2();
             const SpriteEffects Effect = SpriteEffects.None;
             const int Depth = 0;
 

@@ -104,6 +104,8 @@ namespace MonoGameImplementation.EngineImplementation
                     case KeyboardKeys.W: return Keys.W;
                     case KeyboardKeys.A: return Keys.A;
                     case KeyboardKeys.Z: return Keys.Z;
+                    case KeyboardKeys.X: return Keys.X;
+                    case KeyboardKeys.C: return Keys.C;
                     case KeyboardKeys.Enter: return Keys.Enter;
                     case KeyboardKeys.Back: return Keys.Back;
                     case KeyboardKeys.Space: return Keys.Space;

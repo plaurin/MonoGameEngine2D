@@ -41,6 +41,8 @@ namespace SamplesBrowser.Sandbox
         //private string hits;
         private List<HitBase> hits;
 
+        private Sprite linkMouseFollow;
+
         public SandboxScreen(ScreenNavigation screenNavigation)
         {
             this.screenNavigation = screenNavigation;
@@ -73,6 +75,9 @@ namespace SamplesBrowser.Sandbox
             this.inputConfiguration.AddDigitalButton("RangeUp").Assign(KeyboardKeys.W).MapTo(gt => this.range *= 1.2f * (1 + gt.ElapsedSeconds));
             this.inputConfiguration.AddDigitalButton("RangeDown").Assign(KeyboardKeys.Q).MapTo(gt => this.range *= 1 / (1.2f * (1 + gt.ElapsedSeconds)));
 
+            this.inputConfiguration.AddDigitalButton("RotateLeft").Assign(KeyboardKeys.X).MapTo(gt => this.linkMouseFollow.Rotation -= 4 * gt.ElapsedSeconds);
+            this.inputConfiguration.AddDigitalButton("RotateRight").Assign(KeyboardKeys.C).MapTo(gt => this.linkMouseFollow.Rotation += 4 * gt.ElapsedSeconds);
+
             this.inputConfiguration.AddDigitalButton("Selection").Assign(MouseButtons.Left).MapTo(elapse =>
             {
                 this.hits = this.scene.GetHits(this.mouseState.AbsolutePosition, this.camera).ToList();
@@ -82,6 +87,8 @@ namespace SamplesBrowser.Sandbox
             {
                 this.mouseState = mt;
                 this.mouseLayer.Update(this.mouseState);
+
+                this.linkMouseFollow.Position = mt.AbsolutePosition;
             });
 
             return this.inputConfiguration;
@@ -118,6 +125,7 @@ namespace SamplesBrowser.Sandbox
             this.scene.AddLayer(this.CreateSpriteLayer());
             this.scene.AddLayer(this.CreateDiagnosticLayer());
             this.scene.AddLayer(this.CreateMouseCursorLayer());
+            this.scene.AddLayer(this.CreateMouseFollow());
 
             //this.scene.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
 
@@ -177,10 +185,24 @@ namespace SamplesBrowser.Sandbox
             return this.mouseLayer;
         }
 
+        private LayerBase CreateMouseFollow()
+        {
+            var layer = new SpriteLayer("MouseFollow");
+            layer.CameraMode = CameraMode.Fix;
+
+            var linkSheet = this.gameResourceManager.GetSpriteSheet("Link");
+            this.linkMouseFollow = new Sprite(linkSheet, "Link01");
+            this.linkMouseFollow.Origin = new Vector(8, 11);
+
+            layer.AddSprite(this.linkMouseFollow);
+
+            return layer;
+        }
+
         private DiagnosticLayer CreateDiagnosticLayer()
         {
-            var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1"); 
-            
+            var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
+
             this.diagnosticLayer = new DiagnosticLayer(this.gameResourceManager, font, new DiagnosticLayerConfiguration());
             this.diagnosticLayer.AddLine("Range", "Range: {0:f1}");
 
@@ -270,7 +292,6 @@ namespace SamplesBrowser.Sandbox
             var spriteLayer = new SpriteLayer("Sprites");
             spriteLayer.AddSprite(link01);
             spriteLayer.AddSprite(sleep01);
-
             spriteLayer.ParallaxScrollingVector = new Vector(4.0f, 8.0f);
             spriteLayer.Offset = new Vector(50, 50);
 

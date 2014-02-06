@@ -26,24 +26,27 @@ namespace GameFramework.Sprites
             this.Definitions.Add(spriteName, spriteRectangle);
         }
 
-        public void Draw(DrawContext drawContext, Camera camera, Vector layerOffset, Vector parallaxScrollingVector, Sprite sprite)
+        public void Draw(DrawContext drawContext, Camera camera, Vector layerOffset, Vector parallaxScrollingVector, 
+            Sprite sprite, CameraMode cameraMode)
         {
             var source = this.Definitions[sprite.SpriteName];
-            var destination = 
-                new Rectangle(
-                    layerOffset.X + sprite.Position.X,
-                    layerOffset.Y + sprite.Position.Y,
-                    source.Width, 
-                    source.Height)
-                .Scale(camera.ZoomFactor)
-                .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
+            var destination = new Rectangle(layerOffset.X + sprite.Position.X, layerOffset.Y + sprite.Position.Y,
+                source.Width, source.Height);
+
+            if (cameraMode == CameraMode.Follow)
+            {
+                destination = destination
+                    .Scale(camera.ZoomFactor)
+                    .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
+            }
 
             drawContext.DrawImage(new DrawImageParams
             {
                 Texture = this.Texture,
                 Source = source,
                 Destination = destination,
-                Rotation = sprite.Rotation
+                Rotation = sprite.Rotation,
+                Origin = sprite.Origin
             });
         }
 

@@ -19,12 +19,13 @@ namespace SamplesBrowser.ShootEmUp
 
         public SpriteBase ReferencedSprite { get; set; }
 
-        public override void Draw(DrawContext drawContext, Camera camera, Vector layerOffset, Vector parallaxScrollingVector)
+        public override void Draw(DrawContext drawContext, Camera camera, Vector layerOffset, Vector parallaxScrollingVector,
+            CameraMode cameraMode)
         {
             if (this.ReferencedSprite != null)
             {
                 var referenceOffset = layerOffset.Translate(this.Position);
-                this.ReferencedSprite.Draw(drawContext, camera, referenceOffset, parallaxScrollingVector);
+                this.ReferencedSprite.Draw(drawContext, camera, referenceOffset, parallaxScrollingVector, cameraMode);
             }
         }
 
