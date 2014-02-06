@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>MonoGameEngine2D.Windows</id>
-    <version>1.0.1</version>
+    <version>1.1.0</version>
     <authors>Pascal Laurin</authors>
     <owners>Pascal Laurin</owners>
     <licenseUrl>http://github.com/plaurin/MonoGameEngine2D/blob/master/License.txt</licenseUrl>
@@ -14,7 +14,7 @@
     <copyright>Copyright 2014</copyright>
     <tags>Game MonoGame</tags>
     <dependencies>
-      <dependency id="MonoGameEngine2D.GameFramework" version="1.0.0" />
+      <dependency id="MonoGameEngine2D.GameFramework" version="1.1.0" />
     </dependencies>
   </metadata>
   <files>

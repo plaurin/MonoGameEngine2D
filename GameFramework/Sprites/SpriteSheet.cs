@@ -38,7 +38,13 @@ namespace GameFramework.Sprites
                 .Scale(camera.ZoomFactor)
                 .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
 
-            drawContext.DrawImage(this.Texture, source, destination);
+            drawContext.DrawImage(new DrawImageParams
+            {
+                Texture = this.Texture,
+                Source = source,
+                Destination = destination,
+                Rotation = sprite.Rotation
+            });
         }
 
         public HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector, Sprite sprite)

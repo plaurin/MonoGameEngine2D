@@ -9,6 +9,8 @@ namespace GameFramework.Sprites
 
         public Vector Position { get; set; }
 
+        public float Rotation { get; set; }
+
         public abstract void Draw(DrawContext drawContext, Camera camera, Vector layerOffset, Vector parallaxScrollingVector);
 
         public abstract HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector);

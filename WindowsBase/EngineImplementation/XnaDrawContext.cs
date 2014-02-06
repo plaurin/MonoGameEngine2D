@@ -46,16 +46,21 @@ namespace MonoGameImplementation.EngineImplementation
                 new Vector2(length, width), SpriteEffects.None, 0);
         }
 
-        public override void DrawImage(Texture texture, Rectangle source, Rectangle destination)
+        public override void DrawImage(DrawImageParams param)
         {
-            var xnaTexture = (XnaTexture)texture;
-            this.spriteBatch.Draw(xnaTexture.Texture2D, destination.ToXnaRect(), source.ToXnaRect(), Color.White);
-        }
+            var xnaTexture = (XnaTexture)param.Texture;
 
-        public override void DrawImage(Texture texture, Rectangle destination)
-        {
-            var xnaTexture = (XnaTexture)texture;
-            this.spriteBatch.Draw(xnaTexture.Texture2D, destination.ToXnaRect(), Color.White);
+            var texture2D = xnaTexture.Texture2D;
+            var destination = param.Destination.ToXnaRect();
+            Microsoft.Xna.Framework.Rectangle? source = null;
+            var rotation = param.Rotation;
+            var origin = Vector2.Zero;
+            const SpriteEffects Effect = SpriteEffects.None;
+            const int Depth = 0;
+
+            if (param.Source.HasValue) source = param.Source.Value.ToXnaRect();
+
+            this.spriteBatch.Draw(texture2D, destination, source, Color.White, rotation, origin, Effect, Depth);
         }
 
         public override void FillColor(GameFramework.Color color)

@@ -43,7 +43,12 @@ namespace GameFramework.Hexes
 
         public virtual void Draw(DrawContext drawContext, HexDefinition hexDefinition, Rectangle destination)
         {
-            drawContext.DrawImage(this.Texture, hexDefinition.Rectangle, destination);
+            drawContext.DrawImage(new DrawImageParams
+            {
+                Texture = this.Texture,
+                Source = hexDefinition.Rectangle,
+                Destination = destination,
+            });
         }
     }
 }

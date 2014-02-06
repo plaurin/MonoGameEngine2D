@@ -18,7 +18,11 @@ namespace GameFramework.Layers
 
         public override void Draw(DrawContext drawContext, Camera camera)
         {
-            drawContext.DrawImage(this.Texture, this.Rectangle);
+            drawContext.DrawImage(new DrawImageParams
+            {
+                Texture = this.Texture,
+                Destination = this.Rectangle
+            });
         }
     }
 }

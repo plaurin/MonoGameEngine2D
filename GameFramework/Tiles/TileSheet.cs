@@ -48,7 +48,12 @@ namespace GameFramework.Tiles
 
         public void Draw(DrawContext drawContext, TileDefinition tileDefinition, Rectangle destination)
         {
-            drawContext.DrawImage(this.Texture, tileDefinition.Rectangle, destination);
+            drawContext.DrawImage(new DrawImageParams
+            {
+                Texture = this.Texture,
+                Source = tileDefinition.Rectangle,
+                Destination = destination,
+            });
         }
     }
 }

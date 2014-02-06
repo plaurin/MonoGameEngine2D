@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>MonoGameEngine2D.GameFramework</id>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <authors>Pascal Laurin</authors>
     <owners>Pascal Laurin</owners>
     <licenseUrl>http://github.com/plaurin/MonoGameEngine2D/blob/master/License.txt</licenseUrl>
