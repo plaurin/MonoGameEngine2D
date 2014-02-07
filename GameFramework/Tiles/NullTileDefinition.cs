@@ -15,6 +15,11 @@ namespace GameFramework.Tiles
             return new NullTileDefinition();
         }
 
+        public override bool ShouldDraw
+        {
+            get { return false; }
+        }
+
         public override void Draw(DrawContext drawContext, Rectangle destination)
         {
             // Do nothing: Null Object Pattern

@@ -18,7 +18,7 @@ namespace GameFramework.Sprites
 
         public Vector Origin { get; set; }
 
-        public abstract void Draw(DrawContext drawContext, Camera camera, Vector layerOffset,
+        public abstract int Draw(DrawContext drawContext, Camera camera, Vector layerOffset,
             Vector parallaxScrollingVector, CameraMode cameraMode);
 
         public abstract HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector);

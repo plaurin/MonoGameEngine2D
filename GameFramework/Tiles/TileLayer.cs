@@ -9,6 +9,7 @@ namespace GameFramework.Tiles
     public class TileLayer : LayerBase
     {
         private readonly TileDefinition[,] map;
+        private int drawnElementsLastFrame;
 
         public TileLayer(string name, Size mapSize, Size tileSize, TileDefinition defaultTileDefinition = null)
             : base(name)
@@ -44,24 +45,37 @@ namespace GameFramework.Tiles
 
         public override int DrawnElementsLastFrame
         {
-            get { return this.TotalElements; }
+            get { return this.drawnElementsLastFrame; }
         }
 
         public override void Draw(DrawContext drawContext, Camera camera)
         {
+            this.drawnElementsLastFrame = 0;
+
             for (var i = 0; i < this.MapSize.Width; i++)
                 for (var j = 0; j < this.MapSize.Height; j++)
                 {
-                    var destination =
-                        new Rectangle(
+                    if (this.map[i, j].ShouldDraw)
+                    {
+                        var destination = new Rectangle(
                             this.Offset.X + i * this.TileSize.Width, 
                             this.Offset.Y + j * this.TileSize.Height, 
                             this.TileSize.Width, 
-                            this.TileSize.Height)
-                        .Scale(camera.ZoomFactor)
-                        .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
+                            this.TileSize.Height);
 
-                    this.map[i, j].Draw(drawContext, destination);
+                        if (this.CameraMode == CameraMode.Follow)
+                        {
+                            destination = destination
+                                .Scale(camera.ZoomFactor)
+                                .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
+                        }
+
+                        if (camera.Viewport.IsVisible(destination))
+                        {
+                            this.map[i, j].Draw(drawContext, destination);
+                            this.drawnElementsLastFrame++;
+                        }
+                    }
                 }
         }
 

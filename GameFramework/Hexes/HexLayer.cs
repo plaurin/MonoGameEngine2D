@@ -11,6 +11,7 @@ namespace GameFramework.Hexes
         private readonly HexDefinition[,] map;
 
         private readonly int topEdgeLength;
+        private int drawnElementsLastFrame;
 
         public HexLayer(string name, Size mapSize, Size hexSize, int topEdgeLength, HexDefinition defaultHexDefinition = null)
             : base(name)
@@ -58,27 +59,36 @@ namespace GameFramework.Hexes
 
         public override int DrawnElementsLastFrame
         {
-            get { return this.TotalElements; }
+            get { return this.drawnElementsLastFrame; }
         }
 
         public override void Draw(DrawContext drawContext, Camera camera)
         {
+            this.drawnElementsLastFrame = 0;
+
             for (var i = 0; i < this.MapSize.Width; i++)
                 for (var j = 0; j < this.MapSize.Height; j++)
                 {
-                    var hexDistance = this.HexSize.Width - (this.HexSize.Width - this.TopEdgeLength) / 2;
-                    var halfHeight = this.HexSize.Height / 2;
+                    if (this.map[i, j].ShouldDraw)
+                    {
+                        var hexDistance = this.HexSize.Width - (this.HexSize.Width - this.TopEdgeLength) / 2;
+                        var halfHeight = this.HexSize.Height / 2;
 
-                    var rectangle = new Rectangle(
-                        this.Offset.X + i * hexDistance,
-                        this.Offset.Y + j * this.HexSize.Height + (i % 2 == 1 ? halfHeight : 0),
-                        this.HexSize.Width, this.HexSize.Height);
+                        var rectangle = new Rectangle(
+                            this.Offset.X + i * hexDistance,
+                            this.Offset.Y + j * this.HexSize.Height + (i % 2 == 1 ? halfHeight : 0),
+                            this.HexSize.Width, this.HexSize.Height);
 
-                    var destination = rectangle
-                        .Scale(camera.ZoomFactor)
-                        .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
+                        var destination = rectangle
+                            .Scale(camera.ZoomFactor)
+                            .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
 
-                    this.map[i, j].Draw(drawContext, destination);
+                        if (camera.Viewport.IsVisible(destination))
+                        {
+                            this.map[i, j].Draw(drawContext, destination);
+                            this.drawnElementsLastFrame++;
+                        }
+                    }
                 }
         }
 

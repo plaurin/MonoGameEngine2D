@@ -11,6 +11,7 @@ namespace GameFramework.Sprites
     public class SpriteLayer : LayerBase
     {
         private readonly List<SpriteBase> sprites;
+        private int drawnElementsLastFrame;
 
         public SpriteLayer(string name)
             : base(name)
@@ -41,14 +42,17 @@ namespace GameFramework.Sprites
 
         public override int DrawnElementsLastFrame
         {
-            get { return this.TotalElements; }
+            get { return this.drawnElementsLastFrame; }
         }
 
         public override void Draw(DrawContext drawContext, Camera camera)
         {
+            this.drawnElementsLastFrame = 0;
+
             foreach (var sprite in this.Sprites)
             {
-                sprite.Draw(drawContext, camera, this.Offset, this.ParallaxScrollingVector, this.CameraMode);
+                this.drawnElementsLastFrame += 
+                    sprite.Draw(drawContext, camera, this.Offset, this.ParallaxScrollingVector, this.CameraMode);
             }
         }
 

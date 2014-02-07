@@ -27,14 +27,18 @@ namespace SamplesBrowser.ShootEmUp
             this.sprites.Add(sprite);
         }
 
-        public override void Draw(DrawContext drawContext, Camera camera, Vector layerOffset, Vector parallaxScrollingVector,
+        public override int Draw(DrawContext drawContext, Camera camera, Vector layerOffset, Vector parallaxScrollingVector,
             CameraMode cameraMode)
         {
+            var drawCount = 0;
+
             var compositeOffset = layerOffset.Translate(this.Position);
             foreach (var sprite in this.sprites)
             {
-                sprite.Draw(drawContext, camera, compositeOffset, parallaxScrollingVector, cameraMode);
+                drawCount += sprite.Draw(drawContext, camera, compositeOffset, parallaxScrollingVector, cameraMode);
             }
+
+            return drawCount;
         }
 
         public override HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector)

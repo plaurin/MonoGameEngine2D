@@ -30,5 +30,18 @@ namespace GameFramework
         public Vector Positon { get; private set; }
 
         public Vector Size { get; private set; }
+
+        public override string ToString()
+        {
+            return string.Format("{{X:{0} Y:{1} Width:{2} Height:{3}}}", this.X, this.Y, this.Width, this.Height);
+        }
+
+        public bool IsVisible(Rectangle destination)
+        {
+            return destination.Left <= this.X + this.Width
+                && destination.Right >= this.X
+                && destination.Top <= this.Y + this.Height
+                && destination.Bottom >= this.Y;
+        }
     }
 }

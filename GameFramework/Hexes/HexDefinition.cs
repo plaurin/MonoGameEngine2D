@@ -22,6 +22,11 @@ namespace GameFramework.Hexes
 
         public Rectangle Rectangle { get; private set; }
 
+        public virtual bool ShouldDraw
+        {
+            get { return true; }
+        }
+
         public virtual void Draw(DrawContext drawContext, Rectangle destination)
         {
             this.Sheet.Draw(drawContext, this, destination);

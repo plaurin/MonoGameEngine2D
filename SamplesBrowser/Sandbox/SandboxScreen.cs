@@ -42,6 +42,7 @@ namespace SamplesBrowser.Sandbox
         private List<HitBase> hits;
 
         private Sprite linkMouseFollow;
+        private LayerBase layer;
 
         public SandboxScreen(ScreenNavigation screenNavigation)
         {
@@ -111,6 +112,7 @@ namespace SamplesBrowser.Sandbox
             this.diagnosticLayer.Update(this.mouseState);
             this.diagnosticLayer.Update(this.hits);
             this.diagnosticLayer.UpdateLine("Range", this.range);
+            this.diagnosticLayer.UpdateLine("Objects", this.layer.TotalElements, this.layer.DrawnElementsLastFrame);
         }
 
         public override Scene GetScene()
@@ -205,6 +207,7 @@ namespace SamplesBrowser.Sandbox
 
             this.diagnosticLayer = new DiagnosticLayer(this.gameResourceManager, font, new DiagnosticLayerConfiguration());
             this.diagnosticLayer.AddLine("Range", "Range: {0:f1}");
+            this.diagnosticLayer.AddLine("Objects", "Objects: {0} (drawn: {1})");
 
             return this.diagnosticLayer;
         }
@@ -326,6 +329,8 @@ namespace SamplesBrowser.Sandbox
 
                 layer.AddText(font, text, hex.Center - (measure / 2.0f), Color.Yellow);
             }
+
+            this.layer = layer;
 
             return layer;
         }

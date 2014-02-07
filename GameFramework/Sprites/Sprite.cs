@@ -15,10 +15,10 @@ namespace GameFramework.Sprites
 
         public SpriteSheet SpriteSheet { get; private set; }
 
-        public override void Draw(DrawContext drawContext, Camera camera, Vector layerOffset, Vector parallaxScrollingVector,
+        public override int Draw(DrawContext drawContext, Camera camera, Vector layerOffset, Vector parallaxScrollingVector,
             CameraMode cameraMode)
         {
-            this.SpriteSheet.Draw(drawContext, camera, layerOffset, parallaxScrollingVector, this, cameraMode);
+            return this.SpriteSheet.Draw(drawContext, camera, layerOffset, parallaxScrollingVector, this, cameraMode);
         }
 
         public override HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector)

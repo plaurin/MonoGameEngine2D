@@ -90,6 +90,7 @@ namespace GameFramework.Drawing
 
         public override void Draw(DrawContext drawContext, Camera camera)
         {
+            // TODO: Optimize filter element outside the view should not be drawn
             foreach (var element in this.elements)
             {
                 element.Draw(drawContext, camera, this);

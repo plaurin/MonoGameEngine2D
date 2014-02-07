@@ -10,6 +10,11 @@ namespace GameFramework.Hexes
             this.Sheet.AddHexDefinition(this);
         }
 
+        public virtual bool ShouldDraw
+        {
+            get { return false; }
+        }
+
         public static NullHexDefinition CreateInstance()
         {
             return new NullHexDefinition();

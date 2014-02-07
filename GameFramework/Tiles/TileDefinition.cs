@@ -19,8 +19,13 @@ namespace GameFramework.Tiles
         }
 
         public string Name { get; private set; }
-        
+
         public Rectangle Rectangle { get; private set; }
+
+        public virtual bool ShouldDraw
+        {
+            get { return true; }
+        }
 
         public virtual void Draw(DrawContext drawContext, Rectangle destination)
         {

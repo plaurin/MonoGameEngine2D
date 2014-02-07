@@ -26,7 +26,7 @@ namespace GameFramework.Sprites
             this.Definitions.Add(spriteName, spriteRectangle);
         }
 
-        public void Draw(DrawContext drawContext, Camera camera, Vector layerOffset, Vector parallaxScrollingVector, 
+        public int Draw(DrawContext drawContext, Camera camera, Vector layerOffset, Vector parallaxScrollingVector, 
             Sprite sprite, CameraMode cameraMode)
         {
             var source = this.Definitions[sprite.SpriteName];
@@ -40,14 +40,21 @@ namespace GameFramework.Sprites
                     .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
             }
 
-            drawContext.DrawImage(new DrawImageParams
+            if (camera.Viewport.IsVisible(destination))
             {
-                Texture = this.Texture,
-                Source = source,
-                Destination = destination,
-                Rotation = sprite.Rotation,
-                Origin = sprite.Origin
-            });
+                drawContext.DrawImage(new DrawImageParams
+                {
+                    Texture = this.Texture,
+                    Source = source,
+                    Destination = destination,
+                    Rotation = sprite.Rotation,
+                    Origin = sprite.Origin
+                });
+
+                return 1;
+            }
+
+            return 0;
         }
 
         public HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector, Sprite sprite)
