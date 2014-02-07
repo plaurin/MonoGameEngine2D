@@ -10,15 +10,16 @@ namespace GameFramework.Inputs
         private readonly Dictionary<string, DigitalButton> digitalButtons;
         private readonly Dictionary<string, VisualButton> visualButtons;
         private readonly Dictionary<string, InputEvent> inputEvents;
-
-        private MouseTracking mouseTracking;
-        private TouchTracking touchTracking;
+        private readonly List<MouseTracking> mouseTrackings;
+        private readonly List<TouchTracking> touchTrackings;
 
         public InputConfiguration()
         {
             this.digitalButtons = new Dictionary<string, DigitalButton>();
             this.visualButtons = new Dictionary<string, VisualButton>();
             this.inputEvents = new Dictionary<string, InputEvent>();
+            this.mouseTrackings = new List<MouseTracking>();
+            this.touchTrackings = new List<TouchTracking>();
             this.EnabledGestures = Enumerable.Empty<TouchGestureType>();
         }
 
@@ -32,8 +33,10 @@ namespace GameFramework.Inputs
             var mouseState = inputContext.MouseGetState();
             var touchState = inputContext.TouchGetState();
 
-            if (this.mouseTracking != null)
-                this.mouseTracking.Update(mouseState, gameTime);
+            foreach (var mouseTracking in this.mouseTrackings)
+            {
+                mouseTracking.Update(mouseState, gameTime);
+            }
 
             foreach (var digitalButton in this.digitalButtons.Values)
             {
@@ -45,9 +48,9 @@ namespace GameFramework.Inputs
                 visualButton.Update(touchState, mouseState, gameTime);
             }
 
-            if (this.touchTracking != null)
+            foreach (var touchTracking in this.touchTrackings)
             {
-                this.touchTracking.Update(touchState, gameTime);
+                touchTracking.Update(touchState, gameTime);
             }
 
             foreach (var inputEvent in this.inputEvents.Values)
@@ -97,16 +100,18 @@ namespace GameFramework.Inputs
 
         public MouseTracking AddMouseTracking(Camera camera)
         {
-            this.mouseTracking = new MouseTracking(camera);
+            var mouseTracking = new MouseTracking(camera);
+            this.mouseTrackings.Add(mouseTracking);
 
-            return this.mouseTracking;
+            return mouseTracking;
         }
 
         public TouchTracking AddTouchTracking(Camera camera)
         {
-            this.touchTracking = new TouchTracking(camera);
+            var touchTracking = new TouchTracking(camera);
+            this.touchTrackings.Add(touchTracking);
 
-            return this.touchTracking;
+            return touchTracking;
         }
 
         public void EnableGesture(params TouchGestureType[] touchGestures)
