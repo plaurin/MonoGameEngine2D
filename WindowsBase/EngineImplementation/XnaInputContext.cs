@@ -82,36 +82,7 @@ namespace MonoGameImplementation.EngineImplementation
 
             private static Keys ConvertToXnaKey(KeyboardKeys key)
             {
-                switch (key)
-                {
-                    case KeyboardKeys.Left: return Keys.Left;
-                    case KeyboardKeys.Right: return Keys.Right;
-                    case KeyboardKeys.Up: return Keys.Up;
-                    case KeyboardKeys.Down: return Keys.Down;
-
-                    case KeyboardKeys.D0: return Keys.D0;
-                    case KeyboardKeys.D1: return Keys.D1;
-                    case KeyboardKeys.D2: return Keys.D2;
-                    case KeyboardKeys.D3: return Keys.D3;
-                    case KeyboardKeys.D4: return Keys.D4;
-                    case KeyboardKeys.D5: return Keys.D5;
-                    case KeyboardKeys.D6: return Keys.D6;
-                    case KeyboardKeys.D7: return Keys.D7;
-                    case KeyboardKeys.D8: return Keys.D8;
-                    case KeyboardKeys.D9: return Keys.D9;
-
-                    case KeyboardKeys.Q: return Keys.Q;
-                    case KeyboardKeys.W: return Keys.W;
-                    case KeyboardKeys.A: return Keys.A;
-                    case KeyboardKeys.Z: return Keys.Z;
-                    case KeyboardKeys.X: return Keys.X;
-                    case KeyboardKeys.C: return Keys.C;
-                    case KeyboardKeys.Enter: return Keys.Enter;
-                    case KeyboardKeys.Back: return Keys.Back;
-                    case KeyboardKeys.Space: return Keys.Space;
-                    case KeyboardKeys.Escape: return Keys.Escape;
-                    default: throw new NotSupportedException("Key not supported yet");
-                }
+                return (Keys)(int)key;
             }
         }
 
