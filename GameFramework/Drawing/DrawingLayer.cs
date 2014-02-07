@@ -78,6 +78,16 @@ namespace GameFramework.Drawing
             this.elements.Clear();
         }
 
+        public override int TotalElements
+        {
+            get { return this.elements.Count; }
+        }
+
+        public override int DrawnElementsLastFrame
+        {
+            get { return this.TotalElements; }
+        }
+
         public override void Draw(DrawContext drawContext, Camera camera)
         {
             foreach (var element in this.elements)

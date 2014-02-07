@@ -39,6 +39,16 @@ namespace GameFramework.Utilities
             this.updateAction(mouseState);
         }
 
+        public override int TotalElements
+        {
+            get { return this.layer.TotalElements; }
+        }
+
+        public override int DrawnElementsLastFrame
+        {
+            get { return this.layer.DrawnElementsLastFrame; }
+        }
+
         public override void Draw(DrawContext drawContext, Camera camera)
         {
             this.layer.Draw(drawContext, camera);

@@ -19,6 +19,16 @@ namespace GameFramework.Scenes
 
         public string Name { get; private set; }
 
+        public int TotalElements
+        {
+            get { return this.layers.Sum(l => l.TotalElements); }
+        }
+
+        public int DrawnElementsLastFrame
+        {
+            get { return this.layers.Sum(l => l.DrawnElementsLastFrame); }
+        }
+
         public IEnumerable<LayerBase> Layers
         {
             get

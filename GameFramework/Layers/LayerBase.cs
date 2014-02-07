@@ -18,8 +18,12 @@ namespace GameFramework.Layers
         public CameraMode CameraMode { get; set; }
 
         public Vector ParallaxScrollingVector { get; set; }
-        
+
         public Vector Offset { get; set; }
+
+        public abstract int TotalElements { get; }
+
+        public abstract int DrawnElementsLastFrame { get; }
 
         public abstract void Draw(DrawContext drawContext, Camera camera);
 

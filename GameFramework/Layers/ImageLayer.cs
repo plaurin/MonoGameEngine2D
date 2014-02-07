@@ -16,6 +16,16 @@ namespace GameFramework.Layers
 
         public Texture Texture { get; private set; }
 
+        public override int TotalElements
+        {
+            get { return 1; }
+        }
+
+        public override int DrawnElementsLastFrame
+        {
+            get { return this.TotalElements; }
+        }
+
         public override void Draw(DrawContext drawContext, Camera camera)
         {
             drawContext.DrawImage(new DrawImageParams

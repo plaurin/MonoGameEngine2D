@@ -51,6 +51,16 @@ namespace GameFramework.Hexes
             set { this.map[point.X, point.Y] = value; }
         }
 
+        public override int TotalElements
+        {
+            get { return this.MapSize.Width * this.MapSize.Height; }
+        }
+
+        public override int DrawnElementsLastFrame
+        {
+            get { return this.TotalElements; }
+        }
+
         public override void Draw(DrawContext drawContext, Camera camera)
         {
             for (var i = 0; i < this.MapSize.Width; i++)

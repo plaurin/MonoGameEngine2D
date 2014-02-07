@@ -33,6 +33,17 @@ namespace GameFramework.Sprites
             this.sprites.Remove(sprite);
         }
 
+        public override int TotalElements
+        {
+            // TODO: Fix for CompositeSprite which is more than 1!
+            get { return this.sprites.Count; }
+        }
+
+        public override int DrawnElementsLastFrame
+        {
+            get { return this.TotalElements; }
+        }
+
         public override void Draw(DrawContext drawContext, Camera camera)
         {
             foreach (var sprite in this.Sprites)
