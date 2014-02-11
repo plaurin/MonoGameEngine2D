@@ -126,7 +126,7 @@ namespace GameFramework
 
         public static Rectangle FromBound(int left, int top, int right, int bottom)
         {
-            return new Rectangle(left, top, Math.Abs(right - left), Math.Abs(top - bottom));
+            return new Rectangle(left, top, Math.Abs(right - left) - 1, Math.Abs(top - bottom) - 1);
         }
     }
 }

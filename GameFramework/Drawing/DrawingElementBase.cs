@@ -8,6 +8,13 @@ namespace GameFramework.Drawing
     // TODO: Could be renamed DrawingObject? LineObject, TextObject, etc.. to match Tiled object layer
     public abstract class DrawingElementBase
     {
+        protected DrawingElementBase()
+        {
+            this.IsVisible = true;
+        }
+
+        public bool IsVisible { get; set; }
+
         public abstract void Draw(DrawContext drawContext, Camera camera, DrawingLayer drawingLayer);
 
         public abstract HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector);

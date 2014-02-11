@@ -11,6 +11,7 @@ namespace GameFramework.Layers
             this.Name = name;
             this.CameraMode = CameraMode.Follow;
             this.ParallaxScrollingVector = Vector.One;
+            this.IsVisible = true;
         }
 
         public string Name { get; set; }
@@ -20,6 +21,8 @@ namespace GameFramework.Layers
         public Vector ParallaxScrollingVector { get; set; }
 
         public Vector Offset { get; set; }
+
+        public bool IsVisible { get; set; }
 
         public abstract int TotalElements { get; }
 

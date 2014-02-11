@@ -81,6 +81,8 @@ namespace GameFramework.Utilities
 
             if (this.configuration.DisplayHits)
                 this.CreateNewLine(LineId.Hits, "Hits: {0}");
+
+            this.ViewState = this.configuration.DisplayState;
         }
 
         public void Update(IGameTiming gameTime, Camera camera)
@@ -89,14 +91,14 @@ namespace GameFramework.Utilities
             this.AdjustLinesPosition(camera);
 
             if (this.configuration.DisplayFps)
-                this.UpdatBuiltInLine(LineId.Fps, gameTime.DrawFps, gameTime.UpdateFps);
+                this.UpdateBuiltInLine(LineId.Fps, gameTime.DrawFps, gameTime.UpdateFps);
 
             if (this.configuration.DisplayCameraState)
             {
-                this.UpdatBuiltInLine(LineId.ViewPort, camera.SceneViewport);
-                this.UpdatBuiltInLine(LineId.Translation, camera.SceneTranslationVector);
-                this.UpdatBuiltInLine(LineId.Position, camera.Position);
-                this.UpdatBuiltInLine(LineId.Zoom, camera.ZoomFactor);
+                this.UpdateBuiltInLine(LineId.ViewPort, camera.SceneViewport);
+                this.UpdateBuiltInLine(LineId.Translation, camera.SceneTranslationVector);
+                this.UpdateBuiltInLine(LineId.Position, camera.Position);
+                this.UpdateBuiltInLine(LineId.Zoom, camera.ZoomFactor);
             }
         }
 
@@ -104,8 +106,8 @@ namespace GameFramework.Utilities
         {
             if (this.configuration.DisplayMouseState && mouseState != null)
             {
-                this.UpdatBuiltInLine(LineId.Mouse, mouseState);
-                this.UpdatBuiltInLine(LineId.MouseAbsolute, mouseState.AbsolutePosition);
+                this.UpdateBuiltInLine(LineId.Mouse, mouseState);
+                this.UpdateBuiltInLine(LineId.MouseAbsolute, mouseState.AbsolutePosition);
             }
         }
 
@@ -113,17 +115,17 @@ namespace GameFramework.Utilities
         {
             if (this.configuration.DisplayTouchState && touchState != null)
             {
-                this.UpdatBuiltInLine(LineId.TouchCapabilities, touchState.IsConnected, touchState.HasPressure);
-                this.UpdatBuiltInLine(LineId.TouchCapabilities2, touchState.MaximumTouchCount, touchState.IsGestureAvailable);
-                this.UpdatBuiltInLine(LineId.Touches, string.Join("; ", touchState.Touches));
-                this.UpdatBuiltInLine(LineId.Gestures, this.GetGesturesList(touchState.CurrentGesture.GestureType));
+                this.UpdateBuiltInLine(LineId.TouchCapabilities, touchState.IsConnected, touchState.HasPressure);
+                this.UpdateBuiltInLine(LineId.TouchCapabilities2, touchState.MaximumTouchCount, touchState.IsGestureAvailable);
+                this.UpdateBuiltInLine(LineId.Touches, string.Join("; ", touchState.Touches));
+                this.UpdateBuiltInLine(LineId.Gestures, this.GetGesturesList(touchState.CurrentGesture.GestureType));
             }
         }
 
         public void Update(IEnumerable<HitBase> hits)
         {
             if (this.configuration.DisplayHits && hits != null)
-                this.UpdatBuiltInLine(LineId.Hits, string.Join("; ", hits));
+                this.UpdateBuiltInLine(LineId.Hits, string.Join("; ", hits));
         }
 
         public override int TotalElements
@@ -136,8 +138,20 @@ namespace GameFramework.Utilities
             get { return this.layer.DrawnElementsLastFrame; }
         }
 
+        public DiagnosticViewState ViewState { get; set; }
+
         public override void Draw(DrawContext drawContext, Camera camera)
         {
+            foreach (var element in this.allLines.Select(l => l.Value))
+            {
+                element.IsVisible = this.ViewState == DiagnosticViewState.Full;
+            }
+
+            if (this.ViewState == DiagnosticViewState.FpsOnly)
+            {
+                this.allLines.Single(l => l.Key == LineId.Fps.ToString()).Value.IsVisible = true;
+            }
+
             this.layer.Draw(drawContext, camera);
         }
 
@@ -152,6 +166,12 @@ namespace GameFramework.Utilities
             textElement.SetParameters(parameters);
         }
 
+        public void ViewStateToggle()
+        {
+            this.ViewState++;
+            if (this.ViewState > DiagnosticViewState.Hide) this.ViewState = DiagnosticViewState.Full;
+        }
+
         private void CreateNewLine(LineId lineId, string text)
         {
             this.CreateNewLine(lineId.ToString(), text);
@@ -164,7 +184,7 @@ namespace GameFramework.Utilities
             return textElement;
         }
 
-        private void UpdatBuiltInLine(LineId lineId, params object[] parameters)
+        private void UpdateBuiltInLine(LineId lineId, params object[] parameters)
         {
             this.allLines.Single(l => l.Key == lineId.ToString()).Value.SetParameters(parameters);
         }
@@ -216,6 +236,8 @@ namespace GameFramework.Utilities
 
         public bool DisplayHits { get; set; }
 
+        public DiagnosticViewState DisplayState { get; set; }
+
         public static DiagnosticLayerConfiguration CreateWithFpsOnly(DiagnosticDisplayLocation location = DiagnosticDisplayLocation.Right)
         {
             return new DiagnosticLayerConfiguration
@@ -225,6 +247,7 @@ namespace GameFramework.Utilities
                 DisplayMouseState = false,
                 DisplayTouchState = false,
                 DisplayHits = false,
+                DisplayState = DiagnosticViewState.Full 
             };
         }
     }
@@ -233,5 +256,12 @@ namespace GameFramework.Utilities
     {
         Left,
         Right
+    }
+
+    public enum DiagnosticViewState
+    {
+        Full,
+        FpsOnly,
+        Hide
     }
 }

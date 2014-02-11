@@ -46,7 +46,8 @@ namespace GameFramework.Scenes
         {
             foreach (var layer in this.layers)
             {
-                layer.Draw(drawContext, camera);
+                if (layer.IsVisible)
+                    layer.Draw(drawContext, camera);
             }
         }
 
