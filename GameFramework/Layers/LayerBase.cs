@@ -4,7 +4,7 @@ using GameFramework.Scenes;
 
 namespace GameFramework.Layers
 {
-    public abstract class LayerBase
+    public abstract class LayerBase : ILayer
     {
         protected LayerBase(string name)
         {

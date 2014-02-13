@@ -118,7 +118,8 @@ namespace GameFramework
 
         public TileSheet GetTileSheet(string name)
         {
-            return this.tileSheetDictionary[name];
+            TileSheet result;
+            return this.tileSheetDictionary.TryGetValue(name, out result) ? result : null;
         }
 
         #endregion

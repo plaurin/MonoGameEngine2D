@@ -34,19 +34,24 @@ namespace GameFramework.IO
             //var texture = gameResourceManager.GetTexture(@"Tiled\tmw_desert_spacing");
             var texture = gameResourceManager.GetTexture(texturePath);
             //var sheet = new TileSheet(texture, "Desert", new Size(tmxMap.TileWidth, tmxMap.TileHeight));
-            var sheet = new TileSheet(texture, tileset.Name, tilesSize);
 
-            var margin = tileset.Margin;
-            var spacing = tileset.Spacing;
-            var numTileWidth = (tileset.Image.Width - (2 * margin) + spacing) / (tileset.TileWidth + spacing);
-            var numTileHeight = (tileset.Image.Height - (2 * margin) + spacing) / (tileset.TileHeight + spacing);
+            var sheet = gameResourceManager.GetTileSheet(tileset.Name);
+            if (sheet == null)
+            {
+                sheet = new TileSheet(texture, tileset.Name, tilesSize);
 
-            for (var j = 0; j < numTileHeight; j++)
-                for (var i = 0; i < numTileWidth; i++)
-                    sheet.CreateTileDefinition((tileset.FirstGid + i + numTileWidth * j).ToString(),
-                        new Point(margin + i * (tileset.TileWidth + spacing), margin + j * (tileset.TileHeight + spacing)));
+                var margin = tileset.Margin;
+                var spacing = tileset.Spacing;
+                var numTileWidth = (tileset.Image.Width - (2 * margin) + spacing) / (tileset.TileWidth + spacing);
+                var numTileHeight = (tileset.Image.Height - (2 * margin) + spacing) / (tileset.TileHeight + spacing);
 
-            gameResourceManager.AddTileSheet(sheet);
+                for (var j = 0; j < numTileHeight; j++)
+                    for (var i = 0; i < numTileWidth; i++)
+                        sheet.CreateTileDefinition((tileset.FirstGid + i + numTileWidth * j).ToString(),
+                            new Point(margin + i * (tileset.TileWidth + spacing), margin + j * (tileset.TileHeight + spacing)));
+
+                gameResourceManager.AddTileSheet(sheet);
+            }
 
             return sheet;
         }

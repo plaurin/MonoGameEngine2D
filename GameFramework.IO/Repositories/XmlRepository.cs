@@ -72,7 +72,7 @@ namespace GameFramework.IO.Repositories
             return scene;
         }
 
-        public static XElement ToXml(LayerBase layerBase)
+        public static XElement ToXml(ILayer layerBase)
         {
             var drawingLayer = layerBase as DrawingLayer;
             if (drawingLayer != null) return DrawingXmlRepository.ToXml(drawingLayer);

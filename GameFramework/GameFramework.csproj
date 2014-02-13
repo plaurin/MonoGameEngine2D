@@ -72,6 +72,7 @@
     <Compile Include="Inputs\TouchTracking.cs" />
     <Compile Include="Inputs\VisualButton.cs" />
     <Compile Include="Layers\ColorLayer.cs" />
+    <Compile Include="Layers\ILayer.cs" />
     <Compile Include="Rectangle.cs" />
     <Compile Include="Sprites\SpriteBase.cs" />
     <Compile Include="Utilities\DiagnosticLayer.cs" />

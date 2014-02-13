@@ -9,12 +9,12 @@ namespace GameFramework.Scenes
 {
     public class Scene
     {
-        private readonly List<LayerBase> layers;
+        private readonly List<ILayer> layers;
 
         public Scene(string name)
         {
             this.Name = name;
-            this.layers = new List<LayerBase>();
+            this.layers = new List<ILayer>();
         }
 
         public string Name { get; private set; }
@@ -29,7 +29,7 @@ namespace GameFramework.Scenes
             get { return this.layers.Sum(l => l.DrawnElementsLastFrame); }
         }
 
-        public IEnumerable<LayerBase> Layers
+        public IEnumerable<ILayer> Layers
         {
             get
             {
@@ -37,7 +37,7 @@ namespace GameFramework.Scenes
             }
         }
 
-        public void AddLayer(LayerBase layer)
+        public void AddLayer(ILayer layer)
         {
             this.layers.Add(layer);
         }
