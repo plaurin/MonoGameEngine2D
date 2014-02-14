@@ -1,8 +1,5 @@
 using System;
 
-using GameFramework.Cameras;
-using GameFramework.Scenes;
-
 namespace GameFramework.Drawing
 {
     // TODO: Could be renamed DrawingObject? LineObject, TextObject, etc.. to match Tiled object layer
@@ -16,8 +13,6 @@ namespace GameFramework.Drawing
         public bool IsVisible { get; set; }
 
         public abstract void Draw(IDrawContext drawContext, DrawingLayer drawingLayer);
-
-        public abstract HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector);
 
         protected void DrawLine(IDrawContext drawContext, DrawingLayer drawingLayer, Vector fromVector, Vector toVector, int width, Color color)
         {

@@ -61,6 +61,7 @@
     <Compile Include="Hexes\NullHexSheet.cs" />
     <Compile Include="IComposite.cs" />
     <Compile Include="IDrawable.cs" />
+    <Compile Include="IHitTarget.cs" />
     <Compile Include="Inputs\DigitalButton.cs" />
     <Compile Include="Inputs\InputConfiguration.cs" />
     <Compile Include="Inputs\InputContext.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Tiles\TileSheet.cs" />
     <Compile Include="Vector.cs" />
     <Compile Include="Viewport.cs" />
+    <Compile Include="WorldTransform.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

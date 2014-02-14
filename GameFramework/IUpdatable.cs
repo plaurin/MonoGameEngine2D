@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace GameFramework
+﻿namespace GameFramework
 {
     public interface IUpdatable
     {

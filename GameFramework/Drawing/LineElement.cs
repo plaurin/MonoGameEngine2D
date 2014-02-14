@@ -1,7 +1,6 @@
 using System;
 
 using GameFramework.Cameras;
-using GameFramework.Scenes;
 
 namespace GameFramework.Drawing
 {
@@ -51,11 +50,6 @@ namespace GameFramework.Drawing
 
             //spriteBatch.Draw(this.blank, finalFrom, null, this.color, angle, Vector.Zero,
             //    new Vector(length, finalWidth), SpriteEffects.None, 0);
-        }
-
-        public override HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector)
-        {
-            return null;
         }
     }
 }

@@ -8,7 +8,7 @@ using GameFramework.Scenes;
 
 namespace GameFramework.Drawing
 {
-    public class DrawingLayer : LayerBase
+    public class DrawingLayer : LayerBase, IHitTarget
     {
         private readonly GameResourceManager gameResourceManager;
 
@@ -105,10 +105,12 @@ namespace GameFramework.Drawing
             return total;
         }
 
-        public override HitBase GetHit(Vector position, Camera camera)
+        public HitBase GetHit(Vector position, ICamera camera, WorldTransform worldTransform)
         {
-            return this.elements
-                .Select(element => element.GetHit(position, camera, this.Offset, this.ParallaxScrollingVector))
+            var newTransform = worldTransform.Compose(this.Offset, this.ParallaxScrollingVector);
+
+            return this.elements.OfType<IHitTarget>()
+                .Select(element => element.GetHit(position, camera, newTransform))
                 .FirstOrDefault(spriteHit => spriteHit != null);
         }
     }

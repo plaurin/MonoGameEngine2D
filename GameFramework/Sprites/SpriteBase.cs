@@ -1,4 +1,5 @@
-﻿using GameFramework.Cameras;
+﻿using System;
+using GameFramework.Cameras;
 using GameFramework.Scenes;
 
 namespace GameFramework.Sprites
@@ -18,9 +19,6 @@ namespace GameFramework.Sprites
 
         public Vector Origin { get; set; }
 
-        public abstract int Draw(IDrawContext drawContext, Vector layerOffset,
-            Vector parallaxScrollingVector, CameraMode cameraMode);
-
-        public abstract HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector);
+        public abstract int Draw(IDrawContext drawContext, Vector layerOffset, Vector parallaxScrollingVector, CameraMode cameraMode);
     }
 }

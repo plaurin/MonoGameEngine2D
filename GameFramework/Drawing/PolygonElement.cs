@@ -6,7 +6,7 @@ using GameFramework.Scenes;
 
 namespace GameFramework.Drawing
 {
-    public class PolygonElement : DrawingElementBase
+    public class PolygonElement : DrawingElementBase, IHitTarget
     {
         private readonly List<Vector> vertices;
         
@@ -31,7 +31,7 @@ namespace GameFramework.Drawing
             this.Vertices.ForEachPair((x, y) => this.DrawLine(drawContext, drawingLayer, x, y, this.Width, this.Color));
         }
 
-        public override HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector)
+        public HitBase GetHit(Vector position, ICamera camera, WorldTransform worldTransform)
         {
             // To be implemented
             return null;

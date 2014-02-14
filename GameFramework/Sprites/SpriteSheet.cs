@@ -57,20 +57,20 @@ namespace GameFramework.Sprites
             return 0;
         }
 
-        public HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector, Sprite sprite)
+        public HitBase GetHit(Vector position, ICamera camera, WorldTransform worldTransform, Sprite sprite)
         {
             var source = this.Definitions[sprite.SpriteName];
-            var spriteRectangle = 
+            var spriteRectangle =
                 new Rectangle(
-                    layerOffset.X + sprite.Position.X,
-                    layerOffset.X + sprite.Position.Y,
-                    source.Width, 
+                    worldTransform.Offset.X + sprite.Position.X,
+                    worldTransform.Offset.X + sprite.Position.Y,
+                    source.Width,
                     source.Height)
                 .Scale(camera.ZoomFactor)
-                .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
+                .Translate(camera.GetSceneTranslationVector(worldTransform.ParallaxScrollingVector));
 
-            return spriteRectangle.Intercept(position) 
-                ? new SpriteHit(sprite) 
+            return spriteRectangle.Intercept(position)
+                ? new SpriteHit(sprite)
                 : null;
         }
     }

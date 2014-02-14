@@ -8,7 +8,7 @@ using GameFramework.Scenes;
 
 namespace GameFramework.Sprites
 {
-    public class SpriteLayer : LayerBase
+    public class SpriteLayer : LayerBase, IHitTarget
     {
         private readonly List<SpriteBase> sprites;
         private int drawnElementsLastFrame;
@@ -58,10 +58,12 @@ namespace GameFramework.Sprites
             return this.drawnElementsLastFrame;
         }
 
-        public override HitBase GetHit(Vector position, Camera camera)
+        public HitBase GetHit(Vector position, ICamera camera, WorldTransform worldTransform)
         {
-            return this.Sprites
-                .Select(sprite => sprite.GetHit(position, camera, this.Offset, this.ParallaxScrollingVector))
+            var newTransform = worldTransform.Compose(this.Offset, this.ParallaxScrollingVector);
+
+            return this.Sprites.OfType<IHitTarget>()
+                .Select(sprite => sprite.GetHit(position, camera, newTransform))
                 .FirstOrDefault(spriteHit => spriteHit != null);
         }
     }

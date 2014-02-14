@@ -1,6 +1,5 @@
 using System;
 using GameFramework.Cameras;
-using GameFramework.Scenes;
 
 namespace GameFramework.Layers
 {
@@ -27,11 +26,6 @@ namespace GameFramework.Layers
         public abstract int TotalElements { get; }
 
         public abstract int DrawnElementsLastFrame { get; }
-
-        public virtual HitBase GetHit(Vector position, Camera camera)
-        {
-            return null;
-        }
 
         public abstract int Draw(IDrawContext drawContext);
     }

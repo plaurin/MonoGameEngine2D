@@ -41,8 +41,8 @@ namespace GameFramework.Scenes
 
         public IEnumerable<HitBase> GetHits(Vector position, Camera camera)
         {
-            return this.Children.OfType<ILayer>()
-                .Select(layer => layer.GetHit(position, camera))
+            return this.Children.OfType<IHitTarget>()
+                .Select(hitTarget => hitTarget.GetHit(position, camera, WorldTransform.New))
                 .Where(hit => hit != null);
         }
 

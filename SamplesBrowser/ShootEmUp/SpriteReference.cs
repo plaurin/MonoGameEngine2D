@@ -1,7 +1,6 @@
 ﻿using System;
 using GameFramework;
 using GameFramework.Cameras;
-using GameFramework.Scenes;
 using GameFramework.Sprites;
 
 namespace SamplesBrowser.ShootEmUp
@@ -29,11 +28,6 @@ namespace SamplesBrowser.ShootEmUp
             }
 
             return 0;
-        }
-
-        public override HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector)
-        {
-            throw new NotImplementedException();
         }
     }
 }

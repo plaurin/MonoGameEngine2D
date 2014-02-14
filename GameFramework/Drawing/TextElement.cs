@@ -1,7 +1,6 @@
 using System;
 
 using GameFramework.Cameras;
-using GameFramework.Scenes;
 
 namespace GameFramework.Drawing
 {
@@ -42,8 +41,6 @@ namespace GameFramework.Drawing
 
             var param = new DrawStringParams
             {
-                //DrawContext = drawContext,
-                //Camera = camera,
                 Text = finalText,
                 Vector = finalVector,
                 ZoomFactor = finalZoomFactor,
@@ -52,11 +49,6 @@ namespace GameFramework.Drawing
             };
 
             drawContext.DrawString(param);
-        }
-
-        public override HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector)
-        {
-            return null;
         }
     }
 }

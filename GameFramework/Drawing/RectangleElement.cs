@@ -4,7 +4,7 @@ using GameFramework.Scenes;
 
 namespace GameFramework.Drawing
 {
-    public class RectangleElement : DrawingElementBase
+    public class RectangleElement : DrawingElementBase, IHitTarget
     {
         private readonly float x;
         private readonly float y;
@@ -43,16 +43,16 @@ namespace GameFramework.Drawing
             this.DrawLine(drawContext, drawingLayer, bottomLeft, topLeft, this.LineWidth, this.Color);
         }
 
-        public override HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector)
+        public HitBase GetHit(Vector position, ICamera camera, WorldTransform worldTransform)
         {
             var rectangle =
                 new Rectangle(
-                    layerOffset.X + this.x,
-                    layerOffset.X + this.y,
+                    worldTransform.Offset.X + this.x,
+                    worldTransform.Offset.Y + this.y,
                     this.width,
                     this.height)
                 .Scale(camera.ZoomFactor)
-                .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
+                .Translate(camera.GetSceneTranslationVector(worldTransform.ParallaxScrollingVector));
 
             return rectangle.Intercept(position)
                 ? new RectangleHit(this)

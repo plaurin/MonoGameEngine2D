@@ -6,7 +6,7 @@ using GameFramework.Scenes;
 
 namespace GameFramework.Hexes
 {
-    public class HexLayer : LayerBase
+    public class HexLayer : LayerBase, IHitTarget
     {
         private readonly HexDefinition[,] map;
 
@@ -94,7 +94,7 @@ namespace GameFramework.Hexes
             return this.drawnElementsLastFrame;
         }
 
-        public override HitBase GetHit(Vector position, Camera camera)
+        public HitBase GetHit(Vector position, ICamera camera, WorldTransform worldTransform)
         {
             for (var i = 0; i < this.MapSize.Width; i++)
                 for (var j = 0; j < this.MapSize.Height; j++)

@@ -19,7 +19,5 @@ namespace GameFramework.Layers
         int TotalElements { get; }
 
         int DrawnElementsLastFrame { get; }
-
-        HitBase GetHit(Vector position, Camera camera);
     }
 }

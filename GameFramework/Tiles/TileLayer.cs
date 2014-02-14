@@ -6,7 +6,7 @@ using GameFramework.Scenes;
 
 namespace GameFramework.Tiles
 {
-    public class TileLayer : LayerBase
+    public class TileLayer : LayerBase, IHitTarget
     {
         private readonly TileDefinition[,] map;
         private int drawnElementsLastFrame;
@@ -50,7 +50,6 @@ namespace GameFramework.Tiles
 
         public override int Draw(IDrawContext drawContext)
         {
-            //var camera = (drawContext as DrawContextWithCamera).Camera;
             this.drawnElementsLastFrame = 0;
 
             for (var i = 0; i < this.MapSize.Width; i++)
@@ -82,7 +81,7 @@ namespace GameFramework.Tiles
             return this.drawnElementsLastFrame;
         }
 
-        public override HitBase GetHit(Vector position, Camera camera)
+        public HitBase GetHit(Vector position, ICamera camera, WorldTransform worldTransform)
         {
             for (var i = 0; i < this.MapSize.Width; i++)
                 for (var j = 0; j < this.MapSize.Height; j++)
@@ -90,8 +89,8 @@ namespace GameFramework.Tiles
                     var tileRectangle =
                         new Rectangle(
                             this.Offset.X + i * this.TileSize.Width,
-                            this.Offset.Y + j * this.TileSize.Height, 
-                            this.TileSize.Width, 
+                            this.Offset.Y + j * this.TileSize.Height,
+                            this.TileSize.Width,
                             this.TileSize.Height)
                         .Scale(camera.ZoomFactor)
                         .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
