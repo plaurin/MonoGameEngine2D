@@ -27,7 +27,7 @@ namespace GameFramework.Tiles
             get { return true; }
         }
 
-        public virtual void Draw(DrawContext drawContext, Rectangle destination)
+        public virtual void Draw(IDrawContext drawContext, Rectangle destination)
         {
             this.Sheet.Draw(drawContext, this, destination);
         }

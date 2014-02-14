@@ -20,7 +20,7 @@ namespace GameFramework.Tiles
             get { return false; }
         }
 
-        public override void Draw(DrawContext drawContext, Rectangle destination)
+        public override void Draw(IDrawContext drawContext, Rectangle destination)
         {
             // Do nothing: Null Object Pattern
         }

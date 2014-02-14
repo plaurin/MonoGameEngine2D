@@ -144,7 +144,7 @@ namespace GameFramework.Utilities
 
         public DiagnosticViewState ViewState { get; set; }
 
-        public override int Draw(DrawContext drawContext)
+        public override int Draw(IDrawContext drawContext)
         {
             foreach (var element in this.allLines.Select(l => l.Value))
             {

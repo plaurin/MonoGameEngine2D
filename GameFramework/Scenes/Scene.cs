@@ -52,7 +52,7 @@ namespace GameFramework.Scenes
                 updatable.Update(gameTiming);
         }
 
-        public int Draw(DrawContext drawContext)
+        public int Draw(IDrawContext drawContext)
         {
             return this.sceneObjects.OfType<IDrawable>()
                 .Sum(drawable => drawable.Draw(drawContext));

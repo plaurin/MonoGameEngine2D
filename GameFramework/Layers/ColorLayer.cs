@@ -22,7 +22,7 @@ namespace GameFramework.Layers
             get { return this.TotalElements; }
         }
 
-        public override int Draw(DrawContext drawContext)
+        public override int Draw(IDrawContext drawContext)
         {
             drawContext.FillColor(this.Color);
 

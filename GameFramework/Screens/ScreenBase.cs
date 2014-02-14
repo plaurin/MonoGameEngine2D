@@ -15,8 +15,9 @@ namespace GameFramework.Screens
 
         public abstract void Update(IGameTiming gameTime);
 
+        // TODO: Remove (Tell don't ask)
         public abstract Scene GetScene();
 
-        public abstract int Draw(DrawContext drawContext);
+        public abstract int Draw(IDrawContext drawContext);
     }
 }

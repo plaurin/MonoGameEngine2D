@@ -132,7 +132,9 @@ namespace MonoGameImplementation
             blank.SetData(new[] { Color.White });
 
             var xnaDrawContext = new XnaDrawContext(this.spriteBatch, blank, this.graphics.GraphicsDevice.Viewport);
-            var drawContext = new DrawContextWithCamera(xnaDrawContext, this.screenNavigation.Current.Camera);
+
+            //var drawContext = new DrawContextWithCamera(xnaDrawContext, this.screenNavigation.Current.Camera);
+            var drawContext = new DrawContext(xnaDrawContext) { Camera = this.screenNavigation.Current.Camera };
 
             this.screenNavigation.Current.Screen.Draw(drawContext);
 

@@ -26,7 +26,7 @@ namespace GameFramework.Sprites
             this.Definitions.Add(spriteName, spriteRectangle);
         }
 
-        public int Draw(DrawContext drawContext, Camera camera, Vector layerOffset, Vector parallaxScrollingVector, 
+        public int Draw(IDrawContext drawContext, Vector layerOffset, Vector parallaxScrollingVector, 
             Sprite sprite, CameraMode cameraMode)
         {
             var source = this.Definitions[sprite.SpriteName];
@@ -36,11 +36,11 @@ namespace GameFramework.Sprites
             if (cameraMode == CameraMode.Follow)
             {
                 destination = destination
-                    .Scale(camera.ZoomFactor)
-                    .Translate(camera.GetSceneTranslationVector(parallaxScrollingVector));
+                    .Scale(drawContext.Camera.ZoomFactor)
+                    .Translate(drawContext.Camera.GetSceneTranslationVector(parallaxScrollingVector));
             }
 
-            if (camera.Viewport.IsVisible(destination))
+            if (drawContext.Camera.Viewport.IsVisible(destination))
             {
                 drawContext.DrawImage(new DrawImageParams
                 {

@@ -41,7 +41,7 @@ namespace GameFramework.Hexes
             this.Definitions.Add(hexDefinition.Name, hexDefinition);
         }
 
-        public virtual void Draw(DrawContext drawContext, HexDefinition hexDefinition, Rectangle destination)
+        public virtual void Draw(IDrawContext drawContext, HexDefinition hexDefinition, Rectangle destination)
         {
             drawContext.DrawImage(new DrawImageParams
             {

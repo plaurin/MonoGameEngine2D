@@ -62,9 +62,8 @@ namespace GameFramework.Hexes
             get { return this.drawnElementsLastFrame; }
         }
 
-        public override int Draw(DrawContext drawContext)
+        public override int Draw(IDrawContext drawContext)
         {
-            var camera = (drawContext as DrawContextWithCamera).Camera;
             this.drawnElementsLastFrame = 0;
 
             for (var i = 0; i < this.MapSize.Width; i++)
@@ -81,10 +80,10 @@ namespace GameFramework.Hexes
                             this.HexSize.Width, this.HexSize.Height);
 
                         var destination = rectangle
-                            .Scale(camera.ZoomFactor)
-                            .Translate(camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
+                            .Scale(drawContext.Camera.ZoomFactor)
+                            .Translate(drawContext.Camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
 
-                        if (camera.Viewport.IsVisible(destination))
+                        if (drawContext.Camera.Viewport.IsVisible(destination))
                         {
                             this.map[i, j].Draw(drawContext, destination);
                             this.drawnElementsLastFrame++;

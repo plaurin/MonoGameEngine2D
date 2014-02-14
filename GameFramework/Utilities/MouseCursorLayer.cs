@@ -49,7 +49,7 @@ namespace GameFramework.Utilities
             get { return this.layer.DrawnElementsLastFrame; }
         }
 
-        public override int Draw(DrawContext drawContext)
+        public override int Draw(IDrawContext drawContext)
         {
             return this.layer.Draw(drawContext);
         }

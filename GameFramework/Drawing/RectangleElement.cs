@@ -30,17 +30,17 @@ namespace GameFramework.Drawing
 
         public Color Color { get; set; }
 
-        public override void Draw(DrawContext drawContext, Camera camera, DrawingLayer drawingLayer)
+        public override void Draw(IDrawContext drawContext, DrawingLayer drawingLayer)
         {
             var topLeft = new Vector(this.x, this.y);
             var topRight = new Vector(this.x + this.width, this.y);
             var bottomLeft = new Vector(this.x, this.y + this.height);
             var bottomRight = new Vector(this.x + this.width, this.y + this.height);
 
-            this.DrawLine(drawContext, camera, drawingLayer, topLeft, topRight, this.LineWidth, this.Color);
-            this.DrawLine(drawContext, camera, drawingLayer, topRight, bottomRight, this.LineWidth, this.Color);
-            this.DrawLine(drawContext, camera, drawingLayer, bottomRight, bottomLeft, this.LineWidth, this.Color);
-            this.DrawLine(drawContext, camera, drawingLayer, bottomLeft, topLeft, this.LineWidth, this.Color);
+            this.DrawLine(drawContext, drawingLayer, topLeft, topRight, this.LineWidth, this.Color);
+            this.DrawLine(drawContext, drawingLayer, topRight, bottomRight, this.LineWidth, this.Color);
+            this.DrawLine(drawContext, drawingLayer, bottomRight, bottomLeft, this.LineWidth, this.Color);
+            this.DrawLine(drawContext, drawingLayer, bottomLeft, topLeft, this.LineWidth, this.Color);
         }
 
         public override HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector)

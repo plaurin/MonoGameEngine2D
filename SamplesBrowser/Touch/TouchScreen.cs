@@ -119,7 +119,7 @@ namespace SamplesBrowser.Touch
             return this.scene;
         }
 
-        public override int Draw(DrawContext drawContext)
+        public override int Draw(IDrawContext drawContext)
         {
             return this.scene.Draw(drawContext);
         }

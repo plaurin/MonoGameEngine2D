@@ -33,6 +33,6 @@ namespace GameFramework.Layers
             return null;
         }
 
-        public abstract int Draw(DrawContext drawContext);
+        public abstract int Draw(IDrawContext drawContext);
     }
 }

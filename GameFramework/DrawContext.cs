@@ -5,57 +5,63 @@ using GameFramework.Drawing;
 
 namespace GameFramework
 {
-    // TODO: Remove this temp class after cleanup with DrawContext, Camera, etc. for Composites IDrawable
-    public class DrawContextWithCamera : DrawContext
+    public interface IDrawImplementation
     {
-        private readonly DrawContext innerContext;
+        void DrawString(DrawStringParams param);
 
-        public DrawContextWithCamera(DrawContext innerContext, Camera camera)
+        void DrawLine(DrawLineParams param);
+
+        void DrawImage(DrawImageParams param);
+
+        void FillColor(Color color);
+    }
+
+    public interface IDrawContext : IDrawImplementation
+    {
+        ICamera Camera { get; }
+    }
+
+    public class DrawContext : IDrawContext
+    {
+        private readonly IDrawImplementation drawImplementation;
+
+        public DrawContext(IDrawImplementation drawImplementation)
         {
-            this.innerContext = innerContext;
-            this.Camera = camera;
+            this.drawImplementation = drawImplementation;
         }
 
-        public Camera Camera { get; private set; }
+        public ICamera Camera { get; set; }
 
-        public override void DrawString(DrawContext drawContext, Camera camera, string text, Vector vector, float zoomFactor,
-            DrawingFont drawingFont, Color color)
+        public void DrawString(DrawStringParams param)
         {
-            this.innerContext.DrawString(drawContext, camera, text, vector, zoomFactor, drawingFont, color);
+            this.drawImplementation.DrawString(param);
         }
 
-        public override void DrawLine(Vector vectorFrom, Vector vectorTo, float width, Color color)
+        public void DrawLine(DrawLineParams param)
         {
-            this.innerContext.DrawLine(vectorFrom, vectorTo, width, color);
+            this.drawImplementation.DrawLine(param); 
         }
 
-        public override void DrawImage(DrawImageParams param)
+        public void DrawImage(DrawImageParams param)
         {
-            this.innerContext.DrawImage(param);
+            this.drawImplementation.DrawImage(param);
         }
 
-        public override void FillColor(Color color)
+        public void FillColor(Color color)
         {
-            this.innerContext.FillColor(color);
+            this.drawImplementation.FillColor(color);
         }
     }
 
-    public abstract class DrawContext
+    public struct DrawLineParams
     {
-        public abstract void DrawString(
-            DrawContext drawContext,
-            Camera camera,
-            string text,
-            Vector vector,
-            float zoomFactor,
-            DrawingFont drawingFont,
-            Color color);
+        public Vector VectorFrom { get; set; }
 
-        public abstract void DrawLine(Vector vectorFrom, Vector vectorTo, float width, Color color);
+        public Vector VectorTo { get; set; }
 
-        public abstract void DrawImage(DrawImageParams param);
+        public float Width { get; set; }
 
-        public abstract void FillColor(Color color);
+        public Color Color { get; set; }
     }
 
     public class DrawImageParams
@@ -74,5 +80,18 @@ namespace GameFramework
         public float Rotation { get; set; }
 
         public Vector Origin { get; set; }
+    }
+
+    public struct DrawStringParams
+    {
+        public string Text { get; set; }
+
+        public Vector Vector { get; set; }
+
+        public float ZoomFactor { get; set; }
+
+        public DrawingFont DrawingFont { get; set; }
+
+        public Color Color { get; set; }
     }
 }

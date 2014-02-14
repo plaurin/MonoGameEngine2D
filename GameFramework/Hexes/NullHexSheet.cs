@@ -9,7 +9,7 @@ namespace GameFramework.Hexes
         {
         }
 
-        public override void Draw(DrawContext drawContext, HexDefinition hexDefinition, Rectangle destination)
+        public override void Draw(IDrawContext drawContext, HexDefinition hexDefinition, Rectangle destination)
         {
             // Do nothing NullObjectPattern
         }

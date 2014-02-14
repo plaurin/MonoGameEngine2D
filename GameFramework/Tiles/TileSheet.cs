@@ -46,7 +46,7 @@ namespace GameFramework.Tiles
             this.definitions.Add(tileDefinition.Name, tileDefinition);
         }
 
-        public void Draw(DrawContext drawContext, TileDefinition tileDefinition, Rectangle destination)
+        public void Draw(IDrawContext drawContext, TileDefinition tileDefinition, Rectangle destination)
         {
             drawContext.DrawImage(new DrawImageParams
             {

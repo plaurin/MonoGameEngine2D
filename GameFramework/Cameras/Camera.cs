@@ -2,7 +2,16 @@
 
 namespace GameFramework.Cameras
 {
-    public class Camera
+    public interface ICamera
+    {
+        float ZoomFactor { get; }
+
+        Viewport Viewport { get; }
+
+        Vector GetSceneTranslationVector(Vector parallaxScrollingVector);
+    }
+
+    public class Camera : ICamera
     {
         private Vector innerPosition;
 

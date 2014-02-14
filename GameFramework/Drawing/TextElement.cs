@@ -30,19 +30,28 @@ namespace GameFramework.Drawing
 
         protected object[] Parameters { get; private set; }
 
-        public override void Draw(DrawContext drawContext, Camera camera, DrawingLayer drawingLayer)
+        public override void Draw(IDrawContext drawContext, DrawingLayer drawingLayer)
         {
             var finalText = this.Parameters != null ? string.Format(this.Text, this.Parameters) : this.Text;
-            var finalZoomFactor = drawingLayer.CameraMode == CameraMode.Fix ? 1.0f : camera.ZoomFactor;
+            var finalZoomFactor = drawingLayer.CameraMode == CameraMode.Fix ? 1.0f : drawContext.Camera.ZoomFactor;
             var finalVector = drawingLayer.CameraMode == CameraMode.Fix
                 ? this.Position
                 : this.Position
-                    .Scale(camera.ZoomFactor)
-                    .Translate(camera.GetSceneTranslationVector(drawingLayer.ParallaxScrollingVector));
+                    .Scale(drawContext.Camera.ZoomFactor)
+                    .Translate(drawContext.Camera.GetSceneTranslationVector(drawingLayer.ParallaxScrollingVector));
 
-            drawContext.DrawString(drawContext, camera, finalText, finalVector, finalZoomFactor, this.DrawingFont, this.Color);
-            //spriteBatch.DrawString(this.drawingFont.Font, finalText, finalVector, this.color, 0.0f, Vector2.Zero, 
-            //    finalZoomFactor, SpriteEffects.None, 0.0f);
+            var param = new DrawStringParams
+            {
+                //DrawContext = drawContext,
+                //Camera = camera,
+                Text = finalText,
+                Vector = finalVector,
+                ZoomFactor = finalZoomFactor,
+                DrawingFont = this.DrawingFont,
+                Color = this.Color
+            };
+
+            drawContext.DrawString(param);
         }
 
         public override HitBase GetHit(Vector position, Camera camera, Vector layerOffset, Vector parallaxScrollingVector)

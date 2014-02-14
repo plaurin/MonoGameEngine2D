@@ -27,7 +27,7 @@ namespace SamplesBrowser.ShootEmUp
             this.sprites.Add(sprite);
         }
 
-        public override int Draw(DrawContext drawContext, Camera camera, Vector layerOffset, Vector parallaxScrollingVector,
+        public override int Draw(IDrawContext drawContext, Vector layerOffset, Vector parallaxScrollingVector,
             CameraMode cameraMode)
         {
             var drawCount = 0;
@@ -35,7 +35,7 @@ namespace SamplesBrowser.ShootEmUp
             var compositeOffset = layerOffset.Translate(this.Position);
             foreach (var sprite in this.sprites)
             {
-                drawCount += sprite.Draw(drawContext, camera, compositeOffset, parallaxScrollingVector, cameraMode);
+                drawCount += sprite.Draw(drawContext, compositeOffset, parallaxScrollingVector, cameraMode);
             }
 
             return drawCount;
