@@ -30,8 +30,6 @@ namespace SamplesBrowser
         private MouseStateBase mouseState;
         private TouchStateBase touchState;
 
-        private MouseCursorLayer mouseLayer;
-
         public HubScreen(ScreenNavigation screenNavigation)
         {
             this.screenNavigation = screenNavigation;
@@ -105,8 +103,6 @@ namespace SamplesBrowser
             inputConfiguration.AddMouseTracking(this.Camera).OnMove((mt, e) =>
             {
                 this.mouseState = mt;
-
-                this.mouseLayer.Update(this.mouseState);
 
                 var hit = this.Scene.GetHits(this.mouseState.AbsolutePosition, this.Camera).OfType<RectangleHit>().FirstOrDefault();
                 this.hoveringSample = hitToSampleFunc(hit);
@@ -201,8 +197,8 @@ namespace SamplesBrowser
 
             scene.Add(hubMap);
 
-            this.mouseLayer = MouseCursorLayer.Create(this.ResourceManager);
-            scene.Add(this.mouseLayer);
+            //this.mouseLayer = MouseCursorLayer.Create(this.ResourceManager);
+            scene.Add(new MouseCursor(this.InputConfiguration.AddMouseTracking(this.Camera)));
 
             return scene;
         }

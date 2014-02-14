@@ -27,7 +27,6 @@ namespace SamplesBrowser.Sandbox
 
         private MouseStateBase mouseState;
 
-        private MouseCursorLayer mouseLayer;
         private DiagnosticLayer diagnosticLayer;
 
         private List<HitBase> hits;
@@ -90,7 +89,6 @@ namespace SamplesBrowser.Sandbox
             inputConfiguration.AddMouseTracking(this.Camera).OnMove((mt, e) =>
             {
                 this.mouseState = mt;
-                this.mouseLayer.Update(this.mouseState);
 
                 this.linkMouseFollow.Position = mt.AbsolutePosition;
             });
@@ -111,7 +109,7 @@ namespace SamplesBrowser.Sandbox
             scene.Add(this.CreateHexLayerTestDistance());
             scene.Add(this.CreateSpriteLayer());
             scene.Add(this.CreateDiagnosticLayer());
-            scene.Add(this.CreateMouseCursorLayer());
+            scene.Add(this.CreateMouseCursor());
             scene.Add(this.CreateMouseFollow());
 
             //this.scene.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
@@ -165,11 +163,9 @@ namespace SamplesBrowser.Sandbox
             if (mySpriteSheetXml.ToString() != otherSpriteSheetXml.ToString()) Debugger.Break();
         }
 
-        private ILayer CreateMouseCursorLayer()
+        private object CreateMouseCursor()
         {
-            this.mouseLayer = MouseCursorLayer.Create(this.ResourceManager);
-
-            return this.mouseLayer;
+            return new MouseCursor(this.InputConfiguration.AddMouseTracking(this.Camera));
         }
 
         private ILayer CreateMouseFollow()
