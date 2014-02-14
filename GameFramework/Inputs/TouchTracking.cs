@@ -5,10 +5,10 @@ namespace GameFramework.Inputs
 {
     public class TouchTracking
     {
-        private readonly Camera camera;
+        private readonly ICamera camera;
         private Action<TouchStateBase, IGameTiming> touchAction;
 
-        public TouchTracking(Camera camera)
+        public TouchTracking(ICamera camera)
         {
             this.camera = camera;
         }

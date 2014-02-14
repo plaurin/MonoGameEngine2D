@@ -19,7 +19,7 @@ namespace GameFramework.Inputs
 
         public abstract Vector Position { get; }
 
-        public MouseStateBase AdjustToCamera(Camera camera)
+        public MouseStateBase AdjustToCamera(ICamera camera)
         {
             return new AdjustedMouseState(this, camera);
         }
@@ -38,9 +38,9 @@ namespace GameFramework.Inputs
         {
             private readonly MouseStateBase inneMouseState;
 
-            private readonly Camera camera;
+            private readonly ICamera camera;
 
-            public AdjustedMouseState(MouseStateBase inneMouseState, Camera camera)
+            public AdjustedMouseState(MouseStateBase inneMouseState, ICamera camera)
             {
                 this.inneMouseState = inneMouseState;
                 this.camera = camera;

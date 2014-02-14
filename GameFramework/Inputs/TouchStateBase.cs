@@ -5,7 +5,7 @@ namespace GameFramework.Inputs
 {
     public abstract class TouchStateBase
     {
-        public TouchStateBase AdjustToCamera(Camera camera)
+        public TouchStateBase AdjustToCamera(ICamera camera)
         {
             return new AdjustedTouchState(this, camera);
         }
@@ -13,9 +13,9 @@ namespace GameFramework.Inputs
         private class AdjustedTouchState : TouchStateBase
         {
             private readonly TouchStateBase innerTouchState;
-            private readonly Camera camera;
+            private readonly ICamera camera;
 
-            public AdjustedTouchState(TouchStateBase innerTouchState, Camera camera)
+            public AdjustedTouchState(TouchStateBase innerTouchState, ICamera camera)
             {
                 this.innerTouchState = innerTouchState;
                 this.camera = camera;

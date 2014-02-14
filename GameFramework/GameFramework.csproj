@@ -39,6 +39,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cameras\Camera.cs" />
+    <Compile Include="Cameras\CameraCenter.cs" />
+    <Compile Include="Cameras\CameraMode.cs" />
+    <Compile Include="Cameras\ICamera.cs" />
     <Compile Include="Color.cs" />
     <Compile Include="DrawContext.cs" />
     <Compile Include="Drawing\DrawingElementBase.cs" />

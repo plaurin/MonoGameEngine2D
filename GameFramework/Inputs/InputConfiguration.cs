@@ -98,7 +98,7 @@ namespace GameFramework.Inputs
             return this.inputEvents[name];
         }
 
-        public MouseTracking AddMouseTracking(Camera camera)
+        public MouseTracking AddMouseTracking(ICamera camera)
         {
             var mouseTracking = new MouseTracking(camera);
             this.mouseTrackings.Add(mouseTracking);
@@ -106,7 +106,7 @@ namespace GameFramework.Inputs
             return mouseTracking;
         }
 
-        public TouchTracking AddTouchTracking(Camera camera)
+        public TouchTracking AddTouchTracking(ICamera camera)
         {
             var touchTracking = new TouchTracking(camera);
             this.touchTrackings.Add(touchTracking);

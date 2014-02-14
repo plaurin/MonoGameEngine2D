@@ -85,7 +85,7 @@ namespace GameFramework.Utilities
             this.ViewState = this.configuration.DisplayState;
         }
 
-        public void Update(IGameTiming gameTime, Camera camera)
+        public void Update(IGameTiming gameTime, ICamera camera)
         {
             this.Update(gameTime);
             this.AdjustLinesPosition(camera);
@@ -193,7 +193,7 @@ namespace GameFramework.Utilities
             this.allLines.Single(l => l.Key == lineId.ToString()).Value.SetParameters(parameters);
         }
 
-        private void AdjustLinesPosition(Camera camera)
+        private void AdjustLinesPosition(ICamera camera)
         {
             var currentY = FirstLineY;
             foreach (var textElement in this.allLines.Select(l => l.Value))

@@ -6,11 +6,11 @@ namespace GameFramework.Inputs
 {
     public class MouseTracking
     {
-        private readonly Camera camera;
+        private readonly ICamera camera;
 
         private Action<MouseStateBase, IGameTiming> mouseMoveAction;
 
-        public MouseTracking(Camera camera)
+        public MouseTracking(ICamera camera)
         {
             this.camera = camera;
         }

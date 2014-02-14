@@ -2,15 +2,6 @@
 
 namespace GameFramework.Cameras
 {
-    public interface ICamera
-    {
-        float ZoomFactor { get; }
-
-        Viewport Viewport { get; }
-
-        Vector GetSceneTranslationVector(Vector parallaxScrollingVector);
-    }
-
     public class Camera : ICamera
     {
         private Vector innerPosition;
@@ -100,17 +91,5 @@ namespace GameFramework.Cameras
                     throw new NotSupportedException("CameraCenter value not supported");
             }
         }
-    }
-
-    public enum CameraMode
-    {
-        Follow = 0,
-        Fix = 1
-    }
-
-    public enum CameraCenter
-    {
-        WindowCenter,
-        WindowTopLeft
     }
 }
