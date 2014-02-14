@@ -1,13 +1,12 @@
 ﻿using System;
-using GameFramework.Cameras;
 using GameFramework.Inputs;
 using GameFramework.Scenes;
 
 namespace GameFramework.Screens
 {
-    public abstract class ScreenBase : IUpdatable, IDrawable
+    public abstract class ScreenBase : IUpdatable
     {
-        public abstract void Initialize(Camera camera);
+        public abstract void Initialize(Viewport viewport);
 
         public abstract InputConfiguration GetInputConfiguration();
 
@@ -18,6 +17,6 @@ namespace GameFramework.Screens
         // TODO: Remove (Tell don't ask)
         public abstract Scene GetScene();
 
-        public abstract int Draw(IDrawContext drawContext);
+        public abstract int Draw(DrawContext drawContext);
     }
 }

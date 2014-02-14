@@ -49,10 +49,9 @@ namespace SamplesBrowser
             Touch
         }
 
-        public override void Initialize(Camera theCamera)
+        public override void Initialize(Viewport viewport)
         {
-            this.camera = theCamera;
-
+            this.camera = new Camera(viewport);
             this.camera.Center = CameraCenter.WindowTopLeft;
         }
 
@@ -210,8 +209,9 @@ namespace SamplesBrowser
             return this.scene;
         }
 
-        public override int Draw(IDrawContext drawContext)
+        public override int Draw(DrawContext drawContext)
         {
+            drawContext.Camera = this.camera;
             return this.scene.Draw(drawContext);
         }
 

@@ -1,12 +1,10 @@
 using System;
 
 using GameFramework;
-using GameFramework.Cameras;
 using GameFramework.Screens;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using MonoGameImplementation.EngineImplementation;
 using Color = Microsoft.Xna.Framework.Color;
@@ -56,7 +54,7 @@ namespace MonoGameImplementation
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            this.screenNavigation.Initialize(this.CreateCamera);
+            this.screenNavigation.Initialize(this.GetViewPort());
 
             base.Initialize();
         }
@@ -132,36 +130,20 @@ namespace MonoGameImplementation
             blank.SetData(new[] { Color.White });
 
             var xnaDrawContext = new XnaDrawContext(this.spriteBatch, blank, this.graphics.GraphicsDevice.Viewport);
-            var drawContext = new DrawContext(xnaDrawContext) { Camera = this.screenNavigation.Current.Camera };
+            var drawContext = new DrawContext(xnaDrawContext);
 
             this.screenNavigation.Current.Screen.Draw(drawContext);
-
-            // TODO: Move this option elsewhere
-            //this.DrawCamera(drawContext);
 
             this.spriteBatch.End();
 
             base.Draw(gameTime);
         }
 
-        //private void DrawCamera(DrawContext drawContext)
-        //{
-        //    drawContext.DrawLine(
-        //        this.camera.ViewPortCenter.Translate(-10, 0).ToVector(),
-        //        this.camera.ViewPortCenter.Translate(10, 0).ToVector(), 1.0f, new GameFramework.Color(255, 255, 0, 255));
-
-        //    drawContext.DrawLine(
-        //        this.camera.ViewPortCenter.Translate(0, -10).ToVector(),
-        //        this.camera.ViewPortCenter.Translate(0, 10).ToVector(), 1.0f, new GameFramework.Color(255, 255, 0, 255));
-        //}
-
-        private Camera CreateCamera()
+        private GameFramework.Viewport GetViewPort()
         {
-            var viewport = new GameFramework.Viewport(
+            return new GameFramework.Viewport(
                 this.graphics.GraphicsDevice.Viewport.Width,
                 this.graphics.GraphicsDevice.Viewport.Height);
-
-            return new Camera(viewport);
         }
 
         private class SingleScreenNavigation : ScreenNavigation

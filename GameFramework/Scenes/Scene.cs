@@ -39,7 +39,7 @@ namespace GameFramework.Scenes
             this.sceneObjects.Add(sceneObject);
         }
 
-        public IEnumerable<HitBase> GetHits(Vector position, Camera camera)
+        public IEnumerable<HitBase> GetHits(Vector position, ICamera camera)
         {
             return this.Children.OfType<IHitTarget>()
                 .Select(hitTarget => hitTarget.GetHit(position, camera, WorldTransform.New))

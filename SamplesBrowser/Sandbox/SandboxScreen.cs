@@ -49,13 +49,11 @@ namespace SamplesBrowser.Sandbox
             this.screenNavigation = screenNavigation;
         }
 
-        public override void Initialize(Camera theCamera)
+        public override void Initialize(Viewport viewport)
         {
-            this.camera = theCamera;
+            this.camera = new Camera(viewport);
             this.player = new Vector(25, 25);
             this.range = 0.25f;
-
-            // theCamera.Center = CameraCenter.WindowTopLeft;
         }
 
         public override InputConfiguration GetInputConfiguration()
@@ -137,8 +135,9 @@ namespace SamplesBrowser.Sandbox
             return this.scene;
         }
 
-        public override int Draw(IDrawContext drawContext)
+        public override int Draw(DrawContext drawContext)
         {
+            drawContext.Camera = this.camera;
             return this.scene.Draw(drawContext);
         }
 

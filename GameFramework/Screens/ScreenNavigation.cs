@@ -25,11 +25,11 @@ namespace GameFramework.Screens
 
         public bool ShouldExit { get; private set; }
         
-        public void Initialize(Func<Camera> cameraFactory)
+        public void Initialize(Viewport viewPort)
         {
             foreach (var screenContext in this.screens.Values.Where(screenContext => !screenContext.IsInitialized))
             {
-                Initialize(screenContext, cameraFactory.Invoke());
+                Initialize(screenContext, viewPort);
             }
         }
 
@@ -89,10 +89,9 @@ namespace GameFramework.Screens
             this.InitialScreen = screen.GetType();
         }
 
-        private static void Initialize(ScreenContext screenContext, Camera camera)
+        private static void Initialize(ScreenContext screenContext, Viewport viewPort)
         {
-            screenContext.Camera = camera;
-            screenContext.Screen.Initialize(camera);
+            screenContext.Screen.Initialize(viewPort);
             screenContext.InputConfiguration = screenContext.Screen.GetInputConfiguration();
 
             screenContext.IsInitialized = true;
