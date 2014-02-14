@@ -112,11 +112,16 @@ namespace SamplesBrowser.Touch
         {
             this.scene = new Scene("Touch");
 
-            this.scene.AddLayer(this.CreateButtonLayer());
+            this.scene.Add(this.CreateButtonLayer());
 
-            this.scene.AddLayer(this.CreateDiagnosticLayer());
+            this.scene.Add(this.CreateDiagnosticLayer());
 
             return this.scene;
+        }
+
+        public override int Draw(DrawContext drawContext)
+        {
+            return this.scene.Draw(drawContext);
         }
 
         public DrawingLayer CreateButtonLayer()

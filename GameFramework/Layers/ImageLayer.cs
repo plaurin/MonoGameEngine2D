@@ -26,13 +26,15 @@ namespace GameFramework.Layers
             get { return this.TotalElements; }
         }
 
-        public override void Draw(DrawContext drawContext, Camera camera)
+        public override int Draw(DrawContext drawContext)
         {
             drawContext.DrawImage(new DrawImageParams
             {
                 Texture = this.Texture,
                 Destination = this.Rectangle
             });
+
+            return 1;
         }
     }
 }

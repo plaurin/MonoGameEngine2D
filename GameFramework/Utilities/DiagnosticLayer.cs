@@ -9,7 +9,7 @@ using GameFramework.Scenes;
 
 namespace GameFramework.Utilities
 {
-    public class DiagnosticLayer : LayerBase
+    public class DiagnosticLayer : LayerBase, IUpdatable
     {
         private const int FirstLineY = 10;
         private const int LineHeight = 15;
@@ -87,11 +87,8 @@ namespace GameFramework.Utilities
 
         public void Update(IGameTiming gameTime, Camera camera)
         {
-            this.currentGameTime = gameTime;
+            this.Update(gameTime);
             this.AdjustLinesPosition(camera);
-
-            if (this.configuration.DisplayFps)
-                this.UpdateBuiltInLine(LineId.Fps, gameTime.DrawFps, gameTime.UpdateFps);
 
             if (this.configuration.DisplayCameraState)
             {
@@ -100,6 +97,13 @@ namespace GameFramework.Utilities
                 this.UpdateBuiltInLine(LineId.Position, camera.Position);
                 this.UpdateBuiltInLine(LineId.Zoom, camera.ZoomFactor);
             }
+        }
+
+        public void Update(IGameTiming gameTiming)
+        {
+            this.currentGameTime = gameTiming;
+            if (this.configuration.DisplayFps)
+                this.UpdateBuiltInLine(LineId.Fps, gameTiming.DrawFps, gameTiming.UpdateFps);
         }
 
         public void Update(MouseStateBase mouseState)
@@ -140,7 +144,7 @@ namespace GameFramework.Utilities
 
         public DiagnosticViewState ViewState { get; set; }
 
-        public override void Draw(DrawContext drawContext, Camera camera)
+        public override int Draw(DrawContext drawContext)
         {
             foreach (var element in this.allLines.Select(l => l.Value))
             {
@@ -152,7 +156,7 @@ namespace GameFramework.Utilities
                 this.allLines.Single(l => l.Key == LineId.Fps.ToString()).Value.IsVisible = true;
             }
 
-            this.layer.Draw(drawContext, camera);
+            return this.layer.Draw(drawContext);
         }
 
         public void AddLine(string lineId, string textFormat)

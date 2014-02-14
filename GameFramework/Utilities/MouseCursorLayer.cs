@@ -8,10 +8,10 @@ namespace GameFramework.Utilities
 {
     public class MouseCursorLayer : LayerBase
     {
-        private readonly LayerBase layer;
+        private readonly ILayer layer;
         private readonly Action<MouseStateBase> updateAction;
 
-        private MouseCursorLayer(LayerBase layer, Action<MouseStateBase> updateAction)
+        private MouseCursorLayer(ILayer layer, Action<MouseStateBase> updateAction)
             : base("MouseCursor")
         {
             this.layer = layer;
@@ -49,9 +49,9 @@ namespace GameFramework.Utilities
             get { return this.layer.DrawnElementsLastFrame; }
         }
 
-        public override void Draw(DrawContext drawContext, Camera camera)
+        public override int Draw(DrawContext drawContext)
         {
-            this.layer.Draw(drawContext, camera);
+            return this.layer.Draw(drawContext);
         }
     }
 }

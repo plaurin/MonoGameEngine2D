@@ -28,11 +28,11 @@ namespace GameFramework.Layers
 
         public abstract int DrawnElementsLastFrame { get; }
 
-        public abstract void Draw(DrawContext drawContext, Camera camera);
-
         public virtual HitBase GetHit(Vector position, Camera camera)
         {
             return null;
         }
+
+        public abstract int Draw(DrawContext drawContext);
     }
 }

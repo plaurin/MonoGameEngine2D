@@ -131,9 +131,10 @@ namespace MonoGameImplementation
             var blank = new Texture2D(this.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             blank.SetData(new[] { Color.White });
 
-            var drawContext = new XnaDrawContext(this.spriteBatch, blank, this.graphics.GraphicsDevice.Viewport);
+            var xnaDrawContext = new XnaDrawContext(this.spriteBatch, blank, this.graphics.GraphicsDevice.Viewport);
+            var drawContext = new DrawContextWithCamera(xnaDrawContext, this.screenNavigation.Current.Camera);
 
-            this.screenNavigation.Current.Scene.Draw(drawContext, this.screenNavigation.Current.Camera);
+            this.screenNavigation.Current.Screen.Draw(drawContext);
 
             // TODO: Move this option elsewhere
             //this.DrawCamera(drawContext);

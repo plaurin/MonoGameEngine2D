@@ -203,12 +203,17 @@ namespace SamplesBrowser
             hubMap.AddText(font, "3 - Tiled sample", new Vector(20, 430), Color.White);
             hubMap.AddText(font, "4 - Touch sample", new Vector(220, 430), Color.White);
 
-            this.scene.AddLayer(hubMap);
+            this.scene.Add(hubMap);
 
             this.mouseLayer = MouseCursorLayer.Create(this.gameResourceManager);
-            this.scene.AddLayer(this.mouseLayer);
+            this.scene.Add(this.mouseLayer);
 
             return this.scene;
+        }
+
+        public override int Draw(DrawContext drawContext)
+        {
+            return this.scene.Draw(drawContext);
         }
 
         private void LaunchSandboxSample()

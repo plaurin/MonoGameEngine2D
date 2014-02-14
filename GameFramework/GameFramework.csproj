@@ -59,6 +59,8 @@
     <Compile Include="Hexes\HexSheet.cs" />
     <Compile Include="Hexes\NullHexDefinition.cs" />
     <Compile Include="Hexes\NullHexSheet.cs" />
+    <Compile Include="IComposite.cs" />
+    <Compile Include="IDrawable.cs" />
     <Compile Include="Inputs\DigitalButton.cs" />
     <Compile Include="Inputs\InputConfiguration.cs" />
     <Compile Include="Inputs\InputContext.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="Inputs\TouchStateBase.cs" />
     <Compile Include="Inputs\TouchTracking.cs" />
     <Compile Include="Inputs\VisualButton.cs" />
+    <Compile Include="IUpdatable.cs" />
     <Compile Include="Layers\ColorLayer.cs" />
     <Compile Include="Layers\ILayer.cs" />
     <Compile Include="Rectangle.cs" />

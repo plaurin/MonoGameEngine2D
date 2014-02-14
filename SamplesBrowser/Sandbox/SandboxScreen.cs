@@ -42,7 +42,7 @@ namespace SamplesBrowser.Sandbox
         private List<HitBase> hits;
 
         private Sprite linkMouseFollow;
-        private LayerBase layer;
+        private ILayer layer;
 
         public SandboxScreen(ScreenNavigation screenNavigation)
         {
@@ -104,7 +104,7 @@ namespace SamplesBrowser.Sandbox
 
         public override void Update(IGameTiming gameTime)
         {
-            var colorLayer = this.scene.Layers.OfType<ColorLayer>().FirstOrDefault();
+            var colorLayer = this.scene.Children.OfType<ColorLayer>().FirstOrDefault();
             if (colorLayer != null)
                 colorLayer.Color = new Color(255, 0, 0, (int)(255 * Math.Min(this.range, 1.0f)));
 
@@ -119,15 +119,15 @@ namespace SamplesBrowser.Sandbox
         {
             this.scene = new Scene("scene1");
 
-            this.scene.AddLayer(this.CreateImageLayer());
-            this.scene.AddLayer(this.CreateHexLayer());
-            this.scene.AddLayer(this.CreateTileLayer());
-            this.scene.AddLayer(this.CreateColorLayer());
-            this.scene.AddLayer(this.CreateHexLayerTestDistance());
-            this.scene.AddLayer(this.CreateSpriteLayer());
-            this.scene.AddLayer(this.CreateDiagnosticLayer());
-            this.scene.AddLayer(this.CreateMouseCursorLayer());
-            this.scene.AddLayer(this.CreateMouseFollow());
+            this.scene.Add(this.CreateImageLayer());
+            this.scene.Add(this.CreateHexLayer());
+            this.scene.Add(this.CreateTileLayer());
+            this.scene.Add(this.CreateColorLayer());
+            this.scene.Add(this.CreateHexLayerTestDistance());
+            this.scene.Add(this.CreateSpriteLayer());
+            this.scene.Add(this.CreateDiagnosticLayer());
+            this.scene.Add(this.CreateMouseCursorLayer());
+            this.scene.Add(this.CreateMouseFollow());
 
             //this.scene.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
 
@@ -137,14 +137,19 @@ namespace SamplesBrowser.Sandbox
             return this.scene;
         }
 
+        public override int Draw(DrawContext drawContext)
+        {
+            return this.scene.Draw(drawContext);
+        }
+
         private void TestSceneSaveLoad()
         {
             var scene2 = XmlRepository.LoadFrom(this.gameResourceManager,
                 @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
 
-            foreach (var layer in this.scene.Layers)
+            foreach (var layer in this.scene.Children.OfType<ILayer>())
             {
-                var otherLayer = scene2.Layers.Single(x => x.Name == layer.Name);
+                var otherLayer = scene2.Children.OfType<ILayer>().Single(x => x.Name == layer.Name);
 
                 var myXml = XmlRepository.ToXml(layer); // map.ToXml();
                 var otherXml = XmlRepository.ToXml(otherLayer); // otherMap.ToXml();
@@ -180,14 +185,14 @@ namespace SamplesBrowser.Sandbox
             if (mySpriteSheetXml.ToString() != otherSpriteSheetXml.ToString()) Debugger.Break();
         }
 
-        private LayerBase CreateMouseCursorLayer()
+        private ILayer CreateMouseCursorLayer()
         {
             this.mouseLayer = MouseCursorLayer.Create(this.gameResourceManager);
 
             return this.mouseLayer;
         }
 
-        private LayerBase CreateMouseFollow()
+        private ILayer CreateMouseFollow()
         {
             var layer = new SpriteLayer("MouseFollow");
             layer.CameraMode = CameraMode.Fix;

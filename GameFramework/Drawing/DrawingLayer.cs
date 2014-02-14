@@ -88,14 +88,22 @@ namespace GameFramework.Drawing
             get { return this.TotalElements; }
         }
 
-        public override void Draw(DrawContext drawContext, Camera camera)
+        public override int Draw(DrawContext drawContext)
         {
+            var total = 0;
+            var drawContextWithCamera = drawContext as DrawContextWithCamera;
+
             // TODO: Optimize filter element outside the view should not be drawn
             foreach (var element in this.elements)
             {
                 if (element.IsVisible)
-                    element.Draw(drawContext, camera, this);
+                {
+                    element.Draw(drawContext, drawContextWithCamera.Camera, this);
+                    total++;
+                }
             }
+
+            return total;
         }
 
         public override HitBase GetHit(Vector position, Camera camera)

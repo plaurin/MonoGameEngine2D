@@ -21,7 +21,7 @@ namespace GameFramework.IO.Repositories
 
             document.Add(new XElement("Scene",
                 new XAttribute("name", scene.Name),
-                scene.Layers.Select(XmlRepository.ToXml)));
+                scene.Children.OfType<ILayer>().Select(XmlRepository.ToXml)));
 
             // TODO: Fix this
             //document.Save(path);
@@ -49,22 +49,22 @@ namespace GameFramework.IO.Repositories
                 switch (layerElement.Name.ToString())
                 {
                     case "ImageLayer":
-                        scene.AddLayer(ImageXmlRepository.ImageLayerFromXml(gameResourceManager, layerElement));
+                        scene.Add(ImageXmlRepository.ImageLayerFromXml(gameResourceManager, layerElement));
                         break;
                     case "HexLayer":
-                        scene.AddLayer(HexXmlRepository.HexLayerFromXml(gameResourceManager, layerElement));
+                        scene.Add(HexXmlRepository.HexLayerFromXml(gameResourceManager, layerElement));
                         break;
                     case "TileLayer":
-                        scene.AddLayer(TileXmlRepository.TileLayerFromXml(gameResourceManager, layerElement));
+                        scene.Add(TileXmlRepository.TileLayerFromXml(gameResourceManager, layerElement));
                         break;
                     case "ColorLayer":
-                        scene.AddLayer(ColorXmlRepository.ColorLayerFromXml(layerElement));
+                        scene.Add(ColorXmlRepository.ColorLayerFromXml(layerElement));
                         break;
                     case "SpriteLayer":
-                        scene.AddLayer(SpriteXmlRepository.SpriteLayerFromXml(gameResourceManager, layerElement));
+                        scene.Add(SpriteXmlRepository.SpriteLayerFromXml(gameResourceManager, layerElement));
                         break;
                     case "DrawingLayer":
-                        scene.AddLayer(DrawingXmlRepository.DrawingLayerFromXml(gameResourceManager, layerElement));
+                        scene.Add(DrawingXmlRepository.DrawingLayerFromXml(gameResourceManager, layerElement));
                         break;
                 }
             }
@@ -95,7 +95,7 @@ namespace GameFramework.IO.Repositories
             throw new NotSupportedException(layerBase.GetType() + " is not supported");
         }
 
-        internal static IEnumerable<object> LayerBaseToXml(LayerBase layerBase)
+        internal static IEnumerable<object> LayerBaseToXml(ILayer layerBase)
         {
             yield return new XAttribute("name", layerBase.Name);
             yield return new XAttribute("parallaxScrollingVector", layerBase.ParallaxScrollingVector);
@@ -103,7 +103,7 @@ namespace GameFramework.IO.Repositories
             yield return new XAttribute("cameraMode", layerBase.CameraMode);
         }
 
-        internal static void BaseFromXml(LayerBase layerBase, XElement element)
+        internal static void BaseFromXml(ILayer layerBase, XElement element)
         {
             layerBase.Name = element.Attribute("name").Value;
             layerBase.ParallaxScrollingVector = MathUtil.ParseVector(element.Attribute("parallaxScrollingVector").Value);

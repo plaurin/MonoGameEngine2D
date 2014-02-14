@@ -6,7 +6,7 @@ using GameFramework.Sprites;
 
 namespace SamplesBrowser.ShootEmUp
 {
-    public class PlayerShipEntity
+    public class PlayerShipEntity : IUpdatable
     {
         private readonly SpriteLayer entityLayer;
         private readonly SpriteSheet shipSheet;
@@ -74,7 +74,7 @@ namespace SamplesBrowser.ShootEmUp
         }
     }
 
-    public class BulletEntity
+    public class BulletEntity : IUpdatable
     {
         private readonly SpriteLayer entityLayer;
         private readonly SpriteSheet shipSheet;

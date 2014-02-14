@@ -62,8 +62,9 @@ namespace GameFramework.Hexes
             get { return this.drawnElementsLastFrame; }
         }
 
-        public override void Draw(DrawContext drawContext, Camera camera)
+        public override int Draw(DrawContext drawContext)
         {
+            var camera = (drawContext as DrawContextWithCamera).Camera;
             this.drawnElementsLastFrame = 0;
 
             for (var i = 0; i < this.MapSize.Width; i++)
@@ -90,6 +91,8 @@ namespace GameFramework.Hexes
                         }
                     }
                 }
+
+            return this.drawnElementsLastFrame;
         }
 
         public override HitBase GetHit(Vector position, Camera camera)

@@ -45,8 +45,9 @@ namespace GameFramework.Sprites
             get { return this.drawnElementsLastFrame; }
         }
 
-        public override void Draw(DrawContext drawContext, Camera camera)
+        public override int Draw(DrawContext drawContext)
         {
+            var camera = (drawContext as DrawContextWithCamera).Camera;
             this.drawnElementsLastFrame = 0;
 
             foreach (var sprite in this.Sprites)
@@ -54,6 +55,8 @@ namespace GameFramework.Sprites
                 this.drawnElementsLastFrame += 
                     sprite.Draw(drawContext, camera, this.Offset, this.ParallaxScrollingVector, this.CameraMode);
             }
+
+            return this.drawnElementsLastFrame;
         }
 
         public override HitBase GetHit(Vector position, Camera camera)

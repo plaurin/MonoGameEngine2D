@@ -1,9 +1,10 @@
+using System;
 using GameFramework.Cameras;
 using GameFramework.Scenes;
 
 namespace GameFramework.Layers
 {
-    public interface ILayer
+    public interface ILayer : IDrawable
     {
         string Name { get; set; }
 
@@ -18,8 +19,6 @@ namespace GameFramework.Layers
         int TotalElements { get; }
 
         int DrawnElementsLastFrame { get; }
-
-        void Draw(DrawContext drawContext, Camera camera);
 
         HitBase GetHit(Vector position, Camera camera);
     }

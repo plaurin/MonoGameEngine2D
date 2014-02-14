@@ -7,55 +7,55 @@ using GameFramework.Layers;
 
 namespace GameFramework.Scenes
 {
-    public class Scene
+    public class Scene : IComposite, IUpdatable, IDrawable
     {
-        private readonly List<ILayer> layers;
+        private readonly List<object> sceneObjects;
 
         public Scene(string name)
         {
             this.Name = name;
-            this.layers = new List<ILayer>();
+            this.sceneObjects = new List<object>();
         }
 
         public string Name { get; private set; }
 
         public int TotalElements
         {
-            get { return this.layers.Sum(l => l.TotalElements); }
+            get { return this.Children.OfType<ILayer>().Sum(l => l.TotalElements); }
         }
 
         public int DrawnElementsLastFrame
         {
-            get { return this.layers.Sum(l => l.DrawnElementsLastFrame); }
+            get { return this.Children.OfType<ILayer>().Sum(l => l.DrawnElementsLastFrame); }
         }
 
-        public IEnumerable<ILayer> Layers
+        public IEnumerable<object> Children
         {
-            get
-            {
-                return this.layers;
-            }
+            get { return this.sceneObjects; }
         }
 
-        public void AddLayer(ILayer layer)
+        public void Add(object sceneObject)
         {
-            this.layers.Add(layer);
-        }
-
-        public void Draw(DrawContext drawContext, Camera camera)
-        {
-            foreach (var layer in this.layers)
-            {
-                if (layer.IsVisible)
-                    layer.Draw(drawContext, camera);
-            }
+            this.sceneObjects.Add(sceneObject);
         }
 
         public IEnumerable<HitBase> GetHits(Vector position, Camera camera)
         {
-            return this.layers
+            return this.Children.OfType<ILayer>()
                 .Select(layer => layer.GetHit(position, camera))
                 .Where(hit => hit != null);
+        }
+
+        public void Update(IGameTiming gameTiming)
+        {
+            foreach (var updatable in this.sceneObjects.OfType<IUpdatable>())
+                updatable.Update(gameTiming);
+        }
+
+        public int Draw(DrawContext drawContext)
+        {
+            return this.sceneObjects.OfType<IDrawable>()
+                .Sum(drawable => drawable.Draw(drawContext));
         }
     }
 }

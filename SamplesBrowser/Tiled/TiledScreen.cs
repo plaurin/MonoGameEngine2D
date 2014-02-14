@@ -116,7 +116,7 @@ namespace SamplesBrowser.Tiled
             //this.scene.AddMap(this.CreateTileMap(map, tmxTileset, tmxLayer));
 
             foreach (var tileMap in TiledHelper.LoadFile(@"Tiled\untitled.tmx", this.gameResourceManager))
-                this.scene.AddLayer(tileMap);
+                this.scene.Add(tileMap);
 
             //this.scene.AddMap(this.CreateImageMap());
             //this.scene.AddMap(this.CreateHexMap());
@@ -133,6 +133,11 @@ namespace SamplesBrowser.Tiled
             //this.TestSheetsSaveLoad();
 
             return this.scene;
+        }
+
+        public override int Draw(DrawContext drawContext)
+        {
+            return this.scene.Draw(drawContext);
         }
 
         //private MapBase CreateTileMap(TmxMap tmxMap, TmxTileset tmxTileset, TmxLayer tmxLayer)

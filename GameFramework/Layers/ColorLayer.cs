@@ -1,5 +1,4 @@
 using System;
-using GameFramework.Cameras;
 
 namespace GameFramework.Layers
 {
@@ -23,9 +22,11 @@ namespace GameFramework.Layers
             get { return this.TotalElements; }
         }
 
-        public override void Draw(DrawContext drawContext, Camera camera)
+        public override int Draw(DrawContext drawContext)
         {
             drawContext.FillColor(this.Color);
+
+            return 1;
         }
     }
 }

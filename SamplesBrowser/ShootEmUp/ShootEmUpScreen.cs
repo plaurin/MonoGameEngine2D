@@ -68,7 +68,7 @@ namespace SamplesBrowser.ShootEmUp
             var spriteSheet = CreateSpriteSheet();
 
             this.entityLayer = new SpriteLayer("EntityMap");
-            this.scene.AddLayer(this.entityLayer);
+            this.scene.Add(this.entityLayer);
 
             this.playerShipEntity = new PlayerShipEntity(this.entityLayer, spriteSheet);
             this.playerShipEntity.BindController(this.inputConfiguration);
@@ -82,6 +82,11 @@ namespace SamplesBrowser.ShootEmUp
             this.entityLayer.AddSprite(blueSprite);
 
             return this.scene;
+        }
+
+        public override int Draw(DrawContext drawContext)
+        {
+            return this.scene.Draw(drawContext);
         }
 
         private SpriteSheet CreateSpriteSheet()

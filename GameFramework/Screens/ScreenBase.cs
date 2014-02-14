@@ -5,7 +5,7 @@ using GameFramework.Scenes;
 
 namespace GameFramework.Screens
 {
-    public abstract class ScreenBase
+    public abstract class ScreenBase : IUpdatable, IDrawable
     {
         public abstract void Initialize(Camera camera);
 
@@ -16,5 +16,7 @@ namespace GameFramework.Screens
         public abstract void Update(IGameTiming gameTime);
 
         public abstract Scene GetScene();
+
+        public abstract int Draw(DrawContext drawContext);
     }
 }
