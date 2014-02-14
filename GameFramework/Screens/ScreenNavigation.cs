@@ -75,7 +75,7 @@ namespace GameFramework.Screens
         {
             foreach (var screen in screensToAdd)
             {
-                this.screens.Add(screen.GetType(), new ScreenContext { Screen = screen });
+                this.screens.Add(screen.GetType(), new ScreenContext(screen));
             }
         }
 
@@ -92,7 +92,6 @@ namespace GameFramework.Screens
         private static void Initialize(ScreenContext screenContext, Viewport viewPort)
         {
             screenContext.Screen.Initialize(viewPort);
-            screenContext.InputConfiguration = screenContext.Screen.GetInputConfiguration();
 
             screenContext.IsInitialized = true;
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using GameFramework;
 using GameFramework.Cameras;
@@ -14,7 +15,7 @@ using SamplesBrowser.Touch;
 
 namespace SamplesBrowser
 {
-    public class HubScreen : ScreenBase
+    public class HubScreen : ScreenBase, ITouchEnabled
     {
         private readonly ScreenNavigation screenNavigation;
 
@@ -33,6 +34,8 @@ namespace SamplesBrowser
         private TouchStateBase touchState;
 
         private Scene scene;
+        private InputConfiguration inputConfiguration;
+
         private MouseCursorLayer mouseLayer;
 
         public HubScreen(ScreenNavigation screenNavigation)
@@ -53,9 +56,16 @@ namespace SamplesBrowser
         {
             this.camera = new Camera(viewport);
             this.camera.Center = CameraCenter.WindowTopLeft;
+
+            this.inputConfiguration = this.GetInputConfiguration();
         }
 
-        public override InputConfiguration GetInputConfiguration()
+        public IEnumerable<TouchGestureType> TouchGestures
+        {
+            get { yield return TouchGestureType.Tap; }
+        }
+
+        private InputConfiguration GetInputConfiguration()
         {
             var input = new InputConfiguration();
 
@@ -133,8 +143,6 @@ namespace SamplesBrowser
                 this.hoveringSample = hitToSampleFunc(hit);
             });
 
-            input.EnableGesture(TouchGestureType.Tap);
-
             input.AddEvent("TouchSelection").Assign(TouchGestureType.Tap).MapTo(gt =>
             {
                 var hit = this.scene.GetHits(this.touchState.CurrentGesture.Position, this.camera)
@@ -170,8 +178,10 @@ namespace SamplesBrowser
             this.gameResourceManager.AddDrawingFont(@"Sandbox\SpriteFont1");
         }
 
-        public override void Update(IGameTiming gameTime)
+        public override void Update(InputContext inputContext, IGameTiming gameTime)
         {
+            this.inputConfiguration.Update(inputContext, gameTime);
+
             Func<Samples, Color> colorFunc = sample => 
                 this.hoveringSample == sample ? Color.Blue : this.currentSample == sample ? Color.Red : Color.White;
 

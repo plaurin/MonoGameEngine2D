@@ -30,9 +30,11 @@ namespace SamplesBrowser.ShootEmUp
         {
             this.camera = new Camera(viewport);
             this.camera.Center = CameraCenter.WindowTopLeft;
+
+            this.GetInputConfiguration();
         }
 
-        public override InputConfiguration GetInputConfiguration()
+        public void GetInputConfiguration()
         {
             this.inputConfiguration = new InputConfiguration();
 
@@ -44,8 +46,6 @@ namespace SamplesBrowser.ShootEmUp
             this.inputConfiguration.AddDigitalButton("Up").Assign(KeyboardKeys.Up);
             this.inputConfiguration.AddDigitalButton("Down").Assign(KeyboardKeys.Down);
             this.inputConfiguration.AddDigitalButton("Fire Weapon").Assign(KeyboardKeys.Space);
-
-            return this.inputConfiguration;
         }
 
         public override void LoadContent(GameResourceManager theResourceManager)
@@ -55,8 +55,9 @@ namespace SamplesBrowser.ShootEmUp
 
         private PlayerShipEntity playerShipEntity;
 
-        public override void Update(IGameTiming gameTime)
+        public override void Update(InputContext inputContext, IGameTiming gameTime)
         {
+            this.inputConfiguration.Update(inputContext, gameTime);
             this.playerShipEntity.Update(gameTime);
         }
 
@@ -104,5 +105,4 @@ namespace SamplesBrowser.ShootEmUp
             return spriteSheet;
         }
     }
-
 }

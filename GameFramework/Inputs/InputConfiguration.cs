@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using GameFramework.Cameras;
 
 namespace GameFramework.Inputs
@@ -20,12 +19,7 @@ namespace GameFramework.Inputs
             this.inputEvents = new Dictionary<string, InputEvent>();
             this.mouseTrackings = new List<MouseTracking>();
             this.touchTrackings = new List<TouchTracking>();
-            this.EnabledGestures = Enumerable.Empty<TouchGestureType>();
         }
-
-        public IEnumerable<TouchGestureType> EnabledGestures { get; private set; }
-
-        public bool EnabledGesturesUpdated { get; set; }
 
         public void Update(InputContext inputContext, IGameTiming gameTime)
         {
@@ -112,13 +106,6 @@ namespace GameFramework.Inputs
             this.touchTrackings.Add(touchTracking);
 
             return touchTracking;
-        }
-
-        public void EnableGesture(params TouchGestureType[] touchGestures)
-        {
-            // TODO: Those two should be on an interface only XNA can see
-            this.EnabledGestures = touchGestures.ToList();
-            this.EnabledGesturesUpdated = true;
         }
     }
 }

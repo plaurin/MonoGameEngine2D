@@ -29,16 +29,16 @@ namespace SamplesBrowser.Tiled
         {
             this.camera = new Camera(viewport);
             this.camera.Center = CameraCenter.WindowTopLeft;
+
+            this.GetInputConfiguration();
         }
 
-        public override InputConfiguration GetInputConfiguration()
+        public void GetInputConfiguration()
         {
             this.inputConfiguration = new InputConfiguration();
 
             this.inputConfiguration.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
                 .MapClickTo(gt => this.screenNavigation.NavigateBack());
-
-            return this.inputConfiguration;
         }
 
         public override void LoadContent(GameResourceManager theResourceManager)
@@ -46,8 +46,9 @@ namespace SamplesBrowser.Tiled
             this.gameResourceManager = theResourceManager;
         }
 
-        public override void Update(IGameTiming gameTime)
+        public override void Update(InputContext inputContext, IGameTiming gameTime)
         {
+            this.inputConfiguration.Update(inputContext, gameTime);
         }
 
         public override Scene GetScene()

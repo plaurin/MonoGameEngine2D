@@ -10,7 +10,7 @@ namespace GameFramework.Hexes
             this.Sheet.AddHexDefinition(this);
         }
 
-        public virtual bool ShouldDraw
+        public override bool ShouldDraw
         {
             get { return false; }
         }

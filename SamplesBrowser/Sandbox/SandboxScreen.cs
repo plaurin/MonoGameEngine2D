@@ -54,9 +54,11 @@ namespace SamplesBrowser.Sandbox
             this.camera = new Camera(viewport);
             this.player = new Vector(25, 25);
             this.range = 0.25f;
+
+            this.GetInputConfiguration();
         }
 
-        public override InputConfiguration GetInputConfiguration()
+        public void GetInputConfiguration()
         {
             this.inputConfiguration = new InputConfiguration();
 
@@ -89,8 +91,6 @@ namespace SamplesBrowser.Sandbox
 
                 this.linkMouseFollow.Position = mt.AbsolutePosition;
             });
-
-            return this.inputConfiguration;
         }
 
         public override void LoadContent(GameResourceManager theResourceManager)
@@ -100,8 +100,10 @@ namespace SamplesBrowser.Sandbox
             this.gameResourceManager.AddDrawingFont(@"Sandbox\SpriteFont1");
         }
 
-        public override void Update(IGameTiming gameTime)
+        public override void Update(InputContext inputContext, IGameTiming gameTime)
         {
+            this.inputConfiguration.Update(inputContext, gameTime);
+
             var colorLayer = this.scene.Children.OfType<ColorLayer>().FirstOrDefault();
             if (colorLayer != null)
                 colorLayer.Color = new Color(255, 0, 0, (int)(255 * Math.Min(this.range, 1.0f)));

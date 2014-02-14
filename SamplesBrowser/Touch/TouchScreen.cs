@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using GameFramework;
 using GameFramework.Cameras;
 using GameFramework.Drawing;
@@ -9,7 +10,7 @@ using GameFramework.Utilities;
 
 namespace SamplesBrowser.Touch
 {
-    public class TouchScreen : ScreenBase
+    public class TouchScreen : ScreenBase, ITouchEnabled
     {
         private readonly ScreenNavigation screenNavigation;
         private Camera camera;
@@ -44,9 +45,25 @@ namespace SamplesBrowser.Touch
         {
             this.camera = new Camera(viewport);
             this.camera.Center = CameraCenter.WindowTopLeft;
+
+            this.GetInputConfiguration();
         }
 
-        public override InputConfiguration GetInputConfiguration()
+        public IEnumerable<TouchGestureType> TouchGestures
+        {
+            get
+            {
+                return new[]
+                {
+                    TouchGestureType.Tap, TouchGestureType.Hold, TouchGestureType.DoubleTap,
+                    TouchGestureType.DragComplete, TouchGestureType.Flick, TouchGestureType.FreeDrag,
+                    TouchGestureType.HorizontalDrag,
+                    TouchGestureType.Pinch, TouchGestureType.PinchComplete, TouchGestureType.VerticalDrag
+                };
+            }
+        }
+
+        private void GetInputConfiguration()
         {
             this.inputConfiguration = new InputConfiguration();
 
@@ -54,10 +71,6 @@ namespace SamplesBrowser.Touch
                 .MapClickTo(gt => this.screenNavigation.NavigateBack());
 
             this.inputConfiguration.AddTouchTracking(this.camera).OnTouch((ts, gt) => this.touchState = ts);
-
-            this.inputConfiguration.EnableGesture(TouchGestureType.Tap, TouchGestureType.Hold, TouchGestureType.DoubleTap,
-                TouchGestureType.DragComplete, TouchGestureType.Flick, TouchGestureType.FreeDrag, TouchGestureType.HorizontalDrag,
-                TouchGestureType.Pinch, TouchGestureType.PinchComplete, TouchGestureType.VerticalDrag);
 
             this.inputConfiguration.AddEvent("Tap").Assign(TouchGestureType.Tap).MapTo(gt => this.tapCount++);
             this.inputConfiguration.AddEvent("Hold").Assign(TouchGestureType.Hold).MapTo(gt => this.holdCount++);
@@ -79,8 +92,6 @@ namespace SamplesBrowser.Touch
                 .Assign(TouchGestureType.Tap)
                 .MapTouchTo(gt => this.isHoveringBackButton = true)
                 .MapClickTo(gt => this.screenNavigation.NavigateBack());
-
-            return this.inputConfiguration;
         }
 
         public override void LoadContent(GameResourceManager theResourceManager)
@@ -88,8 +99,10 @@ namespace SamplesBrowser.Touch
             this.gameResourceManager = theResourceManager;
         }
 
-        public override void Update(IGameTiming gameTime)
+        public override void Update(InputContext inputContext, IGameTiming gameTime)
         {
+            this.inputConfiguration.Update(inputContext, gameTime);
+
             this.diagnosticLayer.Update(gameTime, this.camera);
             this.diagnosticLayer.Update(this.touchState);
             this.diagnosticLayer.UpdateLine("DoubleTap", this.doubleTapCount);
