@@ -5,7 +5,7 @@ using GameFramework.Inputs;
 
 namespace GameFramework.Screens
 {
-    public class ScreenNavigation : ScreenBase
+    public class ScreenNavigation : IScreen
     {
         private readonly IDictionary<Type, ScreenContext> screens;
         private readonly Stack<ScreenContext> navigationStack;
@@ -21,12 +21,12 @@ namespace GameFramework.Screens
             this.navigationStack = new Stack<ScreenContext>();
         }
 
-        public override bool ShouldExit
+        public bool ShouldExit
         {
             get { return this.shouldExit || (this.current != null && this.current.ShouldExit); }
         }
 
-        public override void Initialize(Viewport viewPort)
+        public void Initialize(Viewport viewPort)
         {
             foreach (var screenContext in this.screens.Values.Where(screenContext => !screenContext.IsInitialized))
             {
@@ -34,25 +34,25 @@ namespace GameFramework.Screens
             }
         }
 
-        public override void LoadContent(GameResourceManager theGameResourceManager)
+        public void LoadContent(GameResourceManager theGameResourceManager)
         {
             this.gameResourceManager = theGameResourceManager;
             this.NavigateTo(this.initialScreen);
         }
 
-        public override void Update(InputContext inputContext, IGameTiming gameTime)
+        public void Update(InputContext inputContext, IGameTiming gameTime)
         {
             this.CompletePendingTransition();
 
             this.current.Update(inputContext, gameTime);
         }
 
-        public override int Draw(DrawContext drawContext)
+        public int Draw(DrawContext drawContext)
         {
             return this.current.Draw(drawContext);
         }
 
-        public void NavigateTo<T>() where T : ScreenBase
+        public void NavigateTo<T>() where T : IScreen
         {
             this.NavigateTo(typeof(T));
         }
@@ -79,7 +79,7 @@ namespace GameFramework.Screens
             this.shouldExit = true;
         }
 
-        protected void AddScreen(params ScreenBase[] screensToAdd)
+        protected void AddScreen(params IScreen[] screensToAdd)
         {
             foreach (var screen in screensToAdd)
             {
@@ -87,12 +87,12 @@ namespace GameFramework.Screens
             }
         }
 
-        protected void SetInitialScreen<TScreen>() where TScreen : ScreenBase
+        protected void SetInitialScreen<TScreen>() where TScreen : IScreen
         {
             this.initialScreen = typeof(TScreen);
         }
 
-        protected void SetInitialScreen(ScreenBase screen)
+        protected void SetInitialScreen(IScreen screen)
         {
             this.initialScreen = screen.GetType();
         }

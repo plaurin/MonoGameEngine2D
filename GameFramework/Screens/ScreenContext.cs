@@ -4,14 +4,14 @@ using GameFramework.Inputs;
 
 namespace GameFramework.Screens
 {
-    public class ScreenContext : ScreenBase
+    public class ScreenContext : IScreen
     {
-        private readonly ScreenBase screen;
+        private readonly IScreen screen;
         private readonly IEnumerable<TouchGestureType> touchGestures;
 
         private bool isEnabledGesturesUpdated;
 
-        public ScreenContext(ScreenBase screen)
+        public ScreenContext(IScreen screen)
         {
             this.screen = screen;
 
@@ -27,24 +27,24 @@ namespace GameFramework.Screens
 
         public bool IsContentLoaded { get; private set; }
 
-        public override bool ShouldExit
+        public bool ShouldExit
         {
             get { return this.screen.ShouldExit; }
         }
 
-        public override void Initialize(Viewport viewport)
+        public void Initialize(Viewport viewport)
         {
             this.screen.Initialize(viewport);
             this.IsInitialized = true;
         }
 
-        public override void LoadContent(GameResourceManager theResourceManager)
+        public void LoadContent(GameResourceManager theResourceManager)
         {
             this.screen.LoadContent(theResourceManager);
             this.IsContentLoaded = true;
         }
 
-        public override void Update(InputContext inputContext, IGameTiming gameTime)
+        public void Update(InputContext inputContext, IGameTiming gameTime)
         {
             if (this.isEnabledGesturesUpdated)
             {
@@ -55,7 +55,7 @@ namespace GameFramework.Screens
             this.screen.Update(inputContext, gameTime);
         }
 
-        public override int Draw(DrawContext drawContext)
+        public int Draw(DrawContext drawContext)
         {
             return this.screen.Draw(drawContext);
         }

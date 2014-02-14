@@ -19,13 +19,13 @@ namespace MonoGameImplementation
 
         private readonly GameFramework.GameTimer gameTimer;
 
-        private readonly ScreenBase screen;
+        private readonly IScreen screen;
 
         private SpriteBatch spriteBatch;
 
         private GameResourceManager gameResourceManager;
 
-        protected MonoGameBase(ScreenBase screen)
+        protected MonoGameBase(IScreen screen)
         {
             this.screen = screen;
 

@@ -5,11 +5,18 @@ using GameFramework.Scenes;
 
 namespace GameFramework.Screens
 {
-    public abstract class SceneBasedScreen : ScreenBase, IComposite, IUpdatable, IDrawable
+    public abstract class SceneBasedScreen : IScreen, IComposite, IUpdatable, IDrawable
     {
+        private bool shouldExit;
+
         public IEnumerable<object> Children
         {
             get { return new[] { this.Scene }; }
+        }
+        
+        bool IScreen.ShouldExit
+        {
+            get { return this.shouldExit; }
         }
 
         protected Camera Camera { get; private set; }
@@ -20,25 +27,25 @@ namespace GameFramework.Screens
 
         protected Scene Scene { get; private set; }
 
-        public override void Initialize(Viewport viewport)
+        void IScreen.Initialize(Viewport viewport)
         {
             this.Camera = this.CreateCamera(viewport);
             this.InputConfiguration = this.CreateInputConfiguration();
         }
 
-        public override void LoadContent(GameResourceManager gameResourceManager)
+        void IScreen.LoadContent(GameResourceManager gameResourceManager)
         {
             this.ResourceManager = gameResourceManager;
             this.Scene = this.CreateScene();
         }
 
-        public override void Update(InputContext inputContext, IGameTiming gameTime)
+        void IScreen.Update(InputContext inputContext, IGameTiming gameTime)
         {
             this.InputConfiguration.Update(inputContext, gameTime);
             this.Update(gameTime);
         }
 
-        public override int Draw(DrawContext drawContext)
+        int IScreen.Draw(DrawContext drawContext)
         {
             drawContext.Camera = this.Camera;
             var total = this.Scene.Draw(drawContext);
@@ -53,6 +60,11 @@ namespace GameFramework.Screens
         public virtual int Draw(IDrawContext drawContext)
         {
             return 0;
+        }
+
+        protected void Exit()
+        {
+            this.shouldExit = true;
         }
 
         protected abstract Camera CreateCamera(Viewport viewport);
