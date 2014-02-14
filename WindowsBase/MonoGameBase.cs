@@ -98,15 +98,15 @@ namespace MonoGameImplementation
             this.screenNavigation.Update();
 
             // TODO: Review this if we decide to implement Gestures ourself
-            if (this.screenNavigation.Current.IsEnabledGesturesUpdated)
+            if (this.screenNavigation.IsEnabledGesturesUpdated)
             {
                 TouchPanel.EnabledGestures = 
-                    XnaInputContext.GetGestures(this.screenNavigation.Current.EnabledGestures);
+                    XnaInputContext.GetGestures(this.screenNavigation.EnabledGestures);
 
-                this.screenNavigation.Current.IsEnabledGesturesUpdated = false;
+                this.screenNavigation.IsEnabledGesturesUpdated = false;
             }
 
-            this.screenNavigation.Current.Screen.Update(new XnaInputContext(), this.gameTimer);
+            this.screenNavigation.Update(new XnaInputContext(), this.gameTimer);
 
             base.Update(gameTime);
         }
@@ -130,7 +130,7 @@ namespace MonoGameImplementation
             var xnaDrawContext = new XnaDrawContext(this.spriteBatch, blank, this.graphics.GraphicsDevice.Viewport);
             var drawContext = new DrawContext(xnaDrawContext);
 
-            this.screenNavigation.Current.Screen.Draw(drawContext);
+            this.screenNavigation.Draw(drawContext);
 
             this.spriteBatch.End();
 

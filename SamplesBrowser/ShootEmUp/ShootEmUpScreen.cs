@@ -31,10 +31,30 @@ namespace SamplesBrowser.ShootEmUp
             this.camera = new Camera(viewport);
             this.camera.Center = CameraCenter.WindowTopLeft;
 
-            this.GetInputConfiguration();
+            this.CreateInputConfiguration();
         }
 
-        public void GetInputConfiguration()
+        public override void LoadContent(GameResourceManager theResourceManager)
+        {
+            this.gameResourceManager = theResourceManager;
+            this.CreateScene();
+        }
+
+        private PlayerShipEntity playerShipEntity;
+
+        public override void Update(InputContext inputContext, IGameTiming gameTime)
+        {
+            this.inputConfiguration.Update(inputContext, gameTime);
+            this.playerShipEntity.Update(gameTime);
+        }
+
+        public override int Draw(DrawContext drawContext)
+        {
+            drawContext.Camera = this.camera;
+            return this.scene.Draw(drawContext);
+        }
+
+        private void CreateInputConfiguration()
         {
             this.inputConfiguration = new InputConfiguration();
 
@@ -48,24 +68,11 @@ namespace SamplesBrowser.ShootEmUp
             this.inputConfiguration.AddDigitalButton("Fire Weapon").Assign(KeyboardKeys.Space);
         }
 
-        public override void LoadContent(GameResourceManager theResourceManager)
-        {
-            this.gameResourceManager = theResourceManager;
-        }
-
-        private PlayerShipEntity playerShipEntity;
-
-        public override void Update(InputContext inputContext, IGameTiming gameTime)
-        {
-            this.inputConfiguration.Update(inputContext, gameTime);
-            this.playerShipEntity.Update(gameTime);
-        }
-
-        public override Scene GetScene()
+        private void CreateScene()
         {
             this.scene = new Scene("MainScene");
 
-            var spriteSheet = CreateSpriteSheet();
+            var spriteSheet = this.CreateSpriteSheet();
 
             this.entityLayer = new SpriteLayer("EntityMap");
             this.scene.Add(this.entityLayer);
@@ -80,14 +87,6 @@ namespace SamplesBrowser.ShootEmUp
             this.entityLayer.AddSprite(yellowSprite);
             this.entityLayer.AddSprite(redSprite);
             this.entityLayer.AddSprite(blueSprite);
-
-            return this.scene;
-        }
-
-        public override int Draw(DrawContext drawContext)
-        {
-            drawContext.Camera = this.camera;
-            return this.scene.Draw(drawContext);
         }
 
         private SpriteSheet CreateSpriteSheet()

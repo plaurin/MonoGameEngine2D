@@ -57,7 +57,7 @@ namespace SamplesBrowser
             this.camera = new Camera(viewport);
             this.camera.Center = CameraCenter.WindowTopLeft;
 
-            this.inputConfiguration = this.GetInputConfiguration();
+            this.CreateInputConfiguration();
         }
 
         public IEnumerable<TouchGestureType> TouchGestures
@@ -65,24 +65,52 @@ namespace SamplesBrowser
             get { yield return TouchGestureType.Tap; }
         }
 
-        private InputConfiguration GetInputConfiguration()
+        public override void LoadContent(GameResourceManager theResourceManager)
         {
-            var input = new InputConfiguration();
+            this.gameResourceManager = theResourceManager;
+
+            // TODO: This is weird, mendatory??
+            this.gameResourceManager.AddDrawingFont(@"Sandbox\SpriteFont1");
+            this.CreateScene();
+        }
+
+        public override void Update(InputContext inputContext, IGameTiming gameTime)
+        {
+            this.inputConfiguration.Update(inputContext, gameTime);
+
+            Func<Samples, Color> colorFunc = sample => 
+                this.hoveringSample == sample ? Color.Blue : this.currentSample == sample ? Color.Red : Color.White;
+
+            this.sandboxRectangle.Color = colorFunc(Samples.Sandbox);
+            this.shootEmUpRectangle.Color = colorFunc(Samples.ShootEmUp);
+            this.tiledRectangle.Color = colorFunc(Samples.Tiled);
+            this.touchRectangle.Color = colorFunc(Samples.Touch);
+        }
+
+        public override int Draw(DrawContext drawContext)
+        {
+            drawContext.Camera = this.camera;
+            return this.scene.Draw(drawContext);
+        }
+
+        private void CreateInputConfiguration()
+        {
+            this.inputConfiguration = new InputConfiguration();
 
             // Keyboard
-            input.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
+            this.inputConfiguration.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
                 .MapClickTo(gt => this.screenNavigation.Exit());
 
-            input.AddDigitalButton("GotoSandbox").Assign(KeyboardKeys.D1)
+            this.inputConfiguration.AddDigitalButton("GotoSandbox").Assign(KeyboardKeys.D1)
                 .MapClickTo(gt => this.LaunchSandboxSample());
 
-            input.AddDigitalButton("GotoShootEmUp").Assign(KeyboardKeys.D2)
+            this.inputConfiguration.AddDigitalButton("GotoShootEmUp").Assign(KeyboardKeys.D2)
                 .MapClickTo(gt => this.LaunchShootEmUpSample());
 
-            input.AddDigitalButton("GotoTiled").Assign(KeyboardKeys.D3)
+            this.inputConfiguration.AddDigitalButton("GotoTiled").Assign(KeyboardKeys.D3)
                 .MapClickTo(gt => this.LaunchTiledSample());
 
-            input.AddDigitalButton("GotoTouch").Assign(KeyboardKeys.D4)
+            this.inputConfiguration.AddDigitalButton("GotoTouch").Assign(KeyboardKeys.D4)
                 .MapClickTo(gt => this.LaunchTouchSample());
 
             // Mouse
@@ -99,7 +127,7 @@ namespace SamplesBrowser
                 return Samples.None;
             };
 
-            input.AddMouseTracking(this.camera).OnMove((mt, e) =>
+            this.inputConfiguration.AddMouseTracking(this.camera).OnMove((mt, e) =>
             {
                 this.mouseState = mt;
 
@@ -109,7 +137,7 @@ namespace SamplesBrowser
                 this.hoveringSample = hitToSampleFunc(hit);
             });
 
-            input.AddDigitalButton("MouseSelection").Assign(MouseButtons.Left).MapClickTo(elapse =>
+            this.inputConfiguration.AddDigitalButton("MouseSelection").Assign(MouseButtons.Left).MapClickTo(elapse =>
             {
                 var hit = this.scene.GetHits(this.mouseState.AbsolutePosition, this.camera).OfType<RectangleHit>().FirstOrDefault();
                 var hitSample = hitToSampleFunc(hit);
@@ -132,7 +160,7 @@ namespace SamplesBrowser
             });
 
             // Touch
-            input.AddTouchTracking(this.camera).OnTouch((ts, gt) =>
+            this.inputConfiguration.AddTouchTracking(this.camera).OnTouch((ts, gt) =>
             {
                 this.touchState = ts;
 
@@ -143,7 +171,7 @@ namespace SamplesBrowser
                 this.hoveringSample = hitToSampleFunc(hit);
             });
 
-            input.AddEvent("TouchSelection").Assign(TouchGestureType.Tap).MapTo(gt =>
+            this.inputConfiguration.AddEvent("TouchSelection").Assign(TouchGestureType.Tap).MapTo(gt =>
             {
                 var hit = this.scene.GetHits(this.touchState.CurrentGesture.Position, this.camera)
                     .OfType<RectangleHit>().FirstOrDefault();
@@ -166,32 +194,9 @@ namespace SamplesBrowser
                         break;
                 }
             });
-
-            return input;
         }
 
-        public override void LoadContent(GameResourceManager theResourceManager)
-        {
-            this.gameResourceManager = theResourceManager;
-
-            // TODO: This is weird, mendatory??
-            this.gameResourceManager.AddDrawingFont(@"Sandbox\SpriteFont1");
-        }
-
-        public override void Update(InputContext inputContext, IGameTiming gameTime)
-        {
-            this.inputConfiguration.Update(inputContext, gameTime);
-
-            Func<Samples, Color> colorFunc = sample => 
-                this.hoveringSample == sample ? Color.Blue : this.currentSample == sample ? Color.Red : Color.White;
-
-            this.sandboxRectangle.Color = colorFunc(Samples.Sandbox);
-            this.shootEmUpRectangle.Color = colorFunc(Samples.ShootEmUp);
-            this.tiledRectangle.Color = colorFunc(Samples.Tiled);
-            this.touchRectangle.Color = colorFunc(Samples.Touch);
-        }
-
-        public override Scene GetScene()
+        private void CreateScene()
         {
             this.scene = new Scene("HubScene");
 
@@ -215,14 +220,6 @@ namespace SamplesBrowser
 
             this.mouseLayer = MouseCursorLayer.Create(this.gameResourceManager);
             this.scene.Add(this.mouseLayer);
-
-            return this.scene;
-        }
-
-        public override int Draw(DrawContext drawContext)
-        {
-            drawContext.Camera = this.camera;
-            return this.scene.Draw(drawContext);
         }
 
         private void LaunchSandboxSample()

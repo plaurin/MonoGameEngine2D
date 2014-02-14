@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GameFramework.Cameras;
+using GameFramework.Inputs;
 
 namespace GameFramework.Screens
 {
@@ -13,6 +13,8 @@ namespace GameFramework.Screens
 
         private GameResourceManager gameResourceManager;
 
+        private ScreenContext current;
+
         public ScreenNavigation()
         {
             this.screens = new Dictionary<Type, ScreenContext>();
@@ -21,10 +23,19 @@ namespace GameFramework.Screens
 
         public Type InitialScreen { get; private set; }
 
-        public ScreenContext Current { get; private set; }
-
         public bool ShouldExit { get; private set; }
-        
+
+        public bool IsEnabledGesturesUpdated
+        {
+            get { return this.current.IsEnabledGesturesUpdated; }
+            set { this.current.IsEnabledGesturesUpdated = value; }
+        }
+
+        public IEnumerable<TouchGestureType> EnabledGestures
+        {
+            get { return this.current.EnabledGestures; }
+        }
+
         public void Initialize(Viewport viewPort)
         {
             foreach (var screenContext in this.screens.Values.Where(screenContext => !screenContext.IsInitialized))
@@ -40,8 +51,8 @@ namespace GameFramework.Screens
 
         public void Update()
         {
-            if (this.navigationStack != null && this.Current != this.navigationStack.Peek())
-                this.Current = this.navigationStack.Peek();
+            if (this.navigationStack != null && this.current != this.navigationStack.Peek())
+                this.current = this.navigationStack.Peek();
         }
 
         public void NavigateTo<T>() where T : ScreenBase
@@ -71,6 +82,16 @@ namespace GameFramework.Screens
             this.ShouldExit = true;
         }
 
+        public void Update(InputContext inputContext, IGameTiming gameTime)
+        {
+            this.current.Update(inputContext, gameTime);
+        }
+
+        public int Draw(DrawContext drawContext)
+        {
+            return this.current.Draw(drawContext);
+        }
+
         protected void AddScreen(params ScreenBase[] screensToAdd)
         {
             foreach (var screen in screensToAdd)
@@ -91,15 +112,14 @@ namespace GameFramework.Screens
 
         private static void Initialize(ScreenContext screenContext, Viewport viewPort)
         {
-            screenContext.Screen.Initialize(viewPort);
+            screenContext.Initialize(viewPort);
 
             screenContext.IsInitialized = true;
         }
 
         private void LoadContent(ScreenContext screenContext)
         {
-            screenContext.Screen.LoadContent(this.gameResourceManager);
-            screenContext.Scene = screenContext.Screen.GetScene();
+            screenContext.LoadContent(this.gameResourceManager);
 
             screenContext.IsContentLoaded = true;
         }

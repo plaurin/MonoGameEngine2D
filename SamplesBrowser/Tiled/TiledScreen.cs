@@ -30,20 +30,13 @@ namespace SamplesBrowser.Tiled
             this.camera = new Camera(viewport);
             this.camera.Center = CameraCenter.WindowTopLeft;
 
-            this.GetInputConfiguration();
-        }
-
-        public void GetInputConfiguration()
-        {
-            this.inputConfiguration = new InputConfiguration();
-
-            this.inputConfiguration.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
-                .MapClickTo(gt => this.screenNavigation.NavigateBack());
+            this.CreateInputConfiguration();
         }
 
         public override void LoadContent(GameResourceManager theResourceManager)
         {
             this.gameResourceManager = theResourceManager;
+            this.CreateScene();
         }
 
         public override void Update(InputContext inputContext, IGameTiming gameTime)
@@ -51,20 +44,26 @@ namespace SamplesBrowser.Tiled
             this.inputConfiguration.Update(inputContext, gameTime);
         }
 
-        public override Scene GetScene()
+        public override int Draw(DrawContext drawContext)
+        {
+            drawContext.Camera = this.camera;
+            return this.scene.Draw(drawContext);
+        }
+
+        private void CreateInputConfiguration()
+        {
+            this.inputConfiguration = new InputConfiguration();
+
+            this.inputConfiguration.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
+                .MapClickTo(gt => this.screenNavigation.NavigateBack());
+        }
+
+        private void CreateScene()
         {
             this.scene = new Scene("Tiled");
 
             foreach (var tileMap in TiledHelper.LoadFile(@"Tiled\untitled.tmx", this.gameResourceManager))
                 this.scene.Add(tileMap);
-
-            return this.scene;
-        }
-
-        public override int Draw(DrawContext drawContext)
-        {
-            drawContext.Camera = this.camera;
-            return this.scene.Draw(drawContext);
         }
     }
 }

@@ -55,10 +55,39 @@ namespace SamplesBrowser.Sandbox
             this.player = new Vector(25, 25);
             this.range = 0.25f;
 
-            this.GetInputConfiguration();
+            this.CreateInputConfiguration();
         }
 
-        public void GetInputConfiguration()
+        public override void LoadContent(GameResourceManager theResourceManager)
+        {
+            this.gameResourceManager = theResourceManager;
+
+            this.gameResourceManager.AddDrawingFont(@"Sandbox\SpriteFont1");
+            this.CreateScene();
+        }
+
+        public override void Update(InputContext inputContext, IGameTiming gameTime)
+        {
+            this.inputConfiguration.Update(inputContext, gameTime);
+
+            var colorLayer = this.scene.Children.OfType<ColorLayer>().FirstOrDefault();
+            if (colorLayer != null)
+                colorLayer.Color = new Color(255, 0, 0, (int)(255 * Math.Min(this.range, 1.0f)));
+
+            this.diagnosticLayer.Update(gameTime, this.camera);
+            this.diagnosticLayer.Update(this.mouseState);
+            this.diagnosticLayer.Update(this.hits);
+            this.diagnosticLayer.UpdateLine("Range", this.range);
+            this.diagnosticLayer.UpdateLine("Objects", this.layer.TotalElements, this.layer.DrawnElementsLastFrame);
+        }
+
+        public override int Draw(DrawContext drawContext)
+        {
+            drawContext.Camera = this.camera;
+            return this.scene.Draw(drawContext);
+        }
+
+        private void CreateInputConfiguration()
         {
             this.inputConfiguration = new InputConfiguration();
 
@@ -93,29 +122,7 @@ namespace SamplesBrowser.Sandbox
             });
         }
 
-        public override void LoadContent(GameResourceManager theResourceManager)
-        {
-            this.gameResourceManager = theResourceManager;
-
-            this.gameResourceManager.AddDrawingFont(@"Sandbox\SpriteFont1");
-        }
-
-        public override void Update(InputContext inputContext, IGameTiming gameTime)
-        {
-            this.inputConfiguration.Update(inputContext, gameTime);
-
-            var colorLayer = this.scene.Children.OfType<ColorLayer>().FirstOrDefault();
-            if (colorLayer != null)
-                colorLayer.Color = new Color(255, 0, 0, (int)(255 * Math.Min(this.range, 1.0f)));
-
-            this.diagnosticLayer.Update(gameTime, this.camera);
-            this.diagnosticLayer.Update(this.mouseState);
-            this.diagnosticLayer.Update(this.hits);
-            this.diagnosticLayer.UpdateLine("Range", this.range);
-            this.diagnosticLayer.UpdateLine("Objects", this.layer.TotalElements, this.layer.DrawnElementsLastFrame);
-        }
-
-        public override Scene GetScene()
+        private void CreateScene()
         {
             this.scene = new Scene("scene1");
 
@@ -133,14 +140,6 @@ namespace SamplesBrowser.Sandbox
 
             //this.TestSceneSaveLoad();
             //this.TestSheetsSaveLoad();
-
-            return this.scene;
-        }
-
-        public override int Draw(DrawContext drawContext)
-        {
-            drawContext.Camera = this.camera;
-            return this.scene.Draw(drawContext);
         }
 
         private void TestSceneSaveLoad()

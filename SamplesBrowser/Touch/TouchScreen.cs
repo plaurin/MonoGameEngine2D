@@ -46,7 +46,7 @@ namespace SamplesBrowser.Touch
             this.camera = new Camera(viewport);
             this.camera.Center = CameraCenter.WindowTopLeft;
 
-            this.GetInputConfiguration();
+            this.CreateInputConfiguration();
         }
 
         public IEnumerable<TouchGestureType> TouchGestures
@@ -63,7 +63,40 @@ namespace SamplesBrowser.Touch
             }
         }
 
-        private void GetInputConfiguration()
+        public override void LoadContent(GameResourceManager theResourceManager)
+        {
+            this.gameResourceManager = theResourceManager;
+            this.CreateScene();
+        }
+
+        public override void Update(InputContext inputContext, IGameTiming gameTime)
+        {
+            this.inputConfiguration.Update(inputContext, gameTime);
+
+            this.diagnosticLayer.Update(gameTime, this.camera);
+            this.diagnosticLayer.Update(this.touchState);
+            this.diagnosticLayer.UpdateLine("DoubleTap", this.doubleTapCount);
+            this.diagnosticLayer.UpdateLine("DragC", this.dragCompleteCount);
+            this.diagnosticLayer.UpdateLine("Flick", this.flickCount);
+            this.diagnosticLayer.UpdateLine("FreeD", this.freeDragCount);
+            this.diagnosticLayer.UpdateLine("Hold", this.holdCount);
+            this.diagnosticLayer.UpdateLine("HDrag", this.horizontalDragCount);
+            this.diagnosticLayer.UpdateLine("PinchC", this.pinchCompleteCount);
+            this.diagnosticLayer.UpdateLine("Pinch", this.pinchCount);
+            this.diagnosticLayer.UpdateLine("Tap", this.tapCount);
+            this.diagnosticLayer.UpdateLine("VDrag", this.verticalDragCount);
+
+            this.visualBackButtonElement.Color = this.isHoveringBackButton ? Color.Red : Color.Blue;
+            this.isHoveringBackButton = false;
+        }
+
+        public override int Draw(DrawContext drawContext)
+        {
+            drawContext.Camera = this.camera;
+            return this.scene.Draw(drawContext);
+        }
+
+        private void CreateInputConfiguration()
         {
             this.inputConfiguration = new InputConfiguration();
 
@@ -94,50 +127,16 @@ namespace SamplesBrowser.Touch
                 .MapClickTo(gt => this.screenNavigation.NavigateBack());
         }
 
-        public override void LoadContent(GameResourceManager theResourceManager)
-        {
-            this.gameResourceManager = theResourceManager;
-        }
-
-        public override void Update(InputContext inputContext, IGameTiming gameTime)
-        {
-            this.inputConfiguration.Update(inputContext, gameTime);
-
-            this.diagnosticLayer.Update(gameTime, this.camera);
-            this.diagnosticLayer.Update(this.touchState);
-            this.diagnosticLayer.UpdateLine("DoubleTap", this.doubleTapCount);
-            this.diagnosticLayer.UpdateLine("DragC", this.dragCompleteCount);
-            this.diagnosticLayer.UpdateLine("Flick", this.flickCount);
-            this.diagnosticLayer.UpdateLine("FreeD", this.freeDragCount);
-            this.diagnosticLayer.UpdateLine("Hold", this.holdCount);
-            this.diagnosticLayer.UpdateLine("HDrag", this.horizontalDragCount);
-            this.diagnosticLayer.UpdateLine("PinchC", this.pinchCompleteCount);
-            this.diagnosticLayer.UpdateLine("Pinch", this.pinchCount);
-            this.diagnosticLayer.UpdateLine("Tap", this.tapCount);
-            this.diagnosticLayer.UpdateLine("VDrag", this.verticalDragCount);
-
-            this.visualBackButtonElement.Color = this.isHoveringBackButton ? Color.Red : Color.Blue;
-            this.isHoveringBackButton = false;
-        }
-
-        public override Scene GetScene()
+        private void CreateScene()
         {
             this.scene = new Scene("Touch");
 
             this.scene.Add(this.CreateButtonLayer());
 
             this.scene.Add(this.CreateDiagnosticLayer());
-
-            return this.scene;
         }
 
-        public override int Draw(DrawContext drawContext)
-        {
-            drawContext.Camera = this.camera;
-            return this.scene.Draw(drawContext);
-        }
-
-        public DrawingLayer CreateButtonLayer()
+        private DrawingLayer CreateButtonLayer()
         {
             var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
 
