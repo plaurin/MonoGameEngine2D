@@ -7,78 +7,55 @@ using GameFramework.Sprites;
 
 namespace SamplesBrowser.ShootEmUp
 {
-    public class ShootEmUpScreen : ScreenBase
+    public class ShootEmUpScreen : SceneBasedScreen
     {
         private readonly ScreenNavigation screenNavigation;
 
-        private Camera camera;
-
-        private InputConfiguration inputConfiguration;
-
-        private GameResourceManager gameResourceManager;
-
-        private Scene scene;
-
         private SpriteLayer entityLayer;
+        private PlayerShipEntity playerShipEntity;
 
         public ShootEmUpScreen(ScreenNavigation screenNavigation)
         {
             this.screenNavigation = screenNavigation;
         }
 
-        public override void Initialize(Viewport viewport)
+        public override void Update(IGameTiming gameTime)
         {
-            this.camera = new Camera(viewport);
-            this.camera.Center = CameraCenter.WindowTopLeft;
-
-            this.CreateInputConfiguration();
-        }
-
-        public override void LoadContent(GameResourceManager theResourceManager)
-        {
-            this.gameResourceManager = theResourceManager;
-            this.CreateScene();
-        }
-
-        private PlayerShipEntity playerShipEntity;
-
-        public override void Update(InputContext inputContext, IGameTiming gameTime)
-        {
-            this.inputConfiguration.Update(inputContext, gameTime);
             this.playerShipEntity.Update(gameTime);
         }
 
-        public override int Draw(DrawContext drawContext)
+        protected override Camera CreateCamera(Viewport viewport)
         {
-            drawContext.Camera = this.camera;
-            return this.scene.Draw(drawContext);
+            return new Camera(viewport) { Center = CameraCenter.WindowTopLeft };
         }
 
-        private void CreateInputConfiguration()
+        protected override InputConfiguration CreateInputConfiguration()
         {
-            this.inputConfiguration = new InputConfiguration();
+            var inputConfiguration = new InputConfiguration();
 
-            this.inputConfiguration.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
+            inputConfiguration.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
                 .MapClickTo(gt => this.screenNavigation.NavigateBack());
 
-            this.inputConfiguration.AddDigitalButton("Left").Assign(KeyboardKeys.Left);
-            this.inputConfiguration.AddDigitalButton("Right").Assign(KeyboardKeys.Right);
-            this.inputConfiguration.AddDigitalButton("Up").Assign(KeyboardKeys.Up);
-            this.inputConfiguration.AddDigitalButton("Down").Assign(KeyboardKeys.Down);
-            this.inputConfiguration.AddDigitalButton("Fire Weapon").Assign(KeyboardKeys.Space);
+            inputConfiguration.AddDigitalButton("Left").Assign(KeyboardKeys.Left);
+            inputConfiguration.AddDigitalButton("Right").Assign(KeyboardKeys.Right);
+            inputConfiguration.AddDigitalButton("Up").Assign(KeyboardKeys.Up);
+            inputConfiguration.AddDigitalButton("Down").Assign(KeyboardKeys.Down);
+            inputConfiguration.AddDigitalButton("Fire Weapon").Assign(KeyboardKeys.Space);
+
+            return inputConfiguration;
         }
 
-        private void CreateScene()
+        protected override Scene CreateScene()
         {
-            this.scene = new Scene("MainScene");
+            var scene = new Scene("MainScene");
 
             var spriteSheet = this.CreateSpriteSheet();
 
             this.entityLayer = new SpriteLayer("EntityMap");
-            this.scene.Add(this.entityLayer);
+            scene.Add(this.entityLayer);
 
             this.playerShipEntity = new PlayerShipEntity(this.entityLayer, spriteSheet);
-            this.playerShipEntity.BindController(this.inputConfiguration);
+            this.playerShipEntity.BindController(this.InputConfiguration);
 
             var yellowSprite = new Sprite(spriteSheet, "YellowEnemy") { Position = new Vector(250, 100) };
             var redSprite = new Sprite(spriteSheet, "RedEnemy") { Position = new Vector(300, 100) };
@@ -87,11 +64,13 @@ namespace SamplesBrowser.ShootEmUp
             this.entityLayer.AddSprite(yellowSprite);
             this.entityLayer.AddSprite(redSprite);
             this.entityLayer.AddSprite(blueSprite);
+
+            return scene;
         }
 
         private SpriteSheet CreateSpriteSheet()
         {
-            var spriteTexture = this.gameResourceManager.GetTexture(@"ShootEmUp\Sprites.png");
+            var spriteTexture = this.ResourceManager.GetTexture(@"ShootEmUp\Sprites.png");
             var spriteSheet = new SpriteSheet(spriteTexture, "SpriteSheet");
 
             spriteSheet.CreateSpriteDefinition("Ship", new Rectangle(1, 1, 32, 32));

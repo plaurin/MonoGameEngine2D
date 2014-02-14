@@ -10,15 +10,10 @@ using GameFramework.Utilities;
 
 namespace SamplesBrowser.Touch
 {
-    public class TouchScreen : ScreenBase, ITouchEnabled
+    public class TouchScreen : SceneBasedScreen, ITouchEnabled
     {
         private readonly ScreenNavigation screenNavigation;
-        private Camera camera;
-        private InputConfiguration inputConfiguration;
-        private GameResourceManager gameResourceManager;
-        private Scene scene;
         private DiagnosticLayer diagnosticLayer;
-
         private TouchStateBase touchState;
 
         private int tapCount;
@@ -41,14 +36,6 @@ namespace SamplesBrowser.Touch
             this.screenNavigation = screenNavigation;
         }
 
-        public override void Initialize(Viewport viewport)
-        {
-            this.camera = new Camera(viewport);
-            this.camera.Center = CameraCenter.WindowTopLeft;
-
-            this.CreateInputConfiguration();
-        }
-
         public IEnumerable<TouchGestureType> TouchGestures
         {
             get
@@ -63,17 +50,9 @@ namespace SamplesBrowser.Touch
             }
         }
 
-        public override void LoadContent(GameResourceManager theResourceManager)
+        public override void Update(IGameTiming gameTime)
         {
-            this.gameResourceManager = theResourceManager;
-            this.CreateScene();
-        }
-
-        public override void Update(InputContext inputContext, IGameTiming gameTime)
-        {
-            this.inputConfiguration.Update(inputContext, gameTime);
-
-            this.diagnosticLayer.Update(gameTime, this.camera);
+            this.diagnosticLayer.Update(gameTime, this.Camera);
             this.diagnosticLayer.Update(this.touchState);
             this.diagnosticLayer.UpdateLine("DoubleTap", this.doubleTapCount);
             this.diagnosticLayer.UpdateLine("DragC", this.dragCompleteCount);
@@ -90,57 +69,60 @@ namespace SamplesBrowser.Touch
             this.isHoveringBackButton = false;
         }
 
-        public override int Draw(DrawContext drawContext)
+        protected override Camera CreateCamera(Viewport viewport)
         {
-            drawContext.Camera = this.camera;
-            return this.scene.Draw(drawContext);
+            return new Camera(viewport) { Center = CameraCenter.WindowTopLeft };
         }
 
-        private void CreateInputConfiguration()
+        protected override InputConfiguration CreateInputConfiguration()
         {
-            this.inputConfiguration = new InputConfiguration();
+            var inputConfiguration = new InputConfiguration();
 
-            this.inputConfiguration.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
+            inputConfiguration.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
                 .MapClickTo(gt => this.screenNavigation.NavigateBack());
 
-            this.inputConfiguration.AddTouchTracking(this.camera).OnTouch((ts, gt) => this.touchState = ts);
+            inputConfiguration.AddTouchTracking(this.Camera).OnTouch((ts, gt) => this.touchState = ts);
 
-            this.inputConfiguration.AddEvent("Tap").Assign(TouchGestureType.Tap).MapTo(gt => this.tapCount++);
-            this.inputConfiguration.AddEvent("Hold").Assign(TouchGestureType.Hold).MapTo(gt => this.holdCount++);
-            this.inputConfiguration.AddEvent("DoubleTap").Assign(TouchGestureType.DoubleTap).MapTo(gt => this.doubleTapCount++);
-            this.inputConfiguration.AddEvent("DragComplete").Assign(TouchGestureType.DragComplete).MapTo(gt => this.dragCompleteCount++);
-            this.inputConfiguration.AddEvent("Flick").Assign(TouchGestureType.Flick).MapTo(gt => this.flickCount++);
-            this.inputConfiguration.AddEvent("FreeDrag").Assign(TouchGestureType.FreeDrag).MapTo(gt => this.freeDragCount++);
-            this.inputConfiguration.AddEvent("HorizontalDrag").Assign(TouchGestureType.HorizontalDrag).MapTo(gt => this.horizontalDragCount++);
-            this.inputConfiguration.AddEvent("Pinch").Assign(TouchGestureType.Pinch).MapTo(gt => this.pinchCount++);
-            this.inputConfiguration.AddEvent("PinchComplete").Assign(TouchGestureType.PinchComplete).MapTo(gt => this.pinchCompleteCount++);
-            this.inputConfiguration.AddEvent("VerticalDrag").Assign(TouchGestureType.VerticalDrag).MapTo(gt => this.verticalDragCount++);
+            inputConfiguration.AddEvent("Tap").Assign(TouchGestureType.Tap).MapTo(gt => this.tapCount++);
+            inputConfiguration.AddEvent("Hold").Assign(TouchGestureType.Hold).MapTo(gt => this.holdCount++);
+            inputConfiguration.AddEvent("DoubleTap").Assign(TouchGestureType.DoubleTap).MapTo(gt => this.doubleTapCount++);
+            inputConfiguration.AddEvent("DragComplete").Assign(TouchGestureType.DragComplete).MapTo(gt => this.dragCompleteCount++);
+            inputConfiguration.AddEvent("Flick").Assign(TouchGestureType.Flick).MapTo(gt => this.flickCount++);
+            inputConfiguration.AddEvent("FreeDrag").Assign(TouchGestureType.FreeDrag).MapTo(gt => this.freeDragCount++);
+            inputConfiguration.AddEvent("HorizontalDrag").Assign(TouchGestureType.HorizontalDrag).MapTo(gt => this.horizontalDragCount++);
+            inputConfiguration.AddEvent("Pinch").Assign(TouchGestureType.Pinch).MapTo(gt => this.pinchCount++);
+            inputConfiguration.AddEvent("PinchComplete").Assign(TouchGestureType.PinchComplete).MapTo(gt => this.pinchCompleteCount++);
+            inputConfiguration.AddEvent("VerticalDrag").Assign(TouchGestureType.VerticalDrag).MapTo(gt => this.verticalDragCount++);
 
-            var viewport = this.camera.Viewport;
+            var viewport = this.Camera.Viewport;
             //var size = new Size(viewport.Width, viewport.Height);
             var s2 = viewport.Size.Scale(0.1f);
             var backRectangle = new Rectangle(viewport.Width - s2.X * 2, viewport.Height - s2.Y * 2, s2.X, s2.Y);
 
-            this.visualBackButton = this.inputConfiguration.AddVisualButton("Back", backRectangle)
+            this.visualBackButton = inputConfiguration.AddVisualButton("Back", backRectangle)
                 .Assign(TouchGestureType.Tap)
                 .MapTouchTo(gt => this.isHoveringBackButton = true)
                 .MapClickTo(gt => this.screenNavigation.NavigateBack());
+
+            return inputConfiguration;
         }
 
-        private void CreateScene()
+        protected override Scene CreateScene()
         {
-            this.scene = new Scene("Touch");
+            var scene = new Scene("Touch");
 
-            this.scene.Add(this.CreateButtonLayer());
+            scene.Add(this.CreateButtonLayer());
 
-            this.scene.Add(this.CreateDiagnosticLayer());
+            scene.Add(this.CreateDiagnosticLayer());
+
+            return scene;
         }
 
         private DrawingLayer CreateButtonLayer()
         {
-            var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
+            var font = this.ResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
 
-            var drawingMap = new DrawingLayer("Button", this.gameResourceManager);
+            var drawingMap = new DrawingLayer("Button", this.ResourceManager);
 
             this.visualBackButtonElement = drawingMap.AddRectangle(this.visualBackButton.Rectangle, 2, Color.Blue);
             drawingMap.AddText(font, "Back", this.visualBackButton.Rectangle.Location.Translate(10, 10), Color.White);
@@ -150,12 +132,12 @@ namespace SamplesBrowser.Touch
 
         private DiagnosticLayer CreateDiagnosticLayer()
         {
-            var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
+            var font = this.ResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
 
             var configuration = DiagnosticLayerConfiguration.CreateWithFpsOnly(DiagnosticDisplayLocation.Left);
             configuration.DisplayTouchState = true;
 
-            this.diagnosticLayer = new DiagnosticLayer(this.gameResourceManager, font, configuration);
+            this.diagnosticLayer = new DiagnosticLayer(this.ResourceManager, font, configuration);
 
             this.diagnosticLayer.AddLine("DoubleTap", "DoubleTap: {0}");
             this.diagnosticLayer.AddLine("DragC", "DragComplete: {0}");

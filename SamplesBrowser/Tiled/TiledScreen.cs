@@ -8,62 +8,38 @@ using GameFramework.Screens;
 
 namespace SamplesBrowser.Tiled
 {
-    public class TiledScreen : ScreenBase
+    public class TiledScreen : SceneBasedScreen
     {
         private readonly ScreenNavigation screenNavigation;
-
-        private Camera camera;
-
-        private GameResourceManager gameResourceManager;
-
-        private Scene scene;
-
-        private InputConfiguration inputConfiguration;
 
         public TiledScreen(ScreenNavigation screenNavigation)
         {
             this.screenNavigation = screenNavigation;
         }
 
-        public override void Initialize(Viewport viewport)
+        protected override Camera CreateCamera(Viewport viewport)
         {
-            this.camera = new Camera(viewport);
-            this.camera.Center = CameraCenter.WindowTopLeft;
-
-            this.CreateInputConfiguration();
+            return new Camera(viewport) { Center = CameraCenter.WindowTopLeft };
         }
 
-        public override void LoadContent(GameResourceManager theResourceManager)
+        protected override InputConfiguration CreateInputConfiguration()
         {
-            this.gameResourceManager = theResourceManager;
-            this.CreateScene();
-        }
+            var inputConfiguration = new InputConfiguration();
 
-        public override void Update(InputContext inputContext, IGameTiming gameTime)
-        {
-            this.inputConfiguration.Update(inputContext, gameTime);
-        }
-
-        public override int Draw(DrawContext drawContext)
-        {
-            drawContext.Camera = this.camera;
-            return this.scene.Draw(drawContext);
-        }
-
-        private void CreateInputConfiguration()
-        {
-            this.inputConfiguration = new InputConfiguration();
-
-            this.inputConfiguration.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
+            inputConfiguration.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
                 .MapClickTo(gt => this.screenNavigation.NavigateBack());
+
+            return inputConfiguration;
         }
 
-        private void CreateScene()
+        protected override Scene CreateScene()
         {
-            this.scene = new Scene("Tiled");
+            var scene = new Scene("Tiled");
 
-            foreach (var tileMap in TiledHelper.LoadFile(@"Tiled\untitled.tmx", this.gameResourceManager))
-                this.scene.Add(tileMap);
+            foreach (var tileMap in TiledHelper.LoadFile(@"Tiled\untitled.tmx", this.ResourceManager))
+                scene.Add(tileMap);
+
+            return scene;
         }
     }
 }

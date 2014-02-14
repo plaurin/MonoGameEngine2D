@@ -82,6 +82,7 @@
     <Compile Include="Layers\ColorLayer.cs" />
     <Compile Include="Layers\ILayer.cs" />
     <Compile Include="Rectangle.cs" />
+    <Compile Include="Screens\SceneBasedScreen.cs" />
     <Compile Include="Sprites\SpriteBase.cs" />
     <Compile Include="Utilities\DiagnosticLayer.cs" />
     <Compile Include="Layers\ImageLayer.cs" />

@@ -17,28 +17,19 @@ using GameFramework.Utilities;
 
 namespace SamplesBrowser.Sandbox
 {
-    public class SandboxScreen : ScreenBase
+    public class SandboxScreen : SceneBasedScreen
     {
         private readonly ScreenNavigation screenNavigation;
 
-        private Camera camera;
-
-        private GameResourceManager gameResourceManager;
-
-        private Vector player;
+        private readonly Vector player;
 
         private float range;
 
-        private Scene scene;
-
         private MouseStateBase mouseState;
-
-        private InputConfiguration inputConfiguration;
 
         private MouseCursorLayer mouseLayer;
         private DiagnosticLayer diagnosticLayer;
 
-        //private string hits;
         private List<HitBase> hits;
 
         private Sprite linkMouseFollow;
@@ -47,107 +38,96 @@ namespace SamplesBrowser.Sandbox
         public SandboxScreen(ScreenNavigation screenNavigation)
         {
             this.screenNavigation = screenNavigation;
-        }
 
-        public override void Initialize(Viewport viewport)
-        {
-            this.camera = new Camera(viewport);
             this.player = new Vector(25, 25);
             this.range = 0.25f;
-
-            this.CreateInputConfiguration();
         }
 
-        public override void LoadContent(GameResourceManager theResourceManager)
+        public override void Update(IGameTiming gameTime)
         {
-            this.gameResourceManager = theResourceManager;
-
-            this.gameResourceManager.AddDrawingFont(@"Sandbox\SpriteFont1");
-            this.CreateScene();
-        }
-
-        public override void Update(InputContext inputContext, IGameTiming gameTime)
-        {
-            this.inputConfiguration.Update(inputContext, gameTime);
-
-            var colorLayer = this.scene.Children.OfType<ColorLayer>().FirstOrDefault();
+            var colorLayer = this.Scene.Children.OfType<ColorLayer>().FirstOrDefault();
             if (colorLayer != null)
                 colorLayer.Color = new Color(255, 0, 0, (int)(255 * Math.Min(this.range, 1.0f)));
 
-            this.diagnosticLayer.Update(gameTime, this.camera);
+            this.diagnosticLayer.Update(gameTime, this.Camera);
             this.diagnosticLayer.Update(this.mouseState);
             this.diagnosticLayer.Update(this.hits);
             this.diagnosticLayer.UpdateLine("Range", this.range);
             this.diagnosticLayer.UpdateLine("Objects", this.layer.TotalElements, this.layer.DrawnElementsLastFrame);
         }
 
-        public override int Draw(DrawContext drawContext)
+        protected override Camera CreateCamera(Viewport viewport)
         {
-            drawContext.Camera = this.camera;
-            return this.scene.Draw(drawContext);
+            return new Camera(viewport);
         }
 
-        private void CreateInputConfiguration()
+        protected override InputConfiguration CreateInputConfiguration()
         {
-            this.inputConfiguration = new InputConfiguration();
+            var inputConfiguration = new InputConfiguration();
 
-            this.inputConfiguration.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
+            inputConfiguration.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
                 .MapClickTo(gt => this.screenNavigation.NavigateBack());
 
-            this.inputConfiguration.AddDigitalButton("Left").Assign(KeyboardKeys.Left).MapTo(gt => this.camera.Move(-60 * gt.ElapsedSeconds, 0));
-            this.inputConfiguration.AddDigitalButton("Right").Assign(KeyboardKeys.Right).MapTo(gt => this.camera.Move(60 * gt.ElapsedSeconds, 0));
-            this.inputConfiguration.AddDigitalButton("Up").Assign(KeyboardKeys.Up).MapTo(gt => this.camera.Move(0, -60 * gt.ElapsedSeconds));
-            this.inputConfiguration.AddDigitalButton("Down").Assign(KeyboardKeys.Down).MapTo(gt => this.camera.Move(0, 60 * gt.ElapsedSeconds));
+            inputConfiguration.AddDigitalButton("Left").Assign(KeyboardKeys.Left).MapTo(gt => this.Camera.Move(-60 * gt.ElapsedSeconds, 0));
+            inputConfiguration.AddDigitalButton("Right").Assign(KeyboardKeys.Right).MapTo(gt => this.Camera.Move(60 * gt.ElapsedSeconds, 0));
+            inputConfiguration.AddDigitalButton("Up").Assign(KeyboardKeys.Up).MapTo(gt => this.Camera.Move(0, -60 * gt.ElapsedSeconds));
+            inputConfiguration.AddDigitalButton("Down").Assign(KeyboardKeys.Down).MapTo(gt => this.Camera.Move(0, 60 * gt.ElapsedSeconds));
 
-            this.inputConfiguration.AddDigitalButton("ZoomIn").Assign(KeyboardKeys.A).MapTo(gt => this.camera.ZoomFactor *= 1.2f * (1 + gt.ElapsedSeconds));
-            this.inputConfiguration.AddDigitalButton("ZoomOut").Assign(KeyboardKeys.Z).MapTo(gt => this.camera.ZoomFactor *= 1 / (1.2f * (1 + gt.ElapsedSeconds)));
+            inputConfiguration.AddDigitalButton("ZoomIn").Assign(KeyboardKeys.A).MapTo(gt => this.Camera.ZoomFactor *= 1.2f * (1 + gt.ElapsedSeconds));
+            inputConfiguration.AddDigitalButton("ZoomOut").Assign(KeyboardKeys.Z).MapTo(gt => this.Camera.ZoomFactor *= 1 / (1.2f * (1 + gt.ElapsedSeconds)));
 
-            this.inputConfiguration.AddDigitalButton("RangeUp").Assign(KeyboardKeys.W).MapTo(gt => this.range *= 1.2f * (1 + gt.ElapsedSeconds));
-            this.inputConfiguration.AddDigitalButton("RangeDown").Assign(KeyboardKeys.Q).MapTo(gt => this.range *= 1 / (1.2f * (1 + gt.ElapsedSeconds)));
+            inputConfiguration.AddDigitalButton("RangeUp").Assign(KeyboardKeys.W).MapTo(gt => this.range *= 1.2f * (1 + gt.ElapsedSeconds));
+            inputConfiguration.AddDigitalButton("RangeDown").Assign(KeyboardKeys.Q).MapTo(gt => this.range *= 1 / (1.2f * (1 + gt.ElapsedSeconds)));
 
-            this.inputConfiguration.AddDigitalButton("RotateLeft").Assign(KeyboardKeys.X).MapTo(gt => this.linkMouseFollow.Rotation -= 4 * gt.ElapsedSeconds);
-            this.inputConfiguration.AddDigitalButton("RotateRight").Assign(KeyboardKeys.C).MapTo(gt => this.linkMouseFollow.Rotation += 4 * gt.ElapsedSeconds);
+            inputConfiguration.AddDigitalButton("RotateLeft").Assign(KeyboardKeys.X).MapTo(gt => this.linkMouseFollow.Rotation -= 4 * gt.ElapsedSeconds);
+            inputConfiguration.AddDigitalButton("RotateRight").Assign(KeyboardKeys.C).MapTo(gt => this.linkMouseFollow.Rotation += 4 * gt.ElapsedSeconds);
 
-            this.inputConfiguration.AddDigitalButton("Selection").Assign(MouseButtons.Left).MapTo(elapse =>
+            inputConfiguration.AddDigitalButton("Selection").Assign(MouseButtons.Left).MapTo(elapse =>
             {
-                this.hits = this.scene.GetHits(this.mouseState.AbsolutePosition, this.camera).ToList();
+                this.hits = this.Scene.GetHits(this.mouseState.AbsolutePosition, this.Camera).ToList();
             });
 
-            this.inputConfiguration.AddMouseTracking(this.camera).OnMove((mt, e) =>
+            inputConfiguration.AddMouseTracking(this.Camera).OnMove((mt, e) =>
             {
                 this.mouseState = mt;
                 this.mouseLayer.Update(this.mouseState);
 
                 this.linkMouseFollow.Position = mt.AbsolutePosition;
             });
+
+            return inputConfiguration;
         }
 
-        private void CreateScene()
+        protected override Scene CreateScene()
         {
-            this.scene = new Scene("scene1");
+            this.ResourceManager.AddDrawingFont(@"Sandbox\SpriteFont1");
 
-            this.scene.Add(this.CreateImageLayer());
-            this.scene.Add(this.CreateHexLayer());
-            this.scene.Add(this.CreateTileLayer());
-            this.scene.Add(this.CreateColorLayer());
-            this.scene.Add(this.CreateHexLayerTestDistance());
-            this.scene.Add(this.CreateSpriteLayer());
-            this.scene.Add(this.CreateDiagnosticLayer());
-            this.scene.Add(this.CreateMouseCursorLayer());
-            this.scene.Add(this.CreateMouseFollow());
+            var scene = new Scene("scene1");
+
+            scene.Add(this.CreateImageLayer());
+            scene.Add(this.CreateHexLayer());
+            scene.Add(this.CreateTileLayer());
+            scene.Add(this.CreateColorLayer());
+            scene.Add(this.CreateHexLayerTestDistance());
+            scene.Add(this.CreateSpriteLayer());
+            scene.Add(this.CreateDiagnosticLayer());
+            scene.Add(this.CreateMouseCursorLayer());
+            scene.Add(this.CreateMouseFollow());
 
             //this.scene.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
 
             //this.TestSceneSaveLoad();
             //this.TestSheetsSaveLoad();
+
+            return scene;
         }
 
         private void TestSceneSaveLoad()
         {
-            var scene2 = XmlRepository.LoadFrom(this.gameResourceManager,
+            var scene2 = XmlRepository.LoadFrom(this.ResourceManager,
                 @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
 
-            foreach (var layer in this.scene.Children.OfType<ILayer>())
+            foreach (var layer in this.Scene.Children.OfType<ILayer>())
             {
                 var otherLayer = scene2.Children.OfType<ILayer>().Single(x => x.Name == layer.Name);
 
@@ -164,30 +144,30 @@ namespace SamplesBrowser.Sandbox
         private void TestSheetsSaveLoad()
         {
             var otherHexSheet = SheetXmlRepository.LoadFrom<HexSheet>(
-                this.gameResourceManager, @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Color HexSheet.xml");
+                this.ResourceManager, @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Color HexSheet.xml");
 
-            var myHexSheetXml = SheetXmlRepository.ToXml(this.gameResourceManager.GetHexSheet(otherHexSheet.Name));
+            var myHexSheetXml = SheetXmlRepository.ToXml(this.ResourceManager.GetHexSheet(otherHexSheet.Name));
             var otherHexSheetXml = SheetXmlRepository.ToXml(otherHexSheet);
             if (myHexSheetXml.ToString() != otherHexSheetXml.ToString()) Debugger.Break();
 
             var otherTileSheet = SheetXmlRepository.LoadFrom<TileSheet>(
-                this.gameResourceManager, @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Color TileSheet.xml");
+                this.ResourceManager, @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Color TileSheet.xml");
 
-            var myTileSheetXml = SheetXmlRepository.ToXml(this.gameResourceManager.GetTileSheet(otherTileSheet.Name));
+            var myTileSheetXml = SheetXmlRepository.ToXml(this.ResourceManager.GetTileSheet(otherTileSheet.Name));
             var otherTileSheetXml = SheetXmlRepository.ToXml(otherTileSheet);
             if (myTileSheetXml.ToString() != otherTileSheetXml.ToString()) Debugger.Break();
 
             var otherSpriteSheet = SheetXmlRepository.LoadFrom<SpriteSheet>(
-                this.gameResourceManager, @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Link SpriteSheet.xml");
+                this.ResourceManager, @"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Link SpriteSheet.xml");
 
-            var mySpriteSheetXml = SheetXmlRepository.ToXml(this.gameResourceManager.GetSpriteSheet(otherSpriteSheet.Name));
+            var mySpriteSheetXml = SheetXmlRepository.ToXml(this.ResourceManager.GetSpriteSheet(otherSpriteSheet.Name));
             var otherSpriteSheetXml = SheetXmlRepository.ToXml(otherSpriteSheet);
             if (mySpriteSheetXml.ToString() != otherSpriteSheetXml.ToString()) Debugger.Break();
         }
 
         private ILayer CreateMouseCursorLayer()
         {
-            this.mouseLayer = MouseCursorLayer.Create(this.gameResourceManager);
+            this.mouseLayer = MouseCursorLayer.Create(this.ResourceManager);
 
             return this.mouseLayer;
         }
@@ -197,7 +177,7 @@ namespace SamplesBrowser.Sandbox
             var layer = new SpriteLayer("MouseFollow");
             layer.CameraMode = CameraMode.Fix;
 
-            var linkSheet = this.gameResourceManager.GetSpriteSheet("Link");
+            var linkSheet = this.ResourceManager.GetSpriteSheet("Link");
             this.linkMouseFollow = new Sprite(linkSheet, "Link01");
             this.linkMouseFollow.Origin = new Vector(8, 11);
 
@@ -208,9 +188,9 @@ namespace SamplesBrowser.Sandbox
 
         private DiagnosticLayer CreateDiagnosticLayer()
         {
-            var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
+            var font = this.ResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
 
-            this.diagnosticLayer = new DiagnosticLayer(this.gameResourceManager, font, new DiagnosticLayerConfiguration());
+            this.diagnosticLayer = new DiagnosticLayer(this.ResourceManager, font, new DiagnosticLayerConfiguration());
             this.diagnosticLayer.AddLine("Range", "Range: {0:f1}");
             this.diagnosticLayer.AddLine("Objects", "Objects: {0} (drawn: {1})");
 
@@ -219,7 +199,7 @@ namespace SamplesBrowser.Sandbox
 
         private ImageLayer CreateImageLayer()
         {
-            var texture = this.gameResourceManager.GetTexture(@"Sandbox\LinkSheet");
+            var texture = this.ResourceManager.GetTexture(@"Sandbox\LinkSheet");
 
             return new ImageLayer("Image", texture, new Rectangle(10, 10, 250, 250));
         }
@@ -233,7 +213,7 @@ namespace SamplesBrowser.Sandbox
 
         private HexLayer CreateHexLayer()
         {
-            var texture = this.gameResourceManager.GetTexture(@"Sandbox\HexSheet");
+            var texture = this.ResourceManager.GetTexture(@"Sandbox\HexSheet");
             var sheet = new HexSheet(texture, "Hexes", new Size(68, 60));
             var red = sheet.CreateHexDefinition("red", new Point(55, 30));
             var yellow = sheet.CreateHexDefinition("yellow", new Point(163, 330));
@@ -241,7 +221,7 @@ namespace SamplesBrowser.Sandbox
 
             //sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Color HexSheet.xml");
 
-            this.gameResourceManager.AddHexSheet(sheet);
+            this.ResourceManager.AddHexSheet(sheet);
 
             var hexLayer = new HexLayer("Hex", new Size(4, 4), new Size(68, 60), 42);
             hexLayer[2, 0] = purple;
@@ -258,7 +238,7 @@ namespace SamplesBrowser.Sandbox
 
         private TileLayer CreateTileLayer()
         {
-            var texture = this.gameResourceManager.GetTexture(@"Sandbox\TileSheet");
+            var texture = this.ResourceManager.GetTexture(@"Sandbox\TileSheet");
             var sheet = new TileSheet(texture, "Background", new Size(16, 16));
             var red = sheet.CreateTileDefinition("red", new Point(0, 0));
             var green = sheet.CreateTileDefinition("green", new Point(16, 0));
@@ -269,7 +249,7 @@ namespace SamplesBrowser.Sandbox
 
             //sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Color TileSheet.xml");
 
-            this.gameResourceManager.AddTileSheet(sheet);
+            this.ResourceManager.AddTileSheet(sheet);
 
             var tileLayer = new TileLayer("Tiles", new Size(32, 32), new Size(16, 16));
             tileLayer[0, 0] = purple;
@@ -285,7 +265,7 @@ namespace SamplesBrowser.Sandbox
 
         private SpriteLayer CreateSpriteLayer()
         {
-            var texture = this.gameResourceManager.GetTexture(@"Sandbox\LinkSheet");
+            var texture = this.ResourceManager.GetTexture(@"Sandbox\LinkSheet");
             var sheet = new SpriteSheet(texture, "Link");
             sheet.CreateSpriteDefinition("Link01", new Rectangle(3, 3, 16, 22));
             sheet.CreateSpriteDefinition("Sleep01", new Rectangle(45, 219, 32, 40));
@@ -295,7 +275,7 @@ namespace SamplesBrowser.Sandbox
             var link01 = new Sprite(sheet, "Link01") { Position = this.player };
             var sleep01 = new Sprite(sheet, "Sleep01") { Position = new Vector(125, 25) };
 
-            this.gameResourceManager.AddSpriteSheet(sheet);
+            this.ResourceManager.AddSpriteSheet(sheet);
 
             var spriteLayer = new SpriteLayer("Sprites");
             spriteLayer.AddSprite(link01);
@@ -308,8 +288,8 @@ namespace SamplesBrowser.Sandbox
 
         private DrawingLayer CreateHexLayerTestDistance()
         {
-            var layer = new DrawingLayer("Hex drawing test", this.gameResourceManager);
-            var font = this.gameResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
+            var layer = new DrawingLayer("Hex drawing test", this.ResourceManager);
+            var font = this.ResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
             var hexMap = HexGrid.CreateHexMap(30, 9);
             foreach (var hex in hexMap.Hexes)
             {
