@@ -19,11 +19,6 @@ namespace SamplesBrowser.ShootEmUp
             this.screenNavigation = screenNavigation;
         }
 
-        public override void Update(IGameTiming gameTime)
-        {
-            this.playerShipEntity.Update(gameTime);
-        }
-
         protected override Camera CreateCamera(Viewport viewport)
         {
             return new Camera(viewport) { Center = CameraCenter.WindowTopLeft };
@@ -56,6 +51,8 @@ namespace SamplesBrowser.ShootEmUp
 
             this.playerShipEntity = new PlayerShipEntity(this.entityLayer, spriteSheet);
             this.playerShipEntity.BindController(this.InputConfiguration);
+
+            scene.Add(this.playerShipEntity);
 
             var yellowSprite = new Sprite(spriteSheet, "YellowEnemy") { Position = new Vector(250, 100) };
             var redSprite = new Sprite(spriteSheet, "RedEnemy") { Position = new Vector(300, 100) };

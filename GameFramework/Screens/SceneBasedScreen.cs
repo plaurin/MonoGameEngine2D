@@ -42,6 +42,8 @@ namespace GameFramework.Screens
         void IScreen.Update(InputContext inputContext, IGameTiming gameTime)
         {
             this.InputConfiguration.Update(inputContext, gameTime);
+            this.Scene.Update(gameTime);
+
             this.Update(gameTime);
         }
 

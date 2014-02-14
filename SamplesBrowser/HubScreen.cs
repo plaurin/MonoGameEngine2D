@@ -139,11 +139,14 @@ namespace SamplesBrowser
             {
                 this.touchState = ts;
 
-                var hit = this.touchState.Touches
-                    .SelectMany(t => this.Scene.GetHits(t.Position, this.Camera))
-                    .OfType<RectangleHit>().FirstOrDefault();
+                if (this.touchState.Touches.Any())
+                {
+                    var hit = this.touchState.Touches
+                        .SelectMany(t => this.Scene.GetHits(t.Position, this.Camera))
+                        .OfType<RectangleHit>().FirstOrDefault();
 
-                this.hoveringSample = hitToSampleFunc(hit);
+                    this.hoveringSample = hitToSampleFunc(hit);
+                }
             });
 
             inputConfiguration.AddEvent("TouchSelection").Assign(TouchGestureType.Tap).MapTo(gt =>
