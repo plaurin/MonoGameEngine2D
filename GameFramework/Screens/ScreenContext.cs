@@ -4,11 +4,12 @@ using GameFramework.Inputs;
 
 namespace GameFramework.Screens
 {
-    // TODO: Should remove this... Tell don't ask
-    public class ScreenContext
+    public class ScreenContext : ScreenBase
     {
         private readonly ScreenBase screen;
         private readonly IEnumerable<TouchGestureType> touchGestures;
+
+        private bool isEnabledGesturesUpdated;
 
         public ScreenContext(ScreenBase screen)
         {
@@ -17,38 +18,44 @@ namespace GameFramework.Screens
             var touchEnabled = this.screen as ITouchEnabled;
             if (touchEnabled != null)
             {
-                this.IsEnabledGesturesUpdated = true;
+                this.isEnabledGesturesUpdated = true;
                 this.touchGestures = touchEnabled.TouchGestures;
             }
         }
 
-        public bool IsInitialized { get; set; }
+        public bool IsInitialized { get; private set; }
 
-        public bool IsContentLoaded { get; set; }
+        public bool IsContentLoaded { get; private set; }
 
-        public bool IsEnabledGesturesUpdated { get; set; }
-
-        public IEnumerable<TouchGestureType> EnabledGestures
+        public override bool ShouldExit
         {
-            get { return this.touchGestures; }
+            get { return this.screen.ShouldExit; }
         }
 
-        public void Initialize(Viewport viewport)
+        public override void Initialize(Viewport viewport)
         {
             this.screen.Initialize(viewport);
+            this.IsInitialized = true;
         }
 
-        public void LoadContent(GameResourceManager theResourceManager)
+        public override void LoadContent(GameResourceManager theResourceManager)
         {
             this.screen.LoadContent(theResourceManager);
+            this.IsContentLoaded = true;
         }
 
-        public void Update(InputContext inputContext, IGameTiming gameTime)
+        public override void Update(InputContext inputContext, IGameTiming gameTime)
         {
+            if (this.isEnabledGesturesUpdated)
+            {
+                inputContext.UpdateEnabledGestures(this.touchGestures);
+                this.isEnabledGesturesUpdated = false;
+            }
+
             this.screen.Update(inputContext, gameTime);
         }
 
-        public int Draw(DrawContext drawContext)
+        public override int Draw(DrawContext drawContext)
         {
             return this.screen.Draw(drawContext);
         }

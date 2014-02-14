@@ -5,15 +5,15 @@ using GameFramework.Inputs;
 
 namespace GameFramework.Screens
 {
-    public class ScreenNavigation
+    public class ScreenNavigation : ScreenBase
     {
         private readonly IDictionary<Type, ScreenContext> screens;
-
         private readonly Stack<ScreenContext> navigationStack;
 
         private GameResourceManager gameResourceManager;
-
         private ScreenContext current;
+        private Type initialScreen;
+        private bool shouldExit;
 
         public ScreenNavigation()
         {
@@ -21,38 +21,35 @@ namespace GameFramework.Screens
             this.navigationStack = new Stack<ScreenContext>();
         }
 
-        public Type InitialScreen { get; private set; }
-
-        public bool ShouldExit { get; private set; }
-
-        public bool IsEnabledGesturesUpdated
+        public override bool ShouldExit
         {
-            get { return this.current.IsEnabledGesturesUpdated; }
-            set { this.current.IsEnabledGesturesUpdated = value; }
+            get { return this.shouldExit || (this.current != null && this.current.ShouldExit); }
         }
 
-        public IEnumerable<TouchGestureType> EnabledGestures
-        {
-            get { return this.current.EnabledGestures; }
-        }
-
-        public void Initialize(Viewport viewPort)
+        public override void Initialize(Viewport viewPort)
         {
             foreach (var screenContext in this.screens.Values.Where(screenContext => !screenContext.IsInitialized))
             {
-                Initialize(screenContext, viewPort);
+                screenContext.Initialize(viewPort);
             }
         }
 
-        public void LoadContent(GameResourceManager theGameResourceManager)
+        public override void LoadContent(GameResourceManager theGameResourceManager)
         {
             this.gameResourceManager = theGameResourceManager;
+            this.NavigateTo(this.initialScreen);
         }
 
-        public void Update()
+        public override void Update(InputContext inputContext, IGameTiming gameTime)
         {
-            if (this.navigationStack != null && this.current != this.navigationStack.Peek())
-                this.current = this.navigationStack.Peek();
+            this.CompletePendingTransition();
+
+            this.current.Update(inputContext, gameTime);
+        }
+
+        public override int Draw(DrawContext drawContext)
+        {
+            return this.current.Draw(drawContext);
         }
 
         public void NavigateTo<T>() where T : ScreenBase
@@ -66,7 +63,7 @@ namespace GameFramework.Screens
 
             if (!screenToNavigate.IsContentLoaded)
             {
-                this.LoadContent(screenToNavigate);
+                screenToNavigate.LoadContent(this.gameResourceManager);
             }
 
             this.navigationStack.Push(screenToNavigate);
@@ -79,17 +76,7 @@ namespace GameFramework.Screens
 
         public void Exit()
         {
-            this.ShouldExit = true;
-        }
-
-        public void Update(InputContext inputContext, IGameTiming gameTime)
-        {
-            this.current.Update(inputContext, gameTime);
-        }
-
-        public int Draw(DrawContext drawContext)
-        {
-            return this.current.Draw(drawContext);
+            this.shouldExit = true;
         }
 
         protected void AddScreen(params ScreenBase[] screensToAdd)
@@ -102,26 +89,18 @@ namespace GameFramework.Screens
 
         protected void SetInitialScreen<TScreen>() where TScreen : ScreenBase
         {
-            this.InitialScreen = typeof(TScreen);
+            this.initialScreen = typeof(TScreen);
         }
 
         protected void SetInitialScreen(ScreenBase screen)
         {
-            this.InitialScreen = screen.GetType();
+            this.initialScreen = screen.GetType();
         }
 
-        private static void Initialize(ScreenContext screenContext, Viewport viewPort)
+        private void CompletePendingTransition()
         {
-            screenContext.Initialize(viewPort);
-
-            screenContext.IsInitialized = true;
-        }
-
-        private void LoadContent(ScreenContext screenContext)
-        {
-            screenContext.LoadContent(this.gameResourceManager);
-
-            screenContext.IsContentLoaded = true;
+            if (this.navigationStack != null && this.current != this.navigationStack.Peek())
+                this.current = this.navigationStack.Peek();
         }
     }
 }

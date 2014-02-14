@@ -5,7 +5,6 @@ using GameFramework.Screens;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input.Touch;
 using MonoGameImplementation.EngineImplementation;
 using Color = Microsoft.Xna.Framework.Color;
 
@@ -18,31 +17,22 @@ namespace MonoGameImplementation
     {
         private readonly GraphicsDeviceManager graphics;
 
-        private readonly Type initialScreen;
-
         private readonly GameFramework.GameTimer gameTimer;
 
-        private readonly ScreenNavigation screenNavigation;
+        private readonly ScreenBase screen;
 
         private SpriteBatch spriteBatch;
 
         private GameResourceManager gameResourceManager;
 
-        protected MonoGameBase(ScreenBase initialScreen)
-            : this(new SingleScreenNavigation(initialScreen))
+        protected MonoGameBase(ScreenBase screen)
         {
-        }
+            this.screen = screen;
 
-        protected MonoGameBase(ScreenNavigation screenNavigation)
-        {
             this.graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
 
             this.gameTimer = new GameFramework.GameTimer();
-
-            this.screenNavigation = screenNavigation;
-
-            this.initialScreen = screenNavigation.InitialScreen;
         }
 
         /// <summary>
@@ -54,7 +44,7 @@ namespace MonoGameImplementation
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            this.screenNavigation.Initialize(this.GetViewPort());
+            this.screen.Initialize(this.GetViewPort());
 
             base.Initialize();
         }
@@ -70,8 +60,7 @@ namespace MonoGameImplementation
             this.gameResourceManager = new XnaGameResourceManager(this.Content);
 
             // TODO: use this.Content to load your game content here
-            this.screenNavigation.LoadContent(this.gameResourceManager);
-            this.screenNavigation.NavigateTo(this.initialScreen);
+            this.screen.LoadContent(this.gameResourceManager);
         }
 
         /// <summary>
@@ -93,20 +82,9 @@ namespace MonoGameImplementation
             this.gameTimer.Update(gameTime.ElapsedGameTime, gameTime.TotalGameTime);
 
             // Allows the game to exit
-            if (this.screenNavigation.ShouldExit) this.Exit();
+            if (this.screen.ShouldExit) this.Exit();
 
-            this.screenNavigation.Update();
-
-            // TODO: Review this if we decide to implement Gestures ourself
-            if (this.screenNavigation.IsEnabledGesturesUpdated)
-            {
-                TouchPanel.EnabledGestures = 
-                    XnaInputContext.GetGestures(this.screenNavigation.EnabledGestures);
-
-                this.screenNavigation.IsEnabledGesturesUpdated = false;
-            }
-
-            this.screenNavigation.Update(new XnaInputContext(), this.gameTimer);
+            this.screen.Update(new XnaInputContext(), this.gameTimer);
 
             base.Update(gameTime);
         }
@@ -130,7 +108,7 @@ namespace MonoGameImplementation
             var xnaDrawContext = new XnaDrawContext(this.spriteBatch, blank, this.graphics.GraphicsDevice.Viewport);
             var drawContext = new DrawContext(xnaDrawContext);
 
-            this.screenNavigation.Draw(drawContext);
+            this.screen.Draw(drawContext);
 
             this.spriteBatch.End();
 
@@ -142,15 +120,6 @@ namespace MonoGameImplementation
             return new GameFramework.Viewport(
                 this.graphics.GraphicsDevice.Viewport.Width,
                 this.graphics.GraphicsDevice.Viewport.Height);
-        }
-
-        private class SingleScreenNavigation : ScreenNavigation
-        {
-            public SingleScreenNavigation(ScreenBase screen)
-            {
-                this.AddScreen(screen);
-                this.SetInitialScreen(screen);
-            }
         }
     }
 }

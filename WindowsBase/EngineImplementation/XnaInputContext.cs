@@ -5,7 +5,6 @@ using GameFramework;
 using GameFramework.Inputs;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
-using Point = GameFramework.Point;
 
 namespace MonoGameImplementation.EngineImplementation
 {
@@ -30,7 +29,12 @@ namespace MonoGameImplementation.EngineImplementation
                 gestureSample);
         }
 
-        public static GestureType GetGestures(IEnumerable<TouchGestureType> touchGestures)
+        public override void UpdateEnabledGestures(IEnumerable<TouchGestureType> enabledGestures)
+        {
+            TouchPanel.EnabledGestures = XnaInputContext.GetGestures(enabledGestures);
+        }
+
+        private static GestureType GetGestures(IEnumerable<TouchGestureType> touchGestures)
         {
             var result = GestureType.None;
             foreach (var touchGesture in touchGestures)

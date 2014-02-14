@@ -100,6 +100,7 @@ namespace SamplesBrowser
             // Keyboard
             this.inputConfiguration.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
                 .MapClickTo(gt => this.screenNavigation.Exit());
+                //.MapClickTo(gt => this.ShouldExit = true);
 
             this.inputConfiguration.AddDigitalButton("GotoSandbox").Assign(KeyboardKeys.D1)
                 .MapClickTo(gt => this.LaunchSandboxSample());

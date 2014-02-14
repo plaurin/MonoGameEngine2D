@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace GameFramework.Inputs
 {
@@ -11,5 +12,7 @@ namespace GameFramework.Inputs
         public abstract MouseStateBase MouseGetState();
 
         public abstract TouchStateBase TouchGetState();
+
+        public abstract void UpdateEnabledGestures(IEnumerable<TouchGestureType> touchGestures);
     }
 }

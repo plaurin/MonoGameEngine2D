@@ -5,6 +5,8 @@ namespace GameFramework.Screens
 {
     public abstract class ScreenBase
     {
+        public virtual bool ShouldExit { get; protected set; }
+
         public abstract void Initialize(Viewport viewport);
 
         public abstract void LoadContent(GameResourceManager theResourceManager);
