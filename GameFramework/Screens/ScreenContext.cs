@@ -4,7 +4,7 @@ using GameFramework.Inputs;
 
 namespace GameFramework.Screens
 {
-    public class ScreenContext : IScreen, IComposite
+    public class ScreenContext : IScreen, IComposite, INavigatorMetadataProvider
     {
         private readonly IScreen screen;
         private readonly IEnumerable<TouchGestureType> touchGestures;
@@ -65,9 +65,9 @@ namespace GameFramework.Screens
             get { return new[] { this.screen }; }
         }
 
-        public override string ToString()
+        public NavigatorMetadata GetMetadata()
         {
-            return string.Format("Context for {0}", this.screen.GetType().Name);
+            return new NavigatorMetadata("State for " + this.screen.GetType().Name, NodeKind.ScreenState);
         }
     }
 }

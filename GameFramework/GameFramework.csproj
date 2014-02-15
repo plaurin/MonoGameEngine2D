@@ -65,6 +65,7 @@
     <Compile Include="IComposite.cs" />
     <Compile Include="IDrawable.cs" />
     <Compile Include="IHitTarget.cs" />
+    <Compile Include="INavigatorMetadataProvider.cs" />
     <Compile Include="Inputs\DigitalButton.cs" />
     <Compile Include="Inputs\InputConfiguration.cs" />
     <Compile Include="Inputs\InputContext.cs" />

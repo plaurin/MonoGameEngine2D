@@ -22,20 +22,26 @@
             </ToolBar>
         </ToolBarTray>
         <StatusBar DockPanel.Dock="Bottom">
-            <StatusBarItem>
-                <Label Content="{Binding Status}"/>
-            </StatusBarItem>
+            <StatusBarItem Content="{Binding Status}" />
             <Separator></Separator>
-            <StatusBarItem>
-                <Label Content="{Binding TotalNodes}"/>
-            </StatusBarItem>
+            <StatusBarItem Content="{Binding TotalNodes}" />
             <StatusBarItem HorizontalAlignment="Right">
-                <Label Content="{Binding GameTime}"/>
+                <StackPanel Orientation="Horizontal">
+                    <StatusBarItem Content="{Binding UpdateFps}" />
+                    <StatusBarItem Content="{Binding DrawFps}" />
+                    <StatusBarItem Content="{Binding FrameCount}" />
+                    <StatusBarItem Content="{Binding GameTime}" />
+                </StackPanel>
             </StatusBarItem>
         </StatusBar>
-        <TreeView ItemsSource="{Binding Path=Nodes}" >
+        <TreeView ItemsSource="{Binding Path=Nodes}">
             <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource="{Binding Path=Nodes}">
+                <HierarchicalDataTemplate ItemsSource="{Binding Path=Nodes}" >
+                    <HierarchicalDataTemplate.ItemContainerStyle>
+                        <Style TargetType="{x:Type TreeViewItem}">
+                            <Setter Property="IsSelected" Value="{Binding IsSelected}" />
+                        </Style>
+                    </HierarchicalDataTemplate.ItemContainerStyle>
                     <TextBlock Text="{Binding Path=Label}"></TextBlock>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>

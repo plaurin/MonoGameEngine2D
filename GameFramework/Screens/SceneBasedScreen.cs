@@ -5,7 +5,7 @@ using GameFramework.Scenes;
 
 namespace GameFramework.Screens
 {
-    public abstract class SceneBasedScreen : IScreen, IComposite, IUpdatable, IDrawable
+    public abstract class SceneBasedScreen : IScreen, IComposite, IUpdatable, IDrawable, INavigatorMetadataProvider
     {
         private bool shouldExit;
 
@@ -62,6 +62,11 @@ namespace GameFramework.Screens
         public virtual int Draw(IDrawContext drawContext)
         {
             return 0;
+        }
+
+        public NavigatorMetadata GetMetadata()
+        {
+            return new NavigatorMetadata(this.GetType().Name, NodeKind.Screen);
         }
 
         protected void Exit()

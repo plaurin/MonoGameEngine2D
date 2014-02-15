@@ -7,7 +7,7 @@ using GameFramework.Layers;
 
 namespace GameFramework.Scenes
 {
-    public class Scene : IComposite, IUpdatable, IDrawable
+    public class Scene : IComposite, IUpdatable, IDrawable, INavigatorMetadataProvider
     {
         private readonly List<object> sceneObjects;
 
@@ -56,6 +56,11 @@ namespace GameFramework.Scenes
         {
             return this.sceneObjects.OfType<IDrawable>()
                 .Sum(drawable => drawable.Draw(drawContext));
+        }
+
+        public NavigatorMetadata GetMetadata()
+        {
+            return new NavigatorMetadata(this.Name, NodeKind.Scene);
         }
     }
 }

@@ -47,6 +47,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ViewModelBase.cs" />
     <Page Include="Navigator.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

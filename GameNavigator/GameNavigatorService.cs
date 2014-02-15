@@ -43,6 +43,7 @@ namespace GameNavigator
                 this.window.Dispatcher.Invoke(() =>
                 {
                     result = this.navigatorViewModel.Update(gameTiming);
+                    this.window.Title = "Navigator" + (result.ShouldPlay ? string.Empty : " - Pause");
                 });
 
                 return result;

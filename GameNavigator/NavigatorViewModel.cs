@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using GameFramework;
 using GameFramework.Screens;
 
 namespace GameNavigator
 {
-    public class NavigatorViewModel : INotifyPropertyChanged
+    public class NavigatorViewModel : ViewModelBase
     {
         private readonly IScreen screen;
         private readonly List<NavigatorNode> nodes;
@@ -17,12 +16,16 @@ namespace GameNavigator
         private readonly ICommand oneFrameCommand;
         private readonly ICommand exitCommand;
 
-        private string gameTime;
-        private string status;
-
         private bool shouldPause;
         private bool shouldPlayOneFrame;
         private bool shouldExit;
+
+        private string gameTime;
+        private string status;
+        private string updateFps;
+        private string drawFps;
+        private string frameCount;
+        private int frameCounter;
 
         public NavigatorViewModel()
         {
@@ -42,8 +45,6 @@ namespace GameNavigator
 
             this.RefreshTree();
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public ICommand RefreshCommand
         {
@@ -70,6 +71,8 @@ namespace GameNavigator
             get { return this.nodes; }
         }
 
+        public NavigatorNode CurrentSelection { get; set; }
+
         public string Status
         {
             get
@@ -92,6 +95,57 @@ namespace GameNavigator
             get { return this.nodes.Count; }
         }
 
+        public string UpdateFps
+        {
+            get
+            {
+                return this.updateFps;
+            }
+
+            private set
+            {
+                if (this.updateFps != value)
+                {
+                    this.updateFps = value;
+                    this.OnPropertyChanged();
+                }
+            }
+        }
+
+        public string DrawFps
+        {
+            get
+            {
+                return this.drawFps;
+            }
+
+            private set
+            {
+                if (this.drawFps != value)
+                {
+                    this.drawFps = value;
+                    this.OnPropertyChanged();
+                }
+            }
+        }
+
+        public string FrameCount
+        {
+            get
+            {
+                return this.frameCount;
+            }
+
+            private set
+            {
+                if (this.frameCount != value)
+                {
+                    this.frameCount = value;
+                    this.OnPropertyChanged();
+                }
+            }
+        }
+
         public string GameTime
         {
             get
@@ -111,6 +165,11 @@ namespace GameNavigator
 
         public NavigatorMessage Update(IGameTiming gameTiming)
         {
+            this.frameCounter++;
+
+            this.UpdateFps = "Updt:" + gameTiming.UpdateFps;
+            this.DrawFps = "Draw:" + gameTiming.DrawFps;
+            this.FrameCount = "#" + this.frameCounter;
             this.GameTime = gameTiming.TotalSeconds.ToString("f2");
 
             var result = new NavigatorMessage
@@ -122,12 +181,6 @@ namespace GameNavigator
             this.shouldPlayOneFrame = false;
 
             return result;
-        }
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            var handler = this.PropertyChanged;
-            if (handler != null) handler.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void RefreshTree()
@@ -155,16 +208,51 @@ namespace GameNavigator
                             Console.WriteLine(ex);
                         }
 
-                        if (childNodes != null)
-                        {
-                            yield return new NavigatorNode
-                            {
-                                Label = child.ToString(),
-                                Nodes = childNodes
-                            };
-                        }
+                        //if (childNodes != null)
+                        //{
+                        //    yield return this.CreateNavigatorNode(child, childNodes);
+                        yield return this.CreateNavigatorNode(child, childNodes);
+                        //}
                     }
                 }
+            }
+        }
+
+        private NavigatorNode CreateNavigatorNode(object child, IEnumerable<NavigatorNode> childNodes)
+        {
+            NavigatorNode node;
+
+            var metadataProvider = child as INavigatorMetadataProvider;
+            if (metadataProvider != null)
+            {
+                var metadata = metadataProvider.GetMetadata();
+                node = new NavigatorNode
+                {
+                    Label = metadata.Name,
+                    Nodes = childNodes
+                };
+            }
+            else
+            {
+                node = new NavigatorNode
+                {
+                    Label = child.ToString(),
+                    Nodes = childNodes
+                };
+            }
+
+            node.PropertyChanged += this.NodePropertyChanged;
+
+            return node;
+        }
+
+        private void NodePropertyChanged(object sender, PropertyChangedEventArgs eventArgs)
+        {
+            if (eventArgs.PropertyName == "IsSelected")
+            {
+                var node = sender as NavigatorNode;
+                if (node != null)
+                    this.CurrentSelection = node;
             }
         }
     }
