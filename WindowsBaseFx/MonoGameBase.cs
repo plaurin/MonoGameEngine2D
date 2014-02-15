@@ -1,5 +1,4 @@
 using System;
-
 using GameFramework;
 using GameFramework.Screens;
 
@@ -25,6 +24,10 @@ namespace MonoGameImplementation
 
         private GameResourceManager gameResourceManager;
 
+#if WINDOWS
+        private GameNavigatorGateway gameNavigator;
+#endif
+
         protected MonoGameBase(IScreen screen)
         {
             this.screen = screen;
@@ -33,6 +36,10 @@ namespace MonoGameImplementation
             this.Content.RootDirectory = "Content";
 
             this.gameTimer = new GameFramework.GameTimer();
+
+#if WINDOWS
+            this.gameNavigator = new GameNavigatorGateway();
+#endif
         }
 
         /// <summary>
@@ -45,6 +52,10 @@ namespace MonoGameImplementation
         {
             // TODO: Add your initialization logic here
             this.screen.Initialize(this.GetViewPort());
+
+#if WINDOWS
+            this.gameNavigator.Launch(this.screen);
+#endif
 
             base.Initialize();
         }
@@ -85,6 +96,10 @@ namespace MonoGameImplementation
             if (this.screen.ShouldExit) this.Exit();
 
             this.screen.Update(new XnaInputContext(), this.gameTimer);
+
+#if WINDOWS
+            this.gameNavigator.Update(this.gameTimer);
+#endif
 
             base.Update(gameTime);
         }

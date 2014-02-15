@@ -5,7 +5,7 @@ using GameFramework.Inputs;
 
 namespace GameFramework.Screens
 {
-    public class ScreenNavigation : IScreen
+    public class ScreenNavigation : IScreen, IComposite
     {
         private readonly IDictionary<Type, ScreenContext> screens;
         private readonly Stack<ScreenContext> navigationStack;
@@ -19,6 +19,11 @@ namespace GameFramework.Screens
         {
             this.screens = new Dictionary<Type, ScreenContext>();
             this.navigationStack = new Stack<ScreenContext>();
+        }
+
+        public IEnumerable<object> Children
+        {
+            get { return this.screens.Values; }
         }
 
         public bool ShouldExit

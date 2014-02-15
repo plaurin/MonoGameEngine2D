@@ -43,6 +43,7 @@
     <Compile Include="EngineImplementation\XnaGameResourceManager.cs" />
     <Compile Include="EngineImplementation\XnaInputContext.cs" />
     <Compile Include="EngineImplementation\XnaTexture.cs" />
+    <Compile Include="GameNavigatorGateway.cs" />
     <Compile Include="MonoGameBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -76,6 +77,10 @@
     <ProjectReference Include="..\GameFramework\GameFramework.csproj">
       <Project>{E30E5EEE-AAF6-4455-8BC5-40E158EACBC1}</Project>
       <Name>GameFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GameNavigator\GameNavigator.csproj">
+      <Project>{05dc4f3d-5ebf-4e4d-8671-cde1d1cd7680}</Project>
+      <Name>GameNavigator</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
