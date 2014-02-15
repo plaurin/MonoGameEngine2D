@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using GameFramework;
@@ -11,6 +12,11 @@ namespace GameNavigator
         private Window window;
         private NavigatorViewModel navigatorViewModel;
 
+        public bool IsNavigatorOpen
+        {
+            get { return this.window == null || this.window.IsVisible; }
+        }
+
         public void Launch(IScreen gameScreen)
         {
             // Create a thread
@@ -20,6 +26,7 @@ namespace GameNavigator
 
                 var navigator = new Navigator { DataContext = navigatorViewModel };
                 this.window = new Window { Content = navigator, Width = 300, Left = 0 };
+                this.window.Closing += (sender, args) => { args.Cancel = true; this.window.Hide(); };
                 this.window.Show();
 
                 // Start the Dispatcher Processing
@@ -32,6 +39,14 @@ namespace GameNavigator
             newWindowThread.IsBackground = true;
             // Start the thread
             newWindowThread.Start();
+        }
+
+        public void Show()
+        {
+            if (this.window != null)
+            {
+                this.window.Dispatcher.Invoke(() => this.window.Show());
+            }
         }
 
         public NavigatorMessage Update(IGameTiming gameTiming)

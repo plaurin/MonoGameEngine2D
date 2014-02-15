@@ -13,6 +13,11 @@ namespace MonoGameImplementation
             this.service = new GameNavigatorService();
         }
 
+        public bool IsOpen
+        {
+            get { return this.service.IsNavigatorOpen; }
+        }
+
         public void Launch(IScreen screen)
         {
             this.service.Launch(screen);
@@ -21,6 +26,11 @@ namespace MonoGameImplementation
         public NavigatorMessage Update(IGameTiming gameTiming)
         {
             return this.service.Update(gameTiming);
+        }
+
+        public void Show()
+        {
+            this.service.Show();
         }
     }
 }

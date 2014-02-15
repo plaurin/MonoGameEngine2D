@@ -1,5 +1,6 @@
 using System;
 using GameFramework;
+using GameFramework.Inputs;
 using GameFramework.Screens;
 
 using Microsoft.Xna.Framework;
@@ -92,16 +93,21 @@ namespace MonoGameImplementation
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            var inputContext = new XnaInputContext();
+
             if (this.isUpdateEnabled)
             {
                 this.gameTimer.Update(gameTime.ElapsedGameTime, gameTime.TotalGameTime);
-                this.screen.Update(new XnaInputContext(), this.gameTimer);
+                this.screen.Update(inputContext, this.gameTimer);
             }
 
             // Allows the game to exit
             if (this.screen.ShouldExit) this.Exit();
 
 #if WINDOWS
+            if (!this.gameNavigator.IsOpen && inputContext.KeyboardGetState().IsKeyDown(KeyboardKeys.F12))
+                this.gameNavigator.Show();
+
             var navigatorMessage = this.gameNavigator.Update(this.gameTimer);
             if (navigatorMessage.ShouldExit) this.Exit();
             this.isUpdateEnabled = navigatorMessage.ShouldPlay;
