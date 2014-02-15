@@ -27,7 +27,7 @@ namespace SamplesBrowser.Sandbox
 
         private MouseStateBase mouseState;
 
-        private DiagnosticLayer diagnosticLayer;
+        private DiagnosticHud diagnosticHud;
 
         private List<HitBase> hits;
 
@@ -47,12 +47,6 @@ namespace SamplesBrowser.Sandbox
             var colorLayer = this.Scene.Children.OfType<ColorLayer>().FirstOrDefault();
             if (colorLayer != null)
                 colorLayer.Color = new Color(255, 0, 0, (int)(255 * Math.Min(this.range, 1.0f)));
-
-            this.diagnosticLayer.Update(gameTime, this.Camera);
-            this.diagnosticLayer.Update(this.mouseState);
-            this.diagnosticLayer.Update(this.hits);
-            this.diagnosticLayer.UpdateLine("Range", this.range);
-            this.diagnosticLayer.UpdateLine("Objects", this.layer.TotalElements, this.layer.DrawnElementsLastFrame);
         }
 
         protected override Camera CreateCamera(Viewport viewport)
@@ -66,6 +60,8 @@ namespace SamplesBrowser.Sandbox
 
             inputConfiguration.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
                 .MapClickTo(gt => this.screenNavigation.NavigateBack());
+
+            inputConfiguration.AddDigitalButton("DiagToggle").Assign(KeyboardKeys.F1).MapClickTo(gt => this.diagnosticHud.ViewStateToggle());
 
             inputConfiguration.AddDigitalButton("Left").Assign(KeyboardKeys.Left).MapTo(gt => this.Camera.Move(-60 * gt.ElapsedSeconds, 0));
             inputConfiguration.AddDigitalButton("Right").Assign(KeyboardKeys.Right).MapTo(gt => this.Camera.Move(60 * gt.ElapsedSeconds, 0));
@@ -182,15 +178,21 @@ namespace SamplesBrowser.Sandbox
             return layer;
         }
 
-        private DiagnosticLayer CreateDiagnosticLayer()
+        private DiagnosticHud CreateDiagnosticLayer()
         {
             var font = this.ResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
 
-            this.diagnosticLayer = new DiagnosticLayer(this.ResourceManager, font, new DiagnosticLayerConfiguration());
-            this.diagnosticLayer.AddLine("Range", "Range: {0:f1}");
-            this.diagnosticLayer.AddLine("Objects", "Objects: {0} (drawn: {1})");
+            var config = new DiagnosticHudConfiguration();
+            config.EnableCameraTracking(this.Camera);
+            config.EnableMouseTracking(this.InputConfiguration.AddMouseTracking(this.Camera));
+            config.EnableHitTracking(() => this.hits);
+            config.AddLine("Range: {0:f1}", () => this.range);
+            config.AddLine("Objects: {0} (drawn: {1})",
+                () => this.layer.TotalElements, () => this.layer.DrawnElementsLastFrame);
 
-            return this.diagnosticLayer;
+            this.diagnosticHud = new DiagnosticHud(font, config);
+
+            return this.diagnosticHud;
         }
 
         private ImageLayer CreateImageLayer()

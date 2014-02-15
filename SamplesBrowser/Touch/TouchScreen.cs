@@ -13,8 +13,8 @@ namespace SamplesBrowser.Touch
     public class TouchScreen : SceneBasedScreen, ITouchEnabled
     {
         private readonly ScreenNavigation screenNavigation;
-        private DiagnosticLayer diagnosticLayer;
-        private TouchStateBase touchState;
+        private DiagnosticHud diagnosticHud;
+        //private TouchStateBase touchState;
 
         private int tapCount;
         private int holdCount;
@@ -52,19 +52,6 @@ namespace SamplesBrowser.Touch
 
         public override void Update(IGameTiming gameTime)
         {
-            this.diagnosticLayer.Update(gameTime, this.Camera);
-            this.diagnosticLayer.Update(this.touchState);
-            this.diagnosticLayer.UpdateLine("DoubleTap", this.doubleTapCount);
-            this.diagnosticLayer.UpdateLine("DragC", this.dragCompleteCount);
-            this.diagnosticLayer.UpdateLine("Flick", this.flickCount);
-            this.diagnosticLayer.UpdateLine("FreeD", this.freeDragCount);
-            this.diagnosticLayer.UpdateLine("Hold", this.holdCount);
-            this.diagnosticLayer.UpdateLine("HDrag", this.horizontalDragCount);
-            this.diagnosticLayer.UpdateLine("PinchC", this.pinchCompleteCount);
-            this.diagnosticLayer.UpdateLine("Pinch", this.pinchCount);
-            this.diagnosticLayer.UpdateLine("Tap", this.tapCount);
-            this.diagnosticLayer.UpdateLine("VDrag", this.verticalDragCount);
-
             this.visualBackButtonElement.Color = this.isHoveringBackButton ? Color.Red : Color.Blue;
             this.isHoveringBackButton = false;
         }
@@ -81,7 +68,7 @@ namespace SamplesBrowser.Touch
             inputConfiguration.AddDigitalButton("Back").Assign(KeyboardKeys.Escape)
                 .MapClickTo(gt => this.screenNavigation.NavigateBack());
 
-            inputConfiguration.AddTouchTracking(this.Camera).OnTouch((ts, gt) => this.touchState = ts);
+            //inputConfiguration.AddTouchTracking(this.Camera).OnTouch((ts, gt) => this.touchState = ts);
 
             inputConfiguration.AddEvent("Tap").Assign(TouchGestureType.Tap).MapTo(gt => this.tapCount++);
             inputConfiguration.AddEvent("Hold").Assign(TouchGestureType.Hold).MapTo(gt => this.holdCount++);
@@ -130,27 +117,27 @@ namespace SamplesBrowser.Touch
             return drawingMap;
         }
 
-        private DiagnosticLayer CreateDiagnosticLayer()
+        private DiagnosticHud CreateDiagnosticLayer()
         {
             var font = this.ResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
 
-            var configuration = DiagnosticLayerConfiguration.CreateWithFpsOnly(DiagnosticDisplayLocation.Left);
-            configuration.DisplayTouchState = true;
+            var configuration = new DiagnosticHudConfiguration(DiagnosticDisplayLocation.Left);
+            configuration.EnableTouchTracking(this.InputConfiguration.AddTouchTracking(this.Camera));
 
-            this.diagnosticLayer = new DiagnosticLayer(this.ResourceManager, font, configuration);
+            configuration.AddLine("DoubleTap: {0}", () => this.doubleTapCount);
+            configuration.AddLine("DragComplete: {0}", () => this.dragCompleteCount);
+            configuration.AddLine("Flick: {0}", () => this.flickCount);
+            configuration.AddLine("FreeDrag: {0}", () => this.freeDragCount);
+            configuration.AddLine("Hold: {0}", () => this.holdCount);
+            configuration.AddLine("HorizontalDrag: {0}", () => this.horizontalDragCount);
+            configuration.AddLine("PinchCompleted: {0}", () => this.pinchCompleteCount);
+            configuration.AddLine("Pinch: {0}", () => this.pinchCount);
+            configuration.AddLine("Tap: {0}", () => this.tapCount);
+            configuration.AddLine("VerticalDrag: {0}", () => this.verticalDragCount);
 
-            this.diagnosticLayer.AddLine("DoubleTap", "DoubleTap: {0}");
-            this.diagnosticLayer.AddLine("DragC", "DragComplete: {0}");
-            this.diagnosticLayer.AddLine("Flick", "Flick: {0}");
-            this.diagnosticLayer.AddLine("FreeD", "FreeDrag: {0}");
-            this.diagnosticLayer.AddLine("Hold", "Hold: {0}");
-            this.diagnosticLayer.AddLine("HDrag", "HorizontalDrag: {0}");
-            this.diagnosticLayer.AddLine("PinchC", "PinchCompleted: {0}");
-            this.diagnosticLayer.AddLine("Pinch", "Pinch: {0}");
-            this.diagnosticLayer.AddLine("Tap", "Tap: {0}");
-            this.diagnosticLayer.AddLine("VDrag", "VerticalDrag: {0}");
+            this.diagnosticHud = new DiagnosticHud(font, configuration);
 
-            return this.diagnosticLayer;
+            return this.diagnosticHud;
         }
     }
 }

@@ -85,10 +85,11 @@
     <Compile Include="Screens\IScreen.cs" />
     <Compile Include="Screens\SceneBasedScreen.cs" />
     <Compile Include="Sprites\SpriteBase.cs" />
-    <Compile Include="Utilities\DiagnosticLayer.cs" />
+    <Compile Include="Utilities\DiagnosticHud.cs" />
     <Compile Include="Layers\ImageLayer.cs" />
     <Compile Include="Layers\LayerBase.cs" />
-    <Compile Include="Utilities\MouseCursorLayer.cs" />
+    <Compile Include="Utilities\DiagnosticHudConfiguration.cs" />
+    <Compile Include="Utilities\MouseCursor.cs" />
     <Compile Include="MathExtensions.cs" />
     <Compile Include="MathUtil.cs" />
     <Compile Include="Point.cs" />
