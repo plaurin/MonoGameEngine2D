@@ -99,14 +99,15 @@
       <Project>{A6633657-3842-417A-B3F0-2FB329130139}</Project>
       <Name>SamplesBrowser</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WindowsBase\WindowsBase.csproj">
-      <Project>{370C3028-2B87-4F29-A722-C4B4873BF813}</Project>
-      <Name>WindowsBase</Name>
+    <ProjectReference Include="..\WindowsBaseFx\WindowsBaseFx.csproj">
+      <Project>{370c3028-2b87-4f29-a722-c4b4873bf813}</Project>
+      <Name>WindowsBaseFx</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent></PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
