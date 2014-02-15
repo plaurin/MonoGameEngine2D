@@ -18,9 +18,9 @@ namespace MonoGameImplementation
             this.service.Launch(screen);
         }
 
-        public void Update(IGameTiming gameTiming)
+        public NavigatorMessage Update(IGameTiming gameTiming)
         {
-            this.service.Update(gameTiming);
+            return this.service.Update(gameTiming);
         }
     }
 }

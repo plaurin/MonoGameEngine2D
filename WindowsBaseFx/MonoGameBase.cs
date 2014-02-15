@@ -20,13 +20,15 @@ namespace MonoGameImplementation
 
         private readonly IScreen screen;
 
+#if WINDOWS
+        private readonly GameNavigatorGateway gameNavigator;
+#endif
+
         private SpriteBatch spriteBatch;
 
         private GameResourceManager gameResourceManager;
 
-#if WINDOWS
-        private GameNavigatorGateway gameNavigator;
-#endif
+        private bool isUpdateEnabled = true;
 
         protected MonoGameBase(IScreen screen)
         {
@@ -90,15 +92,19 @@ namespace MonoGameImplementation
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            this.gameTimer.Update(gameTime.ElapsedGameTime, gameTime.TotalGameTime);
+            if (this.isUpdateEnabled)
+            {
+                this.gameTimer.Update(gameTime.ElapsedGameTime, gameTime.TotalGameTime);
+                this.screen.Update(new XnaInputContext(), this.gameTimer);
+            }
 
             // Allows the game to exit
             if (this.screen.ShouldExit) this.Exit();
 
-            this.screen.Update(new XnaInputContext(), this.gameTimer);
-
 #if WINDOWS
-            this.gameNavigator.Update(this.gameTimer);
+            var navigatorMessage = this.gameNavigator.Update(this.gameTimer);
+            if (navigatorMessage.ShouldExit) this.Exit();
+            this.isUpdateEnabled = navigatorMessage.ShouldPlay;
 #endif
 
             base.Update(gameTime);

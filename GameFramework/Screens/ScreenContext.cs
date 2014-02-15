@@ -4,7 +4,7 @@ using GameFramework.Inputs;
 
 namespace GameFramework.Screens
 {
-    public class ScreenContext : IScreen
+    public class ScreenContext : IScreen, IComposite
     {
         private readonly IScreen screen;
         private readonly IEnumerable<TouchGestureType> touchGestures;
@@ -58,6 +58,16 @@ namespace GameFramework.Screens
         public int Draw(DrawContext drawContext)
         {
             return this.screen.Draw(drawContext);
+        }
+
+        public IEnumerable<object> Children
+        {
+            get { return new[] { this.screen }; }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Context for {0}", this.screen.GetType().Name);
         }
     }
 }

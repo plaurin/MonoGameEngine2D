@@ -9,16 +9,17 @@ namespace GameNavigator
     public class GameNavigatorService
     {
         private Window window;
-        private IScreen screen;
+        private NavigatorViewModel navigatorViewModel;
 
         public void Launch(IScreen gameScreen)
         {
-            this.screen = gameScreen;
-
             // Create a thread
             var newWindowThread = new Thread(() =>
             {
-                this.window = new Window { Content = new UserControl1(), Width = 300, Left = 0 };
+                this.navigatorViewModel = new NavigatorViewModel(gameScreen);
+
+                var navigator = new Navigator { DataContext = navigatorViewModel };
+                this.window = new Window { Content = navigator, Width = 300, Left = 0 };
                 this.window.Show();
 
                 // Start the Dispatcher Processing
@@ -33,23 +34,21 @@ namespace GameNavigator
             newWindowThread.Start();
         }
 
-        public void Update(IGameTiming gameTiming)
+        public NavigatorMessage Update(IGameTiming gameTiming)
         {
             if (this.window != null)
             {
+                NavigatorMessage result = null;
+
                 this.window.Dispatcher.Invoke(() =>
                 {
-                    //var composite = this.screen as IComposite;
-                    //if (composite != null)
-                    //{
-                    //    var c = composite.Children;
-
-                    //    window.Title = c.Count().ToString();
-                    //}
-
-                    window.Title = gameTiming.TotalSeconds.ToString();
+                    result = this.navigatorViewModel.Update(gameTiming);
                 });
+
+                return result;
             }
+
+            return new NavigatorMessage();
         }
     }
 }

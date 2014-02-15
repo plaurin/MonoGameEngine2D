@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="GameNavigator.Navigator"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:gameNavigator="clr-namespace:GameNavigator"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" 
+             d:DataContext="{Binding Source={StaticResource DesignInst}}">
+    <UserControl.Resources>
+        <gameNavigator:NavigatorViewModel x:Key="DesignInst"/>
+    </UserControl.Resources>
+    <DockPanel LastChildFill="True">
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button Command="{Binding RefreshCommand}">Refresh</Button>
+                <Separator/>
+                <Button Command="{Binding PausePlayCommand}">Pause/Play</Button>
+                <Button Command="{Binding OneFrameCommand}">One Frame</Button>
+                <Separator/>
+                <Button Command="{Binding ExitCommand}">Exit?</Button>
+            </ToolBar>
+        </ToolBarTray>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <Label Content="{Binding Status}"/>
+            </StatusBarItem>
+            <Separator></Separator>
+            <StatusBarItem>
+                <Label Content="{Binding TotalNodes}"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <Label Content="{Binding GameTime}"/>
+            </StatusBarItem>
+        </StatusBar>
+        <TreeView ItemsSource="{Binding Path=Nodes}" >
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Path=Nodes}">
+                    <TextBlock Text="{Binding Path=Label}"></TextBlock>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+    </DockPanel>
+</UserControl>

@@ -47,17 +47,22 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UserControl1.xaml">
+    <Page Include="Navigator.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="DelegateCommand.cs" />
+    <Compile Include="DesignTimeData.cs" />
     <Compile Include="GameNavigatorService.cs" />
-    <Compile Include="UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
+    <Compile Include="Navigator.xaml.cs">
+      <DependentUpon>Navigator.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NavigatorMessage.cs" />
+    <Compile Include="NavigatorNode.cs" />
+    <Compile Include="NavigatorViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
