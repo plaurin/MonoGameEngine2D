@@ -46,5 +46,17 @@ namespace GameNavigator.Properties {
                 this["NavigatorPosition"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string InspectorPosition {
+            get {
+                return ((string)(this["InspectorPosition"]));
+            }
+            set {
+                this["InspectorPosition"] = value;
+            }
+        }
     }
 }

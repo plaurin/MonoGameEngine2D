@@ -3,14 +3,18 @@ using System.Threading;
 using System.Windows;
 using GameFramework;
 using GameFramework.Screens;
+using GameNavigator.Navigator;
+using GameNavigator.ObjectInspector;
 using GameNavigator.Properties;
 
 namespace GameNavigator
 {
     public class GameNavigatorService
     {
-        private Window navigatorWindow;
         private NavigatorViewModel navigatorViewModel;
+        private Window navigatorWindow;
+
+        private Window inspectorWindow;
 
         public bool IsNavigatorOpen
         {
@@ -24,8 +28,9 @@ namespace GameNavigator
             // Create a thread
             var newWindowThread = new Thread(() =>
             {
+                // Navigator window
                 this.navigatorViewModel = new NavigatorViewModel(gameScreen);
-                var navigator = new Navigator { DataContext = navigatorViewModel };
+                var navigator = new NavigatorView { DataContext = navigatorViewModel };
                 this.navigatorWindow = new Window { Content = navigator };
 
                 this.RestoreNavigatorWindow();
@@ -36,6 +41,17 @@ namespace GameNavigator
                 this.navigatorWindow.LocationChanged += (sender, args) => PersistNavigatorWindow();
 
                 //this.navigatorWindow.Show();
+
+                // Object Inspector window
+                var objectInspector = new ObjectInspectorView { DataContext = navigatorViewModel };
+                this.inspectorWindow = new Window { Content = objectInspector };
+
+                this.RestoreInspectorWindow();
+
+                this.inspectorWindow.Closing += (sender, args) => { args.Cancel = true; this.inspectorWindow.Hide(); };
+
+                this.inspectorWindow.SizeChanged += (sender, args) => PersistInspectorWindow();
+                this.inspectorWindow.LocationChanged += (sender, args) => PersistInspectorWindow();
 
                 // Start the Dispatcher Processing
                 System.Windows.Threading.Dispatcher.Run();
@@ -54,6 +70,11 @@ namespace GameNavigator
             if (this.navigatorWindow != null)
             {
                 this.navigatorWindow.Dispatcher.Invoke(() => this.navigatorWindow.Show());
+            }
+
+            if (this.inspectorWindow != null)
+            {
+                this.inspectorWindow.Dispatcher.Invoke(() => this.inspectorWindow.Show());
             }
         }
 
@@ -122,6 +143,37 @@ namespace GameNavigator
                 this.navigatorWindow.Top,
                 this.navigatorWindow.Width,
                 this.navigatorWindow.Height
+            });
+
+            Settings.Default.Save();
+        }
+
+        private void RestoreInspectorWindow()
+        {
+            try
+            {
+                var position = Settings.Default.InspectorPosition;
+                var values = position.Split(',');
+
+                this.inspectorWindow.Left = int.Parse(values[0].Trim());
+                this.inspectorWindow.Top = int.Parse(values[1].Trim());
+                this.inspectorWindow.Width = int.Parse(values[2].Trim());
+                this.inspectorWindow.Height = int.Parse(values[3].Trim());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+        private void PersistInspectorWindow()
+        {
+            Settings.Default.InspectorPosition = string.Join(",", new[]
+            {
+                this.inspectorWindow.Left,
+                this.inspectorWindow.Top,
+                this.inspectorWindow.Width,
+                this.inspectorWindow.Height
             });
 
             Settings.Default.Save();

@@ -5,7 +5,7 @@ using System.Windows.Input;
 using GameFramework;
 using GameFramework.Screens;
 
-namespace GameNavigator
+namespace GameNavigator.Navigator
 {
     public class NavigatorViewModel : ViewModelBase
     {
@@ -91,6 +91,7 @@ namespace GameNavigator
             set
             {
                 this.currentSelection = value;
+                this.OnPropertyChanged();
                 this.refreshCommand.RaiseCanExecuteChanged();
             }
         }
@@ -285,19 +286,19 @@ namespace GameNavigator
             switch (kind)
             {
                 case NodeKind.ScreenState:
-                    return "Icons/ScreenState.png";
+                    return "../Icons/ScreenState.png";
                 case NodeKind.Screen:
-                    return "Icons/Screen.png";
+                    return "../Icons/Screen.png";
                 case NodeKind.Scene:
-                    return "Icons/Scene.png";
+                    return "../Icons/Scene.png";
                 case NodeKind.Layer:
-                    return "Icons/Layer.png";
+                    return "../Icons/Layer.png";
                 case NodeKind.Entity:
-                    return "Icons/Entity.png";
+                    return "../Icons/Entity.png";
                 case NodeKind.Utility:
-                    return "Icons/Utility.png";
+                    return "../Icons/Utility.png";
                 case NodeKind.Unknown:
-                    return "Icons/Unknown.png";
+                    return "../Icons/Unknown.png";
                 default: 
                     throw new InvalidOperationException(kind + " not yet implemented");
             }

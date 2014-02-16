@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Data;
 
-namespace GameNavigator
+namespace GameNavigator.Navigator
 {
     public class NavigatorNode : ViewModelBase
     {
