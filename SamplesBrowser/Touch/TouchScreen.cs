@@ -122,7 +122,7 @@ namespace SamplesBrowser.Touch
             var font = this.ResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
 
             var configuration = new DiagnosticHudConfiguration(DiagnosticDisplayLocation.Left);
-            configuration.EnableTouchTracking(this.InputConfiguration.AddTouchTracking(this.Camera));
+            configuration.EnableTouchTracking(this.InputConfiguration.CreateTouchTracking(this.Camera));
 
             configuration.AddLine("DoubleTap: {0}", () => this.doubleTapCount);
             configuration.AddLine("DragComplete: {0}", () => this.dragCompleteCount);

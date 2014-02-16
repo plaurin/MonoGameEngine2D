@@ -100,7 +100,7 @@ namespace SamplesBrowser
                 return Samples.None;
             };
 
-            inputConfiguration.AddMouseTracking(this.Camera).OnMove((mt, e) =>
+            inputConfiguration.CreateMouseTracking(this.Camera).OnMove((mt, e) =>
             {
                 this.mouseState = mt;
 
@@ -131,7 +131,7 @@ namespace SamplesBrowser
             });
 
             // Touch
-            inputConfiguration.AddTouchTracking(this.Camera).OnTouch((ts, gt) =>
+            inputConfiguration.CreateTouchTracking(this.Camera).OnTouch((ts, gt) =>
             {
                 this.touchState = ts;
 
@@ -198,7 +198,7 @@ namespace SamplesBrowser
             scene.Add(hubMap);
 
             //this.mouseLayer = MouseCursorLayer.Create(this.ResourceManager);
-            scene.Add(new MouseCursor(this.InputConfiguration.AddMouseTracking(this.Camera)));
+            scene.Add(new MouseCursor(this.InputConfiguration.CreateMouseTracking(this.Camera)));
 
             return scene;
         }

@@ -84,9 +84,19 @@ namespace MonoGameImplementation.EngineImplementation
                 return this.states.IsKeyDown(ConvertToXnaKey(key));
             }
 
+            public override IEnumerable<KeyboardKeys> PressedKeys()
+            {
+                return this.states.GetPressedKeys().Select(ConvertToKeyboardKey);
+            }
+
             private static Keys ConvertToXnaKey(KeyboardKeys key)
             {
                 return (Keys)(int)key;
+            }
+
+            private static KeyboardKeys ConvertToKeyboardKey(Keys key)
+            {
+                return (KeyboardKeys)(int)key;
             }
         }
 

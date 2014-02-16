@@ -9,6 +9,7 @@ namespace GameFramework.Inputs
         private readonly Dictionary<string, DigitalButton> digitalButtons;
         private readonly Dictionary<string, VisualButton> visualButtons;
         private readonly Dictionary<string, InputEvent> inputEvents;
+        private readonly List<KeyboardTracking> keyboardTrackings;
         private readonly List<MouseTracking> mouseTrackings;
         private readonly List<TouchTracking> touchTrackings;
 
@@ -17,6 +18,7 @@ namespace GameFramework.Inputs
             this.digitalButtons = new Dictionary<string, DigitalButton>();
             this.visualButtons = new Dictionary<string, VisualButton>();
             this.inputEvents = new Dictionary<string, InputEvent>();
+            this.keyboardTrackings = new List<KeyboardTracking>();
             this.mouseTrackings = new List<MouseTracking>();
             this.touchTrackings = new List<TouchTracking>();
         }
@@ -26,6 +28,11 @@ namespace GameFramework.Inputs
             var keyState = inputContext.KeyboardGetState();
             var mouseState = inputContext.MouseGetState();
             var touchState = inputContext.TouchGetState();
+
+            foreach (var keyboardTracking in this.keyboardTrackings)
+            {
+                keyboardTracking.Update(keyState, gameTime);
+            }
 
             foreach (var mouseTracking in this.mouseTrackings)
             {
@@ -92,7 +99,15 @@ namespace GameFramework.Inputs
             return this.inputEvents[name];
         }
 
-        public MouseTracking AddMouseTracking(ICamera camera)
+        public KeyboardTracking CreateKeyboardTracking()
+        {
+            var keyboardTracking = new KeyboardTracking();
+            this.keyboardTrackings.Add(keyboardTracking);
+
+            return keyboardTracking;
+        }
+
+        public MouseTracking CreateMouseTracking(ICamera camera)
         {
             var mouseTracking = new MouseTracking(camera);
             this.mouseTrackings.Add(mouseTracking);
@@ -100,7 +115,7 @@ namespace GameFramework.Inputs
             return mouseTracking;
         }
 
-        public TouchTracking AddTouchTracking(ICamera camera)
+        public TouchTracking CreateTouchTracking(ICamera camera)
         {
             var touchTracking = new TouchTracking(camera);
             this.touchTrackings.Add(touchTracking);

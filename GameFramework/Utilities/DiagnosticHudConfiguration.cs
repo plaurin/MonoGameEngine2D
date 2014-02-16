@@ -35,6 +35,14 @@ namespace GameFramework.Utilities
             this.AddLine("Zooming: {0:f1}", () => camera.ZoomFactor);
         }
 
+        public void EnableKeyboardTracking(KeyboardTracking keyboardTracking)
+        {
+            KeyboardStateBase keyboardState = null;
+            keyboardTracking.OnUpdate((ks, gt) => keyboardState = ks);
+
+            this.AddLine("Keys: {0}", () => string.Join(", ", keyboardState.PressedKeys()));
+        }
+
         public void EnableMouseTracking(MouseTracking mouseTracking)
         {
             MouseStateBase mouseState = null;

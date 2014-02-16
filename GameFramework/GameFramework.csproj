@@ -72,6 +72,7 @@
     <Compile Include="Inputs\InputEvent.cs" />
     <Compile Include="Inputs\ITouchEnabled.cs" />
     <Compile Include="Inputs\KeyboardStateBase.cs" />
+    <Compile Include="Inputs\KeyboardTracking.cs" />
     <Compile Include="Inputs\Keys.cs" />
     <Compile Include="Inputs\MouseButtons.cs" />
     <Compile Include="Inputs\MouseStateBase.cs" />

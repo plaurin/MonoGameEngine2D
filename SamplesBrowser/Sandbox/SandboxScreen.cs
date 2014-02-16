@@ -82,7 +82,7 @@ namespace SamplesBrowser.Sandbox
                 this.hits = this.Scene.GetHits(this.mouseState.AbsolutePosition, this.Camera).ToList();
             });
 
-            inputConfiguration.AddMouseTracking(this.Camera).OnMove((mt, e) =>
+            inputConfiguration.CreateMouseTracking(this.Camera).OnMove((mt, e) =>
             {
                 this.mouseState = mt;
 
@@ -161,7 +161,7 @@ namespace SamplesBrowser.Sandbox
 
         private object CreateMouseCursor()
         {
-            return new MouseCursor(this.InputConfiguration.AddMouseTracking(this.Camera));
+            return new MouseCursor(this.InputConfiguration.CreateMouseTracking(this.Camera));
         }
 
         private ILayer CreateMouseFollow()
@@ -184,7 +184,8 @@ namespace SamplesBrowser.Sandbox
 
             var config = new DiagnosticHudConfiguration();
             config.EnableCameraTracking(this.Camera);
-            config.EnableMouseTracking(this.InputConfiguration.AddMouseTracking(this.Camera));
+            config.EnableKeyboardTracking(this.InputConfiguration.CreateKeyboardTracking());
+            config.EnableMouseTracking(this.InputConfiguration.CreateMouseTracking(this.Camera));
             config.EnableHitTracking(() => this.hits);
             config.AddLine("Range: {0:f1}", () => this.range);
             config.AddLine("Objects: {0} (drawn: {1})",
