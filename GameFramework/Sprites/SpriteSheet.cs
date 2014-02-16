@@ -21,10 +21,16 @@ namespace GameFramework.Sprites
             get { return this.definitions; }
         }
 
-        public void CreateSpriteDefinition(string spriteName, RectangleInt spriteRectangle, Vector? origin = null)
+        public SpriteDefinition CreateSpriteDefinition(string spriteName, RectangleInt spriteRectangle, Vector? origin = null)
         {
-            var spriteDefinition = new SpriteDefinition(spriteName, spriteRectangle, origin);
+            var spriteDefinition = new SpriteDefinition(this, spriteName, spriteRectangle, origin);
             this.Definitions.Add(spriteName, spriteDefinition);
+            return spriteDefinition;
+        }
+
+        public SpriteDefinition GetSpriteDefinition(string spriteName)
+        {
+            return this.definitions[spriteName];
         }
 
         public int Draw(IDrawContext drawContext, Vector layerOffset, Vector parallaxScrollingVector, 

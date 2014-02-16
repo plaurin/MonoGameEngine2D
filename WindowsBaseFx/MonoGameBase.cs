@@ -53,7 +53,6 @@ namespace MonoGameImplementation
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             this.screen.Initialize(this.GetViewPort());
 
 #if WINDOWS
@@ -73,7 +72,6 @@ namespace MonoGameImplementation
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
             this.gameResourceManager = new XnaGameResourceManager(this.Content);
 
-            // TODO: use this.Content to load your game content here
             this.screen.LoadContent(this.gameResourceManager);
         }
 
@@ -126,7 +124,6 @@ namespace MonoGameImplementation
 
             this.GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
             this.spriteBatch.Begin();
 
             var blank = new Texture2D(this.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);

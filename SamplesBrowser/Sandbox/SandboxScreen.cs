@@ -31,7 +31,9 @@ namespace SamplesBrowser.Sandbox
 
         private List<HitBase> hits;
 
-        private Sprite linkMouseFollow;
+        private SpriteAnimation linkMouseFollow;
+        private SpriteAnimationTemplate linkAnimTemplate;
+
         private ILayer layer;
 
         public SandboxScreen(ScreenNavigation screenNavigation)
@@ -47,6 +49,8 @@ namespace SamplesBrowser.Sandbox
             var colorLayer = this.Scene.Children.OfType<ColorLayer>().FirstOrDefault();
             if (colorLayer != null)
                 colorLayer.Color = new Color(255, 0, 0, (int)(255 * Math.Min(this.range, 1.0f)));
+
+            this.linkMouseFollow.Update(gameTime);
         }
 
         protected override Camera CreateCamera(Viewport viewport)
@@ -168,9 +172,13 @@ namespace SamplesBrowser.Sandbox
             var layer = new SpriteLayer("MouseFollow");
             layer.CameraMode = CameraMode.Fix;
 
-            var linkSheet = this.ResourceManager.GetSpriteSheet("Link");
-            this.linkMouseFollow = new Sprite(linkSheet, "Link01");
+            var spriteAnimation = this.linkAnimTemplate.CreateInstance();
+
+            //var linkSheet = this.ResourceManager.GetSpriteSheet("Link");
+            //this.linkMouseFollow = new Sprite(linkSheet, "Link01");
             //this.linkMouseFollow.Origin = new Vector(8, 11);
+
+            this.linkMouseFollow = spriteAnimation;
 
             layer.AddSprite(this.linkMouseFollow);
 
@@ -267,6 +275,25 @@ namespace SamplesBrowser.Sandbox
             var sheet = new SpriteSheet(texture, "Link");
             sheet.CreateSpriteDefinition("Link01", new RectangleInt(3, 3, 16, 22), new Vector(8, 11));
             sheet.CreateSpriteDefinition("Sleep01", new RectangleInt(45, 219, 32, 40));
+
+            var la1 = sheet.CreateSpriteDefinition("LinkAnim01", new RectangleInt(187, 270, 28, 28), new Vector(07, 25));
+            var la2 = sheet.CreateSpriteDefinition("LinkAnim02", new RectangleInt(225, 273, 31, 22), new Vector(07, 19));
+            var la3 = sheet.CreateSpriteDefinition("LinkAnim03", new RectangleInt(268, 270, 26, 28), new Vector(06, 19));
+            var la4 = sheet.CreateSpriteDefinition("LinkAnim04", new RectangleInt(303, 266, 17, 35), new Vector(06, 19));
+            var la5 = sheet.CreateSpriteDefinition("LinkAnim05", new RectangleInt(328, 269, 26, 30), new Vector(17, 19));
+            var la6 = sheet.CreateSpriteDefinition("LinkAnim06", new RectangleInt(355, 273, 32, 22), new Vector(23, 19));
+            var la7 = sheet.CreateSpriteDefinition("LinkAnim07", new RectangleInt(389, 271, 24, 25), new Vector(16, 22));
+            var la8 = sheet.CreateSpriteDefinition("LinkAnim08", new RectangleInt(423, 268, 16, 31), new Vector(08, 28));
+
+            this.linkAnimTemplate = new SpriteAnimationTemplate("LinkAnim")
+                .AddFrame(la1, 0.1f)
+                .AddFrame(la2, 0.1f)
+                .AddFrame(la3, 0.1f)
+                .AddFrame(la4, 0.1f)
+                .AddFrame(la5, 0.1f)
+                .AddFrame(la6, 0.1f)
+                .AddFrame(la7, 0.1f)
+                .AddFrame(la8, 0.1f);
 
             //sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Link SpriteSheet.xml");
 

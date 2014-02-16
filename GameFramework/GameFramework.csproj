@@ -87,6 +87,11 @@
     <Compile Include="Rectangle.cs" />
     <Compile Include="Screens\IScreen.cs" />
     <Compile Include="Screens\SceneBasedScreen.cs" />
+    <Compile Include="Sprites\ISpriteTemplate.cs" />
+    <Compile Include="Sprites\SpriteAnimation.cs" />
+    <Compile Include="Sprites\SpriteAnimationFrame.cs" />
+    <Compile Include="Sprites\SpriteAnimationFrameTemplate.cs" />
+    <Compile Include="Sprites\SpriteAnimationTemplate.cs" />
     <Compile Include="Sprites\SpriteBase.cs" />
     <Compile Include="Sprites\SpriteDefinition.cs" />
     <Compile Include="Utilities\DiagnosticHud.cs" />
