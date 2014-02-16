@@ -1,6 +1,6 @@
 namespace GameFramework.Sprites
 {
-    public class SpriteDefinition : ISpriteTemplate<Sprite>
+    public class SpriteDefinition : ISpriteTemplate
     {
         public SpriteDefinition(SpriteSheet spriteSheet, string name, RectangleInt rectangle, Vector? origin)
         {
@@ -18,7 +18,7 @@ namespace GameFramework.Sprites
 
         public Vector Origin { get; private set; }
 
-        public Sprite CreateInstance()
+        public SpriteBase CreateInstance()
         {
             return new Sprite(this.SpriteSheet, this.Name);
         }

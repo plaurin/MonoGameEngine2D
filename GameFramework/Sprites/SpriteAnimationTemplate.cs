@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace GameFramework.Sprites
 {
-    public class SpriteAnimationTemplate : ISpriteTemplate<SpriteAnimation>
+    public class SpriteAnimationTemplate : ISpriteTemplate
     {
         private readonly string name;
         private readonly List<SpriteAnimationFrameTemplate> frames;
@@ -28,7 +28,7 @@ namespace GameFramework.Sprites
             return this;
         }
 
-        public SpriteAnimation CreateInstance()
+        public SpriteBase CreateInstance()
         {
             return new SpriteAnimation(this.name, this.frames.Select(f => f.CreateInstance()).ToArray());
         }

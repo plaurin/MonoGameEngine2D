@@ -1,8 +1,9 @@
-﻿namespace GameFramework.Sprites
+﻿using System;
+
+namespace GameFramework.Sprites
 {
-    public interface ISpriteTemplate<out T>
-        where T : SpriteBase
+    public interface ISpriteTemplate
     {
-        T CreateInstance();
+        SpriteBase CreateInstance();
     }
 }

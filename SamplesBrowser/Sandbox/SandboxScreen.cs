@@ -31,8 +31,8 @@ namespace SamplesBrowser.Sandbox
 
         private List<HitBase> hits;
 
-        private SpriteAnimation linkMouseFollow;
-        private SpriteAnimationTemplate linkAnimTemplate;
+        private SpriteBase linkMouseFollow;
+        private SpriteCompositeTemplate linkCompositeTemplate;
 
         private ILayer layer;
 
@@ -50,7 +50,8 @@ namespace SamplesBrowser.Sandbox
             if (colorLayer != null)
                 colorLayer.Color = new Color(255, 0, 0, (int)(255 * Math.Min(this.range, 1.0f)));
 
-            this.linkMouseFollow.Update(gameTime);
+            var updatable = this.linkMouseFollow as IUpdatable;
+            if (updatable != null) updatable.Update(gameTime);
         }
 
         protected override Camera CreateCamera(Viewport viewport)
@@ -172,13 +173,7 @@ namespace SamplesBrowser.Sandbox
             var layer = new SpriteLayer("MouseFollow");
             layer.CameraMode = CameraMode.Fix;
 
-            var spriteAnimation = this.linkAnimTemplate.CreateInstance();
-
-            //var linkSheet = this.ResourceManager.GetSpriteSheet("Link");
-            //this.linkMouseFollow = new Sprite(linkSheet, "Link01");
-            //this.linkMouseFollow.Origin = new Vector(8, 11);
-
-            this.linkMouseFollow = spriteAnimation;
+            this.linkMouseFollow = this.linkCompositeTemplate.CreateInstance();
 
             layer.AddSprite(this.linkMouseFollow);
 
@@ -285,7 +280,7 @@ namespace SamplesBrowser.Sandbox
             var la7 = sheet.CreateSpriteDefinition("LinkAnim07", new RectangleInt(389, 271, 24, 25), new Vector(16, 22));
             var la8 = sheet.CreateSpriteDefinition("LinkAnim08", new RectangleInt(423, 268, 16, 31), new Vector(08, 28));
 
-            this.linkAnimTemplate = new SpriteAnimationTemplate("LinkAnim")
+            var linkAnimTemplate = new SpriteAnimationTemplate("LinkAnim")
                 .AddFrame(la1, 0.1f)
                 .AddFrame(la2, 0.1f)
                 .AddFrame(la3, 0.1f)
@@ -294,6 +289,12 @@ namespace SamplesBrowser.Sandbox
                 .AddFrame(la6, 0.1f)
                 .AddFrame(la7, 0.1f)
                 .AddFrame(la8, 0.1f);
+
+            var crystal = sheet.CreateSpriteDefinition("Crystal", new RectangleInt(336, 221, 10, 14), new Vector(4, 6));
+
+            this.linkCompositeTemplate = new SpriteCompositeTemplate("CompositeLink")
+                .AddTemplate(linkAnimTemplate)
+                .AddTemplate(crystal, new Vector(20, 0));
 
             //sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Link SpriteSheet.xml");
 

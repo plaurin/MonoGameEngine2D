@@ -93,6 +93,8 @@
     <Compile Include="Sprites\SpriteAnimationFrameTemplate.cs" />
     <Compile Include="Sprites\SpriteAnimationTemplate.cs" />
     <Compile Include="Sprites\SpriteBase.cs" />
+    <Compile Include="Sprites\SpriteComposite.cs" />
+    <Compile Include="Sprites\SpriteCompositeTemplate.cs" />
     <Compile Include="Sprites\SpriteDefinition.cs" />
     <Compile Include="Sprites\SpriteReference.cs" />
     <Compile Include="Utilities\DiagnosticHud.cs" />
