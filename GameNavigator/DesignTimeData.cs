@@ -8,7 +8,7 @@ namespace GameNavigator
         {
             return new List<NavigatorNode>
             {
-                new NavigatorNode { Label = "A" },
+                new NavigatorNode { Label = "A", Icon = @"Icons/Unknown.png" },
                 new NavigatorNode 
                 { 
                     Label = "B", 

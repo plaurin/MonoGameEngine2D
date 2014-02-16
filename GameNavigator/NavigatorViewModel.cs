@@ -31,7 +31,7 @@ namespace GameNavigator
         {
             this.nodes = DesignTimeData.GetNodes();
 
-            this.refreshCommand = new DelegateCommand(p => {});
+            this.refreshCommand = new DelegateCommand(p => { });
             this.pausePlayCommand = new DelegateCommand(p => this.shouldPause = !this.shouldPause);
             this.oneFrameCommand = new DelegateCommand(p => this.shouldPlayOneFrame = true);
             this.exitCommand = new DelegateCommand(p => this.shouldExit = true);
@@ -39,7 +39,8 @@ namespace GameNavigator
             this.Status = "Hi!";
         }
 
-        public NavigatorViewModel(IScreen screen) : this()
+        public NavigatorViewModel(IScreen screen)
+            : this()
         {
             this.screen = screen;
 
@@ -229,7 +230,8 @@ namespace GameNavigator
                 node = new NavigatorNode
                 {
                     Label = metadata.Name,
-                    Nodes = childNodes
+                    Nodes = childNodes,
+                    Icon = GetIconFromKind(metadata.Kind)
                 };
             }
             else
@@ -244,6 +246,29 @@ namespace GameNavigator
             node.PropertyChanged += this.NodePropertyChanged;
 
             return node;
+        }
+
+        private static string GetIconFromKind(NodeKind kind)
+        {
+            switch (kind)
+            {
+                case NodeKind.ScreenState:
+                    return "Icons/ScreenState.png";
+                case NodeKind.Screen:
+                    return "Icons/Screen.png";
+                case NodeKind.Scene:
+                    return "Icons/Scene.png";
+                case NodeKind.Layer:
+                    return "Icons/Layer.png";
+                case NodeKind.Entity:
+                    return "Icons/Entity.png";
+                case NodeKind.Utility:
+                    return "Icons/Utility.png";
+                case NodeKind.Unknown:
+                    return "Icons/Unknown.png";
+                default: 
+                    throw new InvalidOperationException(kind + " not yet implemented");
+            }
         }
 
         private void NodePropertyChanged(object sender, PropertyChangedEventArgs eventArgs)

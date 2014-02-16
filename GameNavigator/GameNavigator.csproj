@@ -93,6 +93,16 @@
       <Name>GameFramework</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Camera.png" />
+    <Resource Include="Icons\Entity.png" />
+    <Resource Include="Icons\Layer.png" />
+    <Resource Include="Icons\Scene.png" />
+    <Resource Include="Icons\Screen.png" />
+    <Resource Include="Icons\ScreenState.png" />
+    <Resource Include="Icons\Unknown.png" />
+    <Resource Include="Icons\Utility.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

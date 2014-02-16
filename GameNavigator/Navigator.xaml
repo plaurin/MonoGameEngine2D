@@ -42,7 +42,10 @@
                             <Setter Property="IsSelected" Value="{Binding IsSelected}" />
                         </Style>
                     </HierarchicalDataTemplate.ItemContainerStyle>
-                    <TextBlock Text="{Binding Path=Label}"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Icon}"/>
+                        <TextBlock Text="{Binding Label}"></TextBlock>
+                    </StackPanel>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
