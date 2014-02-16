@@ -14,10 +14,10 @@ namespace GameFramework.IO.Repositories
                     drawingLayer.Elements.Select(ToXml)));
         }
 
-        public static DrawingLayer DrawingLayerFromXml(GameResourceManager gameResourceManager, XElement layerElement)
+        public static DrawingLayer DrawingLayerFromXml(XElement layerElement)
         {
             var name = layerElement.Attribute("name").Value;
-            var layer = new DrawingLayer(name, gameResourceManager);
+            var layer = new DrawingLayer(name);
             XmlRepository.BaseFromXml(layer, layerElement);
 
             foreach (var element in layerElement.Element("Elements").Elements())

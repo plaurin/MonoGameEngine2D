@@ -8,7 +8,7 @@ using GameFramework.Scenes;
 
 namespace GameFramework.Sprites
 {
-    public class SpriteLayer : LayerBase, IHitTarget
+    public class SpriteLayer : LayerBase, IComposite, IHitTarget
     {
         private readonly List<SpriteBase> sprites;
         private int drawnElementsLastFrame;
@@ -56,6 +56,11 @@ namespace GameFramework.Sprites
             }
 
             return this.drawnElementsLastFrame;
+        }
+
+        public IEnumerable<object> Children
+        {
+            get { return this.Sprites; }
         }
 
         public HitBase GetHit(Vector position, ICamera camera, WorldTransform worldTransform)

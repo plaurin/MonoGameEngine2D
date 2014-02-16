@@ -3,7 +3,7 @@ using GameFramework.Inputs;
 
 namespace GameFramework.Utilities
 {
-    public class MouseCursor : IDrawable
+    public class MouseCursor : IDrawable, INavigatorMetadataProvider
     {
         private Vector mousePosition;
 
@@ -17,6 +17,11 @@ namespace GameFramework.Utilities
             DrawLine(drawContext, this.mousePosition.Translate(-11, 0), this.mousePosition.Translate(10, 0));
             DrawLine(drawContext, this.mousePosition.Translate(0, -11), this.mousePosition.Translate(0, 10));
             return 2;
+        }
+
+        public NavigatorMetadata GetMetadata()
+        {
+            return new NavigatorMetadata("Mouse Cusor", NodeKind.Utility);
         }
 
         private static void DrawLine(IDrawContext drawContext, Vector from, Vector to)

@@ -8,17 +8,13 @@ using GameFramework.Scenes;
 
 namespace GameFramework.Drawing
 {
-    public class DrawingLayer : LayerBase, IHitTarget
+    public class DrawingLayer : LayerBase, IComposite, IHitTarget
     {
-        private readonly GameResourceManager gameResourceManager;
-
         private readonly List<DrawingElementBase> elements;
 
-        public DrawingLayer(string name, GameResourceManager gameResourceManager)
+        public DrawingLayer(string name)
             : base(name)
         {
-            this.gameResourceManager = gameResourceManager;
-
             this.elements = new List<DrawingElementBase>();
         }
 
@@ -103,6 +99,11 @@ namespace GameFramework.Drawing
             }
 
             return total;
+        }
+
+        public IEnumerable<object> Children
+        {
+            get { return this.elements; }
         }
 
         public HitBase GetHit(Vector position, ICamera camera, WorldTransform worldTransform)

@@ -64,7 +64,7 @@ namespace GameFramework.IO.Repositories
                         scene.Add(SpriteXmlRepository.SpriteLayerFromXml(gameResourceManager, layerElement));
                         break;
                     case "DrawingLayer":
-                        scene.Add(DrawingXmlRepository.DrawingLayerFromXml(gameResourceManager, layerElement));
+                        scene.Add(DrawingXmlRepository.DrawingLayerFromXml(layerElement));
                         break;
                 }
             }

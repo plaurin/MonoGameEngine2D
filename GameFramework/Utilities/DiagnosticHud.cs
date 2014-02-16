@@ -5,7 +5,7 @@ using GameFramework.Drawing;
 
 namespace GameFramework.Utilities
 {
-    public class DiagnosticHud : IUpdatable, IDrawable
+    public class DiagnosticHud : IUpdatable, IDrawable, INavigatorMetadataProvider
     {
         private const int FirstLineY = 10;
         private const int LineHeight = 15;
@@ -77,6 +77,11 @@ namespace GameFramework.Utilities
             }
 
             return this.finalLines.Count;
+        }
+
+        public NavigatorMetadata GetMetadata()
+        {
+            return new NavigatorMetadata("Diagnostic HUD", NodeKind.Utility);
         }
 
         public void ViewStateToggle()

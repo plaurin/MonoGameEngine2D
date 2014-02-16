@@ -6,7 +6,7 @@ using GameFramework.Sprites;
 
 namespace SamplesBrowser.ShootEmUp
 {
-    public class PlayerShipEntity : IUpdatable
+    public class PlayerShipEntity : IUpdatable, INavigatorMetadataProvider
     {
         private readonly SpriteLayer entityLayer;
         private readonly SpriteSheet shipSheet;
@@ -52,6 +52,11 @@ namespace SamplesBrowser.ShootEmUp
             {
                 bullet.Update(gameTime);
             }
+        }
+
+        public NavigatorMetadata GetMetadata()
+        {
+            return new NavigatorMetadata("Player Ship", NodeKind.Entity);
         }
 
         public void BindController(InputConfiguration inputConfiguration)

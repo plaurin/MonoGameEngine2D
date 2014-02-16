@@ -181,7 +181,7 @@ namespace SamplesBrowser
 
             var font = this.ResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
 
-            var hubMap = new DrawingLayer("HubMap", this.ResourceManager);
+            var hubMap = new DrawingLayer("HubMap");
 
             this.sandboxRectangle = hubMap.AddRectangle(10, 10, 200, 200, 1, Color.White);
             this.shootEmUpRectangle = hubMap.AddRectangle(220, 10, 200, 200, 1, Color.White);

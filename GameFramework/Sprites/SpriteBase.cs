@@ -1,10 +1,9 @@
 ﻿using System;
 using GameFramework.Cameras;
-using GameFramework.Scenes;
 
 namespace GameFramework.Sprites
 {
-    public abstract class SpriteBase
+    public abstract class SpriteBase : INavigatorMetadataProvider
     {
         protected SpriteBase()
         {
@@ -20,5 +19,10 @@ namespace GameFramework.Sprites
         public Vector Origin { get; set; }
 
         public abstract int Draw(IDrawContext drawContext, Vector layerOffset, Vector parallaxScrollingVector, CameraMode cameraMode);
+
+        public NavigatorMetadata GetMetadata()
+        {
+            return new NavigatorMetadata(this.SpriteName, NodeKind.Entity);
+        }
     }
 }

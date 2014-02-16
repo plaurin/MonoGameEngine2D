@@ -286,7 +286,7 @@ namespace SamplesBrowser.Sandbox
 
         private DrawingLayer CreateHexLayerTestDistance()
         {
-            var layer = new DrawingLayer("Hex drawing test", this.ResourceManager);
+            var layer = new DrawingLayer("Hex drawing test");
             var font = this.ResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
             var hexMap = HexGrid.CreateHexMap(30, 9);
             foreach (var hex in hexMap.Hexes)

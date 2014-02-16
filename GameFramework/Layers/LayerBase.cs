@@ -28,5 +28,10 @@ namespace GameFramework.Layers
         public abstract int DrawnElementsLastFrame { get; }
 
         public abstract int Draw(IDrawContext drawContext);
+
+        public NavigatorMetadata GetMetadata()
+        {
+            return new NavigatorMetadata(this.Name, NodeKind.Layer);
+        }
     }
 }

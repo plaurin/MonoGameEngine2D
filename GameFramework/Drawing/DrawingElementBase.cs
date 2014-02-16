@@ -3,7 +3,7 @@ using System;
 namespace GameFramework.Drawing
 {
     // TODO: Could be renamed DrawingObject? LineObject, TextObject, etc.. to match Tiled object layer
-    public abstract class DrawingElementBase
+    public abstract class DrawingElementBase : INavigatorMetadataProvider
     {
         protected DrawingElementBase()
         {
@@ -13,6 +13,11 @@ namespace GameFramework.Drawing
         public bool IsVisible { get; set; }
 
         public abstract void Draw(IDrawContext drawContext, DrawingLayer drawingLayer);
+
+        public NavigatorMetadata GetMetadata()
+        {
+            return new NavigatorMetadata(this.GetType().Name, NodeKind.Entity);
+        }
 
         protected void DrawLine(IDrawContext drawContext, DrawingLayer drawingLayer, Vector fromVector, Vector toVector, int width, Color color)
         {

@@ -109,7 +109,7 @@ namespace SamplesBrowser.Touch
         {
             var font = this.ResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
 
-            var drawingMap = new DrawingLayer("Button", this.ResourceManager);
+            var drawingMap = new DrawingLayer("Button");
 
             this.visualBackButtonElement = drawingMap.AddRectangle(this.visualBackButton.Rectangle, 2, Color.Blue);
             drawingMap.AddText(font, "Back", this.visualBackButton.Rectangle.Location.Translate(10, 10), Color.White);

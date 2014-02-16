@@ -1,10 +1,9 @@
 using System;
 using GameFramework.Cameras;
-using GameFramework.Scenes;
 
 namespace GameFramework.Layers
 {
-    public interface ILayer : IDrawable
+    public interface ILayer : IDrawable, INavigatorMetadataProvider
     {
         string Name { get; set; }
 

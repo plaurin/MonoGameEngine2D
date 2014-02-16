@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Windows;
+using System.Windows.Threading;
 using GameFramework;
 using GameFramework.Screens;
 using GameNavigator.Navigator;
@@ -44,7 +45,7 @@ namespace GameNavigator
 
                 // Object Inspector window
                 var objectInspector = new ObjectInspectorView { DataContext = navigatorViewModel };
-                this.inspectorWindow = new Window { Content = objectInspector };
+                this.inspectorWindow = new Window { Content = objectInspector, Title = "Object Inspector" };
 
                 this.RestoreInspectorWindow();
 
@@ -54,7 +55,7 @@ namespace GameNavigator
                 this.inspectorWindow.LocationChanged += (sender, args) => PersistInspectorWindow();
 
                 // Start the Dispatcher Processing
-                System.Windows.Threading.Dispatcher.Run();
+                Dispatcher.Run();
             });
 
             // Set the apartment state
