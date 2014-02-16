@@ -53,7 +53,6 @@
     <Compile Include="ShootEmUp\CompositeSprite.cs" />
     <Compile Include="ShootEmUp\PlayerShipEntity.cs" />
     <Compile Include="ShootEmUp\ShootEmUpScreen.cs" />
-    <Compile Include="ShootEmUp\SpriteReference.cs" />
     <Compile Include="Tiled\TiledScreen.cs" />
     <Compile Include="Touch\TouchScreen.cs" />
   </ItemGroup>

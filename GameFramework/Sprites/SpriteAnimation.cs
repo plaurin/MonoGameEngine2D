@@ -34,9 +34,6 @@ namespace GameFramework.Sprites
             this.totalAnimationTime = this.frames.Sum(f => f.Duration);
         }
 
-        // TODO: Promote to SpriteBase
-        public bool IsVisible { get; set; }
-
         public float AnimationTime { get; private set; }
 
         public bool HasCompleted

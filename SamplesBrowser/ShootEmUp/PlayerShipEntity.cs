@@ -26,7 +26,7 @@ namespace SamplesBrowser.ShootEmUp
             {
                 Position = new Vector(300, 400),
                 SpriteName = "Player Ship",
-                ReferencedSprite = new Sprite(this.shipSheet, "Ship")
+                Sprite = new Sprite(this.shipSheet, "Ship")
             };
 
             this.entityLayer.AddSprite(this.SpriteReference);
@@ -100,7 +100,7 @@ namespace SamplesBrowser.ShootEmUp
             {
                 Position = this.position,
                 SpriteName = "Bullet",
-                ReferencedSprite = new Sprite(this.shipSheet, "YellowShot")
+                Sprite = new Sprite(this.shipSheet, "YellowShot")
             };
 
             this.entityLayer.AddSprite(this.SpriteReference);

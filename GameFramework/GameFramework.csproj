@@ -94,6 +94,7 @@
     <Compile Include="Sprites\SpriteAnimationTemplate.cs" />
     <Compile Include="Sprites\SpriteBase.cs" />
     <Compile Include="Sprites\SpriteDefinition.cs" />
+    <Compile Include="Sprites\SpriteReference.cs" />
     <Compile Include="Utilities\DiagnosticHud.cs" />
     <Compile Include="Layers\ImageLayer.cs" />
     <Compile Include="Layers\LayerBase.cs" />
