@@ -11,10 +11,10 @@ namespace GameNavigator
     {
         private readonly IScreen screen;
         private readonly List<NavigatorNode> nodes;
-        private readonly ICommand refreshCommand;
-        private readonly ICommand pausePlayCommand;
-        private readonly ICommand oneFrameCommand;
-        private readonly ICommand exitCommand;
+        private readonly DelegateCommand refreshCommand;
+        private readonly DelegateCommand pausePlayCommand;
+        private readonly DelegateCommand oneFrameCommand;
+        private readonly DelegateCommand quitCommand;
 
         private bool shouldPause;
         private bool shouldPlayOneFrame;
@@ -26,15 +26,24 @@ namespace GameNavigator
         private string drawFps;
         private string frameCount;
         private int frameCounter;
+        private NavigatorNode currentSelection;
+        private string playButtonLabel = "Pause";
 
         public NavigatorViewModel()
         {
             this.nodes = DesignTimeData.GetNodes();
 
-            this.refreshCommand = new DelegateCommand(p => { });
-            this.pausePlayCommand = new DelegateCommand(p => this.shouldPause = !this.shouldPause);
-            this.oneFrameCommand = new DelegateCommand(p => this.shouldPlayOneFrame = true);
-            this.exitCommand = new DelegateCommand(p => this.shouldExit = true);
+            this.refreshCommand = new DelegateCommand(
+                p => this.RefreshNode(this.CurrentSelection), p => this.CurrentSelection != null);
+
+            this.pausePlayCommand = new DelegateCommand(p =>
+            {
+                this.shouldPause = !this.shouldPause;
+                this.PlayButtonLabel = this.shouldPause ? "Play" : "Pause";
+                this.oneFrameCommand.RaiseCanExecuteChanged();
+            });
+            this.oneFrameCommand = new DelegateCommand(p => this.shouldPlayOneFrame = true, p => this.shouldPause);
+            this.quitCommand = new DelegateCommand(p => this.shouldExit = true);
 
             this.Status = "Hi!";
         }
@@ -62,9 +71,9 @@ namespace GameNavigator
             get { return this.oneFrameCommand; }
         }
 
-        public ICommand ExitCommand
+        public ICommand QuitCommand
         {
-            get { return this.exitCommand; }
+            get { return this.quitCommand; }
         }
 
         public IEnumerable<NavigatorNode> Nodes
@@ -72,7 +81,36 @@ namespace GameNavigator
             get { return this.nodes; }
         }
 
-        public NavigatorNode CurrentSelection { get; set; }
+        public NavigatorNode CurrentSelection
+        {
+            get
+            {
+                return this.currentSelection;
+            }
+
+            set
+            {
+                this.currentSelection = value;
+                this.refreshCommand.RaiseCanExecuteChanged();
+            }
+        }
+
+        public string PlayButtonLabel
+        {
+            get
+            {
+                return this.playButtonLabel;
+            }
+
+            private set
+            {
+                if (this.playButtonLabel != value)
+                {
+                    this.playButtonLabel = value;
+                    this.OnPropertyChanged();
+                }
+            }
+        }
 
         public string Status
         {
@@ -190,6 +228,13 @@ namespace GameNavigator
             this.nodes.AddRange(this.GetNavigatorNodes(this.screen));
         }
 
+        private void RefreshNode(NavigatorNode navigatorNode)
+        {
+            var childNodes = this.GetNavigatorNodes(navigatorNode.SceneNode);
+            // TODO: Should remove event handler
+            navigatorNode.UpdateNodes(childNodes);
+        }
+
         private IEnumerable<NavigatorNode> GetNavigatorNodes(object sceneNode)
         {
             var composite = sceneNode as IComposite;
@@ -209,38 +254,25 @@ namespace GameNavigator
                             Console.WriteLine(ex);
                         }
 
-                        //if (childNodes != null)
-                        //{
-                        //    yield return this.CreateNavigatorNode(child, childNodes);
                         yield return this.CreateNavigatorNode(child, childNodes);
-                        //}
                     }
                 }
             }
         }
 
-        private NavigatorNode CreateNavigatorNode(object child, IEnumerable<NavigatorNode> childNodes)
+        private NavigatorNode CreateNavigatorNode(object sceneObject, IEnumerable<NavigatorNode> childNodes)
         {
             NavigatorNode node;
 
-            var metadataProvider = child as INavigatorMetadataProvider;
+            var metadataProvider = sceneObject as INavigatorMetadataProvider;
             if (metadataProvider != null)
             {
                 var metadata = metadataProvider.GetMetadata();
-                node = new NavigatorNode
-                {
-                    Label = metadata.Name,
-                    Nodes = childNodes,
-                    Icon = GetIconFromKind(metadata.Kind)
-                };
+                node = new NavigatorNode(sceneObject, metadata.Name, childNodes, GetIconFromKind(metadata.Kind));
             }
             else
             {
-                node = new NavigatorNode
-                {
-                    Label = child.ToString(),
-                    Nodes = childNodes
-                };
+                node = new NavigatorNode(sceneObject, sceneObject.ToString(), childNodes, GetIconFromKind(NodeKind.Unknown));
             }
 
             node.PropertyChanged += this.NodePropertyChanged;
@@ -277,7 +309,10 @@ namespace GameNavigator
             {
                 var node = sender as NavigatorNode;
                 if (node != null)
+                {
                     this.CurrentSelection = node;
+                    this.Status = node.Label;
+                }
             }
         }
     }

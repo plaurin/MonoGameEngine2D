@@ -6,19 +6,19 @@
              xmlns:gameNavigator="clr-namespace:GameNavigator"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" 
-             d:DataContext="{Binding Source={StaticResource DesignInst}}">
+             d:DataContext="{Binding Source={StaticResource DesignData}}">
     <UserControl.Resources>
-        <gameNavigator:NavigatorViewModel x:Key="DesignInst"/>
+        <gameNavigator:NavigatorViewModel x:Key="DesignData"/>
     </UserControl.Resources>
     <DockPanel LastChildFill="True">
         <ToolBarTray DockPanel.Dock="Top">
             <ToolBar>
                 <Button Command="{Binding RefreshCommand}">Refresh</Button>
                 <Separator/>
-                <Button Command="{Binding PausePlayCommand}">Pause/Play</Button>
+                <Button Command="{Binding PausePlayCommand}" Content="{Binding PlayButtonLabel}"/>
                 <Button Command="{Binding OneFrameCommand}">One Frame</Button>
                 <Separator/>
-                <Button Command="{Binding ExitCommand}">Exit?</Button>
+                <Button Command="{Binding QuitCommand}">Quit</Button>
             </ToolBar>
         </ToolBarTray>
         <StatusBar DockPanel.Dock="Bottom">
@@ -35,13 +35,13 @@
             </StatusBarItem>
         </StatusBar>
         <TreeView ItemsSource="{Binding Path=Nodes}">
+            <TreeView.Resources>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsSelected" Value="{Binding Path=(gameNavigator:NavigatorNode.IsSelected)}" />
+                </Style>
+            </TreeView.Resources>
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Path=Nodes}" >
-                    <HierarchicalDataTemplate.ItemContainerStyle>
-                        <Style TargetType="{x:Type TreeViewItem}">
-                            <Setter Property="IsSelected" Value="{Binding IsSelected}" />
-                        </Style>
-                    </HierarchicalDataTemplate.ItemContainerStyle>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{Binding Icon}"/>
                         <TextBlock Text="{Binding Label}"></TextBlock>

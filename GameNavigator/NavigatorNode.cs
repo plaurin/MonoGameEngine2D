@@ -1,16 +1,40 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Windows.Data;
 
 namespace GameNavigator
 {
     public class NavigatorNode : ViewModelBase
     {
+        private readonly ObservableCollection<NavigatorNode> nodeCollection;
+
         private bool isSelected;
 
-        public IEnumerable<NavigatorNode> Nodes { get; set; }
+        public NavigatorNode(string label, IEnumerable<NavigatorNode> nodes = null)
+            : this(null, label, nodes)
+        {
+        }
 
-        public string Label { get; set; }
+        public NavigatorNode(object sceneNode, string label, IEnumerable<NavigatorNode> nodes = null, string icon = "")
+        {
+            this.SceneNode = sceneNode;
+            this.Label = label;
+            this.Icon = icon;
 
-        public string Icon { get; set; }
+            this.nodeCollection = new ObservableCollection<NavigatorNode>();
+            if (nodes != null) foreach (var node in nodes) this.nodeCollection.Add(node);
+
+            this.Nodes = CollectionViewSource.GetDefaultView(this.nodeCollection);
+        }
+
+        public ICollectionView Nodes { get; private set; }
+
+        public object SceneNode { get; private set; }
+
+        public string Label { get; private set; }
+
+        public string Icon { get; private set; }
 
         public bool IsSelected
         {
@@ -27,6 +51,12 @@ namespace GameNavigator
                     this.OnPropertyChanged();
                 }
             }
+        }
+
+        public void UpdateNodes(IEnumerable<NavigatorNode> nodes)
+        {
+            this.nodeCollection.Clear();
+            foreach (var node in nodes) this.nodeCollection.Add(node);
         }
     }
 }

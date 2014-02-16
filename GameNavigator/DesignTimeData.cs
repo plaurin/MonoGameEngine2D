@@ -8,27 +8,19 @@ namespace GameNavigator
         {
             return new List<NavigatorNode>
             {
-                new NavigatorNode { Label = "A", Icon = @"Icons/Unknown.png" },
-                new NavigatorNode 
-                { 
-                    Label = "B", 
-                    Nodes = new[]
-                    {
-                        new NavigatorNode { Label = "1" },
-                        new NavigatorNode { Label = "2" }
-                    }
-                },
-                new NavigatorNode { Label = "C" },
-                new NavigatorNode 
-                { 
-                    Label = "D", 
-                    Nodes = new[]
-                    {
-                        new NavigatorNode { Label = "3" },
-                        new NavigatorNode { Label = "4" }
-                    }
-                },
-                new NavigatorNode { Label = "E" }
+                new NavigatorNode("A"),
+                new NavigatorNode("B", new[]
+                {
+                    new NavigatorNode("1"),
+                    new NavigatorNode("2")
+                }),
+                new NavigatorNode("C"),
+                new NavigatorNode("D", new[]
+                {
+                    new NavigatorNode("3"),
+                    new NavigatorNode("4")
+                }),
+                new NavigatorNode("E")
             };
         }
     }
