@@ -57,7 +57,7 @@ namespace MonoGameImplementation
             this.screen.Initialize(this.GetViewPort());
 
 #if WINDOWS
-            this.gameNavigator.Launch(this.screen);
+            this.gameNavigator.Launch(this.screen, this.Window);
 #endif
 
             base.Initialize();
