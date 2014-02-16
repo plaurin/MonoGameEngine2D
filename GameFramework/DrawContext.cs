@@ -75,7 +75,7 @@ namespace GameFramework
 
         public Rectangle Destination { get; set; }
 
-        public Rectangle? Source { get; set; }
+        public RectangleInt? Source { get; set; }
 
         public float Rotation { get; set; }
 

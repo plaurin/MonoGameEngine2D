@@ -30,5 +30,10 @@ namespace MonoGameImplementation.EngineImplementation
         {
             return new Rectangle((int)rectangle.X, (int)rectangle.Y, (int)rectangle.Width, (int)rectangle.Height);
         }
+
+        public static Rectangle ToXnaRect(this GameFramework.RectangleInt rectangle)
+        {
+            return new Rectangle(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace GameFramework.Hexes
 
         public HexDefinition CreateHexDefinition(string hexName, Point hexPosition)
         {
-            var rectangle = new Rectangle(hexPosition.X, hexPosition.Y, this.HexSize.Width, this.HexSize.Height);
+            var rectangle = new RectangleInt(hexPosition.X, hexPosition.Y, this.HexSize.Width, this.HexSize.Height);
             var hexDefinition = new HexDefinition(this, hexName, rectangle);
 
             this.Definitions.Add(hexName, hexDefinition);

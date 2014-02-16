@@ -21,11 +21,11 @@ namespace GameFramework
             return (hypotenuse.Square() - sideA.Square()).SquareRoot();
         }
 
-        public static Rectangle ParseRectangle(string value)
+        public static RectangleInt ParseRectangle(string value)
         {
             var nameValues = GetNameValues(value);
 
-            return new Rectangle(nameValues["X"], nameValues["Y"], nameValues["Width"], nameValues["Height"]);
+            return new RectangleInt(nameValues["X"], nameValues["Y"], nameValues["Width"], nameValues["Height"]);
         }
 
         public static Size ParseSize(string value)

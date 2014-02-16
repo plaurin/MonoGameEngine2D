@@ -5,14 +5,14 @@ namespace GameFramework.Layers
 {
     public class ImageLayer : LayerBase
     {
-        public ImageLayer(string name, Texture texture, Rectangle rectangle)
+        public ImageLayer(string name, Texture texture, RectangleInt rectangle)
             : base(name)
         {
             this.Texture = texture;
             this.Rectangle = rectangle;
         }
 
-        public Rectangle Rectangle { get; set; }
+        public RectangleInt Rectangle { get; set; }
 
         public Texture Texture { get; private set; }
 
@@ -31,7 +31,7 @@ namespace GameFramework.Layers
             drawContext.DrawImage(new DrawImageParams
             {
                 Texture = this.Texture,
-                Destination = this.Rectangle
+                Destination = new Rectangle(this.Rectangle)
             });
 
             return 1;

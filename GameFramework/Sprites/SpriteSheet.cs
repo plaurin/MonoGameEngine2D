@@ -8,22 +8,23 @@ namespace GameFramework.Sprites
 {
     public class SpriteSheet : SheetBase
     {
-        private readonly IDictionary<string, Rectangle> definitions;
+        private readonly IDictionary<string, SpriteDefinition> definitions;
 
         public SpriteSheet(Texture texture, string name)
             : base(texture, name)
         {
-            this.definitions = new Dictionary<string, Rectangle>();
+            this.definitions = new Dictionary<string, SpriteDefinition>();
         }
 
-        public IDictionary<string, Rectangle> Definitions
+        public IDictionary<string, SpriteDefinition> Definitions
         {
             get { return this.definitions; }
         }
 
-        public void CreateSpriteDefinition(string spriteName, Rectangle spriteRectangle)
+        public void CreateSpriteDefinition(string spriteName, RectangleInt spriteRectangle, Vector? origin = null)
         {
-            this.Definitions.Add(spriteName, spriteRectangle);
+            var spriteDefinition = new SpriteDefinition(spriteName, spriteRectangle, origin);
+            this.Definitions.Add(spriteName, spriteDefinition);
         }
 
         public int Draw(IDrawContext drawContext, Vector layerOffset, Vector parallaxScrollingVector, 
@@ -31,7 +32,7 @@ namespace GameFramework.Sprites
         {
             var source = this.Definitions[sprite.SpriteName];
             var destination = new Rectangle(layerOffset.X + sprite.Position.X, layerOffset.Y + sprite.Position.Y,
-                source.Width, source.Height);
+                source.Rectangle.Width, source.Rectangle.Height);
 
             if (cameraMode == CameraMode.Follow)
             {
@@ -42,13 +43,15 @@ namespace GameFramework.Sprites
 
             if (drawContext.Camera.Viewport.IsVisible(destination))
             {
+                var origin = sprite.Origin.HasValue ? sprite.Origin.Value : source.Origin;
+
                 drawContext.DrawImage(new DrawImageParams
                 {
                     Texture = this.Texture,
-                    Source = source,
+                    Source = source.Rectangle,
                     Destination = destination,
                     Rotation = sprite.Rotation,
-                    Origin = sprite.Origin
+                    Origin = origin
                 });
 
                 return 1;
@@ -64,8 +67,8 @@ namespace GameFramework.Sprites
                 new Rectangle(
                     worldTransform.Offset.X + sprite.Position.X,
                     worldTransform.Offset.X + sprite.Position.Y,
-                    source.Width,
-                    source.Height)
+                    source.Rectangle.Width,
+                    source.Rectangle.Height)
                 .Scale(camera.ZoomFactor)
                 .Translate(camera.GetSceneTranslationVector(worldTransform.ParallaxScrollingVector));
 

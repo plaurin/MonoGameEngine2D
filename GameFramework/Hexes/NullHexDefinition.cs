@@ -5,7 +5,7 @@ namespace GameFramework.Hexes
     public class NullHexDefinition : HexDefinition
     {
         private NullHexDefinition()
-            : base(new NullHexSheet(), "null", Rectangle.Empty)
+            : base(new NullHexSheet(), "null", RectangleInt.Empty)
         {
             this.Sheet.AddHexDefinition(this);
         }

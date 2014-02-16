@@ -171,7 +171,7 @@ namespace SamplesBrowser.Sandbox
 
             var linkSheet = this.ResourceManager.GetSpriteSheet("Link");
             this.linkMouseFollow = new Sprite(linkSheet, "Link01");
-            this.linkMouseFollow.Origin = new Vector(8, 11);
+            //this.linkMouseFollow.Origin = new Vector(8, 11);
 
             layer.AddSprite(this.linkMouseFollow);
 
@@ -200,7 +200,7 @@ namespace SamplesBrowser.Sandbox
         {
             var texture = this.ResourceManager.GetTexture(@"Sandbox\LinkSheet");
 
-            return new ImageLayer("Image", texture, new Rectangle(10, 10, 250, 250));
+            return new ImageLayer("Image", texture, new RectangleInt(10, 10, 250, 250));
         }
 
         private ColorLayer CreateColorLayer()
@@ -266,8 +266,8 @@ namespace SamplesBrowser.Sandbox
         {
             var texture = this.ResourceManager.GetTexture(@"Sandbox\LinkSheet");
             var sheet = new SpriteSheet(texture, "Link");
-            sheet.CreateSpriteDefinition("Link01", new Rectangle(3, 3, 16, 22));
-            sheet.CreateSpriteDefinition("Sleep01", new Rectangle(45, 219, 32, 40));
+            sheet.CreateSpriteDefinition("Link01", new RectangleInt(3, 3, 16, 22), new Vector(8, 11));
+            sheet.CreateSpriteDefinition("Sleep01", new RectangleInt(45, 219, 32, 40));
 
             //sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Link SpriteSheet.xml");
 

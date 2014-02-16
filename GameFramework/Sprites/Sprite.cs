@@ -15,6 +15,11 @@ namespace GameFramework.Sprites
 
         public SpriteSheet SpriteSheet { get; private set; }
 
+        /// <summary>
+        /// <remarks>Set only to override the SpriteDefinition Origin</remarks>
+        /// </summary>
+        public Vector? Origin { get; set; }
+
         public override int Draw(IDrawContext drawContext, Vector layerOffset, Vector parallaxScrollingVector,
             CameraMode cameraMode)
         {

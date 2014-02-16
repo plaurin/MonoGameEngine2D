@@ -70,12 +70,12 @@ namespace SamplesBrowser.ShootEmUp
             var spriteTexture = this.ResourceManager.GetTexture(@"ShootEmUp\Sprites.png");
             var spriteSheet = new SpriteSheet(spriteTexture, "SpriteSheet");
 
-            spriteSheet.CreateSpriteDefinition("Ship", new Rectangle(1, 1, 32, 32));
-            spriteSheet.CreateSpriteDefinition("YellowEnemy", new Rectangle(44, 37, 15, 23));
-            spriteSheet.CreateSpriteDefinition("RedEnemy", new Rectangle(79, 37, 15, 23));
-            spriteSheet.CreateSpriteDefinition("BlueEnemy", new Rectangle(114, 37, 15, 23));
+            spriteSheet.CreateSpriteDefinition("Ship", new RectangleInt(1, 1, 32, 32));
+            spriteSheet.CreateSpriteDefinition("YellowEnemy", new RectangleInt(44, 37, 15, 23));
+            spriteSheet.CreateSpriteDefinition("RedEnemy", new RectangleInt(79, 37, 15, 23));
+            spriteSheet.CreateSpriteDefinition("BlueEnemy", new RectangleInt(114, 37, 15, 23));
 
-            spriteSheet.CreateSpriteDefinition("YellowShot", new Rectangle(54, 1, 5, 9));
+            spriteSheet.CreateSpriteDefinition("YellowShot", new RectangleInt(54, 1, 5, 9));
 
             return spriteSheet;
         }

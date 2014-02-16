@@ -87,6 +87,7 @@
     <Compile Include="Screens\IScreen.cs" />
     <Compile Include="Screens\SceneBasedScreen.cs" />
     <Compile Include="Sprites\SpriteBase.cs" />
+    <Compile Include="Sprites\SpriteDefinition.cs" />
     <Compile Include="Utilities\DiagnosticHud.cs" />
     <Compile Include="Layers\ImageLayer.cs" />
     <Compile Include="Layers\LayerBase.cs" />

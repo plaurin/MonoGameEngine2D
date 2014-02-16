@@ -4,7 +4,7 @@ namespace GameFramework.Hexes
 {
     public class HexDefinition
     {
-        public HexDefinition(HexSheet sheet, string name, Rectangle rectangle)
+        public HexDefinition(HexSheet sheet, string name, RectangleInt rectangle)
         {
             this.Sheet = sheet;
             this.Name = name;
@@ -20,7 +20,7 @@ namespace GameFramework.Hexes
         
         public string Name { get; private set; }
 
-        public Rectangle Rectangle { get; private set; }
+        public RectangleInt Rectangle { get; private set; }
 
         public virtual bool ShouldDraw
         {

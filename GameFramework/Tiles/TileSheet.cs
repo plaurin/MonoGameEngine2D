@@ -34,7 +34,7 @@ namespace GameFramework.Tiles
 
         public TileDefinition CreateTileDefinition(string tileName, Point tilePosition)
         {
-            var rectangle = new Rectangle(tilePosition.X, tilePosition.Y, this.TilesSize.Width, this.TilesSize.Height);
+            var rectangle = new RectangleInt(tilePosition.X, tilePosition.Y, this.TilesSize.Width, this.TilesSize.Height);
             var tileDefinition = new TileDefinition(this, tileName, rectangle);
             this.definitions.Add(tileName, tileDefinition);
 
