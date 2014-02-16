@@ -140,17 +140,11 @@ namespace GameFramework
 
         #region SpriteFont
 
-        public void AddDrawingFont(string assetName)
-        {
-            if (!this.drawingFontDictionary.ContainsKey(assetName))
-                this.drawingFontDictionary.Add(assetName, null);
-        }
-
         public virtual DrawingFont GetDrawingFont(string assetName)
         {
-            var drawingFont = this.drawingFontDictionary[assetName];
+            DrawingFont drawingFont;
 
-            if (drawingFont == null)
+            if (!this.drawingFontDictionary.TryGetValue(assetName, out drawingFont))
             {
                 drawingFont = this.CreateDrawingFont(assetName);
                 this.drawingFontDictionary[assetName] = drawingFont;

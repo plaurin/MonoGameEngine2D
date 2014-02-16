@@ -35,7 +35,7 @@ namespace GameFramework.Utilities
             this.AddLine("Zooming: {0:f1}", () => camera.ZoomFactor);
         }
 
-        public void EnableKeyboardTracking(KeyboardTracking keyboardTracking)
+        public void EnableKeyboardTracking(IKeyboardMapper keyboardTracking)
         {
             KeyboardStateBase keyboardState = null;
             keyboardTracking.OnUpdate((ks, gt) => keyboardState = ks);
@@ -43,19 +43,19 @@ namespace GameFramework.Utilities
             this.AddLine("Keys: {0}", () => string.Join(", ", keyboardState.PressedKeys()));
         }
 
-        public void EnableMouseTracking(MouseTracking mouseTracking)
+        public void EnableMouseTracking(IMouseMapper mouseTracking)
         {
             MouseStateBase mouseState = null;
-            mouseTracking.OnMove((mt, gt) => mouseState = mt);
+            mouseTracking.OnUpdate((mt, gt) => mouseState = mt);
 
             this.AddLine("Mouse: {0}", () => mouseState);
             this.AddLine("MouseAbs: {0}", () => mouseState.AbsolutePosition);
         }
 
-        public void EnableTouchTracking(TouchTracking touchTracking)
+        public void EnableTouchTracking(ITouchMapper touchTracking)
         {
             TouchStateBase touchState = null;
-            touchTracking.OnTouch((ts, gt) => touchState = ts);
+            touchTracking.OnUpdate((ts, gt) => touchState = ts);
 
             this.AddLine("TouchCap: Connected?: {0}, Pressure?: {1}",
                 () => touchState.IsConnected, () => touchState.HasPressure);

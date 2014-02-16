@@ -2,7 +2,12 @@ using System;
 
 namespace GameFramework.Inputs
 {
-    public class KeyboardTracking
+    public interface IKeyboardMapper
+    {
+        void OnUpdate(Action<KeyboardStateBase, IGameTiming> trackingAction);
+    }
+
+    public class KeyboardTracking : IKeyboardMapper
     {
         private Action<KeyboardStateBase, IGameTiming> keyboardTrackingAction;
 

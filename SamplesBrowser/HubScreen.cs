@@ -100,7 +100,7 @@ namespace SamplesBrowser
                 return Samples.None;
             };
 
-            inputConfiguration.CreateMouseTracking(this.Camera).OnMove((mt, e) =>
+            inputConfiguration.CreateMouseTracking(this.Camera).OnUpdate((mt, e) =>
             {
                 this.mouseState = mt;
 
@@ -131,7 +131,7 @@ namespace SamplesBrowser
             });
 
             // Touch
-            inputConfiguration.CreateTouchTracking(this.Camera).OnTouch((ts, gt) =>
+            inputConfiguration.CreateTouchTracking(this.Camera).OnUpdate((ts, gt) =>
             {
                 this.touchState = ts;
 
@@ -174,9 +174,6 @@ namespace SamplesBrowser
 
         protected override Scene CreateScene()
         {
-            // TODO: Fix this... This is weird, mendatory??
-            this.ResourceManager.AddDrawingFont(@"Sandbox\SpriteFont1");
-
             var scene = new Scene("HubScene");
 
             var font = this.ResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");

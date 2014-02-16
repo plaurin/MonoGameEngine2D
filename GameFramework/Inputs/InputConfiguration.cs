@@ -4,7 +4,18 @@ using GameFramework.Cameras;
 
 namespace GameFramework.Inputs
 {
-    public class InputConfiguration
+    public interface IInputMapper
+    {
+        IDigitalButtonMapper GetDigitalButton(string name);
+
+        IKeyboardMapper CreateKeyboardTracking();
+
+        IMouseMapper CreateMouseTracking(ICamera camera);
+
+        ITouchMapper CreateTouchTracking(ICamera camera);
+    }
+
+    public class InputConfiguration : IInputMapper
     {
         private readonly Dictionary<string, DigitalButton> digitalButtons;
         private readonly Dictionary<string, VisualButton> visualButtons;
@@ -68,7 +79,7 @@ namespace GameFramework.Inputs
             return digitalButton;
         }
 
-        public DigitalButton GetDigitalButton(string name)
+        public IDigitalButtonMapper GetDigitalButton(string name)
         {
             return this.digitalButtons[name];
         }
@@ -99,7 +110,7 @@ namespace GameFramework.Inputs
             return this.inputEvents[name];
         }
 
-        public KeyboardTracking CreateKeyboardTracking()
+        public IKeyboardMapper CreateKeyboardTracking()
         {
             var keyboardTracking = new KeyboardTracking();
             this.keyboardTrackings.Add(keyboardTracking);
@@ -107,7 +118,7 @@ namespace GameFramework.Inputs
             return keyboardTracking;
         }
 
-        public MouseTracking CreateMouseTracking(ICamera camera)
+        public IMouseMapper CreateMouseTracking(ICamera camera)
         {
             var mouseTracking = new MouseTracking(camera);
             this.mouseTrackings.Add(mouseTracking);
@@ -115,7 +126,7 @@ namespace GameFramework.Inputs
             return mouseTracking;
         }
 
-        public TouchTracking CreateTouchTracking(ICamera camera)
+        public ITouchMapper CreateTouchTracking(ICamera camera)
         {
             var touchTracking = new TouchTracking(camera);
             this.touchTrackings.Add(touchTracking);

@@ -3,7 +3,12 @@ using GameFramework.Cameras;
 
 namespace GameFramework.Inputs
 {
-    public class TouchTracking
+    public interface ITouchMapper
+    {
+        void OnUpdate(Action<TouchStateBase, IGameTiming> moveAction);
+    }
+
+    public class TouchTracking : ITouchMapper
     {
         private readonly ICamera camera;
         private Action<TouchStateBase, IGameTiming> touchAction;
@@ -13,7 +18,7 @@ namespace GameFramework.Inputs
             this.camera = camera;
         }
 
-        public void OnTouch(Action<TouchStateBase, IGameTiming> moveAction)
+        public void OnUpdate(Action<TouchStateBase, IGameTiming> moveAction)
         {
             this.touchAction = moveAction;
         }

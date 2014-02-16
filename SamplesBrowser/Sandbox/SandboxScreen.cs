@@ -82,7 +82,7 @@ namespace SamplesBrowser.Sandbox
                 this.hits = this.Scene.GetHits(this.mouseState.AbsolutePosition, this.Camera).ToList();
             });
 
-            inputConfiguration.CreateMouseTracking(this.Camera).OnMove((mt, e) =>
+            inputConfiguration.CreateMouseTracking(this.Camera).OnUpdate((mt, e) =>
             {
                 this.mouseState = mt;
 
@@ -94,19 +94,18 @@ namespace SamplesBrowser.Sandbox
 
         protected override Scene CreateScene()
         {
-            this.ResourceManager.AddDrawingFont(@"Sandbox\SpriteFont1");
-
             var scene = new Scene("scene1");
 
-            scene.Add(this.CreateImageLayer());
-            scene.Add(this.CreateHexLayer());
-            scene.Add(this.CreateTileLayer());
-            scene.Add(this.CreateColorLayer());
-            scene.Add(this.CreateHexLayerTestDistance());
-            scene.Add(this.CreateSpriteLayer());
-            scene.Add(this.CreateDiagnosticLayer());
-            scene.Add(this.CreateMouseCursor());
-            scene.Add(this.CreateMouseFollow());
+            scene.Add(
+                this.CreateImageLayer(),
+                this.CreateHexLayer(),
+                this.CreateTileLayer(),
+                this.CreateColorLayer(),
+                this.CreateHexLayerTestDistance(),
+                this.CreateSpriteLayer(),
+                this.CreateDiagnosticLayer(),
+                this.CreateMouseCursor(),
+                this.CreateMouseFollow());
 
             //this.scene.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\TestScene.xml");
 

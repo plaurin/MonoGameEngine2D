@@ -7,9 +7,9 @@ namespace GameFramework.Utilities
     {
         private Vector mousePosition;
 
-        public MouseCursor(MouseTracking mouseTracking)
+        public MouseCursor(IMouseMapper mouseTracking)
         {
-            mouseTracking.OnMove((mt, gt) => this.mousePosition = mt.AbsolutePosition);
+            mouseTracking.OnUpdate((mt, gt) => this.mousePosition = mt.AbsolutePosition);
         }
 
         public int Draw(IDrawContext drawContext)

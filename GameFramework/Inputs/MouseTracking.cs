@@ -4,7 +4,12 @@ using GameFramework.Cameras;
 
 namespace GameFramework.Inputs
 {
-    public class MouseTracking
+    public interface IMouseMapper
+    {
+        void OnUpdate(Action<MouseStateBase, IGameTiming> moveAction);
+    }
+
+    public class MouseTracking : IMouseMapper
     {
         private readonly ICamera camera;
 
@@ -15,7 +20,7 @@ namespace GameFramework.Inputs
             this.camera = camera;
         }
 
-        public void OnMove(Action<MouseStateBase, IGameTiming> moveAction)
+        public void OnUpdate(Action<MouseStateBase, IGameTiming> moveAction)
         {
             this.mouseMoveAction = moveAction;
         }

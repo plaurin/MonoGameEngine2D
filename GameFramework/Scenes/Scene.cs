@@ -34,9 +34,14 @@ namespace GameFramework.Scenes
             get { return this.sceneObjects; }
         }
 
-        public void Add(object sceneObject)
+        public void Add(params object[] newSceneObjects)
         {
-            this.sceneObjects.Add(sceneObject);
+            this.sceneObjects.AddRange(newSceneObjects);
+        }
+
+        public void AddRange(IEnumerable<object> newSceneObjects)
+        {
+            this.sceneObjects.AddRange(newSceneObjects);
         }
 
         public IEnumerable<HitBase> GetHits(Vector position, ICamera camera)

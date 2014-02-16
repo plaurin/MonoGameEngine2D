@@ -59,7 +59,7 @@ namespace SamplesBrowser.ShootEmUp
             return new NavigatorMetadata("Player Ship", NodeKind.Entity);
         }
 
-        public void BindController(InputConfiguration inputConfiguration)
+        public void BindController(IInputMapper inputConfiguration)
         {
             inputConfiguration.GetDigitalButton("Left").MapTo(gt => this.shipVelocity = shipVelocity.Translate(gt.ElapsedSeconds * -250, 0));
             inputConfiguration.GetDigitalButton("Right").MapTo(gt => this.shipVelocity = shipVelocity.Translate(gt.ElapsedSeconds * 250, 0));

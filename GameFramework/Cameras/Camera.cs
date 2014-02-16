@@ -71,7 +71,17 @@ namespace GameFramework.Cameras
 
         public void Move(float offsetX, float offsetY)
         {
-            this.innerPosition = this.innerPosition.Translate(offsetX, offsetY);
+            this.MoveTo(this.innerPosition.Translate(offsetX, offsetY));
+        }
+
+        public void MoveTo(float x, float y)
+        {
+            this.MoveTo(new Vector(x, y));
+        }
+
+        public void MoveTo(Vector newPosition)
+        {
+            this.innerPosition = newPosition;
             this.Position = this.innerPosition;
         }
 

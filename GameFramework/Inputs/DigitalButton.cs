@@ -4,17 +4,25 @@ using System.Linq;
 
 namespace GameFramework.Inputs
 {
-    public class DigitalButton
+    public interface IDigitalButtonMapper
+    {
+        void MapTo(Action<IGameTiming> downAction, Action<IGameTiming> upAction = null);
+
+        void MapClickTo(Action<IGameTiming> clickAction);
+
+        void MapStateTo(Action<bool, IGameTiming> stateAction);
+    }
+
+    public class DigitalButton : IDigitalButtonMapper
     {
         private readonly List<KeyboardKeys> mappingKeys;
 
         private readonly List<MouseButtons> mappingButtons;
 
         private Action<IGameTiming> buttonDownAction;
-
         private Action<IGameTiming> buttonUpAction;
-
         private Action<IGameTiming> buttonClickAction;
+        private Action<bool, IGameTiming> buttonStateAction;
 
         private bool isDown;
 
@@ -51,6 +59,11 @@ namespace GameFramework.Inputs
             this.buttonClickAction = clickAction;
         }
 
+        public void MapStateTo(Action<bool, IGameTiming> stateAction)
+        {
+            this.buttonStateAction = stateAction;
+        }
+
         public void Update(KeyboardStateBase keyboardState, MouseStateBase mouseState, IGameTiming gameTime)
         {
             var previousDown = this.isDown;
@@ -62,6 +75,8 @@ namespace GameFramework.Inputs
             if (!this.isDown && this.buttonUpAction != null) this.buttonUpAction.Invoke(gameTime);
 
             if (this.buttonClickAction != null && previousDown && !this.isDown) this.buttonClickAction.Invoke(gameTime);
+
+            if (this.buttonStateAction != null) this.buttonStateAction.Invoke(this.isDown, gameTime);
         }
     }
 }

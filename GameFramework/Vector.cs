@@ -38,6 +38,11 @@ namespace GameFramework
             get { return new Vector(1, 1); }
         }
 
+        public Vector GetNormalized()
+        {
+            return this / this.Length;
+        }
+
         public static Vector operator +(Vector first, Vector second)
         {
             return new Vector(first.X + second.X, first.Y + second.Y);
@@ -51,6 +56,11 @@ namespace GameFramework
         public static Vector operator /(Vector vector, float factor)
         {
             return new Vector(vector.X / factor, vector.Y / factor);
+        }
+
+        public static Vector operator *(Vector vector, float factor)
+        {
+            return new Vector(vector.X * factor, vector.Y * factor);
         }
 
         public static float GetDistance(Vector first, Vector second)

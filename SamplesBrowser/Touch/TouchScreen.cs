@@ -98,9 +98,8 @@ namespace SamplesBrowser.Touch
         {
             var scene = new Scene("Touch");
 
-            scene.Add(this.CreateButtonLayer());
-
-            scene.Add(this.CreateDiagnosticLayer());
+            scene.Add(this.CreateButtonLayer(), 
+                this.CreateDiagnosticLayer());
 
             return scene;
         }

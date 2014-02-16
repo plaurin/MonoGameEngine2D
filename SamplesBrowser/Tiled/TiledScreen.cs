@@ -36,8 +36,7 @@ namespace SamplesBrowser.Tiled
         {
             var scene = new Scene("Tiled");
 
-            foreach (var tileMap in TiledHelper.LoadFile(@"Tiled\untitled.tmx", this.ResourceManager))
-                scene.Add(tileMap);
+            scene.AddRange(TiledHelper.LoadFile(@"Tiled\untitled.tmx", this.ResourceManager));
 
             return scene;
         }

@@ -77,6 +77,7 @@
     <Compile Include="Inputs\MouseButtons.cs" />
     <Compile Include="Inputs\MouseStateBase.cs" />
     <Compile Include="Inputs\MouseTracking.cs" />
+    <Compile Include="Inputs\TouchPoint.cs" />
     <Compile Include="Inputs\TouchStateBase.cs" />
     <Compile Include="Inputs\TouchTracking.cs" />
     <Compile Include="Inputs\VisualButton.cs" />
