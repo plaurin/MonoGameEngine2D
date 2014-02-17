@@ -22,7 +22,7 @@ namespace GameNavigator
             get { return this.navigatorWindow == null || this.navigatorWindow.IsVisible; }
         }
 
-        public void Launch(IScreen gameScreen, Action<int, int> moveGameWindow)
+        public void Launch(IScreen gameScreen, GameResourceManager gameResourceManager, Action<int, int> moveGameWindow)
         {
             RestoreGameWindow(moveGameWindow);
 
@@ -30,7 +30,7 @@ namespace GameNavigator
             var newWindowThread = new Thread(() =>
             {
                 // Navigator window
-                this.navigatorViewModel = new NavigatorViewModel(gameScreen);
+                this.navigatorViewModel = new NavigatorViewModel(gameScreen, gameResourceManager);
                 var navigator = new NavigatorView { DataContext = navigatorViewModel };
                 this.navigatorWindow = new Window { Content = navigator };
 
@@ -44,7 +44,7 @@ namespace GameNavigator
                 //this.navigatorWindow.Show();
 
                 // Object Inspector window
-                var objectInspector = new ObjectInspectorView { DataContext = navigatorViewModel };
+                var objectInspector = new ObjectInspectorView(navigatorViewModel);
                 this.inspectorWindow = new Window { Content = objectInspector, Title = "Object Inspector" };
 
                 this.RestoreInspectorWindow();

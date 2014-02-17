@@ -1,8 +1,8 @@
 namespace GameFramework.Sprites
 {
-    public class SpriteDefinition : ISpriteTemplate
+    public class SpriteDefinition : ISpriteTemplate, INavigatorMetadataProvider
     {
-        public SpriteDefinition(SpriteSheet spriteSheet, string name, RectangleInt rectangle, Vector? origin)
+        internal SpriteDefinition(SpriteSheet spriteSheet, string name, RectangleInt rectangle, Vector? origin)
         {
             this.SpriteSheet = spriteSheet;
             this.Name = name;
@@ -21,6 +21,12 @@ namespace GameFramework.Sprites
         public SpriteBase CreateInstance()
         {
             return new Sprite(this.SpriteSheet, this.Name);
+        }
+
+        public NavigatorMetadata GetMetadata()
+        {
+            // TODO need kind and icon for SpriteDefinition (any kind of definition/template?)
+            return new NavigatorMetadata(this.Name);
         }
     }
 }

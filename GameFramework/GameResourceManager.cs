@@ -1,19 +1,16 @@
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using GameFramework.Drawing;
 using GameFramework.Hexes;
-using GameFramework.Scenes;
 using GameFramework.Sprites;
 using GameFramework.Tiles;
 
 namespace GameFramework
 {
-    public class GameResourceManager
+    public class GameResourceManager : IComposite, INavigatorMetadataProvider
     {
         #region Fields
-
-        //private readonly ContentManager contentManager;
 
         private readonly Dictionary<string, Texture> textureDictionary;
 
@@ -25,15 +22,10 @@ namespace GameFramework
 
         private readonly Dictionary<string, DrawingFont> drawingFontDictionary;
         
-        private readonly Dictionary<string, Scene> sceneDictionary;
-
         #endregion
 
         #region Constructor
 
-        //public GameResourceManager(ContentManager contentManager)
-        //{
-        //    this.contentManager = contentManager;
         public GameResourceManager()
         {
             this.textureDictionary = new Dictionary<string, Texture>();
@@ -41,7 +33,6 @@ namespace GameFramework
             this.tileSheetDictionary = new Dictionary<string, TileSheet>();
             this.spriteSheetDictionary = new Dictionary<string, SpriteSheet>();
             this.drawingFontDictionary = new Dictionary<string, DrawingFont>();
-            this.sceneDictionary = new Dictionary<string, Scene>();
 
             this.AddHexSheet(NullHexDefinition.CreateInstance().Sheet);
             this.AddTileSheet(NullTileDefinition.CreateInstance().Sheet);
@@ -49,15 +40,25 @@ namespace GameFramework
 
         #endregion
 
-        #region Texture
+        public IEnumerable<object> Children
+        {
+            get
+            {
+                return this.drawingFontDictionary.Values.Cast<object>()
+                    .Concat(this.textureDictionary.Values)
+                    .Concat(this.tileSheetDictionary.Values)
+                    .Concat(this.hexSheetDictionary.Values)
+                    .Concat(this.spriteSheetDictionary.Values);
+            }
+        }
 
-        //protected Dictionary<string, Texture> TextureDictionary
-        //{
-        //    get
-        //    {
-        //        return this.textureDictionary;
-        //    }
-        //}
+        public NavigatorMetadata GetMetadata()
+        {
+            // TODO: Need new node kind and label
+            return new NavigatorMetadata("Resource Manager", NodeKind.Utility);
+        }
+
+        #region Texture
 
         public void AddTexture(Texture texture)
         {
@@ -160,20 +161,6 @@ namespace GameFramework
                 Name = assetName,
                 //Font = this.contentManager.Load<SpriteFont>(assetName)
             };
-        }
-
-        #endregion
-
-        #region Scene
-
-        public void AddScene(Scene scene)
-        {
-            this.sceneDictionary.Add(scene.Name, scene);
-        }
-
-        public Scene GetScene(string sceneName)
-        {
-            return this.sceneDictionary[sceneName];
         }
 
         #endregion

@@ -2,7 +2,7 @@ using System;
 
 namespace GameFramework.Hexes
 {
-    public class HexDefinition
+    public class HexDefinition : INavigatorMetadataProvider
     {
         public HexDefinition(HexSheet sheet, string name, RectangleInt rectangle)
         {
@@ -30,6 +30,11 @@ namespace GameFramework.Hexes
         public virtual void Draw(IDrawContext drawContext, Rectangle destination)
         {
             this.Sheet.Draw(drawContext, this, destination);
+        }
+
+        public NavigatorMetadata GetMetadata()
+        {
+            return new NavigatorMetadata(this.Name);
         }
     }
 }

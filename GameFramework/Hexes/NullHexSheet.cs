@@ -5,7 +5,7 @@ namespace GameFramework.Hexes
     public class NullHexSheet : HexSheet
     {
         public NullHexSheet()
-            : base(null, "null", Size.Zero)
+            : base(null, "NullHexSheet", Size.Zero)
         {
         }
 
@@ -13,10 +13,5 @@ namespace GameFramework.Hexes
         {
             // Do nothing NullObjectPattern
         }
-
-        //protected override HexDefinition CreateHexDefinition(HexSheet hexSheet, string hexName, Rectangle rectangle)
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }

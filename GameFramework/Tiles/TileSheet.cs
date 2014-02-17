@@ -5,7 +5,7 @@ using GameFramework.Sheets;
 
 namespace GameFramework.Tiles
 {
-    public class TileSheet : SheetBase
+    public class TileSheet : SheetBase, IComposite
     {
         private readonly Size tilesSize;
 
@@ -54,6 +54,11 @@ namespace GameFramework.Tiles
                 Source = tileDefinition.Rectangle,
                 Destination = destination,
             });
+        }
+
+        public IEnumerable<object> Children
+        {
+            get { return this.Definitions.Values; }
         }
     }
 }

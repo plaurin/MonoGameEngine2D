@@ -5,7 +5,7 @@ namespace GameFramework.Tiles
     public class NullTileDefinition : TileDefinition
     {
         private NullTileDefinition()
-            : base(new NullTileSheet(), "null", RectangleInt.Empty)
+            : base(new NullTileSheet(), "NullTileDefinition", RectangleInt.Empty)
         {
             this.Sheet.AddTileDefinition(this);
         }

@@ -5,7 +5,7 @@ using GameFramework.Sheets;
 
 namespace GameFramework.Hexes
 {
-    public class HexSheet : SheetBase
+    public class HexSheet : SheetBase, IComposite
     {
         private readonly Dictionary<string, HexDefinition> definitions;
 
@@ -49,6 +49,11 @@ namespace GameFramework.Hexes
                 Source = hexDefinition.Rectangle,
                 Destination = destination,
             });
+        }
+
+        public IEnumerable<object> Children
+        {
+            get { return this.Definitions.Values; }
         }
     }
 }

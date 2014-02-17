@@ -21,13 +21,11 @@ namespace MonoGameImplementation
             get { return this.service.IsNavigatorOpen; }
         }
 
-        public void Launch(IScreen screen, GameWindow gameWindow)
+        public void Launch(IScreen screen, GameResourceManager gameResourceManager, GameWindow gameWindow)
         {
-            //gameWindow.AllowUserResizing = true;
-
             this.HookWindowClosingShouldSavePosition(gameWindow);
 
-            this.service.Launch(screen, (x, y) => MoveGameWindow(gameWindow, x, y));
+            this.service.Launch(screen, gameResourceManager, (x, y) => MoveGameWindow(gameWindow, x, y));
         }
 
         public NavigatorMessage Update(IGameTiming gameTiming)

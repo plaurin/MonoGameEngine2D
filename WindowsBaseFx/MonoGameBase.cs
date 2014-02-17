@@ -38,6 +38,8 @@ namespace MonoGameImplementation
             this.graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
 
+            this.gameResourceManager = new XnaGameResourceManager(this.Content);
+
             this.gameTimer = new GameFramework.GameTimer();
 
 #if WINDOWS
@@ -56,7 +58,7 @@ namespace MonoGameImplementation
             this.screen.Initialize(this.GetViewPort());
 
 #if WINDOWS
-            this.gameNavigator.Launch(this.screen, this.Window);
+            this.gameNavigator.Launch(this.screen, this.gameResourceManager, this.Window);
 #endif
 
             base.Initialize();
@@ -70,7 +72,6 @@ namespace MonoGameImplementation
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
-            this.gameResourceManager = new XnaGameResourceManager(this.Content);
 
             this.screen.LoadContent(this.gameResourceManager);
         }

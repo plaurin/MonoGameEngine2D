@@ -6,7 +6,7 @@ using GameFramework.Sheets;
 
 namespace GameFramework.Sprites
 {
-    public class SpriteSheet : SheetBase
+    public class SpriteSheet : SheetBase, IComposite
     {
         private readonly IDictionary<string, SpriteDefinition> definitions;
 
@@ -81,6 +81,11 @@ namespace GameFramework.Sprites
             return spriteRectangle.Intercept(position)
                 ? new SpriteHit(sprite)
                 : null;
+        }
+
+        public IEnumerable<object> Children
+        {
+            get { return this.Definitions.Values; }
         }
     }
 }

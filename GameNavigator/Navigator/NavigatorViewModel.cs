@@ -10,6 +10,7 @@ namespace GameNavigator.Navigator
     public class NavigatorViewModel : ViewModelBase
     {
         private readonly IScreen screen;
+        private readonly GameResourceManager gameResourceManager;
         private readonly List<NavigatorNode> nodes;
         private readonly DelegateCommand refreshCommand;
         private readonly DelegateCommand pausePlayCommand;
@@ -19,6 +20,7 @@ namespace GameNavigator.Navigator
         private bool shouldPause;
         private bool shouldPlayOneFrame;
         private bool shouldExit;
+        private float lastTimeUpdateInspector;
 
         private string gameTime;
         private string status;
@@ -48,13 +50,16 @@ namespace GameNavigator.Navigator
             this.Status = "Hi!";
         }
 
-        public NavigatorViewModel(IScreen screen)
+        public NavigatorViewModel(IScreen screen, GameResourceManager gameResourceManager)
             : this()
         {
             this.screen = screen;
+            this.gameResourceManager = gameResourceManager;
 
             this.RefreshTree();
         }
+
+        public event EventHandler RefreshInspector;
 
         public ICommand RefreshCommand
         {
@@ -92,7 +97,9 @@ namespace GameNavigator.Navigator
             {
                 this.currentSelection = value;
                 this.OnPropertyChanged();
+                
                 this.refreshCommand.RaiseCanExecuteChanged();
+                this.RefreshChildNodes(this.CurrentSelection);
             }
         }
 
@@ -212,6 +219,12 @@ namespace GameNavigator.Navigator
             this.FrameCount = "#" + this.frameCounter;
             this.GameTime = gameTiming.TotalSeconds.ToString("f2");
 
+            if (gameTiming.TotalSeconds - this.lastTimeUpdateInspector > 1)
+            {
+                this.OnRefreshInspector();
+                this.lastTimeUpdateInspector = gameTiming.TotalSeconds;
+            }
+
             var result = new NavigatorMessage
             {
                 ShouldPlay = !this.shouldPause || this.shouldPlayOneFrame,
@@ -226,6 +239,8 @@ namespace GameNavigator.Navigator
         private void RefreshTree()
         {
             this.nodes.Clear();
+
+            this.nodes.Add(this.CreateNavigatorNode(this.gameResourceManager, this.GetNavigatorNodes(this.gameResourceManager)));
             this.nodes.AddRange(this.GetNavigatorNodes(this.screen));
         }
 
@@ -234,6 +249,12 @@ namespace GameNavigator.Navigator
             var childNodes = this.GetNavigatorNodes(navigatorNode.SceneNode);
             // TODO: Should remove event handler
             navigatorNode.UpdateNodes(childNodes);
+        }
+
+        private void RefreshChildNodes(NavigatorNode navigatorNode)
+        {
+            if (navigatorNode.Kind != NodeKind.Unknown)
+                this.RefreshNode(navigatorNode);
         }
 
         private IEnumerable<NavigatorNode> GetNavigatorNodes(object sceneNode)
@@ -269,11 +290,11 @@ namespace GameNavigator.Navigator
             if (metadataProvider != null)
             {
                 var metadata = metadataProvider.GetMetadata();
-                node = new NavigatorNode(sceneObject, metadata.Name, childNodes, GetIconFromKind(metadata.Kind));
+                node = new NavigatorNode(sceneObject, metadata.Name, metadata.Kind, childNodes);
             }
             else
             {
-                node = new NavigatorNode(sceneObject, sceneObject.ToString(), childNodes, GetIconFromKind(NodeKind.Unknown));
+                node = new NavigatorNode(sceneObject, sceneObject.ToString(), childNodes);
             }
 
             node.PropertyChanged += this.NodePropertyChanged;
@@ -281,40 +302,31 @@ namespace GameNavigator.Navigator
             return node;
         }
 
-        private static string GetIconFromKind(NodeKind kind)
-        {
-            switch (kind)
-            {
-                case NodeKind.ScreenState:
-                    return "../Icons/ScreenState.png";
-                case NodeKind.Screen:
-                    return "../Icons/Screen.png";
-                case NodeKind.Scene:
-                    return "../Icons/Scene.png";
-                case NodeKind.Layer:
-                    return "../Icons/Layer.png";
-                case NodeKind.Entity:
-                    return "../Icons/Entity.png";
-                case NodeKind.Utility:
-                    return "../Icons/Utility.png";
-                case NodeKind.Unknown:
-                    return "../Icons/Unknown.png";
-                default: 
-                    throw new InvalidOperationException(kind + " not yet implemented");
-            }
-        }
-
         private void NodePropertyChanged(object sender, PropertyChangedEventArgs eventArgs)
         {
             if (eventArgs.PropertyName == "IsSelected")
             {
                 var node = sender as NavigatorNode;
-                if (node != null)
+                if (node != null && node.IsSelected)
                 {
                     this.CurrentSelection = node;
-                    this.Status = node.Label;
                 }
             }
+
+            if (eventArgs.PropertyName == "IsExpanded")
+            {
+                var node = sender as NavigatorNode;
+                if (node != null && node.IsExpanded)
+                {
+                    this.RefreshChildNodes(node);
+                }
+            }
+        }
+
+        private void OnRefreshInspector()
+        {
+            var handler = this.RefreshInspector;
+            if (handler != null) handler.Invoke(this, EventArgs.Empty);
         }
     }
 }

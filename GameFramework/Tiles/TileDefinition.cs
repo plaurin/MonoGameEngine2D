@@ -2,7 +2,7 @@ using System;
 
 namespace GameFramework.Tiles
 {
-    public class TileDefinition
+    public class TileDefinition : INavigatorMetadataProvider
     {
         public TileDefinition(TileSheet sheet, string name, RectangleInt rectangle)
         {
@@ -30,6 +30,12 @@ namespace GameFramework.Tiles
         public virtual void Draw(IDrawContext drawContext, Rectangle destination)
         {
             this.Sheet.Draw(drawContext, this, destination);
+        }
+
+        public NavigatorMetadata GetMetadata()
+        {
+            // TODO need kind and icon for TileDefinition (any kind of definition/template?)
+            return new NavigatorMetadata(this.Name);
         }
     }
 }
