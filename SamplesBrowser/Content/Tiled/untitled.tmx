@@ -6,4 +6,10 @@
    eJzt1slOwzAUBdAHSECZKqhYMKhiEAum//89HKVRgrERNO7uHOlukqx89Z6zjoj1zFykLIMWSud7k3Kbcld5r4/dKZ3vY8pTykeMneyl7E9yED/70Ml8pbn4jL6PaSeXKdcpJ5vcx9iLPtopzUWeoZNFjH0MOQ19tDR08RD1Pro8Rz8jV1lW4f5oaTofrykvUe+j++Yw5WiT43Cft5bf5bVOuj66Ls5j3E1n0fcyPGO+0v9V18lblvf4fk+Uwnz57pnuo9pe0sfu1HbP8o/v9NHWb+f7n9DWNuerDwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAbX4vtFKE=
   </data>
  </layer>
+ <objectgroup name="Object Layer 1" width="100" height="100">
+  <object gid="46" x="83" y="78"/>
+  <object gid="46" x="439" y="70"/>
+  <object gid="31" x="426" y="279"/>
+  <object gid="31" x="127" y="299"/>
+ </objectgroup>
 </map>

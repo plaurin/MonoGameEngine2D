@@ -7,11 +7,30 @@ using GameFramework.Tiles;
 
 namespace GameFramework.IO
 {
-    public static class TiledHelper
+    public class TiledFile : ITiledFile
     {
         private const string ContentFolder = "Content";
 
-        public static IEnumerable<TileLayer> LoadFile(string filepath, GameResourceManager gameResourceManager)
+        private readonly List<TileLayer> tileLayers;
+        private readonly List<ObjectLayer> objectLayers;
+
+        private TiledFile(IEnumerable<TileLayer> tileLayers, IEnumerable<ObjectLayer> objectLayers)
+        {
+            this.tileLayers = new List<TileLayer>(tileLayers);
+            this.objectLayers = new List<ObjectLayer>(objectLayers);
+        }
+
+        public IEnumerable<TileLayer> TileLayers
+        {
+            get { return this.tileLayers; }
+        }
+
+        public IEnumerable<ObjectLayer> ObjectLayers
+        {
+            get { return this.objectLayers; }
+        }
+
+        public static ITiledFile Load(string filepath, GameResourceManager gameResourceManager)
         {
             var map = new TmxMap(Path.Combine(ContentFolder, filepath));
 
@@ -23,8 +42,10 @@ namespace GameFramework.IO
             var tileDefinitions = sheets.SelectMany(sheet => sheet.Definitions.Values)
                 .ToDictionary(tileDefinition => tileDefinition.Name);
 
-            foreach (var layer in map.Layers)
-                yield return LoadLayer(layer, mapSize, tilesSize, tileDefinitions);
+            var tileLayers = map.Layers.Select(l => LoadLayer(l, mapSize, tilesSize, tileDefinitions)).ToList();
+            var objectLayers = map.ObjectGroups.Select(o => LoadObjects(o, tileDefinitions)).ToList();
+
+            return new TiledFile(tileLayers, objectLayers);
         }
 
         private static TileSheet LoadTileset(TmxTileset tileset, Size tilesSize, GameResourceManager gameResourceManager)
@@ -56,7 +77,7 @@ namespace GameFramework.IO
             return sheet;
         }
 
-        private static TileLayer LoadLayer(TmxLayer layer, Size mapSize, Size tilesSize, IDictionary<string, TileDefinition> tileDefinitions)
+        private static TileLayer LoadLayer(TmxLayer layer, Size mapSize, Size tilesSize, IReadOnlyDictionary<string, TileDefinition> tileDefinitions)
         {
             var tileLayer = new TileLayer(layer.Name, mapSize, tilesSize);
 
@@ -67,6 +88,22 @@ namespace GameFramework.IO
             }
 
             return tileLayer;
+        }
+
+        private static ObjectLayer LoadObjects(TmxObjectGroup objectGroup, IReadOnlyDictionary<string, TileDefinition> tileDefinitions)
+        {
+            var tiledObjects = new List<TiledObject>();
+
+            foreach (var tmxObject in objectGroup.Objects)
+            {
+                if (tmxObject.ObjectType == TmxObjectGroup.TmxObjectType.Tile && tmxObject.Tile != null)
+                {
+                    var tileDefinition = tileDefinitions[tmxObject.Tile.Gid.ToString()];
+                    tiledObjects.Add(new TiledObject(tileDefinition, new Vector(tmxObject.Tile.X, tmxObject.Tile.Y)));
+                }
+            }
+
+            return new ObjectLayer(objectGroup.Name, tiledObjects);
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using GameFramework;
 using GameFramework.Cameras;
+using GameFramework.Drawing;
 using GameFramework.Inputs;
 using GameFramework.IO;
 using GameFramework.Scenes;
@@ -36,7 +38,14 @@ namespace SamplesBrowser.Tiled
         {
             var scene = new Scene("Tiled");
 
-            scene.AddRange(TiledHelper.LoadFile(@"Tiled\untitled.tmx", this.ResourceManager));
+            var tiledFile = TiledFile.Load(@"Tiled\untitled.tmx", this.ResourceManager);
+            scene.AddRange(tiledFile.TileLayers);
+
+            var drawingLayer = new DrawingLayer("ObjectLayer");
+            foreach (var tiledObject in tiledFile.ObjectLayers.First().TiledObjects)
+                drawingLayer.AddRectangle(tiledObject.Position.X, tiledObject.Position.Y, 10, 10, 2, Color.Red);
+
+            scene.Add(drawingLayer);
 
             return scene;
         }

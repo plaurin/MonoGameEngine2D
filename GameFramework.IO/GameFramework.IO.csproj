@@ -33,6 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ITiledFile.cs" />
+    <Compile Include="ObjectLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ColorXmlRepository.cs" />
     <Compile Include="Repositories\DrawingXmlRepository.cs" />
@@ -42,7 +44,8 @@
     <Compile Include="Repositories\SpriteXmlRepository.cs" />
     <Compile Include="Repositories\TileXmlRepository.cs" />
     <Compile Include="Repositories\XmlRepository.cs" />
-    <Compile Include="TiledHelper.cs" />
+    <Compile Include="TiledFile.cs" />
+    <Compile Include="TiledObject.cs" />
     <Compile Include="TiledSharp\ImageLayer.cs" />
     <Compile Include="TiledSharp\ITmxElement.cs" />
     <Compile Include="TiledSharp\Layer.cs" />
