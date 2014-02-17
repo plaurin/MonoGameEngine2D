@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>MonoGameEngine2D.Windows</id>
-    <version>1.2.1</version>
+    <version>1.5.0</version>
     <authors>Pascal Laurin</authors>
     <owners>Pascal Laurin</owners>
     <licenseUrl>http://github.com/plaurin/MonoGameEngine2D/blob/master/License.txt</licenseUrl>
@@ -10,17 +10,20 @@
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Cross-platform Game making framework using MonoGame and PCL.  Use to create a Windows host.</description>
-    <releaseNotes>Fix KeyboardKeys mapping to Xna Keys</releaseNotes>
+    <releaseNotes>Major refactoring and GameNavigator</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>Game MonoGame</tags>
     <dependencies>
-      <dependency id="MonoGameEngine2D.GameFramework" version="1.2.0" />
+      <dependency id="MonoGameEngine2D.GameFramework" version="1.5.0" />
+      <dependency id="Extended.Wpf.Toolkit" version="2.0.0" />
     </dependencies>
   </metadata>
   <files>
-    <file src="WindowsBase\bin\WindowsGL\Release\WindowsBase.dll" target="lib\net45" />
-    <file src="WindowsBase\bin\WindowsGL\Release\WindowsBase.dll.config" target="lib\net45" />
-    <file src="WindowsBase\bin\WindowsGL\Release\WindowsBase.pdb" target="lib\net45" />
+    <file src="WindowsBaseFx\bin\WindowsGL\Release\WindowsBaseFx.dll" target="lib\net45" />
+    <file src="WindowsBaseFx\bin\WindowsGL\Release\WindowsBaseFx.pdb" target="lib\net45" />
+    <file src="GameNavigator\bin\Release\GameNavigator.dll" target="lib\net45" />
+    <file src="GameNavigator\bin\Release\GameNavigator.dll.config" target="lib\net45" />
+    <file src="GameNavigator\bin\Release\GameNavigator.pdb" target="lib\net45" />
     <!--<file src="WindowsBase\bin\WindowsGL\Release\Lidgren.Network.dll" target="lib\net45" />
     <file src="WindowsBase\bin\WindowsGL\Release\MonoGame.Framework.dll" target="lib\net45" />
     <file src="WindowsBase\bin\WindowsGL\Release\OpenTK.dll" target="lib\net45" />

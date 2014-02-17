@@ -4,8 +4,6 @@
  - CompositeTile stencil to help map's designing
 ### SpriteLayer
  - P2 Scaling SpriteSheets
- - P3 AnimatedSpriteDefinition
- - P3 CompositeSprite
 ### HexLayer
 ### Layer
 ### Scene
@@ -24,7 +22,6 @@
 ### ContentSync
  - Validate current content Links
 ### IO
- - P1 Filter Layer to Import (TiledHelper.LoadFile -> TiledHelper.ImportLayers(, params string[] layerNames))
  - Validate Tiled load map/tileset support
  - Fix Repositories to use proper constructor injection patterns
 
@@ -35,7 +32,6 @@
 - ! Touch gesture get stuck, should we implement our own configurable gesture? (add-on utility)
 
 ## Refactorings
-- Should Draw/Hit be external to core classes?
 
 ## Quality
 - Activate more StyleCop rules
@@ -63,6 +59,7 @@
 - Other
  - GameFramework (Framework abstraction - PCL)
  - GameFramework.IO (Framework utilities for loading/saving scenes - PCL)
+ - GameNavigator (Debugging tools: screen navigator and object inspector)
  - SamplesBrowser (Samples game demo - PCL)
 
 ## InTray

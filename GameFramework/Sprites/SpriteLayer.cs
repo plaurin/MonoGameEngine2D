@@ -49,7 +49,7 @@ namespace GameFramework.Sprites
         {
             this.drawnElementsLastFrame = 0;
 
-            foreach (var sprite in this.Sprites)
+            foreach (var sprite in this.Sprites.Where(s => s.IsVisible))
             {
                 this.drawnElementsLastFrame += 
                     sprite.Draw(drawContext, this.Offset, this.ParallaxScrollingVector, this.CameraMode);
