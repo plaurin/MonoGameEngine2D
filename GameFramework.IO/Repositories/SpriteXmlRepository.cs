@@ -41,8 +41,8 @@ namespace GameFramework.IO.Repositories
         {
             yield return new XElement("Definitions", spriteSheet.Definitions.Select(d =>
                 new XElement("Definition",
-                    new XAttribute("name", d.Key),
-                    new XAttribute("rectangle", d.Value))));
+                    new XAttribute("name", d.Name),
+                    new XAttribute("rectangle", d))));
         }
 
         public static SpriteSheet FromXml(XElement sheetElement, string name, Texture texture)

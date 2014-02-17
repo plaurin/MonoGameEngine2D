@@ -280,7 +280,8 @@ namespace SamplesBrowser.Sandbox
             var la7 = sheet.CreateSpriteDefinition("LinkAnim07", new RectangleInt(389, 271, 24, 25), new Vector(16, 22));
             var la8 = sheet.CreateSpriteDefinition("LinkAnim08", new RectangleInt(423, 268, 16, 31), new Vector(08, 28));
 
-            var linkAnimTemplate = new SpriteAnimationTemplate("LinkAnim")
+            //var linkAnimTemplate = new SpriteAnimationTemplate("LinkAnim")
+            var linkAnimTemplate = sheet.CreateSpriteAnimationTemplate("LinkAnim")
                 .AddFrame(la1, 0.1f)
                 .AddFrame(la2, 0.1f)
                 .AddFrame(la3, 0.1f)
@@ -292,7 +293,8 @@ namespace SamplesBrowser.Sandbox
 
             var crystal = sheet.CreateSpriteDefinition("Crystal", new RectangleInt(336, 221, 10, 14), new Vector(4, 6));
 
-            this.linkCompositeTemplate = new SpriteCompositeTemplate("CompositeLink")
+            //this.linkCompositeTemplate = new SpriteCompositeTemplate("CompositeLink")
+            this.linkCompositeTemplate = sheet.CreateSpriteCompositeTemplate("CompositeLink")
                 .AddTemplate(linkAnimTemplate)
                 .AddTemplate(crystal, new Vector(20, 0));
 

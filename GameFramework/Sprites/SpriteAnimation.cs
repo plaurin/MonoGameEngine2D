@@ -5,7 +5,7 @@ using GameFramework.Cameras;
 
 namespace GameFramework.Sprites
 {
-    public class SpriteAnimation : SpriteBase, IUpdatable
+    public class SpriteAnimation : SpriteBase, IComposite, IUpdatable
     {
         private readonly List<SpriteAnimationFrame> frames;
         private readonly float totalAnimationTime;
@@ -39,6 +39,11 @@ namespace GameFramework.Sprites
         public bool HasCompleted
         {
             get { return this.AnimationTime > this.totalAnimationTime; }
+        }
+
+        public IEnumerable<object> Children
+        {
+            get { return this.frames; }
         }
 
         public void StartAnimation()

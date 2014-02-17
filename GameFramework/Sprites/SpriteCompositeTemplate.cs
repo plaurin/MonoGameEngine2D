@@ -2,15 +2,20 @@
 
 namespace GameFramework.Sprites
 {
-    public class SpriteCompositeTemplate : ISpriteTemplate
+    public class SpriteCompositeTemplate : ISpriteTemplate, IComposite, INavigatorMetadataProvider
     {
         private readonly string name;
         private readonly List<TemplateDefinition> templateDefinitions;
 
-        public SpriteCompositeTemplate(string name)
+        internal SpriteCompositeTemplate(string name)
         {
             this.name = name;
             this.templateDefinitions = new List<TemplateDefinition>();
+        }
+
+        public IEnumerable<object> Children
+        {
+            get { return this.templateDefinitions; }
         }
 
         public SpriteCompositeTemplate AddTemplate(ISpriteTemplate template, Vector? offset = null)
@@ -38,11 +43,27 @@ namespace GameFramework.Sprites
             return new SpriteComposite(this.name, sprites);
         }
 
-        private struct TemplateDefinition
+        public NavigatorMetadata GetMetadata()
+        {
+            // TODO get new kind and icon
+            return new NavigatorMetadata(this.name, NodeKind.Entity);
+        }
+
+        private class TemplateDefinition : IComposite, INavigatorMetadataProvider
         {
             public ISpriteTemplate Template { get; set; }
 
             public Vector Offset { get; set; }
+
+            public IEnumerable<object> Children
+            {
+                get { return new[] { this.Template }; }
+            }
+
+            public NavigatorMetadata GetMetadata()
+            {
+                return new NavigatorMetadata("Template", NodeKind.Entity);
+            }
         }
     }
 }
