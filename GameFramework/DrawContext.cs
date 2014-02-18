@@ -69,6 +69,8 @@ namespace GameFramework
         public DrawImageParams()
         {
             this.Origin = Vector.Zero;
+            this.Color = Color.White;
+            this.ImageEffect = ImageEffect.None;
         }
 
         public Texture Texture { get; set; }
@@ -80,6 +82,18 @@ namespace GameFramework
         public float Rotation { get; set; }
 
         public Vector Origin { get; set; }
+
+        public Color Color { get; set; }
+
+        public ImageEffect ImageEffect { get; set; }
+    }
+
+    [Flags]
+    public enum ImageEffect
+    {
+        None = 0,
+        FlipHorizontally = 1,
+        FlipVertically = 2,
     }
 
     public struct DrawStringParams

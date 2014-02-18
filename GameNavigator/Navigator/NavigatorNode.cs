@@ -114,8 +114,8 @@ namespace GameNavigator.Navigator
         {
             var nodeList = nodes.ToList();
 
-            var newNodes = nodeList.Except(this.nodeCollection, new NavigatorNodeEqualityComparer());
-            var extraNodes = this.nodeCollection.Except(nodeList, new NavigatorNodeEqualityComparer());
+            var newNodes = nodeList.Except(this.nodeCollection, new NavigatorNodeEqualityComparer()).ToList();
+            var extraNodes = this.nodeCollection.Except(nodeList, new NavigatorNodeEqualityComparer()).ToList();
 
             foreach (var extraNode in extraNodes) this.nodeCollection.Remove(extraNode);
             foreach (var newNode in newNodes) this.nodeCollection.Add(newNode);

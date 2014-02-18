@@ -101,7 +101,9 @@ namespace GameFramework.Sprites
                     Source = source.Rectangle,
                     Destination = destination,
                     Rotation = sprite.Rotation,
-                    Origin = origin
+                    Origin = origin,
+                    Color = sprite.Color,
+                    ImageEffect = GetImageEffect(sprite)
                 });
 
                 return 1;
@@ -135,6 +137,15 @@ namespace GameFramework.Sprites
                 .Concat(this.AnimationTemplates)
                 .Concat(this.CompositeTemplates);
             }
+        }
+
+        private static ImageEffect GetImageEffect(SpriteBase sprite)
+        {
+            if (sprite.FlipHorizontally && !sprite.FlipVertically) return ImageEffect.FlipHorizontally;
+            if (sprite.FlipHorizontally && sprite.FlipVertically) return ImageEffect.FlipHorizontally | ImageEffect.FlipVertically;
+            if (!sprite.FlipHorizontally && sprite.FlipVertically) return ImageEffect.FlipVertically;
+
+            return ImageEffect.None;
         }
     }
 }

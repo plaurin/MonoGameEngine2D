@@ -300,8 +300,8 @@ namespace SamplesBrowser.Sandbox
 
             //sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Link SpriteSheet.xml");
 
-            var link01 = new Sprite(sheet, "Link01") { Position = this.player };
-            var sleep01 = new Sprite(sheet, "Sleep01") { Position = new Vector(125, 25) };
+            var link01 = new Sprite(sheet, "Link01") { Position = this.player, Color = Color.Blue };
+            var sleep01 = new Sprite(sheet, "Sleep01") { Position = new Vector(125, 25), FlipVertically = true };
 
             this.ResourceManager.AddSpriteSheet(sheet);
 

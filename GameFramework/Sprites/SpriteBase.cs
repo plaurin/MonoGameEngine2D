@@ -8,6 +8,7 @@ namespace GameFramework.Sprites
         protected SpriteBase()
         {
             this.IsVisible = true;
+            this.Color = Color.White;
         }
 
         public string SpriteName { get; set; }
@@ -15,6 +16,12 @@ namespace GameFramework.Sprites
         public Vector Position { get; set; }
 
         public float Rotation { get; set; }
+
+        public Color Color { get; set; }
+
+        public bool FlipHorizontally { get; set; }
+
+        public bool FlipVertically { get; set; }
 
         public bool IsVisible { get; set; }
 

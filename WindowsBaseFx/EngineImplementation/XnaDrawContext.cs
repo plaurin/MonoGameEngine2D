@@ -29,7 +29,7 @@ namespace MonoGameImplementation.EngineImplementation
         {
             var font = (XnaDrawingFont)drawStringParams.DrawingFont;
 
-            this.spriteBatch.DrawString(font.Font, drawStringParams.Text, drawStringParams.Vector.ToVector2(), drawStringParams.Color.ToXnaColor(), 
+            this.spriteBatch.DrawString(font.Font, drawStringParams.Text, drawStringParams.Vector.ToVector2(), drawStringParams.Color.ToXnaColor(),
                 0.0f, Vector2.Zero, drawStringParams.ZoomFactor, SpriteEffects.None, 0.0f);
         }
 
@@ -49,14 +49,15 @@ namespace MonoGameImplementation.EngineImplementation
             var texture2D = xnaTexture.Texture2D;
             var destination = param.Destination.ToXnaRect();
             Microsoft.Xna.Framework.Rectangle? source = null;
+            var color = new Microsoft.Xna.Framework.Color(param.Color.R, param.Color.G, param.Color.B, param.Color.A);
             var rotation = param.Rotation;
             var origin = param.Origin.ToVector2();
-            const SpriteEffects Effect = SpriteEffects.None;
+            var effect = (SpriteEffects)(int)param.ImageEffect;
             const int Depth = 0;
 
             if (param.Source.HasValue) source = param.Source.Value.ToXnaRect();
 
-            this.spriteBatch.Draw(texture2D, destination, source, Color.White, rotation, origin, Effect, Depth);
+            this.spriteBatch.Draw(texture2D, destination, source, color, rotation, origin, effect, Depth);
         }
 
         public void FillColor(GameFramework.Color color)
