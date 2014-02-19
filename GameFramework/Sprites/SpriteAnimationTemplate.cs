@@ -27,9 +27,9 @@ namespace GameFramework.Sprites
             get { return this.frames; }
         }
 
-        public SpriteAnimationTemplate AddFrame(SpriteDefinition frameSprite, float duration)
+        public SpriteAnimationTemplate AddFrame(SpriteDefinition frameSprite, float duration, SpriteTransform transform = null)
         {
-            this.frames.Add(new SpriteAnimationFrameTemplate(frameSprite, duration));
+            this.frames.Add(new SpriteAnimationFrameTemplate(frameSprite, duration, transform));
             return this;
         }
 

@@ -7,18 +7,9 @@ namespace GameFramework.Sprites
     public class SpriteAnimation : SpriteBase, IComposite, IUpdatable
     {
         private readonly List<SpriteAnimationFrame> frames;
-        private readonly float totalAnimationTime;
 
         private float animationStartTime;
         private SpriteAnimationFrame currentFrame;
-        private AnimationState animationState = AnimationState.Running;
-
-        private enum AnimationState
-        {
-            //Stopped,
-            Starting,
-            Running
-        }
 
         public SpriteAnimation(string name, params SpriteAnimationFrame[] frames)
         {
@@ -30,14 +21,19 @@ namespace GameFramework.Sprites
             if (frames != null && frames.Length > 0)
                 this.frames.AddRange(frames);
 
-            this.totalAnimationTime = this.frames.Sum(f => f.Duration);
+            this.TotalAnimationTime = this.frames.Sum(f => f.Duration);
+            this.AnimationState = AnimationState.Running;
         }
 
         public float AnimationTime { get; private set; }
 
+        public float TotalAnimationTime { get; private set; }
+
+        public AnimationState AnimationState { get; private set; }
+
         public bool HasCompleted
         {
-            get { return this.AnimationTime > this.totalAnimationTime; }
+            get { return this.AnimationTime > this.TotalAnimationTime; }
         }
 
         public IEnumerable<object> Children
@@ -47,20 +43,20 @@ namespace GameFramework.Sprites
 
         public void StartAnimation()
         {
-            this.animationState = AnimationState.Starting;
+            this.AnimationState = AnimationState.Starting;
         }
 
         public void Update(IGameTiming gameTiming)
         {
-            if (this.animationState == AnimationState.Starting)
+            if (this.AnimationState == AnimationState.Starting)
             {
                 this.animationStartTime = gameTiming.TotalSeconds;
-                this.animationState = AnimationState.Running;
+                this.AnimationState = AnimationState.Running;
             }
 
             this.AnimationTime = gameTiming.TotalSeconds - this.animationStartTime;
 
-            this.currentFrame = this.GetCurrentAnimationFrame(this.AnimationTime % this.totalAnimationTime);
+            this.currentFrame = this.GetCurrentAnimationFrame(this.AnimationTime % this.TotalAnimationTime);
         }
 
         public override int Draw(IDrawContext drawContext, SpriteTransform transform)

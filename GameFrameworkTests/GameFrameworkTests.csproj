@@ -53,6 +53,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AssertSprite.cs" />
+    <Compile Include="SpriteAnimationTemplateTests.cs" />
     <Compile Include="SpriteCompositeTemplateTests.cs" />
     <Compile Include="SpriteTransformTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

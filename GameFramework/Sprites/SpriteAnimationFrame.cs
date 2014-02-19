@@ -4,25 +4,18 @@ namespace GameFramework.Sprites
 {
     public class SpriteAnimationFrame : IComposite, INavigatorMetadataProvider
     {
-        internal SpriteAnimationFrame(SpriteBase frameSprite, float duration,
-            Vector position, float rotation, Color color)
+        internal SpriteAnimationFrame(SpriteBase frameSprite, float duration, SpriteTransform transform = null)
         {
             this.FrameSprite = frameSprite;
             this.Duration = duration;
-            this.Position = position;
-            this.Rotation = rotation;
-            this.Color = color;
+            this.Transform = transform;
         }
 
         public SpriteBase FrameSprite { get; private set; }
 
         public float Duration { get; set; }
 
-        public Vector Position { get; set; }
-
-        public float Rotation { get; set; }
-
-        public Color Color { get; set; }
+        public SpriteTransform Transform { get; internal set; }
 
         public IEnumerable<object> Children
         {

@@ -15,11 +15,6 @@
             this.Color = color.HasValue ? color.Value : Color.White;
         }
 
-        public SpriteTransform(SpriteTransform firstTransform, SpriteTransform secondTransform)
-            : this(firstTransform, secondTransform.Translation, secondTransform.Rotation, secondTransform.Scale, secondTransform.Color)
-        {
-        }
-
         public Vector Translation { get; private set; }
 
         public float Rotation { get; private set; }
@@ -64,11 +59,48 @@
                 currentTransform = currentTransform.innerTransform;
             }
 
-            return new SpriteTransform 
-            { 
-                Rotation = rotation, Scale = scale, Translation = translation, 
-                Color = new Color((int)(r * 255), (int)(g * 255), (int)(b * 255), (int)(a * 255)) 
+            return new SpriteTransform
+            {
+                Rotation = rotation,
+                Scale = scale,
+                Translation = translation,
+                Color = new Color((int)(r * 255), (int)(g * 255), (int)(b * 255), (int)(a * 255))
             };
+        }
+
+        public override string ToString()
+        {
+            return string.Format("T: {0}; R: {1}; S: {2}, C: {3}", this.Translation, this.Rotation, this.Scale, this.Color);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return this.Equals((SpriteTransform)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = this.Translation.GetHashCode();
+                hashCode = (hashCode * 397) ^ this.Rotation.GetHashCode();
+                hashCode = (hashCode * 397) ^ this.Scale.GetHashCode();
+                hashCode = (hashCode * 397) ^ this.Color.GetHashCode();
+                hashCode = (hashCode * 397) ^ (this.innerTransform != null ? this.innerTransform.GetHashCode() : 0);
+                return hashCode;
+            }
+        }
+
+        protected bool Equals(SpriteTransform other)
+        {
+            return this.Translation.Equals(other.Translation) 
+                   && this.Rotation.Equals(other.Rotation) 
+                   && this.Scale.Equals(other.Scale) 
+                   && this.Color.Equals(other.Color) 
+                   && object.Equals(this.innerTransform, other.innerTransform);
         }
     }
 }
