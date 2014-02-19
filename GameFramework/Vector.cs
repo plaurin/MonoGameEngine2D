@@ -4,6 +4,8 @@ namespace GameFramework
 {
     public struct Vector
     {
+        private const float Epsilon = 0.00001f;
+
         private readonly float x;
         private readonly float y;
 
@@ -43,6 +45,11 @@ namespace GameFramework
             return this / this.Length;
         }
 
+        public float GetAngle()
+        {
+            return (float)Math.Atan2(this.Y, this.X);
+        }
+
         public static Vector operator +(Vector first, Vector second)
         {
             return new Vector(first.X + second.X, first.Y + second.Y);
@@ -78,6 +85,25 @@ namespace GameFramework
         public static Vector operator -(Vector vector)
         {
             return new Vector(-vector.X, -vector.Y);
+        }
+
+        public bool Equals(Vector other)
+        {
+            return this.x - other.x < Epsilon && this.y - other.y < Epsilon;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            return obj is Vector && this.Equals((Vector)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return (this.x.GetHashCode() * 397) ^ this.y.GetHashCode();
+            }
         }
 
         public override string ToString()

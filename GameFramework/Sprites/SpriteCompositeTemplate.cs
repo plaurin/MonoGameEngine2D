@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GameFramework.Sprites
 {
     public class SpriteCompositeTemplate : ISpriteTemplate, IComposite, INavigatorMetadataProvider
     {
         private readonly string name;
+
         private readonly List<TemplateDefinition> templateDefinitions;
 
         internal SpriteCompositeTemplate(string name)
@@ -18,12 +20,17 @@ namespace GameFramework.Sprites
             get { return this.templateDefinitions; }
         }
 
-        public SpriteCompositeTemplate AddTemplate(ISpriteTemplate template, Vector? offset = null)
+        public SpriteCompositeTemplate AddTemplate(ISpriteTemplate template, SpriteTransform transform = null)
+        {
+            return this.AddTemplate(transform, template);
+        }
+
+        public SpriteCompositeTemplate AddTemplate(SpriteTransform transform, ISpriteTemplate template)
         {
             var def = new TemplateDefinition
             {
-                Template = template, 
-                Offset = offset.HasValue ? offset.Value : Vector.Zero
+                Template = template,
+                Transform = transform
             };
 
             this.templateDefinitions.Add(def);
@@ -36,7 +43,14 @@ namespace GameFramework.Sprites
             foreach (var templateDef in this.templateDefinitions)
             {
                 var sprite = templateDef.Template.CreateInstance();
-                sprite.Position = templateDef.Offset;
+                if (templateDef.Transform != null)
+                {
+                    sprite.Position = templateDef.Transform.Translation;
+                    sprite.Rotation = templateDef.Transform.Rotation;
+                    sprite.Scale = templateDef.Transform.Scale;
+                    sprite.Color = templateDef.Transform.Color;
+                }
+
                 sprites.Add(sprite);
             }
 
@@ -53,7 +67,7 @@ namespace GameFramework.Sprites
         {
             public ISpriteTemplate Template { get; set; }
 
-            public Vector Offset { get; set; }
+            public SpriteTransform Transform { get; set; }
 
             public IEnumerable<object> Children
             {

@@ -1,5 +1,4 @@
 ﻿using System;
-using GameFramework.Cameras;
 
 namespace GameFramework.Sprites
 {
@@ -8,6 +7,7 @@ namespace GameFramework.Sprites
         protected SpriteBase()
         {
             this.IsVisible = true;
+            this.Scale = 1.0f;
             this.Color = Color.White;
         }
 
@@ -17,15 +17,13 @@ namespace GameFramework.Sprites
 
         public float Rotation { get; set; }
 
+        public float Scale { get; set; }
+
         public Color Color { get; set; }
-
-        public bool FlipHorizontally { get; set; }
-
-        public bool FlipVertically { get; set; }
 
         public bool IsVisible { get; set; }
 
-        public abstract int Draw(IDrawContext drawContext, Vector layerOffset, Vector parallaxScrollingVector, CameraMode cameraMode);
+        public abstract int Draw(IDrawContext drawContext, SpriteTransform transform);
 
         public NavigatorMetadata GetMetadata()
         {

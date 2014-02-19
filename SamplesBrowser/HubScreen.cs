@@ -7,6 +7,7 @@ using GameFramework.Drawing;
 using GameFramework.Inputs;
 using GameFramework.Scenes;
 using GameFramework.Screens;
+using GameFramework.Sprites;
 using GameFramework.Utilities;
 using SamplesBrowser.Sandbox;
 using SamplesBrowser.ShootEmUp;
@@ -194,8 +195,27 @@ namespace SamplesBrowser
 
             scene.Add(hubMap);
 
-            //this.mouseLayer = MouseCursorLayer.Create(this.ResourceManager);
             scene.Add(new MouseCursor(this.InputConfiguration.CreateMouseTracking(this.Camera)));
+            
+            // Temp
+            var spriteLayer = new SpriteLayer("TestSpriteTransform");
+            scene.Add(spriteLayer);
+
+            var texture = this.ResourceManager.GetTexture(@"Sandbox\LinkSheet");
+            var sheet = new SpriteSheet(texture, "Link");
+            var def = sheet.AddSpriteDefinition("Link01", new RectangleInt(3, 3, 16, 22), new Vector(8, 11));
+
+            var s2 = sheet.AddSpriteCompositeTemplate("T1")
+                .AddTemplate(def, new SpriteTransform(color: Color.Red))
+                .AddTemplate(new SpriteTransform(translation: new Vector(20, 20)), sheet.AddSpriteCompositeTemplate("T2")
+                    .AddTemplate(def, new SpriteTransform(color: Color.Blue))
+                    .AddTemplate(new SpriteTransform(translation: new Vector(-50, 20)), sheet.AddSpriteCompositeTemplate("T3")
+                        .AddTemplate(def, new SpriteTransform(color: Color.Green))))
+
+                .CreateInstance();
+
+            s2.Position = new Vector(500, 250);
+            spriteLayer.AddSprite(s2);
 
             return scene;
         }

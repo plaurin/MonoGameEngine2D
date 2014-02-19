@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GameFramework.Cameras;
 
 namespace GameFramework.Sprites
 {
@@ -64,13 +63,13 @@ namespace GameFramework.Sprites
             this.currentFrame = this.GetCurrentAnimationFrame(this.AnimationTime % this.totalAnimationTime);
         }
 
-        public override int Draw(IDrawContext drawContext, Vector layerOffset, Vector parallaxScrollingVector, CameraMode cameraMode)
+        public override int Draw(IDrawContext drawContext, SpriteTransform transform)
         {
             if (this.currentFrame != null && this.IsVisible)
             {
-                // TODO: Fix this with CompositeSprite that adjust underlying sprite position and rotation
-                var animationOffset = layerOffset.Translate(this.Position);
-                return this.currentFrame.FrameSprite.Draw(drawContext, animationOffset, parallaxScrollingVector, cameraMode);
+                var newTransform = new SpriteTransform(transform, this.Position, this.Rotation, this.Scale, this.Color);
+
+                return this.currentFrame.FrameSprite.Draw(drawContext, newTransform);
             }
 
             return 1;

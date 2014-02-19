@@ -26,6 +26,11 @@ namespace GameFramework
             get { return new Color(255, 0, 0, 255); }
         }
 
+        public static Color Green
+        {
+            get { return new Color(0, 255, 0, 255); }
+        }
+
         public static Color Blue
         {
             get { return new Color(0, 0, 255, 255); }
@@ -39,6 +44,29 @@ namespace GameFramework
         public static Color Yellow
         {
             get { return new Color(255, 255, 0, 255); }
+        }
+
+        public bool Equals(Color other)
+        {
+            return this.R == other.R && this.G == other.G && this.B == other.B && this.A == other.A;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            return obj is Color && this.Equals((Color)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = this.R;
+                hashCode = (hashCode * 397) ^ this.G;
+                hashCode = (hashCode * 397) ^ this.B;
+                hashCode = (hashCode * 397) ^ this.A;
+                return hashCode;
+            }
         }
 
         public override string ToString()

@@ -20,10 +20,13 @@ namespace GameFramework.Sprites
         /// </summary>
         public Vector? Origin { get; set; }
 
-        public override int Draw(IDrawContext drawContext, Vector layerOffset, Vector parallaxScrollingVector,
-            CameraMode cameraMode)
+        public bool FlipHorizontally { get; set; }
+
+        public bool FlipVertically { get; set; }
+
+        public override int Draw(IDrawContext drawContext, SpriteTransform transform)
         {
-            return this.SpriteSheet.Draw(drawContext, layerOffset, parallaxScrollingVector, this, cameraMode);
+            return this.SpriteSheet.Draw(drawContext, this, transform);
         }
 
         public HitBase GetHit(Vector position, ICamera camera, WorldTransform worldTransform)

@@ -51,7 +51,7 @@ namespace GameFramework.IO.Repositories
 
             foreach (var definitionElement in sheetElement.Elements("Definitions").Elements())
             {
-                spriteSheet.CreateSpriteDefinition(
+                spriteSheet.AddSpriteDefinition(
                     definitionElement.Attribute("name").Value,
                     MathUtil.ParseRectangle(definitionElement.Attribute("rectangle").Value));
             }

@@ -35,6 +35,11 @@ namespace GameFramework
             return vector + new Vector((float)Math.Cos(radAngle) * distance, (float)Math.Sin(radAngle) * distance);
         }
 
+        public static Vector TranslatePolar(this Vector vector, float radAngle, Vector translationVector)
+        {
+            return TranslatePolar(vector, translationVector.GetAngle() + radAngle, translationVector.Length);
+        }
+
         public static Vector Translate(this Vector vector, Vector delta)
         {
             return new Vector(vector.X + delta.X, vector.Y + delta.Y);

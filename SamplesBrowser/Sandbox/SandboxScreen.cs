@@ -268,20 +268,20 @@ namespace SamplesBrowser.Sandbox
         {
             var texture = this.ResourceManager.GetTexture(@"Sandbox\LinkSheet");
             var sheet = new SpriteSheet(texture, "Link");
-            sheet.CreateSpriteDefinition("Link01", new RectangleInt(3, 3, 16, 22), new Vector(8, 11));
-            sheet.CreateSpriteDefinition("Sleep01", new RectangleInt(45, 219, 32, 40));
+            sheet.AddSpriteDefinition("Link01", new RectangleInt(3, 3, 16, 22), new Vector(8, 11));
+            sheet.AddSpriteDefinition("Sleep01", new RectangleInt(45, 219, 32, 40));
 
-            var la1 = sheet.CreateSpriteDefinition("LinkAnim01", new RectangleInt(187, 270, 28, 28), new Vector(07, 25));
-            var la2 = sheet.CreateSpriteDefinition("LinkAnim02", new RectangleInt(225, 273, 31, 22), new Vector(07, 19));
-            var la3 = sheet.CreateSpriteDefinition("LinkAnim03", new RectangleInt(268, 270, 26, 28), new Vector(06, 19));
-            var la4 = sheet.CreateSpriteDefinition("LinkAnim04", new RectangleInt(303, 266, 17, 35), new Vector(06, 19));
-            var la5 = sheet.CreateSpriteDefinition("LinkAnim05", new RectangleInt(328, 269, 26, 30), new Vector(17, 19));
-            var la6 = sheet.CreateSpriteDefinition("LinkAnim06", new RectangleInt(355, 273, 32, 22), new Vector(23, 19));
-            var la7 = sheet.CreateSpriteDefinition("LinkAnim07", new RectangleInt(389, 271, 24, 25), new Vector(16, 22));
-            var la8 = sheet.CreateSpriteDefinition("LinkAnim08", new RectangleInt(423, 268, 16, 31), new Vector(08, 28));
+            var la1 = sheet.AddSpriteDefinition("LinkAnim01", new RectangleInt(187, 270, 28, 28), new Vector(07, 25));
+            var la2 = sheet.AddSpriteDefinition("LinkAnim02", new RectangleInt(225, 273, 31, 22), new Vector(07, 19));
+            var la3 = sheet.AddSpriteDefinition("LinkAnim03", new RectangleInt(268, 270, 26, 28), new Vector(06, 19));
+            var la4 = sheet.AddSpriteDefinition("LinkAnim04", new RectangleInt(303, 266, 17, 35), new Vector(06, 19));
+            var la5 = sheet.AddSpriteDefinition("LinkAnim05", new RectangleInt(328, 269, 26, 30), new Vector(17, 19));
+            var la6 = sheet.AddSpriteDefinition("LinkAnim06", new RectangleInt(355, 273, 32, 22), new Vector(23, 19));
+            var la7 = sheet.AddSpriteDefinition("LinkAnim07", new RectangleInt(389, 271, 24, 25), new Vector(16, 22));
+            var la8 = sheet.AddSpriteDefinition("LinkAnim08", new RectangleInt(423, 268, 16, 31), new Vector(08, 28));
 
             //var linkAnimTemplate = new SpriteAnimationTemplate("LinkAnim")
-            var linkAnimTemplate = sheet.CreateSpriteAnimationTemplate("LinkAnim")
+            var linkAnimTemplate = sheet.AddSpriteAnimationTemplate("LinkAnim")
                 .AddFrame(la1, 0.1f)
                 .AddFrame(la2, 0.1f)
                 .AddFrame(la3, 0.1f)
@@ -291,12 +291,12 @@ namespace SamplesBrowser.Sandbox
                 .AddFrame(la7, 0.1f)
                 .AddFrame(la8, 0.1f);
 
-            var crystal = sheet.CreateSpriteDefinition("Crystal", new RectangleInt(336, 221, 10, 14), new Vector(4, 6));
+            var crystal = sheet.AddSpriteDefinition("Crystal", new RectangleInt(336, 221, 10, 14), new Vector(4, 6));
 
             //this.linkCompositeTemplate = new SpriteCompositeTemplate("CompositeLink")
-            this.linkCompositeTemplate = sheet.CreateSpriteCompositeTemplate("CompositeLink")
+            this.linkCompositeTemplate = sheet.AddSpriteCompositeTemplate("CompositeLink")
                 .AddTemplate(linkAnimTemplate)
-                .AddTemplate(crystal, new Vector(20, 0));
+                .AddTemplate(crystal, new SpriteTransform(translation: new Vector(20, 0)));
 
             //sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Link SpriteSheet.xml");
 

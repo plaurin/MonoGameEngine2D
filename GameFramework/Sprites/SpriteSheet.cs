@@ -36,7 +36,7 @@ namespace GameFramework.Sprites
             get { return this.compositeTemplates.Values; }
         }
 
-        public SpriteDefinition CreateSpriteDefinition(string spriteName, RectangleInt spriteRectangle, Vector? origin = null)
+        public SpriteDefinition AddSpriteDefinition(string spriteName, RectangleInt spriteRectangle, Vector? origin = null)
         {
             var spriteDefinition = new SpriteDefinition(this, spriteName, spriteRectangle, origin);
             this.definitions.Add(spriteName, spriteDefinition);
@@ -53,7 +53,7 @@ namespace GameFramework.Sprites
             return (Sprite)this.definitions[spriteName].CreateInstance();
         }
 
-        public SpriteAnimationTemplate CreateSpriteAnimationTemplate(string animationName)
+        public SpriteAnimationTemplate AddSpriteAnimationTemplate(string animationName)
         {
             var template = new SpriteAnimationTemplate(animationName);
             this.animationTemplates.Add(animationName, template);
@@ -65,7 +65,7 @@ namespace GameFramework.Sprites
             return (SpriteAnimation)this.animationTemplates[animationName].CreateInstance();
         }
 
-        public SpriteCompositeTemplate CreateSpriteCompositeTemplate(string compositeName)
+        public SpriteCompositeTemplate AddSpriteCompositeTemplate(string compositeName)
         {
             var template = new SpriteCompositeTemplate(compositeName);
             this.compositeTemplates.Add(compositeName, template);
@@ -77,19 +77,16 @@ namespace GameFramework.Sprites
             return (SpriteComposite)this.animationTemplates[compositeName].CreateInstance();
         }
 
-        public int Draw(IDrawContext drawContext, Vector layerOffset, Vector parallaxScrollingVector,
-            Sprite sprite, CameraMode cameraMode)
+        public int Draw(IDrawContext drawContext, Sprite sprite, SpriteTransform transform)
         {
             var source = this.definitions[sprite.SpriteName];
-            var destination = new Rectangle(layerOffset.X + sprite.Position.X, layerOffset.Y + sprite.Position.Y,
-                source.Rectangle.Width, source.Rectangle.Height);
 
-            if (cameraMode == CameraMode.Follow)
-            {
-                destination = destination
-                    .Scale(drawContext.Camera.ZoomFactor)
-                    .Translate(drawContext.Camera.GetSceneTranslationVector(parallaxScrollingVector));
-            }
+            var finalTransform = new SpriteTransform(transform, sprite.Position, sprite.Rotation, sprite.Scale, sprite.Color)
+                .GetFinal();
+
+            var destination = new Rectangle(
+                finalTransform.Translation.X, finalTransform.Translation.Y,
+                source.Rectangle.Width * finalTransform.Scale, source.Rectangle.Height * finalTransform.Scale);
 
             if (drawContext.Camera.Viewport.IsVisible(destination))
             {
@@ -100,9 +97,9 @@ namespace GameFramework.Sprites
                     Texture = this.Texture,
                     Source = source.Rectangle,
                     Destination = destination,
-                    Rotation = sprite.Rotation,
+                    Rotation = finalTransform.Rotation,
                     Origin = origin,
-                    Color = sprite.Color,
+                    Color = finalTransform.Color,
                     ImageEffect = GetImageEffect(sprite)
                 });
 
@@ -139,7 +136,7 @@ namespace GameFramework.Sprites
             }
         }
 
-        private static ImageEffect GetImageEffect(SpriteBase sprite)
+        private static ImageEffect GetImageEffect(Sprite sprite)
         {
             if (sprite.FlipHorizontally && !sprite.FlipVertically) return ImageEffect.FlipHorizontally;
             if (sprite.FlipHorizontally && sprite.FlipVertically) return ImageEffect.FlipHorizontally | ImageEffect.FlipVertically;

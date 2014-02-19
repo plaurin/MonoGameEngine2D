@@ -96,7 +96,7 @@ namespace GameFramework
 
         public bool Equals(Rectangle other)
         {
-            const float Tolerance = 0.0000001f;
+            const float Tolerance = 0.00001f;
             return Math.Abs(other.x - this.x) < Tolerance 
                 && Math.Abs(other.y - this.y) < Tolerance 
                 && Math.Abs(other.width - this.width) < Tolerance

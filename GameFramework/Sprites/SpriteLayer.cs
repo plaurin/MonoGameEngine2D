@@ -49,10 +49,20 @@ namespace GameFramework.Sprites
         {
             this.drawnElementsLastFrame = 0;
 
+            SpriteTransform parallaxTransform;
+            if (this.CameraMode == CameraMode.Follow)
+            {
+                parallaxTransform = new SpriteTransform(scale: drawContext.Camera.ZoomFactor,
+                    translation: drawContext.Camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
+            }
+            else
+                parallaxTransform = SpriteTransform.Identity;
+
+            var transform = new SpriteTransform(parallaxTransform, this.Offset);
+
             foreach (var sprite in this.Sprites.Where(s => s.IsVisible))
             {
-                this.drawnElementsLastFrame += 
-                    sprite.Draw(drawContext, this.Offset, this.ParallaxScrollingVector, this.CameraMode);
+                this.drawnElementsLastFrame += sprite.Draw(drawContext, transform);
             }
 
             return this.drawnElementsLastFrame;
