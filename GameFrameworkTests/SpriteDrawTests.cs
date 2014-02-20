@@ -31,7 +31,7 @@ namespace GameFrameworkTests
             var drawContext = CreateDrawContextMock(p => actual = p);
 
             // ACT
-            sprite.Draw(drawContext.Object, SpriteTransform.Identity);
+            sprite.Draw(drawContext.Object, SpriteTransform.SpriteIdentity);
 
             // ASSERT
             drawContext.VerifyAll();
@@ -44,17 +44,17 @@ namespace GameFrameworkTests
             var source = new RectangleInt(10, 10, 20, 20);
             var origin = new Vector(4, 7);
 
-            var expected = CreateDrawImageParams(source, origin, destination: new Rectangle(-12, 24, 20, 20));
+            var expected = CreateDrawImageParams(source, origin, destination: new Rectangle(29, 24, 20, 20));
 
             // ARRANGE
             var sprite = CreateSprite(source, origin);
-            sprite.Position = new Vector(-12, 24);
+            sprite.Position = new Vector(29, 24);
 
             DrawImageParams actual = null;
             var drawContext = CreateDrawContextMock(p => actual = p);
 
             // ACT
-            sprite.Draw(drawContext.Object, SpriteTransform.Identity);
+            sprite.Draw(drawContext.Object, SpriteTransform.SpriteIdentity);
 
             // ASSERT
             drawContext.VerifyAll();
@@ -78,7 +78,7 @@ namespace GameFrameworkTests
             var drawContext = CreateDrawContextMock(p => actual = p);
 
             // ACT
-            sprite.Draw(drawContext.Object, SpriteTransform.Identity);
+            sprite.Draw(drawContext.Object, SpriteTransform.SpriteIdentity);
 
             // ASSERT
             drawContext.VerifyAll();
@@ -102,7 +102,7 @@ namespace GameFrameworkTests
             var drawContext = CreateDrawContextMock(p => actual = p);
 
             // ACT
-            sprite.Draw(drawContext.Object, SpriteTransform.Identity);
+            sprite.Draw(drawContext.Object, SpriteTransform.SpriteIdentity);
 
             // ASSERT
             drawContext.VerifyAll();
@@ -126,7 +126,7 @@ namespace GameFrameworkTests
             var drawContext = CreateDrawContextMock(p => actual = p);
 
             // ACT
-            sprite.Draw(drawContext.Object, SpriteTransform.Identity);
+            sprite.Draw(drawContext.Object, SpriteTransform.SpriteIdentity);
 
             // ASSERT
             drawContext.VerifyAll();
@@ -142,10 +142,10 @@ namespace GameFrameworkTests
         {
             var source = new RectangleInt(10, 10, 20, 20);
             var origin = new Vector(4, 7);
-            var transform = new SpriteTransform(translation: new Vector(3, 5), rotation: 7, scale: 0.5f, color: Color.Blue);
+            var transform = new SpriteTransform(translation: new Vector(3, 5), rotation: HalfPI, scale: 0.5f, color: Color.Blue);
 
             var expected = CreateDrawImageParams(source, origin,
-                destination: new Rectangle(3, 5, 10, 10), rotation: 7, color: Color.Blue);
+                destination: new Rectangle(3, 5, 10, 10), rotation: HalfPI, color: Color.Blue);
 
             // ARRANGE
             var sprite = CreateSprite(source, origin);
@@ -288,7 +288,7 @@ namespace GameFrameworkTests
             });
 
             // ACT
-            spriteComposite.Draw(drawContext.Object, SpriteTransform.Identity);
+            spriteComposite.Draw(drawContext.Object, SpriteTransform.SpriteIdentity);
 
             // ASSERT
             drawContext.VerifyAll();
@@ -332,7 +332,7 @@ namespace GameFrameworkTests
             });
 
             // ACT
-            spriteComposite.Draw(drawContext.Object, SpriteTransform.Identity);
+            spriteComposite.Draw(drawContext.Object, SpriteTransform.SpriteIdentity);
 
             // ASSERT
             drawContext.VerifyAll();

@@ -82,11 +82,13 @@ namespace GameFramework.Sprites
             var source = this.definitions[sprite.SpriteName];
 
             var finalTransform = new SpriteTransform(transform, sprite.Position, sprite.Rotation, sprite.Scale, sprite.Color)
-                .GetFinal();
+                .GetSpriteFinal();
 
             var destination = new Rectangle(
                 finalTransform.Translation.X, finalTransform.Translation.Y,
                 source.Rectangle.Width * finalTransform.Scale, source.Rectangle.Height * finalTransform.Scale);
+            //var destination = new Rectangle(0, 0, source.Rectangle.Width, source.Rectangle.Height);
+            //destination = finalTransform.ApplyFor(destination);
 
             if (drawContext.Camera.Viewport.IsVisible(destination))
             {

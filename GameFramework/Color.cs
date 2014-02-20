@@ -46,6 +46,15 @@ namespace GameFramework
             get { return new Color(255, 255, 0, 255); }
         }
 
+        public Color Multiply(Color color)
+        {
+            return new Color(
+                (int)(((this.R / 255.0f) * (color.R / 255.0f)) * 255.0f),
+                (int)(((this.G / 255.0f) * (color.G / 255.0f)) * 255.0f),
+                (int)(((this.B / 255.0f) * (color.B / 255.0f)) * 255.0f),
+                (int)(((this.A / 255.0f) * (color.A / 255.0f)) * 255.0f));
+        }
+
         public bool Equals(Color other)
         {
             return this.R == other.R && this.G == other.G && this.B == other.B && this.A == other.A;

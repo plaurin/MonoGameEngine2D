@@ -17,7 +17,7 @@ namespace GameFrameworkTests
         {
             var transform = new SpriteTransform();
 
-            var final = transform.GetFinal();
+            var final = transform.GetSpriteFinal();
 
             Assert.AreEqual(255, final.Color.R);
             Assert.AreEqual(255, final.Color.G);
@@ -30,7 +30,7 @@ namespace GameFrameworkTests
         {
             var transform = new SpriteTransform(new SpriteTransform(new SpriteTransform()));
 
-            var final = transform.GetFinal();
+            var final = transform.GetSpriteFinal();
 
             Assert.AreEqual(255, final.Color.R);
             Assert.AreEqual(255, final.Color.G);
@@ -43,7 +43,7 @@ namespace GameFrameworkTests
         {
             var transform = new SpriteTransform(color: new Color(100, 120, 140, 160));
 
-            var final = transform.GetFinal();
+            var final = transform.GetSpriteFinal();
 
             Assert.AreEqual(100, final.Color.R);
             Assert.AreEqual(120, final.Color.G);
@@ -57,7 +57,7 @@ namespace GameFrameworkTests
             var transform = new SpriteTransform(color: new Color(128, 192, 64, 32));
             var transform2 = new SpriteTransform(transform, color: new Color(255, 255, 255, 255));
 
-            var final = transform2.GetFinal();
+            var final = transform2.GetSpriteFinal();
 
             Assert.AreEqual(128, final.Color.R);
             Assert.AreEqual(192, final.Color.G);
@@ -71,7 +71,7 @@ namespace GameFrameworkTests
             var transform = new SpriteTransform(color: new Color(128, 192, 64, 32));
             var transform2 = new SpriteTransform(transform, color: new Color(128, 64, 32, 128));
 
-            var final = transform2.GetFinal();
+            var final = transform2.GetSpriteFinal();
 
             Assert.AreEqual(64, final.Color.R);
             Assert.AreEqual(48, final.Color.G);
@@ -88,7 +88,7 @@ namespace GameFrameworkTests
         {
             var transform = new SpriteTransform();
 
-            var final = transform.GetFinal();
+            var final = transform.GetSpriteFinal();
 
             Assert.AreEqual(Vector.Zero, final.Translation);
         }
@@ -98,7 +98,7 @@ namespace GameFrameworkTests
         {
             var transform = new SpriteTransform(new SpriteTransform(new SpriteTransform()));
 
-            var final = transform.GetFinal();
+            var final = transform.GetSpriteFinal();
 
             Assert.AreEqual(Vector.Zero, final.Translation);
         }
@@ -108,7 +108,7 @@ namespace GameFrameworkTests
         {
             var transform = new SpriteTransform(translation: new Vector(123, 456));
 
-            var final = transform.GetFinal();
+            var final = transform.GetSpriteFinal();
 
             Assert.AreEqual(new Vector(123, 456), final.Translation);
         }
@@ -119,7 +119,7 @@ namespace GameFrameworkTests
             var transform1 = new SpriteTransform(translation: new Vector(98, 76));
             var transform2 = new SpriteTransform(transform1);
 
-            var final = transform2.GetFinal();
+            var final = transform2.GetSpriteFinal();
 
             Assert.AreEqual(new Vector(98, 76), final.Translation);
         }
@@ -130,7 +130,7 @@ namespace GameFrameworkTests
             var transform1 = new SpriteTransform(translation: new Vector(98, 76));
             var transform2 = new SpriteTransform(transform1, new Vector(-20, -30));
 
-            var final = transform2.GetFinal();
+            var final = transform2.GetSpriteFinal();
 
             Assert.AreEqual(new Vector(78, 46), final.Translation);
         }
@@ -144,7 +144,7 @@ namespace GameFrameworkTests
         {
             var transform = new SpriteTransform();
 
-            var final = transform.GetFinal();
+            var final = transform.GetSpriteFinal();
 
             Assert.AreEqual(1.0f, final.Scale);
         }
@@ -154,7 +154,7 @@ namespace GameFrameworkTests
         {
             var transform = new SpriteTransform(new SpriteTransform(new SpriteTransform()));
 
-            var final = transform.GetFinal();
+            var final = transform.GetSpriteFinal();
 
             Assert.AreEqual(1.0f, final.Scale);
         }
@@ -164,7 +164,7 @@ namespace GameFrameworkTests
         {
             var transform = new SpriteTransform(scale: 6.6f);
 
-            var final = transform.GetFinal();
+            var final = transform.GetSpriteFinal();
 
             Assert.AreEqual(6.6f, final.Scale);
         }
@@ -175,7 +175,7 @@ namespace GameFrameworkTests
             var transform1 = new SpriteTransform(scale: 2.4f);
             var transform2 = new SpriteTransform(transform1);
 
-            var final = transform2.GetFinal();
+            var final = transform2.GetSpriteFinal();
 
             Assert.AreEqual(2.4f, final.Scale);
         }
@@ -186,7 +186,7 @@ namespace GameFrameworkTests
             var transform1 = new SpriteTransform(scale: 0.4f);
             var transform2 = new SpriteTransform(transform1, scale: 8.0f);
 
-            var final = transform2.GetFinal();
+            var final = transform2.GetSpriteFinal();
 
             Assert.AreEqual(3.2f, final.Scale);
         }
@@ -200,7 +200,7 @@ namespace GameFrameworkTests
         {
             var transform = new SpriteTransform();
 
-            var final = transform.GetFinal();
+            var final = transform.GetSpriteFinal();
 
             Assert.AreEqual(0.0f, final.Rotation);
         }
@@ -210,7 +210,7 @@ namespace GameFrameworkTests
         {
             var transform = new SpriteTransform(new SpriteTransform(new SpriteTransform()));
 
-            var final = transform.GetFinal();
+            var final = transform.GetSpriteFinal();
 
             Assert.AreEqual(0.0f, final.Rotation);
         }
@@ -220,7 +220,7 @@ namespace GameFrameworkTests
         {
             var transform = new SpriteTransform(rotation: 3.6f);
 
-            var final = transform.GetFinal();
+            var final = transform.GetSpriteFinal();
 
             Assert.AreEqual(3.6f, final.Rotation);
         }
@@ -231,7 +231,7 @@ namespace GameFrameworkTests
             var transform1 = new SpriteTransform(rotation: 5.4f);
             var transform2 = new SpriteTransform(transform1);
 
-            var final = transform2.GetFinal();
+            var final = transform2.GetSpriteFinal();
 
             Assert.AreEqual(5.4f, final.Rotation);
         }
@@ -242,7 +242,7 @@ namespace GameFrameworkTests
             var transform1 = new SpriteTransform(rotation: 1.4f);
             var transform2 = new SpriteTransform(transform1, rotation: -5.0f);
 
-            var final = transform2.GetFinal();
+            var final = transform2.GetSpriteFinal();
 
             Assert.AreEqual(-3.6f, final.Rotation);
         }
@@ -257,7 +257,7 @@ namespace GameFrameworkTests
             var transform1 = new SpriteTransform(scale: 2.0f);
             var transform2 = new SpriteTransform(transform1, new Vector(100, 100));
 
-            var final = transform2.GetFinal();
+            var final = transform2.GetSpriteFinal();
 
             Assert.AreEqual(new Vector(200, 200), final.Translation);
             Assert.AreEqual(2.0f, final.Scale);
@@ -269,7 +269,7 @@ namespace GameFrameworkTests
             var transform1 = new SpriteTransform(translation: new Vector(100, 100));
             var transform2 = new SpriteTransform(transform1, scale: 2.0f);
 
-            var final = transform2.GetFinal();
+            var final = transform2.GetSpriteFinal();
 
             Assert.AreEqual(new Vector(100, 100), final.Translation);
             Assert.AreEqual(2.0f, final.Scale);
@@ -281,7 +281,7 @@ namespace GameFrameworkTests
             var transform1 = new SpriteTransform(translation: new Vector(15, -25), scale: 2.0f);
             var transform2 = new SpriteTransform(transform1, new Vector(100, 100));
 
-            var final = transform2.GetFinal();
+            var final = transform2.GetSpriteFinal();
 
             Assert.AreEqual(new Vector(215, 175), final.Translation);
             Assert.AreEqual(2.0f, final.Scale);
@@ -293,7 +293,7 @@ namespace GameFrameworkTests
             var transform1 = new SpriteTransform(translation: new Vector(100, 100));
             var transform2 = new SpriteTransform(transform1, new Vector(15, -25), scale: 2.0f);
 
-            var final = transform2.GetFinal();
+            var final = transform2.GetSpriteFinal();
 
             Assert.AreEqual(new Vector(115, 75), final.Translation);
             Assert.AreEqual(2.0f, final.Scale);
@@ -309,7 +309,7 @@ namespace GameFrameworkTests
             var transform1 = new SpriteTransform(rotation: HalfPI);
             var transform2 = new SpriteTransform(transform1, new Vector(100, 0));
 
-            var final = transform2.GetFinal();
+            var final = transform2.GetSpriteFinal();
 
             Assert.AreEqual(new Vector(0, 100), final.Translation);
             Assert.AreEqual(HalfPI, final.Rotation);
@@ -321,7 +321,7 @@ namespace GameFrameworkTests
             var transform1 = new SpriteTransform(translation: new Vector(100, 100));
             var transform2 = new SpriteTransform(transform1, rotation: -HalfPI);
 
-            var final = transform2.GetFinal();
+            var final = transform2.GetSpriteFinal();
 
             Assert.AreEqual(new Vector(100, 100), final.Translation);
             Assert.AreEqual(-HalfPI, final.Rotation);
@@ -333,7 +333,7 @@ namespace GameFrameworkTests
             var transform1 = new SpriteTransform(translation: new Vector(100, 100), rotation: HalfPI * 2);
             var transform2 = new SpriteTransform(transform1, new Vector(50, 25));
 
-            var final = transform2.GetFinal();
+            var final = transform2.GetSpriteFinal();
 
             Assert.AreEqual(new Vector(50, 75), final.Translation);
             Assert.AreEqual(HalfPI * 2, final.Rotation);
@@ -345,7 +345,7 @@ namespace GameFrameworkTests
             var transform1 = new SpriteTransform(translation: new Vector(100, 100));
             var transform2 = new SpriteTransform(transform1, new Vector(15, -25), -HalfPI);
 
-            var final = transform2.GetFinal();
+            var final = transform2.GetSpriteFinal();
 
             Assert.AreEqual(new Vector(115, 75), final.Translation);
             Assert.AreEqual(-HalfPI, final.Rotation);

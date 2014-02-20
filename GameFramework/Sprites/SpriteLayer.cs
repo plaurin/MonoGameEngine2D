@@ -56,7 +56,7 @@ namespace GameFramework.Sprites
                     translation: drawContext.Camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
             }
             else
-                parallaxTransform = SpriteTransform.Identity;
+                parallaxTransform = SpriteTransform.SpriteIdentity;
 
             var transform = new SpriteTransform(parallaxTransform, this.Offset);
 
