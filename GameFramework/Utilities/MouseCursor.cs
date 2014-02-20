@@ -12,7 +12,7 @@ namespace GameFramework.Utilities
             mouseTracking.OnUpdate((mt, gt) => this.mousePosition = mt.AbsolutePosition);
         }
 
-        public int Draw(IDrawContext drawContext)
+        public int Draw(IDrawContext drawContext, Transform transform)
         {
             DrawLine(drawContext, this.mousePosition.Translate(-11, 0), this.mousePosition.Translate(10, 0));
             DrawLine(drawContext, this.mousePosition.Translate(0, -11), this.mousePosition.Translate(0, 10));

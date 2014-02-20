@@ -24,7 +24,7 @@ namespace GameFramework.Sprites
 
         public bool FlipVertically { get; set; }
 
-        public override int Draw(IDrawContext drawContext, SpriteTransform transform)
+        public override int Draw(IDrawContext drawContext, Transform transform)
         {
             return this.SpriteSheet.Draw(drawContext, this, transform);
         }

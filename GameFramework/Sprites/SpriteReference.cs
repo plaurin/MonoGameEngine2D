@@ -4,7 +4,7 @@
     {
         public SpriteBase Sprite { get; set; }
 
-        public override int Draw(IDrawContext drawContext, SpriteTransform transform)
+        public override int Draw(IDrawContext drawContext, Transform transform)
         {
             if (this.Sprite != null && this.IsVisible)
             {

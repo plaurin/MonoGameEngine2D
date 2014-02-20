@@ -45,20 +45,17 @@ namespace GameFramework.Sprites
             get { return this.drawnElementsLastFrame; }
         }
 
-        public override int Draw(IDrawContext drawContext)
+        public override int Draw(IDrawContext drawContext, Transform transform)
         {
             this.drawnElementsLastFrame = 0;
 
-            SpriteTransform parallaxTransform;
             if (this.CameraMode == CameraMode.Follow)
             {
-                parallaxTransform = new SpriteTransform(scale: drawContext.Camera.ZoomFactor,
+                transform = new SpriteTransform(transform, scale: drawContext.Camera.ZoomFactor,
                     translation: drawContext.Camera.GetSceneTranslationVector(this.ParallaxScrollingVector));
             }
-            else
-                parallaxTransform = SpriteTransform.SpriteIdentity;
 
-            var transform = new SpriteTransform(parallaxTransform, this.Offset);
+            transform = new SpriteTransform(transform, this.Offset);
 
             foreach (var sprite in this.Sprites.Where(s => s.IsVisible))
             {

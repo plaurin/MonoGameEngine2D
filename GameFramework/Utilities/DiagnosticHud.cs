@@ -62,7 +62,7 @@ namespace GameFramework.Utilities
             }
         }
 
-        public int Draw(IDrawContext drawContext)
+        public int Draw(IDrawContext drawContext, Transform transform)
         {
             var x = this.configuration.DisplayLocation == DiagnosticDisplayLocation.Left
                 ? LeftMargin

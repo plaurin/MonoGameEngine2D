@@ -59,7 +59,7 @@ namespace GameFramework.Sprites
             this.currentFrame = this.GetCurrentAnimationFrame(this.AnimationTime % this.TotalAnimationTime);
         }
 
-        public override int Draw(IDrawContext drawContext, SpriteTransform transform)
+        public override int Draw(IDrawContext drawContext, Transform transform)
         {
             if (this.currentFrame != null && this.IsVisible)
             {

@@ -20,7 +20,7 @@ namespace GameFramework.Sprites
             get { return this.sprites; }
         }
 
-        public override int Draw(IDrawContext drawContext, SpriteTransform transform)
+        public override int Draw(IDrawContext drawContext, Transform transform)
         {
             var newTransform = new SpriteTransform(transform, this.Position, this.Rotation, this.Scale, this.Color);
 

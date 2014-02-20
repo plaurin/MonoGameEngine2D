@@ -2,7 +2,7 @@
 
 namespace GameFramework.Sprites
 {
-    public abstract class SpriteBase : INavigatorMetadataProvider
+    public abstract class SpriteBase : IDrawable, INavigatorMetadataProvider
     {
         protected SpriteBase()
         {
@@ -23,7 +23,7 @@ namespace GameFramework.Sprites
 
         public bool IsVisible { get; set; }
 
-        public abstract int Draw(IDrawContext drawContext, SpriteTransform transform);
+        public abstract int Draw(IDrawContext drawContext, Transform transform);
 
         public NavigatorMetadata GetMetadata()
         {

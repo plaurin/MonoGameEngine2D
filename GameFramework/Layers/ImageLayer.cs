@@ -26,7 +26,7 @@ namespace GameFramework.Layers
             get { return this.TotalElements; }
         }
 
-        public override int Draw(IDrawContext drawContext)
+        public override int Draw(IDrawContext drawContext, Transform transform)
         {
             drawContext.DrawImage(new DrawImageParams
             {

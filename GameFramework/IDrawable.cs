@@ -2,6 +2,6 @@
 {
     public interface IDrawable
     {
-        int Draw(IDrawContext drawContext);
+        int Draw(IDrawContext drawContext, Transform transform);
     }
 }

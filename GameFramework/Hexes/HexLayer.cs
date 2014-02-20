@@ -62,7 +62,7 @@ namespace GameFramework.Hexes
             get { return this.drawnElementsLastFrame; }
         }
 
-        public override int Draw(IDrawContext drawContext)
+        public override int Draw(IDrawContext drawContext, Transform transform)
         {
             this.drawnElementsLastFrame = 0;
 

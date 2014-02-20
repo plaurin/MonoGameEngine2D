@@ -48,9 +48,10 @@ namespace GameFramework.Sprites
             base.Update(cumulativeTransform, currentTransform);
 
             var cumulSprite = (SpriteTransform)cumulativeTransform;
-            var currentSprite = (SpriteTransform)currentTransform;
+            var currentSprite = currentTransform as SpriteTransform;
 
-            cumulSprite.Color = cumulSprite.Color.Multiply(currentSprite.Color);
+            if (currentSprite != null)
+                cumulSprite.Color = cumulSprite.Color.Multiply(currentSprite.Color);
         }
 
         protected bool Equals(SpriteTransform other)

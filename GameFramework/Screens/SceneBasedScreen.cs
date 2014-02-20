@@ -50,16 +50,17 @@ namespace GameFramework.Screens
         int IScreen.Draw(DrawContext drawContext)
         {
             drawContext.Camera = this.Camera;
-            var total = this.Scene.Draw(drawContext);
+            var transform = Transform.Identity;
+            var total = this.Scene.Draw(drawContext, transform);
 
-            return total + this.Draw(drawContext);
+            return total + this.Draw(drawContext, transform);
         }
 
         public virtual void Update(IGameTiming gameTiming)
         {
         }
 
-        public virtual int Draw(IDrawContext drawContext)
+        public virtual int Draw(IDrawContext drawContext, Transform transform)
         {
             return 0;
         }

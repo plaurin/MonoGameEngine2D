@@ -84,7 +84,7 @@ namespace GameFramework.Drawing
             get { return this.TotalElements; }
         }
 
-        public override int Draw(IDrawContext drawContext)
+        public override int Draw(IDrawContext drawContext, Transform transform)
         {
             var total = 0;
 

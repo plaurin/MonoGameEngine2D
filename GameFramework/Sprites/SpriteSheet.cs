@@ -77,7 +77,7 @@ namespace GameFramework.Sprites
             return (SpriteComposite)this.animationTemplates[compositeName].CreateInstance();
         }
 
-        public int Draw(IDrawContext drawContext, Sprite sprite, SpriteTransform transform)
+        public int Draw(IDrawContext drawContext, Sprite sprite, Transform transform)
         {
             var source = this.definitions[sprite.SpriteName];
 
