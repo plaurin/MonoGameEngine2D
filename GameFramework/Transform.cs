@@ -1,4 +1,6 @@
-﻿namespace GameFramework
+﻿using System;
+
+namespace GameFramework
 {
     public class Transform
     {
@@ -30,9 +32,12 @@
             var cumulativeTranform = this.CreateIdentity();
 
             var currentTransform = this;
+            var hasRotation = false;
             while (currentTransform != null)
             {
-                this.Update(cumulativeTranform, currentTransform);
+                if (Math.Abs(currentTransform.Rotation) > 0.001f) hasRotation = true;
+
+                this.Update(cumulativeTranform, currentTransform, hasRotation);
                 currentTransform = currentTransform.innerTransform;
             }
 
@@ -69,11 +74,19 @@
             return Identity;
         }
 
-        protected virtual void Update(Transform cumulativeTransform, Transform currentTransform)
+        protected virtual void Update(Transform cumulativeTransform, Transform currentTransform, bool hasRotation)
         {
-            cumulativeTransform.Translation = Vector.Zero.TranslatePolar(currentTransform.Rotation, cumulativeTransform.Translation);
-            cumulativeTransform.Translation *= currentTransform.Scale;
-            cumulativeTransform.Translation += currentTransform.Translation;
+            if (hasRotation)
+            {
+                cumulativeTransform.Translation = Vector.Zero.TranslatePolar(currentTransform.Rotation, cumulativeTransform.Translation);
+                cumulativeTransform.Translation *= currentTransform.Scale;
+                cumulativeTransform.Translation += currentTransform.Translation;
+            }
+            else
+            {
+                cumulativeTransform.Translation *= currentTransform.Scale;
+                cumulativeTransform.Translation += currentTransform.Translation;
+            }
 
             cumulativeTransform.Scale *= currentTransform.Scale;
 

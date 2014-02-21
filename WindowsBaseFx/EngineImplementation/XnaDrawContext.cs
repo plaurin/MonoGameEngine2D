@@ -29,8 +29,8 @@ namespace MonoGameImplementation.EngineImplementation
         {
             var font = (XnaDrawingFont)drawStringParams.DrawingFont;
 
-            this.spriteBatch.DrawString(font.Font, drawStringParams.Text, drawStringParams.Vector.ToVector2(), drawStringParams.Color.ToXnaColor(),
-                0.0f, Vector2.Zero, drawStringParams.ZoomFactor, SpriteEffects.None, 0.0f);
+            this.spriteBatch.DrawString(font.Font, drawStringParams.Text, drawStringParams.Vector.ToVector2(), 
+                drawStringParams.Color.ToXnaColor(), 0.0f, Vector2.Zero, drawStringParams.ZoomFactor, SpriteEffects.None, 0.0f);
         }
 
         public void DrawLine(DrawLineParams param)
@@ -40,6 +40,13 @@ namespace MonoGameImplementation.EngineImplementation
 
             this.spriteBatch.Draw(this.blank, param.VectorFrom.ToVector2(), null, param.Color.ToXnaColor(), angle, Vector2.Zero,
                 new Vector2(length, param.Width), SpriteEffects.None, 0);
+        }
+
+        public void FillRectangle(DrawLineParams param)
+        {
+            var rect = GameFramework.Rectangle.FromBound((int)param.VectorFrom.X, (int)param.VectorFrom.Y, (int)param.VectorTo.X, (int)param.VectorTo.Y);
+
+            this.spriteBatch.Draw(this.blank, rect.ToXnaRect(), param.Color.ToXnaColor());
         }
 
         public void DrawImage(DrawImageParams param)

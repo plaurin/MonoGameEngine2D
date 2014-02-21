@@ -43,9 +43,9 @@ namespace GameFramework.Sprites
             return SpriteIdentity;
         }
 
-        protected override void Update(Transform cumulativeTransform, Transform currentTransform)
+        protected override void Update(Transform cumulativeTransform, Transform currentTransform, bool hasRotation)
         {
-            base.Update(cumulativeTransform, currentTransform);
+            base.Update(cumulativeTransform, currentTransform, hasRotation);
 
             var cumulSprite = (SpriteTransform)cumulativeTransform;
             var currentSprite = currentTransform as SpriteTransform;

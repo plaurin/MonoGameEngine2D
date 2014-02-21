@@ -60,6 +60,11 @@ namespace GameFramework.Sprites
             return template;
         }
 
+        public SpriteAnimationTemplate GetSpriteAnimationTemplate(string animationName)
+        {
+            return this.animationTemplates[animationName];
+        }
+
         public SpriteAnimation CreateSpriteAnimation(string animationName)
         {
             return (SpriteAnimation)this.animationTemplates[animationName].CreateInstance();
@@ -72,9 +77,31 @@ namespace GameFramework.Sprites
             return template;
         }
 
+        public SpriteCompositeTemplate GetSpriteCompositeTemplate(string compositeName)
+        {
+            return this.compositeTemplates[compositeName];
+        }
+
         public SpriteComposite CreateSpriteComposite(string compositeName)
         {
-            return (SpriteComposite)this.animationTemplates[compositeName].CreateInstance();
+            return (SpriteComposite)this.compositeTemplates[compositeName].CreateInstance();
+        }
+
+        public ISpriteTemplate GetTemplate(string templateName)
+        {
+            SpriteDefinition definition;
+            if (this.definitions.TryGetValue(templateName, out definition))
+                return definition;
+
+            SpriteAnimationTemplate animationTemplate;
+            if (this.animationTemplates.TryGetValue(templateName, out animationTemplate))
+                return animationTemplate;
+
+            SpriteCompositeTemplate compositeTemplate;
+            if (this.compositeTemplates.TryGetValue(templateName, out compositeTemplate))
+                return compositeTemplate;
+
+            throw new InvalidOperationException(templateName + " not found!");
         }
 
         public int Draw(IDrawContext drawContext, Sprite sprite, Transform transform)
