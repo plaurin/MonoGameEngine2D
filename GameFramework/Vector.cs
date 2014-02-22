@@ -42,7 +42,7 @@ namespace GameFramework
 
         public Vector GetNormalized()
         {
-            return this / this.Length;
+            return this.Length < Epsilon ? Vector.Zero : this / this.Length;
         }
 
         public float GetAngle()

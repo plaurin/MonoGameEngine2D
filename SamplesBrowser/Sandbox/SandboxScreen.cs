@@ -35,6 +35,7 @@ namespace SamplesBrowser.Sandbox
         private SpriteCompositeTemplate linkCompositeTemplate;
 
         private ILayer layer;
+        private Sprite sleep01;
 
         public SandboxScreen(ScreenNavigation screenNavigation)
         {
@@ -52,6 +53,8 @@ namespace SamplesBrowser.Sandbox
 
             var updatable = this.linkMouseFollow as IUpdatable;
             if (updatable != null) updatable.Update(gameTime);
+
+            this.sleep01.Color = new Color(255, 255, 255, (int)((gameTime.TotalSeconds % 10) / 10.0f * 255.0f));
         }
 
         protected override Camera CreateCamera(Viewport viewport)
@@ -301,13 +304,13 @@ namespace SamplesBrowser.Sandbox
             //sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Link SpriteSheet.xml");
 
             var link01 = new Sprite(sheet, "Link01") { Position = this.player, Color = Color.Blue };
-            var sleep01 = new Sprite(sheet, "Sleep01") { Position = new Vector(125, 25), FlipVertically = true };
+            this.sleep01 = new Sprite(sheet, "Sleep01") { Position = new Vector(125, 25), FlipVertically = true };
 
             this.ResourceManager.AddSpriteSheet(sheet);
 
             var spriteLayer = new SpriteLayer("Sprites");
             spriteLayer.AddSprite(link01);
-            spriteLayer.AddSprite(sleep01);
+            spriteLayer.AddSprite(this.sleep01);
             spriteLayer.ParallaxScrollingVector = new Vector(4.0f, 8.0f);
             spriteLayer.Offset = new Vector(50, 50);
 

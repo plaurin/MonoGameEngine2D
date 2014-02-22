@@ -125,7 +125,7 @@ namespace MonoGameImplementation
 
             this.GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            this.spriteBatch.Begin();
+            this.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
 
             var blank = new Texture2D(this.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             blank.SetData(new[] { Color.White });

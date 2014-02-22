@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:navigator="clr-namespace:GameNavigator.Navigator"
+             xmlns:gameFramework="clr-namespace:GameFramework;assembly=GameFramework"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance navigator:NavigatorViewModel}">
     <DockPanel LastChildFill="True">
@@ -15,6 +17,30 @@
                 <xctk:PropertyDefinition Name="FavoriteColor" />
                 <xctk:PropertyDefinition Name="PetNames" />
             </xctk:PropertyGrid.PropertyDefinitions>-->
+            <xctk:PropertyGrid.EditorDefinitions>
+                <xctk:EditorTemplateDefinition>
+                    <xctk:EditorTemplateDefinition.EditingTemplate>
+                        <DataTemplate>
+                            <TextBox Background="Green"  Text="{Binding Value}" />
+                            <!-- Always bind your editor's value to the bound property's Value -->
+                        </DataTemplate>
+                    </xctk:EditorTemplateDefinition.EditingTemplate>
+                </xctk:EditorTemplateDefinition>
+                <xctk:EditorDefinition TargetType="{x:Type gameFramework:Color}">
+                    <xctk:EditorDefinition.EditorTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBox Background="Red"  Text="{Binding R}" />
+                                <TextBox Background="Green"  Text="{Binding G}" />
+                                <TextBox Background="Blue"  Text="{Binding B}" />
+                                <TextBox Background="White"  Text="{Binding A}" />
+                            </StackPanel>
+                            <!-- Always bind your editor's value to the bound property's Value -->
+                        </DataTemplate>
+                    </xctk:EditorDefinition.EditorTemplate>
+                </xctk:EditorDefinition>
+            </xctk:PropertyGrid.EditorDefinitions>
+            
         </xctk:PropertyGrid>
     </DockPanel>
 </UserControl>

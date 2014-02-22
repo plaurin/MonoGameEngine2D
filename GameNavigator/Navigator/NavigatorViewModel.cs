@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Input;
 using GameFramework;
 using GameFramework.Screens;
@@ -241,7 +242,12 @@ namespace GameNavigator.Navigator
             this.nodes.Clear();
 
             this.nodes.Add(this.CreateNavigatorNode(this.gameResourceManager, this.GetNavigatorNodes(this.gameResourceManager)));
-            this.nodes.AddRange(this.GetNavigatorNodes(this.screen));
+
+            var rootNodes = this.GetNavigatorNodes(this.screen).ToList();
+            if (rootNodes.Any())
+                this.nodes.AddRange(rootNodes);
+            else
+                this.nodes.Add(this.CreateNavigatorNode(this.screen, Enumerable.Empty<NavigatorNode>()));
         }
 
         private void RefreshNode(NavigatorNode navigatorNode)
