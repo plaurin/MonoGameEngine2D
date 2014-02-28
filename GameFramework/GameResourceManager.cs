@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using GameFramework.Audio;
 using GameFramework.Drawing;
 using GameFramework.Hexes;
 using GameFramework.Sprites;
@@ -8,31 +9,31 @@ using GameFramework.Tiles;
 
 namespace GameFramework
 {
-    public class GameResourceManager : IComposite, INavigatorMetadataProvider
+    public abstract class GameResourceManager : IComposite, INavigatorMetadataProvider
     {
         #region Fields
 
         private readonly Dictionary<string, Texture> textureDictionary;
-
         private readonly Dictionary<string, HexSheet> hexSheetDictionary;
-
         private readonly Dictionary<string, TileSheet> tileSheetDictionary;
-
         private readonly Dictionary<string, SpriteSheet> spriteSheetDictionary;
-
         private readonly Dictionary<string, DrawingFont> drawingFontDictionary;
-        
+        private readonly Dictionary<string, Sound> soundDictionary;
+        private readonly Dictionary<string, Music> musicDictionary;
+
         #endregion
 
         #region Constructor
 
-        public GameResourceManager()
+        protected GameResourceManager()
         {
             this.textureDictionary = new Dictionary<string, Texture>();
             this.hexSheetDictionary = new Dictionary<string, HexSheet>();
             this.tileSheetDictionary = new Dictionary<string, TileSheet>();
             this.spriteSheetDictionary = new Dictionary<string, SpriteSheet>();
             this.drawingFontDictionary = new Dictionary<string, DrawingFont>();
+            this.soundDictionary = new Dictionary<string, Sound>();
+            this.musicDictionary = new Dictionary<string, Music>();
 
             this.AddHexSheet(NullHexDefinition.CreateInstance().Sheet);
             this.AddTileSheet(NullTileDefinition.CreateInstance().Sheet);
@@ -162,6 +163,47 @@ namespace GameFramework
                 //Font = this.contentManager.Load<SpriteFont>(assetName)
             };
         }
+
+        #endregion
+
+        #region Sound
+
+        public Sound GetSoundEffect(string assetName)
+        {
+            Sound sound;
+
+            if (!this.soundDictionary.TryGetValue(assetName, out sound))
+            {
+                sound = this.CreateSoundEffect(assetName);
+                this.soundDictionary[assetName] = sound;
+            }
+
+            return sound;
+        }
+
+        protected virtual Sound CreateSoundEffect(string assetName)
+        {
+            throw new NotSupportedException();
+        }
+
+        #endregion
+
+        #region Music
+
+        public Music GetMusic(string assetName)
+        {
+            Music music;
+
+            if (!this.musicDictionary.TryGetValue(assetName, out music))
+            {
+                music = this.CreateMusic(assetName);
+                this.musicDictionary[assetName] = music;
+            }
+
+            return music;
+        }
+
+        protected abstract Music CreateMusic(string assetName);
 
         #endregion
     }

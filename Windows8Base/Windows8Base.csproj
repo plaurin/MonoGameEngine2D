@@ -145,6 +145,12 @@
     <Compile Include="..\WindowsBaseFx\EngineImplementation\XnaInputContext.cs">
       <Link>EngineImplementation\XnaInputContext.cs</Link>
     </Compile>
+    <Compile Include="..\WindowsBaseFx\EngineImplementation\XnaMusic.cs">
+      <Link>EngineImplementation\XnaMusic.cs</Link>
+    </Compile>
+    <Compile Include="..\WindowsBaseFx\EngineImplementation\XnaSoundEffect.cs">
+      <Link>EngineImplementation\XnaSoundEffect.cs</Link>
+    </Compile>
     <Compile Include="..\WindowsBaseFx\EngineImplementation\XnaTexture.cs">
       <Link>EngineImplementation\XnaTexture.cs</Link>
     </Compile>

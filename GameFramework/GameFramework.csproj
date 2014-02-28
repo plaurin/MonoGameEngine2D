@@ -38,6 +38,8 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Audio\Music.cs" />
+    <Compile Include="Audio\SoundInstance.cs" />
     <Compile Include="Cameras\Camera.cs" />
     <Compile Include="Cameras\CameraCenter.cs" />
     <Compile Include="Cameras\CameraMode.cs" />
@@ -87,6 +89,7 @@
     <Compile Include="Rectangle.cs" />
     <Compile Include="Screens\IScreen.cs" />
     <Compile Include="Screens\SceneBasedScreen.cs" />
+    <Compile Include="Audio\Sound.cs" />
     <Compile Include="Sprites\AnimationState.cs" />
     <Compile Include="Sprites\ISpriteTemplate.cs" />
     <Compile Include="Sprites\SpriteAnimation.cs" />

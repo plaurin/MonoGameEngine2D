@@ -42,6 +42,8 @@
     <Compile Include="EngineImplementation\XnaExtensions.cs" />
     <Compile Include="EngineImplementation\XnaGameResourceManager.cs" />
     <Compile Include="EngineImplementation\XnaInputContext.cs" />
+    <Compile Include="EngineImplementation\XnaMusic.cs" />
+    <Compile Include="EngineImplementation\XnaSoundEffect.cs" />
     <Compile Include="EngineImplementation\XnaTexture.cs" />
     <Compile Include="GameNavigatorGateway.cs" />
     <Compile Include="MonoGameBase.cs" />

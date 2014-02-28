@@ -208,4 +208,21 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="..\SamplesBrowser\Content\Sandbox\Coin.xnb">
+      <Link>Content\Sandbox\Coin.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup />
+  <ItemGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="..\SamplesBrowser\Content\Sandbox\Music3.wav">
+      <Link>Content\Sandbox\Music3.wav</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

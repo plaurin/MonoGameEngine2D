@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using GameFramework;
+using GameFramework.Audio;
 using GameFramework.Cameras;
 using GameFramework.Drawing;
 using GameFramework.Hexes;
@@ -36,6 +37,8 @@ namespace SamplesBrowser.Sandbox
 
         private ILayer layer;
         private Sprite sleep01;
+        private SoundInstance coinSound;
+        private Music music;
 
         public SandboxScreen(ScreenNavigation screenNavigation)
         {
@@ -90,6 +93,24 @@ namespace SamplesBrowser.Sandbox
                 this.hits = this.Scene.GetHits(this.mouseState.AbsolutePosition, this.Camera).ToList();
             });
 
+            inputConfiguration.AddDigitalButton("Play sound").Assign(MouseButtons.Right).MapClickTo(e =>
+            {
+                this.coinSound.Pan = (this.mouseState.AbsolutePosition.X / 320.0f) - 1.0f;
+                this.coinSound.Play();
+            });
+
+            inputConfiguration.AddDigitalButton("PlayPause music").Assign(KeyboardKeys.Space).MapClickTo(e =>
+            {
+                if (this.music.IsPlaying) 
+                    this.music.Pause();
+                //else if (this.music.IsPaused)
+                //    this.music.Resume();
+                else if (this.music.IsPaused)
+                    this.music.Play();
+                else if (this.music.IsStopped) 
+                    this.music.Play();
+            });
+
             inputConfiguration.CreateMouseTracking(this.Camera).OnUpdate((mt, e) =>
             {
                 this.mouseState = mt;
@@ -103,6 +124,11 @@ namespace SamplesBrowser.Sandbox
         protected override Scene CreateScene()
         {
             var scene = new Scene("scene1");
+
+            this.coinSound = this.ResourceManager.GetSoundEffect(@"Sandbox\Coin").CreateInstance();
+            this.coinSound.Volume = 0.5f;
+
+            this.music = this.ResourceManager.GetMusic(@"Sandbox\Music3.wav");
 
             scene.Add(
                 this.CreateImageLayer(),
