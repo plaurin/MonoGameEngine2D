@@ -13,6 +13,8 @@ namespace GameFramework
 
         void DrawImage(DrawImageParams param);
 
+        void DrawRectangle(DrawLineParams param);
+
         void FillRectangle(DrawLineParams param);
 
         void FillColor(Color color);
@@ -47,6 +49,11 @@ namespace GameFramework
         public void DrawImage(DrawImageParams param)
         {
             this.drawImplementation.DrawImage(param);
+        }
+
+        public void DrawRectangle(DrawLineParams param)
+        {
+            this.drawImplementation.DrawRectangle(param);
         }
 
         public void FillRectangle(DrawLineParams param)

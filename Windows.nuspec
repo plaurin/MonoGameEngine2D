@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>MonoGameEngine2D.Windows</id>
-    <version>1.5.11</version>
+    <version>1.5.15</version>
     <authors>Pascal Laurin</authors>
     <owners>Pascal Laurin</owners>
     <licenseUrl>http://github.com/plaurin/MonoGameEngine2D/blob/master/License.txt</licenseUrl>
@@ -10,11 +10,11 @@
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Cross-platform Game making framework using MonoGame and PCL.  Use to create a Windows host.</description>
-    <releaseNotes>Fix sprites with alpha transparency</releaseNotes>
+    <releaseNotes>Added DrawContext.DrawRectangle</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>Game MonoGame</tags>
     <dependencies>
-      <dependency id="MonoGameEngine2D.GameFramework" version="1.5.11" />
+      <dependency id="MonoGameEngine2D.GameFramework" version="1.5.15" />
       <dependency id="Extended.Wpf.Toolkit" version="2.0.0" />
     </dependencies>
   </metadata>

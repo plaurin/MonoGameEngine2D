@@ -11,6 +11,7 @@ namespace GameFramework.Sprites
         {
             this.SpriteSheet = spriteSheet;
             this.SpriteName = spriteName;
+            this.ShouldDrawPixelPrecision = false;
         }
 
         public SpriteSheet SpriteSheet { get; private set; }
@@ -23,6 +24,8 @@ namespace GameFramework.Sprites
         public bool FlipHorizontally { get; set; }
 
         public bool FlipVertically { get; set; }
+
+        public bool ShouldDrawPixelPrecision { get; set; }
 
         public override int Draw(IDrawContext drawContext, Transform transform)
         {

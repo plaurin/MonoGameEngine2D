@@ -225,4 +225,16 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\SamplesBrowser\Content\Sandbox\Music2.wma">
+      <Link>Content\Sandbox\Music2.wma</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\SamplesBrowser\Content\Sandbox\Music2.xnb">
+      <Link>Content\Sandbox\Music2.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

@@ -11,6 +11,12 @@ namespace GameFramework.Sprites
             this.Color = color.HasValue ? color.Value : Color.White;
         }
 
+        public SpriteTransform(SpriteTransform innerTransform, SpriteTransform otherTransform)
+            : base(innerTransform, otherTransform.Translation, otherTransform.Rotation, otherTransform.Scale)
+        {
+            this.Color = innerTransform.Color.Multiply(otherTransform.Color);
+        }
+
         public Color Color { get; private set; }
 
         public static SpriteTransform SpriteIdentity

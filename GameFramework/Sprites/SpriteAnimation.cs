@@ -64,6 +64,9 @@ namespace GameFramework.Sprites
             if (this.currentFrame != null && this.IsVisible)
             {
                 var newTransform = new SpriteTransform(transform, this.Position, this.Rotation, this.Scale, this.Color);
+                
+                if (this.currentFrame.Transform != null)
+                    newTransform = new SpriteTransform(newTransform, this.currentFrame.Transform);
 
                 return this.currentFrame.FrameSprite.Draw(drawContext, newTransform);
             }

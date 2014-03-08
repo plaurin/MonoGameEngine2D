@@ -29,7 +29,7 @@ namespace MonoGameImplementation.EngineImplementation
         {
             var font = (XnaDrawingFont)drawStringParams.DrawingFont;
 
-            this.spriteBatch.DrawString(font.Font, drawStringParams.Text, drawStringParams.Vector.ToVector2(), 
+            this.spriteBatch.DrawString(font.Font, drawStringParams.Text, drawStringParams.Vector.ToVector2(),
                 drawStringParams.Color.ToXnaColor(), 0.0f, Vector2.Zero, drawStringParams.ZoomFactor, SpriteEffects.None, 0.0f);
         }
 
@@ -40,6 +40,17 @@ namespace MonoGameImplementation.EngineImplementation
 
             this.spriteBatch.Draw(this.blank, param.VectorFrom.ToVector2(), null, param.Color.ToXnaColor(), angle, Vector2.Zero,
                 new Vector2(length, param.Width), SpriteEffects.None, 0);
+        }
+
+        public void DrawRectangle(DrawLineParams param)
+        {
+            var bottomLeft = new Vector(param.VectorFrom.X, param.VectorTo.Y);
+            var topRight = new Vector(param.VectorTo.X, param.VectorFrom.Y);
+
+            this.DrawLine(new DrawLineParams { VectorFrom = param.VectorFrom, VectorTo = topRight, Color = param.Color, Width = param.Width});
+            this.DrawLine(new DrawLineParams { VectorFrom = topRight, VectorTo = param.VectorTo, Color = param.Color, Width = param.Width});
+            this.DrawLine(new DrawLineParams { VectorFrom = param.VectorTo, VectorTo = bottomLeft, Color = param.Color, Width = param.Width});
+            this.DrawLine(new DrawLineParams { VectorFrom = bottomLeft, VectorTo = param.VectorFrom, Color = param.Color, Width = param.Width});
         }
 
         public void FillRectangle(DrawLineParams param)

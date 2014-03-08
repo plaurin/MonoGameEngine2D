@@ -99,6 +99,12 @@ namespace GameFramework
             return new Rectangle(rectangle.X + vector.X, rectangle.Y + vector.Y, rectangle.Width, rectangle.Height);
         }
 
+        public static Rectangle Round(this Rectangle rectangle)
+        {
+            return new Rectangle((float)Math.Round(rectangle.X), (float)Math.Round(rectangle.Y),
+                (float)Math.Round(rectangle.Width), (float)Math.Round(rectangle.Height));
+        }
+
         public static bool Intercept(this Rectangle rectangle, Vector vector)
         {
             return vector.X >= rectangle.X

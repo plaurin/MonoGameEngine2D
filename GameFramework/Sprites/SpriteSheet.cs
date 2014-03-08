@@ -117,9 +117,17 @@ namespace GameFramework.Sprites
             //var destination = new Rectangle(0, 0, source.Rectangle.Width, source.Rectangle.Height);
             //destination = finalTransform.ApplyFor(destination);
 
-            if (drawContext.Camera.Viewport.IsVisible(destination))
+            var origin = sprite.Origin.HasValue ? sprite.Origin.Value : source.Origin;
+
+            var visibilityCheckRectangle = new Rectangle(
+                destination.X - (origin.X / source.Rectangle.Width) * destination.Width,
+                destination.Y - (origin.Y / source.Rectangle.Height) * destination.Height,
+                destination.Width, destination.Height);
+
+            if (drawContext.Camera.Viewport.IsVisible(visibilityCheckRectangle))
             {
-                var origin = sprite.Origin.HasValue ? sprite.Origin.Value : source.Origin;
+                if (sprite.ShouldDrawPixelPrecision)
+                    destination = destination.Round();
 
                 drawContext.DrawImage(new DrawImageParams
                 {

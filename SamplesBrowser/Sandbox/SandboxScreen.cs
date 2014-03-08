@@ -95,7 +95,7 @@ namespace SamplesBrowser.Sandbox
 
             inputConfiguration.AddDigitalButton("Play sound").Assign(MouseButtons.Right).MapClickTo(e =>
             {
-                this.coinSound.Pan = (this.mouseState.AbsolutePosition.X / 320.0f) - 1.0f;
+                this.coinSound.Pan = (this.mouseState.AbsolutePosition.X / this.Camera.SceneViewport.Width) - 0.5f;
                 this.coinSound.Play();
             });
 
@@ -128,7 +128,11 @@ namespace SamplesBrowser.Sandbox
             this.coinSound = this.ResourceManager.GetSoundEffect(@"Sandbox\Coin").CreateInstance();
             this.coinSound.Volume = 0.5f;
 
+#if (NETFX_CORE)
+            this.music = this.ResourceManager.GetMusic(@"Sandbox\Music2");
+#else
             this.music = this.ResourceManager.GetMusic(@"Sandbox\Music3.wav");
+#endif
 
             scene.Add(
                 this.CreateImageLayer(),
@@ -329,7 +333,7 @@ namespace SamplesBrowser.Sandbox
 
             //sheet.Save(@"C:\Users\Pascal\Dev\DotNet\GitHub\XNAGameEngine2D\Link SpriteSheet.xml");
 
-            var link01 = new Sprite(sheet, "Link01") { Position = this.player, Color = Color.Blue };
+            var link01 = new Sprite(sheet, "Link01") { Position = this.player, Color = Color.Blue, Scale = 2, ShouldDrawPixelPrecision = true };
             this.sleep01 = new Sprite(sheet, "Sleep01") { Position = new Vector(125, 25), FlipVertically = true };
 
             this.ResourceManager.AddSpriteSheet(sheet);

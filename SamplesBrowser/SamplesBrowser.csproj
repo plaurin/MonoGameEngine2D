@@ -62,6 +62,7 @@
     <Content Include="Content\Sandbox\LinkSheet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Sandbox\Music2.wma" />
     <Content Include="Content\Sandbox\Music3.wav" />
     <Content Include="Content\ShootEmUp\Sprites.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -84,6 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Sandbox\Coin.xnb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Sandbox\Music2.xnb" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <PropertyGroup>
