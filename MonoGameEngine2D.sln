@@ -29,7 +29,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndroidSamples", "AndroidSa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E68D5BC9-1591-4434-A571-F69A56822570}"
 	ProjectSection(SolutionItems) = preProject
+		NuGetFiles\DefaultScreen.cs.pp = NuGetFiles\DefaultScreen.cs.pp
 		GameFramework.nuspec = GameFramework.nuspec
+		NuGetFiles\Install.ps1 = NuGetFiles\Install.ps1
 		License.txt = License.txt
 		Package.cmd = Package.cmd
 		Readme.txt = Readme.txt

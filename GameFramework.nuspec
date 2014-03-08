@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>MonoGameEngine2D.GameFramework</id>
-    <version>1.5.16</version>
+    <version>1.5.17</version>
     <authors>Pascal Laurin</authors>
     <owners>Pascal Laurin</owners>
     <licenseUrl>http://github.com/plaurin/MonoGameEngine2D/blob/master/License.txt</licenseUrl>
@@ -10,7 +10,7 @@
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Cross-platform Game making framework using MonoGame and PCL.  Use this to create your game.</description>
-    <releaseNotes>Added Sprite.ShouldDrawPixelPrecision</releaseNotes>
+    <releaseNotes>Test package</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>Game MonoGame</tags>
     <dependencies>
@@ -22,5 +22,8 @@
     <file src="GameFramework\bin\Release\GameFramework.pdb" target="lib\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\" />
     <file src="GameFramework.IO\bin\Release\GameFramework.IO.dll" target="lib\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\" />
     <file src="GameFramework.IO\bin\Release\GameFramework.IO.pdb" target="lib\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\" />
+    <file src="NuGetFiles\DefaultScreen.cs.pp" target="content\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\" />
+    <file src="NuGetFiles\Content\SpriteFont.xnb" target="content\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\Content\" />
+    <file src="NuGetFiles\Install.ps1" target="tools\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\" />
   </files>
 </package>
