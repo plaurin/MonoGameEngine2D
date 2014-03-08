@@ -29,15 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndroidSamples", "AndroidSa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E68D5BC9-1591-4434-A571-F69A56822570}"
 	ProjectSection(SolutionItems) = preProject
-		NuGetFiles\DefaultScreen.cs.pp = NuGetFiles\DefaultScreen.cs.pp
-		GameFramework.nuspec = GameFramework.nuspec
-		NuGetFiles\Install.ps1 = NuGetFiles\Install.ps1
 		License.txt = License.txt
-		Package.cmd = Package.cmd
 		Readme.txt = Readme.txt
 		Settings.StyleCop = Settings.StyleCop
 		Todo.md = Todo.md
-		Windows.nuspec = Windows.nuspec
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentSyncTests", "ContentSyncTests\ContentSyncTests.csproj", "{001887A1-A043-455F-85C3-D87B48B530E0}"
@@ -49,6 +44,17 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameNavigator", "GameNavigator\GameNavigator.csproj", "{05DC4F3D-5EBF-4E4D-8671-CDE1D1CD7680}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameFrameworkTests", "GameFrameworkTests\GameFrameworkTests.csproj", "{B152C8A8-5936-4F3A-B2D4-7F5B3DB8C3F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{BF851CC3-BC9E-446D-BFBA-A2877F54D41E}"
+	ProjectSection(SolutionItems) = preProject
+		NuGetFiles\DefaultScreen.cs.pp = NuGetFiles\DefaultScreen.cs.pp
+		GameFramework.nuspec = GameFramework.nuspec
+		GameLogic.nuspec = GameLogic.nuspec
+		NuGetFiles\Install.ps1 = NuGetFiles\Install.ps1
+		Package.cmd = Package.cmd
+		NuGetFiles\Program.cs.pp = NuGetFiles\Program.cs.pp
+		Windows.nuspec = Windows.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1186,5 +1192,6 @@ Global
 		{3DCC7071-6360-4E30-922F-4C9544E4838A} = {F29EE311-BF5E-4972-863F-AAFD710EA650}
 		{CEE2B382-4F02-4693-AE8D-2DF483DD88CC} = {AA05FBE3-4E25-4F19-82A2-3145C3EFB98B}
 		{001887A1-A043-455F-85C3-D87B48B530E0} = {AA05FBE3-4E25-4F19-82A2-3145C3EFB98B}
+		{BF851CC3-BC9E-446D-BFBA-A2877F54D41E} = {E68D5BC9-1591-4434-A571-F69A56822570}
 	EndGlobalSection
 EndGlobal

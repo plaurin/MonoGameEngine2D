@@ -14,17 +14,13 @@
     <copyright>Copyright 2014</copyright>
     <tags>Game MonoGame</tags>
     <dependencies>
-      <!--<dependency id="MonoGameEngine2D.GameFramework" version="1.5.15" />-->
+      <dependency id="MonoGameEngine2D.GameFramework" version="1.5.17" />
       <dependency id="MonoGame.Binaries" version="3.0.1" />
-      <dependency id="Zlib.Portable" version="1.9.2" />
+      <!--<dependency id="Zlib.Portable" version="1.9.2" />-->
       <dependency id="Extended.Wpf.Toolkit" version="2.0.0" />
     </dependencies>
   </metadata>
   <files>
-    <file src="GameFramework\bin\Release\GameFramework.dll" target="lib\net45" />
-    <file src="GameFramework\bin\Release\GameFramework.pdb" target="lib\net45" />
-    <file src="GameFramework.IO\bin\Release\GameFramework.IO.dll" target="lib\net45" />
-    <file src="GameFramework.IO\bin\Release\GameFramework.IO.pdb" target="lib\net45" />
     <file src="WindowsBaseFx\bin\WindowsGL\Release\WindowsBaseFx.dll" target="lib\net45" />
     <file src="WindowsBaseFx\bin\WindowsGL\Release\WindowsBaseFx.pdb" target="lib\net45" />
     <file src="GameNavigator\bin\Release\GameNavigator.dll" target="lib\net45" />

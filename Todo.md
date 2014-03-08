@@ -3,7 +3,6 @@
  - Map drawing utilities: DrawRectangle, FillRectangle, DrawLine
  - CompositeTile stencil to help map's designing
 ### SpriteLayer
- - P2 Scaling SpriteSheets
 ### HexLayer
 ### Layer
 ### Scene
@@ -14,11 +13,7 @@
  - Input configuration (mouse axes)
  - Input configuration (gamepad)
 ### Others
- - Audio?
  - P4 Entities
-  - Link to sprites/tiles
-  - Animations state machine
- - P3 Resources manager: Screen, Audio
 ### ContentSync
  - Validate current content Links
 ### IO
@@ -26,8 +21,6 @@
  - Fix Repositories to use proper constructor injection patterns
 
 ## Bugs
-- ! WPF, DrawString Zoom and Font
-- ! Scene saving point/vector/rectangle precision
 - ! CameraMode.Fix to be implemented on all Gfx 
 - ! Touch gesture get stuck, should we implement our own configurable gesture? (add-on utility)
 
@@ -63,7 +56,6 @@
  - SamplesBrowser (Samples game demo - PCL)
 
 ## InTray
-- Implement Scene Navigation
 - Document Glosary
 - Fix WP8 Samples
 - Fix Win8.1 Exit with Escape (can it be fixed?)

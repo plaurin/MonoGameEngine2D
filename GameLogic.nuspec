@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>MonoGameEngine2D.GameFramework</id>
+    <id>MonoGameEngine2D.GameLogic</id>
     <version>1.5.17</version>
     <authors>Pascal Laurin</authors>
     <owners>Pascal Laurin</owners>
@@ -14,13 +14,12 @@
     <copyright>Copyright 2014</copyright>
     <tags>Game MonoGame</tags>
     <dependencies>
-      <dependency id="Zlib.Portable" version="1.9.2" />
+      <dependency id="MonoGameEngine2D.GameFramework" version="1.5.17" />
     </dependencies>
   </metadata>
   <files>
-    <file src="GameFramework\bin\Release\GameFramework.dll" target="lib\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\" />
-    <file src="GameFramework\bin\Release\GameFramework.pdb" target="lib\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\" />
-    <file src="GameFramework.IO\bin\Release\GameFramework.IO.dll" target="lib\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\" />
-    <file src="GameFramework.IO\bin\Release\GameFramework.IO.pdb" target="lib\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\" />
+    <file src="NuGetFiles\DefaultScreen.cs.pp" target="content\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\" />
+    <file src="NuGetFiles\Content\SpriteFont.xnb" target="content\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\Content\" />
+    <file src="NuGetFiles\Install.ps1" target="tools\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\" />
   </files>
 </package>
