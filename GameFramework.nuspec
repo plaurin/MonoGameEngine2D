@@ -9,8 +9,8 @@
     <projectUrl>http://github.com/plaurin/MonoGameEngine2D</projectUrl>
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Cross-platform Game making framework using MonoGame and PCL.  Use this to create your game.</description>
-    <releaseNotes>Test package</releaseNotes>
+    <description>Cross-platform Game making framework using MonoGame and PCL.  Use this for additional game logic library projects.</description>
+    <releaseNotes>NuGet packages refactoring</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>Game MonoGame</tags>
     <dependencies>

@@ -9,8 +9,8 @@
     <projectUrl>http://github.com/plaurin/MonoGameEngine2D</projectUrl>
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Cross-platform Game making framework using MonoGame and PCL.  Use this to create your game.</description>
-    <releaseNotes>Test package</releaseNotes>
+    <description>Cross-platform Game making framework using MonoGame and PCL.  Use this to create your game logic.</description>
+    <releaseNotes>NuGet packages refactoring</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>Game MonoGame</tags>
     <dependencies>
@@ -20,6 +20,7 @@
   <files>
     <file src="NuGetFiles\DefaultScreen.cs.pp" target="content\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\" />
     <file src="NuGetFiles\Content\SpriteFont.xnb" target="content\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\Content\" />
+    <file src="ContentSync\bin\Debug\ContentSync.exe" target="content\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\SyncTool\" />
     <file src="NuGetFiles\Install.ps1" target="tools\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\" />
   </files>
 </package>

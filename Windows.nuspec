@@ -9,14 +9,13 @@
     <projectUrl>http://github.com/plaurin/MonoGameEngine2D</projectUrl>
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Cross-platform Game making framework using MonoGame and PCL.  Use to create a Windows host.</description>
-    <releaseNotes>Test package</releaseNotes>
+    <description>Cross-platform Game making framework using MonoGame and PCL.  Use this to create a Windows host.</description>
+    <releaseNotes>NuGet packages refactoring</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>Game MonoGame</tags>
     <dependencies>
       <dependency id="MonoGameEngine2D.GameFramework" version="1.5.17" />
       <dependency id="MonoGame.Binaries" version="3.0.1" />
-      <!--<dependency id="Zlib.Portable" version="1.9.2" />-->
       <dependency id="Extended.Wpf.Toolkit" version="2.0.0" />
     </dependencies>
   </metadata>
