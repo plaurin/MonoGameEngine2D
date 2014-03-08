@@ -1,6 +1,5 @@
 ﻿using MonoGameImplementation;
 using SamplesBrowser;
-using SamplesBrowser.Sandbox;
 
 namespace Windows8Samples
 {

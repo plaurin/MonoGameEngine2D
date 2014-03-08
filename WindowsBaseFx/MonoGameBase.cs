@@ -13,7 +13,7 @@ namespace MonoGameImplementation
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public abstract class MonoGameBase : Game
+    public class MonoGameBase : Game
     {
         private readonly GraphicsDeviceManager graphics;
 
@@ -27,11 +27,11 @@ namespace MonoGameImplementation
 
         private SpriteBatch spriteBatch;
 
-        private GameResourceManager gameResourceManager;
+        private readonly GameResourceManager gameResourceManager;
 
         private bool isUpdateEnabled = true;
 
-        protected MonoGameBase(IScreen screen)
+        public MonoGameBase(IScreen screen)
         {
             this.screen = screen;
 
