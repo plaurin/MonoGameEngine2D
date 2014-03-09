@@ -4,5 +4,6 @@ IF NOT EXIST NuGetOutput md NuGetOutput
 nuget pack GameFramework.nuspec -OutputDirectory NuGetOutput
 nuget pack GameLogic.nuspec -OutputDirectory NuGetOutput
 nuget pack Windows.nuspec -OutputDirectory NuGetOutput
+nuget pack Windows8.nuspec -OutputDirectory NuGetOutput
 
 pause

@@ -53,7 +53,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{BF851CC3
 		NuGetFiles\Install.ps1 = NuGetFiles\Install.ps1
 		Package.cmd = Package.cmd
 		NuGetFiles\Program.cs.pp = NuGetFiles\Program.cs.pp
+		NuGetFiles\Program8.cs.pp = NuGetFiles\Program8.cs.pp
 		Windows.nuspec = Windows.nuspec
+		Windows8.nuspec = Windows8.nuspec
 	EndProjectSection
 EndProject
 Global
