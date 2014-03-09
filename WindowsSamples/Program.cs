@@ -1,17 +1,10 @@
-﻿#region Using Statements
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-#endregion
+﻿using System;
+using MonoGameImplementation;
+using SamplesBrowser;
 
 namespace WindowsSamples
 {
-#if WINDOWS || LINUX
-    /// <summary>
-    /// The main class.
-    /// </summary>
-    public static class Program
+    static class Program
     {
         /// <summary>
         /// The main entry point for the application.
@@ -19,9 +12,7 @@ namespace WindowsSamples
         [STAThread]
         static void Main()
         {
-            using (var game = new SamplesBrowserWin())
-                game.Run();
+            using (var game = new MonoGameBase(new SampleBrowserScreenNavigation())) game.Run();
         }
     }
-#endif
 }
