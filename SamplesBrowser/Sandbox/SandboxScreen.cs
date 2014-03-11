@@ -52,7 +52,7 @@ namespace SamplesBrowser.Sandbox
         {
             var colorLayer = this.Scene.Children.OfType<ColorLayer>().FirstOrDefault();
             if (colorLayer != null)
-                colorLayer.Color = new Color(255, 0, 0, (int)(255 * Math.Min(this.range, 1.0f)));
+                colorLayer.Color = Color.CornflowerBlue.ChangeAlpha((int)(255 * Math.Min(this.range, 1.0f)));
 
             var updatable = this.linkMouseFollow as IUpdatable;
             if (updatable != null) updatable.Update(gameTime);
@@ -81,6 +81,9 @@ namespace SamplesBrowser.Sandbox
 
             inputConfiguration.AddDigitalButton("ZoomIn").Assign(KeyboardKeys.A).MapTo(gt => this.Camera.ZoomFactor *= 1.2f * (1 + gt.ElapsedSeconds));
             inputConfiguration.AddDigitalButton("ZoomOut").Assign(KeyboardKeys.Z).MapTo(gt => this.Camera.ZoomFactor *= 1 / (1.2f * (1 + gt.ElapsedSeconds)));
+
+            inputConfiguration.AddDigitalButton("SwitchSampler").Assign(KeyboardKeys.Tab)
+                .MapClickTo(gt => this.Scene.UseLinearSampler = !this.Scene.UseLinearSampler);
 
             inputConfiguration.AddDigitalButton("RangeUp").Assign(KeyboardKeys.W).MapTo(gt => this.range *= 1.2f * (1 + gt.ElapsedSeconds));
             inputConfiguration.AddDigitalButton("RangeDown").Assign(KeyboardKeys.Q).MapTo(gt => this.range *= 1 / (1.2f * (1 + gt.ElapsedSeconds)));
@@ -135,10 +138,10 @@ namespace SamplesBrowser.Sandbox
 #endif
 
             scene.Add(
+                this.CreateColorLayer(),
                 this.CreateImageLayer(),
                 this.CreateHexLayer(),
                 this.CreateTileLayer(),
-                this.CreateColorLayer(),
                 this.CreateHexLayerTestDistance(),
                 this.CreateSpriteLayer(),
                 this.CreateDiagnosticLayer(),
@@ -242,7 +245,7 @@ namespace SamplesBrowser.Sandbox
         {
             var alpha = Math.Min(this.range, 1.0f);
 
-            return new ColorLayer("Red", new Color(255, 0, 0, (int)(255 * alpha)));
+            return new ColorLayer("Black", new Color(0, 0, 0, (int)(255 * alpha)));
         }
 
         private HexLayer CreateHexLayer()
@@ -276,7 +279,7 @@ namespace SamplesBrowser.Sandbox
             var sheet = new TileSheet(texture, "Background", new Size(16, 16));
             var red = sheet.CreateTileDefinition("red", new Point(0, 0));
             var green = sheet.CreateTileDefinition("green", new Point(16, 0));
-            sheet.CreateTileDefinition("yellow", new Point(32, 0));
+            var yellow = sheet.CreateTileDefinition("yellow", new Point(32, 0));
             var purple = sheet.CreateTileDefinition("purple", new Point(0, 16));
             sheet.CreateTileDefinition("orange", new Point(16, 16));
             sheet.CreateTileDefinition("blue", new Point(32, 16));
@@ -287,6 +290,8 @@ namespace SamplesBrowser.Sandbox
 
             var tileLayer = new TileLayer("Tiles", new Size(32, 32), new Size(16, 16));
             tileLayer[0, 0] = purple;
+            tileLayer[0, 1] = green;
+            tileLayer[1, 0] = yellow;
             tileLayer[1, 1] = red;
             tileLayer[10, 10] = purple;
             tileLayer[4, 20] = green;

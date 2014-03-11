@@ -5,6 +5,7 @@ using GameFramework;
 using GameFramework.Cameras;
 using GameFramework.Drawing;
 using GameFramework.Inputs;
+using GameFramework.Layers;
 using GameFramework.Scenes;
 using GameFramework.Screens;
 using GameFramework.Utilities;
@@ -175,6 +176,7 @@ namespace SamplesBrowser
         protected override Scene CreateScene()
         {
             var scene = new Scene("HubScene");
+            scene.Add(new ColorLayer("Background", Color.CornflowerBlue));
 
             var font = this.ResourceManager.GetDrawingFont(@"Sandbox\SpriteFont1");
 

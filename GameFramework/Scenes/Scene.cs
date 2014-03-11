@@ -11,13 +11,16 @@ namespace GameFramework.Scenes
     {
         private readonly List<object> sceneObjects;
 
-        public Scene(string name)
+        public Scene(string name, bool useLinearSampler = true)
         {
             this.Name = name;
+            this.UseLinearSampler = useLinearSampler;
             this.sceneObjects = new List<object>();
         }
 
         public string Name { get; private set; }
+
+        public bool UseLinearSampler { get; set; }
 
         public int TotalElements
         {

@@ -64,6 +64,8 @@ namespace GameFramework.Hexes
 
         public override int Draw(IDrawContext drawContext, Transform transform)
         {
+            this.SetSampler(drawContext);
+
             this.drawnElementsLastFrame = 0;
 
             for (var i = 0; i < this.MapSize.Width; i++)

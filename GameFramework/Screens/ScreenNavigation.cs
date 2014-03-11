@@ -31,6 +31,11 @@ namespace GameFramework.Screens
             get { return this.shouldExit || (this.current != null && this.current.ShouldExit); }
         }
 
+        public bool UseLinearSampler
+        {
+            get { return this.current != null && this.current.UseLinearSampler; }
+        }
+
         public void Initialize(Viewport viewPort)
         {
             foreach (var screenContext in this.screens.Values.Where(screenContext => !screenContext.IsInitialized))

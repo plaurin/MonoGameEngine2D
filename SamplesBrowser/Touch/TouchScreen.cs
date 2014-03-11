@@ -4,6 +4,7 @@ using GameFramework;
 using GameFramework.Cameras;
 using GameFramework.Drawing;
 using GameFramework.Inputs;
+using GameFramework.Layers;
 using GameFramework.Scenes;
 using GameFramework.Screens;
 using GameFramework.Utilities;
@@ -97,6 +98,7 @@ namespace SamplesBrowser.Touch
         protected override Scene CreateScene()
         {
             var scene = new Scene("Touch");
+            scene.Add(new ColorLayer("Background", Color.CornflowerBlue));
 
             scene.Add(this.CreateButtonLayer(), 
                 this.CreateDiagnosticLayer());

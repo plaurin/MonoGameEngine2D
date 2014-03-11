@@ -1,6 +1,7 @@
 ﻿using GameFramework;
 using GameFramework.Cameras;
 using GameFramework.Inputs;
+using GameFramework.Layers;
 using GameFramework.Scenes;
 using GameFramework.Screens;
 using GameFramework.Sprites;
@@ -43,6 +44,7 @@ namespace SamplesBrowser.ShootEmUp
         protected override Scene CreateScene()
         {
             var scene = new Scene("MainScene");
+            scene.Add(new ColorLayer("Background", Color.CornflowerBlue));
 
             var spriteSheet = this.CreateSpriteSheet();
 

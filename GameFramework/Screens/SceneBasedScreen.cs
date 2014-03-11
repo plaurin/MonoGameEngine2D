@@ -19,6 +19,11 @@ namespace GameFramework.Screens
             get { return this.shouldExit; }
         }
 
+        bool IScreen.UseLinearSampler
+        {
+            get { return this.Scene.UseLinearSampler; }
+        }
+
         protected Camera Camera { get; private set; }
 
         protected InputConfiguration InputConfiguration { get; private set; }

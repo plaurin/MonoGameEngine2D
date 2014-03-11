@@ -47,6 +47,8 @@ namespace GameFramework.Sprites
 
         public override int Draw(IDrawContext drawContext, Transform transform)
         {
+            this.SetSampler(drawContext);
+
             this.drawnElementsLastFrame = 0;
 
             if (this.CameraMode == CameraMode.Follow)

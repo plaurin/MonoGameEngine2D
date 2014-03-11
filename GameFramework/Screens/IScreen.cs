@@ -6,6 +6,8 @@ namespace GameFramework.Screens
     {
         bool ShouldExit { get; }
 
+        bool UseLinearSampler { get; }
+
         void Initialize(Viewport viewport);
 
         void LoadContent(GameResourceManager theResourceManager);

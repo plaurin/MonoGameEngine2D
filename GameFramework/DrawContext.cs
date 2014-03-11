@@ -18,6 +18,10 @@ namespace GameFramework
         void FillRectangle(DrawLineParams param);
 
         void FillColor(Color color);
+
+        void UseLinearSampler();
+
+        void UsePointSampler();
     }
 
     public interface IDrawContext : IDrawImplementation
@@ -64,6 +68,16 @@ namespace GameFramework
         public void FillColor(Color color)
         {
             this.drawImplementation.FillColor(color);
+        }
+
+        public void UseLinearSampler()
+        {
+            this.drawImplementation.UseLinearSampler();
+        }
+
+        public void UsePointSampler()
+        {
+            this.drawImplementation.UsePointSampler();
         }
     }
 

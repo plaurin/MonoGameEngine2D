@@ -16,18 +16,16 @@ namespace MonoGameImplementation
     public class MonoGameBase : Game
     {
         private readonly GraphicsDeviceManager graphics;
-
         private readonly GameFramework.GameTimer gameTimer;
-
         private readonly IScreen screen;
+        private readonly GameResourceManager gameResourceManager;
 
 #if WINDOWS
         private readonly GameNavigatorGateway gameNavigator;
 #endif
 
         private SpriteBatch spriteBatch;
-
-        private readonly GameResourceManager gameResourceManager;
+        private Texture2D blank;
 
         private bool isUpdateEnabled = true;
 
@@ -74,6 +72,9 @@ namespace MonoGameImplementation
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
 
             this.screen.LoadContent(this.gameResourceManager);
+
+            this.blank = new Texture2D(this.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            this.blank.SetData(new[] { Color.White });
         }
 
         /// <summary>
@@ -123,15 +124,60 @@ namespace MonoGameImplementation
         {
             this.gameTimer.DrawFrame(gameTime.ElapsedGameTime, gameTime.TotalGameTime);
 
-            this.GraphicsDevice.Clear(Color.CornflowerBlue);
+            //this.GraphicsDevice.Clear(Color.CornflowerBlue);
+            //this.GraphicsDevice.Clear(Color.Black);
 
-            this.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
+            //var pp = GraphicsDevice.PresentationParameters;
+            //var tempText = new RenderTarget2D(GraphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight, true, pp.BackBufferFormat, pp.DepthStencilFormat);
+            //var tempText = new RenderTarget2D(GraphicsDevice, 100, 100, false, pp.BackBufferFormat, pp.DepthStencilFormat);
+            //var tempText = new RenderTarget2D(GraphicsDevice, 100, 100);
 
-            var blank = new Texture2D(this.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
-            blank.SetData(new[] { Color.White });
+            //if (this.screen.UseLinearSampler)
+            //{
+            //    //this.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
+            //    this.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied,
+            //        SamplerState.LinearWrap, DepthStencilState.None, RasterizerState.CullCounterClockwise);
 
-            var xnaDrawContext = new XnaDrawContext(this.spriteBatch, blank, this.graphics.GraphicsDevice.Viewport);
+            //    //GraphicsDevice.SetRenderTarget(tempText);
+            //    //this.GraphicsDevice.Clear(Color.CornflowerBlue);
+            //    this.spriteBatch.Draw(this.blank, new Microsoft.Xna.Framework.Rectangle(202, 202, 40, 40), Color.Orange);
+            //    //GraphicsDevice.SetRenderTarget(null);
+
+            //    //this.spriteBatch.End();
+
+            //    this.spriteBatch.End();
+                
+            //    GraphicsDevice.SetRenderTarget(tempText);
+            //    this.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
+            //    //this.GraphicsDevice.Clear(Color.CornflowerBlue);
+            //    this.GraphicsDevice.Clear(new Color(0, 0, 0, 0));
+            //    this.spriteBatch.Draw(this.blank, new Microsoft.Xna.Framework.Rectangle(2, 2, 40, 40), Color.Green);
+            //    this.spriteBatch.End();
+
+            //    this.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
+            //    GraphicsDevice.SetRenderTarget(null);
+            //    this.GraphicsDevice.Clear(Color.CornflowerBlue);
+            //    //this.GraphicsDevice.Clear(new Color(0, 0, 0, 0));
+
+            //    this.spriteBatch.Draw(tempText, new Microsoft.Xna.Framework.Rectangle(2, 2, 200, 200), Color.White);
+
+            //    //this.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied,
+            //    //    SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null,
+            //    //    Matrix.CreateScale(2.4f));
+            //}
+            //else
+            //{
+            //    this.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied,
+            //        SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
+            //}
+
+            var xnaDrawContext = new XnaDrawContext(this.spriteBatch, this.blank, this.graphics.GraphicsDevice.Viewport);
             var drawContext = new DrawContext(xnaDrawContext);
+
+            if (this.screen.UseLinearSampler)
+                drawContext.UseLinearSampler();
+            else
+                drawContext.UsePointSampler();
 
             this.screen.Draw(drawContext);
 

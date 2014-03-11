@@ -43,24 +43,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="GameFramework">
-      <HintPath>..\packages\MonoGameEngine2D.GameFramework.1.5.17\lib\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\GameFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="GameFramework.IO">
-      <HintPath>..\packages\MonoGameEngine2D.GameFramework.1.5.17\lib\portable-net45+wp80+win+MonoAndroid10+MonoTouch10\GameFramework.IO.dll</HintPath>
-    </Reference>
-    <Reference Include="GameNavigator">
-      <HintPath>..\packages\MonoGameEngine2D.Windows.1.5.17\lib\net45\GameNavigator.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
-    <Reference Include="WindowsBaseFx">
-      <HintPath>..\packages\MonoGameEngine2D.Windows.1.5.17\lib\net45\WindowsBaseFx.dll</HintPath>
-    </Reference>
     <Reference Include="Xceed.Wpf.AvalonDock">
       <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
     </Reference>
@@ -112,9 +100,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GameFramework.IO\GameFramework.IO.csproj">
+      <Project>{267edcab-f1bf-4678-b412-dca86afb2603}</Project>
+      <Name>GameFramework.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GameFramework\GameFramework.csproj">
+      <Project>{e30e5eee-aaf6-4455-8bc5-40e158eacbc1}</Project>
+      <Name>GameFramework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SamplesBrowser\SamplesBrowser.csproj">
       <Project>{A6633657-3842-417A-B3F0-2FB329130139}</Project>
       <Name>SamplesBrowser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WindowsBaseFx\WindowsBaseFx.csproj">
+      <Project>{370c3028-2b87-4f29-a722-c4b4873bf813}</Project>
+      <Name>WindowsBaseFx</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -86,6 +86,8 @@ namespace GameFramework.Drawing
 
         public override int Draw(IDrawContext drawContext, Transform transform)
         {
+            this.SetSampler(drawContext);
+
             var total = 0;
 
             // TODO: Optimize filter element outside the view should not be drawn

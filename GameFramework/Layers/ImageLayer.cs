@@ -28,6 +28,8 @@ namespace GameFramework.Layers
 
         public override int Draw(IDrawContext drawContext, Transform transform)
         {
+            this.SetSampler(drawContext);
+
             drawContext.DrawImage(new DrawImageParams
             {
                 Texture = this.Texture,

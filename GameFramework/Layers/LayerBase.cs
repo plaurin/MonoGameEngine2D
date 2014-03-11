@@ -11,6 +11,7 @@ namespace GameFramework.Layers
             this.CameraMode = CameraMode.Follow;
             this.ParallaxScrollingVector = Vector.One;
             this.IsVisible = true;
+            this.UseLinearSampler = null;
         }
 
         public string Name { get; set; }
@@ -23,6 +24,8 @@ namespace GameFramework.Layers
 
         public bool IsVisible { get; set; }
 
+        public bool? UseLinearSampler { get; set; }
+
         public abstract int TotalElements { get; }
 
         public abstract int DrawnElementsLastFrame { get; }
@@ -32,6 +35,17 @@ namespace GameFramework.Layers
         public NavigatorMetadata GetMetadata()
         {
             return new NavigatorMetadata(this.Name, NodeKind.Layer);
+        }
+
+        protected void SetSampler(IDrawContext drawContext)
+        {
+            if (this.UseLinearSampler.HasValue)
+            {
+                if (this.UseLinearSampler.Value)
+                    drawContext.UseLinearSampler();
+                else
+                    drawContext.UsePointSampler();
+            }
         }
     }
 }

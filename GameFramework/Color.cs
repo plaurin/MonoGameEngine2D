@@ -46,6 +46,11 @@ namespace GameFramework
             get { return new Color(255, 255, 0, 255); }
         }
 
+        public static Color CornflowerBlue
+        {
+            get { return new Color(100, 149, 237, 255); }
+        }
+
         public Color Multiply(Color color)
         {
             return new Color(

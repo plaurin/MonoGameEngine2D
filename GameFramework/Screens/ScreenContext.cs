@@ -32,6 +32,11 @@ namespace GameFramework.Screens
             get { return this.screen.ShouldExit; }
         }
 
+        public bool UseLinearSampler
+        {
+            get { return this.screen.UseLinearSampler; }
+        }
+
         public void Initialize(Viewport viewport)
         {
             this.screen.Initialize(viewport);
