@@ -8,6 +8,10 @@ namespace GameFramework.Inputs
     {
         IDigitalButtonMapper GetDigitalButton(string name);
 
+        VisualButton GetVisualButton(string name);
+
+        InputEvent GetEvent(string name);
+
         IKeyboardMapper CreateKeyboardTracking();
 
         IMouseMapper CreateMouseTracking(ICamera camera);

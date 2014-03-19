@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using GameFramework.Cameras;
 using GameFramework.Inputs;
 using GameFramework.Scenes;
@@ -56,8 +57,21 @@ namespace GameFramework.Screens
         {
             drawContext.Camera = this.Camera;
             var transform = Transform.Identity;
+            
+            // PreDraw
+            foreach (var preDrawable in this.GetPreDrawables(this.Scene))
+                preDrawable.PreDraw(drawContext);
+
+            // Init draw
+            if (((IScreen)this).UseLinearSampler)
+                drawContext.UseLinearSampler();
+            else
+                drawContext.UsePointSampler();
+
+            // Draw scene
             var total = this.Scene.Draw(drawContext, transform);
 
+            // Finally draw this Screen
             return total + this.Draw(drawContext, transform);
         }
 
@@ -85,5 +99,19 @@ namespace GameFramework.Screens
         protected abstract InputConfiguration CreateInputConfiguration();
 
         protected abstract Scene CreateScene();
+
+        private IEnumerable<IPreDrawable> GetPreDrawables(object sceneObject)
+        {
+            var preDrawable = sceneObject as IPreDrawable;
+            if (preDrawable != null)
+                yield return preDrawable;
+
+            var composite = sceneObject as IComposite;
+            if (composite != null)
+            {
+                foreach (var preDrawableChild in composite.Children.SelectMany(this.GetPreDrawables))
+                    yield return preDrawableChild;
+            }
+        }
     }
 }

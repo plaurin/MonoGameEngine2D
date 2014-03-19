@@ -1,5 +1,5 @@
 using System;
-
+using System.Collections.Generic;
 using GameFramework;
 
 using Microsoft.Xna.Framework;
@@ -13,19 +13,22 @@ namespace MonoGameImplementation.EngineImplementation
     public class XnaDrawContext : IDrawImplementation
     {
         private readonly SpriteBatch spriteBatch;
-
         private readonly Texture2D blank;
-
         private readonly Viewport viewport;
+        private readonly IDictionary<IPreDrawable, RenderTargetWrap> renderTargetDictionary;
+
+        private RenderTargetWrap renderTargetWrap;
 
         private bool isStarted;
 
-        private bool? isLinearSampler;
-        
-        public XnaDrawContext(SpriteBatch spriteBatch, Texture2D blank, Viewport viewport)
+        private bool isLinearSampler = true;
+
+        public XnaDrawContext(SpriteBatch spriteBatch, Texture2D blank, Viewport viewport, 
+            IDictionary<IPreDrawable, RenderTargetWrap> renderTargetDictionary)
         {
             this.spriteBatch = spriteBatch;
             this.blank = blank;
+            this.renderTargetDictionary = renderTargetDictionary;
             this.viewport = viewport;
         }
 
@@ -72,10 +75,9 @@ namespace MonoGameImplementation.EngineImplementation
             var xnaTexture = (XnaTexture)param.Texture;
 
             var texture2D = xnaTexture.Texture2D;
-            //var destination = param.Destination.ToXnaRect();
             var destinationVector = param.Destination.Location.ToVector2();
 
-            var color = new Microsoft.Xna.Framework.Color(param.Color.R, param.Color.G, param.Color.B, param.Color.A);
+            var color = new Color(param.Color.R, param.Color.G, param.Color.B, param.Color.A);
             var rotation = param.Rotation;
             var origin = param.Origin.ToVector2();
             var effect = (SpriteEffects)(int)param.ImageEffect;
@@ -95,7 +97,6 @@ namespace MonoGameImplementation.EngineImplementation
                     param.Destination.Height / texture2D.Height);
             }
 
-            //this.spriteBatch.Draw(texture2D, destination, source, color, rotation, origin, effect, Depth);
             this.spriteBatch.Draw(texture2D, destinationVector, source, color, rotation, origin, scaleVector, effect, Depth);
         }
 
@@ -107,29 +108,85 @@ namespace MonoGameImplementation.EngineImplementation
 
         public void UseLinearSampler()
         {
-            if (!this.isLinearSampler.HasValue || !this.isLinearSampler.Value)
+            if (!this.isLinearSampler || !this.isStarted)
             {
                 if (this.isStarted) this.spriteBatch.End();
 
-                this.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
-
                 this.isLinearSampler = true;
-                this.isStarted = true;
+                this.SpriteBatchBegin();
             }
         }
 
         public void UsePointSampler()
         {
-            if (!this.isLinearSampler.HasValue || this.isLinearSampler.Value)
+            if (this.isLinearSampler || !this.isStarted)
             {
                 if (this.isStarted) this.spriteBatch.End();
 
+                this.isLinearSampler = false;
+                this.SpriteBatchBegin();
+            }
+        }
+
+        public void SetRenderTarget(IPreDrawable painter, Vector size)
+        {
+            if (!this.renderTargetDictionary.TryGetValue(painter, out this.renderTargetWrap))
+            {
+                this.renderTargetWrap = new RenderTargetWrap();
+                this.renderTargetDictionary.Add(painter, this.renderTargetWrap);
+            }
+
+            if (size.X > this.renderTargetWrap.ActualSize.X || size.Y > this.renderTargetWrap.ActualSize.Y)
+            {
+                this.renderTargetWrap.ActualSize = new Vector((int)(size.X * 1.2f), (int)(size.Y * 1.2f));
+
+                this.renderTargetWrap.RenderTarget2D = new RenderTarget2D(this.spriteBatch.GraphicsDevice,
+                    (int)this.renderTargetWrap.ActualSize.X, (int)this.renderTargetWrap.ActualSize.Y);
+            }
+
+            this.renderTargetWrap.Size = size;
+
+            this.spriteBatch.GraphicsDevice.SetRenderTarget(this.renderTargetWrap.RenderTarget2D);
+
+            this.SpriteBatchBegin();
+            this.spriteBatch.GraphicsDevice.Clear(GameFramework.Color.Transparent.ToXnaColor());
+        }
+
+        public void FlushRenderTarget()
+        {
+            this.spriteBatch.End();
+
+            this.spriteBatch.GraphicsDevice.SetRenderTarget(null);
+        }
+
+        public void DrawPreDrawn(IPreDrawable painter)
+        {
+            if (this.renderTargetDictionary.TryGetValue(painter, out this.renderTargetWrap))
+            {
+                this.spriteBatch.Draw(this.renderTargetWrap.RenderTarget2D, this.spriteBatch.GraphicsDevice.Viewport.Bounds,
+                    new Microsoft.Xna.Framework.Rectangle(0, 0, (int)this.renderTargetWrap.Size.X, (int)this.renderTargetWrap.Size.Y),
+                    Color.White);
+            }
+        }
+
+        private void SpriteBatchBegin()
+        {
+            if (this.isLinearSampler)
+                this.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
+            else
                 this.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied,
                     SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
 
-                this.isLinearSampler = false;
-                this.isStarted = true;
-            }
+            this.isStarted = true;
         }
+    }
+
+    public class RenderTargetWrap
+    {
+        public RenderTarget2D RenderTarget2D { get; set; }
+
+        public Vector Size { get; set; }
+
+        public Vector ActualSize { get; set; }
     }
 }

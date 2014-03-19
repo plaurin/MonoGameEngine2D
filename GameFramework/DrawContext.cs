@@ -2,6 +2,7 @@
 
 using GameFramework.Cameras;
 using GameFramework.Drawing;
+using GameFramework.Tiles;
 
 namespace GameFramework
 {
@@ -22,6 +23,12 @@ namespace GameFramework
         void UseLinearSampler();
 
         void UsePointSampler();
+
+        void SetRenderTarget(IPreDrawable painter, Vector size);
+
+        void FlushRenderTarget();
+
+        void DrawPreDrawn(IPreDrawable painter);
     }
 
     public interface IDrawContext : IDrawImplementation
@@ -39,6 +46,21 @@ namespace GameFramework
         }
 
         public ICamera Camera { get; set; }
+
+        public void SetRenderTarget(IPreDrawable painter, Vector size)
+        {
+            this.drawImplementation.SetRenderTarget(painter, size);
+        }
+
+        public void FlushRenderTarget()
+        {
+            this.drawImplementation.FlushRenderTarget();
+        }
+
+        public void DrawPreDrawn(IPreDrawable painter)
+        {
+            this.drawImplementation.DrawPreDrawn(painter);
+        }
 
         public void DrawString(DrawStringParams param)
         {

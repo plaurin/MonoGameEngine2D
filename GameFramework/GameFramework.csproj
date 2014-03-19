@@ -102,6 +102,7 @@
     <Compile Include="Sprites\SpriteDefinition.cs" />
     <Compile Include="Sprites\SpriteReference.cs" />
     <Compile Include="Sprites\SpriteTransform.cs" />
+    <Compile Include="Tiles\ScalableTileLayer.cs" />
     <Compile Include="Transform.cs" />
     <Compile Include="Utilities\DiagnosticHud.cs" />
     <Compile Include="Layers\ImageLayer.cs" />

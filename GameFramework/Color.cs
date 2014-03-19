@@ -21,6 +21,11 @@ namespace GameFramework
 
         public int A { get; private set; }
 
+        public static Color Black
+        {
+            get { return new Color(0, 0, 0, 255); }
+        }
+
         public static Color Red
         {
             get { return new Color(255, 0, 0, 255); }
@@ -49,6 +54,11 @@ namespace GameFramework
         public static Color CornflowerBlue
         {
             get { return new Color(100, 149, 237, 255); }
+        }
+
+        public static Color Transparent
+        {
+            get { return new Color(255, 255, 255, 0); }
         }
 
         public Color Multiply(Color color)

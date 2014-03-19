@@ -59,8 +59,8 @@ namespace GameFramework.Cameras
                             this.Viewport.Height / this.ZoomFactor);
                     case CameraCenter.WindowTopLeft:
                         return new Viewport(
-                            this.Position.X / this.ZoomFactor,
-                            this.Position.Y / this.ZoomFactor,
+                            this.Position.X,
+                            this.Position.Y,
                             this.Viewport.Width / this.ZoomFactor,
                             this.Viewport.Height / this.ZoomFactor);
                     default:

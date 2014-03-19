@@ -79,7 +79,7 @@ namespace GameFramework.IO
 
         private static TileLayer LoadLayer(TmxLayer layer, Size mapSize, Size tilesSize, IReadOnlyDictionary<string, TileDefinition> tileDefinitions)
         {
-            var tileLayer = new TileLayer(layer.Name, mapSize, tilesSize);
+            var tileLayer = new ScalableTileLayer(layer.Name, mapSize, tilesSize);
 
             foreach (var tile in layer.Tiles)
             {

@@ -64,7 +64,6 @@ namespace SamplesBrowser.Tiled
 
             var tiledFile = TiledFile.Load(@"Tiled\untitled.tmx", this.ResourceManager);
             this.tileLayers = tiledFile.TileLayers.ToList();
-            foreach (var l in this.tileLayers) l.UseLinearSampler = true;
             scene.AddRange(this.tileLayers);
 
             var drawingLayer = new DrawingLayer("ObjectLayer");
