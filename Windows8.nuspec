@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>MonoGameEngine2D.Windows8</id>
-    <version>1.5.19</version>
+    <version>1.5.22</version>
     <authors>Pascal Laurin</authors>
     <owners>Pascal Laurin</owners>
     <licenseUrl>http://github.com/plaurin/MonoGameEngine2D/blob/master/License.txt</licenseUrl>
@@ -10,11 +10,11 @@
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Cross-platform Game making framework using MonoGame and PCL.  Use this to create a Windows8 host.</description>
-    <releaseNotes>Support for texture sampler PointClamp and LinearClamp</releaseNotes>
+    <releaseNotes>Fix2 for PreDraw multiple layer</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>Game MonoGame</tags>
     <dependencies>
-      <dependency id="MonoGameEngine2D.GameFramework" version="1.5.19" />
+      <dependency id="MonoGameEngine2D.GameFramework" version="1.5.20" />
       <dependency id="MonoGame.Binaries" version="3.0.1" />
     </dependencies>
   </metadata>

@@ -110,7 +110,7 @@ namespace MonoGameImplementation.EngineImplementation
         {
             if (!this.isLinearSampler || !this.isStarted)
             {
-                if (this.isStarted) this.spriteBatch.End();
+                this.SpriteBatchEnd();
 
                 this.isLinearSampler = true;
                 this.SpriteBatchBegin();
@@ -121,7 +121,7 @@ namespace MonoGameImplementation.EngineImplementation
         {
             if (this.isLinearSampler || !this.isStarted)
             {
-                if (this.isStarted) this.spriteBatch.End();
+                this.SpriteBatchEnd();
 
                 this.isLinearSampler = false;
                 this.SpriteBatchBegin();
@@ -154,8 +154,7 @@ namespace MonoGameImplementation.EngineImplementation
 
         public void FlushRenderTarget()
         {
-            this.spriteBatch.End();
-
+            this.SpriteBatchEnd();
             this.spriteBatch.GraphicsDevice.SetRenderTarget(null);
         }
 
@@ -178,6 +177,12 @@ namespace MonoGameImplementation.EngineImplementation
                     SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
 
             this.isStarted = true;
+        }
+
+        private void SpriteBatchEnd()
+        {
+            if (this.isStarted) this.spriteBatch.End();
+            this.isStarted = false;
         }
     }
 

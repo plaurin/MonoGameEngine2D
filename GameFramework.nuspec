@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>MonoGameEngine2D.GameFramework</id>
-    <version>1.5.19</version>
+    <version>1.5.21</version>
     <authors>Pascal Laurin</authors>
     <owners>Pascal Laurin</owners>
     <licenseUrl>http://github.com/plaurin/MonoGameEngine2D/blob/master/License.txt</licenseUrl>
@@ -10,7 +10,7 @@
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Cross-platform Game making framework using MonoGame and PCL.  Use this for additional game logic library projects.</description>
-    <releaseNotes>Support for texture sampler PointClamp and LinearClamp</releaseNotes>
+    <releaseNotes>Support normal TileLayer and ScalableTileLayer for Tiled</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>Game MonoGame</tags>
     <dependencies>

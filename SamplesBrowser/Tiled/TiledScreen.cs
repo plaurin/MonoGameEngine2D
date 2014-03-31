@@ -29,6 +29,7 @@ namespace SamplesBrowser.Tiled
         protected override Camera CreateCamera(Viewport viewport)
         {
             return new Camera(viewport) { Center = CameraCenter.WindowTopLeft };
+            //return new Camera(viewport) { Center = CameraCenter.WindowCenter };
         }
 
         protected override InputConfiguration CreateInputConfiguration()
@@ -62,7 +63,7 @@ namespace SamplesBrowser.Tiled
             var scene = new Scene("Tiled") { UseLinearSampler = false };
             scene.Add(new ColorLayer("Background", Color.CornflowerBlue));
 
-            var tiledFile = TiledFile.Load(@"Tiled\untitled.tmx", this.ResourceManager);
+            var tiledFile = TiledFile.LoadScalable(@"Tiled\untitled.tmx", this.ResourceManager);
             this.tileLayers = tiledFile.TileLayers.ToList();
             scene.AddRange(this.tileLayers);
 

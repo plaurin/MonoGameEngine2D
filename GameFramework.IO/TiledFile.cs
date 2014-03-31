@@ -30,7 +30,17 @@ namespace GameFramework.IO
             get { return this.objectLayers; }
         }
 
+        public static ITiledFile LoadScalable(string filepath, GameResourceManager gameResourceManager)
+        {
+            return Load(filepath, gameResourceManager, true);
+        }
+
         public static ITiledFile Load(string filepath, GameResourceManager gameResourceManager)
+        {
+            return Load(filepath, gameResourceManager, false);
+        }
+
+        private static ITiledFile Load(string filepath, GameResourceManager gameResourceManager, bool scalable)
         {
             var map = new TmxMap(Path.Combine(ContentFolder, filepath));
 
@@ -42,7 +52,7 @@ namespace GameFramework.IO
             var tileDefinitions = sheets.SelectMany(sheet => sheet.Definitions.Values)
                 .ToDictionary(tileDefinition => tileDefinition.Name);
 
-            var tileLayers = map.Layers.Select(l => LoadLayer(l, mapSize, tilesSize, tileDefinitions)).ToList();
+            var tileLayers = map.Layers.Select(l => LoadLayer(l, mapSize, tilesSize, tileDefinitions, scalable)).ToList();
             var objectLayers = map.ObjectGroups.Select(o => LoadObjects(o, tileDefinitions)).ToList();
 
             return new TiledFile(tileLayers, objectLayers);
@@ -77,9 +87,12 @@ namespace GameFramework.IO
             return sheet;
         }
 
-        private static TileLayer LoadLayer(TmxLayer layer, Size mapSize, Size tilesSize, IReadOnlyDictionary<string, TileDefinition> tileDefinitions)
+        private static TileLayer LoadLayer(TmxLayer layer, Size mapSize, Size tilesSize, 
+            IReadOnlyDictionary<string, TileDefinition> tileDefinitions, bool scalable)
         {
-            var tileLayer = new ScalableTileLayer(layer.Name, mapSize, tilesSize);
+            var tileLayer = scalable
+                ? new ScalableTileLayer(layer.Name, mapSize, tilesSize)
+                : new TileLayer(layer.Name, mapSize, tilesSize);
 
             foreach (var tile in layer.Tiles)
             {

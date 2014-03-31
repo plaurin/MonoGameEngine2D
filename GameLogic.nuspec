@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>MonoGameEngine2D.GameLogic</id>
-    <version>1.5.17</version>
+    <version>1.5.20</version>
     <authors>Pascal Laurin</authors>
     <owners>Pascal Laurin</owners>
     <licenseUrl>http://github.com/plaurin/MonoGameEngine2D/blob/master/License.txt</licenseUrl>
@@ -10,11 +10,11 @@
     <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Cross-platform Game making framework using MonoGame and PCL.  Use this to create your game logic.</description>
-    <releaseNotes>NuGet packages refactoring</releaseNotes>
+    <releaseNotes>Added ScalableTileLayer for Tiled support</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>Game MonoGame</tags>
     <dependencies>
-      <dependency id="MonoGameEngine2D.GameFramework" version="1.5.17" />
+      <dependency id="MonoGameEngine2D.GameFramework" version="1.5.20" />
     </dependencies>
   </metadata>
   <files>
